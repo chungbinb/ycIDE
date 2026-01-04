@@ -1,0 +1,12 @@
+#include "..\include_sqlite3_header.h"
+
+// 调用格式: SDT_SHORT (Sqlite表).读字段短整数值, 命令说明: "读取当前记录中指定字段的值，并转换为短整数型数据后返回。"
+// 参数<1>: 字段名称或位置 _SDT_ALL, 参数说明: "指定欲读取的字段，可以为一个字段名称文本或者一个字段位置数值，字段位置数值从1开始。"
+// 参数<2>: [&执行结果 SDT_BOOL], 参数说明: "如果提供本参数，其中将存放本方法执行结果——成功为“真”，失败为“假”。"
+SQLITE3_EXTERN_C void sqlite3_GetFieldShortValue_145_sqlite3(PMDATA_INF pRetData, INT nArgCount, PMDATA_INF pArgInf)
+{
+    PVOID    arg1 = pArgInf[1].m_pByte;
+    BOOL*    arg2 = pArgInf[2].m_pBool;
+
+}
+

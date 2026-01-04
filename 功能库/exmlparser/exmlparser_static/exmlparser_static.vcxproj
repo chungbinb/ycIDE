@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\exmlparser_const.cpp" />
+    <ClCompile Include="..\exmlparser_dllMain.cpp" />
+    <ClCompile Include="..\exmlparser_dtType.cpp" />
+    <ClCompile Include="..\exmlparser_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_0_CreateNewTree.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_1_LoadFrom.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_2_WriteToFile.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_3_Release.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_4_GetRootNodeCaption.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_5_GetChildNodeNumber.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_6_GetChildNodeCaption.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_7_GetChildNodeValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_8_GetBinaryValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_9_GetNodeAttrName.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_10_GetNodeAttrValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_11_InsertNode.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_12_InsertAttr.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_13_DelNode.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_14_DelAttr.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_15_ModifyNodeCaption.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_16_ModifyNodeValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_17_ModifyNodeBinaryValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_18_ModifyNodeAttrCaption.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_19_ModifyNodeAttrValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_20_BatchDeleteNode.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_21_BatchGetNodeValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_22_BatchModifyNodeValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_23_BlurMatch.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_24__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_25__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_26__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_27__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_28__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_29__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_30_GetRootNodeCaption.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_31_GetChildNodeNumber.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_32_GetAllChildNodeCaption.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_33_GetChildNodeValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_34_GetBinaryValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_35_GetNodeAttrCount.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_36_GetNodeAllAttrName.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_37_GetNodeAttrValue.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_38_GetXMLData.cpp" />
+    <ClCompile Include="..\cppCode\exmlparser_39_GetNodeCaption.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_exmlparser_header.h" />
+    <ClInclude Include="..\exmlparser_cmd_typedef.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5ff16995-6ad6-4964-a421-e0842e1be946}</ProjectGuid>
+    <RootNamespace>exmlparserstatic</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=exmlparser;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=exmlparser;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

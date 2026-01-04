@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\downlib_const.cpp" />
+    <ClCompile Include="..\downlib_dllMain.cpp" />
+    <ClCompile Include="..\downlib_dtType.cpp" />
+    <ClCompile Include="..\downlib_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\downlib_0_InitDownLib.cpp" />
+    <ClCompile Include="..\cppCode\downlib_1_SetTautologyTime.cpp" />
+    <ClCompile Include="..\cppCode\downlib_2_GetAllRate.cpp" />
+    <ClCompile Include="..\cppCode\downlib_3_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_4_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_5_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_6_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_7_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_8_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_9_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_10_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_11_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_12_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_13_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_14_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_15_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_16_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_17_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_18_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_19_AddDownFile.cpp" />
+    <ClCompile Include="..\cppCode\downlib_20_StopDownFile.cpp" />
+    <ClCompile Include="..\cppCode\downlib_21_ContinueDownFile.cpp" />
+    <ClCompile Include="..\cppCode\downlib_22_AddDownThread.cpp" />
+    <ClCompile Include="..\cppCode\downlib_23_DecreaseDownThread.cpp" />
+    <ClCompile Include="..\cppCode\downlib_24_SetDownRate.cpp" />
+    <ClCompile Include="..\cppCode\downlib_25_GetDownRate.cpp" />
+    <ClCompile Include="..\cppCode\downlib_26_GetDownFileSize.cpp" />
+    <ClCompile Include="..\cppCode\downlib_27_GetThreadSize.cpp" />
+    <ClCompile Include="..\cppCode\downlib_28_GetTautologyCount.cpp" />
+    <ClCompile Include="..\cppCode\downlib_29_GetObjInfo.cpp" />
+    <ClCompile Include="..\cppCode\downlib_30_GetThreadInfo.cpp" />
+    <ClCompile Include="..\cppCode\downlib_31_GetStopDownObjInfo.cpp" />
+    <ClCompile Include="..\cppCode\downlib_32_GetFilePath.cpp" />
+    <ClCompile Include="..\cppCode\downlib_33_SetNewName.cpp" />
+    <ClCompile Include="..\cppCode\downlib_34_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_35_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_36_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_37_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_38_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_39_DownFreeCmd.cpp" />
+    <ClCompile Include="..\cppCode\downlib_40_UpDataFile.cpp" />
+    <ClCompile Include="..\cppCode\downlib_41_StopUpData.cpp" />
+    <ClCompile Include="..\cppCode\downlib_42_SetRate.cpp" />
+    <ClCompile Include="..\cppCode\downlib_43_GetRate.cpp" />
+    <ClCompile Include="..\cppCode\downlib_44_GetUpDataSize.cpp" />
+    <ClCompile Include="..\cppCode\downlib_45_GetUpDataTautologyCount.cpp" />
+    <ClCompile Include="..\cppCode\downlib_46_SetNewName.cpp" />
+    <ClCompile Include="..\cppCode\downlib_47_GetFtpObjInfo.cpp" />
+    <ClCompile Include="..\cppCode\downlib_48_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_49_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_50_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_51_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_52_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_53_GDownLibStandbyFun.cpp" />
+    <ClCompile Include="..\cppCode\downlib_54_FtpLogin.cpp" />
+    <ClCompile Include="..\cppCode\downlib_55_FtpQuit.cpp" />
+    <ClCompile Include="..\cppCode\downlib_56_FtpDelFile.cpp" />
+    <ClCompile Include="..\cppCode\downlib_57_FtpReFileName.cpp" />
+    <ClCompile Include="..\cppCode\downlib_58_FtpCreateDir.cpp" />
+    <ClCompile Include="..\cppCode\downlib_59_FtpDelDir.cpp" />
+    <ClCompile Include="..\cppCode\downlib_60_FtpSetCurrentDir.cpp" />
+    <ClCompile Include="..\cppCode\downlib_61_FtpGetCurrentDir.cpp" />
+    <ClCompile Include="..\cppCode\downlib_62_FtpGetDirList.cpp" />
+    <ClCompile Include="..\cppCode\downlib_63_FtpMoveFile.cpp" />
+    <ClCompile Include="..\cppCode\downlib_64_FtpRunCmd.cpp" />
+    <ClCompile Include="..\cppCode\downlib_65_FtpGetConnectHandle.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_downlib_header.h" />
+    <ClInclude Include="..\downlib_cmd_typedef.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5ff16995-6ad6-4964-a421-e0842e1be946}</ProjectGuid>
+    <RootNamespace>downlibstatic</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=downlib;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=downlib;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

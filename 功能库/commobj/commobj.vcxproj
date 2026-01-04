@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="elib\fnshare.cpp" />
+    <ClCompile Include="commobj_const.cpp" />
+    <ClCompile Include="commobj_dllMain.cpp" />
+    <ClCompile Include="commobj_dtType.cpp" />
+    <ClCompile Include="commobj_cmdInfo.cpp" />
+    <ClCompile Include="cppCode\commobj_0__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_1__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_2__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_3__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_4__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_5__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_6__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_7__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_8__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_9__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_10__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_11__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_12__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_13__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_14__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_15__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_16__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_17__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_18__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_19__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_20_Constructor.cpp" />
+    <ClCompile Include="cppCode\commobj_21_CopyConstructor.cpp" />
+    <ClCompile Include="cppCode\commobj_22_Destructor.cpp" />
+    <ClCompile Include="cppCode\commobj_23_GetLength.cpp" />
+    <ClCompile Include="cppCode\commobj_24_GetText.cpp" />
+    <ClCompile Include="cppCode\commobj_25_SetText.cpp" />
+    <ClCompile Include="cppCode\commobj_26_EmptyText.cpp" />
+    <ClCompile Include="cppCode\commobj_27_Append.cpp" />
+    <ClCompile Include="cppCode\commobj_28_Insert.cpp" />
+    <ClCompile Include="cppCode\commobj_29_DeleteChars.cpp" />
+    <ClCompile Include="cppCode\commobj_30__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_31__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_32__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_33__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_34_Find.cpp" />
+    <ClCompile Include="cppCode\commobj_35_FindReverse.cpp" />
+    <ClCompile Include="cppCode\commobj_36_ReplaceTextW.cpp" />
+    <ClCompile Include="cppCode\commobj_37_ReplaceSubText.cpp" />
+    <ClCompile Include="cppCode\commobj_38_SplitText.cpp" />
+    <ClCompile Include="cppCode\commobj_39__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_40__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_41__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_42__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_43__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_44__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_45_UpperCase.cpp" />
+    <ClCompile Include="cppCode\commobj_46_LowerCase.cpp" />
+    <ClCompile Include="cppCode\commobj_47_QJCase.cpp" />
+    <ClCompile Include="cppCode\commobj_48_QJCase.cpp" />
+    <ClCompile Include="cppCode\commobj_49_TrimLeft.cpp" />
+    <ClCompile Include="cppCode\commobj_50_TrimRight.cpp" />
+    <ClCompile Include="cppCode\commobj_51_Trim.cpp" />
+    <ClCompile Include="cppCode\commobj_52_TrimAll.cpp" />
+    <ClCompile Include="cppCode\commobj_53__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_54__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_55__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_56__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_57__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_58__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_59__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_60__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_61__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_62__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_63__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_64__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_65__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_66_ReadFromFile.cpp" />
+    <ClCompile Include="cppCode\commobj_67_WriteToFile.cpp" />
+    <ClCompile Include="cppCode\commobj_68__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_69__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_70_GetBuffer.cpp" />
+    <ClCompile Include="cppCode\commobj_71_ReleaseBuffer.cpp" />
+    <ClCompile Include="cppCode\commobj_72_SetMemLength.cpp" />
+    <ClCompile Include="cppCode\commobj_73_SetMemGrowSize.cpp" />
+    <ClCompile Include="cppCode\commobj_74__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_75__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_76__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_77__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_78__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_79__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_80_Constructor.cpp" />
+    <ClCompile Include="cppCode\commobj_81_CopyConstructor.cpp" />
+    <ClCompile Include="cppCode\commobj_82_Destructor.cpp" />
+    <ClCompile Include="cppCode\commobj_83_GetLength.cpp" />
+    <ClCompile Include="cppCode\commobj_84_GetData.cpp" />
+    <ClCompile Include="cppCode\commobj_85_SetData.cpp" />
+    <ClCompile Include="cppCode\commobj_86_Empty.cpp" />
+    <ClCompile Include="cppCode\commobj_87_Append.cpp" />
+    <ClCompile Include="cppCode\commobj_88_Insert.cpp" />
+    <ClCompile Include="cppCode\commobj_89_DeleteBytes.cpp" />
+    <ClCompile Include="cppCode\commobj_90_GetByte.cpp" />
+    <ClCompile Include="cppCode\commobj_91__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_92__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_93__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_94_Find.cpp" />
+    <ClCompile Include="cppCode\commobj_95_FindReverse.cpp" />
+    <ClCompile Include="cppCode\commobj_96_ReplaceBin.cpp" />
+    <ClCompile Include="cppCode\commobj_97_ReplaceSubBin.cpp" />
+    <ClCompile Include="cppCode\commobj_98_SplitBinary.cpp" />
+    <ClCompile Include="cppCode\commobj_99__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_100__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_101__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_102__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_103__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_104__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_105__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_106__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_107__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_108__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_109__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_110__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_111__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_112__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_113__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_114__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_115__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_116__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_117__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_118__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_119__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_120__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_121__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_122__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_123__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_124__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_125__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_126_ReadFromFile.cpp" />
+    <ClCompile Include="cppCode\commobj_127_WriteToFile.cpp" />
+    <ClCompile Include="cppCode\commobj_128__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_129__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_130_GetBuffer.cpp" />
+    <ClCompile Include="cppCode\commobj_131_ReleaseBuffer.cpp" />
+    <ClCompile Include="cppCode\commobj_132_SetMemLength.cpp" />
+    <ClCompile Include="cppCode\commobj_133_SetMemGrowSize.cpp" />
+    <ClCompile Include="cppCode\commobj_134__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_135__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_136__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_137__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_138__bunengshibie_.cpp" />
+    <ClCompile Include="cppCode\commobj_139__bunengshibie_.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="elib\fnshare.h" />
+    <ClInclude Include="elib\krnllib.h" />
+    <ClInclude Include="elib\lang.h" />
+    <ClInclude Include="elib\lib2.h" />
+    <ClInclude Include="elib\mtypes.h" />
+    <ClInclude Include="elib\PublicIDEFunctions.h" />
+    <ClInclude Include="elib\untshare.h" />
+    <ClInclude Include="include_commobj_header.h" />
+    <ClInclude Include="commobj_cmd_typedef.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source_commobj.def" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ceadc3dd-024e-4173-9ccf-e60334b2944f}</ProjectGuid>
+    <RootNamespace>commobj</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.fne</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.fne</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_FNENAME=commobj;WIN32;_DEBUG;COMMOBJ_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source_commobj.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_FNENAME=commobj;WIN32;NDEBUG;COMMOBJ_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source_commobj.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;COMMOBJ_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;COMMOBJ_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

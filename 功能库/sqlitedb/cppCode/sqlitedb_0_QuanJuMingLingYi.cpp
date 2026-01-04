@@ -1,0 +1,11 @@
+#include "..\include_sqlitedb_header.h"
+
+// 本命令被隐藏, 原始名字 = "全局命令一"
+// 调用格式: SDT_BOOL 全局命令一, 命令说明: NULL
+// 参数<1>: 参数一 SDT_TEXT, 参数说明: NULL
+SQLITEDB_EXTERN_C void sqlitedb_QuanJuMingLingYi_0_sqlitedb(PMDATA_INF pRetData, INT nArgCount, PMDATA_INF pArgInf)
+{
+    LPSTR    arg1 = pArgInf[0].m_pText;
+
+}
+

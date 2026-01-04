@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\sqlitedb_const.cpp" />
+    <ClCompile Include="..\sqlitedb_dllMain.cpp" />
+    <ClCompile Include="..\sqlitedb_dtType.cpp" />
+    <ClCompile Include="..\sqlitedb_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_0_QuanJuMingLingYi.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_1__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_2__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_3__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_4__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_5__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_6__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_7__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_8__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_9__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_10__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_11__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_12__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_13__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_14__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_15__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_16__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_17__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_18__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_19__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_20_Constructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_21_CopyConstructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_22_Destructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_23__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_24__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_25__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_26__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_27__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_28__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_29_IsOpen.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_30_Open.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_31_Close.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_32_ExecuteSQL.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_33_GetDataset.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_34__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_35__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_36_SetBusyTimeout.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_37_GetLastErrorCode.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_38_GetLastErrorText.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_39_GetLastInsertRowId.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_40_CreateSqlFunction.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_41__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_42__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_43__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_44_BeginTransaction.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_45_CommitTransaction.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_46_RollbackTransaction.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_47_EndTransaction.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_48__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_49__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_50_IsTableExist.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_51_GetTables.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_52_GetTableContent.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_53_GetTableSql.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_54_GetFieldValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_55__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_56__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_57__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_58__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_59__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_60__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_61_CreateTable.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_62_XiuGaiBiao_ZanShiBuTiGongBenHanShu_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_63_DropTable.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_64_ClearTable.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_65__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_66__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_67__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_68__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_69__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_70__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_71__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_72__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_73__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_74__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_75__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_76__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_77__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_78__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_79__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_80_ShrinkDB.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_81__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_82__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_83__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_84__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_85__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_86__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_87__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_88__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_89__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_90__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_91__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_92__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_93__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_94__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_95__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_96__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_97__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_98__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_99__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_100_Constructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_101_CopyConstructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_102_Destructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_103__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_104_IsOpen.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_105_Open.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_106_Close.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_107_First.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_108_Last.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_109_Next.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_110_Prior.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_111_Skip.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_112_Goto.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_113_Bof.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_114_eof.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_115__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_116__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_117__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_118__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_119__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_120_Edit.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_121_Insert.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_122_Delete.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_123_Post.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_124_Cancel.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_125_Refresh.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_126_Locate.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_127__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_128__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_129__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_130__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_131__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_132__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_133__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_134__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_135_GetFieldValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_136_SetFieldValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_137_GetFieldTextValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_138_GetFieldIntValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_139_GetFieldFloatValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_140_GetFieldDoubleValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_141_GetFieldBinValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_142_GetFieldBoolValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_143_GetFieldDatetimeValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_144_GetFieldInt64Value.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_145_GetFieldShortValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_146_GetFieldByteValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_147__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_148_GetTableName.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_149_GetRecordNO.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_150_GetRecordCount.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_151_GetContent.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_152_GetFieldCount.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_153_GetFields.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_154__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_155__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_156__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_157__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_158__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_159__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_160__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_161__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_162__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_163__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_164__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_165__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_166__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_167__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_168__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_169__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_170__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_171__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_172__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_173__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_174__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_175__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_176__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_177__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_178__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_179__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_180_Constructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_181_CopyConstructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_182_Destructor.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_183__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_184_SetSQL.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_185_GetParameterCount.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_186_GetParameters.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_187_BindParameter.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_188__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_189_IsOpen.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_190_Open.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_191_Close.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_192_GetFieldValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_193__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_194__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_195__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_196__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_197__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_198_Next.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_199__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_200_Bof.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_201_Eof.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_202__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_203__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_204__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_205__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_206__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_207__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_208_GetRecordCount.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_209_GetContent.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_210_GetFieldCount.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_211_GetFields.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_212__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_213__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_214__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_215_GetFieldTextValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_216_GetFieldIntValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_217_GetFieldFloatValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_218_GetFieldDoubleValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_219_GetFieldBinValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_220_GetFieldBoolValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_221_GetFieldDatetimeValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_222_GetFieldInt64Value.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_223_GetFieldShortValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_224_GetFieldByteValue.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_225__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_226__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_227__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_228__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\sqlitedb_229__bunengshibie_.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_sqlitedb_header.h" />
+    <ClInclude Include="..\sqlitedb_cmd_typedef.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5ff16995-6ad6-4964-a421-e0842e1be946}</ProjectGuid>
+    <RootNamespace>sqlitedbstatic</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=sqlitedb;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=sqlitedb;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="elib\fnshare.cpp" />
+    <ClCompile Include="edatastructure_const.cpp" />
+    <ClCompile Include="edatastructure_dllMain.cpp" />
+    <ClCompile Include="edatastructure_dtType.cpp" />
+    <ClCompile Include="edatastructure_cmdInfo.cpp" />
+    <ClCompile Include="cppCode\edatastructure_0_CreateNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_1_FreeNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_2_NodeCopy.cpp" />
+    <ClCompile Include="cppCode\edatastructure_3_AddAttr.cpp" />
+    <ClCompile Include="cppCode\edatastructure_4_DelAttr.cpp" />
+    <ClCompile Include="cppCode\edatastructure_5_ModifyAttr.cpp" />
+    <ClCompile Include="cppCode\edatastructure_6_GetAllAttrName.cpp" />
+    <ClCompile Include="cppCode\edatastructure_7_GetAttrKind.cpp" />
+    <ClCompile Include="cppCode\edatastructure_8_GetDoubleValue.cpp" />
+    <ClCompile Include="cppCode\edatastructure_9_GetBoolValue.cpp" />
+    <ClCompile Include="cppCode\edatastructure_10_GetDateValue.cpp" />
+    <ClCompile Include="cppCode\edatastructure_11_GetTextValue.cpp" />
+    <ClCompile Include="cppCode\edatastructure_12_GetBinValue.cpp" />
+    <ClCompile Include="cppCode\edatastructure_13_ListCreate.cpp" />
+    <ClCompile Include="cppCode\edatastructure_14_ListRelease.cpp" />
+    <ClCompile Include="cppCode\edatastructure_15_ListCopy.cpp" />
+    <ClCompile Include="cppCode\edatastructure_16_ListIsEmpty.cpp" />
+    <ClCompile Include="cppCode\edatastructure_17_ListGetCount.cpp" />
+    <ClCompile Include="cppCode\edatastructure_18_ListAddNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_19_ListRemoveHead.cpp" />
+    <ClCompile Include="cppCode\edatastructure_20_ListRemoveTail.cpp" />
+    <ClCompile Include="cppCode\edatastructure_21_ListRemoveAll.cpp" />
+    <ClCompile Include="cppCode\edatastructure_22_ListRemoveCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_23_ListRemoveNodeFromKey.cpp" />
+    <ClCompile Include="cppCode\edatastructure_24_ListUpdateNodeFromKey.cpp" />
+    <ClCompile Include="cppCode\edatastructure_25_ListUpdateCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_26_ListGoNext.cpp" />
+    <ClCompile Include="cppCode\edatastructure_27_ListGoPrev.cpp" />
+    <ClCompile Include="cppCode\edatastructure_28_ListGoHead.cpp" />
+    <ClCompile Include="cppCode\edatastructure_29_ListGoTail.cpp" />
+    <ClCompile Include="cppCode\edatastructure_30_ListSearch.cpp" />
+    <ClCompile Include="cppCode\edatastructure_31_ListGetCurNodeKey.cpp" />
+    <ClCompile Include="cppCode\edatastructure_32_CListGetCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_33_CListGetNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_34_StackCreate.cpp" />
+    <ClCompile Include="cppCode\edatastructure_35_StackRelease.cpp" />
+    <ClCompile Include="cppCode\edatastructure_36_StackCopy.cpp" />
+    <ClCompile Include="cppCode\edatastructure_37_StackIsEmpty.cpp" />
+    <ClCompile Include="cppCode\edatastructure_38_StackGetCount.cpp" />
+    <ClCompile Include="cppCode\edatastructure_39_StackClear.cpp" />
+    <ClCompile Include="cppCode\edatastructure_40_StackPeek.cpp" />
+    <ClCompile Include="cppCode\edatastructure_41_StackPush.cpp" />
+    <ClCompile Include="cppCode\edatastructure_42_StackPop.cpp" />
+    <ClCompile Include="cppCode\edatastructure_43_QueueCreate.cpp" />
+    <ClCompile Include="cppCode\edatastructure_44_QueueRelease.cpp" />
+    <ClCompile Include="cppCode\edatastructure_45_QueueCopy.cpp" />
+    <ClCompile Include="cppCode\edatastructure_46_QueueIsEmpty.cpp" />
+    <ClCompile Include="cppCode\edatastructure_47_QueueGetCount.cpp" />
+    <ClCompile Include="cppCode\edatastructure_48_QueueClear.cpp" />
+    <ClCompile Include="cppCode\edatastructure_49_QueuePeek.cpp" />
+    <ClCompile Include="cppCode\edatastructure_50_QueuePush.cpp" />
+    <ClCompile Include="cppCode\edatastructure_51_QueuePop.cpp" />
+    <ClCompile Include="cppCode\edatastructure_52_BiTreeCreate.cpp" />
+    <ClCompile Include="cppCode\edatastructure_53_BiTreeRelease.cpp" />
+    <ClCompile Include="cppCode\edatastructure_54_BiTreeCopy.cpp" />
+    <ClCompile Include="cppCode\edatastructure_55_BiTreeIsEmpty.cpp" />
+    <ClCompile Include="cppCode\edatastructure_56_BiTreeGetCount.cpp" />
+    <ClCompile Include="cppCode\edatastructure_57_BiTreeGetDeep.cpp" />
+    <ClCompile Include="cppCode\edatastructure_58_BiTreeEmpty.cpp" />
+    <ClCompile Include="cppCode\edatastructure_59_BiTreeGoLeft.cpp" />
+    <ClCompile Include="cppCode\edatastructure_60_BiTreeGoRight.cpp" />
+    <ClCompile Include="cppCode\edatastructure_61_BiTreeFind.cpp" />
+    <ClCompile Include="cppCode\edatastructure_62_BiTreeGoRoot.cpp" />
+    <ClCompile Include="cppCode\edatastructure_63_BiTreeGoParent.cpp" />
+    <ClCompile Include="cppCode\edatastructure_64_BiTreeGetCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_65_BiTreeGetCurNodeKey.cpp" />
+    <ClCompile Include="cppCode\edatastructure_66_BiTreeInsert.cpp" />
+    <ClCompile Include="cppCode\edatastructure_67_BiTreeUpdate.cpp" />
+    <ClCompile Include="cppCode\edatastructure_68_BiTreeUpdateCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_69_BiTreeDelete.cpp" />
+    <ClCompile Include="cppCode\edatastructure_70_BiTreeDeleteCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_71_TreeCreate.cpp" />
+    <ClCompile Include="cppCode\edatastructure_72_TreeRelease.cpp" />
+    <ClCompile Include="cppCode\edatastructure_73_TreeCopy.cpp" />
+    <ClCompile Include="cppCode\edatastructure_74_TreeIsEmpty.cpp" />
+    <ClCompile Include="cppCode\edatastructure_75_TreeGetCount.cpp" />
+    <ClCompile Include="cppCode\edatastructure_76_TreeEmpty.cpp" />
+    <ClCompile Include="cppCode\edatastructure_77_TreeGoChild.cpp" />
+    <ClCompile Include="cppCode\edatastructure_78_TreeGoSibling.cpp" />
+    <ClCompile Include="cppCode\edatastructure_79_TreeGoRoot.cpp" />
+    <ClCompile Include="cppCode\edatastructure_80_TreeGoParent.cpp" />
+    <ClCompile Include="cppCode\edatastructure_81_TreeGetCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_82_TreeGetChildCount.cpp" />
+    <ClCompile Include="cppCode\edatastructure_83_TreeInsert.cpp" />
+    <ClCompile Include="cppCode\edatastructure_84_TreeUpdateCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_85_TreeDeleteCurNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_86_TreeGetCurNodeIndex.cpp" />
+    <ClCompile Include="cppCode\edatastructure_87_DSGetErrMsg.cpp" />
+    <ClCompile Include="cppCode\edatastructure_88_CreateNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_89_FreeNode.cpp" />
+    <ClCompile Include="cppCode\edatastructure_90_MapCopy.cpp" />
+    <ClCompile Include="cppCode\edatastructure_91_AddKeyValue.cpp" />
+    <ClCompile Include="cppCode\edatastructure_92_GetKeyValue.cpp" />
+    <ClCompile Include="cppCode\edatastructure_93_GetSize.cpp" />
+    <ClCompile Include="cppCode\edatastructure_94_GetAllKeys.cpp" />
+    <ClCompile Include="cppCode\edatastructure_95_DelKeyValue.cpp" />
+    <ClCompile Include="cppCode\edatastructure_96_DelAllKeyValues.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="elib\fnshare.h" />
+    <ClInclude Include="elib\krnllib.h" />
+    <ClInclude Include="elib\lang.h" />
+    <ClInclude Include="elib\lib2.h" />
+    <ClInclude Include="elib\mtypes.h" />
+    <ClInclude Include="elib\PublicIDEFunctions.h" />
+    <ClInclude Include="elib\untshare.h" />
+    <ClInclude Include="include_edatastructure_header.h" />
+    <ClInclude Include="edatastructure_cmd_typedef.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source_edatastructure.def" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ceadc3dd-024e-4173-9ccf-e60334b2944f}</ProjectGuid>
+    <RootNamespace>edatastructure</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.fne</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.fne</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_FNENAME=edatastructure;WIN32;_DEBUG;EDATASTRUCTURE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source_edatastructure.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_FNENAME=edatastructure;WIN32;NDEBUG;EDATASTRUCTURE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source_edatastructure.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;EDATASTRUCTURE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;EDATASTRUCTURE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

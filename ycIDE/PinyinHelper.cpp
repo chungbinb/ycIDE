@@ -1,0 +1,453 @@
+#include "PinyinHelper.h"
+
+std::map<wchar_t, std::wstring> PinyinHelper::pinyinMap;
+std::map<wchar_t, std::vector<std::wstring>> PinyinHelper::multiPinyinMap;
+bool PinyinHelper::initialized = false;
+
+void PinyinHelper::Initialize() {
+    if (initialized) return;
+    
+    // 多音字映射
+    multiPinyinMap[L'调'] = {L"diao", L"tiao"};
+    multiPinyinMap[L'重'] = {L"zhong", L"chong"};
+    multiPinyinMap[L'长'] = {L"chang", L"zhang"};
+    multiPinyinMap[L'行'] = {L"xing", L"hang"};
+    multiPinyinMap[L'藏'] = {L"cang", L"zang"};
+    multiPinyinMap[L'传'] = {L"chuan", L"zhuan"};
+    multiPinyinMap[L'弹'] = {L"dan", L"tan"};
+    
+    // 常用汉字拼音映射
+    struct { wchar_t ch; const wchar_t* py; } mapData[] = {
+        {L'阿', L"a"}, {L'爱', L"ai"}, {L'安', L"an"}, {L'按', L"an"}, {L'暗', L"an"},
+        {L'八', L"ba"}, {L'把', L"ba"}, {L'爸', L"ba"}, {L'吧', L"ba"}, {L'白', L"bai"}, {L'百', L"bai"}, {L'拜', L"bai"},
+        {L'班', L"ban"}, {L'板', L"ban"}, {L'版', L"ban"}, {L'半', L"ban"}, {L'办', L"ban"}, {L'帮', L"bang"}, {L'包', L"bao"},
+        {L'保', L"bao"}, {L'报', L"bao"}, {L'抱', L"bao"}, {L'暴', L"bao"}, {L'爆', L"bao"}, {L'北', L"bei"}, {L'背', L"bei"},
+        {L'备', L"bei"}, {L'被', L"bei"}, {L'本', L"ben"}, {L'比', L"bi"}, {L'笔', L"bi"}, {L'避', L"bi"}, {L'必', L"bi"},
+        {L'边', L"bian"}, {L'变', L"bian"}, {L'遍', L"bian"}, {L'辨', L"bian"}, {L'标', L"biao"}, {L'表', L"biao"}, {L'别', L"bie"},
+        {L'宾', L"bin"}, {L'冰', L"bing"}, {L'兵', L"bing"}, {L'并', L"bing"}, {L'病', L"bing"}, {L'播', L"bo"}, {L'波', L"bo"},
+        {L'博', L"bo"}, {L'补', L"bu"}, {L'不', L"bu"}, {L'步', L"bu"}, {L'部', L"bu"},
+        {L'擦', L"ca"}, {L'猜', L"cai"}, {L'才', L"cai"}, {L'材', L"cai"}, {L'财', L"cai"}, {L'采', L"cai"}, {L'彩', L"cai"},
+        {L'菜', L"cai"}, {L'参', L"can"}, {L'残', L"can"}, {L'藏', L"cang"}, {L'操', L"cao"}, {L'草', L"cao"}, {L'册', L"ce"},
+        {L'侧', L"ce"}, {L'测', L"ce"}, {L'层', L"ceng"}, {L'插', L"cha"}, {L'查', L"cha"}, {L'差', L"cha"}, {L'拆', L"chai"},
+        {L'产', L"chan"}, {L'长', L"chang"}, {L'常', L"chang"}, {L'场', L"chang"}, {L'厂', L"chang"}, {L'唱', L"chang"}, {L'超', L"chao"},
+        {L'车', L"che"}, {L'撤', L"che"}, {L'彻', L"che"}, {L'沉', L"chen"}, {L'陈', L"chen"}, {L'称', L"cheng"}, {L'成', L"cheng"},
+        {L'呈', L"cheng"}, {L'承', L"cheng"}, {L'城', L"cheng"}, {L'乘', L"cheng"}, {L'程', L"cheng"}, {L'吃', L"chi"}, {L'持', L"chi"},
+        {L'池', L"chi"}, {L'迟', L"chi"}, {L'尺', L"chi"}, {L'齿', L"chi"}, {L'充', L"chong"}, {L'冲', L"chong"}, {L'虫', L"chong"},
+        {L'抽', L"chou"}, {L'仇', L"chou"}, {L'臭', L"chou"}, {L'出', L"chu"}, {L'初', L"chu"}, {L'除', L"chu"}, {L'处', L"chu"},
+        {L'触', L"chu"}, {L'川', L"chuan"}, {L'穿', L"chuan"}, {L'传', L"chuan"}, {L'船', L"chuan"}, {L'串', L"chuan"}, {L'窗', L"chuang"},
+        {L'床', L"chuang"}, {L'创', L"chuang"}, {L'吹', L"chui"}, {L'春', L"chun"}, {L'纯', L"chun"}, {L'词', L"ci"}, {L'辞', L"ci"},
+        {L'此', L"ci"}, {L'次', L"ci"}, {L'刺', L"ci"}, {L'从', L"cong"}, {L'匆', L"cong"}, {L'聪', L"cong"}, {L'粗', L"cu"},
+        {L'促', L"cu"}, {L'簇', L"cu"}, {L'窜', L"cuan"}, {L'催', L"cui"}, {L'摧', L"cui"}, {L'脆', L"cui"}, {L'村', L"cun"},
+        {L'存', L"cun"}, {L'寸', L"cun"}, {L'错', L"cuo"},
+        {L'搭', L"da"}, {L'达', L"da"}, {L'答', L"da"}, {L'打', L"da"}, {L'大', L"da"}, {L'呆', L"dai"}, {L'代', L"dai"},
+        {L'带', L"dai"}, {L'待', L"dai"}, {L'袋', L"dai"}, {L'丹', L"dan"}, {L'单', L"dan"}, {L'担', L"dan"}, {L'胆', L"dan"},
+        {L'旦', L"dan"}, {L'但', L"dan"}, {L'弹', L"dan"}, {L'淡', L"dan"}, {L'蛋', L"dan"}, {L'当', L"dang"}, {L'挡', L"dang"},
+        {L'党', L"dang"}, {L'荡', L"dang"}, {L'档', L"dang"}, {L'刀', L"dao"}, {L'导', L"dao"}, {L'岛', L"dao"}, {L'倒', L"dao"},
+        {L'到', L"dao"}, {L'道', L"dao"}, {L'德', L"de"}, {L'得', L"de"}, {L'的', L"de"}, {L'灯', L"deng"}, {L'登', L"deng"},
+        {L'等', L"deng"}, {L'低', L"di"}, {L'滴', L"di"}, {L'敌', L"di"}, {L'底', L"di"}, {L'抵', L"di"}, {L'地', L"di"},
+        {L'弟', L"di"}, {L'帝', L"di"}, {L'递', L"di"}, {L'第', L"di"}, {L'点', L"dian"}, {L'典', L"dian"}, {L'电', L"dian"},
+        {L'店', L"dian"}, {L'垫', L"dian"}, {L'掉', L"diao"}, {L'调', L"diao"}, {L'钓', L"diao"}, {L'爹', L"die"}, {L'跌', L"die"},
+        {L'叠', L"die"}, {L'丁', L"ding"}, {L'盯', L"ding"}, {L'顶', L"ding"}, {L'定', L"ding"}, {L'订', L"ding"}, {L'丢', L"diu"},
+        {L'东', L"dong"}, {L'冬', L"dong"}, {L'懂', L"dong"}, {L'动', L"dong"}, {L'冻', L"dong"}, {L'洞', L"dong"}, {L'都', L"dou"},
+        {L'斗', L"dou"}, {L'豆', L"dou"}, {L'逗', L"dou"}, {L'陡', L"dou"}, {L'督', L"du"}, {L'毒', L"du"}, {L'读', L"du"},
+        {L'独', L"du"}, {L'堵', L"du"}, {L'赌', L"du"}, {L'度', L"du"}, {L'渡', L"du"}, {L'端', L"duan"}, {L'短', L"duan"},
+        {L'段', L"duan"}, {L'断', L"duan"}, {L'堆', L"dui"}, {L'队', L"dui"}, {L'对', L"dui"}, {L'吨', L"dun"}, {L'顿', L"dun"},
+        {L'多', L"duo"}, {L'夺', L"duo"}, {L'朵', L"duo"}, {L'躲', L"duo"},
+        {L'鹅', L"e"}, {L'额', L"e"}, {L'恶', L"e"}, {L'饿', L"e"}, {L'恩', L"en"}, {L'而', L"er"}, {L'儿', L"er"},
+        {L'耳', L"er"}, {L'二', L"er"},
+        {L'发', L"fa"}, {L'罚', L"fa"}, {L'法', L"fa"}, {L'帆', L"fan"}, {L'番', L"fan"}, {L'翻', L"fan"}, {L'凡', L"fan"},
+        {L'烦', L"fan"}, {L'繁', L"fan"}, {L'反', L"fan"}, {L'返', L"fan"}, {L'犯', L"fan"}, {L'饭', L"fan"}, {L'范', L"fan"},
+        {L'贩', L"fan"}, {L'方', L"fang"}, {L'坊', L"fang"}, {L'芳', L"fang"}, {L'防', L"fang"}, {L'房', L"fang"}, {L'访', L"fang"},
+        {L'放', L"fang"}, {L'非', L"fei"}, {L'飞', L"fei"}, {L'肥', L"fei"}, {L'费', L"fei"}, {L'废', L"fei"}, {L'分', L"fen"},
+        {L'纷', L"fen"}, {L'芬', L"fen"}, {L'坟', L"fen"}, {L'粉', L"fen"}, {L'份', L"fen"}, {L'奋', L"fen"}, {L'愤', L"fen"},
+        {L'风', L"feng"}, {L'封', L"feng"}, {L'丰', L"feng"}, {L'逢', L"feng"}, {L'峰', L"feng"}, {L'锋', L"feng"}, {L'缝', L"feng"},
+        {L'奉', L"feng"}, {L'否', L"fou"}, {L'夫', L"fu"}, {L'肤', L"fu"}, {L'服', L"fu"}, {L'幅', L"fu"}, {L'福', L"fu"},
+        {L'浮', L"fu"}, {L'符', L"fu"}, {L'抚', L"fu"}, {L'府', L"fu"}, {L'辅', L"fu"}, {L'腐', L"fu"}, {L'父', L"fu"},
+        {L'付', L"fu"}, {L'负', L"fu"}, {L'妇', L"fu"}, {L'附', L"fu"}, {L'复', L"fu"}, {L'富', L"fu"}, {L'副', L"fu"},
+        {L'该', L"gai"}, {L'改', L"gai"}, {L'盖', L"gai"}, {L'概', L"gai"}, {L'干', L"gan"}, {L'甘', L"gan"}, {L'杆', L"gan"},
+        {L'肝', L"gan"}, {L'赶', L"gan"}, {L'敢', L"gan"}, {L'感', L"gan"}, {L'刚', L"gang"}, {L'钢', L"gang"}, {L'纲', L"gang"},
+        {L'岗', L"gang"}, {L'港', L"gang"}, {L'高', L"gao"}, {L'搞', L"gao"}, {L'稿', L"gao"}, {L'告', L"gao"}, {L'哥', L"ge"},
+        {L'歌', L"ge"}, {L'割', L"ge"}, {L'革', L"ge"}, {L'格', L"ge"}, {L'隔', L"ge"}, {L'个', L"ge"}, {L'各', L"ge"},
+        {L'给', L"gei"}, {L'根', L"gen"}, {L'跟', L"gen"}, {L'更', L"geng"}, {L'耕', L"geng"}, {L'工', L"gong"}, {L'弓', L"gong"},
+        {L'公', L"gong"}, {L'功', L"gong"}, {L'攻', L"gong"}, {L'供', L"gong"}, {L'宫', L"gong"}, {L'恭', L"gong"}, {L'巩', L"gong"},
+        {L'共', L"gong"}, {L'贡', L"gong"}, {L'勾', L"gou"}, {L'沟', L"gou"}, {L'狗', L"gou"}, {L'构', L"gou"}, {L'购', L"gou"},
+        {L'够', L"gou"}, {L'估', L"gu"}, {L'孤', L"gu"}, {L'姑', L"gu"}, {L'古', L"gu"}, {L'谷', L"gu"}, {L'股', L"gu"},
+        {L'骨', L"gu"}, {L'鼓', L"gu"}, {L'固', L"gu"}, {L'故', L"gu"}, {L'顾', L"gu"}, {L'瓜', L"gua"}, {L'刮', L"gua"},
+        {L'挂', L"gua"}, {L'乖', L"guai"}, {L'拐', L"guai"}, {L'怪', L"guai"}, {L'关', L"guan"}, {L'观', L"guan"}, {L'官', L"guan"},
+        {L'馆', L"guan"}, {L'管', L"guan"}, {L'贯', L"guan"}, {L'惯', L"guan"}, {L'光', L"guang"}, {L'广', L"guang"}, {L'归', L"gui"},
+        {L'规', L"gui"}, {L'鬼', L"gui"}, {L'轨', L"gui"}, {L'桂', L"gui"}, {L'贵', L"gui"}, {L'柜', L"gui"}, {L'滚', L"gun"},
+        {L'棍', L"gun"}, {L'郭', L"guo"}, {L'国', L"guo"}, {L'果', L"guo"}, {L'裹', L"guo"}, {L'过', L"guo"},
+        {L'哈', L"ha"}, {L'孩', L"hai"}, {L'海', L"hai"}, {L'害', L"hai"}, {L'含', L"han"}, {L'寒', L"han"}, {L'函', L"han"},
+        {L'喊', L"han"}, {L'汉', L"han"}, {L'汗', L"han"}, {L'旱', L"han"}, {L'杭', L"hang"}, {L'行', L"hang"}, {L'好', L"hao"},
+        {L'号', L"hao"}, {L'浩', L"hao"}, {L'耗', L"hao"}, {L'喝', L"he"}, {L'禾', L"he"}, {L'合', L"he"}, {L'何', L"he"},
+        {L'和', L"he"}, {L'河', L"he"}, {L'核', L"he"}, {L'荷', L"he"}, {L'贺', L"he"}, {L'黑', L"hei"}, {L'痕', L"hen"},
+        {L'很', L"hen"}, {L'狠', L"hen"}, {L'恨', L"hen"}, {L'恒', L"heng"}, {L'横', L"heng"}, {L'衡', L"heng"}, {L'轰', L"hong"},
+        {L'哄', L"hong"}, {L'红', L"hong"}, {L'宏', L"hong"}, {L'洪', L"hong"}, {L'虹', L"hong"}, {L'侯', L"hou"}, {L'喉', L"hou"},
+        {L'猴', L"hou"}, {L'吼', L"hou"}, {L'后', L"hou"}, {L'厚', L"hou"}, {L'候', L"hou"}, {L'乎', L"hu"}, {L'呼', L"hu"},
+        {L'忽', L"hu"}, {L'狐', L"hu"}, {L'胡', L"hu"}, {L'壶', L"hu"}, {L'湖', L"hu"}, {L'虎', L"hu"}, {L'互', L"hu"},
+        {L'户', L"hu"}, {L'护', L"hu"}, {L'花', L"hua"}, {L'华', L"hua"}, {L'哗', L"hua"}, {L'滑', L"hua"}, {L'化', L"hua"},
+        {L'划', L"hua"}, {L'画', L"hua"}, {L'话', L"hua"}, {L'怀', L"huai"}, {L'坏', L"huai"}, {L'欢', L"huan"}, {L'还', L"huan"},
+        {L'环', L"huan"}, {L'缓', L"huan"}, {L'幻', L"huan"}, {L'唤', L"huan"}, {L'换', L"huan"}, {L'患', L"huan"}, {L'荒', L"huang"},
+        {L'慌', L"huang"}, {L'皇', L"huang"}, {L'黄', L"huang"}, {L'煌', L"huang"}, {L'晃', L"huang"}, {L'灰', L"hui"}, {L'挥', L"hui"},
+        {L'辉', L"hui"}, {L'回', L"hui"}, {L'毁', L"hui"}, {L'悔', L"hui"}, {L'汇', L"hui"}, {L'会', L"hui"}, {L'绘', L"hui"},
+        {L'慧', L"hui"}, {L'婚', L"hun"}, {L'昏', L"hun"}, {L'浑', L"hun"}, {L'魂', L"hun"}, {L'混', L"hun"}, {L'活', L"huo"},
+        {L'火', L"huo"}, {L'伙', L"huo"}, {L'或', L"huo"}, {L'货', L"huo"}, {L'获', L"huo"}, {L'祸', L"huo"},
+        {L'击', L"ji"}, {L'饥', L"ji"}, {L'机', L"ji"}, {L'积', L"ji"}, {L'基', L"ji"}, {L'鸡', L"ji"}, {L'绩', L"ji"},
+        {L'激', L"ji"}, {L'及', L"ji"}, {L'吉', L"ji"}, {L'级', L"ji"}, {L'极', L"ji"}, {L'即', L"ji"}, {L'急', L"ji"},
+        {L'集', L"ji"}, {L'几', L"ji"}, {L'己', L"ji"}, {L'挤', L"ji"}, {L'济', L"ji"}, {L'计', L"ji"}, {L'记', L"ji"},
+        {L'纪', L"ji"}, {L'技', L"ji"}, {L'系', L"xi"}, {L'季', L"ji"}, {L'际', L"ji"}, {L'继', L"ji"}, {L'寄', L"ji"},
+        {L'寂', L"ji"}, {L'加', L"jia"}, {L'夹', L"jia"}, {L'佳', L"jia"}, {L'家', L"jia"}, {L'嘉', L"jia"}, {L'甲', L"jia"},
+        {L'价', L"jia"}, {L'驾', L"jia"}, {L'架', L"jia"}, {L'假', L"jia"}, {L'嫁', L"jia"}, {L'尖', L"jian"}, {L'坚', L"jian"},
+        {L'间', L"jian"}, {L'肩', L"jian"}, {L'艰', L"jian"}, {L'兼', L"jian"}, {L'监', L"jian"}, {L'减', L"jian"}, {L'剪', L"jian"},
+        {L'检', L"jian"}, {L'简', L"jian"}, {L'见', L"jian"}, {L'件', L"jian"}, {L'建', L"jian"}, {L'剑', L"jian"}, {L'健', L"jian"},
+        {L'舰', L"jian"}, {L'渐', L"jian"}, {L'践', L"jian"}, {L'鉴', L"jian"}, {L'键', L"jian"}, {L'箭', L"jian"}, {L'江', L"jiang"},
+        {L'将', L"jiang"}, {L'姜', L"jiang"}, {L'浆', L"jiang"}, {L'僵', L"jiang"}, {L'疆', L"jiang"}, {L'讲', L"jiang"}, {L'奖', L"jiang"},
+        {L'蒋', L"jiang"}, {L'匠', L"jiang"}, {L'降', L"jiang"}, {L'交', L"jiao"}, {L'郊', L"jiao"}, {L'娇', L"jiao"}, {L'浇', L"jiao"},
+        {L'骄', L"jiao"}, {L'胶', L"jiao"}, {L'焦', L"jiao"}, {L'角', L"jiao"}, {L'脚', L"jiao"}, {L'叫', L"jiao"}, {L'觉', L"jue"},
+        {L'较', L"jiao"}, {L'教', L"jiao"}, {L'阶', L"jie"}, {L'皆', L"jie"}, {L'接', L"jie"}, {L'街', L"jie"}, {L'节', L"jie"},
+        {L'洁', L"jie"}, {L'结', L"jie"}, {L'捷', L"jie"}, {L'截', L"jie"}, {L'姐', L"jie"}, {L'解', L"jie"}, {L'介', L"jie"},
+        {L'界', L"jie"}, {L'戒', L"jie"}, {L'届', L"jie"}, {L'借', L"jie"}, {L'巾', L"jin"}, {L'今', L"jin"}, {L'斤', L"jin"},
+        {L'金', L"jin"}, {L'津', L"jin"}, {L'筋', L"jin"}, {L'仅', L"jin"}, {L'紧', L"jin"}, {L'锦', L"jin"}, {L'尽', L"jin"},
+        {L'劲', L"jin"}, {L'近', L"jin"}, {L'进', L"jin"}, {L'晋', L"jin"}, {L'浸', L"jin"}, {L'禁', L"jin"}, {L'京', L"jing"},
+        {L'经', L"jing"}, {L'茎', L"jing"}, {L'惊', L"jing"}, {L'晶', L"jing"}, {L'睛', L"jing"}, {L'精', L"jing"}, {L'井', L"jing"},
+        {L'警', L"jing"}, {L'景', L"jing"}, {L'颈', L"jing"}, {L'静', L"jing"}, {L'境', L"jing"}, {L'敬', L"jing"}, {L'镜', L"jing"},
+        {L'竞', L"jing"}, {L'竟', L"jing"}, {L'净', L"jing"}, {L'纠', L"jiu"}, {L'究', L"jiu"}, {L'揪', L"jiu"}, {L'九', L"jiu"},
+        {L'久', L"jiu"}, {L'酒', L"jiu"}, {L'旧', L"jiu"}, {L'救', L"jiu"}, {L'就', L"jiu"}, {L'舅', L"jiu"}, {L'居', L"ju"},
+        {L'局', L"ju"}, {L'菊', L"ju"}, {L'橘', L"ju"}, {L'举', L"ju"}, {L'矩', L"ju"}, {L'句', L"ju"}, {L'巨', L"ju"},
+        {L'拒', L"ju"}, {L'具', L"ju"}, {L'俱', L"ju"}, {L'剧', L"ju"}, {L'据', L"ju"}, {L'距', L"ju"}, {L'惧', L"ju"},
+        {L'捐', L"juan"}, {L'卷', L"juan"}, {L'倦', L"juan"}, {L'决', L"jue"}, {L'绝', L"jue"}, {L'军', L"jun"}, {L'君', L"jun"},
+        {L'均', L"jun"}, {L'菌', L"jun"}, {L'俊', L"jun"},
+        {L'卡', L"ka"}, {L'开', L"kai"}, {L'凯', L"kai"}, {L'慨', L"kai"}, {L'刊', L"kan"}, {L'看', L"kan"}, {L'康', L"kang"},
+        {L'抗', L"kang"}, {L'考', L"kao"}, {L'烤', L"kao"}, {L'靠', L"kao"}, {L'科', L"ke"}, {L'棵', L"ke"}, {L'颗', L"ke"},
+        {L'壳', L"ke"}, {L'咳', L"ke"}, {L'可', L"ke"}, {L'渴', L"ke"}, {L'克', L"ke"}, {L'刻', L"ke"}, {L'客', L"ke"},
+        {L'课', L"ke"}, {L'肯', L"ken"}, {L'坑', L"keng"}, {L'空', L"kong"}, {L'孔', L"kong"}, {L'恐', L"kong"}, {L'控', L"kong"},
+        {L'口', L"kou"}, {L'扣', L"kou"}, {L'枯', L"ku"}, {L'哭', L"ku"}, {L'苦', L"ku"}, {L'库', L"ku"}, {L'裤', L"ku"},
+        {L'酷', L"ku"}, {L'夸', L"kua"}, {L'跨', L"kua"}, {L'块', L"kuai"}, {L'快', L"kuai"}, {L'宽', L"kuan"}, {L'款', L"kuan"},
+        {L'狂', L"kuang"}, {L'况', L"kuang"}, {L'矿', L"kuang"}, {L'框', L"kuang"}, {L'亏', L"kui"}, {L'愧', L"kui"}, {L'困', L"kun"},
+        {L'扩', L"kuo"}, {L'括', L"kuo"},
+        {L'拉', L"la"}, {L'啦', L"la"}, {L'喇', L"la"}, {L'来', L"lai"}, {L'赖', L"lai"}, {L'兰', L"lan"}, {L'拦', L"lan"},
+        {L'栏', L"lan"}, {L'蓝', L"lan"}, {L'篮', L"lan"}, {L'览', L"lan"}, {L'懒', L"lan"}, {L'烂', L"lan"}, {L'滥', L"lan"},
+        {L'郎', L"lang"}, {L'狼', L"lang"}, {L'廊', L"lang"}, {L'朗', L"lang"}, {L'浪', L"lang"}, {L'捞', L"lao"}, {L'劳', L"lao"},
+        {L'牢', L"lao"}, {L'老', L"lao"}, {L'姥', L"lao"}, {L'乐', L"le"}, {L'勒', L"le"}, {L'雷', L"lei"}, {L'累', L"lei"},
+        {L'类', L"lei"}, {L'泪', L"lei"}, {L'冷', L"leng"}, {L'厘', L"li"}, {L'梨', L"li"}, {L'离', L"li"}, {L'黎', L"li"},
+        {L'礼', L"li"}, {L'李', L"li"}, {L'里', L"li"}, {L'理', L"li"}, {L'力', L"li"}, {L'历', L"li"}, {L'厉', L"li"},
+        {L'立', L"li"}, {L'丽', L"li"}, {L'利', L"li"}, {L'励', L"li"}, {L'例', L"li"}, {L'隶', L"li"}, {L'粒', L"li"},
+        {L'连', L"lian"}, {L'帘', L"lian"}, {L'怜', L"lian"}, {L'联', L"lian"}, {L'廉', L"lian"}, {L'莲', L"lian"}, {L'脸', L"lian"},
+        {L'练', L"lian"}, {L'炼', L"lian"}, {L'恋', L"lian"}, {L'链', L"lian"}, {L'良', L"liang"}, {L'凉', L"liang"}, {L'梁', L"liang"},
+        {L'粮', L"liang"}, {L'两', L"liang"}, {L'亮', L"liang"}, {L'谅', L"liang"}, {L'辆', L"liang"}, {L'量', L"liang"}, {L'聊', L"liao"},
+        {L'辽', L"liao"}, {L'疗', L"liao"}, {L'料', L"liao"}, {L'列', L"lie"}, {L'烈', L"lie"}, {L'猎', L"lie"}, {L'裂', L"lie"},
+        {L'邻', L"lin"}, {L'林', L"lin"}, {L'临', L"lin"}, {L'淋', L"lin"}, {L'灵', L"ling"}, {L'玲', L"ling"}, {L'铃', L"ling"},
+        {L'陵', L"ling"}, {L'零', L"ling"}, {L'龄', L"ling"}, {L'领', L"ling"}, {L'令', L"ling"}, {L'另', L"ling"}, {L'溜', L"liu"},
+        {L'刘', L"liu"}, {L'流', L"liu"}, {L'留', L"liu"}, {L'六', L"liu"}, {L'龙', L"long"}, {L'笼', L"long"}, {L'隆', L"long"},
+        {L'垄', L"long"}, {L'楼', L"lou"}, {L'漏', L"lou"}, {L'露', L"lu"}, {L'卢', L"lu"}, {L'芦', L"lu"}, {L'炉', L"lu"},
+        {L'鲁', L"lu"}, {L'陆', L"lu"}, {L'录', L"lu"}, {L'鹿', L"lu"}, {L'路', L"lu"}, {L'旅', L"lv"}, {L'屡', L"lv"},
+        {L'律', L"lv"}, {L'虑', L"lv"}, {L'率', L"lv"}, {L'绿', L"lv"}, {L'卵', L"luan"}, {L'乱', L"luan"}, {L'掠', L"lue"},
+        {L'略', L"lue"}, {L'轮', L"lun"}, {L'论', L"lun"}, {L'罗', L"luo"}, {L'萝', L"luo"}, {L'逻', L"luo"}, {L'螺', L"luo"},
+        {L'落', L"luo"},
+        {L'妈', L"ma"}, {L'麻', L"ma"}, {L'马', L"ma"}, {L'码', L"ma"}, {L'骂', L"ma"}, {L'吗', L"ma"}, {L'埋', L"mai"},
+        {L'买', L"mai"}, {L'迈', L"mai"}, {L'卖', L"mai"}, {L'麦', L"mai"}, {L'脉', L"mai"}, {L'蛮', L"man"}, {L'满', L"man"},
+        {L'曼', L"man"}, {L'慢', L"man"}, {L'漫', L"man"}, {L'忙', L"mang"}, {L'芒', L"mang"}, {L'盲', L"mang"}, {L'茫', L"mang"},
+        {L'猫', L"mao"}, {L'毛', L"mao"}, {L'矛', L"mao"}, {L'茅', L"mao"}, {L'茂', L"mao"}, {L'冒', L"mao"}, {L'贸', L"mao"},
+        {L'帽', L"mao"}, {L'貌', L"mao"}, {L'么', L"me"}, {L'没', L"mei"}, {L'眉', L"mei"}, {L'梅', L"mei"}, {L'媒', L"mei"},
+        {L'煤', L"mei"}, {L'美', L"mei"}, {L'每', L"mei"}, {L'妹', L"mei"}, {L'门', L"men"}, {L'闷', L"men"}, {L'们', L"men"},
+        {L'萌', L"meng"}, {L'盟', L"meng"}, {L'猛', L"meng"}, {L'蒙', L"meng"}, {L'梦', L"meng"}, {L'迷', L"mi"}, {L'谜', L"mi"},
+        {L'米', L"mi"}, {L'密', L"mi"}, {L'蜜', L"mi"}, {L'棉', L"mian"}, {L'眠', L"mian"}, {L'免', L"mian"}, {L'勉', L"mian"},
+        {L'面', L"mian"}, {L'苗', L"miao"}, {L'描', L"miao"}, {L'秒', L"miao"}, {L'妙', L"miao"}, {L'庙', L"miao"}, {L'灭', L"mie"},
+        {L'民', L"min"}, {L'敏', L"min"}, {L'名', L"ming"}, {L'明', L"ming"}, {L'鸣', L"ming"}, {L'命', L"ming"}, {L'摸', L"mo"},
+        {L'模', L"mo"}, {L'膜', L"mo"}, {L'摩', L"mo"}, {L'磨', L"mo"}, {L'抹', L"mo"}, {L'末', L"mo"}, {L'莫', L"mo"},
+        {L'漠', L"mo"}, {L'墨', L"mo"}, {L'默', L"mo"}, {L'谋', L"mou"}, {L'某', L"mou"}, {L'母', L"mu"}, {L'亩', L"mu"},
+        {L'木', L"mu"}, {L'目', L"mu"}, {L'牧', L"mu"}, {L'墓', L"mu"}, {L'幕', L"mu"}, {L'慕', L"mu"},
+        {L'拿', L"na"}, {L'哪', L"na"}, {L'内', L"nei"}, {L'那', L"na"}, {L'纳', L"na"}, {L'乃', L"nai"}, {L'奶', L"nai"},
+        {L'耐', L"nai"}, {L'男', L"nan"}, {L'南', L"nan"}, {L'难', L"nan"}, {L'囊', L"nang"}, {L'脑', L"nao"}, {L'恼', L"nao"},
+        {L'闹', L"nao"}, {L'呢', L"ne"}, {L'嫩', L"nen"}, {L'能', L"neng"}, {L'尼', L"ni"}, {L'泥', L"ni"}, {L'你', L"ni"},
+        {L'拟', L"ni"}, {L'逆', L"ni"}, {L'年', L"nian"}, {L'念', L"nian"}, {L'娘', L"niang"}, {L'酿', L"niang"}, {L'鸟', L"niao"},
+        {L'尿', L"niao"}, {L'捏', L"nie"}, {L'您', L"nin"}, {L'宁', L"ning"}, {L'凝', L"ning"}, {L'牛', L"niu"}, {L'扭', L"niu"},
+        {L'纽', L"niu"}, {L'农', L"nong"}, {L'浓', L"nong"}, {L'弄', L"nong"}, {L'奴', L"nu"}, {L'努', L"nu"}, {L'怒', L"nu"},
+        {L'女', L"nv"}, {L'暖', L"nuan"}, {L'挪', L"nuo"},
+        {L'欧', L"ou"}, {L'偶', L"ou"},
+        {L'趴', L"pa"}, {L'爬', L"pa"}, {L'怕', L"pa"}, {L'拍', L"pai"}, {L'排', L"pai"}, {L'牌', L"pai"}, {L'派', L"pai"},
+        {L'攀', L"pan"}, {L'盘', L"pan"}, {L'判', L"pan"}, {L'盼', L"pan"}, {L'旁', L"pang"}, {L'胖', L"pang"}, {L'抛', L"pao"},
+        {L'跑', L"pao"}, {L'泡', L"pao"}, {L'炮', L"pao"}, {L'陪', L"pei"}, {L'培', L"pei"}, {L'赔', L"pei"}, {L'佩', L"pei"},
+        {L'配', L"pei"}, {L'喷', L"pen"}, {L'盆', L"pen"}, {L'朋', L"peng"}, {L'棚', L"peng"}, {L'膨', L"peng"}, {L'捧', L"peng"},
+        {L'碰', L"peng"}, {L'批', L"pi"}, {L'披', L"pi"}, {L'皮', L"pi"}, {L'疲', L"pi"}, {L'脾', L"pi"}, {L'匹', L"pi"},
+        {L'屁', L"pi"}, {L'辟', L"pi"}, {L'篇', L"pian"}, {L'偏', L"pian"}, {L'片', L"pian"}, {L'骗', L"pian"}, {L'漂', L"piao"},
+        {L'飘', L"piao"}, {L'票', L"piao"}, {L'撇', L"pie"}, {L'拼', L"pin"}, {L'贫', L"pin"}, {L'品', L"pin"}, {L'乒', L"ping"},
+        {L'平', L"ping"}, {L'评', L"ping"}, {L'凭', L"ping"}, {L'瓶', L"ping"}, {L'坡', L"po"}, {L'泼', L"po"}, {L'婆', L"po"},
+        {L'迫', L"po"}, {L'破', L"po"}, {L'剖', L"pou"}, {L'扑', L"pu"}, {L'铺', L"pu"}, {L'葡', L"pu"}, {L'朴', L"pu"},
+        {L'普', L"pu"}, {L'谱', L"pu"},
+        {L'七', L"qi"}, {L'妻', L"qi"}, {L'戚', L"qi"}, {L'期', L"qi"}, {L'欺', L"qi"}, {L'漆', L"qi"}, {L'齐', L"qi"},
+        {L'其', L"qi"}, {L'奇', L"qi"}, {L'骑', L"qi"}, {L'棋', L"qi"}, {L'旗', L"qi"}, {L'乞', L"qi"}, {L'企', L"qi"},
+        {L'岂', L"qi"}, {L'启', L"qi"}, {L'起', L"qi"}, {L'气', L"qi"}, {L'弃', L"qi"}, {L'汽', L"qi"}, {L'器', L"qi"},
+        {L'恰', L"qia"}, {L'千', L"qian"}, {L'迁', L"qian"}, {L'牵', L"qian"}, {L'铅', L"qian"}, {L'谦', L"qian"}, {L'签', L"qian"},
+        {L'前', L"qian"}, {L'钱', L"qian"}, {L'潜', L"qian"}, {L'浅', L"qian"}, {L'遣', L"qian"}, {L'欠', L"qian"}, {L'枪', L"qiang"},
+        {L'腔', L"qiang"}, {L'强', L"qiang"}, {L'墙', L"qiang"}, {L'抢', L"qiang"}, {L'悄', L"qiao"}, {L'敲', L"qiao"}, {L'乔', L"qiao"},
+        {L'桥', L"qiao"}, {L'瞧', L"qiao"}, {L'巧', L"qiao"}, {L'切', L"qie"}, {L'且', L"qie"}, {L'亲', L"qin"}, {L'侵', L"qin"},
+        {L'琴', L"qin"}, {L'勤', L"qin"}, {L'青', L"qing"}, {L'轻', L"qing"}, {L'倾', L"qing"}, {L'清', L"qing"}, {L'情', L"qing"},
+        {L'晴', L"qing"}, {L'顷', L"qing"}, {L'请', L"qing"}, {L'庆', L"qing"}, {L'穷', L"qiong"}, {L'秋', L"qiu"}, {L'丘', L"qiu"},
+        {L'球', L"qiu"}, {L'求', L"qiu"}, {L'区', L"qu"}, {L'曲', L"qu"}, {L'驱', L"qu"}, {L'屈', L"qu"}, {L'渠', L"qu"},
+        {L'取', L"qu"}, {L'去', L"qu"}, {L'趣', L"qu"}, {L'圈', L"quan"}, {L'全', L"quan"}, {L'权', L"quan"}, {L'泉', L"quan"},
+        {L'拳', L"quan"}, {L'劝', L"quan"}, {L'缺', L"que"}, {L'确', L"que"}, {L'雀', L"que"}, {L'群', L"qun"},
+        {L'然', L"ran"}, {L'燃', L"ran"}, {L'染', L"ran"}, {L'嚷', L"rang"}, {L'壤', L"rang"}, {L'让', L"rang"}, {L'饶', L"rao"},
+        {L'扰', L"rao"}, {L'绕', L"rao"}, {L'惹', L"re"}, {L'热', L"re"}, {L'人', L"ren"}, {L'仁', L"ren"}, {L'忍', L"ren"},
+        {L'认', L"ren"}, {L'任', L"ren"}, {L'扔', L"reng"}, {L'仍', L"reng"}, {L'日', L"ri"}, {L'容', L"rong"}, {L'荣', L"rong"},
+        {L'融', L"rong"}, {L'柔', L"rou"}, {L'肉', L"rou"}, {L'如', L"ru"}, {L'儒', L"ru"}, {L'乳', L"ru"}, {L'入', L"ru"},
+        {L'软', L"ruan"}, {L'锐', L"rui"}, {L'瑞', L"rui"}, {L'润', L"run"}, {L'若', L"ruo"}, {L'弱', L"ruo"},
+        {L'撒', L"sa"}, {L'洒', L"sa"}, {L'萨', L"sa"}, {L'塞', L"sai"}, {L'赛', L"sai"}, {L'三', L"san"}, {L'伞', L"san"},
+        {L'散', L"san"}, {L'桑', L"sang"}, {L'嗓', L"sang"}, {L'丧', L"sang"}, {L'扫', L"sao"}, {L'嫂', L"sao"}, {L'色', L"se"},
+        {L'森', L"sen"}, {L'僧', L"seng"}, {L'杀', L"sha"}, {L'沙', L"sha"}, {L'纱', L"sha"}, {L'傻', L"sha"}, {L'筛', L"shai"},
+        {L'晒', L"shai"}, {L'山', L"shan"}, {L'删', L"shan"}, {L'衫', L"shan"}, {L'闪', L"shan"}, {L'陕', L"shan"}, {L'扇', L"shan"},
+        {L'善', L"shan"}, {L'伤', L"shang"}, {L'商', L"shang"}, {L'赏', L"shang"}, {L'上', L"shang"}, {L'尚', L"shang"}, {L'梢', L"shao"},
+        {L'烧', L"shao"}, {L'勺', L"shao"}, {L'少', L"shao"}, {L'绍', L"shao"}, {L'舌', L"she"}, {L'蛇', L"she"}, {L'舍', L"she"},
+        {L'设', L"she"}, {L'社', L"she"}, {L'射', L"she"}, {L'涉', L"she"}, {L'摄', L"she"}, {L'申', L"shen"}, {L'伸', L"shen"},
+        {L'身', L"shen"}, {L'深', L"shen"}, {L'神', L"shen"}, {L'审', L"shen"}, {L'婶', L"shen"}, {L'肾', L"shen"}, {L'甚', L"shen"},
+        {L'渗', L"shen"}, {L'慎', L"shen"}, {L'升', L"sheng"}, {L'生', L"sheng"}, {L'声', L"sheng"}, {L'绳', L"sheng"}, {L'省', L"sheng"},
+        {L'盛', L"sheng"}, {L'胜', L"sheng"}, {L'圣', L"sheng"}, {L'剩', L"sheng"}, {L'师', L"shi"}, {L'失', L"shi"}, {L'狮', L"shi"},
+        {L'施', L"shi"}, {L'湿', L"shi"}, {L'诗', L"shi"}, {L'十', L"shi"}, {L'石', L"shi"}, {L'时', L"shi"}, {L'识', L"shi"},
+        {L'实', L"shi"}, {L'拾', L"shi"}, {L'食', L"shi"}, {L'蚀', L"shi"}, {L'史', L"shi"}, {L'使', L"shi"}, {L'始', L"shi"},
+        {L'驶', L"shi"}, {L'士', L"shi"}, {L'氏', L"shi"}, {L'世', L"shi"}, {L'市', L"shi"}, {L'示', L"shi"}, {L'式', L"shi"},
+        {L'事', L"shi"}, {L'侍', L"shi"}, {L'势', L"shi"}, {L'视', L"shi"}, {L'试', L"shi"}, {L'饰', L"shi"}, {L'室', L"shi"},
+        {L'是', L"shi"}, {L'适', L"shi"}, {L'释', L"shi"}, {L'收', L"shou"}, {L'手', L"shou"}, {L'守', L"shou"}, {L'首', L"shou"},
+        {L'寿', L"shou"}, {L'受', L"shou"}, {L'授', L"shou"}, {L'售', L"shou"}, {L'兽', L"shou"}, {L'瘦', L"shou"}, {L'书', L"shu"},
+        {L'叔', L"shu"}, {L'殊', L"shu"}, {L'梳', L"shu"}, {L'舒', L"shu"}, {L'疏', L"shu"}, {L'输', L"shu"}, {L'蔬', L"shu"},
+        {L'熟', L"shu"}, {L'暑', L"shu"}, {L'属', L"shu"}, {L'鼠', L"shu"}, {L'数', L"shu"}, {L'术', L"shu"}, {L'述', L"shu"},
+        {L'树', L"shu"}, {L'束', L"shu"}, {L'竖', L"shu"}, {L'刷', L"shua"}, {L'耍', L"shua"}, {L'衰', L"shuai"}, {L'摔', L"shuai"},
+        {L'甩', L"shuai"}, {L'帅', L"shuai"}, {L'拴', L"shuan"}, {L'双', L"shuang"}, {L'霜', L"shuang"}, {L'爽', L"shuang"}, {L'谁', L"shui"},
+        {L'水', L"shui"}, {L'税', L"shui"}, {L'睡', L"shui"}, {L'顺', L"shun"}, {L'瞬', L"shun"}, {L'说', L"shuo"}, {L'丝', L"si"},
+        {L'司', L"si"}, {L'私', L"si"}, {L'思', L"si"}, {L'斯', L"si"}, {L'撕', L"si"}, {L'死', L"si"}, {L'四', L"si"},
+        {L'寺', L"si"}, {L'似', L"si"}, {L'饲', L"si"}, {L'松', L"song"}, {L'耸', L"song"}, {L'送', L"song"}, {L'颂', L"song"},
+        {L'搜', L"sou"}, {L'艘', L"sou"}, {L'苏', L"su"}, {L'俗', L"su"}, {L'诉', L"su"}, {L'肃', L"su"}, {L'素', L"su"},
+        {L'速', L"su"}, {L'宿', L"su"}, {L'塑', L"su"}, {L'酸', L"suan"}, {L'算', L"suan"}, {L'虽', L"sui"}, {L'随', L"sui"},
+        {L'岁', L"sui"}, {L'碎', L"sui"}, {L'孙', L"sun"}, {L'损', L"sun"}, {L'笋', L"sun"}, {L'缩', L"suo"}, {L'所', L"suo"},
+        {L'索', L"suo"}, {L'锁', L"suo"},
+        {L'他', L"ta"}, {L'它', L"ta"}, {L'塔', L"ta"}, {L'踏', L"ta"}, {L'胎', L"tai"}, {L'台', L"tai"}, {L'抬', L"tai"},
+        {L'太', L"tai"}, {L'态', L"tai"}, {L'泰', L"tai"}, {L'贪', L"tan"}, {L'摊', L"tan"}, {L'滩', L"tan"}, {L'坛', L"tan"},
+        {L'谈', L"tan"}, {L'痰', L"tan"}, {L'坦', L"tan"}, {L'毯', L"tan"}, {L'叹', L"tan"}, {L'炭', L"tan"}, {L'探', L"tan"},
+        {L'汤', L"tang"}, {L'唐', L"tang"}, {L'堂', L"tang"}, {L'塘', L"tang"}, {L'糖', L"tang"}, {L'躺', L"tang"}, {L'趟', L"tang"},
+        {L'烫', L"tang"}, {L'涛', L"tao"}, {L'掏', L"tao"}, {L'滔', L"tao"}, {L'逃', L"tao"}, {L'桃', L"tao"}, {L'陶', L"tao"},
+        {L'淘', L"tao"}, {L'讨', L"tao"}, {L'套', L"tao"}, {L'特', L"te"}, {L'疼', L"teng"}, {L'腾', L"teng"}, {L'梯', L"ti"},
+        {L'踢', L"ti"}, {L'提', L"ti"}, {L'题', L"ti"}, {L'蹄', L"ti"}, {L'体', L"ti"}, {L'替', L"ti"}, {L'天', L"tian"},
+        {L'添', L"tian"}, {L'田', L"tian"}, {L'甜', L"tian"}, {L'填', L"tian"}, {L'挑', L"tiao"}, {L'条', L"tiao"}, {L'跳', L"tiao"},
+        {L'贴', L"tie"}, {L'铁', L"tie"}, {L'帖', L"tie"}, {L'厅', L"ting"}, {L'听', L"ting"}, {L'亭', L"ting"}, {L'庭', L"ting"},
+        {L'停', L"ting"}, {L'挺', L"ting"}, {L'通', L"tong"}, {L'同', L"tong"}, {L'桐', L"tong"}, {L'铜', L"tong"}, {L'童', L"tong"},
+        {L'统', L"tong"}, {L'桶', L"tong"}, {L'痛', L"tong"}, {L'偷', L"tou"}, {L'头', L"tou"}, {L'投', L"tou"}, {L'透', L"tou"},
+        {L'突', L"tu"}, {L'图', L"tu"}, {L'徒', L"tu"}, {L'涂', L"tu"}, {L'途', L"tu"}, {L'土', L"tu"}, {L'吐', L"tu"},
+        {L'兔', L"tu"}, {L'团', L"tuan"}, {L'推', L"tui"}, {L'腿', L"tui"}, {L'退', L"tui"}, {L'吞', L"tun"}, {L'托', L"tuo"},
+        {L'拖', L"tuo"}, {L'脱', L"tuo"}, {L'驼', L"tuo"}, {L'妥', L"tuo"},
+        {L'挖', L"wa"}, {L'娃', L"wa"}, {L'瓦', L"wa"}, {L'袜', L"wa"}, {L'歪', L"wai"}, {L'外', L"wai"}, {L'弯', L"wan"},
+        {L'湾', L"wan"}, {L'丸', L"wan"}, {L'完', L"wan"}, {L'玩', L"wan"}, {L'顽', L"wan"}, {L'挽', L"wan"}, {L'晚', L"wan"},
+        {L'碗', L"wan"}, {L'万', L"wan"}, {L'汪', L"wang"}, {L'亡', L"wang"}, {L'王', L"wang"}, {L'网', L"wang"}, {L'往', L"wang"},
+        {L'忘', L"wang"}, {L'旺', L"wang"}, {L'望', L"wang"}, {L'危', L"wei"}, {L'威', L"wei"}, {L'微', L"wei"}, {L'为', L"wei"},
+        {L'围', L"wei"}, {L'违', L"wei"}, {L'唯', L"wei"}, {L'维', L"wei"}, {L'伟', L"wei"}, {L'伪', L"wei"}, {L'尾', L"wei"},
+        {L'纬', L"wei"}, {L'委', L"wei"}, {L'卫', L"wei"}, {L'未', L"wei"}, {L'位', L"wei"}, {L'味', L"wei"}, {L'胃', L"wei"},
+        {L'谓', L"wei"}, {L'喂', L"wei"}, {L'慰', L"wei"}, {L'温', L"wen"}, {L'文', L"wen"}, {L'纹', L"wen"}, {L'闻', L"wen"},
+        {L'蚊', L"wen"}, {L'吻', L"wen"}, {L'稳', L"wen"}, {L'问', L"wen"}, {L'翁', L"weng"}, {L'窝', L"wo"}, {L'我', L"wo"},
+        {L'卧', L"wo"}, {L'握', L"wo"}, {L'乌', L"wu"}, {L'污', L"wu"}, {L'屋', L"wu"}, {L'无', L"wu"}, {L'吴', L"wu"},
+        {L'五', L"wu"}, {L'午', L"wu"}, {L'伍', L"wu"}, {L'武', L"wu"}, {L'舞', L"wu"}, {L'侮', L"wu"}, {L'务', L"wu"},
+        {L'物', L"wu"}, {L'误', L"wu"}, {L'悟', L"wu"}, {L'雾', L"wu"},
+        {L'夕', L"xi"}, {L'西', L"xi"}, {L'吸', L"xi"}, {L'希', L"xi"}, {L'析', L"xi"}, {L'牺', L"xi"}, {L'息', L"xi"},
+        {L'悉', L"xi"}, {L'惜', L"xi"}, {L'稀', L"xi"}, {L'锡', L"xi"}, {L'溪', L"xi"}, {L'席', L"xi"}, {L'习', L"xi"},
+        {L'袭', L"xi"}, {L'洗', L"xi"}, {L'喜', L"xi"}, {L'戏', L"xi"}, {L'细', L"xi"}, {L'隙', L"xi"}, {L'虾', L"xia"},
+        {L'瞎', L"xia"}, {L'峡', L"xia"}, {L'狭', L"xia"}, {L'霞', L"xia"}, {L'下', L"xia"}, {L'吓', L"xia"}, {L'夏', L"xia"},
+        {L'仙', L"xian"}, {L'先', L"xian"}, {L'纤', L"xian"}, {L'掀', L"xian"}, {L'鲜', L"xian"}, {L'闲', L"xian"}, {L'弦', L"xian"},
+        {L'贤', L"xian"}, {L'咸', L"xian"}, {L'衔', L"xian"}, {L'嫌', L"xian"}, {L'显', L"xian"}, {L'险', L"xian"}, {L'县', L"xian"},
+        {L'现', L"xian"}, {L'限', L"xian"}, {L'线', L"xian"}, {L'宪', L"xian"}, {L'陷', L"xian"}, {L'献', L"xian"}, {L'乡', L"xiang"},
+        {L'相', L"xiang"}, {L'香', L"xiang"}, {L'箱', L"xiang"}, {L'详', L"xiang"}, {L'祥', L"xiang"}, {L'享', L"xiang"}, {L'响', L"xiang"},
+        {L'想', L"xiang"}, {L'向', L"xiang"}, {L'巷', L"xiang"}, {L'项', L"xiang"}, {L'象', L"xiang"}, {L'像', L"xiang"}, {L'萧', L"xiao"},
+        {L'消', L"xiao"}, {L'宵', L"xiao"}, {L'销', L"xiao"}, {L'小', L"xiao"}, {L'晓', L"xiao"}, {L'孝', L"xiao"}, {L'校', L"xiao"},
+        {L'笑', L"xiao"}, {L'效', L"xiao"}, {L'些', L"xie"}, {L'歇', L"xie"}, {L'协', L"xie"}, {L'邪', L"xie"}, {L'胁', L"xie"},
+        {L'斜', L"xie"}, {L'携', L"xie"}, {L'鞋', L"xie"}, {L'写', L"xie"}, {L'泄', L"xie"}, {L'泻', L"xie"}, {L'卸', L"xie"},
+        {L'屑', L"xie"}, {L'械', L"xie"}, {L'谢', L"xie"}, {L'心', L"xin"}, {L'辛', L"xin"}, {L'欣', L"xin"}, {L'新', L"xin"},
+        {L'信', L"xin"}, {L'兴', L"xing"}, {L'星', L"xing"}, {L'腥', L"xing"}, {L'刑', L"xing"}, {L'行', L"xing"}, {L'形', L"xing"},
+        {L'型', L"xing"}, {L'醒', L"xing"}, {L'杏', L"xing"}, {L'姓', L"xing"}, {L'幸', L"xing"}, {L'性', L"xing"}, {L'凶', L"xiong"},
+        {L'兄', L"xiong"}, {L'胸', L"xiong"}, {L'雄', L"xiong"}, {L'熊', L"xiong"}, {L'休', L"xiu"}, {L'修', L"xiu"}, {L'羞', L"xiu"},
+        {L'朽', L"xiu"}, {L'秀', L"xiu"}, {L'绣', L"xiu"}, {L'袖', L"xiu"}, {L'锈', L"xiu"}, {L'须', L"xu"}, {L'虚', L"xu"},
+        {L'需', L"xu"}, {L'徐', L"xu"}, {L'许', L"xu"}, {L'序', L"xu"}, {L'叙', L"xu"}, {L'畜', L"xu"}, {L'绪', L"xu"},
+        {L'续', L"xu"}, {L'絮', L"xu"}, {L'蓄', L"xu"}, {L'宣', L"xuan"}, {L'悬', L"xuan"}, {L'旋', L"xuan"}, {L'选', L"xuan"},
+        {L'穴', L"xue"}, {L'学', L"xue"}, {L'雪', L"xue"}, {L'血', L"xue"}, {L'勋', L"xun"}, {L'熏', L"xun"}, {L'寻', L"xun"},
+        {L'巡', L"xun"}, {L'询', L"xun"}, {L'循', L"xun"}, {L'训', L"xun"}, {L'讯', L"xun"}, {L'迅', L"xun"},
+        {L'压', L"ya"}, {L'押', L"ya"}, {L'鸦', L"ya"}, {L'鸭', L"ya"}, {L'牙', L"ya"}, {L'芽', L"ya"}, {L'崖', L"ya"},
+        {L'哑', L"ya"}, {L'雅', L"ya"}, {L'亚', L"ya"}, {L'咽', L"yan"}, {L'烟', L"yan"}, {L'淹', L"yan"}, {L'延', L"yan"},
+        {L'严', L"yan"}, {L'言', L"yan"}, {L'岩', L"yan"}, {L'沿', L"yan"}, {L'炎', L"yan"}, {L'研', L"yan"}, {L'盐', L"yan"},
+        {L'颜', L"yan"}, {L'掩', L"yan"}, {L'眼', L"yan"}, {L'演', L"yan"}, {L'厌', L"yan"}, {L'宴', L"yan"}, {L'艳', L"yan"},
+        {L'验', L"yan"}, {L'雁', L"yan"}, {L'央', L"yang"}, {L'秧', L"yang"}, {L'扬', L"yang"}, {L'羊', L"yang"}, {L'阳', L"yang"},
+        {L'杨', L"yang"}, {L'洋', L"yang"}, {L'仰', L"yang"}, {L'养', L"yang"}, {L'氧', L"yang"}, {L'痒', L"yang"}, {L'样', L"yang"},
+        {L'妖', L"yao"}, {L'腰', L"yao"}, {L'邀', L"yao"}, {L'摇', L"yao"}, {L'遥', L"yao"}, {L'咬', L"yao"}, {L'药', L"yao"},
+        {L'要', L"yao"}, {L'耀', L"yao"}, {L'爷', L"ye"}, {L'也', L"ye"}, {L'冶', L"ye"}, {L'野', L"ye"}, {L'业', L"ye"},
+        {L'叶', L"ye"}, {L'页', L"ye"}, {L'夜', L"ye"}, {L'液', L"ye"}, {L'一', L"yi"}, {L'衣', L"yi"}, {L'医', L"yi"},
+        {L'依', L"yi"}, {L'仪', L"yi"}, {L'宜', L"yi"}, {L'姨', L"yi"}, {L'移', L"yi"}, {L'遗', L"yi"}, {L'疑', L"yi"},
+        {L'乙', L"yi"}, {L'已', L"yi"}, {L'以', L"yi"}, {L'蚁', L"yi"}, {L'倚', L"yi"}, {L'椅', L"yi"}, {L'亿', L"yi"},
+        {L'义', L"yi"}, {L'艺', L"yi"}, {L'忆', L"yi"}, {L'议', L"yi"}, {L'亦', L"yi"}, {L'异', L"yi"}, {L'役', L"yi"},
+        {L'译', L"yi"}, {L'易', L"yi"}, {L'疫', L"yi"}, {L'益', L"yi"}, {L'谊', L"yi"}, {L'意', L"yi"}, {L'毅', L"yi"},
+        {L'翼', L"yi"}, {L'因', L"yin"}, {L'阴', L"yin"}, {L'音', L"yin"}, {L'银', L"yin"}, {L'引', L"yin"}, {L'饮', L"yin"},
+        {L'隐', L"yin"}, {L'印', L"yin"}, {L'应', L"ying"}, {L'英', L"ying"}, {L'婴', L"ying"}, {L'鹰', L"ying"}, {L'迎', L"ying"},
+        {L'盈', L"ying"}, {L'营', L"ying"}, {L'蝇', L"ying"}, {L'赢', L"ying"}, {L'影', L"ying"}, {L'映', L"ying"}, {L'硬', L"ying"},
+        {L'佣', L"yong"}, {L'拥', L"yong"}, {L'庸', L"yong"}, {L'永', L"yong"}, {L'咏', L"yong"}, {L'泳', L"yong"}, {L'勇', L"yong"},
+        {L'涌', L"yong"}, {L'用', L"yong"}, {L'优', L"you"}, {L'忧', L"you"}, {L'幽', L"you"}, {L'悠', L"you"}, {L'尤', L"you"},
+        {L'由', L"you"}, {L'邮', L"you"}, {L'犹', L"you"}, {L'油', L"you"}, {L'游', L"you"}, {L'友', L"you"}, {L'有', L"you"},
+        {L'又', L"you"}, {L'右', L"you"}, {L'幼', L"you"}, {L'诱', L"you"}, {L'于', L"yu"}, {L'余', L"yu"}, {L'鱼', L"yu"},
+        {L'娱', L"yu"}, {L'渔', L"yu"}, {L'愉', L"yu"}, {L'愚', L"yu"}, {L'与', L"yu"}, {L'予', L"yu"}, {L'岛', L"yu"},
+        {L'宇', L"yu"}, {L'羽', L"yu"}, {L'雨', L"yu"}, {L'语', L"yu"}, {L'玉', L"yu"}, {L'育', L"yu"}, {L'狱', L"yu"},
+        {L'浴', L"yu"}, {L'预', L"yu"}, {L'域', L"yu"}, {L'欲', L"yu"}, {L'遇', L"yu"}, {L'御', L"yu"}, {L'裕', L"yu"},
+        {L'愈', L"yu"}, {L'誉', L"yu"}, {L'冤', L"yuan"}, {L'元', L"yuan"}, {L'园', L"yuan"}, {L'原', L"yuan"}, {L'圆', L"yuan"},
+        {L'员', L"yuan"}, {L'援', L"yuan"}, {L'缘', L"yuan"}, {L'源', L"yuan"}, {L'远', L"yuan"}, {L'怨', L"yuan"}, {L'院', L"yuan"},
+        {L'愿', L"yuan"}, {L'曰', L"yue"}, {L'约', L"yue"}, {L'月', L"yue"}, {L'岳', L"yue"}, {L'悦', L"yue"}, {L'阅', L"yue"},
+        {L'跃', L"yue"}, {L'晕', L"yun"}, {L'云', L"yun"}, {L'匀', L"yun"}, {L'允', L"yun"}, {L'孕', L"yun"}, {L'运', L"yun"},
+        {L'韵', L"yun"},
+        {L'扎', L"za"}, {L'杂', L"za"}, {L'砸', L"za"}, {L'灾', L"zai"}, {L'栽', L"zai"}, {L'宰', L"zai"}, {L'载', L"zai"},
+        {L'再', L"zai"}, {L'在', L"zai"}, {L'咱', L"zan"}, {L'暂', L"zan"}, {L'赞', L"zan"}, {L'脏', L"zang"}, {L'葬', L"zang"},
+        {L'遭', L"zao"}, {L'糟', L"zao"}, {L'早', L"zao"}, {L'枣', L"zao"}, {L'澡', L"zao"}, {L'造', L"zao"}, {L'燥', L"zao"},
+        {L'躁', L"zao"}, {L'责', L"ze"}, {L'择', L"ze"}, {L'则', L"ze"}, {L'泽', L"ze"}, {L'贼', L"zei"}, {L'怎', L"zen"},
+        {L'曾', L"zeng"}, {L'增', L"zeng"}, {L'赠', L"zeng"}, {L'渣', L"zha"}, {L'扎', L"zha"}, {L'闸', L"zha"}, {L'眨', L"zha"},
+        {L'诈', L"zha"}, {L'炸', L"zha"}, {L'摘', L"zhai"}, {L'宅', L"zhai"}, {L'窄', L"zhai"}, {L'债', L"zhai"}, {L'沾', L"zhan"},
+        {L'粘', L"zhan"}, {L'展', L"zhan"}, {L'斩', L"zhan"}, {L'盏', L"zhan"}, {L'占', L"zhan"}, {L'战', L"zhan"}, {L'站', L"zhan"},
+        {L'张', L"zhang"}, {L'章', L"zhang"}, {L'涨', L"zhang"}, {L'掌', L"zhang"}, {L'丈', L"zhang"}, {L'仗', L"zhang"}, {L'帐', L"zhang"},
+        {L'胀', L"zhang"}, {L'账', L"zhang"}, {L'障', L"zhang"}, {L'招', L"zhao"}, {L'昭', L"zhao"}, {L'找', L"zhao"}, {L'召', L"zhao"},
+        {L'兆', L"zhao"}, {L'赵', L"zhao"}, {L'照', L"zhao"}, {L'罩', L"zhao"}, {L'遮', L"zhe"}, {L'折', L"zhe"}, {L'哲', L"zhe"},
+        {L'者', L"zhe"}, {L'这', L"zhe"}, {L'浙', L"zhe"}, {L'贞', L"zhen"}, {L'针', L"zhen"}, {L'侦', L"zhen"}, {L'珍', L"zhen"},
+        {L'真', L"zhen"}, {L'诊', L"zhen"}, {L'枕', L"zhen"}, {L'阵', L"zhen"}, {L'振', L"zhen"}, {L'震', L"zhen"}, {L'镇', L"zhen"},
+        {L'争', L"zheng"}, {L'征', L"zheng"}, {L'睁', L"zheng"}, {L'挣', L"zheng"}, {L'蒸', L"zheng"}, {L'整', L"zheng"}, {L'正', L"zheng"},
+        {L'证', L"zheng"}, {L'郑', L"zheng"}, {L'政', L"zheng"}, {L'之', L"zhi"}, {L'支', L"zhi"}, {L'汁', L"zhi"}, {L'芝', L"zhi"},
+        {L'枝', L"zhi"}, {L'知', L"zhi"}, {L'织', L"zhi"}, {L'脂', L"zhi"}, {L'直', L"zhi"}, {L'植', L"zhi"}, {L'殖', L"zhi"},
+        {L'执', L"zhi"}, {L'值', L"zhi"}, {L'职', L"zhi"}, {L'止', L"zhi"}, {L'只', L"zhi"}, {L'旨', L"zhi"}, {L'纸', L"zhi"},
+        {L'指', L"zhi"}, {L'至', L"zhi"}, {L'志', L"zhi"}, {L'制', L"zhi"}, {L'治', L"zhi"}, {L'质', L"zhi"}, {L'致', L"zhi"},
+        {L'智', L"zhi"}, {L'置', L"zhi"}, {L'中', L"zhong"}, {L'忠', L"zhong"}, {L'终', L"zhong"}, {L'钟', L"zhong"}, {L'肿', L"zhong"},
+        {L'种', L"zhong"}, {L'众', L"zhong"}, {L'重', L"zhong"}, {L'舟', L"zhou"}, {L'州', L"zhou"}, {L'周', L"zhou"}, {L'洲', L"zhou"},
+        {L'粥', L"zhou"}, {L'轴', L"zhou"}, {L'宙', L"zhou"}, {L'昼', L"zhou"}, {L'皱', L"zhou"}, {L'骤', L"zhou"}, {L'朱', L"zhu"},
+        {L'珠', L"zhu"}, {L'株', L"zhu"}, {L'诸', L"zhu"}, {L'猪', L"zhu"}, {L'竹', L"zhu"}, {L'主', L"zhu"}, {L'煮', L"zhu"},
+        {L'嘱', L"zhu"}, {L'住', L"zhu"}, {L'助', L"zhu"}, {L'注', L"zhu"}, {L'驻', L"zhu"}, {L'柱', L"zhu"}, {L'祝', L"zhu"},
+        {L'著', L"zhu"}, {L'筑', L"zhu"}, {L'抓', L"zhua"}, {L'爪', L"zhua"}, {L'专', L"zhuan"}, {L'砖', L"zhuan"}, {L'转', L"zhuan"},
+        {L'赚', L"zhuan"}, {L'庄', L"zhuang"}, {L'装', L"zhuang"}, {L'壮', L"zhuang"}, {L'状', L"zhuang"}, {L'撞', L"zhuang"}, {L'追', L"zhui"},
+        {L'准', L"zhun"}, {L'捉', L"zhuo"}, {L'桌', L"zhuo"}, {L'浊', L"zhuo"}, {L'啄', L"zhuo"}, {L'资', L"zi"}, {L'姿', L"zi"},
+        {L'滋', L"zi"}, {L'子', L"zi"}, {L'紫', L"zi"}, {L'字', L"zi"}, {L'自', L"zi"}, {L'宗', L"zong"}, {L'综', L"zong"},
+        {L'棕', L"zong"}, {L'踪', L"zong"}, {L'总', L"zong"}, {L'纵', L"zong"}, {L'走', L"zou"}, {L'奏', L"zou"}, {L'租', L"zu"},
+        {L'足', L"zu"}, {L'族', L"zu"}, {L'阻', L"zu"}, {L'组', L"zu"}, {L'祖', L"zu"}, {L'钻', L"zuan"}, {L'嘴', L"zui"},
+        {L'最', L"zui"}, {L'罪', L"zui"}, {L'醉', L"zui"}, {L'尊', L"zun"}, {L'遵', L"zun"}, {L'昨', L"zuo"}, {L'左', L"zuo"},
+        {L'作', L"zuo"}, {L'坐', L"zuo"}, {L'座', L"zuo"}, {L'做', L"zuo"}
+    };
+    
+    for (const auto& item : mapData) {
+        pinyinMap[item.ch] = item.py;
+    }
+    
+    initialized = true;
+}
+
+std::wstring PinyinHelper::GetPinyin(wchar_t ch) {
+    Initialize();
+    auto it = pinyinMap.find(ch);
+    if (it != pinyinMap.end()) {
+        return it->second;
+    }
+    return L"";
+}
+
+std::wstring PinyinHelper::GetStringPinyin(const std::wstring& str) {
+    Initialize();
+    std::wstring result;
+    for (wchar_t ch : str) {
+        std::wstring py = GetPinyin(ch);
+        if (!py.empty()) {
+            result += py;
+        } else {
+            result += ch;
+        }
+    }
+    return result;
+}
+
+std::wstring PinyinHelper::GetStringInitials(const std::wstring& str) {
+    Initialize();
+    std::wstring result;
+    for (wchar_t ch : str) {
+        std::wstring py = GetPinyin(ch);
+        if (!py.empty()) {
+            result += py[0];
+        } else {
+            result += ch;
+        }
+    }
+    return result;
+}
+
+std::vector<std::wstring> PinyinHelper::GetStringPinyins(const std::wstring& str) {
+    Initialize();
+    std::vector<std::wstring> results;
+    results.push_back(L"");
+    
+    for (wchar_t ch : str) {
+        std::vector<std::wstring> currentPinyins;
+        
+        // 检查多音字
+        auto itMulti = multiPinyinMap.find(ch);
+        if (itMulti != multiPinyinMap.end()) {
+            currentPinyins = itMulti->second;
+        } else {
+            // 检查单音字
+            auto it = pinyinMap.find(ch);
+            if (it != pinyinMap.end()) {
+                currentPinyins.push_back(it->second);
+            } else {
+                // 非汉字
+                currentPinyins.push_back(std::wstring(1, ch));
+            }
+        }
+        
+        std::vector<std::wstring> newResults;
+        for (const auto& prefix : results) {
+            for (const auto& py : currentPinyins) {
+                newResults.push_back(prefix + py);
+            }
+        }
+        results = newResults;
+    }
+    return results;
+}
+
+std::vector<std::wstring> PinyinHelper::GetStringInitialsList(const std::wstring& str) {
+    Initialize();
+    std::vector<std::wstring> results;
+    results.push_back(L"");
+    
+    for (wchar_t ch : str) {
+        std::vector<std::wstring> currentInitials;
+        
+        // 检查多音字
+        auto itMulti = multiPinyinMap.find(ch);
+        if (itMulti != multiPinyinMap.end()) {
+            for (const auto& py : itMulti->second) {
+                if (!py.empty()) {
+                    // 避免重复首字母
+                    std::wstring initial = py.substr(0, 1);
+                    bool exists = false;
+                    for (const auto& existing : currentInitials) {
+                        if (existing == initial) {
+                            exists = true;
+                            break;
+                        }
+                    }
+                    if (!exists) {
+                        currentInitials.push_back(initial);
+                    }
+                }
+            }
+        } else {
+            // 检查单音字
+            auto it = pinyinMap.find(ch);
+            if (it != pinyinMap.end() && !it->second.empty()) {
+                currentInitials.push_back(it->second.substr(0, 1));
+            } else {
+                // 非汉字
+                currentInitials.push_back(std::wstring(1, ch));
+            }
+        }
+        
+        std::vector<std::wstring> newResults;
+        for (const auto& prefix : results) {
+            for (const auto& ini : currentInitials) {
+                newResults.push_back(prefix + ini);
+            }
+        }
+        results = newResults;
+    }
+    return results;
+}

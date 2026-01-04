@@ -1,0 +1,16 @@
+#include "..\include_opengl_header.h"
+
+// 调用格式: SDT_BOOL 载入TGA图片, 命令说明: "成功载入返回真，失败返回假"
+// 参数<1>: 位图文件名 SDT_TEXT, 参数说明: "允许使用24位、32位的压缩和非压缩的TGA文件格式"
+// 参数<2>: [背景色 SDT_INT], 参数说明: "位图中指定为背景色的区域，其颜色值的通道部分将被定义为0。如果为空，将被定义为1。可以通过使用“通道混合测试”进行处理。\r\n\t如果希望将背景色部分显示为透明，可以执行：\r\n\t  启用功能 (#通道测试)\r\n\t  通道混合测试 (#大于, 0)\r\n\t  设置纹理映射方式 (#纹理映射模式, #调节处理)"
+// 参数<3>: &宽度 SDT_INT, 参数说明: "保存图片的宽度的变量"
+// 参数<4>: &高度 SDT_INT, 参数说明: "保存图片的高度的变量"
+OPENGL_EXTERN_C void opengl_glTGALoad_125_opengl(PMDATA_INF pRetData, INT nArgCount, PMDATA_INF pArgInf)
+{
+    LPSTR    arg1 = pArgInf[0].m_pText;
+    INT      arg2 = pArgInf[1].m_int;
+    PINT     arg3 = pArgInf[2].m_pInt;
+    PINT     arg4 = pArgInf[3].m_pInt;
+
+}
+

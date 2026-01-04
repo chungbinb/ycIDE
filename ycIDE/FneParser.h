@@ -1,0 +1,151 @@
+#pragma once
+#include <windows.h>
+#include <string>
+#include <vector>
+#include <map>
+
+// 基于 Yi 语言官方 lib2.h 中的结构定义
+typedef unsigned long DATA_TYPE;
+
+// 系统基本数据类型定义
+#define SDT_BYTE        (DATA_TYPE)MAKELONG(MAKEWORD(1, 1), 0x8000)
+#define SDT_SHORT       (DATA_TYPE)MAKELONG(MAKEWORD(1, 2), 0x8000)
+#define SDT_INT         (DATA_TYPE)MAKELONG(MAKEWORD(1, 3), 0x8000)
+#define SDT_INT64       (DATA_TYPE)MAKELONG(MAKEWORD(1, 4), 0x8000)
+#define SDT_FLOAT       (DATA_TYPE)MAKELONG(MAKEWORD(1, 5), 0x8000)
+#define SDT_DOUBLE      (DATA_TYPE)MAKELONG(MAKEWORD(1, 6), 0x8000)
+#define SDT_BOOL        (DATA_TYPE)MAKELONG(MAKEWORD(2, 0), 0x8000)
+#define SDT_DATE_TIME   (DATA_TYPE)MAKELONG(MAKEWORD(3, 0), 0x8000)
+#define SDT_TEXT        (DATA_TYPE)MAKELONG(MAKEWORD(4, 0), 0x8000)
+#define SDT_BIN         (DATA_TYPE)MAKELONG(MAKEWORD(5, 0), 0x8000)
+#define SDT_SUB_PTR     (DATA_TYPE)MAKELONG(MAKEWORD(6, 0), 0x8000)
+
+// 参数标志
+#define AS_HAS_DEFAULT_VALUE       (1 << 0)
+#define AS_DEFAULT_VALUE_IS_EMPTY  (1 << 1)
+#define AS_RECEIVE_VAR             (1 << 2)
+#define AS_RECEIVE_VAR_ARRAY       (1 << 3)
+#define AS_RECEIVE_VAR_OR_ARRAY    (1 << 4)
+#define AS_RECEIVE_ARRAY_DATA      (1 << 5)
+#define AS_RECEIVE_ALL_TYPE_DATA   (1 << 6)
+#define AS_RECEIVE_VAR_OR_OTHER    (1 << 9)
+
+// 命令标志
+#define CT_IS_HIDED                (1 << 2)
+#define CT_RETRUN_ARY_TYPE_DATA    (1 << 6)
+#define CT_IS_OBJ_COPY_CMD         (1 << 7)
+#define CT_IS_OBJ_FREE_CMD         (1 << 8)
+#define CT_IS_OBJ_CONSTURCT_CMD    (1 << 9)
+
+// 取执行平台
+#define _CMD_OS(os)     ((os) >> 16)
+
+// 参数信息结构
+typedef struct {
+    const char* m_szName;           // 参数名称
+    const char* m_szExplain;        // 参数详细说明
+    short       m_shtBitmapIndex;   // 指定图标索引
+    short       m_shtBitmapCount;   // 图标数目
+    DATA_TYPE   m_dtType;           // 参数数据类型
+    int         m_nDefault;         // 默认值
+    DWORD       m_dwState;          // 参数状态
+} ARG_INFO, * PARG_INFO;
+
+// 命令信息结构
+typedef struct {
+    const char* m_szName;           // 命令名称
+    const char* m_szEgName;         // 命令英文名
+    const char* m_szExplain;        // 详细说明
+    short       m_shtCategory;      // 命令类别
+    WORD        m_wState;           // 命令状态
+    DATA_TYPE   m_dtRetValType;     // 返回值类型
+    WORD        m_wReserved;        // 保留
+    short       m_shtUserLevel;     // 用户级别
+    short       m_shtBitmapIndex;   // 图标索引
+    short       m_shtBitmapCount;   // 图标数目
+    int         m_nArgCount;        // 参数数目
+    PARG_INFO   m_pBeginArgInfo;    // 参数信息指针
+} CMD_INFO, * PCMD_INFO;
+
+// 支持库信息结构
+typedef struct {
+    DWORD       m_dwLibFormatVer;   // 库格式版本
+    const char* m_szGuid;           // GUID
+    int         m_nMajorVersion;    // 主版本号
+    int         m_nMinorVersion;    // 次版本号
+    int         m_nBuildNumber;     // 构建版本号
+    int         m_nRqSysMajorVer;   // 需要系统主版本
+    int         m_nRqSysMinorVer;   // 需要系统次版本
+    int         m_nRqSysKrnlLibMajorVer;
+    int         m_nRqSysKrnlLibMinorVer;
+    const char* m_szName;           // 支持库名称
+    int         m_nLanguage;        // 语言
+    const char* m_szExplain;        // 说明
+    DWORD       m_dwState;          // 状态
+    const char* m_szAuthor;         // 作者
+    const char* m_szZipCode;        // 邮编
+    const char* m_szAddress;        // 地址
+    const char* m_szPhoto;          // 电话
+    const char* m_szFax;            // 传真
+    const char* m_szEmail;          // 邮箱
+    const char* m_szHomePage;       // 主页
+    const char* m_szOther;          // 其它信息
+    int         m_nDataTypeCount;   // 自定义数据类型数目
+    void*       m_pDataType;        // 数据类型
+    int         m_nCategoryCount;   // 命令类别数目
+    const char* m_szzCategory;      // 命令类别名称
+    int         m_nCmdCount;        // 命令数目
+    PCMD_INFO   m_pBeginCmdInfo;    // 命令信息数组
+    void**      m_pCmdsFunc;        // 命令执行函数
+    void*       m_pfnRunAddInFn;
+    const char* m_szzAddInFnInfo;
+    void*       m_pfnNotify;
+    void*       m_pfnSuperTemplate;
+    const char* m_szzSuperTemplateInfo;
+    int         m_nLibConstCount;
+    void*       m_pLibConst;
+    const char* m_szzDependFiles;
+} LIB_INFO, * PLIB_INFO;
+
+// GetNewInf 函数原型
+typedef PLIB_INFO(WINAPI* PFN_GET_LIB_INFO)();
+
+// FNE 命令信息类
+struct FneCommandInfo {
+    std::wstring name;          // 命令名称
+    std::wstring description;   // 命令说明
+    std::wstring returnType;    // 返回值类型
+    std::vector<std::wstring> parameters;  // 参数列表
+    bool isHidden;              // 是否隐藏命令
+};
+
+// FNE 解析器
+class FneParser {
+public:
+    FneParser();
+    ~FneParser();
+
+    // 加载 .fne 文件
+    bool LoadFneFile(const std::wstring& filePath);
+
+    // 获取所有命令信息
+    const std::vector<FneCommandInfo>& GetCommands() const { return commands; }
+
+    // 获取支持库名称
+    std::wstring GetLibraryName() const { return libraryName; }
+
+    // 获取支持库说明
+    std::wstring GetLibraryDescription() const { return libraryDescription; }
+
+private:
+    HMODULE hModule;                    // DLL 句柄
+    std::vector<FneCommandInfo> commands;  // 命令信息
+    std::wstring libraryName;           // 支持库名称
+    std::wstring libraryDescription;    // 支持库说明
+
+    // 数据类型转换为字符串
+    std::wstring DataTypeToString(DATA_TYPE dataType);
+
+    // UTF-8 转 UTF-16
+    std::wstring UTF8ToUTF16(const char* utf8Str);
+};

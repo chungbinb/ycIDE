@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\javalib_const.cpp" />
+    <ClCompile Include="..\javalib_dllMain.cpp" />
+    <ClCompile Include="..\javalib_dtType.cpp" />
+    <ClCompile Include="..\javalib_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\javalib_0_TestFunction.cpp" />
+    <ClCompile Include="..\cppCode\javalib_1_Create.cpp" />
+    <ClCompile Include="..\cppCode\javalib_2_Destroy.cpp" />
+    <ClCompile Include="..\cppCode\javalib_3_AttachCurrentThread.cpp" />
+    <ClCompile Include="..\cppCode\javalib_4_DetachCurrentThread.cpp" />
+    <ClCompile Include="..\cppCode\javalib_5_GetVersionText.cpp" />
+    <ClCompile Include="..\cppCode\javalib_6_GetMinorVersion.cpp" />
+    <ClCompile Include="..\cppCode\javalib_7_FindClass.cpp" />
+    <ClCompile Include="..\cppCode\javalib_8_DefineClass.cpp" />
+    <ClCompile Include="..\cppCode\javalib_9_GetSuperclass.cpp" />
+    <ClCompile Include="..\cppCode\javalib_10_AllocObject.cpp" />
+    <ClCompile Include="..\cppCode\javalib_11_NewObject.cpp" />
+    <ClCompile Include="..\cppCode\javalib_12_GetObjectClass.cpp" />
+    <ClCompile Include="..\cppCode\javalib_13_IsInstanceOf.cpp" />
+    <ClCompile Include="..\cppCode\javalib_14_IsSameObject.cpp" />
+    <ClCompile Include="..\cppCode\javalib_15_IsAssignableFrom.cpp" />
+    <ClCompile Include="..\cppCode\javalib_16_NewGlobalRef.cpp" />
+    <ClCompile Include="..\cppCode\javalib_17_DeleteGlobalRef.cpp" />
+    <ClCompile Include="..\cppCode\javalib_18_DeleteLocalRef.cpp" />
+    <ClCompile Include="..\cppCode\javalib_19_GetFieldID.cpp" />
+    <ClCompile Include="..\cppCode\javalib_20_GetField.cpp" />
+    <ClCompile Include="..\cppCode\javalib_21_SetField.cpp" />
+    <ClCompile Include="..\cppCode\javalib_22_GetObjectField.cpp" />
+    <ClCompile Include="..\cppCode\javalib_23_SetObjectField.cpp" />
+    <ClCompile Include="..\cppCode\javalib_24_GetStaticFieldID.cpp" />
+    <ClCompile Include="..\cppCode\javalib_25_GetStaticField.cpp" />
+    <ClCompile Include="..\cppCode\javalib_26_SetStaticField.cpp" />
+    <ClCompile Include="..\cppCode\javalib_27_GetStaticObjectField.cpp" />
+    <ClCompile Include="..\cppCode\javalib_28_SetStaticObjectField.cpp" />
+    <ClCompile Include="..\cppCode\javalib_29_GetMethodID.cpp" />
+    <ClCompile Include="..\cppCode\javalib_30_CallMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_31_CallObjectMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_32_CallVoidMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_33_CallNonvirtualMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_34_CallNonvirtualObjectMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_35_CallNonvirtualVoidMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_36_GetStaticMethodID.cpp" />
+    <ClCompile Include="..\cppCode\javalib_37_CallStaticMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_38_CallStaticObjectMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_39_CallStaticVoidMethod.cpp" />
+    <ClCompile Include="..\cppCode\javalib_40_NewString.cpp" />
+    <ClCompile Include="..\cppCode\javalib_41_GetStringLength.cpp" />
+    <ClCompile Include="..\cppCode\javalib_42_GetStringChars.cpp" />
+    <ClCompile Include="..\cppCode\javalib_43_ReleaseStringChars.cpp" />
+    <ClCompile Include="..\cppCode\javalib_44_NewStringUTF.cpp" />
+    <ClCompile Include="..\cppCode\javalib_45_GetStringUTFLength.cpp" />
+    <ClCompile Include="..\cppCode\javalib_46_GetStringUTFChars.cpp" />
+    <ClCompile Include="..\cppCode\javalib_47_ReleaseStringUTFChars.cpp" />
+    <ClCompile Include="..\cppCode\javalib_48_GetArrayLength.cpp" />
+    <ClCompile Include="..\cppCode\javalib_49_NewArray.cpp" />
+    <ClCompile Include="..\cppCode\javalib_50_GetArrayElement.cpp" />
+    <ClCompile Include="..\cppCode\javalib_51_SetArrayElement.cpp" />
+    <ClCompile Include="..\cppCode\javalib_52_NewObjectArray.cpp" />
+    <ClCompile Include="..\cppCode\javalib_53_GetObjectArrayElement.cpp" />
+    <ClCompile Include="..\cppCode\javalib_54_SetObjectArrayElement.cpp" />
+    <ClCompile Include="..\cppCode\javalib_55_Throw.cpp" />
+    <ClCompile Include="..\cppCode\javalib_56_ThrowNew.cpp" />
+    <ClCompile Include="..\cppCode\javalib_57_IsExceptionOccurred.cpp" />
+    <ClCompile Include="..\cppCode\javalib_58_ExceptionOccurred.cpp" />
+    <ClCompile Include="..\cppCode\javalib_59_ExceptionDescribe.cpp" />
+    <ClCompile Include="..\cppCode\javalib_60_GetExceptionMsg.cpp" />
+    <ClCompile Include="..\cppCode\javalib_61_ExceptionClear.cpp" />
+    <ClCompile Include="..\cppCode\javalib_62_FatalError.cpp" />
+    <ClCompile Include="..\cppCode\javalib_63_MonitorEnter.cpp" />
+    <ClCompile Include="..\cppCode\javalib_64_MonitorExit.cpp" />
+    <ClCompile Include="..\cppCode\javalib_65_DoDestroyJVM.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_javalib_header.h" />
+    <ClInclude Include="..\javalib_cmd_typedef.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5ff16995-6ad6-4964-a421-e0842e1be946}</ProjectGuid>
+    <RootNamespace>javalibstatic</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=javalib;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=javalib;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

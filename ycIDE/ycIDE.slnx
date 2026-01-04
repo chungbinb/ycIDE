@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ycIDE.vcxproj" Id="0cf3f68f-fc53-46d2-849b-d19d504e47b5" />
+</Solution>

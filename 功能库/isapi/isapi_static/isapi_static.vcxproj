@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\isapi_const.cpp" />
+    <ClCompile Include="..\isapi_dllMain.cpp" />
+    <ClCompile Include="..\isapi_dtType.cpp" />
+    <ClCompile Include="..\isapi_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\isapi_0_con.cpp" />
+    <ClCompile Include="..\cppCode\isapi_1_des.cpp" />
+    <ClCompile Include="..\cppCode\isapi_2_InitVersionInfo.cpp" />
+    <ClCompile Include="..\cppCode\isapi_3_InitHttp.cpp" />
+    <ClCompile Include="..\cppCode\isapi_4_WriteText.cpp" />
+    <ClCompile Include="..\cppCode\isapi_5_GetServerVar.cpp" />
+    <ClCompile Include="..\cppCode\isapi_6_GetDataMethoed.cpp" />
+    <ClCompile Include="..\cppCode\isapi_7_GetContentType.cpp" />
+    <ClCompile Include="..\cppCode\isapi_8_GetPathInfo.cpp" />
+    <ClCompile Include="..\cppCode\isapi_9_GetQueryString.cpp" />
+    <ClCompile Include="..\cppCode\isapi_10_ReadText.cpp" />
+    <ClCompile Include="..\cppCode\isapi_11_DecodeText.cpp" />
+    <ClCompile Include="..\cppCode\isapi_12_GetKeyField.cpp" />
+    <ClCompile Include="..\cppCode\isapi_13_SetReplaceFlag.cpp" />
+    <ClCompile Include="..\cppCode\isapi_14_GetReplaceFlag.cpp" />
+    <ClCompile Include="..\cppCode\isapi_15_TemplateReplace.cpp" />
+    <ClCompile Include="..\cppCode\isapi_16_SetCookie.cpp" />
+    <ClCompile Include="..\cppCode\isapi_17_GetCookie.cpp" />
+    <ClCompile Include="..\cppCode\isapi_18_SessionStart.cpp" />
+    <ClCompile Include="..\cppCode\isapi_19_SessionEnd.cpp" />
+    <ClCompile Include="..\cppCode\isapi_20_SessionRegVarAndVal.cpp" />
+    <ClCompile Include="..\cppCode\isapi_21_SessionIsReg.cpp" />
+    <ClCompile Include="..\cppCode\isapi_22_SessionUnReg.cpp" />
+    <ClCompile Include="..\cppCode\isapi_23_SessionGetVal.cpp" />
+    <ClCompile Include="..\cppCode\isapi_24_SessionInTurnTime.cpp" />
+    <ClCompile Include="..\cppCode\isapi_25_EncodeText.cpp" />
+    <ClCompile Include="..\cppCode\isapi_26_ReadBin.cpp" />
+    <ClCompile Include="..\cppCode\isapi_27_Redirect.cpp" />
+    <ClCompile Include="..\cppCode\isapi_28_ServerSupportFunction.cpp" />
+    <ClCompile Include="..\cppCode\isapi_29_WriteBinary.cpp" />
+    <ClCompile Include="..\cppCode\isapi_30_SendResponeHeaderEx.cpp" />
+    <ClCompile Include="..\cppCode\isapi_31__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_32__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_33__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_34__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_35__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_36__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_37__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_38__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_39__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_40__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_41__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_42__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_43__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_44__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_45__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_46__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_47__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_48__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_49__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_50__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_51__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_52__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_53__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_54__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_55__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_56__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_57__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_58__bunengshibie_.cpp" />
+    <ClCompile Include="..\cppCode\isapi_59_constructor.cpp" />
+    <ClCompile Include="..\cppCode\isapi_60_destructor.cpp" />
+    <ClCompile Include="..\cppCode\isapi_61_copyconstructor.cpp" />
+    <ClCompile Include="..\cppCode\isapi_62_FilterInitVersion.cpp" />
+    <ClCompile Include="..\cppCode\isapi_63_FilterInitFilterProc.cpp" />
+    <ClCompile Include="..\cppCode\isapi_64_FilterGetEventType.cpp" />
+    <ClCompile Include="..\cppCode\isapi_65_FilterIsSecurePort.cpp" />
+    <ClCompile Include="..\cppCode\isapi_66_FilterGetServerVariable.cpp" />
+    <ClCompile Include="..\cppCode\isapi_67_FilterAddResponseHeader.cpp" />
+    <ClCompile Include="..\cppCode\isapi_68_FilterAddResponseHeaders.cpp" />
+    <ClCompile Include="..\cppCode\isapi_69_FilterWriteClient.cpp" />
+    <ClCompile Include="..\cppCode\isapi_70_FilterAllocMem.cpp" />
+    <ClCompile Include="..\cppCode\isapi_71_FilterServerSupportFunction.cpp" />
+    <ClCompile Include="..\cppCode\isapi_72_FilterGetRawData.cpp" />
+    <ClCompile Include="..\cppCode\isapi_73_FilterGetHttpStatus.cpp" />
+    <ClCompile Include="..\cppCode\isapi_74_FilterGetHeader.cpp" />
+    <ClCompile Include="..\cppCode\isapi_75_FilterSetHeader.cpp" />
+    <ClCompile Include="..\cppCode\isapi_76_FilterAddHeader.cpp" />
+    <ClCompile Include="..\cppCode\isapi_77_FilterGetAuthInfo.cpp" />
+    <ClCompile Include="..\cppCode\isapi_78_FilterSetAuthInfo.cpp" />
+    <ClCompile Include="..\cppCode\isapi_79_FilterURLMap.cpp" />
+    <ClCompile Include="..\cppCode\isapi_80_FilterGetLogInfo.cpp" />
+    <ClCompile Include="..\cppCode\isapi_81_FilterSetLogInfo.cpp" />
+    <ClCompile Include="..\cppCode\isapi_82_FilterGetAccessDenied.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_isapi_header.h" />
+    <ClInclude Include="..\isapi_cmd_typedef.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5ff16995-6ad6-4964-a421-e0842e1be946}</ProjectGuid>
+    <RootNamespace>isapistatic</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=isapi;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=isapi;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

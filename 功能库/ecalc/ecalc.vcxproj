@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="elib\fnshare.cpp" />
+    <ClCompile Include="ecalc_const.cpp" />
+    <ClCompile Include="ecalc_dllMain.cpp" />
+    <ClCompile Include="ecalc_dtType.cpp" />
+    <ClCompile Include="ecalc_cmdInfo.cpp" />
+    <ClCompile Include="cppCode\ecalc_0_ComplexConstruction.cpp" />
+    <ClCompile Include="cppCode\ecalc_1_ComplexDestruction.cpp" />
+    <ClCompile Include="cppCode\ecalc_2_ComplexAdd.cpp" />
+    <ClCompile Include="cppCode\ecalc_3_ComplexSub.cpp" />
+    <ClCompile Include="cppCode\ecalc_4_ComplexMul.cpp" />
+    <ClCompile Include="cppCode\ecalc_5_ComplexDiv.cpp" />
+    <ClCompile Include="cppCode\ecalc_6_ComplexExp.cpp" />
+    <ClCompile Include="cppCode\ecalc_7_ComplexMag.cpp" />
+    <ClCompile Include="cppCode\ecalc_8_ComplexAngle.cpp" />
+    <ClCompile Include="cppCode\ecalc_9_GetRealComplex.cpp" />
+    <ClCompile Include="cppCode\ecalc_10_GetImaComplex.cpp" />
+    <ClCompile Include="cppCode\ecalc_11_SetRealComplex.cpp" />
+    <ClCompile Include="cppCode\ecalc_12_SetImaComplex.cpp" />
+    <ClCompile Include="cppCode\ecalc_13_MatrixMul.cpp" />
+    <ClCompile Include="cppCode\ecalc_14_CMatrixMul.cpp" />
+    <ClCompile Include="cppCode\ecalc_15_MatrixAdd.cpp" />
+    <ClCompile Include="cppCode\ecalc_16_CMatrixMul.cpp" />
+    <ClCompile Include="cppCode\ecalc_17_MatrixInvert.cpp" />
+    <ClCompile Include="cppCode\ecalc_18_CMatrixInvert.cpp" />
+    <ClCompile Include="cppCode\ecalc_19_MatrixTranspose.cpp" />
+    <ClCompile Include="cppCode\ecalc_20_CMatrixTranspose.cpp" />
+    <ClCompile Include="cppCode\ecalc_21_CyclicJacobi.cpp" />
+    <ClCompile Include="cppCode\ecalc_22_MatrixScalarMul.cpp" />
+    <ClCompile Include="cppCode\ecalc_23_CMatrixScalarMul.cpp" />
+    <ClCompile Include="cppCode\ecalc_24_FFTCalc.cpp" />
+    <ClCompile Include="cppCode\ecalc_25_FFTInvCalc.cpp" />
+    <ClCompile Include="cppCode\ecalc_26_WindowFFTData.cpp" />
+    <ClCompile Include="cppCode\ecalc_27_FFT2DCalc.cpp" />
+    <ClCompile Include="cppCode\ecalc_28_PowerSpectrumCalc.cpp" />
+    <ClCompile Include="cppCode\ecalc_29_IntegrateVector.cpp" />
+    <ClCompile Include="cppCode\ecalc_30_IntegrateFunction.cpp" />
+    <ClCompile Include="cppCode\ecalc_31_RungeKutta.cpp" />
+    <ClCompile Include="cppCode\ecalc_32_SummaryStats.cpp" />
+    <ClCompile Include="cppCode\ecalc_33_GaussJordan.cpp" />
+    <ClCompile Include="cppCode\ecalc_34_ComplexGaussJordan.cpp" />
+    <ClCompile Include="cppCode\ecalc_35_MulReg.cpp" />
+    <ClCompile Include="cppCode\ecalc_36_PolyCurveFit.cpp" />
+    <ClCompile Include="cppCode\ecalc_37_CubicSplines.cpp" />
+    <ClCompile Include="cppCode\ecalc_38_CalcSpline.cpp" />
+    <ClCompile Include="cppCode\ecalc_39_Tanh.cpp" />
+    <ClCompile Include="cppCode\ecalc_40_Cosh.cpp" />
+    <ClCompile Include="cppCode\ecalc_41_Sinh.cpp" />
+    <ClCompile Include="cppCode\ecalc_42_Sech.cpp" />
+    <ClCompile Include="cppCode\ecalc_43_ArcTanh.cpp" />
+    <ClCompile Include="cppCode\ecalc_44_Gamma.cpp" />
+    <ClCompile Include="cppCode\ecalc_45_LogGamma.cpp" />
+    <ClCompile Include="cppCode\ecalc_46_IncGamma.cpp" />
+    <ClCompile Include="cppCode\ecalc_47_IncGammaComp.cpp" />
+    <ClCompile Include="cppCode\ecalc_48_Beta.cpp" />
+    <ClCompile Include="cppCode\ecalc_49_IncBeta.cpp" />
+    <ClCompile Include="cppCode\ecalc_50_Bessel.cpp" />
+    <ClCompile Include="cppCode\ecalc_51_ModBessel.cpp" />
+    <ClCompile Include="cppCode\ecalc_52_ModBesselR.cpp" />
+    <ClCompile Include="cppCode\ecalc_53_ErrFunc.cpp" />
+    <ClCompile Include="cppCode\ecalc_54_ErrFuncCom.cpp" />
+    <ClCompile Include="cppCode\ecalc_55_ErrFuncR.cpp" />
+    <ClCompile Include="cppCode\ecalc_56_ErrFuncI.cpp" />
+    <ClCompile Include="cppCode\ecalc_57_Hermite.cpp" />
+    <ClCompile Include="cppCode\ecalc_58_Legend.cpp" />
+    <ClCompile Include="cppCode\ecalc_59_Laguerre.cpp" />
+    <ClCompile Include="cppCode\ecalc_60_Jacobi.cpp" />
+    <ClCompile Include="cppCode\ecalc_61_Tcheb.cpp" />
+    <ClCompile Include="cppCode\ecalc_62_UnlNumConstruction.cpp" />
+    <ClCompile Include="cppCode\ecalc_63_UnlNumDestruction.cpp" />
+    <ClCompile Include="cppCode\ecalc_64_Destroy.cpp" />
+    <ClCompile Include="cppCode\ecalc_65_ImportTxtFile.cpp" />
+    <ClCompile Include="cppCode\ecalc_66_ImportTxtFile.cpp" />
+    <ClCompile Include="cppCode\ecalc_67_ImportString.cpp" />
+    <ClCompile Include="cppCode\ecalc_68_ExportString.cpp" />
+    <ClCompile Include="cppCode\ecalc_69_ImportNum.cpp" />
+    <ClCompile Include="cppCode\ecalc_70_GetNumType.cpp" />
+    <ClCompile Include="cppCode\ecalc_71_GetStrLen.cpp" />
+    <ClCompile Include="cppCode\ecalc_72_GetIntStrLen.cpp" />
+    <ClCompile Include="cppCode\ecalc_73_GetFloatStrLen.cpp" />
+    <ClCompile Include="cppCode\ecalc_74_GetChar.cpp" />
+    <ClCompile Include="cppCode\ecalc_75_ExportByte.cpp" />
+    <ClCompile Include="cppCode\ecalc_76_ExportShort.cpp" />
+    <ClCompile Include="cppCode\ecalc_77_ExportInt.cpp" />
+    <ClCompile Include="cppCode\ecalc_78_ExportInt64.cpp" />
+    <ClCompile Include="cppCode\ecalc_79_ExportFloat.cpp" />
+    <ClCompile Include="cppCode\ecalc_80_ExportDouble.cpp" />
+    <ClCompile Include="cppCode\ecalc_81_CopyTo.cpp" />
+    <ClCompile Include="cppCode\ecalc_82_GetSignal.cpp" />
+    <ClCompile Include="cppCode\ecalc_83_HasFloat.cpp" />
+    <ClCompile Include="cppCode\ecalc_84_IsZero.cpp" />
+    <ClCompile Include="cppCode\ecalc_85_EqualThan.cpp" />
+    <ClCompile Include="cppCode\ecalc_86_BiggerThan.cpp" />
+    <ClCompile Include="cppCode\ecalc_87_SmallerThan.cpp" />
+    <ClCompile Include="cppCode\ecalc_88_BiggerEqualThan.cpp" />
+    <ClCompile Include="cppCode\ecalc_89_SmallerEqualThan.cpp" />
+    <ClCompile Include="cppCode\ecalc_90_GetIntPart.cpp" />
+    <ClCompile Include="cppCode\ecalc_91_GetFloatPart.cpp" />
+    <ClCompile Include="cppCode\ecalc_92_Add.cpp" />
+    <ClCompile Include="cppCode\ecalc_93_Sub.cpp" />
+    <ClCompile Include="cppCode\ecalc_94_Mul.cpp" />
+    <ClCompile Include="cppCode\ecalc_95_Div.cpp" />
+    <ClCompile Include="cppCode\ecalc_96_DivExact.cpp" />
+    <ClCompile Include="cppCode\ecalc_97_Mod.cpp" />
+    <ClCompile Include="cppCode\ecalc_98_Pow.cpp" />
+    <ClCompile Include="cppCode\ecalc_99_Abs.cpp" />
+    <ClCompile Include="cppCode\ecalc_100_Neg.cpp" />
+    <ClCompile Include="cppCode\ecalc_101_Round.cpp" />
+    <ClCompile Include="cppCode\ecalc_102_KillFloatNum.cpp" />
+    <ClCompile Include="cppCode\ecalc_103_KillIntNum.cpp" />
+    <ClCompile Include="cppCode\ecalc_104_KillBackZero.cpp" />
+    <ClCompile Include="cppCode\ecalc_105_Sin.cpp" />
+    <ClCompile Include="cppCode\ecalc_106_Cos.cpp" />
+    <ClCompile Include="cppCode\ecalc_107_Tan.cpp" />
+    <ClCompile Include="cppCode\ecalc_108_Atn.cpp" />
+    <ClCompile Include="cppCode\ecalc_109_CalcIntegrateExpression.cpp" />
+    <ClCompile Include="cppCode\ecalc_110_UnlNumCopyCmd.cpp" />
+    <ClCompile Include="cppCode\ecalc_111_ComplexCopyCmd.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="elib\fnshare.h" />
+    <ClInclude Include="elib\krnllib.h" />
+    <ClInclude Include="elib\lang.h" />
+    <ClInclude Include="elib\lib2.h" />
+    <ClInclude Include="elib\mtypes.h" />
+    <ClInclude Include="elib\PublicIDEFunctions.h" />
+    <ClInclude Include="elib\untshare.h" />
+    <ClInclude Include="include_ecalc_header.h" />
+    <ClInclude Include="ecalc_cmd_typedef.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source_ecalc.def" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ceadc3dd-024e-4173-9ccf-e60334b2944f}</ProjectGuid>
+    <RootNamespace>ecalc</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.fne</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.fne</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_FNENAME=ecalc;WIN32;_DEBUG;ECALC_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source_ecalc.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_FNENAME=ecalc;WIN32;NDEBUG;ECALC_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source_ecalc.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;ECALC_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;ECALC_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

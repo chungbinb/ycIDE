@@ -1,0 +1,10 @@
+#include "..\include_ecalc_header.h"
+
+// 调用格式: SDT_BOOL (大数).小于, 命令说明: "判断本对象是否小于指定对象。如小于，则返回真；否则，返回假"
+// 参数<1>: 比较数据 MAKELONG(0x0A, 0), 参数说明: "本参数提供待和本大数数据比较的大数"
+ECALC_EXTERN_C void ecalc_SmallerThan_87_ecalc(PMDATA_INF pRetData, INT nArgCount, PMDATA_INF pArgInf)
+{
+    void*    arg1 = pArgInf[1].m_pCompoundData;
+
+}
+

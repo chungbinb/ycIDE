@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\eapi_const.cpp" />
+    <ClCompile Include="..\eapi_dllMain.cpp" />
+    <ClCompile Include="..\eapi_dtType.cpp" />
+    <ClCompile Include="..\eapi_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\eapi_0_GetKeyboardLockState.cpp" />
+    <ClCompile Include="..\cppCode\eapi_1_SimulateKey.cpp" />
+    <ClCompile Include="..\cppCode\eapi_2_SimulateMouse.cpp" />
+    <ClCompile Include="..\cppCode\eapi_3_GetHDInfo.cpp" />
+    <ClCompile Include="..\cppCode\eapi_4_GetDrivesNum.cpp" />
+    <ClCompile Include="..\cppCode\eapi_5_GetDrivesList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_6_PopupCdrom.cpp" />
+    <ClCompile Include="..\cppCode\eapi_7_CloseCdrom.cpp" />
+    <ClCompile Include="..\cppCode\eapi_8_GetCdrom.cpp" />
+    <ClCompile Include="..\cppCode\eapi_9_IsDiskInside.cpp" />
+    <ClCompile Include="..\cppCode\eapi_10_IsDiskInside.cpp" />
+    <ClCompile Include="..\cppCode\eapi_11_SimulateKey.cpp" />
+    <ClCompile Include="..\cppCode\eapi_12_GetDllList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_13_GetHungProgramList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_14_GetSystemInfo.cpp" />
+    <ClCompile Include="..\cppCode\eapi_15_GetBiosInfo.cpp" />
+    <ClCompile Include="..\cppCode\eapi_16_GetFileVersionInfoW.cpp" />
+    <ClCompile Include="..\cppCode\eapi_17_GetCpuInfo.cpp" />
+    <ClCompile Include="..\cppCode\eapi_18_GetCpuUsges.cpp" />
+    <ClCompile Include="..\cppCode\eapi_19_GetMemoryInfo.cpp" />
+    <ClCompile Include="..\cppCode\eapi_20_GetAudioCard.cpp" />
+    <ClCompile Include="..\cppCode\eapi_21_OpenMonitor.cpp" />
+    <ClCompile Include="..\cppCode\eapi_22_CloseMonitor.cpp" />
+    <ClCompile Include="..\cppCode\eapi_23_AddRightMenu.cpp" />
+    <ClCompile Include="..\cppCode\eapi_24_DeleteRightMenu.cpp" />
+    <ClCompile Include="..\cppCode\eapi_25_SetAutoRun.cpp" />
+    <ClCompile Include="..\cppCode\eapi_26_DeleteTempFile.cpp" />
+    <ClCompile Include="..\cppCode\eapi_27_ClearHistory.cpp" />
+    <ClCompile Include="..\cppCode\eapi_28_GetFontList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_29_AddFont.cpp" />
+    <ClCompile Include="..\cppCode\eapi_30_RemoveFont.cpp" />
+    <ClCompile Include="..\cppCode\eapi_31_GetImageWidth.cpp" />
+    <ClCompile Include="..\cppCode\eapi_32_GetImageHeight.cpp" />
+    <ClCompile Include="..\cppCode\eapi_33_GetIconFromResource.cpp" />
+    <ClCompile Include="..\cppCode\eapi_34_GetIEVersion.cpp" />
+    <ClCompile Include="..\cppCode\eapi_35_AddButtonToIE.cpp" />
+    <ClCompile Include="..\cppCode\eapi_36_DeleteButtonFromIE.cpp" />
+    <ClCompile Include="..\cppCode\eapi_37_CreateProgramGroup.cpp" />
+    <ClCompile Include="..\cppCode\eapi_38_DeleteProgramGroupGroup.cpp" />
+    <ClCompile Include="..\cppCode\eapi_39_CreateProgramItem.cpp" />
+    <ClCompile Include="..\cppCode\eapi_40_DeleteProgramItem.cpp" />
+    <ClCompile Include="..\cppCode\eapi_41_GetShortCutTarget.cpp" />
+    <ClCompile Include="..\cppCode\eapi_42_GetApapterList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_43_GetLocalAdapterName.cpp" />
+    <ClCompile Include="..\cppCode\eapi_44_GetLocalMac.cpp" />
+    <ClCompile Include="..\cppCode\eapi_45_GetRemoteMac.cpp" />
+    <ClCompile Include="..\cppCode\eapi_46_GetRemoteName.cpp" />
+    <ClCompile Include="..\cppCode\eapi_47_GetRemoteName.cpp" />
+    <ClCompile Include="..\cppCode\eapi_48_RunEmailAddr.cpp" />
+    <ClCompile Include="..\cppCode\eapi_49_GetNetList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_50_GetGroupList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_51_GetComputerList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_52_IsConnectToInternet.cpp" />
+    <ClCompile Include="..\cppCode\eapi_53_IsLoginNet.cpp" />
+    <ClCompile Include="..\cppCode\eapi_54_CheckPort.cpp" />
+    <ClCompile Include="..\cppCode\eapi_55_OpenSysWindow.cpp" />
+    <ClCompile Include="..\cppCode\eapi_56_OpenURL.cpp" />
+    <ClCompile Include="..\cppCode\eapi_57_HideDesktopIcon.cpp" />
+    <ClCompile Include="..\cppCode\eapi_58_ShowDesktopIcon.cpp" />
+    <ClCompile Include="..\cppCode\eapi_59_HideTaskBar.cpp" />
+    <ClCompile Include="..\cppCode\eapi_60_ShowTaskBar.cpp" />
+    <ClCompile Include="..\cppCode\eapi_61_HideClock.cpp" />
+    <ClCompile Include="..\cppCode\eapi_62_ShowClock.cpp" />
+    <ClCompile Include="..\cppCode\eapi_63_HideStartButton.cpp" />
+    <ClCompile Include="..\cppCode\eapi_64_ShowStartButton.cpp" />
+    <ClCompile Include="..\cppCode\eapi_65_SetDeskWallPaper.cpp" />
+    <ClCompile Include="..\cppCode\eapi_66_SetDiaphaneity.cpp" />
+    <ClCompile Include="..\cppCode\eapi_67_GetVideoList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_68_GetCurVideo.cpp" />
+    <ClCompile Include="..\cppCode\eapi_69_SetResolveRatio.cpp" />
+    <ClCompile Include="..\cppCode\eapi_70_ChangeUnit.cpp" />
+    <ClCompile Include="..\cppCode\eapi_71_GetPointRGB.cpp" />
+    <ClCompile Include="..\cppCode\eapi_72_SetCapture.cpp" />
+    <ClCompile Include="..\cppCode\eapi_73_ReleaseCapture.cpp" />
+    <ClCompile Include="..\cppCode\eapi_74_GetScreenBitma.cpp" />
+    <ClCompile Include="..\cppCode\eapi_75_GetAllWindowsList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_76_GetWindowTextW.cpp" />
+    <ClCompile Include="..\cppCode\eapi_77_GetClassNameW.cpp" />
+    <ClCompile Include="..\cppCode\eapi_78_GetHwndFromPoint.cpp" />
+    <ClCompile Include="..\cppCode\eapi_79_NetAddConnection.cpp" />
+    <ClCompile Include="..\cppCode\eapi_80_NetSendMessage.cpp" />
+    <ClCompile Include="..\cppCode\eapi_81_GetShareResourceList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_82_CancelNetConnection.cpp" />
+    <ClCompile Include="..\cppCode\eapi_83_CancelAutoRun.cpp" />
+    <ClCompile Include="..\cppCode\eapi_84_sprintf.cpp" />
+    <ClCompile Include="..\cppCode\eapi_85_GetPrinterList.cpp" />
+    <ClCompile Include="..\cppCode\eapi_86_GetDefaultPrinterW.cpp" />
+    <ClCompile Include="..\cppCode\eapi_87_SetDefaultPrinterW.cpp" />
+    <ClCompile Include="..\cppCode\eapi_88_OpenPrintSetDlg.cpp" />
+    <ClCompile Include="..\cppCode\eapi_89_GetMoniterDPI.cpp" />
+    <ClCompile Include="..\cppCode\eapi_90_HideCursor.cpp" />
+    <ClCompile Include="..\cppCode\eapi_91_ShowCursor.cpp" />
+    <ClCompile Include="..\cppCode\eapi_92_GetPictureFormat.cpp" />
+    <ClCompile Include="..\cppCode\eapi_93_GetDiskNumber.cpp" />
+    <ClCompile Include="..\cppCode\eapi_94_MessageBeep.cpp" />
+    <ClCompile Include="..\cppCode\eapi_95_RoundedWindow.cpp" />
+    <ClCompile Include="..\cppCode\eapi_96_SetForegroundWindow.cpp" />
+    <ClCompile Include="..\cppCode\eapi_97_UpPrivilegeValue.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_eapi_header.h" />
+    <ClInclude Include="..\eapi_cmd_typedef.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5ff16995-6ad6-4964-a421-e0842e1be946}</ProjectGuid>
+    <RootNamespace>eapistatic</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=eapi;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=eapi;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="elib\fnshare.cpp" />
+    <ClCompile Include="ogrelib_const.cpp" />
+    <ClCompile Include="ogrelib_dllMain.cpp" />
+    <ClCompile Include="ogrelib_dtType.cpp" />
+    <ClCompile Include="ogrelib_cmdInfo.cpp" />
+    <ClCompile Include="cppCode\ogrelib_0_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_1_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_2_FreePrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_3_SetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_4_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_5_GetLevelCount.cpp" />
+    <ClCompile Include="cppCode\ogrelib_6_GetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_7_GetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_8_GetType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_9_PreLoad.cpp" />
+    <ClCompile Include="cppCode\ogrelib_10_SetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_11_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_12_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_13_FreePrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_14_GenerateMipSubLevels.cpp" />
+    <ClCompile Include="cppCode\ogrelib_15_GetAutoGenFilterType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_16_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_17_GetLevelCount.cpp" />
+    <ClCompile Include="cppCode\ogrelib_18_GetLOD.cpp" />
+    <ClCompile Include="cppCode\ogrelib_19_GetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_20_GetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_21_GetType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_22_PreLoad.cpp" />
+    <ClCompile Include="cppCode\ogrelib_23_SetAutoGenFilterType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_24_SetLOD.cpp" />
+    <ClCompile Include="cppCode\ogrelib_25_SetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_26_SetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_27_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_28_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_29_AddDirtyRect.cpp" />
+    <ClCompile Include="cppCode\ogrelib_30_FreePrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_31_GenerateMipSubLevels.cpp" />
+    <ClCompile Include="cppCode\ogrelib_32_GetAutoGenFilterType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_33_GetCubeMapSurface.cpp" />
+    <ClCompile Include="cppCode\ogrelib_34_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_35_GetLevelCount.cpp" />
+    <ClCompile Include="cppCode\ogrelib_36_GetLevelDesc.cpp" />
+    <ClCompile Include="cppCode\ogrelib_37_GetLOD.cpp" />
+    <ClCompile Include="cppCode\ogrelib_38_GetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_39_GetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_40_GetType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_41_PreLoad.cpp" />
+    <ClCompile Include="cppCode\ogrelib_42_SetAutoGenFilterType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_43_SetLOD.cpp" />
+    <ClCompile Include="cppCode\ogrelib_44_SetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_45_SetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_46_WriteData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_47_ReadData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_48_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_49_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_50_FreePrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_51_GetDesc.cpp" />
+    <ClCompile Include="cppCode\ogrelib_52_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_53_GetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_54_GetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_55_GetType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_56_PreLoad.cpp" />
+    <ClCompile Include="cppCode\ogrelib_57_SetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_58_SetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_59_WriteData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_60_ReadData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_61_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_62_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_63_AddDirtyRect.cpp" />
+    <ClCompile Include="cppCode\ogrelib_64_FreePrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_65_GenerateMipSubLevels.cpp" />
+    <ClCompile Include="cppCode\ogrelib_66_GetAutoGenFilterType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_67_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_68_GetLevelCount.cpp" />
+    <ClCompile Include="cppCode\ogrelib_69_GetLevelDesc.cpp" />
+    <ClCompile Include="cppCode\ogrelib_70_GetLOD.cpp" />
+    <ClCompile Include="cppCode\ogrelib_71_GetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_72_GetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_73_GetSurfaceLevel.cpp" />
+    <ClCompile Include="cppCode\ogrelib_74_GetType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_75_WriteData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_76_ReadData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_77_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_78_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_79_FreePrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_80_GetDesc.cpp" />
+    <ClCompile Include="cppCode\ogrelib_81_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_82_GetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_83_GetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_84_GetType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_85_PreLoad.cpp" />
+    <ClCompile Include="cppCode\ogrelib_86_SetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_87_SetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_88_WriteData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_89_ReadData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_90_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_91_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_92_FreePrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_93_GetContainer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_94_GetDesc.cpp" />
+    <ClCompile Include="cppCode\ogrelib_95_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_96_GetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_97_SetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_98_WriteData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_99_ReadData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_100_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_101_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_102_AddDirtyBox.cpp" />
+    <ClCompile Include="cppCode\ogrelib_103_FreePrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_104_GenerateMipSubLevels.cpp" />
+    <ClCompile Include="cppCode\ogrelib_105_GetAutoGenFilterType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_106_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_107_GetLevelCount.cpp" />
+    <ClCompile Include="cppCode\ogrelib_108_GetLevelDesc.cpp" />
+    <ClCompile Include="cppCode\ogrelib_109_GetLOD.cpp" />
+    <ClCompile Include="cppCode\ogrelib_110_GetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_111_GetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_112_GetType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_113_GetVolumeLevel.cpp" />
+    <ClCompile Include="cppCode\ogrelib_114_PreLoad.cpp" />
+    <ClCompile Include="cppCode\ogrelib_115_SetAutoGenFilterType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_116_SetLOD.cpp" />
+    <ClCompile Include="cppCode\ogrelib_117_SetPriority.cpp" />
+    <ClCompile Include="cppCode\ogrelib_118_SetPrivateData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_119_WriteData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_120_ReadData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_121_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_122_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_123_GetDeclaration.cpp" />
+    <ClCompile Include="cppCode\ogrelib_124_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_125_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_126_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_127_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_128_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_129_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_130_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_131_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_132_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_133_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_134_SetTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_135_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_136_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_137_GetDC.cpp" />
+    <ClCompile Include="cppCode\ogrelib_138_GetSurfaceInfo.cpp" />
+    <ClCompile Include="cppCode\ogrelib_139_LockRect.cpp" />
+    <ClCompile Include="cppCode\ogrelib_140_UnlockRect.cpp" />
+    <ClCompile Include="cppCode\ogrelib_141_ReleaseDC.cpp" />
+    <ClCompile Include="cppCode\ogrelib_142_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_143_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_144_CreateDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_145_SetLight.cpp" />
+    <ClCompile Include="cppCode\ogrelib_146_Enablelight.cpp" />
+    <ClCompile Include="cppCode\ogrelib_147_SetMaterial.cpp" />
+    <ClCompile Include="cppCode\ogrelib_148_Clear.cpp" />
+    <ClCompile Include="cppCode\ogrelib_149_BeginScene.cpp" />
+    <ClCompile Include="cppCode\ogrelib_150_EndScene.cpp" />
+    <ClCompile Include="cppCode\ogrelib_151_Present.cpp" />
+    <ClCompile Include="cppCode\ogrelib_152_CreateVertexBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_153_DrawPrimitive.cpp" />
+    <ClCompile Include="cppCode\ogrelib_154_DrawIndexedPrimitive.cpp" />
+    <ClCompile Include="cppCode\ogrelib_155_SetStreamSource.cpp" />
+    <ClCompile Include="cppCode\ogrelib_156_SetFVF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_157_SetRenderState.cpp" />
+    <ClCompile Include="cppCode\ogrelib_158_SetTransform.cpp" />
+    <ClCompile Include="cppCode\ogrelib_159_SetClipPlane.cpp" />
+    <ClCompile Include="cppCode\ogrelib_160_SetCurrentTexturePalette.cpp" />
+    <ClCompile Include="cppCode\ogrelib_161_SetCursorPosition.cpp" />
+    <ClCompile Include="cppCode\ogrelib_162_SetCursorProperties.cpp" />
+    <ClCompile Include="cppCode\ogrelib_163_SetDepthStencilSurface.cpp" />
+    <ClCompile Include="cppCode\ogrelib_164_SetDialogBoxMode.cpp" />
+    <ClCompile Include="cppCode\ogrelib_165_SetIndices.cpp" />
+    <ClCompile Include="cppCode\ogrelib_166_SetNPatchMode.cpp" />
+    <ClCompile Include="cppCode\ogrelib_167_SetPaletteEntries.cpp" />
+    <ClCompile Include="cppCode\ogrelib_168_SetRenderTarget.cpp" />
+    <ClCompile Include="cppCode\ogrelib_169_SetSamplerState.cpp" />
+    <ClCompile Include="cppCode\ogrelib_170_SetVertexProcessing.cpp" />
+    <ClCompile Include="cppCode\ogrelib_171_SetTextureStageState.cpp" />
+    <ClCompile Include="cppCode\ogrelib_172_GetDeviceCaps.cpp" />
+    <ClCompile Include="cppCode\ogrelib_173_GetBackBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_174_GetDepthStencilSurface.cpp" />
+    <ClCompile Include="cppCode\ogrelib_175_GetDisplayMode.cpp" />
+    <ClCompile Include="cppCode\ogrelib_176_GetFrontBufferData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_177_GetFVF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_178_GetLight.cpp" />
+    <ClCompile Include="cppCode\ogrelib_179_GetLightEnable.cpp" />
+    <ClCompile Include="cppCode\ogrelib_180_GetMaterial.cpp" />
+    <ClCompile Include="cppCode\ogrelib_181_GetRenderState.cpp" />
+    <ClCompile Include="cppCode\ogrelib_182_GetRenderTarget.cpp" />
+    <ClCompile Include="cppCode\ogrelib_183_GetVertexProcessing.cpp" />
+    <ClCompile Include="cppCode\ogrelib_184_GetTransform.cpp" />
+    <ClCompile Include="cppCode\ogrelib_185_GetClipPlane.cpp" />
+    <ClCompile Include="cppCode\ogrelib_186_GetViewport.cpp" />
+    <ClCompile Include="cppCode\ogrelib_187_GetTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_188_ShowCursor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_189_StretchRect.cpp" />
+    <ClCompile Include="cppCode\ogrelib_190_TestCooperativeLevel.cpp" />
+    <ClCompile Include="cppCode\ogrelib_191_UpdateSurface.cpp" />
+    <ClCompile Include="cppCode\ogrelib_192_CreateStateBlock.cpp" />
+    <ClCompile Include="cppCode\ogrelib_193_BeginStateBlock.cpp" />
+    <ClCompile Include="cppCode\ogrelib_194_EndStateBlock.cpp" />
+    <ClCompile Include="cppCode\ogrelib_195_ColorFill.cpp" />
+    <ClCompile Include="cppCode\ogrelib_196_CreateAdditionalSwapChain.cpp" />
+    <ClCompile Include="cppCode\ogrelib_197_CreateDepthStencilSurface.cpp" />
+    <ClCompile Include="cppCode\ogrelib_198_CreateIndexBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_199_CreateOffscreenPlainSurface.cpp" />
+    <ClCompile Include="cppCode\ogrelib_200_CreateRenderTarget.cpp" />
+    <ClCompile Include="cppCode\ogrelib_201_CreateVertexDeclaration.cpp" />
+    <ClCompile Include="cppCode\ogrelib_202_SetVertexDeclaration.cpp" />
+    <ClCompile Include="cppCode\ogrelib_203_GetVertexDeclaration.cpp" />
+    <ClCompile Include="cppCode\ogrelib_204_Reset.cpp" />
+    <ClCompile Include="cppCode\ogrelib_205_ValidateDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_206_CreateTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_207_CreateCubeTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_208_CreateVolumeTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_209_MultiplyTransform.cpp" />
+    <ClCompile Include="cppCode\ogrelib_210_CreateVertexShader.cpp" />
+    <ClCompile Include="cppCode\ogrelib_211_SetVertexShaderConstantF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_212_SetVertexShaderConstantF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_213_SetVertexShader.cpp" />
+    <ClCompile Include="cppCode\ogrelib_214_GetVertexShader.cpp" />
+    <ClCompile Include="cppCode\ogrelib_215_CreatePixelShader.cpp" />
+    <ClCompile Include="cppCode\ogrelib_216_SetPixelShaderConstantF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_217_SetPixelShaderConstantF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_218_SetPixelShader.cpp" />
+    <ClCompile Include="cppCode\ogrelib_219_GetPixelShader.cpp" />
+    <ClCompile Include="cppCode\ogrelib_220_GetAdapterCount.cpp" />
+    <ClCompile Include="cppCode\ogrelib_221_EnumAdapterModes.cpp" />
+    <ClCompile Include="cppCode\ogrelib_222_GetAdapterDisplayMode.cpp" />
+    <ClCompile Include="cppCode\ogrelib_223_CheckDeviceType.cpp" />
+    <ClCompile Include="cppCode\ogrelib_224_CheckDeviceFormat.cpp" />
+    <ClCompile Include="cppCode\ogrelib_225_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_226_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_227_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_228_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_229_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_230_Apply.cpp" />
+    <ClCompile Include="cppCode\ogrelib_231_Capture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_232_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_233_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_234_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_235_GetBackBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_236_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_237_GetDisplayMode.cpp" />
+    <ClCompile Include="cppCode\ogrelib_238_GetFrontBufferData.cpp" />
+    <ClCompile Include="cppCode\ogrelib_239_GetPresentParameters.cpp" />
+    <ClCompile Include="cppCode\ogrelib_240_Present.cpp" />
+    <ClCompile Include="cppCode\ogrelib_241_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_242_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_243_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_244_TextureCombine.cpp" />
+    <ClCompile Include="cppCode\ogrelib_245_D3DXCheckCubeTextureRequirements.cpp" />
+    <ClCompile Include="cppCode\ogrelib_246_D3DXCheckTextureRequirements.cpp" />
+    <ClCompile Include="cppCode\ogrelib_247_D3DXCheckVolumeTextureRequirements.cpp" />
+    <ClCompile Include="cppCode\ogrelib_248_D3DXComputeNormalMap.cpp" />
+    <ClCompile Include="cppCode\ogrelib_249_D3DXCreateCubeTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_250_D3DXCreateCubeTextureFromFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_251_D3DXCreateCubeTextureFromFileEx.cpp" />
+    <ClCompile Include="cppCode\ogrelib_252_D3DXCreateCubeTextureFromFileInMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_253_D3DXCreateCubeTextureFromFileInMemoryEx.cpp" />
+    <ClCompile Include="cppCode\ogrelib_254_D3DXCreateTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_255_D3DXCreateTextureFromFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_256_D3DXCreateTextureFromFileEx.cpp" />
+    <ClCompile Include="cppCode\ogrelib_257_D3DXCreateTextureFromFileInMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_258_D3DXCreateTextureFromFileInMemoryEx.cpp" />
+    <ClCompile Include="cppCode\ogrelib_259_D3DXCreateVolumeTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_260_D3DXCreateVolumeTextureFromFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_261_D3DXCreateVolumeTextureFromFileEx.cpp" />
+    <ClCompile Include="cppCode\ogrelib_262_D3DXCreateVolumeTextureFromFileInMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_263_D3DXCreateVolumeTextureFromFileInMemoryEx.cpp" />
+    <ClCompile Include="cppCode\ogrelib_264_D3DXFillCubeTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_265_D3DXFillCubeTextureTX.cpp" />
+    <ClCompile Include="cppCode\ogrelib_266_D3DXFillTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_267_D3DXFillTextureTX.cpp" />
+    <ClCompile Include="cppCode\ogrelib_268_D3DXFillVolumeTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_269_D3DXFillVolumeTextureTX.cpp" />
+    <ClCompile Include="cppCode\ogrelib_270_D3DXFilterTexture.cpp" />
+    <ClCompile Include="cppCode\ogrelib_271_D3DXGetImageInfoFromFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_272_D3DXGetImageInfoFromFileInMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_273_D3DXGetImageInfoFromResource.cpp" />
+    <ClCompile Include="cppCode\ogrelib_274_D3DXLoadSurfaceFromFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_275_D3DXLoadSurfaceFromFileInMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_276_D3DXLoadSurfaceFromMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_277_D3DXLoadSurfaceFromResource.cpp" />
+    <ClCompile Include="cppCode\ogrelib_278_D3DXLoadSurfaceFromSurface.cpp" />
+    <ClCompile Include="cppCode\ogrelib_279_D3DXLoadVolumeFromFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_280_D3DXLoadVolumeFromFileInMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_281_D3DXLoadVolumeFromMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_282_D3DXLoadVolumeFromResource.cpp" />
+    <ClCompile Include="cppCode\ogrelib_283_D3DXLoadVolumeFromVolume.cpp" />
+    <ClCompile Include="cppCode\ogrelib_284_D3DXSaveSurfaceToFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_285_D3DXSaveTextureToFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_286_D3DXSaveVolumeToFile.cpp" />
+    <ClCompile Include="cppCode\ogrelib_287_TransColor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_288_FloatToInt.cpp" />
+    <ClCompile Include="cppCode\ogrelib_289_D3DXVec3Add.cpp" />
+    <ClCompile Include="cppCode\ogrelib_290_D3DXVec3Subtract.cpp" />
+    <ClCompile Include="cppCode\ogrelib_291_D3DXVec3Cross.cpp" />
+    <ClCompile Include="cppCode\ogrelib_292_D3DXVec3Dot.cpp" />
+    <ClCompile Include="cppCode\ogrelib_293_D3DXVec3Length.cpp" />
+    <ClCompile Include="cppCode\ogrelib_294_D3DXVec3Normalize.cpp" />
+    <ClCompile Include="cppCode\ogrelib_295_D3DXVec3Scale.cpp" />
+    <ClCompile Include="cppCode\ogrelib_296_D3DXVec3Transform.cpp" />
+    <ClCompile Include="cppCode\ogrelib_297_D3DXVec3TransformCoord.cpp" />
+    <ClCompile Include="cppCode\ogrelib_298_D3DXVec3TransformNormal.cpp" />
+    <ClCompile Include="cppCode\ogrelib_299_D3DXVec3Project.cpp" />
+    <ClCompile Include="cppCode\ogrelib_300_D3DXVec3Unproject.cpp" />
+    <ClCompile Include="cppCode\ogrelib_301_D3DXVec3Lerp.cpp" />
+    <ClCompile Include="cppCode\ogrelib_302_D3DXVec4Add.cpp" />
+    <ClCompile Include="cppCode\ogrelib_303_D3DXVec4Subtract.cpp" />
+    <ClCompile Include="cppCode\ogrelib_304_D3DXVec4Cross.cpp" />
+    <ClCompile Include="cppCode\ogrelib_305_D3DXVec4Dot.cpp" />
+    <ClCompile Include="cppCode\ogrelib_306_D3DXVec4Length.cpp" />
+    <ClCompile Include="cppCode\ogrelib_307_D3DXVec4Normalize.cpp" />
+    <ClCompile Include="cppCode\ogrelib_308_D3DXVec4Scale.cpp" />
+    <ClCompile Include="cppCode\ogrelib_309_D3DXVec4Transform.cpp" />
+    <ClCompile Include="cppCode\ogrelib_310_D3DXMatrixAffineTransformation.cpp" />
+    <ClCompile Include="cppCode\ogrelib_311_D3DXMatrixDeterminant.cpp" />
+    <ClCompile Include="cppCode\ogrelib_312_D3DXMatrixIdentity.cpp" />
+    <ClCompile Include="cppCode\ogrelib_313_D3DXMatrixInverse.cpp" />
+    <ClCompile Include="cppCode\ogrelib_314_D3DXMatrixIsIdentity.cpp" />
+    <ClCompile Include="cppCode\ogrelib_315_D3DXMatrixLookAtLH.cpp" />
+    <ClCompile Include="cppCode\ogrelib_316_D3DXMatrixMultiply.cpp" />
+    <ClCompile Include="cppCode\ogrelib_317_D3DXMatrixOrthoLH.cpp" />
+    <ClCompile Include="cppCode\ogrelib_318_D3DXMatrixOrthoOffCenterLH.cpp" />
+    <ClCompile Include="cppCode\ogrelib_319_D3DXMatrixPerspectiveFovLH.cpp" />
+    <ClCompile Include="cppCode\ogrelib_320_D3DXMatrixPerspectiveLH.cpp" />
+    <ClCompile Include="cppCode\ogrelib_321_D3DXMatrixReflect.cpp" />
+    <ClCompile Include="cppCode\ogrelib_322_D3DXMatrixRotationAxis.cpp" />
+    <ClCompile Include="cppCode\ogrelib_323_D3DXMatrixRotationQuaternion.cpp" />
+    <ClCompile Include="cppCode\ogrelib_324_D3DXMatrixRotationX.cpp" />
+    <ClCompile Include="cppCode\ogrelib_325_D3DXMatrixRotationY.cpp" />
+    <ClCompile Include="cppCode\ogrelib_326_D3DXMatrixRotationZ.cpp" />
+    <ClCompile Include="cppCode\ogrelib_327_D3DXMatrixScaling.cpp" />
+    <ClCompile Include="cppCode\ogrelib_328_D3DXMatrixTranslation.cpp" />
+    <ClCompile Include="cppCode\ogrelib_329_D3DXMatrixTranspose.cpp" />
+    <ClCompile Include="cppCode\ogrelib_330_D3DXPlaneFromPointNormal.cpp" />
+    <ClCompile Include="cppCode\ogrelib_331_D3DXPlaneFromPoints.cpp" />
+    <ClCompile Include="cppCode\ogrelib_332_D3DXPlaneDot.cpp" />
+    <ClCompile Include="cppCode\ogrelib_333_D3DXPlaneDotCoord.cpp" />
+    <ClCompile Include="cppCode\ogrelib_334_D3DXPlaneDotNormal.cpp" />
+    <ClCompile Include="cppCode\ogrelib_335_D3DXPlaneIntersectLine.cpp" />
+    <ClCompile Include="cppCode\ogrelib_336_D3DXCleanMesh.cpp" />
+    <ClCompile Include="cppCode\ogrelib_337_D3DXComputeBoundingBox.cpp" />
+    <ClCompile Include="cppCode\ogrelib_338_D3DXComputeBoundingSphere.cpp" />
+    <ClCompile Include="cppCode\ogrelib_339_D3DXComputeNormals.cpp" />
+    <ClCompile Include="cppCode\ogrelib_340_D3DXComputeTangent.cpp" />
+    <ClCompile Include="cppCode\ogrelib_341_D3DXConvertMeshSubsetToSingleStrip.cpp" />
+    <ClCompile Include="cppCode\ogrelib_342_D3DXConvertMeshSubsetToStrips.cpp" />
+    <ClCompile Include="cppCode\ogrelib_343_D3DXCreateMesh.cpp" />
+    <ClCompile Include="cppCode\ogrelib_344_D3DXCreateMeshFVF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_345_D3DXIntersect.cpp" />
+    <ClCompile Include="cppCode\ogrelib_346_D3DXLoadMeshFromX.cpp" />
+    <ClCompile Include="cppCode\ogrelib_347_D3DXLoadMeshFromXof.cpp" />
+    <ClCompile Include="cppCode\ogrelib_348_D3DXLoadMeshFromXInMemory.cpp" />
+    <ClCompile Include="cppCode\ogrelib_349_D3DXSaveMeshToX.cpp" />
+    <ClCompile Include="cppCode\ogrelib_350_D3DXSimplifyMesh.cpp" />
+    <ClCompile Include="cppCode\ogrelib_351_D3DXTessellateNPatches.cpp" />
+    <ClCompile Include="cppCode\ogrelib_352_D3DXValidMesh.cpp" />
+    <ClCompile Include="cppCode\ogrelib_353_D3DXWeldVertices.cpp" />
+    <ClCompile Include="cppCode\ogrelib_354_constructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_355_destructor.cpp" />
+    <ClCompile Include="cppCode\ogrelib_356_CloneMesh.cpp" />
+    <ClCompile Include="cppCode\ogrelib_357_CloneMeshFVF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_358_ConvertAdjacencyToPointReps.cpp" />
+    <ClCompile Include="cppCode\ogrelib_359_ConvertPointRepsToAdjacency.cpp" />
+    <ClCompile Include="cppCode\ogrelib_360_DrawSubset.cpp" />
+    <ClCompile Include="cppCode\ogrelib_361_GenerateAdjacency.cpp" />
+    <ClCompile Include="cppCode\ogrelib_362_GetAttributeTable.cpp" />
+    <ClCompile Include="cppCode\ogrelib_363_GetDeclaration.cpp" />
+    <ClCompile Include="cppCode\ogrelib_364_GetDevice.cpp" />
+    <ClCompile Include="cppCode\ogrelib_365_GetFVF.cpp" />
+    <ClCompile Include="cppCode\ogrelib_366_GetIndexBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_367_GetNumBytesPerVertex.cpp" />
+    <ClCompile Include="cppCode\ogrelib_368_GetNumFaces.cpp" />
+    <ClCompile Include="cppCode\ogrelib_369_GetNumVertices.cpp" />
+    <ClCompile Include="cppCode\ogrelib_370_GetOptions.cpp" />
+    <ClCompile Include="cppCode\ogrelib_371_GetVertexBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_372_WriteAttributeBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_373_ReadAttributeBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_374_WriteVertexBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_375_ReadVertexBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_376_WriteIndexBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_377_ReadIndexBuffer.cpp" />
+    <ClCompile Include="cppCode\ogrelib_378_Optimize.cpp" />
+    <ClCompile Include="cppCode\ogrelib_379_OptimizeInplace.cpp" />
+    <ClCompile Include="cppCode\ogrelib_380_SetAttributeTable.cpp" />
+    <ClCompile Include="cppCode\ogrelib_381_UpdateSemantics.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="elib\fnshare.h" />
+    <ClInclude Include="elib\krnllib.h" />
+    <ClInclude Include="elib\lang.h" />
+    <ClInclude Include="elib\lib2.h" />
+    <ClInclude Include="elib\mtypes.h" />
+    <ClInclude Include="elib\PublicIDEFunctions.h" />
+    <ClInclude Include="elib\untshare.h" />
+    <ClInclude Include="include_ogrelib_header.h" />
+    <ClInclude Include="ogrelib_cmd_typedef.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source_ogrelib.def" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{ceadc3dd-024e-4173-9ccf-e60334b2944f}</ProjectGuid>
+    <RootNamespace>ogrelib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.fne</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.fne</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_FNENAME=ogrelib;WIN32;_DEBUG;OGRELIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source_ogrelib.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_FNENAME=ogrelib;WIN32;NDEBUG;OGRELIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source_ogrelib.def</ModuleDefinitionFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;OGRELIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;OGRELIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\opengl_const.cpp" />
+    <ClCompile Include="..\opengl_dllMain.cpp" />
+    <ClCompile Include="..\opengl_dtType.cpp" />
+    <ClCompile Include="..\opengl_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\opengl_0_ChoosePixelFormat.cpp" />
+    <ClCompile Include="..\cppCode\opengl_1_SetPixelFormat.cpp" />
+    <ClCompile Include="..\cppCode\opengl_2_wglCreateContext.cpp" />
+    <ClCompile Include="..\cppCode\opengl_3_wglMakeCurrent.cpp" />
+    <ClCompile Include="..\cppCode\opengl_4_wglDeleteContext.cpp" />
+    <ClCompile Include="..\cppCode\opengl_5_gethdc.cpp" />
+    <ClCompile Include="..\cppCode\opengl_6_ShowCursor.cpp" />
+    <ClCompile Include="..\cppCode\opengl_7_ReleaseDC.cpp" />
+    <ClCompile Include="..\cppCode\opengl_8_glLoadIdentity.cpp" />
+    <ClCompile Include="..\cppCode\opengl_9_glMatrixMode.cpp" />
+    <ClCompile Include="..\cppCode\opengl_10_glTranslate.cpp" />
+    <ClCompile Include="..\cppCode\opengl_11_glRotate.cpp" />
+    <ClCompile Include="..\cppCode\opengl_12_glScale.cpp" />
+    <ClCompile Include="..\cppCode\opengl_13_glFrustum.cpp" />
+    <ClCompile Include="..\cppCode\opengl_14_glOrtho.cpp" />
+    <ClCompile Include="..\cppCode\opengl_15_glViewport.cpp" />
+    <ClCompile Include="..\cppCode\opengl_16_glPushMatrix.cpp" />
+    <ClCompile Include="..\cppCode\opengl_17_glPopMatrix.cpp" />
+    <ClCompile Include="..\cppCode\opengl_18_glLoadMatrix.cpp" />
+    <ClCompile Include="..\cppCode\opengl_19_glMultMatrix.cpp" />
+    <ClCompile Include="..\cppCode\opengl_20_gluPerspective.cpp" />
+    <ClCompile Include="..\cppCode\opengl_21_glBegin.cpp" />
+    <ClCompile Include="..\cppCode\opengl_22_glEnd.cpp" />
+    <ClCompile Include="..\cppCode\opengl_23_glVertex.cpp" />
+    <ClCompile Include="..\cppCode\opengl_24_glRect.cpp" />
+    <ClCompile Include="..\cppCode\opengl_25_glFrontFace.cpp" />
+    <ClCompile Include="..\cppCode\opengl_26_glClipPlane.cpp" />
+    <ClCompile Include="..\cppCode\opengl_27_glPolygonMode.cpp" />
+    <ClCompile Include="..\cppCode\opengl_28_glLineStipple.cpp" />
+    <ClCompile Include="..\cppCode\opengl_29_glPolygonStipple.cpp" />
+    <ClCompile Include="..\cppCode\opengl_30_glEdgeFlag.cpp" />
+    <ClCompile Include="..\cppCode\opengl_31_glScissor.cpp" />
+    <ClCompile Include="..\cppCode\opengl_32_glHint.cpp" />
+    <ClCompile Include="..\cppCode\opengl_33_glAlphaFunc.cpp" />
+    <ClCompile Include="..\cppCode\opengl_34_glBlendFunc.cpp" />
+    <ClCompile Include="..\cppCode\opengl_35_glDepthFunc.cpp" />
+    <ClCompile Include="..\cppCode\opengl_36_glStencilFunc.cpp" />
+    <ClCompile Include="..\cppCode\opengl_37_glStencilOp.cpp" />
+    <ClCompile Include="..\cppCode\opengl_38_SwapBuffers.cpp" />
+    <ClCompile Include="..\cppCode\opengl_39_glFinish.cpp" />
+    <ClCompile Include="..\cppCode\opengl_40_glFlush.cpp" />
+    <ClCompile Include="..\cppCode\opengl_41_glAccum.cpp" />
+    <ClCompile Include="..\cppCode\opengl_42_glClear.cpp" />
+    <ClCompile Include="..\cppCode\opengl_43_glClearAccum.cpp" />
+    <ClCompile Include="..\cppCode\opengl_44_glClearColor.cpp" />
+    <ClCompile Include="..\cppCode\opengl_45_glClearDepth.cpp" />
+    <ClCompile Include="..\cppCode\opengl_46_glClearStencil.cpp" />
+    <ClCompile Include="..\cppCode\opengl_47_glClearIndex.cpp" />
+    <ClCompile Include="..\cppCode\opengl_48_glColor.cpp" />
+    <ClCompile Include="..\cppCode\opengl_49_glIndex.cpp" />
+    <ClCompile Include="..\cppCode\opengl_50_glEnable.cpp" />
+    <ClCompile Include="..\cppCode\opengl_51_glDisable.cpp" />
+    <ClCompile Include="..\cppCode\opengl_52_glLight.cpp" />
+    <ClCompile Include="..\cppCode\opengl_53_glLightModel.cpp" />
+    <ClCompile Include="..\cppCode\opengl_54_glMaterial.cpp" />
+    <ClCompile Include="..\cppCode\opengl_55_glColorMaterial.cpp" />
+    <ClCompile Include="..\cppCode\opengl_56_glFog.cpp" />
+    <ClCompile Include="..\cppCode\opengl_57_glNormal.cpp" />
+    <ClCompile Include="..\cppCode\opengl_58_glShadeModel.cpp" />
+    <ClCompile Include="..\cppCode\opengl_59_glBindTexture.cpp" />
+    <ClCompile Include="..\cppCode\opengl_60_glTexParameter.cpp" />
+    <ClCompile Include="..\cppCode\opengl_61_glTexImage1D.cpp" />
+    <ClCompile Include="..\cppCode\opengl_62_glTexImage2D.cpp" />
+    <ClCompile Include="..\cppCode\opengl_63_glTexCoord.cpp" />
+    <ClCompile Include="..\cppCode\opengl_64_glTexEnv.cpp" />
+    <ClCompile Include="..\cppCode\opengl_65_glGenTextures.cpp" />
+    <ClCompile Include="..\cppCode\opengl_66_glTexGen.cpp" />
+    <ClCompile Include="..\cppCode\opengl_67_auxDIBImageLoad.cpp" />
+    <ClCompile Include="..\cppCode\opengl_68_glNewList.cpp" />
+    <ClCompile Include="..\cppCode\opengl_69_glEndList.cpp" />
+    <ClCompile Include="..\cppCode\opengl_70_glGenLists.cpp" />
+    <ClCompile Include="..\cppCode\opengl_71_glCallList.cpp" />
+    <ClCompile Include="..\cppCode\opengl_72_glIsList.cpp" />
+    <ClCompile Include="..\cppCode\opengl_73_glDeleteLists.cpp" />
+    <ClCompile Include="..\cppCode\opengl_74_glListBase.cpp" />
+    <ClCompile Include="..\cppCode\opengl_75_glCallLists.cpp" />
+    <ClCompile Include="..\cppCode\opengl_76_glRasterPos.cpp" />
+    <ClCompile Include="..\cppCode\opengl_77_glBitmap.cpp" />
+    <ClCompile Include="..\cppCode\opengl_78_glCopyPixels.cpp" />
+    <ClCompile Include="..\cppCode\opengl_79_glPixelStore.cpp" />
+    <ClCompile Include="..\cppCode\opengl_80_glPixelZoom.cpp" />
+    <ClCompile Include="..\cppCode\opengl_81_IsDBCSLeadByte.cpp" />
+    <ClCompile Include="..\cppCode\opengl_82_wglUseFontOutlinesW.cpp" />
+    <ClCompile Include="..\cppCode\opengl_83_glutSolidSphere.cpp" />
+    <ClCompile Include="..\cppCode\opengl_84_glutWireSphere.cpp" />
+    <ClCompile Include="..\cppCode\opengl_85_glutSolidCube.cpp" />
+    <ClCompile Include="..\cppCode\opengl_86_glutWireCube.cpp" />
+    <ClCompile Include="..\cppCode\opengl_87_glutSolidCone.cpp" />
+    <ClCompile Include="..\cppCode\opengl_88_glutWireCone.cpp" />
+    <ClCompile Include="..\cppCode\opengl_89_glutSolidTorus.cpp" />
+    <ClCompile Include="..\cppCode\opengl_90_glutWireTorus.cpp" />
+    <ClCompile Include="..\cppCode\opengl_91_glutSolidDodecahedron.cpp" />
+    <ClCompile Include="..\cppCode\opengl_92_glutWireDodecahedron.cpp" />
+    <ClCompile Include="..\cppCode\opengl_93_glutSolidOctahedron.cpp" />
+    <ClCompile Include="..\cppCode\opengl_94_glutWireOctahedron.cpp" />
+    <ClCompile Include="..\cppCode\opengl_95_glutSolidTetrahedron.cpp" />
+    <ClCompile Include="..\cppCode\opengl_96_glutWireTetrahedron.cpp" />
+    <ClCompile Include="..\cppCode\opengl_97_glutSolidIcosahedron.cpp" />
+    <ClCompile Include="..\cppCode\opengl_98_glutWireIcosahedron.cpp" />
+    <ClCompile Include="..\cppCode\opengl_99_glutSolidcylinder.cpp" />
+    <ClCompile Include="..\cppCode\opengl_100_glutWirecylinder.cpp" />
+    <ClCompile Include="..\cppCode\opengl_101_glGetError.cpp" />
+    <ClCompile Include="..\cppCode\opengl_102_gluLookAt.cpp" />
+    <ClCompile Include="..\cppCode\opengl_103_glLoad3DS.cpp" />
+    <ClCompile Include="..\cppCode\opengl_104_glutSolidtaper.cpp" />
+    <ClCompile Include="..\cppCode\opengl_105_glutWiretaper.cpp" />
+    <ClCompile Include="..\cppCode\opengl_106_glLineWidth.cpp" />
+    <ClCompile Include="..\cppCode\opengl_107_glPointSize.cpp" />
+    <ClCompile Include="..\cppCode\opengl_108_glMap1.cpp" />
+    <ClCompile Include="..\cppCode\opengl_109_glEvalCoord1.cpp" />
+    <ClCompile Include="..\cppCode\opengl_110_glMapGrid1.cpp" />
+    <ClCompile Include="..\cppCode\opengl_111_glEvalMesh1.cpp" />
+    <ClCompile Include="..\cppCode\opengl_112_glMap2.cpp" />
+    <ClCompile Include="..\cppCode\opengl_113_glEvalCoord2.cpp" />
+    <ClCompile Include="..\cppCode\opengl_114_glMapGrid2.cpp" />
+    <ClCompile Include="..\cppCode\opengl_115_glEvalMesh2.cpp" />
+    <ClCompile Include="..\cppCode\opengl_116_glIsTexture.cpp" />
+    <ClCompile Include="..\cppCode\opengl_117_glDeleteTextures.cpp" />
+    <ClCompile Include="..\cppCode\opengl_118_glInitNames.cpp" />
+    <ClCompile Include="..\cppCode\opengl_119_glPushName.cpp" />
+    <ClCompile Include="..\cppCode\opengl_120_glPopName.cpp" />
+    <ClCompile Include="..\cppCode\opengl_121_glLoadName.cpp" />
+    <ClCompile Include="..\cppCode\opengl_122_glSelect.cpp" />
+    <ClCompile Include="..\cppCode\opengl_123_gluProject.cpp" />
+    <ClCompile Include="..\cppCode\opengl_124_gluUnProject.cpp" />
+    <ClCompile Include="..\cppCode\opengl_125_glTGALoad.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_opengl_header.h" />
+    <ClInclude Include="..\opengl_cmd_typedef.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5ff16995-6ad6-4964-a421-e0842e1be946}</ProjectGuid>
+    <RootNamespace>openglstatic</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=opengl;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=opengl;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

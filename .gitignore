@@ -1,0 +1,74 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.opendb
+*.db
+*.ipch
+*.aps
+*.ncb
+*.filters
+*.vcxproj.user
+*.vsidx
+*.v2
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.obj
+*.log
+*.tlog
+*.idb
+*.res
+*.cache
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.out
+*.app
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# VS Code
+.vscode/
+
+# Logs and temp files
+*.txt.bak
+logs/
+temp/
+*.tmp
+
+# Generated files
+*.fne
+*.exp
+
+# Keep necessary files
+!系统核心支持库帮助说明文件.txt
+!论坛发布帖.md
+!每日更新说明.md
+!*.md

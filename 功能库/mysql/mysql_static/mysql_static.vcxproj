@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\mysql_const.cpp" />
+    <ClCompile Include="..\mysql_dllMain.cpp" />
+    <ClCompile Include="..\mysql_dtType.cpp" />
+    <ClCompile Include="..\mysql_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\mysql_0_path.cpp" />
+    <ClCompile Include="..\cppCode\mysql_1_mysql_connect.cpp" />
+    <ClCompile Include="..\cppCode\mysql_2_mysql_close.cpp" />
+    <ClCompile Include="..\cppCode\mysql_3_mysql_query.cpp" />
+    <ClCompile Include="..\cppCode\mysql_4_store_result.cpp" />
+    <ClCompile Include="..\cppCode\mysql_5_free_result.cpp" />
+    <ClCompile Include="..\cppCode\mysql_6_fetch_text.cpp" />
+    <ClCompile Include="..\cppCode\mysql_7_num_rows.cpp" />
+    <ClCompile Include="..\cppCode\mysql_8_row_tell.cpp" />
+    <ClCompile Include="..\cppCode\mysql_9_row_up.cpp" />
+    <ClCompile Include="..\cppCode\mysql_10_row_next.cpp" />
+    <ClCompile Include="..\cppCode\mysql_11_row_seek.cpp" />
+    <ClCompile Include="..\cppCode\mysql_12_row_head.cpp" />
+    <ClCompile Include="..\cppCode\mysql_13_row_cauda.cpp" />
+    <ClCompile Include="..\cppCode\mysql_14_num_fields.cpp" />
+    <ClCompile Include="..\cppCode\mysql_15_field_name.cpp" />
+    <ClCompile Include="..\cppCode\mysql_16_field_index.cpp" />
+    <ClCompile Include="..\cppCode\mysql_17_mysql_select.cpp" />
+    <ClCompile Include="..\cppCode\mysql_18_insert.cpp" />
+    <ClCompile Include="..\cppCode\mysql_19_update.cpp" />
+    <ClCompile Include="..\cppCode\mysql_20_delete.cpp" />
+    <ClCompile Include="..\cppCode\mysql_21_field_len.cpp" />
+    <ClCompile Include="..\cppCode\mysql_22_field_type.cpp" />
+    <ClCompile Include="..\cppCode\mysql_23_server_info.cpp" />
+    <ClCompile Include="..\cppCode\mysql_24_client_info.cpp" />
+    <ClCompile Include="..\cppCode\mysql_25_create_db.cpp" />
+    <ClCompile Include="..\cppCode\mysql_26_delete_db.cpp" />
+    <ClCompile Include="..\cppCode\mysql_27_search_db.cpp" />
+    <ClCompile Include="..\cppCode\mysql_28_show_databases.cpp" />
+    <ClCompile Include="..\cppCode\mysql_29_create_table.cpp" />
+    <ClCompile Include="..\cppCode\mysql_30_change_table.cpp" />
+    <ClCompile Include="..\cppCode\mysql_31_drop_table.cpp" />
+    <ClCompile Include="..\cppCode\mysql_32_search_table.cpp" />
+    <ClCompile Include="..\cppCode\mysql_33_show_table.cpp" />
+    <ClCompile Include="..\cppCode\mysql_34_create_user.cpp" />
+    <ClCompile Include="..\cppCode\mysql_35_delete_user.cpp" />
+    <ClCompile Include="..\cppCode\mysql_36_search_user.cpp" />
+    <ClCompile Include="..\cppCode\mysql_37_show_user.cpp" />
+    <ClCompile Include="..\cppCode\mysql_38_change_user.cpp" />
+    <ClCompile Include="..\cppCode\mysql_39_create_index.cpp" />
+    <ClCompile Include="..\cppCode\mysql_40_drop_index.cpp" />
+    <ClCompile Include="..\cppCode\mysql_41_error_info.cpp" />
+    <ClCompile Include="..\cppCode\mysql_42_begin_trans.cpp" />
+    <ClCompile Include="..\cppCode\mysql_43_commit_trans.cpp" />
+    <ClCompile Include="..\cppCode\mysql_44_rollback_trans.cpp" />
+    <ClCompile Include="..\cppCode\mysql_45_mysql_type.cpp" />
+    <ClCompile Include="..\cppCode\mysql_46_write_bin.cpp" />
+    <ClCompile Include="..\cppCode\mysql_47_field_is_null.cpp" />
+    <ClCompile Include="..\cppCode\mysql_48_select_database.cpp" />
+    <ClCompile Include="..\cppCode\mysql_49_shupdown_mysql.cpp" />
+    <ClCompile Include="..\cppCode\mysql_50_mysql_status.cpp" />
+    <ClCompile Include="..\cppCode\mysql_51_affected_rows.cpp" />
+    <ClCompile Include="..\cppCode\mysql_52_SQL语句序号.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_mysql_header.h" />
+    <ClInclude Include="..\mysql_cmd_typedef.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{5ff16995-6ad6-4964-a421-e0842e1be946}</ProjectGuid>
+    <RootNamespace>mysqlstatic</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=mysql;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=mysql;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
