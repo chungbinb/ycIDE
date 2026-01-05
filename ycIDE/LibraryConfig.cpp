@@ -126,6 +126,8 @@ int LibraryConfigManager::LoadSelectedLibraries() {
                     // 将 FNE 命令添加到 LibraryParser
                     std::wstring libName = parser.GetLibraryName();
                     for (const auto& cmd : parser.GetCommands()) {
+                        // 直接使用 FNE 中的类别信息
+                        // 注意：AddCommandFromFne 需要更新以接受类别参数
                         libParser.AddCommandFromFne(cmd.name, cmd.description, 
                                                     cmd.returnType, cmd.parameters, libName);
                     }

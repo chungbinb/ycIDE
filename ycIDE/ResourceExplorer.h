@@ -43,6 +43,7 @@ struct ResourceExplorerData {
     FileNode* selectedNode;
     int itemHeight;
     bool isWorkspaceMode; // 是否为工作区模式（打开文件夹）
+    bool isProjectMode; // 是否为项目模式（打开.epp项目）
     std::wstring workspacePath; // 工作区根路径
     HANDLE hDirChangeNotify; // 文件系统监控句柄
     HANDLE hMonitorThread; // 监控线程句柄
@@ -77,3 +78,7 @@ void ExplorerSelectFile(const std::wstring& path);
 bool ExplorerLoadModule(FileNode* node);
 // 卸载模块文件
 void ExplorerUnloadModule(FileNode* node);
+// 加载项目文件到资源管理器
+void ExplorerLoadProject();
+// 关闭项目
+void ExplorerCloseProject();

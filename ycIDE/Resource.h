@@ -15,6 +15,10 @@
 #define IDM_SAVE_AS				109
 #define IDM_OPEN_FOLDER			110
 #define IDM_CLOSE_FOLDER		111
+#define IDM_NEW_PROJECT			126
+#define IDM_OPEN_PROJECT		127
+#define IDM_CLOSE_PROJECT		128
+#define IDM_ADD_FILE_TO_PROJECT	129
 #define IDM_FILE				115
 #define IDM_HELP				116
 #define IDM_THEME				117

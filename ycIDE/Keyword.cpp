@@ -1,6 +1,7 @@
 #include "Keyword.h"
 #include "PinyinHelper.h"
 #include <algorithm>
+#include <map>
 
 KeywordManager& KeywordManager::GetInstance() {
     static KeywordManager instance;
@@ -178,12 +179,37 @@ std::vector<CompletionItem> KeywordManager::GetCompletions(const std::wstring& i
         }
     }
     
+    // 去重：移除重复的补全项（基于displayText去重，保留分数更高的）
+    std::map<std::wstring, size_t> seenItems;  // displayText -> index
+    std::vector<CompletionItem> uniqueCompletions;
+    
+    for (const auto& item : completions) {
+        // 提取displayText的基础部分（去掉英文名部分）
+        std::wstring baseDisplayText = item.displayText;
+        size_t parenPos = baseDisplayText.find(L" (");
+        if (parenPos != std::wstring::npos) {
+            baseDisplayText = baseDisplayText.substr(0, parenPos);
+        }
+        
+        auto it = seenItems.find(baseDisplayText);
+        if (it == seenItems.end()) {
+            // 第一次出现，添加到结果
+            seenItems[baseDisplayText] = uniqueCompletions.size();
+            uniqueCompletions.push_back(item);
+        } else {
+            // 已存在，比较分数，保留分数更高的
+            if (item.score > uniqueCompletions[it->second].score) {
+                uniqueCompletions[it->second] = item;
+            }
+        }
+    }
+    
     // 根据分数排序
-    std::sort(completions.begin(), completions.end(), [](const CompletionItem& a, const CompletionItem& b) {
+    std::sort(uniqueCompletions.begin(), uniqueCompletions.end(), [](const CompletionItem& a, const CompletionItem& b) {
         return a.score > b.score;
     });
     
-    return completions;
+    return uniqueCompletions;
 }
 
 bool KeywordManager::IsAlias(const std::wstring& text) {
@@ -218,7 +244,7 @@ bool KeywordManager::NeedsFlowLine(const std::wstring& chinese) {
 }
 
 bool KeywordManager::LoadLibraryCommands(const std::wstring& libraryFilePath) {
-    return LibraryParser::GetInstance().LoadLibraryFile(libraryFilePath);
+    return LibraryParser::GetInstance().LoadFneLibrary(libraryFilePath);
 }
 
 const LibraryCommand* KeywordManager::GetLibraryCommand(const std::wstring& name) {

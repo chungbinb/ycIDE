@@ -141,16 +141,20 @@
   <ItemGroup>
     <ClInclude Include="AIChat.h" />
     <ClInclude Include="AIModel.h" />
+    <ClInclude Include="EllEditor.h" />
     <ClInclude Include="FneParser.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Keyword.h" />
     <ClInclude Include="LibraryConfig.h" />
     <ClInclude Include="LibraryParser.h" />
     <ClInclude Include="PinyinHelper.h" />
+    <ClInclude Include="ProjectManager.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="TabBar.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Theme.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="WelcomePage.h" />
     <ClInclude Include="YiEditor.h" />
     <ClInclude Include="ResourceExplorer.h" />
     <ClInclude Include="ycIDE.h" />
@@ -158,13 +162,17 @@
   <ItemGroup>
     <ClCompile Include="AIChat.cpp" />
     <ClCompile Include="AIModel.cpp" />
+    <ClCompile Include="EllEditor.cpp" />
     <ClCompile Include="FneParser.cpp" />
     <ClCompile Include="Keyword.cpp" />
     <ClCompile Include="LibraryConfig.cpp" />
     <ClCompile Include="LibraryParser.cpp" />
     <ClCompile Include="PinyinHelper.cpp" />
+    <ClCompile Include="ProjectManager.cpp" />
+    <ClCompile Include="TabBar.cpp" />
     <ClCompile Include="Theme.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="WelcomePage.cpp" />
     <ClCompile Include="YiEditor.cpp" />
     <ClCompile Include="ResourceExplorer.cpp" />
     <ClCompile Include="ycIDE.cpp" />

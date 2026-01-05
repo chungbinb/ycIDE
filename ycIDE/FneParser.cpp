@@ -140,6 +140,24 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
         libraryDescription = UTF8ToUTF16(pLibInfo->m_szExplain);
     }
 
+    // 解析命令类别列表
+    std::vector<std::wstring> categories;
+    if (pLibInfo->m_szzCategory && pLibInfo->m_nCategoryCount > 0) {
+        const char* pCategory = pLibInfo->m_szzCategory;
+        OutputDebugStringW((L"[FneParser] 类别总数: " + std::to_wstring(pLibInfo->m_nCategoryCount) + L"\n").c_str());
+        for (int i = 0; i < pLibInfo->m_nCategoryCount; i++) {
+            std::wstring catName = UTF8ToUTF16(pCategory);
+            // 去掉类别名前面的 "0000" 前缀
+            if (catName.length() > 4 && catName.substr(0, 4) == L"0000") {
+                catName = catName.substr(4);
+            }
+            categories.push_back(catName);
+            OutputDebugStringW((L"[FneParser] 类别[" + std::to_wstring(i+1) + L"]: " + catName + L"\n").c_str());
+            // 移动到下一个类别字符串（双\0结束）
+            pCategory += strlen(pCategory) + 1;
+        }
+    }
+
     // 解析所有命令信息
     if (pLibInfo->m_pBeginCmdInfo && pLibInfo->m_nCmdCount > 0) {
         for (int i = 0; i < pLibInfo->m_nCmdCount; i++) {
@@ -159,6 +177,18 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
 
             // 返回值类型
             cmdInfo.returnType = DataTypeToString(pCmdInfo->m_dtRetValType);
+
+            // 命令类别（索引从1开始）
+            if (pCmdInfo->m_shtCategory > 0 && pCmdInfo->m_shtCategory <= (short)categories.size()) {
+                cmdInfo.category = categories[pCmdInfo->m_shtCategory - 1];
+            } else {
+                cmdInfo.category = L"";
+            }
+            
+            // 调试输出前几个命令的类别
+            if (i < 20) {
+                OutputDebugStringW((L"[FneParser] 命令: " + cmdInfo.name + L", 类别索引: " + std::to_wstring(pCmdInfo->m_shtCategory) + L", 类别: " + cmdInfo.category + L"\n").c_str());
+            }
 
             // 是否隐藏
             cmdInfo.isHidden = (pCmdInfo->m_wState & CT_IS_HIDED) != 0;

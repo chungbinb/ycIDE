@@ -4,6 +4,7 @@
 #include "Theme.h"
 #include "Utils.h"
 #include "YiEditor.h"
+#include "ProjectManager.h"
 #include <gdiplus.h>
 #include <windowsx.h>
 #include <algorithm>
@@ -18,7 +19,7 @@ using namespace Gdiplus;
 
 ResourceExplorerData g_ExplorerData;
 
-ResourceExplorerData::ResourceExplorerData() : selectedNode(nullptr), itemHeight(30), isWorkspaceMode(false), workspacePath(L""), 
+ResourceExplorerData::ResourceExplorerData() : selectedNode(nullptr), itemHeight(30), isWorkspaceMode(false), isProjectMode(false), workspacePath(L""), 
     hDirChangeNotify(INVALID_HANDLE_VALUE), hMonitorThread(NULL), stopMonitoring(false) {
 }
 
@@ -764,4 +765,134 @@ void ExplorerRefreshFolder() {
 }
 
 // 模块加载功能已移除
+
+// 加载项目文件到资源管理器
+void ExplorerLoadProject() {
+    // 导入ProjectManager头文件
+    extern class ProjectManager& GetProjectManager();
+    auto& pm = ProjectManager::GetInstance();
+    
+    if (!pm.HasOpenProject()) {
+        return;
+    }
+    
+    const auto* project = pm.GetCurrentProject();
+    if (!project) {
+        return;
+    }
+    
+    // 清空现有节点（保留时间线）
+    for (auto it = g_ExplorerData.rootNodes.begin(); it != g_ExplorerData.rootNodes.end();) {
+        if ((*it)->path == L"TIMELINE_ROOT") {
+            ++it;
+        } else {
+            delete *it;
+            it = g_ExplorerData.rootNodes.erase(it);
+        }
+    }
+    
+    // 设置项目模式
+    g_ExplorerData.isProjectMode = true;
+    g_ExplorerData.isWorkspaceMode = false;
+    
+    // 创建项目根节点
+    FileNode* projectRoot = new FileNode(project->projectName, project->projectPath, true, 0, nullptr);
+    projectRoot->isExpanded = true;
+    
+    // 按文件类型分组
+    std::vector<ProjectFileItem> eycFiles;
+    std::vector<ProjectFileItem> ellFiles;
+    std::vector<ProjectFileItem> ecFiles;
+    std::vector<ProjectFileItem> otherFiles;
+    
+    for (const auto& item : project->files) {
+        switch (item.fileType) {
+            case PROJECT_FILE_EYC: eycFiles.push_back(item); break;
+            case PROJECT_FILE_ELL: ellFiles.push_back(item); break;
+            case PROJECT_FILE_EC: ecFiles.push_back(item); break;
+            default: otherFiles.push_back(item); break;
+        }
+    }
+    
+    // 添加源代码文件组
+    if (!eycFiles.empty()) {
+        FileNode* eycGroup = new FileNode(L"源代码文件", L"GROUP_EYC", true, 1, projectRoot);
+        eycGroup->isExpanded = true;
+        for (const auto& item : eycFiles) {
+            std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+            FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 2, eycGroup);
+            if (item.isMainFile) {
+                fileNode->name = L"★ " + fileNode->name; // 主文件标记
+            }
+            eycGroup->children.push_back(fileNode);
+        }
+        projectRoot->children.push_back(eycGroup);
+    }
+    
+    // 添加DLL声明文件组
+    if (!ellFiles.empty()) {
+        FileNode* ellGroup = new FileNode(L"DLL声明文件", L"GROUP_ELL", true, 1, projectRoot);
+        ellGroup->isExpanded = true;
+        for (const auto& item : ellFiles) {
+            std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+            FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 2, ellGroup);
+            ellGroup->children.push_back(fileNode);
+        }
+        projectRoot->children.push_back(ellGroup);
+    }
+    
+    // 添加模块文件组
+    if (!ecFiles.empty()) {
+        FileNode* ecGroup = new FileNode(L"模块文件", L"GROUP_EC", true, 1, projectRoot);
+        ecGroup->isExpanded = true;
+        for (const auto& item : ecFiles) {
+            std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+            FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 2, ecGroup);
+            ecGroup->children.push_back(fileNode);
+        }
+        projectRoot->children.push_back(ecGroup);
+    }
+    
+    // 添加其他文件组
+    if (!otherFiles.empty()) {
+        FileNode* otherGroup = new FileNode(L"其他文件", L"GROUP_OTHER", true, 1, projectRoot);
+        otherGroup->isExpanded = true;
+        for (const auto& item : otherFiles) {
+            std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+            FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 2, otherGroup);
+            otherGroup->children.push_back(fileNode);
+        }
+        projectRoot->children.push_back(otherGroup);
+    }
+    
+    g_ExplorerData.rootNodes.insert(g_ExplorerData.rootNodes.begin(), projectRoot);
+    
+    g_ExplorerData.UpdateVisibleNodes();
+    
+    extern HWND hRightPanelWnd;
+    if (hRightPanelWnd) {
+        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+    }
+}
+
+// 关闭项目
+void ExplorerCloseProject() {
+    // 清空项目节点（保留时间线）
+    for (auto it = g_ExplorerData.rootNodes.begin(); it != g_ExplorerData.rootNodes.end();) {
+        if ((*it)->path == L"TIMELINE_ROOT") {
+            ++it;
+        } else {
+            delete *it;
+            it = g_ExplorerData.rootNodes.erase(it);
+        }
+    }
+    
+    g_ExplorerData.isProjectMode = false;
+    g_ExplorerData.UpdateVisibleNodes();
+    
+    extern HWND hRightPanelWnd;
+    if (hRightPanelWnd) {
+        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+    }
+}
 

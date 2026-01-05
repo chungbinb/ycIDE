@@ -22,6 +22,8 @@ struct LibraryCommand {
     std::vector<LibraryParameter> parameters;  // 参数列表
     std::vector<std::wstring> pinyin;       // 全拼（支持多音字）
     std::vector<std::wstring> initials;     // 首字母（支持多音字）
+    bool needsFlowLine;        // 是否需要流程线（流程控制命令）
+    bool needsBrackets;        // 是否需要括号
 };
 
 // 支持库解析器
@@ -29,11 +31,8 @@ class LibraryParser {
 public:
     static LibraryParser& GetInstance();
     
-    // 加载支持库文本文件
-    bool LoadLibraryFile(const std::wstring& filePath);
-    
-    // 模块加载功能已移除
-    // bool LoadModuleFile(const std::wstring& filePath, const std::wstring& password = L"");
+    // 加载 .fne 支持库文件（替代原来的 LoadLibraryFile）
+    bool LoadFneLibrary(const std::wstring& fnePath);
     
     // 从 FNE 解析器添加命令
     void AddCommandFromFne(const std::wstring& cmdName, const std::wstring& description,

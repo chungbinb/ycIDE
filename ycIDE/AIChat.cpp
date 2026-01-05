@@ -93,7 +93,7 @@ void WriteDebugLog(const wchar_t* message) {
 }
 
 int g_CurrentChatMode = 0;
-int g_CurrentModelIndex = 3;  // 默认选中DeepSeek(索引为3)
+int g_CurrentModelIndex = 0;  // 默认选中DeepSeek(索引为0)
 bool g_StopRequested = false;  // 停止AI返回的标志
 
 // 自定义模式和模型选择区域
@@ -133,8 +133,8 @@ void LoadChatSettings() {
         file.close();
         
         // 更新模式文本
-        const wchar_t* modes[] = {L"Ask", L"Edit", L"Agent"};
-        if (g_CurrentChatMode >= 0 && g_CurrentChatMode < 3) {
+        const wchar_t* modes[] = {L"Ask", L"Edit"};
+        if (g_CurrentChatMode >= 0 && g_CurrentChatMode < 2) {
             g_ModeText = modes[g_CurrentChatMode];
         }
         
@@ -3308,16 +3308,21 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 std::vector<MenuItemData> items;
                 items.push_back({L"Ask", false, g_CurrentChatMode == 0});
                 items.push_back({L"Edit", false, g_CurrentChatMode == 1});
-                items.push_back({L"Agent", false, g_CurrentChatMode == 2});
                 
-                // 显示自定义菜单
-                POINT screenPt = {g_ModeRect.left, g_ModeRect.bottom};
+                // 计算菜单高度
+                int menuHeight = 2;  // 上下各1像素边框
+                for (const auto& item : items) {
+                    menuHeight += item.isSeparator ? 5 : 26;
+                }
+                
+                // 显示自定义菜单（向上展开）
+                POINT screenPt = {g_ModeRect.left, g_ModeRect.top};
                 ClientToScreen(hWnd, &screenPt);
-                int cmd = ShowCustomMenu(hWnd, screenPt.x, screenPt.y, items);
+                int cmd = ShowCustomMenu(hWnd, screenPt.x, screenPt.y - menuHeight, items);
                 
                 if (cmd > 0) {
                     g_CurrentChatMode = cmd - 1;
-                    const wchar_t* modes[] = {L"Ask", L"Edit", L"Agent"};
+                    const wchar_t* modes[] = {L"Ask", L"Edit"};
                     g_ModeText = modes[g_CurrentChatMode];
                     SaveChatSettings();
                     InvalidateRect(hWnd, &g_ModeRect, FALSE);
@@ -3341,10 +3346,16 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 // 添加管理模型项
                 items.push_back({L"--- 管理模型 ---", false, false});
                 
-                // 显示自定义菜单
-                POINT screenPt = {g_ModelRect.left, g_ModelRect.bottom};
+                // 计算菜单高度
+                int menuHeight = 2;  // 上下各1像素边框
+                for (const auto& item : items) {
+                    menuHeight += item.isSeparator ? 5 : 26;
+                }
+                
+                // 显示自定义菜单（向上展开）
+                POINT screenPt = {g_ModelRect.left, g_ModelRect.top};
                 ClientToScreen(hWnd, &screenPt);
-                int cmd = ShowCustomMenu(hWnd, screenPt.x, screenPt.y, items);
+                int cmd = ShowCustomMenu(hWnd, screenPt.x, screenPt.y - menuHeight, items);
                 
                 if (cmd > 0) {
                     if (cmd == (int)items.size()) {

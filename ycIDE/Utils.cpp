@@ -2,6 +2,7 @@
 #include "YiEditor.h"
 #include "ResourceExplorer.h"
 #include "Keyword.h"
+#include "LibraryParser.h"
 #include <fstream>
 #include <commdlg.h>
 #include <vector>
@@ -46,8 +47,17 @@ bool IsFlowControlLine(const std::wstring& line) {
     
     if (kwEnd > kwStart) {
         std::wstring keyword = line.substr(kwStart, kwEnd - kwStart);
-        // 使用 KeywordManager 检查是否需要流程线
-        return KeywordManager::GetInstance().NeedsFlowLine(keyword);
+        
+        // 先检查内置关键词
+        if (KeywordManager::GetInstance().NeedsFlowLine(keyword)) {
+            return true;
+        }
+        
+        // 再检查支持库命令
+        const LibraryCommand* libCmd = LibraryParser::GetInstance().FindCommand(keyword);
+        if (libCmd && libCmd->needsFlowLine) {
+            return true;
+        }
     }
     
     return false;
@@ -669,8 +679,20 @@ bool SaveFile(const std::wstring& path, EditorDocument* data) {
         data->hFileLock = INVALID_HANDLE_VALUE;
     }
     
-    // 转换内部格式为EPL源码格式
-    std::wstring eplCode = ConvertInternalToEPL(data->lines);
+    // 根据文件类型转换格式
+    std::wstring outputCode;
+    if (data->fileType == FILE_TYPE_ELL) {
+        // .ell文件直接保存原始内容，不进行EPL格式转换
+        for (size_t i = 0; i < data->lines.size(); i++) {
+            outputCode += data->lines[i];
+            if (i < data->lines.size() - 1) {
+                outputCode += L"\n";
+            }
+        }
+    } else {
+        // .eyc文件转换内部格式为EPL源码格式
+        outputCode = ConvertInternalToEPL(data->lines);
+    }
     
     // Convert path to ANSI string for ofstream (MinGW compatibility)
     int pathLen = WideCharToMultiByte(CP_ACP, 0, path.c_str(), -1, NULL, 0, NULL, NULL);
@@ -695,10 +717,10 @@ bool SaveFile(const std::wstring& path, EditorDocument* data) {
         return false;
     }
     
-    int len = WideCharToMultiByte(CP_UTF8, 0, eplCode.c_str(), -1, NULL, 0, NULL, NULL);
+    int len = WideCharToMultiByte(CP_UTF8, 0, outputCode.c_str(), -1, NULL, 0, NULL, NULL);
     if (len > 0) {
         std::string utf8Code(len - 1, 0);
-        WideCharToMultiByte(CP_UTF8, 0, eplCode.c_str(), -1, &utf8Code[0], len, NULL, NULL);
+        WideCharToMultiByte(CP_UTF8, 0, outputCode.c_str(), -1, &utf8Code[0], len, NULL, NULL);
         file << utf8Code;
     }
     
@@ -724,6 +746,23 @@ bool SaveFile(const std::wstring& path, EditorDocument* data) {
 }
 
 bool LoadFile(const std::wstring& path, EditorDocument* data) {
+    wchar_t debugMsg[512];
+    swprintf_s(debugMsg, L"[LoadFile] 开始加载文件: %s\n", path.c_str());
+    OutputDebugStringW(debugMsg);
+    
+    // 根据文件扩展名设置文件类型
+    size_t dotPos = path.find_last_of(L'.');
+    if (dotPos != std::wstring::npos) {
+        std::wstring ext = path.substr(dotPos);
+        if (ext == L".ell" || ext == L".ELL") {
+            data->fileType = FILE_TYPE_ELL;
+        } else {
+            data->fileType = FILE_TYPE_EYC;
+        }
+    } else {
+        data->fileType = FILE_TYPE_EYC;
+    }
+    
     // 先关闭之前的文件锁
     if (data->hFileLock != INVALID_HANDLE_VALUE) {
         CloseHandle(data->hFileLock);
@@ -754,6 +793,7 @@ bool LoadFile(const std::wstring& path, EditorDocument* data) {
         );
         
         if (hFile == INVALID_HANDLE_VALUE) {
+            OutputDebugStringW(L"[LoadFile] 文件打开失败（只读模式也失败），返回false\n");
             return false;
         }
         
@@ -781,8 +821,15 @@ bool LoadFile(const std::wstring& path, EditorDocument* data) {
         }
     }
     
-    // 转换EPL源码格式为内部格式
-    std::wstring internalCode = ConvertEPLToInternal(wContent);
+    // 根据文件类型处理内容
+    std::wstring internalCode;
+    if (data->fileType == FILE_TYPE_ELL) {
+        // .ell文件直接使用原始内容，不进行EPL格式转换
+        internalCode = wContent;
+    } else {
+        // .eyc文件转换EPL源码格式为内部格式
+        internalCode = ConvertEPLToInternal(wContent);
+    }
     
     // 分割为行
     data->lines.clear();
@@ -804,9 +851,11 @@ bool LoadFile(const std::wstring& path, EditorDocument* data) {
     
     ExplorerSetFileModified(path, false);
     
-    // 只在非工作区模式下添加文件到资源管理器
+    OutputDebugStringW(L"[LoadFile] 文件加载成功，返回true\n");
+    
+    // 只在非工作区模式和非项目模式下添加文件到资源管理器
     extern ResourceExplorerData g_ExplorerData;
-    if (!g_ExplorerData.isWorkspaceMode) {
+    if (!g_ExplorerData.isWorkspaceMode && !g_ExplorerData.isProjectMode) {
         ExplorerAddFile(path);
     }
     
@@ -821,7 +870,7 @@ bool ShowSaveDialog(HWND hWnd, std::wstring& path) {
     ofn.hwndOwner = hWnd;
     ofn.lpstrFile = szFile;
     ofn.nMaxFile = sizeof(szFile) / sizeof(WCHAR);
-    ofn.lpstrFilter = L"YiCode Files (*.eyc)\0*.eyc\0All Files (*.*)\0*.*\0";
+    ofn.lpstrFilter = L"YiCode Files (*.eyc)\0*.eyc\0DLL声明文件 (*.ell)\0*.ell\0All Files (*.*)\0*.*\0";
     ofn.nFilterIndex = 1;
     ofn.lpstrFileTitle = NULL;
     ofn.nMaxFileTitle = 0;
@@ -844,7 +893,7 @@ bool ShowOpenDialog(HWND hWnd, std::wstring& path) {
     ofn.hwndOwner = hWnd;
     ofn.lpstrFile = szFile;
     ofn.nMaxFile = sizeof(szFile) / sizeof(WCHAR);
-    ofn.lpstrFilter = L"YiCode Files (*.eyc)\0*.eyc\0All Files (*.*)\0*.*\0";
+    ofn.lpstrFilter = L"YiCode Files (*.eyc)\0*.eyc\0DLL声明文件 (*.ell)\0*.ell\0All Files (*.*)\0*.*\0";
     ofn.nFilterIndex = 1;
     ofn.lpstrFileTitle = NULL;
     ofn.nMaxFileTitle = 0;

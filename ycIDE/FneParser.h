@@ -115,6 +115,7 @@ struct FneCommandInfo {
     std::wstring name;          // 命令名称
     std::wstring description;   // 命令说明
     std::wstring returnType;    // 返回值类型
+    std::wstring category;      // 命令类别（如：流程控制、算术运算等）
     std::vector<std::wstring> parameters;  // 参数列表
     bool isHidden;              // 是否隐藏命令
 };

@@ -19,6 +19,12 @@ struct Snapshot {
     std::wstring description;
 };
 
+// 文件类型枚举
+enum FileType {
+    FILE_TYPE_EYC,  // 易语言源代码文件
+    FILE_TYPE_ELL   // DLL声明文件
+};
+
 struct EditorDocument {
     std::vector<std::wstring> lines;
     int cursorLine;
@@ -29,6 +35,7 @@ struct EditorDocument {
     std::wstring fileName;
     bool modified;
     HANDLE hFileLock; // 文件独占锁句柄
+    FileType fileType; // 文件类型
     
     bool hasSelection;
     int selStartLine;
@@ -51,7 +58,8 @@ struct EditorDocument {
     bool hasUserInteraction;                 // 是否有过用户点击交互
     
     // 流程控制条件展开状态
-    std::vector<bool> conditionExpanded;     // 每行是否展开了条件行
+    std::vector<bool> conditionExpanded;     // 每行是否展开了条件行（已废弃，保留兼容性）
+    std::vector<bool> parametersExpanded;    // 每行是否展开了参数列表
     
     EditorDocument();
     ~EditorDocument();
@@ -104,6 +112,9 @@ struct EditorData {
     std::vector<CompletionItem> completionItems;  // 补全项列表
     int selectedCompletionIndex;  // 选中的补全项索引
     std::wstring currentWord;     // 当前正在输入的词
+    bool isDraggingCompletionScroll; // 是否正在拖动补全窗口滚动条
+    int completionDragStartY;     // 补全窗口拖动开始Y位置
+    int completionDragStartOffset; // 补全窗口拖动开始时的滚动偏移
     
     // 自定义光标
     HCURSOR hRightArrowCursor;   // 右箭头光标（用于行号区域）
@@ -118,6 +129,7 @@ struct EditorData {
     void AddDocument(const std::wstring& path);
     void CloseDocument(int index);
     void SwitchToDocument(int index);
+    int FindDocument(const std::wstring& filePath); // 查找文档索引
 };
 
 extern EditorData* g_EditorData;

@@ -11,13 +11,7 @@
 extern void WriteDebugLog(const wchar_t* message);
 
 std::vector<AIModel> g_AIModels = {
-    AIModel(L"GPT-4", L"OpenAI", L"https://api.openai.com/v1/chat/completions"),
-    AIModel(L"GPT-3.5 Turbo", L"OpenAI", L"https://api.openai.com/v1/chat/completions"),
-    AIModel(L"Claude 3", L"Anthropic", L"https://api.anthropic.com/v1/messages"),
     AIModel(L"DeepSeek", L"DeepSeek", L"https://api.deepseek.com/chat/completions"),
-    AIModel(L"Gemini Pro", L"Google", L"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent"),
-    AIModel(L"WenXin", L"Baidu", L"https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/completions"),
-    AIModel(L"Tongyi", L"Alibaba", L"https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation"),
 };
 
 // JSON字符串转义
