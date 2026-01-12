@@ -2,6 +2,7 @@
 #include "TableEditor.h"
 #include <vector>
 #include <string>
+#include <set>
 
 // GDI+ 前置声明
 namespace Gdiplus {
@@ -32,15 +33,18 @@ struct DllCommand {
     bool isPublic;                 // 是否公开
     std::wstring comment;          // 备注
     std::vector<int> paramLines;   // 参数行索引列表
+    bool isCollapsed;              // 是否折叠
+    
+    DllCommand() : isPublic(false), isCollapsed(false) {}
 };
 
 // DLL参数结构
 struct DllParameter {
     std::wstring paramName;        // 参数名
     std::wstring paramType;        // 参数类型
-    bool byRef;                    // 是否传址/参考
-    bool isArray;                  // 是否数组
-    bool isOptional;               // 是否可空
+    bool byRef = false;            // 是否传址/参考
+    bool isArray = false;          // 是否数组
+    bool isOptional = false;       // 是否可空
     std::wstring comment;          // 备注
 };
 
@@ -51,15 +55,32 @@ private:
     std::vector<DllCommand> m_commands;     // DLL命令列表
     std::vector<DllParameter> m_allParams;  // 所有参数列表
     int m_leftMarginWidth;                  // 左边距宽度（用于行号和折叠符号）
+    int m_lineNumberAreaWidth;              // 行号区域宽度（用于多选和鼠标指针变化）
     
     // 临时编辑缓冲区（用于单元格编辑）
     std::wstring m_editBuffer;
+    
+    // 行选择相关（多选功能）
+    bool m_isRowSelecting;                  // 是否正在进行行选择
+    int m_rowSelectStartRow;                // 行选择起始行
+    int m_rowSelectEndRow;                  // 行选择结束行
+    bool m_hasRowSelection;                 // 是否有行选择
+    
+    // 单元格内文本选择
+    bool m_isCellTextSelecting;             // 是否正在单元格内选择文本
+    RECT m_currentCellRect;                 // 当前编辑单元格的矩形
     
 public:
     // 光标闪烁定时器常量
     static constexpr UINT_PTR CURSOR_TIMER_ID = 1;
     static constexpr UINT CURSOR_BLINK_INTERVAL = 530; // 毫秒
     bool m_cursorVisible;  // 光标可见性（public以便定时器访问）
+    
+    // 自定义消息ID和右键菜单位置（public以便消息处理访问）
+    static constexpr UINT WM_SHOW_CONTEXT_MENU = WM_USER + 100;
+    int m_contextMenuX = 0;
+    int m_contextMenuY = 0;
+    bool m_isShowingContextMenu = false;  // 是否正在显示右键菜单
     
 public:
     DllEditor(HWND hWnd, EditorContext* context);
@@ -98,8 +119,15 @@ public:
     // 重写OnLButtonDown以正确处理复选框判断
     void OnLButtonDown(int x, int y) override;
     
-    // 重写OnKeyDown以处理回车键插入参数行
+    // 重写鼠标移动和释放以处理行选择
+    void OnMouseMove(int x, int y, WPARAM wParam) override;
+    void OnLButtonUp(int x, int y) override;
+    
+    // 重写OnKeyDown以处理回车键插入参数行和Delete键删除
     void OnKeyDown(WPARAM wParam) override;
+    
+    // 重写OnRButtonDown以支持右键菜单
+    void OnRButtonDown(int x, int y) override;
     
     // 重写以提供精确的光标屏幕位置（用于输入法定位）
     bool GetEditingCursorScreenPos(int& x, int& y) override;
@@ -130,4 +158,25 @@ private:
     void DeleteCommand(int cmdIndex);
     void InsertParameter(int cmdIndex, int afterParamIndex);
     void DeleteParameter(int cmdIndex, int paramIndex);
+    
+    // 行选择相关方法
+    int HitTestRow(int x, int y);                          // 根据坐标获取行号
+    void ClearRowSelection();                              // 清除行选择
+    void DeleteSelectedRows();                             // 删除选中的行
+    bool IsRowInSelection(int row) const;                  // 判断行是否在选中范围内
+    
+    // 新建DLL命令
+    std::wstring GenerateUniqueDllCommandName();           // 生成唯一的DLL命令名
+    std::wstring GenerateUniqueDllCommandName(const std::wstring& baseName);  // 基于基础名生成唯一名
+    std::wstring GenerateDllCommandClipboardText(const std::set<int>& cmdIndices);  // 生成易语言格式的剪贴板文本
+    std::wstring GenerateParameterClipboardText(int cmdIndex, const std::set<int>& paramIndices);  // 生成参数剪贴板文本
+    void ParseAndInsertDllCommands(const std::wstring& text);  // 解析并插入DLL命令（追加到末尾）
+    void ParseAndInsertDllCommandsAt(const std::wstring& text, int insertAt);  // 解析并在指定位置插入DLL命令
+    void ParseAndInsertParameters(const std::wstring& text, int cmdIndex);  // 解析并插入参数到指定命令
+    void CreateNewDllCommand();                            // 创建新的DLL命令
+    
+public:
+    // 右键菜单（public以便消息处理调用）
+    void ShowContextMenu(int x, int y);                    // 显示右键菜单
+    void ExecuteMenuCommand(int cmdId);                    // 执行菜单命令
 };

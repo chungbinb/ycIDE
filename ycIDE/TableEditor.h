@@ -86,6 +86,8 @@ public:
     
     // === 窗口消息处理 ===
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+    // 直接传递 editor 指针的版本，避免 GWLP_USERDATA 临时修改问题
+    static LRESULT WndProcWithEditor(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam, TableEditor* pEditor);
     
     // === 文件操作 ===
     virtual bool LoadFile(const std::wstring& path);
@@ -168,9 +170,10 @@ protected:
     void DrawScrollbars(HDC hdc, const RECT& clientRect);
     
     // === 交互相关 ===
-    void OnMouseMove(int x, int y, WPARAM wParam);
+    virtual void OnMouseMove(int x, int y, WPARAM wParam);
     virtual void OnLButtonDown(int x, int y);
-    void OnLButtonUp(int x, int y);
+    virtual void OnLButtonUp(int x, int y);
+    virtual void OnRButtonDown(int x, int y);  // 右键点击
     void OnMouseWheel(int delta);
     virtual void OnKeyDown(WPARAM wParam);
     void OnChar(WPARAM wParam);

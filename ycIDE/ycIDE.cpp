@@ -1171,6 +1171,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
+        
     case WM_CTLCOLOREDIT:
     case WM_CTLCOLORSTATIC:
     case WM_CTLCOLORLISTBOX:

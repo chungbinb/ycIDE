@@ -177,14 +177,12 @@ LRESULT CALLBACK EllEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
     }
     
     // 将所有消息转发给 TableEditor::WndProc
-    // TableEditor::WndProc 需要从 GWLP_USERDATA 获取 TableEditor* 指针
+    // 注意：不再临时修改 GWLP_USERDATA，因为这会在 TrackPopupMenu 等
+    // 有内部消息循环的函数中导致问题
     if (data && data->editor) {
-        // 临时将 GWLP_USERDATA 设置为 editor 指针
-        SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(data->editor));
-        LRESULT result = TableEditor::WndProc(hWnd, message, wParam, lParam);
-        // 恢复 GWLP_USERDATA 为 data 指针
-        SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(data));
-        return result;
+        // 直接调用 TableEditor::WndProc，传递 editor 指针
+        // 我们修改 TableEditor::WndProc 来接受额外参数或使用其他方式
+        return TableEditor::WndProcWithEditor(hWnd, message, wParam, lParam, data->editor);
     }
     
     // 如果没有 editor，显示默认背景

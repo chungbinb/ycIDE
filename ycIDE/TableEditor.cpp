@@ -72,26 +72,23 @@ TableEditor::~TableEditor() {
 LRESULT CALLBACK TableEditor::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
     TableEditor* pEditor = reinterpret_cast<TableEditor*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
     
-    // 调试: 检查 WM_PAINT 时的 pEditor 指针
-    if (message == WM_PAINT) {
-        wchar_t debugMsg[256];
-        swprintf_s(debugMsg, L"[TableEditor::WndProc] WM_PAINT - pEditor: %p\n", pEditor);
-        OutputDebugStringW(debugMsg);
+    // WM_CREATE 特殊处理
+    if (message == WM_CREATE) {
+        CREATESTRUCT* pCreate = reinterpret_cast<CREATESTRUCT*>(lParam);
+        SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pCreate->lpCreateParams));
+        return 0;
     }
     
+    // 其他消息使用通用处理
+    return WndProcWithEditor(hWnd, message, wParam, lParam, pEditor);
+}
+
+// 直接传递 editor 指针的版本
+LRESULT TableEditor::WndProcWithEditor(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam, TableEditor* pEditor) {
     switch (message) {
-        case WM_CREATE: {
-            CREATESTRUCT* pCreate = reinterpret_cast<CREATESTRUCT*>(lParam);
-            SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pCreate->lpCreateParams));
-            return 0;
-        }
-        
         case WM_PAINT:
             if (pEditor) {
-                OutputDebugStringW(L"[TableEditor::WndProc] 调用 OnPaint\n");
                 pEditor->OnPaint();
-            } else {
-                OutputDebugStringW(L"[TableEditor::WndProc] pEditor 为空，跳过 OnPaint\n");
             }
             return 0;
         
@@ -105,6 +102,10 @@ LRESULT CALLBACK TableEditor::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
         
         case WM_LBUTTONUP:
             if (pEditor) pEditor->OnLButtonUp(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            return 0;
+        
+        case WM_RBUTTONDOWN:
+            if (pEditor) pEditor->OnRButtonDown(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             return 0;
         
         case WM_MOUSEWHEEL:
@@ -166,12 +167,19 @@ LRESULT CALLBACK TableEditor::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
             return DefWindowProc(hWnd, message, wParam, lParam);
         
         case WM_TIMER:
-            if (pEditor && pEditor->m_isEditing) {
-                // 处理光标闪烁（由子类DllEditor触发）
+            if (pEditor) {
                 DllEditor* dllEditor = dynamic_cast<DllEditor*>(pEditor);
-                if (dllEditor && wParam == 1) { // CURSOR_TIMER_ID = 1
-                    dllEditor->m_cursorVisible = !dllEditor->m_cursorVisible;
-                    InvalidateRect(hWnd, NULL, FALSE);
+                if (dllEditor) {
+                    if (wParam == 1) { // CURSOR_TIMER_ID = 1 - 光标闪烁
+                        if (dllEditor->m_isEditing) {
+                            dllEditor->m_cursorVisible = !dllEditor->m_cursorVisible;
+                            InvalidateRect(hWnd, NULL, FALSE);
+                        }
+                    }
+                    else if (wParam == 2) { // CONTEXT_MENU_TIMER_ID = 2 - 右键菜单
+                        KillTimer(hWnd, 2);
+                        dllEditor->ShowContextMenu(dllEditor->m_contextMenuX, dllEditor->m_contextMenuY);
+                    }
                 }
             }
             return 0;
@@ -827,6 +835,10 @@ void TableEditor::OnLButtonUp(int x, int y) {
         m_isDraggingHScroll = false;
         ReleaseCapture();
     }
+}
+
+void TableEditor::OnRButtonDown(int x, int y) {
+    // 默认实现：什么都不做，由子类重写
 }
 
 void TableEditor::OnMouseWheel(int delta) {
