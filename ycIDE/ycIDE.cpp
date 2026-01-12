@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "ycIDE.h"
 #include "AIModel.h"
 #include "AIChat.h"
@@ -65,7 +65,7 @@ HWND hMainWnd = NULL;  // 主窗口句柄
 HWND hAIChatWnd;
 HWND hTabBarWnd;       // 标签栏窗口
 HWND hEditorWnd;       // YiEditor窗口
-HWND hEllEditorWnd;    // EllEditor窗口
+HWND hEllEditorWnd;    // 表格编辑器窗口（.ell/.ecl/.eal/.edl）
 HWND hWelcomePageWnd;  // 欢迎页窗口
 HWND hRightPanelWnd;
 HWND hOutputWnd;
@@ -344,14 +344,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 WS_CHILD,
                 0, 0, 0, 0, hWnd, (HMENU)1002, hInst, nullptr);
             
-            // 2.3 EllEditor (DLL声明编辑器) - 初始隐藏
-            hEllEditorWnd = CreateWindowW(L"EllEditorWindow", nullptr,
-                WS_CHILD,
-                0, 0, 0, 0, hWnd, (HMENU)1006, hInst, nullptr);
+            // 2.3 DllEditor (DLL声明编辑器) - 初始隐藏
+            hEllEditorWnd = CreateEllEditorWindow(hInst, hWnd);
+            SetWindowLong(hEllEditorWnd, GWL_ID, 1006);
             
             {
                 wchar_t debugMsg[256];
-                swprintf_s(debugMsg, L"[主窗口] EllEditor窗口句柄: %p\n", hEllEditorWnd);
+                swprintf_s(debugMsg, L"[主窗口] DllEditor窗口句柄: %p\n", hEllEditorWnd);
                 OutputDebugStringW(debugMsg);
             }
             
@@ -414,6 +413,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 EditorDocument* doc = g_EditorData->GetActiveDoc();
                 if (doc && doc->modified) {
                      ExplorerSetFileModified(doc->filePath, true);
+                     
+                     // 同时标记标签页为已修改
+                     TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                     if (tabData && tabData->activeTabIndex >= 0 && tabData->activeTabIndex < tabData->tabs.size()) {
+                         if (!tabData->tabs[tabData->activeTabIndex].isModified) {
+                             tabData->SetTabModified(tabData->activeTabIndex, true);
+                         }
+                     }
                 }
             }
         }
@@ -561,13 +568,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                 InvalidateRect(hEditorWnd, NULL, TRUE);
                             }
                         }
-                    } else if (editorType == 1) { // EllEditor
+                    } else if (editorType == 1) { // DllEditor
                         ShowWindow(hEditorWnd, SW_HIDE);
                         ShowWindow(hEllEditorWnd, SW_SHOW);
-                        // 切换到对应的ELL文档
-                        EllEditorData* ellData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
-                        if (ellData) {
-                            // TODO: 实现 EllEditor 的文档切换
+                        // 切换到对应的DLL文档
+                        EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                        if (dllData) {
+                            // TODO: 实现 DllEditor 的文档切换
                             InvalidateRect(hEllEditorWnd, NULL, TRUE);
                         }
                     }
@@ -582,17 +589,87 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 if (tabData && tabIndex >= 0 && tabIndex < (int)tabData->tabs.size()) {
                     int editorType = tabData->tabs[tabIndex].editorType;
                     std::wstring filePath = tabData->tabs[tabIndex].filePath;
+                    bool isModified = tabData->tabs[tabIndex].isModified;
+                    
+                    // 如果文件已修改，询问是否保存
+                    if (isModified) {
+                        std::wstring fileName = tabData->tabs[tabIndex].fileName;
+                        std::wstring msg = L"文件 \u201C" + fileName + L"\u201D 已被修改。\n\n是否保存更改？";
+                        int result = MessageBoxW(hWnd, msg.c_str(), L"保存文件", 
+                                               MB_YESNOCANCEL | MB_ICONQUESTION);
+                        
+                        if (result == IDCANCEL) {
+                            // 取消关闭
+                            return 0;
+                        } else if (result == IDYES) {
+                            // 保存文件 - 使用统一的保存逻辑
+                            if (g_EditorData) {
+                                int docIndex = g_EditorData->FindDocument(filePath);
+                                if (docIndex >= 0 && docIndex < (int)g_EditorData->documents.size()) {
+                                    EditorDocument* doc = g_EditorData->documents[docIndex];
+                                    
+                                    // 定义统一的保存函数（lambda）
+                                    auto SaveDocument = [](HWND hMainWnd, EditorDocument* doc) -> bool {
+                                        if (!doc || doc->filePath.empty()) {
+                                            return false;
+                                        }
+                                        
+                                        if (doc->fileType == FILE_TYPE_ELL) {
+                                            extern HWND hEllEditorWnd;
+                                            EllEditorData* ellData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                                            if (ellData) {
+                                                if (ellData->currentFilePath != doc->filePath) {
+                                                    ellData->LoadFile(doc->filePath);
+                                                }
+                                                if (ellData->SaveFile()) {
+                                                    doc->modified = false;
+                                                    return true;
+                                                }
+                                            }
+                                            return false;
+                                        } else {
+                                            extern bool SaveFile(const std::wstring& filePath, EditorDocument* doc);
+                                            if (SaveFile(doc->filePath, doc)) {
+                                                doc->modified = false;
+                                                return true;
+                                            }
+                                            return false;
+                                        }
+                                    };
+                                    
+                                    if (!SaveDocument(hWnd, doc)) {
+                                        MessageBoxW(hWnd, L"保存文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                        return 0;
+                                    }
+                                }
+                            }
+                            
+                            // 清除修改标记
+                            tabData->SetTabModified(tabIndex, false);
+                            ExplorerSetFileModified(filePath, false);
+                        } else if (result == IDNO) {
+                            // IDNO: 不保存，清除修改标记后继续关闭
+                            tabData->SetTabModified(tabIndex, false);
+                            ExplorerSetFileModified(filePath, false);
+                            
+                            // 同时清除 EditorDocument 的修改标志
+                            if (g_EditorData) {
+                                int docIndex = g_EditorData->FindDocument(filePath);
+                                if (docIndex >= 0 && docIndex < (int)g_EditorData->documents.size()) {
+                                    EditorDocument* doc = g_EditorData->documents[docIndex];
+                                    if (doc) {
+                                        doc->modified = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     
                     // 从对应的编辑器中关闭文档
-                    if (editorType == 0 && g_EditorData) {
+                    if (g_EditorData) {
                         int docIndex = g_EditorData->FindDocument(filePath);
                         if (docIndex >= 0) {
                             g_EditorData->CloseDocument(docIndex);
-                        }
-                    } else if (editorType == 1) {
-                        EllEditorData* ellData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
-                        if (ellData) {
-                            // TODO: 关闭 ELL 文档
                         }
                     }
                     
@@ -603,6 +680,31 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                         ShowWindow(hEllEditorWnd, SW_HIDE);
                         ShowWindow(hWelcomePageWnd, SW_SHOW);
                         InvalidateRect(hWelcomePageWnd, NULL, TRUE);
+                    }
+                }
+                return 0;
+            }
+            
+            // 编辑器修改通知 (wmId=0, wmEvent=0x1000)
+            if (wmId == 0 && wmEvent == 0x1000) {
+                HWND hEditorWnd = (HWND)lParam;
+                TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                if (tabData && tabData->activeTabIndex >= 0) {
+                    // 标记标签为已修改
+                    tabData->SetTabModified(tabData->activeTabIndex, true);
+                    
+                    // 标记资源管理器中的文件为已修改
+                    std::wstring filePath = tabData->tabs[tabData->activeTabIndex].filePath;
+                    ExplorerSetFileModified(filePath, true);
+                    
+                    // 通过文件路径查找并标记对应的文档为已修改
+                    if (g_EditorData && !filePath.empty()) {
+                        for (auto doc : g_EditorData->documents) {
+                            if (doc && doc->filePath == filePath) {
+                                doc->modified = true;
+                                break;
+                            }
+                        }
                     }
                 }
                 return 0;
@@ -626,77 +728,66 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                         }
                     } else {
                         // 文件未在TabBar中打开，需要打开新文件
-                        if (g_EditorData) {
-                            // 检查文件是否已在YiEditor中打开（但TabBar中没有对应标签）
+                        // 检查文件是否存在
+                        DWORD fileAttr = GetFileAttributesW(file.c_str());
+                        if (fileAttr == INVALID_FILE_ATTRIBUTES) {
+                            // 文件不存在，询问是否创建
+                            std::wstring msg = L"文件不存在：\n" + file + L"\n\n是否创建新文件？";
+                            if (MessageBoxW(hWnd, msg.c_str(), L"文件不存在", MB_YESNO | MB_ICONQUESTION) == IDYES) {
+                                // 创建空文件
+                                HANDLE hFile = CreateFileW(file.c_str(), GENERIC_WRITE, 0, NULL,
+                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                if (hFile != INVALID_HANDLE_VALUE) {
+                                    // 写入默认内容
+                                    std::wstring defaultContent = 
+                                        L".版本 2\n"
+                                        L"\n"
+                                        L".程序集 程序集1\n"
+                                        L"\n"
+                                        L".子程序 _启动子程序\n"
+                                        L"\n";
+                                    
+                                    int utf8Len = WideCharToMultiByte(CP_UTF8, 0, defaultContent.c_str(), -1, NULL, 0, NULL, NULL);
+                                    if (utf8Len > 0) {
+                                        std::string utf8Content(utf8Len - 1, 0);
+                                        WideCharToMultiByte(CP_UTF8, 0, defaultContent.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                        DWORD bytesWritten;
+                                        WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                    }
+                                    CloseHandle(hFile);
+                                } else {
+                                    MessageBoxW(hWnd, L"创建文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                    break;
+                                }
+                            } else {
+                                break;
+                            }
+                        }
+                        
+                        // 确定编辑器类型
+                        int editorType = GetEditorTypeByExtension(file);
+                        
+                        // 添加到标签栏
+                        if (tabData) {
+                            size_t lastSlash = file.find_last_of(L"\\/");
+                            std::wstring fileName = (lastSlash != std::wstring::npos) ? file.substr(lastSlash + 1) : file;
+                            tabData->AddTab(file, fileName, editorType);
+                        }
+                        
+                        // 根据类型打开文件
+                        if (editorType == 0 && g_EditorData) {
+                            // YiEditor (.eyc文件)
+                            // 检查文件是否已在YiEditor中打开
                             int docIndex = g_EditorData->FindDocument(file);
                             if (docIndex >= 0) {
-                                // 文件已在编辑器中，切换到该文档并添加TabBar标签
+                                // 文件已在编辑器中，切换到该文档
                                 g_EditorData->SwitchToDocument(docIndex);
-                                
-                                // 同步到TabBar
-                                TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
-                                if (tabData) {
-                                    size_t lastSlash = file.find_last_of(L"\\/");
-                                    std::wstring fileName = (lastSlash != std::wstring::npos) ? file.substr(lastSlash + 1) : file;
-                                    int editorType = GetEditorTypeByExtension(file);
-                                    tabData->AddTab(file, fileName, editorType);
-                                }
-                                
                                 ShowWindow(hWelcomePageWnd, SW_HIDE);
                                 ShowWindow(hEditorWnd, SW_SHOW);
                                 ShowWindow(hEllEditorWnd, SW_HIDE);
                                 InvalidateRect(hEditorWnd, NULL, TRUE);
                             } else {
-                                // 文件完全未打开，执行正常的打开流程
-                            // 检查文件是否存在
-                            DWORD fileAttr = GetFileAttributesW(file.c_str());
-                            if (fileAttr == INVALID_FILE_ATTRIBUTES) {
-                                // 文件不存在，询问是否创建
-                                std::wstring msg = L"文件不存在：\n" + file + L"\n\n是否创建新文件？";
-                                if (MessageBoxW(hWnd, msg.c_str(), L"文件不存在", MB_YESNO | MB_ICONQUESTION) == IDYES) {
-                                    // 创建空文件
-                                    HANDLE hFile = CreateFileW(file.c_str(), GENERIC_WRITE, 0, NULL,
-                                                              CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
-                                    if (hFile != INVALID_HANDLE_VALUE) {
-                                        // 写入默认内容
-                                        std::wstring defaultContent = 
-                                            L".版本 2\n"
-                                            L"\n"
-                                            L".程序集 程序集1\n"
-                                            L"\n"
-                                            L".子程序 _启动子程序\n"
-                                            L"\n";
-                                        
-                                        int utf8Len = WideCharToMultiByte(CP_UTF8, 0, defaultContent.c_str(), -1, NULL, 0, NULL, NULL);
-                                        if (utf8Len > 0) {
-                                            std::string utf8Content(utf8Len - 1, 0);
-                                            WideCharToMultiByte(CP_UTF8, 0, defaultContent.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
-                                            DWORD bytesWritten;
-                                            WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
-                                        }
-                                        CloseHandle(hFile);
-                                    } else {
-                                        MessageBoxW(hWnd, L"创建文件失败！", L"错误", MB_OK | MB_ICONERROR);
-                                        break;
-                                    }
-                                } else {
-                                    break;
-                                }
-                            }
-                            
-                            // 确定编辑器类型
-                            int editorType = GetEditorTypeByExtension(file);
-                            
-                            // 添加到标签栏
-                            if (tabData) {
-                                size_t lastSlash = file.find_last_of(L"\\/");
-                                std::wstring fileName = (lastSlash != std::wstring::npos) ? file.substr(lastSlash + 1) : file;
-                                tabData->AddTab(file, fileName, editorType);
-                            }
-                            
-                            // 根据类型打开文件
-                            if (editorType == 0) {
-                                // YiEditor (.eyc文件)
+                                // 文件未在编辑器中，打开新文档
                                 g_EditorData->AddDocument(file);
                                 EditorDocument* doc = g_EditorData->GetActiveDoc();
                                 
@@ -724,25 +815,37 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                         MessageBoxW(hWnd, L"打开文件失败！", L"错误", MB_OK | MB_ICONERROR);
                                     }
                                 }
-                            } else if (editorType == 1) {
-                                // EllEditor (.ell文件)
-                                EllEditorData* ellData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
-                                
-                                wchar_t debugMsg[512];
-                                swprintf_s(debugMsg, L"[ELL文件打开] ellData指针: %p, 文件: %s\n", ellData, file.c_str());
-                                OutputDebugStringW(debugMsg);
-                                
-                                if (ellData) {
-                                    ShowWindow(hWelcomePageWnd, SW_HIDE);
-                                    ShowWindow(hEditorWnd, SW_HIDE);
-                                    ShowWindow(hEllEditorWnd, SW_SHOW);
-                                    ellData->AddDocument(file);
-                                    InvalidateRect(hEllEditorWnd, NULL, TRUE);
-                                    
-                                    OutputDebugStringW(L"[ELL文件打开] 已显示EllEditor并添加文档\n");
+                            }
+                        } else if (editorType == 1) {
+                            // DllEditor (.ell文件)
+                            // 首先在 g_EditorData 中创建文档记录
+                            if (g_EditorData) {
+                                int docIndex = g_EditorData->FindDocument(file);
+                                if (docIndex < 0) {
+                                    // 创建新的 EditorDocument 用于跟踪修改状态
+                                    g_EditorData->AddDocument(file);
+                                    EditorDocument* doc = g_EditorData->GetActiveDoc();
+                                    if (doc) {
+                                        doc->fileType = FILE_TYPE_ELL;
+                                    }
                                 }
                             }
-                            }  // 结束 docIndex < 0 的else分支
+                            
+                            EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                            
+                            wchar_t debugMsg[512];
+                            swprintf_s(debugMsg, L"[DLL文件打开] dllData指针: %p, 文件: %s\n", dllData, file.c_str());
+                            OutputDebugStringW(debugMsg);
+                            
+                            if (dllData) {
+                                ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                ShowWindow(hEditorWnd, SW_HIDE);
+                                ShowWindow(hEllEditorWnd, SW_SHOW);
+                                dllData->LoadFile(file);
+                                InvalidateRect(hEllEditorWnd, NULL, TRUE);
+                                
+                                OutputDebugStringW(L"[DLL文件打开] 已显示DllEditor并加载文档\n");
+                            }
                         }
                     }
                     
@@ -1591,6 +1694,38 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_CLOSE:
         {
+            // 统一的保存文档函数
+            auto SaveDocument = [](HWND hMainWnd, EditorDocument* doc) -> bool {
+                if (!doc || doc->filePath.empty()) {
+                    return false;
+                }
+                
+                if (doc->fileType == FILE_TYPE_ELL) {
+                    // .ell 文件通过 EllEditorData 保存
+                    extern HWND hEllEditorWnd;
+                    EllEditorData* ellData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                    if (ellData) {
+                        // 先加载要保存的文件到编辑器
+                        if (ellData->currentFilePath != doc->filePath) {
+                            ellData->LoadFile(doc->filePath);
+                        }
+                        if (ellData->SaveFile()) {
+                            doc->modified = false;
+                            return true;
+                        }
+                    }
+                    return false;
+                } else {
+                    // .eyc 文件使用普通 SaveFile
+                    extern bool SaveFile(const std::wstring& filePath, EditorDocument* doc);
+                    if (SaveFile(doc->filePath, doc)) {
+                        doc->modified = false;
+                        return true;
+                    }
+                    return false;
+                }
+            };
+            
             // 检查是否有未保存的文件
             bool hasUnsavedFiles = false;
             std::vector<std::wstring> unsavedFileNames;
@@ -1624,9 +1759,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 
                 if (result == IDYES) {
                     // 保存所有文件
-                    extern bool SaveFile(const std::wstring& filePath, EditorDocument* doc);
-                    
-                    for (auto doc : g_EditorData->documents) {
+                    for (size_t i = 0; i < g_EditorData->documents.size(); i++) {
+                        auto doc = g_EditorData->documents[i];
                         if (doc && doc->modified) {
                             // 如果是未命名文件，需要弹出另存为对话框
                             if (doc->filePath.empty()) {
@@ -1656,8 +1790,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                 }
                             }
                             
-                            // 使用SaveFile函数保存
-                            if (!SaveFile(doc->filePath, doc)) {
+                            // 使用统一的保存函数
+                            if (!SaveDocument(hWnd, doc)) {
                                 MessageBoxW(hWnd, (L"无法保存文件: " + doc->filePath).c_str(), 
                                           L"错误", MB_OK | MB_ICONERROR);
                                 return 0;

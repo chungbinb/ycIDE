@@ -4,7 +4,7 @@
 #pragma comment(lib, "legacy_stdio_definitions.lib")
 
 // 系统核心支持库主入口
-// 自动生成于 2026-01-04 10:36:10
+// 自动生成于 2026-01-04 15:09:00
 
 EXTERN_C INT_PTR WINAPI krnln_ProcessNotifyLib(INT nMsg, DWORD_PTR dwParam1, DWORD_PTR dwParam2);
 

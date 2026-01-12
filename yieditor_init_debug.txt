@@ -1,0 +1,5 @@
+exe路径: D:\chungbin\ycide\ycIDE\x64\Debug\ycIDE.exe
+exe目录: D:\chungbin\ycide\ycIDE\x64\Debug
+FNE路径: D:\chungbin\ycide\ycIDE\x64\Debug\lib\krnln.fne
+文件是否存在: 是
+加载结果: 成功

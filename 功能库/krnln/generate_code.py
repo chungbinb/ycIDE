@@ -252,7 +252,13 @@ class CodeGenerator:
                     flag_str = " | ".join(flags) if flags else "NULL"
                     
                     desc = self.escape_string(param.description[:60]) if param.description else ""
-                    default_val = f'"{param.default_value}"' if param.default_value else "0"
+                    # 默认值字段是INT类型，需要转换字符串为整数，如果无法转换则使用0
+                    default_val = "0"
+                    if param.default_value:
+                        try:
+                            default_val = str(int(param.default_value))
+                        except ValueError:
+                            default_val = "0"
                     
                     lines.append(f'    /*{arg_index:04d}*/ {{"{param.name}", "{desc}", 0, 0, {param_type}, {default_val}, {flag_str}}},')
                     arg_index += 1

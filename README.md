@@ -77,7 +77,7 @@ Copy-Item "功能库\krnln\x64\Debug\krnln.fne" "ycIDE\x64\Debug\lib\"
 ## 使用说明
 
 1. 启动 ycIDE.exe
-2. 新建或打开易语言源文件（.e）
+2. 新建或打开源文件（.eyc）
 3. 开始编写代码，支持：
    - 中文输入：直接输入"如果"
    - 拼音输入：输入"ruguo"

@@ -286,8 +286,9 @@ class HelpFileParser:
     def _parse_parameter(self, line: str, index: int) -> Optional[Parameter]:
         """解析参数定义行"""
         # 格式：参数<n>的名称为"xxx"，类型为"xxx（英文）"，可以被省略。说明...
+        # 注意:使用中文引号 " " (U+201C, U+201D)
         
-        match = re.search(r'参数<(\d+)>的名称为"([^"]+)"，类型为"([^"]+)"', line)
+        match = re.search(r'参数<(\d+)>的名称为“([^”]+)”，类型为“([^”]+)”', line)
         if not match:
             return None
         
@@ -315,7 +316,7 @@ class HelpFileParser:
         
         # 提取默认值
         default_value = ""
-        default_match = re.search(r'初始值为"([^"]*)"', line)
+        default_match = re.search(r'初始值为“([^”]*)”', line)
         if default_match:
             default_value = default_match.group(1)
         

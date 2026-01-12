@@ -2,8 +2,23 @@
 #include "Theme.h"
 #include <windowsx.h>
 #include <algorithm>
+#include <gdiplus.h>
+
+using namespace Gdiplus;
+#pragma comment(lib, "gdiplus.lib")
 
 extern AppTheme g_CurrentTheme;
+
+// 绘制圆角矩形辅助函数
+static void DrawRoundedRectangle(Graphics& graphics, Pen* pen, const RectF& rect, float radius) {
+    GraphicsPath path;
+    path.AddArc(rect.X, rect.Y, radius * 2, radius * 2, 180, 90);
+    path.AddArc(rect.X + rect.Width - radius * 2, rect.Y, radius * 2, radius * 2, 270, 90);
+    path.AddArc(rect.X + rect.Width - radius * 2, rect.Y + rect.Height - radius * 2, radius * 2, radius * 2, 0, 90);
+    path.AddArc(rect.X, rect.Y + rect.Height - radius * 2, radius * 2, radius * 2, 90, 90);
+    path.CloseFigure();
+    graphics.DrawPath(pen, &path);
+}
 
 // 添加标签
 int TabBarData::AddTab(const std::wstring& filePath, const std::wstring& fileName, int editorType) {
@@ -206,13 +221,36 @@ LRESULT CALLBACK TabBarWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                     textRect.left += 10;
                     textRect.right -= 25; // 为关闭按钮留空间
                     
-                    std::wstring displayText = data->tabs[i].fileName;
+                    // 如果文件已修改，为修改标记留出空间
                     if (data->tabs[i].isModified) {
-                        displayText = L"● " + displayText; // 已修改标记
+                        textRect.left += 22; // 为修改标记留空间
                     }
                     
-                    DrawTextW(memDC, displayText.c_str(), -1, &textRect, 
+                    DrawTextW(memDC, data->tabs[i].fileName.c_str(), -1, &textRect, 
                              DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS);
+                    
+                    // 绘制修改标记 (圆角矩形 + 圆点)
+                    if (data->tabs[i].isModified) {
+                        Graphics graphics(memDC);
+                        graphics.SetSmoothingMode(SmoothingModeAntiAlias);
+                        
+                        float boxSize = 14.0f;
+                        float boxX = (float)tabRect.left + 8;
+                        float boxY = (float)tabRect.top + (tabRect.bottom - tabRect.top - boxSize) / 2.0f;
+                        
+                        // 将 COLORREF 转换为 GDI+ Color (COLORREF 是 0x00BBGGRR, GDI+ 需要 ARGB)
+                        COLORREF textColor = g_CurrentTheme.text;
+                        Color penColor(255, GetRValue(textColor), GetGValue(textColor), GetBValue(textColor));
+                        Pen pen(penColor, 1.0f);
+                        RectF boxRect(boxX, boxY, boxSize, boxSize);
+                        DrawRoundedRectangle(graphics, &pen, boxRect, 3.0f);
+                        
+                        float dotSize = 5.0f;
+                        float dotX = boxX + (boxSize - dotSize) / 2.0f;
+                        float dotY = boxY + (boxSize - dotSize) / 2.0f;
+                        SolidBrush brush(penColor);
+                        graphics.FillEllipse(&brush, dotX, dotY, dotSize, dotSize);
+                    }
                     
                     // 关闭按钮
                     RECT closeRect = data->GetCloseButtonRect(tabRect);
