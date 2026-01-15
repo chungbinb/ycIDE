@@ -70,6 +70,16 @@ private:
     bool m_isCellTextSelecting;             // 是否正在单元格内选择文本
     RECT m_currentCellRect;                 // 当前编辑单元格的矩形
     
+    // 数据类型自动补全相关
+    bool m_showTypeCompletion;              // 是否显示数据类型补全窗口
+    std::vector<std::wstring> m_typeCompletionItems;  // 补全列表项
+    int m_typeCompletionSelectedIndex;      // 当前选中的补全项索引
+    int m_typeCompletionScrollOffset;       // 补全列表滚动偏移
+    RECT m_typeCompletionRect;              // 补全窗口矩形
+    bool m_skipNextSpace;                   // 跳过下一个空格字符（空格上屏后使用）
+    static constexpr int TYPE_COMPLETION_ITEM_HEIGHT = 24;  // 补全项高度
+    static constexpr int TYPE_COMPLETION_MAX_VISIBLE = 8;   // 最大可见项数
+    
 public:
     // 光标闪烁定时器常量
     static constexpr UINT_PTR CURSOR_TIMER_ID = 1;
@@ -123,8 +133,14 @@ public:
     void OnMouseMove(int x, int y, WPARAM wParam) override;
     void OnLButtonUp(int x, int y) override;
     
+    // 重写OnMouseWheel以支持补全窗口滚动
+    void OnMouseWheel(int delta) override;
+    
     // 重写OnKeyDown以处理回车键插入参数行和Delete键删除
     void OnKeyDown(WPARAM wParam) override;
+    
+    // 重写OnChar以处理空格上屏后跳过空格
+    void OnChar(WPARAM wParam) override;
     
     // 重写OnRButtonDown以支持右键菜单
     void OnRButtonDown(int x, int y) override;
@@ -164,6 +180,15 @@ private:
     void ClearRowSelection();                              // 清除行选择
     void DeleteSelectedRows();                             // 删除选中的行
     bool IsRowInSelection(int row) const;                  // 判断行是否在选中范围内
+    
+    // 数据类型自动补全方法
+    bool IsEditingTypeColumn() const;                      // 判断是否正在编辑数据类型列
+    void UpdateTypeCompletion();                           // 更新数据类型补全列表
+    void ShowTypeCompletion();                             // 显示补全窗口
+    void HideTypeCompletion();                             // 隐藏补全窗口
+    void ApplyTypeCompletion();                            // 应用选中的补全项
+    void DrawTypeCompletion(HDC hdc);                      // 绘制补全窗口
+    std::vector<std::wstring> GetAllDataTypes() const;     // 获取所有可用的数据类型
     
     // 新建DLL命令
     std::wstring GenerateUniqueDllCommandName();           // 生成唯一的DLL命令名

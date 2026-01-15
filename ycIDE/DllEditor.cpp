@@ -2,6 +2,8 @@
 #include "EditorContext.h"
 #include "NameValidator.h"
 #include "Theme.h"
+#include "LibraryParser.h"
+#include "PinyinHelper.h"
 #include <sstream>
 #include <algorithm>
 #include <set>
@@ -28,9 +30,14 @@ DllEditor::DllEditor(HWND hWnd, EditorContext* context)
     , m_rowSelectStartRow(-1)
     , m_rowSelectEndRow(-1)
     , m_hasRowSelection(false)
-    , m_isCellTextSelecting(false) {
+    , m_isCellTextSelecting(false)
+    , m_showTypeCompletion(false)
+    , m_typeCompletionSelectedIndex(0)
+    , m_typeCompletionScrollOffset(0)
+    , m_skipNextSpace(false) {
     
     m_currentCellRect = {0, 0, 0, 0};
+    m_typeCompletionRect = {0, 0, 0, 0};
     
     m_fileName = L"未命名.ell";
     
@@ -661,6 +668,52 @@ bool DllEditor::IsCellCheckbox(int row, int col) const {
 }
 
 void DllEditor::OnKeyDown(WPARAM wParam) {
+    // 如果补全窗口打开，优先处理补全相关按键
+    if (m_showTypeCompletion && !m_typeCompletionItems.empty()) {
+        switch (wParam) {
+            case VK_UP:
+                // 向上选择
+                if (m_typeCompletionSelectedIndex > 0) {
+                    m_typeCompletionSelectedIndex--;
+                    // 调整滚动偏移
+                    if (m_typeCompletionSelectedIndex < m_typeCompletionScrollOffset) {
+                        m_typeCompletionScrollOffset = m_typeCompletionSelectedIndex;
+                    }
+                    InvalidateRect(m_hWnd, NULL, FALSE);
+                }
+                return;
+                
+            case VK_DOWN:
+                // 向下选择
+                if (m_typeCompletionSelectedIndex < (int)m_typeCompletionItems.size() - 1) {
+                    m_typeCompletionSelectedIndex++;
+                    // 调整滚动偏移
+                    if (m_typeCompletionSelectedIndex >= m_typeCompletionScrollOffset + TYPE_COMPLETION_MAX_VISIBLE) {
+                        m_typeCompletionScrollOffset = m_typeCompletionSelectedIndex - TYPE_COMPLETION_MAX_VISIBLE + 1;
+                    }
+                    InvalidateRect(m_hWnd, NULL, FALSE);
+                }
+                return;
+                
+            case VK_RETURN:
+            case VK_TAB:
+                // 应用选中的补全项
+                ApplyTypeCompletion();
+                return;
+                
+            case VK_ESCAPE:
+                // 关闭补全窗口
+                HideTypeCompletion();
+                return;
+                
+            case VK_SPACE:
+                // 空格键上屏当前选中项
+                ApplyTypeCompletion();
+                m_skipNextSpace = true;  // 标记跳过下一个空格字符
+                return;
+        }
+    }
+    
     // 处理 Ctrl 组合键
     bool ctrlPressed = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
     
@@ -824,6 +877,18 @@ void DllEditor::OnKeyDown(WPARAM wParam) {
     TableEditor::OnKeyDown(wParam);
 }
 
+void DllEditor::OnChar(WPARAM wParam) {
+    // 检查是否需要跳过空格（空格上屏后）
+    if (m_skipNextSpace && wParam == L' ') {
+        m_skipNextSpace = false;
+        return;  // 跳过这个空格
+    }
+    m_skipNextSpace = false;
+    
+    // 调用基类处理
+    TableEditor::OnChar(wParam);
+}
+
 bool DllEditor::GetEditingCursorScreenPos(int& x, int& y) {
     if (!m_isEditing) {
         return false;
@@ -900,6 +965,26 @@ bool DllEditor::GetEditingCursorScreenPos(int& x, int& y) {
 }
 
 void DllEditor::OnLButtonDown(int x, int y) {
+    // 检查是否点击在补全窗口内
+    if (m_showTypeCompletion && !m_typeCompletionItems.empty()) {
+        POINT pt = {x, y};
+        RECT completionRect = m_typeCompletionRect;
+        if (PtInRect(&completionRect, pt)) {
+            // 计算点击的是哪一项
+            int relativeY = y - m_typeCompletionRect.top - 2;
+            int clickedIndex = m_typeCompletionScrollOffset + relativeY / TYPE_COMPLETION_ITEM_HEIGHT;
+            
+            if (clickedIndex >= 0 && clickedIndex < (int)m_typeCompletionItems.size()) {
+                m_typeCompletionSelectedIndex = clickedIndex;
+                ApplyTypeCompletion();
+            }
+            return;
+        } else {
+            // 点击在补全窗口外，关闭补全窗口
+            HideTypeCompletion();
+        }
+    }
+    
     // 清除之前的行选择
     ClearRowSelection();
     
@@ -996,12 +1081,14 @@ void DllEditor::OnLButtonDown(int x, int y) {
                 EndEditCell(true);
             }
             
+            // 保存当前单元格矩形（在StartEditCell之前，以便补全窗口定位使用）
+            m_currentCellRect = cellRect;
+            
             // 开始编辑，传递相对于单元格左边的坐标
             int relativeX = x - cellRect.left;
             StartEditCell(row, col, relativeX);
             
-            // 保存当前单元格矩形，开始文本选择模式
-            m_currentCellRect = cellRect;
+            // 开始文本选择模式
             m_isCellTextSelecting = true;
             m_selectionStart = m_editingCursorPos;
             m_selectionEnd = m_editingCursorPos;
@@ -1037,6 +1124,49 @@ void DllEditor::OnLButtonDown(int x, int y) {
             EndEditCell(true);
         }
     }
+}
+
+void DllEditor::OnMouseWheel(int delta) {
+    // 如果补全窗口打开，检查鼠标是否在补全窗口区域内
+    if (m_showTypeCompletion && !m_typeCompletionItems.empty()) {
+        // 获取鼠标当前位置
+        POINT pt;
+        GetCursorPos(&pt);
+        ScreenToClient(m_hWnd, &pt);
+        
+        // 检查鼠标是否在补全窗口内
+        if (pt.x >= m_typeCompletionRect.left && pt.x <= m_typeCompletionRect.right &&
+            pt.y >= m_typeCompletionRect.top && pt.y <= m_typeCompletionRect.bottom) {
+            // 滚动补全列表
+            int scrollLines = delta > 0 ? -1 : 1;  // 向上滚动减少偏移，向下滚动增加偏移
+            
+            int newOffset = m_typeCompletionScrollOffset + scrollLines;
+            int maxOffset = (std::max)(0, (int)m_typeCompletionItems.size() - TYPE_COMPLETION_MAX_VISIBLE);
+            
+            // 限制滚动范围
+            newOffset = (std::max)(0, (std::min)(newOffset, maxOffset));
+            
+            if (newOffset != m_typeCompletionScrollOffset) {
+                m_typeCompletionScrollOffset = newOffset;
+                
+                // 确保选中项在可见范围内
+                if (m_typeCompletionSelectedIndex < m_typeCompletionScrollOffset) {
+                    m_typeCompletionSelectedIndex = m_typeCompletionScrollOffset;
+                } else if (m_typeCompletionSelectedIndex >= m_typeCompletionScrollOffset + TYPE_COMPLETION_MAX_VISIBLE) {
+                    m_typeCompletionSelectedIndex = m_typeCompletionScrollOffset + TYPE_COMPLETION_MAX_VISIBLE - 1;
+                }
+                
+                InvalidateRect(m_hWnd, NULL, FALSE);
+            }
+            return;  // 不传递给父类处理
+        } else {
+            // 鼠标不在补全窗口内滚动，隐藏补全窗口
+            HideTypeCompletion();
+        }
+    }
+    
+    // 调用父类处理普通滚动
+    TableEditor::OnMouseWheel(delta);
 }
 
 std::wstring DllEditor::ValidateCell(int row, int col, const std::wstring& value) const {
@@ -1462,6 +1592,11 @@ void DllEditor::OnTextModified() {
             SendMessage(hParent, WM_COMMAND, MAKEWPARAM(0, 0x1000), (LPARAM)m_hWnd);
         }
     }
+    
+    // 如果正在编辑数据类型列，更新自动补全
+    if (IsEditingTypeColumn()) {
+        UpdateTypeCompletion();
+    }
 }
 
 void DllEditor::StartEditCell(int row, int col, int clickX) {
@@ -1551,6 +1686,11 @@ void DllEditor::StartEditCell(int row, int col, int clickX) {
     } else {
         // 如果没有点击位置信息，默认放在文本末尾
         m_editingCursorPos = (int)m_editBuffer.length();
+    }
+    
+    // 如果开始编辑数据类型列，自动显示补全窗口
+    if (IsEditingTypeColumn()) {
+        UpdateTypeCompletion();
     }
     
     InvalidateRect(m_hWnd, NULL, FALSE);
@@ -1867,6 +2007,9 @@ void DllEditor::DrawTable(HDC hdc, const RECT& clientRect) {
             // 间隔行不计入数据行号
         }
     }
+    
+    // 绘制数据类型自动补全窗口（最后绘制以确保在最上层）
+    DrawTypeCompletion(hdc);
 }
 
 void DllEditor::DrawCommandTable(HDC hdc, int cmdIndex, int& yPos, const RECT& clientRect) {
@@ -4090,5 +4233,318 @@ void DllEditor::ExecuteMenuCommand(int cmd) {
                 }
             }
             break;
+    }
+}
+
+// === 数据类型自动补全实现 ===
+
+bool DllEditor::IsEditingTypeColumn() const {
+    if (!m_isEditing) return false;
+    
+    int cmdIndex = -1, paramIndex = -1;
+    DllRowType rowType = GetRowType(m_editingRow, cmdIndex, paramIndex);
+    
+    // 返回值类型列（CommandData行的col=1）
+    if (rowType == DllRowType::CommandData && m_editingCol == 1) {
+        return true;
+    }
+    
+    // 参数类型列（ParamData行的col=1）
+    if (rowType == DllRowType::ParamData && m_editingCol == 1) {
+        return true;
+    }
+    
+    return false;
+}
+
+std::vector<std::wstring> DllEditor::GetAllDataTypes() const {
+    // 从支持库获取所有数据类型
+    return LibraryParser::GetInstance().GetAllDataTypeNames();
+}
+
+void DllEditor::UpdateTypeCompletion() {
+    if (!IsEditingTypeColumn()) {
+        HideTypeCompletion();
+        return;
+    }
+    
+    // 获取当前输入的文本
+    std::wstring input = m_editBuffer;
+    
+    // 转换为小写进行匹配
+    std::wstring lowerInput = input;
+    std::transform(lowerInput.begin(), lowerInput.end(), lowerInput.begin(), ::towlower);
+    
+    // 获取所有数据类型
+    std::vector<std::wstring> allTypes = GetAllDataTypes();
+    
+    // 过滤匹配的类型
+    m_typeCompletionItems.clear();
+    
+    // 用于存储匹配项和分数
+    std::vector<std::pair<std::wstring, int>> scoredItems;
+    
+    for (const auto& type : allTypes) {
+        int score = 0;
+        
+        // 转换类型名为小写
+        std::wstring lowerType = type;
+        std::transform(lowerType.begin(), lowerType.end(), lowerType.begin(), ::towlower);
+        
+        // 1. 中文前缀匹配（如"整"匹配"整数型"）
+        if (type.find(input) == 0) {
+            score = 1000;  // 前缀完全匹配最高分
+        } else if (lowerType.find(lowerInput) == 0) {
+            score = 900;   // 前缀匹配（忽略大小写）
+        } else if (type.find(input) != std::wstring::npos) {
+            score = 500;   // 包含匹配
+        }
+        
+        // 2. 拼音匹配
+        if (score == 0 && !input.empty()) {
+            // 获取类型名的拼音
+            std::wstring fullPinyin = PinyinHelper::GetStringPinyin(type);
+            std::wstring initials = PinyinHelper::GetStringInitials(type);
+            
+            std::wstring lowerFullPinyin = fullPinyin;
+            std::transform(lowerFullPinyin.begin(), lowerFullPinyin.end(), lowerFullPinyin.begin(), ::towlower);
+            std::wstring lowerInitials = initials;
+            std::transform(lowerInitials.begin(), lowerInitials.end(), lowerInitials.begin(), ::towlower);
+            
+            // 首字母匹配（如"zsx"匹配"整数型"）
+            if (lowerInitials.find(lowerInput) == 0) {
+                score = 800;
+            } else if (lowerInitials.find(lowerInput) != std::wstring::npos) {
+                score = 400;
+            }
+            // 全拼匹配（如"zheng"匹配"整数型"）
+            else if (lowerFullPinyin.find(lowerInput) == 0) {
+                score = 700;
+            } else if (lowerFullPinyin.find(lowerInput) != std::wstring::npos) {
+                score = 300;
+            }
+        }
+        
+        if (score > 0) {
+            scoredItems.push_back({type, score});
+        }
+    }
+    
+    // 如果输入为空，显示所有类型
+    if (input.empty()) {
+        for (const auto& type : allTypes) {
+            scoredItems.push_back({type, 100});
+        }
+    }
+    
+    // 按分数排序
+    std::sort(scoredItems.begin(), scoredItems.end(),
+        [](const auto& a, const auto& b) { return a.second > b.second; });
+    
+    // 提取排序后的类型名
+    for (const auto& item : scoredItems) {
+        m_typeCompletionItems.push_back(item.first);
+    }
+    
+    // 检查是否完全匹配：如果输入内容完全等于某个数据类型，且只有一个匹配项，则不显示补全
+    bool isExactMatch = false;
+    if (m_typeCompletionItems.size() == 1 && m_typeCompletionItems[0] == input) {
+        isExactMatch = true;
+    }
+    
+    // 如果有匹配项且不是完全匹配，显示补全窗口
+    if (!m_typeCompletionItems.empty() && !isExactMatch) {
+        ShowTypeCompletion();
+    } else {
+        HideTypeCompletion();
+    }
+}
+
+void DllEditor::ShowTypeCompletion() {
+    if (m_typeCompletionItems.empty()) {
+        HideTypeCompletion();
+        return;
+    }
+    
+    m_showTypeCompletion = true;
+    m_typeCompletionSelectedIndex = 0;
+    m_typeCompletionScrollOffset = 0;
+    
+    // 计算补全窗口位置（在当前编辑单元格的紧贴下方）
+    // 获取客户区
+    RECT clientRect;
+    GetClientRect(m_hWnd, &clientRect);
+    
+    // 计算补全窗口大小
+    int itemCount = (std::min)((int)m_typeCompletionItems.size(), TYPE_COMPLETION_MAX_VISIBLE);
+    int windowHeight = itemCount * TYPE_COMPLETION_ITEM_HEIGHT + 4;
+    int windowWidth = 180;  // 固定宽度
+    
+    // 使用当前编辑单元格的矩形来定位
+    // m_currentCellRect 在 OnLButtonDown 中被设置
+    if (m_currentCellRect.right > m_currentCellRect.left) {
+        // 定位在单元格正下方
+        m_typeCompletionRect.left = m_currentCellRect.left;
+        m_typeCompletionRect.top = m_currentCellRect.bottom;
+        m_typeCompletionRect.right = m_typeCompletionRect.left + windowWidth;
+        m_typeCompletionRect.bottom = m_typeCompletionRect.top + windowHeight;
+    } else {
+        // 备用方案：使用光标位置
+        int cursorX, cursorY;
+        if (GetEditingCursorScreenPos(cursorX, cursorY)) {
+            m_typeCompletionRect.left = cursorX;
+            m_typeCompletionRect.top = cursorY + m_rowHeight;
+            m_typeCompletionRect.right = m_typeCompletionRect.left + windowWidth;
+            m_typeCompletionRect.bottom = m_typeCompletionRect.top + windowHeight;
+        }
+    }
+    
+    // 确保不超出客户区右边界
+    if (m_typeCompletionRect.right > clientRect.right - 20) {
+        int offset = m_typeCompletionRect.right - (clientRect.right - 20);
+        m_typeCompletionRect.left -= offset;
+        m_typeCompletionRect.right -= offset;
+    }
+    
+    // 确保不超出客户区下边界
+    if (m_typeCompletionRect.bottom > clientRect.bottom - 20) {
+        // 如果下方空间不足，显示在单元格上方
+        m_typeCompletionRect.bottom = m_currentCellRect.top;
+        m_typeCompletionRect.top = m_typeCompletionRect.bottom - windowHeight;
+    }
+    
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void DllEditor::HideTypeCompletion() {
+    if (m_showTypeCompletion) {
+        m_showTypeCompletion = false;
+        m_typeCompletionItems.clear();
+        m_typeCompletionSelectedIndex = 0;
+        m_typeCompletionScrollOffset = 0;
+        InvalidateRect(m_hWnd, NULL, FALSE);
+    }
+}
+
+void DllEditor::ApplyTypeCompletion() {
+    if (!m_showTypeCompletion || m_typeCompletionItems.empty()) return;
+    
+    if (m_typeCompletionSelectedIndex >= 0 && 
+        m_typeCompletionSelectedIndex < (int)m_typeCompletionItems.size()) {
+        // 获取选中的类型
+        std::wstring selectedType = m_typeCompletionItems[m_typeCompletionSelectedIndex];
+        
+        // 替换编辑缓冲区内容
+        m_editBuffer = selectedType;
+        m_editingCursorPos = (int)m_editBuffer.length();
+        m_selectionStart = m_selectionEnd = m_editingCursorPos;
+        
+        // 保存到数据结构
+        SetCellValue(m_editingRow, m_editingCol, m_editBuffer);
+        
+        // 隐藏补全窗口
+        HideTypeCompletion();
+        
+        // 通知修改
+        OnTextModified();
+        
+        InvalidateRect(m_hWnd, NULL, FALSE);
+    }
+}
+
+void DllEditor::DrawTypeCompletion(HDC hdc) {
+    if (!m_showTypeCompletion || m_typeCompletionItems.empty()) return;
+    
+    Graphics graphics(hdc);
+    graphics.SetSmoothingMode(SmoothingModeAntiAlias);
+    graphics.SetTextRenderingHint(TextRenderingHintClearTypeGridFit);
+    
+    // 检查是否需要滚动条
+    bool needScrollbar = (int)m_typeCompletionItems.size() > TYPE_COMPLETION_MAX_VISIBLE;
+    int scrollbarWidth = needScrollbar ? 12 : 0;
+    
+    // 绘制背景
+    Color bgColor;
+    bgColor.SetFromCOLORREF(g_CurrentTheme.editorBg);
+    SolidBrush bgBrush(bgColor);
+    
+    RectF bgRect((REAL)m_typeCompletionRect.left, (REAL)m_typeCompletionRect.top,
+                 (REAL)(m_typeCompletionRect.right - m_typeCompletionRect.left),
+                 (REAL)(m_typeCompletionRect.bottom - m_typeCompletionRect.top));
+    graphics.FillRectangle(&bgBrush, bgRect);
+    
+    // 绘制边框
+    Color borderColor;
+    borderColor.SetFromCOLORREF(g_CurrentTheme.grid);
+    Pen borderPen(borderColor, 1.0f);
+    graphics.DrawRectangle(&borderPen, bgRect);
+    
+    // 准备字体
+    FontFamily fontFamily(L"Microsoft YaHei");
+    Font font(&fontFamily, 12.0f, FontStyleRegular, UnitPixel);
+    
+    Color textColor;
+    textColor.SetFromCOLORREF(g_CurrentTheme.text);
+    SolidBrush textBrush(textColor);
+    
+    Color selBgColor(255, 51, 102, 153);  // 选中项背景色（更明显的蓝色）
+    SolidBrush selBgBrush(selBgColor);
+    
+    // 绘制列表项
+    int visibleCount = (std::min)((int)m_typeCompletionItems.size(), TYPE_COMPLETION_MAX_VISIBLE);
+    int y = m_typeCompletionRect.top + 2;
+    int contentWidth = m_typeCompletionRect.right - m_typeCompletionRect.left - 4 - scrollbarWidth;
+    
+    for (int i = 0; i < visibleCount; i++) {
+        int itemIndex = m_typeCompletionScrollOffset + i;
+        if (itemIndex >= (int)m_typeCompletionItems.size()) break;
+        
+        RectF itemRect((REAL)m_typeCompletionRect.left + 2, (REAL)y,
+                       (REAL)contentWidth,
+                       (REAL)TYPE_COMPLETION_ITEM_HEIGHT);
+        
+        // 选中项高亮
+        if (itemIndex == m_typeCompletionSelectedIndex) {
+            graphics.FillRectangle(&selBgBrush, itemRect);
+        }
+        
+        // 绘制文本
+        StringFormat format;
+        format.SetAlignment(StringAlignmentNear);
+        format.SetLineAlignment(StringAlignmentCenter);
+        
+        RectF textRect(itemRect.X + 8, itemRect.Y, itemRect.Width - 16, itemRect.Height);
+        graphics.DrawString(m_typeCompletionItems[itemIndex].c_str(), -1, &font, textRect, &format, &textBrush);
+        
+        y += TYPE_COMPLETION_ITEM_HEIGHT;
+    }
+    
+    // 绘制滚动条
+    if (needScrollbar) {
+        int scrollTrackX = m_typeCompletionRect.right - scrollbarWidth - 2;
+        int scrollTrackY = m_typeCompletionRect.top + 2;
+        int scrollTrackHeight = m_typeCompletionRect.bottom - m_typeCompletionRect.top - 4;
+        
+        // 滚动条轨道背景
+        Color trackColor(60, 128, 128, 128);
+        SolidBrush trackBrush(trackColor);
+        RectF trackRect((REAL)scrollTrackX, (REAL)scrollTrackY, (REAL)scrollbarWidth, (REAL)scrollTrackHeight);
+        graphics.FillRectangle(&trackBrush, trackRect);
+        
+        // 计算滑块位置和大小
+        int totalItems = (int)m_typeCompletionItems.size();
+        int maxScrollOffset = totalItems - TYPE_COMPLETION_MAX_VISIBLE;
+        
+        float thumbRatio = (float)TYPE_COMPLETION_MAX_VISIBLE / totalItems;
+        int thumbHeight = (std::max)(20, (int)(scrollTrackHeight * thumbRatio));
+        
+        float scrollRatio = maxScrollOffset > 0 ? (float)m_typeCompletionScrollOffset / maxScrollOffset : 0;
+        int thumbY = scrollTrackY + (int)((scrollTrackHeight - thumbHeight) * scrollRatio);
+        
+        // 滚动条滑块
+        Color thumbColor(200, 160, 160, 160);
+        SolidBrush thumbBrush(thumbColor);
+        RectF thumbRect((REAL)scrollTrackX + 2, (REAL)thumbY, (REAL)scrollbarWidth - 4, (REAL)thumbHeight);
+        graphics.FillRectangle(&thumbBrush, thumbRect);
     }
 }

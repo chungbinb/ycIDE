@@ -335,7 +335,16 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             Color textColor;
             textColor.SetFromCOLORREF(g_CurrentTheme.text);
             SolidBrush textBrush(textColor);
-            Font font(L"Segoe UI", 10);
+            // 使用支持完整Unicode字符集的字体（包括emoji等特殊字符）
+            Font font(L"Microsoft YaHei UI", 10);
+            
+            // 创建GDI字体用于绘制文件名（GDI的DrawTextW支持emoji）
+            HFONT hGdiFont = CreateFontW(18, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+                DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Microsoft YaHei");
+            HFONT oldFont = (HFONT)SelectObject(hMemDC, hGdiFont);
+            SetTextColor(hMemDC, g_CurrentTheme.text);
+            SetBkMode(hMemDC, TRANSPARENT);
             
             // 绘制文件列表
             int y = 0;
@@ -374,21 +383,38 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                 // 绘制文件图标占位方块
                 graphics.FillRectangle(&iconBrush, (REAL)x, (REAL)y + 8, 14.0f, 14.0f);
                 
-                // 文件名（在图标后面）
-                RectF layoutRect((REAL)x + 18, (REAL)y + 5, (REAL)rect.right - x - 60, (REAL)g_ExplorerData.itemHeight);
-                graphics.DrawString(node->name.c_str(), -1, &font, layoutRect, StringFormat::GenericDefault(), &textBrush);
+                // 文件名（在图标后面）- 使用GDI的DrawTextW以支持emoji
+                RECT textRect;
+                textRect.left = x + 18;
+                textRect.top = y + 5;
+                textRect.right = rect.right - 60;
+                textRect.bottom = y + g_ExplorerData.itemHeight;
+                DrawTextW(hMemDC, node->name.c_str(), -1, &textRect, DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS);
                 
                 // 模块已加载标记
                 if (node->IsModuleFile() && node->isModuleLoaded) {
                     // 在文件名右侧显示 [已加载] 标记
-                    RectF measureRect;
-                    graphics.MeasureString(node->name.c_str(), -1, &font, layoutRect, &measureRect);
+                    // 先测量文件名宽度
+                    SIZE textSize;
+                    GetTextExtentPoint32W(hMemDC, node->name.c_str(), (int)node->name.length(), &textSize);
                     
-                    Color loadedColor(255, 80, 220, 100);
-                    SolidBrush loadedBrush(loadedColor);
-                    Font smallFont(L"Segoe UI", 8);
-                    RectF labelRect((REAL)x + 18 + measureRect.Width + 5, (REAL)y + 7, 60.0f, 16.0f);
-                    graphics.DrawString(L"[已加载]", -1, &smallFont, labelRect, StringFormat::GenericDefault(), &loadedBrush);
+                    // 使用小号字体绘制标记
+                    HFONT hSmallFont = CreateFontW(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                        DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+                        DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Microsoft YaHei");
+                    HFONT prevFont = (HFONT)SelectObject(hMemDC, hSmallFont);
+                    SetTextColor(hMemDC, RGB(80, 220, 100));
+                    
+                    RECT labelRect;
+                    labelRect.left = x + 18 + textSize.cx + 5;
+                    labelRect.top = y + 7;
+                    labelRect.right = labelRect.left + 60;
+                    labelRect.bottom = y + g_ExplorerData.itemHeight;
+                    DrawTextW(hMemDC, L"[已加载]", -1, &labelRect, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+                    
+                    SelectObject(hMemDC, prevFont);
+                    DeleteObject(hSmallFont);
+                    SetTextColor(hMemDC, g_CurrentTheme.text); // 恢复文本颜色
                 }
                 
                 // 修改标记 (圆角矩形 + 圆点)
@@ -409,6 +435,10 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                 
                 y += g_ExplorerData.itemHeight;
             }
+            
+            // 清理GDI字体资源
+            SelectObject(hMemDC, oldFont);
+            DeleteObject(hGdiFont);
             
             BitBlt(hdc, 0, 0, rect.right, rect.bottom, hMemDC, 0, 0, SRCCOPY);
             

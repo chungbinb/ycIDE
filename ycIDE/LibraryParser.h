@@ -26,6 +26,14 @@ struct LibraryCommand {
     bool needsBrackets;        // 是否需要括号
 };
 
+// 支持库数据类型
+struct LibraryDataType {
+    std::wstring name;         // 中文名称
+    std::wstring englishName;  // 英文名称
+    std::wstring description;  // 说明
+    std::wstring library;      // 所属支持库
+};
+
 // 支持库解析器
 class LibraryParser {
 public:
@@ -41,6 +49,12 @@ public:
     
     // 获取所有命令
     const std::vector<LibraryCommand>& GetCommands() const { return commands; }
+    
+    // 获取所有数据类型
+    const std::vector<LibraryDataType>& GetDataTypes() const { return dataTypes; }
+    
+    // 获取所有数据类型名称（包括基础类型）
+    std::vector<std::wstring> GetAllDataTypeNames() const;
     
     // 根据中文名或英文名查找命令
     const LibraryCommand* FindCommand(const std::wstring& name) const;
@@ -58,6 +72,7 @@ private:
     LibraryParser() = default;
     
     std::vector<LibraryCommand> commands;
+    std::vector<LibraryDataType> dataTypes;  // 支持库数据类型
     std::map<std::wstring, size_t> nameIndex;  // 名称到命令索引的映射
     std::wstring lastError_;  // 最后的错误信息
 };

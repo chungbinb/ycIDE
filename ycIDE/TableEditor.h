@@ -174,9 +174,9 @@ protected:
     virtual void OnLButtonDown(int x, int y);
     virtual void OnLButtonUp(int x, int y);
     virtual void OnRButtonDown(int x, int y);  // 右键点击
-    void OnMouseWheel(int delta);
+    virtual void OnMouseWheel(int delta);
     virtual void OnKeyDown(WPARAM wParam);
-    void OnChar(WPARAM wParam);
+    virtual void OnChar(WPARAM wParam);
     
     // === 编辑相关 ===
     virtual void StartEditCell(int row, int col, int clickX);

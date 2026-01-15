@@ -67,6 +67,29 @@ typedef struct {
     PARG_INFO   m_pBeginArgInfo;    // 参数信息指针
 } CMD_INFO, * PCMD_INFO;
 
+// 数据类型标志
+#define LDT_IS_HIDED            (1 << 0)    // 是否隐藏
+#define LDT_IS_ERROR            (1 << 1)    // 是否错误
+#define LDT_WIN_UNIT            (1 << 6)    // 是否窗口组件
+
+// 自定义数据类型结构
+typedef struct {
+    const char* m_szName;           // 数据类型名称
+    const char* m_szEgName;         // 英文名称
+    const char* m_szExplain;        // 说明
+    int         m_nCmdCount;        // 成员命令数目
+    int*        m_pnCmdsIndex;      // 成员命令索引
+    DWORD       m_dwState;          // 状态标志
+    DWORD       m_dwUnitBmpID;      // 图标ID
+    int         m_nEventCount;      // 事件数目
+    void*       m_pEventBegin;      // 事件信息
+    int         m_nPropertyCount;   // 属性数目
+    void*       m_pPropertyBegin;   // 属性信息
+    void*       m_pfnGetInterface;  // 接口函数
+    int         m_nElementCount;    // 成员数目
+    void*       m_pElementBegin;    // 成员信息
+} LIB_DATA_TYPE_INFO, * PLIB_DATA_TYPE_INFO;
+
 // 支持库信息结构
 typedef struct {
     DWORD       m_dwLibFormatVer;   // 库格式版本
@@ -91,7 +114,7 @@ typedef struct {
     const char* m_szHomePage;       // 主页
     const char* m_szOther;          // 其它信息
     int         m_nDataTypeCount;   // 自定义数据类型数目
-    void*       m_pDataType;        // 数据类型
+    PLIB_DATA_TYPE_INFO m_pDataType; // 数据类型
     int         m_nCategoryCount;   // 命令类别数目
     const char* m_szzCategory;      // 命令类别名称
     int         m_nCmdCount;        // 命令数目
@@ -109,6 +132,15 @@ typedef struct {
 
 // GetNewInf 函数原型
 typedef PLIB_INFO(WINAPI* PFN_GET_LIB_INFO)();
+
+// FNE 数据类型信息
+struct FneDataTypeInfo {
+    std::wstring name;          // 数据类型名称
+    std::wstring englishName;   // 英文名称
+    std::wstring description;   // 说明
+    bool isHidden;              // 是否隐藏
+    bool isWindowUnit;          // 是否窗口组件
+};
 
 // FNE 命令信息类
 struct FneCommandInfo {
@@ -132,6 +164,9 @@ public:
     // 获取所有命令信息
     const std::vector<FneCommandInfo>& GetCommands() const { return commands; }
 
+    // 获取所有数据类型
+    const std::vector<FneDataTypeInfo>& GetDataTypes() const { return dataTypes; }
+
     // 获取支持库名称
     std::wstring GetLibraryName() const { return libraryName; }
 
@@ -141,6 +176,7 @@ public:
 private:
     HMODULE hModule;                    // DLL 句柄
     std::vector<FneCommandInfo> commands;  // 命令信息
+    std::vector<FneDataTypeInfo> dataTypes; // 数据类型信息
     std::wstring libraryName;           // 支持库名称
     std::wstring libraryDescription;    // 支持库说明
 

@@ -7,6 +7,7 @@
 #include "Utils.h"
 #include "Keyword.h"
 #include "LibraryParser.h"
+#include "PinyinHelper.h"
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -22,6 +23,10 @@ using namespace Gdiplus;
 
 extern WCHAR szYiEditorClass[];
 extern bool g_LeftPanelVisible;  // 左侧AI面板是否可见
+
+// 类型补全相关常量
+static const int TYPE_COMPLETION_MAX_VISIBLE = 8;
+static const int TYPE_COMPLETION_ITEM_HEIGHT = 24;
 
 // 打勾图片
 static HBITMAP g_hCheckIcon = nullptr;
@@ -132,6 +137,291 @@ static void ApplyCompletion(HWND hWnd, EditorData* data, EditorDocument* doc) {
     doc->cursorCol = wordStart + (int)keyword.length();
     
     data->showCompletion = false;
+    doc->modified = true;
+    InvalidateRect(hWnd, NULL, TRUE);
+}
+
+// 获取所有数据类型
+static std::vector<std::wstring> GetAllDataTypes() {
+    // 从支持库获取所有数据类型
+    return LibraryParser::GetInstance().GetAllDataTypeNames();
+}
+
+// 检查当前是否在类型列编辑（子程序返回类型、参数类型、变量类型）
+static bool IsEditingTypeColumn(EditorDocument* doc) {
+    if (!doc || doc->cursorLine < 0 || doc->cursorLine >= (int)doc->lines.size()) {
+        return false;
+    }
+    
+    const std::wstring& line = doc->lines[doc->cursorLine];
+    
+    // 检查是否是表格行（包含Tab）
+    if (line.find(L'\t') == std::wstring::npos) {
+        return false;
+    }
+    
+    // 检查是否是表头行（不允许编辑）
+    if (line.find(L"子程序名") == 0 || line.find(L"参数名") == 0 || 
+        line.find(L"变量名") == 0 || line.find(L"程序集名") == 0) {
+        return false;
+    }
+    
+    // 解析行获取单元格
+    std::vector<std::wstring> cells;
+    size_t start = 0, pos = 0;
+    while ((pos = line.find(L'\t', start)) != std::wstring::npos) {
+        cells.push_back(line.substr(start, pos - start));
+        start = pos + 1;
+    }
+    cells.push_back(line.substr(start));
+    
+    // 计算光标所在单元格索引
+    int charCount = 0;
+    int cellIndex = 0;
+    for (size_t i = 0; i < cells.size(); i++) {
+        int cellLen = (int)cells[i].length();
+        if (doc->cursorCol <= charCount + cellLen) {
+            cellIndex = (int)i;
+            break;
+        }
+        charCount += cellLen + 1;  // +1 for tab
+        cellIndex = (int)i + 1;
+    }
+    
+    // 向上查找表头确定表类型
+    for (int searchLine = doc->cursorLine - 1; searchLine >= 0; searchLine--) {
+        const std::wstring& headerLine = doc->lines[searchLine];
+        if (headerLine.empty()) continue;
+        
+        // 子程序表：类型在第1列（返回值类型）
+        if (headerLine.find(L"子程序名") == 0) {
+            return cellIndex == 1;
+        }
+        // 参数表：类型在第1列
+        if (headerLine.find(L"参数名") == 0) {
+            return cellIndex == 1;
+        }
+        // 局部变量表：类型在第1列
+        if (headerLine.find(L"变量名") == 0 && headerLine.find(L"静态") != std::wstring::npos) {
+            return cellIndex == 1;
+        }
+        // 程序集变量表：类型在第1列
+        if (headerLine.find(L"变量名") == 0 && headerLine.find(L"静态") == std::wstring::npos) {
+            return cellIndex == 1;
+        }
+        // 程序集表头：跳出
+        if (headerLine.find(L"程序集名") == 0) {
+            break;
+        }
+    }
+    
+    return false;
+}
+
+// 检查当前是否在表格行（包含Tab的行，通常是子程序表、参数表、变量表等）
+static bool IsInTableRow(EditorDocument* doc) {
+    if (!doc || doc->cursorLine < 0 || doc->cursorLine >= (int)doc->lines.size()) {
+        return false;
+    }
+    
+    const std::wstring& line = doc->lines[doc->cursorLine];
+    
+    // 参数行不是表格行
+    if (line.length() > 0 && line[0] == L'\u2060') {
+        return false;
+    }
+    
+    // 缩进行（流程控制内的代码）不是表格行
+    if (line.length() > 0 && line[0] == L' ') {
+        return false;
+    }
+    
+    // 检查是否包含Tab（表格行特征）
+    return line.find(L'\t') != std::wstring::npos;
+}
+
+// 获取当前单元格文本（用于类型补全）
+static std::wstring GetCurrentCellText(EditorDocument* doc, int& cellStartCol) {
+    cellStartCol = 0;
+    if (!doc || doc->cursorLine < 0 || doc->cursorLine >= (int)doc->lines.size()) {
+        return L"";
+    }
+    
+    const std::wstring& line = doc->lines[doc->cursorLine];
+    
+    // 解析行获取单元格
+    std::vector<std::wstring> cells;
+    std::vector<int> cellStarts;
+    size_t start = 0, pos = 0;
+    while ((pos = line.find(L'\t', start)) != std::wstring::npos) {
+        cellStarts.push_back((int)start);
+        cells.push_back(line.substr(start, pos - start));
+        start = pos + 1;
+    }
+    cellStarts.push_back((int)start);
+    cells.push_back(line.substr(start));
+    
+    // 计算光标所在单元格索引
+    int charCount = 0;
+    for (size_t i = 0; i < cells.size(); i++) {
+        int cellLen = (int)cells[i].length();
+        if (doc->cursorCol <= charCount + cellLen) {
+            cellStartCol = cellStarts[i];
+            return cells[i];
+        }
+        charCount += cellLen + 1;  // +1 for tab
+    }
+    
+    if (!cells.empty()) {
+        cellStartCol = cellStarts.back();
+        return cells.back();
+    }
+    
+    return L"";
+}
+
+// 隐藏类型补全窗口
+static void HideTypeCompletion(EditorData* data) {
+    if (data->showTypeCompletion) {
+        data->showTypeCompletion = false;
+        data->typeCompletionItems.clear();
+        data->typeCompletionSelectedIndex = 0;
+        data->typeCompletionScrollOffset = 0;
+    }
+}
+
+// 更新类型补全列表
+static void UpdateTypeCompletion(HWND hWnd, EditorData* data, EditorDocument* doc) {
+    if (!IsEditingTypeColumn(doc)) {
+        HideTypeCompletion(data);
+        return;
+    }
+    
+    // 获取当前单元格文本
+    int cellStartCol;
+    std::wstring input = GetCurrentCellText(doc, cellStartCol);
+    
+    // 转换为小写进行匹配
+    std::wstring lowerInput = input;
+    std::transform(lowerInput.begin(), lowerInput.end(), lowerInput.begin(), ::towlower);
+    
+    // 获取所有数据类型
+    std::vector<std::wstring> allTypes = GetAllDataTypes();
+    
+    // 过滤匹配的类型
+    data->typeCompletionItems.clear();
+    
+    // 用于存储匹配项和分数
+    std::vector<std::pair<std::wstring, int>> scoredItems;
+    
+    for (const auto& type : allTypes) {
+        int score = 0;
+        
+        // 转换类型名为小写
+        std::wstring lowerType = type;
+        std::transform(lowerType.begin(), lowerType.end(), lowerType.begin(), ::towlower);
+        
+        // 1. 中文前缀匹配（如"整"匹配"整数型"）
+        if (type.find(input) == 0) {
+            score = 1000;  // 前缀完全匹配最高分
+        } else if (lowerType.find(lowerInput) == 0) {
+            score = 900;   // 前缀匹配（忽略大小写）
+        } else if (type.find(input) != std::wstring::npos) {
+            score = 500;   // 包含匹配
+        }
+        
+        // 2. 拼音匹配
+        if (score == 0 && !input.empty()) {
+            // 获取类型名的拼音
+            std::wstring fullPinyin = PinyinHelper::GetStringPinyin(type);
+            std::wstring initials = PinyinHelper::GetStringInitials(type);
+            
+            std::wstring lowerFullPinyin = fullPinyin;
+            std::transform(lowerFullPinyin.begin(), lowerFullPinyin.end(), lowerFullPinyin.begin(), ::towlower);
+            std::wstring lowerInitials = initials;
+            std::transform(lowerInitials.begin(), lowerInitials.end(), lowerInitials.begin(), ::towlower);
+            
+            // 首字母匹配（如"zsx"匹配"整数型"）
+            if (lowerInitials.find(lowerInput) == 0) {
+                score = 800;
+            } else if (lowerInitials.find(lowerInput) != std::wstring::npos) {
+                score = 400;
+            }
+            // 全拼匹配（如"zheng"匹配"整数型"）
+            else if (lowerFullPinyin.find(lowerInput) == 0) {
+                score = 700;
+            } else if (lowerFullPinyin.find(lowerInput) != std::wstring::npos) {
+                score = 300;
+            }
+        }
+        
+        if (score > 0) {
+            scoredItems.push_back({type, score});
+        }
+    }
+    
+    // 如果输入为空，显示所有类型
+    if (input.empty()) {
+        for (const auto& type : allTypes) {
+            scoredItems.push_back({type, 100});
+        }
+    }
+    
+    // 按分数排序
+    std::sort(scoredItems.begin(), scoredItems.end(),
+        [](const auto& a, const auto& b) { return a.second > b.second; });
+    
+    // 提取排序后的类型名
+    for (const auto& item : scoredItems) {
+        data->typeCompletionItems.push_back(item.first);
+    }
+    
+    // 检查是否完全匹配：如果输入内容完全等于某个数据类型，且只有一个匹配项，则不显示补全
+    bool isExactMatch = false;
+    if (data->typeCompletionItems.size() == 1 && data->typeCompletionItems[0] == input) {
+        isExactMatch = true;
+    }
+    
+    // 如果有匹配项且不是完全匹配，显示补全窗口
+    if (!data->typeCompletionItems.empty() && !isExactMatch) {
+        data->showTypeCompletion = true;
+        data->typeCompletionSelectedIndex = 0;
+        data->typeCompletionScrollOffset = 0;
+        // 补全窗口位置将在绘制时计算
+    } else {
+        HideTypeCompletion(data);
+    }
+}
+
+// 应用类型补全
+static void ApplyTypeCompletion(HWND hWnd, EditorData* data, EditorDocument* doc) {
+    if (!data->showTypeCompletion || data->typeCompletionItems.empty()) return;
+    if (data->typeCompletionSelectedIndex < 0 || 
+        data->typeCompletionSelectedIndex >= (int)data->typeCompletionItems.size()) return;
+    
+    // 获取选中的类型
+    std::wstring selectedType = data->typeCompletionItems[data->typeCompletionSelectedIndex];
+    
+    // 获取当前单元格信息
+    int cellStartCol;
+    std::wstring currentCell = GetCurrentCellText(doc, cellStartCol);
+    
+    // 替换单元格内容
+    std::wstring& line = doc->lines[doc->cursorLine];
+    
+    // 删除当前单元格内容
+    int cellEndCol = cellStartCol + (int)currentCell.length();
+    line.erase(cellStartCol, cellEndCol - cellStartCol);
+    
+    // 插入选中的类型
+    line.insert(cellStartCol, selectedType);
+    
+    // 移动光标到类型末尾
+    doc->cursorCol = cellStartCol + (int)selectedType.length();
+    
+    // 隐藏补全窗口
+    HideTypeCompletion(data);
+    
     doc->modified = true;
     InvalidateRect(hWnd, NULL, TRUE);
 }
@@ -473,7 +763,9 @@ EditorData::EditorData() : activeDocIndex(-1), fontSize(12), rowHeight(26), tabH
     showCompletion(false), completionX(0), completionY(0), selectedCompletionIndex(0),
     completionScrollOffset(0), completionMaxVisible(8),
     isDraggingCompletionScroll(false), completionDragStartY(0), completionDragStartOffset(0),
-    hRightArrowCursor(NULL), showWelcomePage(true) {
+    hRightArrowCursor(NULL), showWelcomePage(true),
+    showTypeCompletion(false), typeCompletionSelectedIndex(0), typeCompletionScrollOffset(0),
+    currentCellIndex(-1), skipNextSpaceForType(false) {
     // 启动时显示欢迎页，不创建默认文档
     
     // 初始化滚动条矩形
@@ -481,6 +773,10 @@ EditorData::EditorData() : activeDocIndex(-1), fontSize(12), rowHeight(26), tabH
     vScrollThumbRect = {0, 0, 0, 0};
     hScrollbarRect = {0, 0, 0, 0};
     hScrollThumbRect = {0, 0, 0, 0};
+    
+    // 初始化类型补全相关
+    typeCompletionRect = {0, 0, 0, 0};
+    currentCellRect = {0, 0, 0, 0};
     
     // 创建右箭头光标（镜像的箭头，用于行号区域）
     // 使用系统光标创建镜像版本
@@ -1684,6 +1980,49 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
             }
             
             POINT pt = {mouseX, mouseY};
+            
+            // 检查是否点击了类型补全窗口
+            if (data->showTypeCompletion && PtInRect(&data->typeCompletionRect, pt)) {
+                EditorDocument* doc = data->GetActiveDoc();
+                if (doc) {
+                    // 检查是否点击了滚动条区域
+                    bool needScrollbar = (int)data->typeCompletionItems.size() > TYPE_COMPLETION_MAX_VISIBLE;
+                    int scrollbarWidth = needScrollbar ? 12 : 0;
+                    int scrollbarLeft = data->typeCompletionRect.right - scrollbarWidth;
+                    
+                    if (needScrollbar && mouseX >= scrollbarLeft) {
+                        // 点击了滚动条区域 - 简单处理，跳转到该位置
+                        int relativeY = mouseY - data->typeCompletionRect.top;
+                        int popupHeight = data->typeCompletionRect.bottom - data->typeCompletionRect.top;
+                        int maxScroll = std::max(0, (int)data->typeCompletionItems.size() - TYPE_COMPLETION_MAX_VISIBLE);
+                        
+                        if (maxScroll > 0) {
+                            float scrollRatio = (float)relativeY / popupHeight;
+                            data->typeCompletionScrollOffset = (int)(scrollRatio * maxScroll);
+                            if (data->typeCompletionScrollOffset < 0) data->typeCompletionScrollOffset = 0;
+                            if (data->typeCompletionScrollOffset > maxScroll) data->typeCompletionScrollOffset = maxScroll;
+                            InvalidateRect(hWnd, NULL, TRUE);
+                        }
+                        return 0;
+                    }
+                    
+                    // 计算点击了哪一项
+                    int itemY = mouseY - data->typeCompletionRect.top - 2;
+                    int clickedIndex = data->typeCompletionScrollOffset + (itemY / TYPE_COMPLETION_ITEM_HEIGHT);
+                    
+                    if (clickedIndex >= 0 && clickedIndex < (int)data->typeCompletionItems.size()) {
+                        data->typeCompletionSelectedIndex = clickedIndex;
+                        ApplyTypeCompletion(hWnd, data, doc);
+                    }
+                }
+                return 0;
+            }
+            
+            // 点击其他区域时隐藏类型补全窗口
+            if (data->showTypeCompletion) {
+                HideTypeCompletion(data);
+                InvalidateRect(hWnd, NULL, TRUE);
+            }
             
             // 检查是否点击了自动完成弹窗
             if (data->showCompletion && PtInRect(&data->completionRect, pt)) {
@@ -3866,6 +4205,12 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     
                     std::wstring& line = doc->lines[doc->cursorLine];
                     if (doc->cursorCol <= (int)line.length()) {
+                        // 检查是否需要跳过空格（类型补全空格上屏后）
+                        if (ch == L' ' && data->skipNextSpaceForType) {
+                            data->skipNextSpaceForType = false;
+                            return 0;
+                        }
+                        
                         line.insert(doc->cursorCol, 1, ch);
                         doc->cursorCol++;
                         doc->modified = true;
@@ -3875,25 +4220,46 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             SyncParamLineToCommandLine(doc, doc->cursorLine);
                         }
                         
-                        if (ch != L' ') {
+                        // 补全逻辑：
+                        // 1. 表格行中只有类型列需要类型补全，其他列不需要任何补全
+                        // 2. 只有普通代码行才需要命令补全
+                        
+                        if (IsInTableRow(doc)) {
+                            // 在表格行中
+                            if (IsEditingTypeColumn(doc)) {
+                                // 在类型列，触发类型补全
+                                UpdateTypeCompletion(hWnd, data, doc);
+                                data->showCompletion = false;  // 确保命令补全窗口关闭
+                            } else {
+                                // 表格的其他列，不需要任何补全
+                                HideTypeCompletion(data);
+                                data->showCompletion = false;
+                            }
+                        } else if (ch != L' ') {
+                            // 非表格行（普通代码行），触发命令补全
+                            HideTypeCompletion(data);
                             int wordStart;
                             std::wstring currentWord = GetCurrentWord(line, doc->cursorCol, wordStart);
-                            if (!currentWord.empty() && currentWord.length() >= 1) {  // 改为1个字符就触发补全
+                            if (!currentWord.empty() && currentWord.length() >= 1) {
                                 std::vector<CompletionItem> completions = KeywordManager::GetInstance().GetCompletions(currentWord);
                                 if (!completions.empty()) {
                                     data->showCompletion = true;
                                     data->completionItems = completions;
                                     data->selectedCompletionIndex = 0;
-                                    data->completionScrollOffset = 0;  // 重置滚动偏移
+                                    data->completionScrollOffset = 0;
                                     data->currentWord = currentWord;
-                                    data->completionMaxVisible = 8;  // 设置最大可见项数
-                                    data->completionItemHeight = 24;  // 设置项目高度
+                                    data->completionMaxVisible = 8;
+                                    data->completionItemHeight = 24;
                                 } else {
                                     data->showCompletion = false;
                                 }
                             } else {
                                 data->showCompletion = false;
                             }
+                        } else {
+                            // 空格输入时，隐藏所有补全
+                            HideTypeCompletion(data);
+                            data->showCompletion = false;
                         }
                         
                         InvalidateRect(hWnd, NULL, TRUE);
@@ -4469,8 +4835,21 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         SyncParamLineToCommandLine(doc, doc->cursorLine);
                     }
                     
-                    // 更新自动补全提示
-                    if (data->showCompletion) {
+                    // 删除后更新补全提示
+                    if (IsInTableRow(doc)) {
+                        // 在表格行中
+                        if (IsEditingTypeColumn(doc)) {
+                            // 在类型列，触发类型补全
+                            UpdateTypeCompletion(hWnd, data, doc);
+                            data->showCompletion = false;
+                        } else {
+                            // 表格的其他列，不需要任何补全
+                            HideTypeCompletion(data);
+                            data->showCompletion = false;
+                        }
+                    } else if (data->showCompletion) {
+                        // 非表格行，更新命令补全
+                        HideTypeCompletion(data);
                         int wordStart;
                         std::wstring currentWord = GetCurrentWord(line, doc->cursorCol, wordStart);
                         if (!currentWord.empty() && currentWord.length() >= 1) {
@@ -4622,6 +5001,44 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
             
             EditorDocument* doc = data->GetActiveDoc();
             if (!doc) return 0;
+            
+            // 如果类型补全窗口正在显示，优先处理
+            if (data->showTypeCompletion && !data->typeCompletionItems.empty()) {
+                switch (wParam) {
+                case VK_UP:
+                    if (data->typeCompletionSelectedIndex > 0) {
+                        data->typeCompletionSelectedIndex--;
+                        // 确保选中项可见
+                        if (data->typeCompletionSelectedIndex < data->typeCompletionScrollOffset) {
+                            data->typeCompletionScrollOffset = data->typeCompletionSelectedIndex;
+                        }
+                        InvalidateRect(hWnd, NULL, TRUE);
+                    }
+                    return 0;
+                case VK_DOWN:
+                    if (data->typeCompletionSelectedIndex < (int)data->typeCompletionItems.size() - 1) {
+                        data->typeCompletionSelectedIndex++;
+                        // 确保选中项可见
+                        if (data->typeCompletionSelectedIndex >= data->typeCompletionScrollOffset + TYPE_COMPLETION_MAX_VISIBLE) {
+                            data->typeCompletionScrollOffset = data->typeCompletionSelectedIndex - TYPE_COMPLETION_MAX_VISIBLE + 1;
+                        }
+                        InvalidateRect(hWnd, NULL, TRUE);
+                    }
+                    return 0;
+                case VK_TAB:
+                case VK_RETURN:
+                    ApplyTypeCompletion(hWnd, data, doc);
+                    return 0;
+                case VK_SPACE:
+                    ApplyTypeCompletion(hWnd, data, doc);
+                    data->skipNextSpaceForType = true;  // 标记跳过下一个空格
+                    return 0;
+                case VK_ESCAPE:
+                    HideTypeCompletion(data);
+                    InvalidateRect(hWnd, NULL, TRUE);
+                    return 0;
+                }
+            }
             
             // 如果自动完成弹窗正在显示，处理特殊键
             if (data->showCompletion && !data->completionItems.empty()) {
@@ -4934,6 +5351,25 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         if (line.length() > 0 && line[0] == L'\u2060') {
                             SyncParamLineToCommandLine(doc, doc->cursorLine);
                         }
+                        
+                        // 删除后更新补全提示
+                        if (IsInTableRow(doc)) {
+                            // 在表格行中
+                            if (IsEditingTypeColumn(doc)) {
+                                // 在类型列，触发类型补全
+                                UpdateTypeCompletion(hWnd, data, doc);
+                                data->showCompletion = false;
+                            } else {
+                                // 表格的其他列，不需要任何补全
+                                HideTypeCompletion(data);
+                                data->showCompletion = false;
+                            }
+                        } else {
+                            // 非表格行，隐藏类型补全
+                            HideTypeCompletion(data);
+                        }
+                        
+                        InvalidateRect(hWnd, NULL, TRUE);
                     } else if (doc->cursorLine < (int)doc->lines.size() - 1) {
                         // 保护前2行不被合并（即不能删除第1行和第2行）
                         // 如果在第0行末尾按Delete，会合并第1行 -> 禁止
@@ -5069,6 +5505,41 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
             
             int delta = GET_WHEEL_DELTA_WPARAM(wParam);
             int lines = delta / WHEEL_DELTA;
+            
+            // 获取鼠标位置
+            POINT pt;
+            pt.x = GET_X_LPARAM(lParam);
+            pt.y = GET_Y_LPARAM(lParam);
+            ScreenToClient(hWnd, &pt);
+            
+            // 如果类型补全窗口打开，检查鼠标是否在补全窗口内
+            if (data->showTypeCompletion && !data->typeCompletionItems.empty()) {
+                if (PtInRect(&data->typeCompletionRect, pt)) {
+                    // 在类型补全窗口内滚动，滚动补全列表
+                    int scrollLines = lines > 0 ? -1 : 1;  // 向上滚动减少偏移
+                    int newOffset = data->typeCompletionScrollOffset + scrollLines;
+                    int maxOffset = std::max(0, (int)data->typeCompletionItems.size() - TYPE_COMPLETION_MAX_VISIBLE);
+                    
+                    newOffset = std::max(0, std::min(newOffset, maxOffset));
+                    
+                    if (newOffset != data->typeCompletionScrollOffset) {
+                        data->typeCompletionScrollOffset = newOffset;
+                        
+                        // 确保选中项在可见范围内
+                        if (data->typeCompletionSelectedIndex < data->typeCompletionScrollOffset) {
+                            data->typeCompletionSelectedIndex = data->typeCompletionScrollOffset;
+                        } else if (data->typeCompletionSelectedIndex >= data->typeCompletionScrollOffset + TYPE_COMPLETION_MAX_VISIBLE) {
+                            data->typeCompletionSelectedIndex = data->typeCompletionScrollOffset + TYPE_COMPLETION_MAX_VISIBLE - 1;
+                        }
+                        
+                        InvalidateRect(hWnd, NULL, TRUE);
+                    }
+                    return 0;
+                } else {
+                    // 鼠标不在类型补全窗口内，隐藏补全窗口
+                    HideTypeCompletion(data);
+                }
+            }
             
             // 如果自动补全窗口打开，优先处理补全列表滚动
             if (data->showCompletion && !data->completionItems.empty()) {
@@ -7141,6 +7612,123 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     HBRUSH hThumbBrush = CreateSolidBrush(RGB(120, 120, 120));
                     FillRect(hdc, &scrollThumb, hThumbBrush);
                     DeleteObject(hThumbBrush);
+                }
+            }
+            
+            // 绘制数据类型补全窗口
+            if (data->showTypeCompletion && !data->typeCompletionItems.empty()) {
+                // 计算弹窗位置（在当前光标下方）
+                int typeCompletionX = caretX;
+                int typeCompletionY = caretY + rowHeight;
+                
+                // 计算弹窗大小
+                int typeItemHeight = TYPE_COMPLETION_ITEM_HEIGHT;
+                int typePopupWidth = 180;
+                int typeVisibleItems = std::min((int)data->typeCompletionItems.size(), TYPE_COMPLETION_MAX_VISIBLE);
+                int typePopupHeight = typeVisibleItems * typeItemHeight + 4;
+                bool typeNeedScrollbar = (int)data->typeCompletionItems.size() > TYPE_COMPLETION_MAX_VISIBLE;
+                int typeScrollbarWidth = typeNeedScrollbar ? 12 : 0;
+                
+                // 确保弹窗不超出窗口边界
+                if (typeCompletionX + typePopupWidth > rect.right - data->scrollbarWidth) {
+                    typeCompletionX = rect.right - data->scrollbarWidth - typePopupWidth;
+                }
+                if (typeCompletionY + typePopupHeight > rect.bottom - data->scrollbarWidth) {
+                    typeCompletionY = caretY - typePopupHeight; // 显示在光标上方
+                }
+                
+                // 保存弹窗区域
+                data->typeCompletionRect = {typeCompletionX, typeCompletionY, 
+                                            typeCompletionX + typePopupWidth, 
+                                            typeCompletionY + typePopupHeight};
+                
+                // 确保滚动偏移有效
+                if (data->typeCompletionScrollOffset < 0) data->typeCompletionScrollOffset = 0;
+                int typeMaxScroll = std::max(0, (int)data->typeCompletionItems.size() - TYPE_COMPLETION_MAX_VISIBLE);
+                if (data->typeCompletionScrollOffset > typeMaxScroll) data->typeCompletionScrollOffset = typeMaxScroll;
+                
+                // 确保选中项可见
+                if (data->typeCompletionSelectedIndex < data->typeCompletionScrollOffset) {
+                    data->typeCompletionScrollOffset = data->typeCompletionSelectedIndex;
+                }
+                if (data->typeCompletionSelectedIndex >= data->typeCompletionScrollOffset + TYPE_COMPLETION_MAX_VISIBLE) {
+                    data->typeCompletionScrollOffset = data->typeCompletionSelectedIndex - TYPE_COMPLETION_MAX_VISIBLE + 1;
+                }
+                
+                // 绘制弹窗背景
+                RECT typePopupRect = data->typeCompletionRect;
+                HBRUSH hTypePopupBrush = CreateSolidBrush(RGB(40, 40, 40));
+                FillRect(hdc, &typePopupRect, hTypePopupBrush);
+                DeleteObject(hTypePopupBrush);
+                
+                // 绘制边框
+                HPEN hTypeBorderPen = CreatePen(PS_SOLID, 1, RGB(80, 80, 80));
+                HPEN hOldTypePen = (HPEN)SelectObject(hdc, hTypeBorderPen);
+                HBRUSH hOldTypeBrush = (HBRUSH)SelectObject(hdc, GetStockObject(NULL_BRUSH));
+                Rectangle(hdc, typeCompletionX, typeCompletionY, 
+                         typeCompletionX + typePopupWidth, typeCompletionY + typePopupHeight);
+                SelectObject(hdc, hOldTypeBrush);
+                SelectObject(hdc, hOldTypePen);
+                DeleteObject(hTypeBorderPen);
+                
+                // 绘制每个类型选项
+                int typeItemY = typeCompletionY + 2;
+                int typeEndIndex = std::min(data->typeCompletionScrollOffset + typeVisibleItems, 
+                                           (int)data->typeCompletionItems.size());
+                for (int i = data->typeCompletionScrollOffset; i < typeEndIndex; i++) {
+                    bool isTypeSelected = (i == data->typeCompletionSelectedIndex);
+                    
+                    // 绘制选中项背景
+                    if (isTypeSelected) {
+                        RECT typeSelRect = {typeCompletionX + 1, typeItemY, 
+                                           typeCompletionX + typePopupWidth - typeScrollbarWidth - 1, 
+                                           typeItemY + typeItemHeight};
+                        HBRUSH hTypeSelBrush = CreateSolidBrush(RGB(60, 100, 150));
+                        FillRect(hdc, &typeSelRect, hTypeSelBrush);
+                        DeleteObject(hTypeSelBrush);
+                    }
+                    
+                    // 绘制类型图标
+                    SetBkMode(hdc, TRANSPARENT);
+                    SetTextColor(hdc, RGB(78, 201, 176));  // 青色
+                    RECT typeIconRect = {typeCompletionX + 5, typeItemY, 
+                                        typeCompletionX + 22, typeItemY + typeItemHeight};
+                    DrawTextW(hdc, L"▣", 1, &typeIconRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+                    
+                    // 绘制类型名称
+                    SetTextColor(hdc, RGB(220, 220, 220));
+                    RECT typeTextRect = {typeCompletionX + 25, typeItemY, 
+                                        typeCompletionX + typePopupWidth - typeScrollbarWidth - 5, 
+                                        typeItemY + typeItemHeight};
+                    DrawTextW(hdc, data->typeCompletionItems[i].c_str(), -1, &typeTextRect, 
+                             DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+                    
+                    typeItemY += typeItemHeight;
+                }
+                
+                // 绘制滚动条
+                if (typeNeedScrollbar) {
+                    int typeScrollX = typeCompletionX + typePopupWidth - typeScrollbarWidth;
+                    RECT typeScrollTrack = {typeScrollX, typeCompletionY, 
+                                           typeScrollX + typeScrollbarWidth, 
+                                           typeCompletionY + typePopupHeight};
+                    HBRUSH hTypeTrackBrush = CreateSolidBrush(RGB(60, 60, 60));
+                    FillRect(hdc, &typeScrollTrack, hTypeTrackBrush);
+                    DeleteObject(hTypeTrackBrush);
+                    
+                    // 计算滚动块大小和位置
+                    float typeThumbRatio = (float)TYPE_COMPLETION_MAX_VISIBLE / data->typeCompletionItems.size();
+                    int typeThumbHeight = std::max(20, (int)(typePopupHeight * typeThumbRatio));
+                    float typeScrollRatio = typeMaxScroll > 0 ? 
+                                           (float)data->typeCompletionScrollOffset / typeMaxScroll : 0.0f;
+                    int typeThumbY = typeCompletionY + (int)((typePopupHeight - typeThumbHeight) * typeScrollRatio);
+                    
+                    RECT typeScrollThumb = {typeScrollX + 2, typeThumbY, 
+                                           typeScrollX + typeScrollbarWidth - 2, 
+                                           typeThumbY + typeThumbHeight};
+                    HBRUSH hTypeThumbBrush = CreateSolidBrush(RGB(120, 120, 120));
+                    FillRect(hdc, &typeScrollThumb, hTypeThumbBrush);
+                    DeleteObject(hTypeThumbBrush);
                 }
             }
             

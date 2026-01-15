@@ -99,6 +99,26 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
     }
     
     debugFile << L"流程控制命令总数: " << flowControlCount << std::endl;
+    
+    // 解析数据类型
+    const auto& fneDataTypes = fneParser.GetDataTypes();
+    debugFile << L"数据类型数: " << fneDataTypes.size() << std::endl;
+    
+    for (const auto& fneDt : fneDataTypes) {
+        LibraryDataType dt;
+        dt.name = fneDt.name;
+        dt.englishName = fneDt.englishName;
+        dt.description = fneDt.description;
+        dt.library = libraryName;
+        
+        dataTypes.push_back(dt);
+        
+        // 调试输出前几个数据类型
+        if (dataTypes.size() <= 10) {
+            debugFile << L"  数据类型: " << dt.name << std::endl;
+        }
+    }
+    
     debugFile << L"========================================" << std::endl << std::endl;
     debugFile.close();
     
@@ -199,6 +219,41 @@ void LibraryParser::AddCommandFromFne(const std::wstring& cmdName, const std::ws
     
     commands.push_back(cmd);
     nameIndex[cmd.chineseName] = commands.size() - 1;
+}
+
+// 获取所有数据类型名称（包括基础类型和支持库自定义类型）
+std::vector<std::wstring> LibraryParser::GetAllDataTypeNames() const {
+    std::vector<std::wstring> types;
+    
+    // 基础数据类型（按照易语言习惯排序）
+    types.push_back(L"整数型");
+    types.push_back(L"文本型");
+    types.push_back(L"小数型");
+    types.push_back(L"逻辑型");
+    types.push_back(L"字节型");
+    types.push_back(L"短整数型");
+    types.push_back(L"长整数型");
+    types.push_back(L"双精度小数型");
+    types.push_back(L"日期时间型");
+    types.push_back(L"字节集");
+    types.push_back(L"子程序指针");
+    
+    // 添加支持库自定义数据类型
+    for (const auto& dt : dataTypes) {
+        // 避免重复
+        bool exists = false;
+        for (const auto& t : types) {
+            if (t == dt.name) {
+                exists = true;
+                break;
+            }
+        }
+        if (!exists) {
+            types.push_back(dt.name);
+        }
+    }
+    
+    return types;
 }
 
 // 加载.ec模块文件

@@ -122,6 +122,16 @@ struct EditorData {
     // 欢迎页相关
     bool showWelcomePage;        // 是否显示欢迎页
     
+    // 数据类型补全相关
+    bool showTypeCompletion;     // 是否显示类型补全窗口
+    std::vector<std::wstring> typeCompletionItems;  // 类型补全项列表
+    int typeCompletionSelectedIndex;  // 选中的类型补全项索引
+    int typeCompletionScrollOffset;   // 类型补全列表滚动偏移
+    RECT typeCompletionRect;     // 类型补全窗口矩形区域
+    int currentCellIndex;        // 当前编辑的单元格列索引
+    RECT currentCellRect;        // 当前编辑的单元格矩形
+    bool skipNextSpaceForType;   // 跳过下一个空格（用于类型补全空格上屏）
+    
     EditorData();
     ~EditorData();
     

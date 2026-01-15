@@ -236,9 +236,44 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
                 }
             }
 
-            // 只添加非隐藏命令到命令列�?
+            // 只添加非隐藏命令到命令列表
             if (!cmdInfo.isHidden) {
                 commands.push_back(cmdInfo);
+            }
+        }
+    }
+
+    // 解析自定义数据类型
+    if (pLibInfo->m_pDataType && pLibInfo->m_nDataTypeCount > 0) {
+        for (int i = 0; i < pLibInfo->m_nDataTypeCount; i++) {
+            PLIB_DATA_TYPE_INFO pDataTypeInfo = &pLibInfo->m_pDataType[i];
+            
+            FneDataTypeInfo dtInfo;
+            
+            // 数据类型名称
+            if (pDataTypeInfo->m_szName) {
+                dtInfo.name = UTF8ToUTF16(pDataTypeInfo->m_szName);
+            }
+            
+            // 英文名称
+            if (pDataTypeInfo->m_szEgName) {
+                dtInfo.englishName = UTF8ToUTF16(pDataTypeInfo->m_szEgName);
+            }
+            
+            // 说明
+            if (pDataTypeInfo->m_szExplain) {
+                dtInfo.description = UTF8ToUTF16(pDataTypeInfo->m_szExplain);
+            }
+            
+            // 是否隐藏
+            dtInfo.isHidden = (pDataTypeInfo->m_dwState & LDT_IS_HIDED) != 0;
+            
+            // 是否窗口组件
+            dtInfo.isWindowUnit = (pDataTypeInfo->m_dwState & LDT_WIN_UNIT) != 0;
+            
+            // 只添加非隐藏且非窗口组件的数据类型
+            if (!dtInfo.isHidden && !dtInfo.isWindowUnit && !dtInfo.name.empty()) {
+                dataTypes.push_back(dtInfo);
             }
         }
     }
