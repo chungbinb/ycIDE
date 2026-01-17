@@ -1,6 +1,7 @@
 #define NOMINMAX
 #include "TableEditor.h"
 #include "DllEditor.h"
+#include "DataTypeEditor.h"
 #include "EditorContext.h"
 #include "Theme.h"
 #include <fstream>
@@ -179,6 +180,15 @@ LRESULT TableEditor::WndProcWithEditor(HWND hWnd, UINT message, WPARAM wParam, L
                     else if (wParam == 2) { // CONTEXT_MENU_TIMER_ID = 2 - 右键菜单
                         KillTimer(hWnd, 2);
                         dllEditor->ShowContextMenu(dllEditor->m_contextMenuX, dllEditor->m_contextMenuY);
+                    }
+                }
+                DataTypeEditor* dtEditor = dynamic_cast<DataTypeEditor*>(pEditor);
+                if (dtEditor) {
+                    if (wParam == DataTypeEditor::CURSOR_TIMER_ID) { // 光标闪烁
+                        if (dtEditor->m_isEditing) {
+                            dtEditor->m_cursorVisible = !dtEditor->m_cursorVisible;
+                            InvalidateRect(hWnd, NULL, FALSE);
+                        }
                     }
                 }
             }

@@ -47,7 +47,7 @@ bool EllEditorData::CreateEditorForFile(const std::wstring& filePath)
         editor = new GlobalVarEditor(hwnd, context);
         editorType = 2;
         OutputDebugStringW(L"[EllEditor] 创建 GlobalVarEditor\n");
-    } else if (ext == L".edl") {
+    } else if (ext == L".edl" || ext == L".edt") {
         editor = new DataTypeEditor(hwnd, context);
         editorType = 3;
         OutputDebugStringW(L"[EllEditor] 创建 DataTypeEditor\n");

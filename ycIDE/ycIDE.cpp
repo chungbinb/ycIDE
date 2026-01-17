@@ -65,7 +65,7 @@ HWND hMainWnd = NULL;  // 主窗口句柄
 HWND hAIChatWnd;
 HWND hTabBarWnd;       // 标签栏窗口
 HWND hEditorWnd;       // YiEditor窗口
-HWND hEllEditorWnd;    // 表格编辑器窗口（.ell/.ecl/.eal/.edl）
+HWND hEllEditorWnd;    // 表格编辑器窗口（.ell/.ecl/.eal/.edl/.edt）
 HWND hWelcomePageWnd;  // 欢迎页窗口
 HWND hRightPanelWnd;
 HWND hOutputWnd;
@@ -127,6 +127,7 @@ LRESULT CALLBACK    LibraryConfigWndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    ModelSettingsDlg(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    ThemeConfigDlg(HWND, UINT, WPARAM, LPARAM);
+void                UpdateMenuItems();  // 更新菜单项（根据项目状态）
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -196,7 +197,92 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return (int) msg.wParam;
 }
 
-
+// 更新菜单项（根据项目状态）
+void UpdateMenuItems() {
+    g_MenuItems.clear();
+    
+    // 文件菜单
+    MenuItem fileMenu = {L"文件", {0}, IDM_FILE, false, {}};
+    fileMenu.subItems = {
+        {L"新建项目", {0}, IDM_NEW_PROJECT, false, {}},
+        {L"打开项目", {0}, IDM_OPEN_PROJECT, false, {}},
+        {L"关闭项目", {0}, IDM_CLOSE_PROJECT, false, {}},
+        {L"添加文件到项目", {0}, IDM_ADD_FILE_TO_PROJECT, false, {}},
+        {L"新建文件", {0}, IDM_NEW, false, {}},
+        {L"打开文件", {0}, IDM_OPEN, false, {}},
+        {L"打开文件夹", {0}, IDM_OPEN_FOLDER, false, {}},
+        {L"关闭文件夹", {0}, IDM_CLOSE_FOLDER, false, {}},
+        {L"保存", {0}, IDM_SAVE, false, {}},
+        {L"另存为", {0}, IDM_SAVE_AS, false, {}},
+        {L"退出", {0}, IDM_EXIT, false, {}}
+    };
+    
+    // 插入菜单（仅当项目打开时显示）
+    MenuItem insertMenu = {L"插入", {0}, IDM_INSERT, false, {}};
+    insertMenu.subItems = {
+        {L"程序集", {0}, IDM_INSERT_MODULE, false, {}},
+        {L"DLL命令", {0}, IDM_INSERT_DLL_COMMAND, false, {}},
+        {L"自定义数据类型", {0}, IDM_INSERT_DATATYPE, false, {}},
+        {L"全局变量", {0}, IDM_INSERT_GLOBAL_VAR, false, {}},
+        {L"常量", {0}, IDM_INSERT_CONSTANT, false, {}},
+        {L"窗口", {0}, IDM_INSERT_WINDOW, false, {}},
+        {L"类模块", {0}, IDM_INSERT_CLASS_MODULE, false, {}}
+    };
+    
+    // 主题菜单
+    MenuItem themeMenu = {L"主题", {0}, IDM_THEME, false, {}};
+    themeMenu.subItems = {
+        {L"深色主题", {0}, IDM_THEME_DARK, false, {}},
+        {L"浅色主题", {0}, IDM_THEME_LIGHT, false, {}},
+        {L"自定义主题...", {0}, IDM_THEME_CUSTOM, false, {}}
+    };
+    
+    // 工具菜单
+    MenuItem toolsMenu = {L"工具", {0}, IDM_TOOLS, false, {}};
+    toolsMenu.subItems = {
+        {L"系统配置", {0}, IDM_SYSTEM_CONFIG, false, {}},
+        {L"支持库配置", {0}, IDM_LIBRARY_CONFIG, false, {}}
+    };
+    
+    // 帮助菜单
+    MenuItem helpMenu = {L"帮助", {0}, IDM_HELP, false, {}};
+    helpMenu.subItems = {
+        {L"关于", {0}, IDM_ABOUT, false, {}}
+    };
+    
+    // 添加菜单项
+    g_MenuItems.push_back(fileMenu);
+    
+    // 检查是否有打开的项目
+    auto& pm = ProjectManager::GetInstance();
+    if (pm.HasOpenProject()) {
+        g_MenuItems.push_back(insertMenu);
+    }
+    
+    g_MenuItems.push_back(themeMenu);
+    g_MenuItems.push_back(toolsMenu);
+    g_MenuItems.push_back(helpMenu);
+    
+    // 重新计算菜单位置
+    int menuX = 50;
+    for (size_t i = 0; i < g_MenuItems.size(); i++) {
+        g_MenuItems[i].rect = {menuX, 0, menuX + 60, g_TitleBarHeight};
+        menuX += 60;
+    }
+    
+    // 更新侧边栏切换按钮位置
+    extern RECT g_SidebarToggleRect;
+    g_SidebarToggleRect = {menuX + 10, 0, menuX + 42, g_TitleBarHeight};
+    
+    // 刷新标题栏
+    extern HWND hMainWnd;
+    if (hMainWnd) {
+        RECT titleRect = {0, 0, 0, g_TitleBarHeight};
+        GetClientRect(hMainWnd, &titleRect);
+        titleRect.bottom = g_TitleBarHeight;
+        InvalidateRect(hMainWnd, &titleRect, FALSE);
+    }
+}
 
 //
 //  函数: MyRegisterClass()
@@ -281,49 +367,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             hMainWnd = hWnd;
             
             // 初始化菜单项
-            g_MenuItems.clear();
-            MenuItem fileMenu = {L"文件", {0}, IDM_FILE, false, {}};
-            fileMenu.subItems = {
-                {L"新建项目", {0}, IDM_NEW_PROJECT, false, {}},
-                {L"打开项目", {0}, IDM_OPEN_PROJECT, false, {}},
-                {L"关闭项目", {0}, IDM_CLOSE_PROJECT, false, {}},
-                {L"添加文件到项目", {0}, IDM_ADD_FILE_TO_PROJECT, false, {}},
-                {L"新建文件", {0}, IDM_NEW, false, {}},
-                {L"打开文件", {0}, IDM_OPEN, false, {}},
-                {L"打开文件夹", {0}, IDM_OPEN_FOLDER, false, {}},
-                {L"关闭文件夹", {0}, IDM_CLOSE_FOLDER, false, {}},
-                {L"保存", {0}, IDM_SAVE, false, {}},
-                {L"另存为", {0}, IDM_SAVE_AS, false, {}},
-                {L"退出", {0}, IDM_EXIT, false, {}}
-            };
-            MenuItem helpMenu = {L"帮助", {0}, IDM_HELP, false, {}};
-            helpMenu.subItems = {
-                {L"关于", {0}, IDM_ABOUT, false, {}}
-            };
-            MenuItem themeMenu = {L"主题", {0}, IDM_THEME, false, {}};
-            themeMenu.subItems = {
-                {L"深色主题", {0}, IDM_THEME_DARK, false, {}},
-                {L"浅色主题", {0}, IDM_THEME_LIGHT, false, {}},
-                {L"自定义主题...", {0}, IDM_THEME_CUSTOM, false, {}}
-            };
-            MenuItem toolsMenu = {L"工具", {0}, IDM_TOOLS, false, {}};
-            toolsMenu.subItems = {
-                {L"系统配置", {0}, IDM_SYSTEM_CONFIG, false, {}},
-                {L"支持库配置", {0}, IDM_LIBRARY_CONFIG, false, {}}
-            };
-            g_MenuItems.push_back(fileMenu);
-            g_MenuItems.push_back(themeMenu);
-            g_MenuItems.push_back(toolsMenu);
-            g_MenuItems.push_back(helpMenu);
-            
-            // 初始化菜单和按钮位置
-            int menuX = 50;
-            for (size_t i = 0; i < g_MenuItems.size(); i++) {
-                g_MenuItems[i].rect = {menuX, 0, menuX + 60, g_TitleBarHeight};
-                menuX += 60;
-            }
-            // 侧边栏切换按钮：32x32，居中在标题栏
-            g_SidebarToggleRect = {menuX + 10, 0, menuX + 42, g_TitleBarHeight};
+            UpdateMenuItems();
             
             // 加载主题配置
             LoadThemeConfig();
@@ -568,13 +612,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                 InvalidateRect(hEditorWnd, NULL, TRUE);
                             }
                         }
-                    } else if (editorType == 1) { // DllEditor
+                    } else if (editorType == 1) { // EllEditor (包括 .ell, .edt 等)
                         ShowWindow(hEditorWnd, SW_HIDE);
                         ShowWindow(hEllEditorWnd, SW_SHOW);
-                        // 切换到对应的DLL文档
+                        // 切换到对应的文档
                         EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
                         if (dllData) {
-                            // TODO: 实现 DllEditor 的文档切换
+                            // 加载对应的文件
+                            dllData->LoadFile(tabData->tabs[tabIndex].filePath);
                             InvalidateRect(hEllEditorWnd, NULL, TRUE);
                         }
                     }
@@ -817,7 +862,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                 }
                             }
                         } else if (editorType == 1) {
-                            // DllEditor (.ell文件)
+                            // EllEditor (.ell/.edt等表格文件)
                             // 首先在 g_EditorData 中创建文档记录
                             if (g_EditorData) {
                                 int docIndex = g_EditorData->FindDocument(file);
@@ -834,7 +879,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
                             
                             wchar_t debugMsg[512];
-                            swprintf_s(debugMsg, L"[DLL文件打开] dllData指针: %p, 文件: %s\n", dllData, file.c_str());
+                            swprintf_s(debugMsg, L"[表格文件打开] dllData指针: %p, 文件: %s\n", dllData, file.c_str());
                             OutputDebugStringW(debugMsg);
                             
                             if (dllData) {
@@ -844,7 +889,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                 dllData->LoadFile(file);
                                 InvalidateRect(hEllEditorWnd, NULL, TRUE);
                                 
-                                OutputDebugStringW(L"[DLL文件打开] 已显示DllEditor并加载文档\n");
+                                OutputDebugStringW(L"[表格文件打开] 已显示EllEditor并加载文档\n");
                             }
                         }
                     }
@@ -1064,6 +1109,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             }
                             // 加载项目到资源管理器
                             ExplorerLoadProject();
+                            // 更新菜单（添加"插入"菜单）
+                            UpdateMenuItems();
                             InvalidateRect(hEditorWnd, NULL, TRUE);
                             MessageBoxW(hWnd, L"项目创建成功！", L"提示", MB_OK | MB_ICONINFORMATION);
                         } else {
@@ -1087,6 +1134,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             }
                             // 加载项目到资源管理器
                             ExplorerLoadProject();
+                            // 更新菜单（添加"插入"菜单）
+                            UpdateMenuItems();
                             InvalidateRect(hEditorWnd, NULL, TRUE);
                             
                             // 打开主文件（如果有）
@@ -1123,6 +1172,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                 g_EditorData->CloseDocument(0);
                             }
                         }
+                        // 更新菜单（移除"插入"菜单）
+                        UpdateMenuItems();
                         InvalidateRect(hEditorWnd, NULL, TRUE);
                         MessageBoxW(hWnd, L"项目已关闭！", L"提示", MB_OK | MB_ICONINFORMATION);
                     }
@@ -1151,6 +1202,406 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
+                break;
+            
+            // 插入菜单命令
+            case IDM_INSERT_MODULE:
+                {
+                    auto& pm = ProjectManager::GetInstance();
+                    if (pm.HasOpenProject()) {
+                        const ProjectInfo* project = pm.GetCurrentProject();
+                        if (project) {
+                            // 生成唯一的程序集文件名
+                            int counter = 1;
+                            std::wstring baseName = L"程序集";
+                            std::wstring fileName;
+                            std::wstring filePath;
+                            do {
+                                fileName = baseName + std::to_wstring(counter) + L".eyc";
+                                filePath = project->projectDirectory + L"\\" + fileName;
+                                counter++;
+                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            
+                            // 创建程序集文件
+                            std::wstring content = L".版本 2\n\n.程序集 " + baseName + std::to_wstring(counter - 1) + L"\n\n";
+                            
+                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                            if (utf8Len > 0) {
+                                std::string utf8Content(utf8Len - 1, 0);
+                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                
+                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                if (hFile != INVALID_HANDLE_VALUE) {
+                                    DWORD bytesWritten;
+                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                    CloseHandle(hFile);
+                                    
+                                    // 添加到项目
+                                    pm.AddFileToProject(filePath);
+                                    ExplorerLoadProject();
+                                    
+                                    // 打开文件
+                                    SendMessage(hWnd, WM_COMMAND, MAKEWPARAM(1003, LBN_DBLCLK), 0);
+                                    ExplorerSelectFile(filePath);
+                                    
+                                    // 模拟双击打开
+                                    if (g_EditorData) {
+                                        g_EditorData->AddDocument(filePath);
+                                        EditorDocument* doc = g_EditorData->GetActiveDoc();
+                                        if (doc) {
+                                            LoadFile(filePath, doc);
+                                        }
+                                        
+                                        TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                                        if (tabData) {
+                                            tabData->AddTab(filePath, fileName, 0);
+                                        }
+                                        
+                                        ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                        ShowWindow(hEditorWnd, SW_SHOW);
+                                        ShowWindow(hEllEditorWnd, SW_HIDE);
+                                        InvalidateRect(hEditorWnd, NULL, TRUE);
+                                    }
+                                } else {
+                                    MessageBoxW(hWnd, L"创建程序集文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case IDM_INSERT_DLL_COMMAND:
+                {
+                    auto& pm = ProjectManager::GetInstance();
+                    if (pm.HasOpenProject()) {
+                        const ProjectInfo* project = pm.GetCurrentProject();
+                        if (project) {
+                            // 生成唯一的DLL命令文件名
+                            int counter = 1;
+                            std::wstring baseName = L"DLL命令";
+                            std::wstring fileName;
+                            std::wstring filePath;
+                            do {
+                                fileName = baseName + std::to_wstring(counter) + L".ell";
+                                filePath = project->projectDirectory + L"\\" + fileName;
+                                counter++;
+                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            
+                            // 创建DLL命令文件
+                            std::wstring content = L".版本 2\n\n";
+                            
+                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                            if (utf8Len > 0) {
+                                std::string utf8Content(utf8Len - 1, 0);
+                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                
+                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                if (hFile != INVALID_HANDLE_VALUE) {
+                                    DWORD bytesWritten;
+                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                    CloseHandle(hFile);
+                                    
+                                    // 添加到项目
+                                    pm.AddFileToProject(filePath);
+                                    ExplorerLoadProject();
+                                    ExplorerSelectFile(filePath);
+                                    
+                                    // 打开DLL编辑器
+                                    if (g_EditorData) {
+                                        g_EditorData->AddDocument(filePath);
+                                        EditorDocument* doc = g_EditorData->GetActiveDoc();
+                                        if (doc) {
+                                            doc->fileType = FILE_TYPE_ELL;
+                                        }
+                                    }
+                                    
+                                    TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                                    if (tabData) {
+                                        tabData->AddTab(filePath, fileName, 1);
+                                    }
+                                    
+                                    EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                                    if (dllData) {
+                                        ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                        ShowWindow(hEditorWnd, SW_HIDE);
+                                        ShowWindow(hEllEditorWnd, SW_SHOW);
+                                        dllData->LoadFile(filePath);
+                                        InvalidateRect(hEllEditorWnd, NULL, TRUE);
+                                    }
+                                } else {
+                                    MessageBoxW(hWnd, L"创建DLL命令文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case IDM_INSERT_DATATYPE:
+                {
+                    auto& pm = ProjectManager::GetInstance();
+                    if (pm.HasOpenProject()) {
+                        const ProjectInfo* project = pm.GetCurrentProject();
+                        if (project) {
+                            // 生成唯一的数据类型文件名
+                            int counter = 1;
+                            std::wstring baseName = L"数据类型";
+                            std::wstring fileName;
+                            std::wstring filePath;
+                            do {
+                                fileName = baseName + std::to_wstring(counter) + L".edt";
+                                filePath = project->projectDirectory + L"\\" + fileName;
+                                counter++;
+                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            
+                            // 创建数据类型文件
+                            std::wstring content = L".版本 2\n\n.数据类型 新数据类型, 公开\n    .成员 成员1, 整数型\n\n";
+                            
+                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                            if (utf8Len > 0) {
+                                std::string utf8Content(utf8Len - 1, 0);
+                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                
+                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                if (hFile != INVALID_HANDLE_VALUE) {
+                                    DWORD bytesWritten;
+                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                    CloseHandle(hFile);
+                                    
+                                    // 添加到项目
+                                    pm.AddFileToProject(filePath);
+                                    ExplorerLoadProject();
+                                    ExplorerSelectFile(filePath);
+                                    
+                                    // 添加标签并打开数据类型编辑器（通过 EllEditor）
+                                    TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                                    if (tabData) {
+                                        tabData->AddTab(filePath, fileName, 1); // editorType = 1 for EllEditor
+                                        InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                    }
+                                    
+                                    // 通过 EllEditor 打开数据类型文件
+                                    EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                                    if (dllData) {
+                                        ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                        ShowWindow(hEditorWnd, SW_HIDE);
+                                        ShowWindow(hEllEditorWnd, SW_SHOW);
+                                        dllData->LoadFile(filePath);
+                                        InvalidateRect(hEllEditorWnd, NULL, TRUE);
+                                    }
+                                } else {
+                                    MessageBoxW(hWnd, L"创建数据类型文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case IDM_INSERT_GLOBAL_VAR:
+                {
+                    auto& pm = ProjectManager::GetInstance();
+                    if (pm.HasOpenProject()) {
+                        const ProjectInfo* project = pm.GetCurrentProject();
+                        if (project) {
+                            // 生成唯一的全局变量文件名
+                            int counter = 1;
+                            std::wstring baseName = L"全局变量";
+                            std::wstring fileName;
+                            std::wstring filePath;
+                            do {
+                                fileName = baseName + std::to_wstring(counter) + L".egv";
+                                filePath = project->projectDirectory + L"\\" + fileName;
+                                counter++;
+                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            
+                            // 创建全局变量文件
+                            std::wstring content = L"# 全局变量定义文件\n# 格式: 变量名, 类型, 静态/非静态, 数组/非数组, 数组维度, 备注\n\n";
+                            
+                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                            if (utf8Len > 0) {
+                                std::string utf8Content(utf8Len - 1, 0);
+                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                
+                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                if (hFile != INVALID_HANDLE_VALUE) {
+                                    DWORD bytesWritten;
+                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                    CloseHandle(hFile);
+                                    
+                                    // 添加到项目
+                                    pm.AddFileToProject(filePath);
+                                    ExplorerLoadProject();
+                                    ExplorerSelectFile(filePath);
+                                    
+                                    // TODO: 打开全局变量编辑器
+                                    MessageBoxW(hWnd, (L"已创建全局变量文件：" + fileName).c_str(), L"提示", MB_OK | MB_ICONINFORMATION);
+                                } else {
+                                    MessageBoxW(hWnd, L"创建全局变量文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case IDM_INSERT_CONSTANT:
+                {
+                    auto& pm = ProjectManager::GetInstance();
+                    if (pm.HasOpenProject()) {
+                        const ProjectInfo* project = pm.GetCurrentProject();
+                        if (project) {
+                            // 生成唯一的常量文件名
+                            int counter = 1;
+                            std::wstring baseName = L"常量";
+                            std::wstring fileName;
+                            std::wstring filePath;
+                            do {
+                                fileName = baseName + std::to_wstring(counter) + L".ecs";
+                                filePath = project->projectDirectory + L"\\" + fileName;
+                                counter++;
+                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            
+                            // 创建常量文件
+                            std::wstring content = L"# 常量定义文件\n# 格式: 常量名, 类型, 值, 公开/私有, 备注\n\n";
+                            
+                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                            if (utf8Len > 0) {
+                                std::string utf8Content(utf8Len - 1, 0);
+                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                
+                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                if (hFile != INVALID_HANDLE_VALUE) {
+                                    DWORD bytesWritten;
+                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                    CloseHandle(hFile);
+                                    
+                                    // 添加到项目
+                                    pm.AddFileToProject(filePath);
+                                    ExplorerLoadProject();
+                                    ExplorerSelectFile(filePath);
+                                    
+                                    // TODO: 打开常量编辑器
+                                    MessageBoxW(hWnd, (L"已创建常量文件：" + fileName).c_str(), L"提示", MB_OK | MB_ICONINFORMATION);
+                                } else {
+                                    MessageBoxW(hWnd, L"创建常量文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case IDM_INSERT_WINDOW:
+                {
+                    auto& pm = ProjectManager::GetInstance();
+                    if (pm.HasOpenProject()) {
+                        const ProjectInfo* project = pm.GetCurrentProject();
+                        if (project) {
+                            // 生成唯一的窗口文件名
+                            int counter = 1;
+                            std::wstring baseName = L"窗口";
+                            std::wstring fileName;
+                            std::wstring filePath;
+                            do {
+                                fileName = baseName + std::to_wstring(counter) + L".efw";
+                                filePath = project->projectDirectory + L"\\" + fileName;
+                                counter++;
+                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            
+                            // 创建窗口文件（JSON格式存储窗口设计信息）
+                            std::wstring content = L"{\n  \"type\": \"window\",\n  \"name\": \"窗口" + std::to_wstring(counter - 1) + L"\",\n  \"width\": 640,\n  \"height\": 480,\n  \"title\": \"新窗口\",\n  \"controls\": []\n}\n";
+                            
+                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                            if (utf8Len > 0) {
+                                std::string utf8Content(utf8Len - 1, 0);
+                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                
+                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                if (hFile != INVALID_HANDLE_VALUE) {
+                                    DWORD bytesWritten;
+                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                    CloseHandle(hFile);
+                                    
+                                    // 添加到项目
+                                    pm.AddFileToProject(filePath);
+                                    ExplorerLoadProject();
+                                    ExplorerSelectFile(filePath);
+                                    
+                                    // TODO: 打开窗口可视化设计器
+                                    MessageBoxW(hWnd, (L"已创建窗口文件：" + fileName).c_str(), L"提示", MB_OK | MB_ICONINFORMATION);
+                                } else {
+                                    MessageBoxW(hWnd, L"创建窗口文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case IDM_INSERT_CLASS_MODULE:
+                {
+                    auto& pm = ProjectManager::GetInstance();
+                    if (pm.HasOpenProject()) {
+                        const ProjectInfo* project = pm.GetCurrentProject();
+                        if (project) {
+                            // 生成唯一的类模块文件名
+                            int counter = 1;
+                            std::wstring baseName = L"类模块";
+                            std::wstring fileName;
+                            std::wstring filePath;
+                            do {
+                                fileName = baseName + std::to_wstring(counter) + L".ecm";
+                                filePath = project->projectDirectory + L"\\" + fileName;
+                                counter++;
+                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            
+                            // 创建类模块文件
+                            std::wstring content = L".版本 2\n\n.程序集 类模块" + std::to_wstring(counter - 1) + L"\n\n' 类的初始化方法\n.子程序 _初始化\n\n' 类的销毁方法\n.子程序 _销毁\n\n";
+                            
+                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                            if (utf8Len > 0) {
+                                std::string utf8Content(utf8Len - 1, 0);
+                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                
+                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                if (hFile != INVALID_HANDLE_VALUE) {
+                                    DWORD bytesWritten;
+                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                    CloseHandle(hFile);
+                                    
+                                    // 添加到项目
+                                    pm.AddFileToProject(filePath);
+                                    ExplorerLoadProject();
+                                    ExplorerSelectFile(filePath);
+                                    
+                                    // 打开类模块（使用YiEditor）
+                                    if (g_EditorData) {
+                                        g_EditorData->AddDocument(filePath);
+                                        EditorDocument* doc = g_EditorData->GetActiveDoc();
+                                        if (doc) {
+                                            LoadFile(filePath, doc);
+                                        }
+                                        
+                                        TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                                        if (tabData) {
+                                            tabData->AddTab(filePath, fileName, 0);
+                                        }
+                                        
+                                        ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                        ShowWindow(hEditorWnd, SW_SHOW);
+                                        ShowWindow(hEllEditorWnd, SW_HIDE);
+                                        InvalidateRect(hEditorWnd, NULL, TRUE);
+                                    }
+                                } else {
+                                    MessageBoxW(hWnd, L"创建类模块文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                }
+                            }
+                        }
+                    }
+                }
                 break;
             
             // 欢迎页按钮命令
