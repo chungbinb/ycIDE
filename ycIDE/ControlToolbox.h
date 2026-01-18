@@ -95,6 +95,9 @@ private:
     
     // === 内部方法 ===
     
+    // 初始化
+    void AddDefaultControls();
+    
     // 渲染
     void DrawToolbox(Graphics& g);
     void DrawCategory(Graphics& g, const ToolboxCategory& category, int& y);

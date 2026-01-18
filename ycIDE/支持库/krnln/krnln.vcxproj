@@ -166,10 +166,22 @@
     <ClCompile Include="krnln_dtType.cpp" />
     <ClCompile Include="cppCode\krnln_cmd_impl.cpp" />
     <ClCompile Include="elib\fnshare.cpp" />
+    <ClCompile Include="control\control_base.cpp" />
+    <ClCompile Include="control\win_unit.cpp" />
+    <ClCompile Include="control\button.cpp" />
+    <ClCompile Include="control\editbox.cpp" />
+    <ClCompile Include="control\controls.cpp" />
+    <ClCompile Include="control\unit_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include_krnln_header.h" />
     <ClInclude Include="krnln_cmd_typedef.h" />
+    <ClInclude Include="control\control_base.h" />
+    <ClInclude Include="control\win_unit.h" />
+    <ClInclude Include="control\button.h" />
+    <ClInclude Include="control\editbox.h" />
+    <ClInclude Include="control\controls.h" />
+    <ClInclude Include="control\unit_interface.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Source_krnln.def" />

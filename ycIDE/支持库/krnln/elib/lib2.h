@@ -523,7 +523,8 @@ typedef struct
 
 //////////////////////////////////////////////////////////////////////////
 
-typedef DWORD  HUNIT;
+// 使用 UINT_PTR 以支持 64 位指针
+typedef UINT_PTR  HUNIT;
 
 // 通用接口指针。
 typedef void (WINAPI* PFN_INTERFACE) ();

@@ -5,6 +5,11 @@
 #ifndef __INCLUDE_KRNLN_HEADER_H__
 #define __INCLUDE_KRNLN_HEADER_H__
 
+// 防止 Windows.h 定义 min/max 宏，与 std::min/std::max 冲突
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
 // 定义库名称宏，必须在包含 lib2.h 之前定义
 #define __E_FNENAME krnln
 

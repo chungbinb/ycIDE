@@ -1,6 +1,6 @@
 ; 系统核心支持库模块定义文件
 ; 自动生成于 2026-01-04 15:09:00
 
-LIBRARY krnln
+LIBRARY krnln.fne
 EXPORTS
     GetNewInf @1

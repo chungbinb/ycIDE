@@ -12,6 +12,10 @@
 #include "Keyword.h"
 #include "LibraryConfig.h"
 #include "ProjectManager.h"
+#include "VisualDesigner.h"
+#include "PropertyGrid.h"
+#include "ControlToolbox.h"
+#include "ControlRenderer.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -66,10 +70,25 @@ HWND hAIChatWnd;
 HWND hTabBarWnd;       // 标签栏窗口
 HWND hEditorWnd;       // YiEditor窗口
 HWND hEllEditorWnd;    // 表格编辑器窗口（.ell/.ecl/.eal/.edl/.edt）
+HWND hVisualDesignerWnd = NULL;  // 可视化设计器窗口
+HWND hPropertyGridWnd = NULL;    // 属性窗口
+HWND hToolboxWnd = NULL;         // 组件箱窗口（浮动）
 HWND hWelcomePageWnd;  // 欢迎页窗口
 HWND hRightPanelWnd;
 HWND hOutputWnd;
 HWND hStatusBar = NULL;  // 状态栏
+
+// 可视化设计器相关
+bool g_IsVisualDesignerActive = false;  // 当前是否处于可视化设计模式
+VisualDesigner* g_pVisualDesigner = nullptr;  // 可视化设计器实例
+PropertyGrid* g_pPropertyGrid = nullptr;      // 属性窗口实例
+ControlToolbox* g_pControlToolbox = nullptr;  // 组件箱实例
+ControlRenderer* g_pControlRenderer = nullptr; // 控件渲染器实例
+
+// 可视化设计器窗口类名
+const wchar_t szVisualDesignerClass[] = L"VisualDesignerClass";
+const wchar_t szPropertyGridClass[] = L"PropertyGridClass";
+const wchar_t szToolboxClass[] = L"ToolboxClass";
 
 // 标签栏高度
 const int g_TabBarHeight = 35;
@@ -117,10 +136,16 @@ HWND g_MenuPopupWnd = NULL;  // 菜单弹出窗口
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 ATOM                RegisterAIChatClass(HINSTANCE hInstance);
 ATOM                RegisterMenuPopupClass(HINSTANCE hInstance);
+ATOM                RegisterVisualDesignerClass(HINSTANCE hInstance);
+ATOM                RegisterPropertyGridClass(HINSTANCE hInstance);
+ATOM                RegisterToolboxClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    AIChatWndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    MenuPopupWndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    VisualDesignerWndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    PropertyGridWndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    ToolboxWndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    OutputWindowSubclassProc(HWND, UINT, WPARAM, LPARAM, UINT_PTR, DWORD_PTR);
 LRESULT CALLBACK    StatusBarSubclassProc(HWND, UINT, WPARAM, LPARAM, UINT_PTR, DWORD_PTR);
 LRESULT CALLBACK    LibraryConfigWndProc(HWND, UINT, WPARAM, LPARAM);
@@ -128,6 +153,10 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    ModelSettingsDlg(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    ThemeConfigDlg(HWND, UINT, WPARAM, LPARAM);
 void                UpdateMenuItems();  // 更新菜单项（根据项目状态）
+
+// 可视化设计器辅助函数
+void SwitchToVisualDesignerMode(bool enable);
+void UpdatePropertyGridForSelection();
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -164,6 +193,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     RegisterAIChatClass(hInstance);
     RegisterResourceExplorerClass(hInstance);
     RegisterMenuPopupClass(hInstance);
+    RegisterVisualDesignerClass(hInstance);
+    RegisterPropertyGridClass(hInstance);
+    RegisterToolboxClass(hInstance);
     
     // 加载模型配置
     LoadModelsConfig();
@@ -409,6 +441,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     hWelcomePageWnd, IsWindowVisible(hWelcomePageWnd));
                 OutputDebugStringW(debugMsg);
             }
+            
+            // 2.5 可视化设计器 - 初始隐藏
+            hVisualDesignerWnd = CreateWindowW(szVisualDesignerClass, nullptr,
+                WS_CHILD,
+                0, 0, 0, 0, hWnd, (HMENU)1008, hInst, nullptr);
+            
+            // 2.6 属性窗口 - 初始隐藏，在可视化设计模式下替代AI聊天窗口
+            hPropertyGridWnd = CreateWindowW(szPropertyGridClass, nullptr,
+                WS_CHILD,
+                0, 0, 0, 0, hWnd, (HMENU)1009, hInst, nullptr);
+            
+            // 2.7 组件箱浮动窗口 - 初始隐藏，使用 WS_EX_TOOLWINDOW 不带 TOPMOST
+            hToolboxWnd = CreateWindowExW(
+                WS_EX_TOOLWINDOW,
+                szToolboxClass, L"组件箱",
+                WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME,
+                100, 100, 200, 400,
+                hWnd, nullptr, hInst, nullptr);
 
             // 3. 右侧: 资源管理器 (自定义类)
             hRightPanelWnd = CreateWindowW(L"ResourceExplorer", nullptr,
@@ -503,16 +553,38 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             if (editorH < 0) editorH = 0;
 
             // 调整各窗口位置（使用 DeferWindowPos 批量更新，减少闪烁）
-            HDWP hdwp = BeginDeferWindowPos(8);
+            HDWP hdwp = BeginDeferWindowPos(12);
             if (hdwp) {
-                // 左侧AI聊天窗口占满整个高度（不包括状态栏）
-                if (hAIChatWnd) {
-                    if (g_LeftPanelVisible) {
-                        hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 0, topH, leftW, centerTotalH, 
-                            SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
-                    } else {
+                // 左侧面板：在可视化设计模式下显示属性窗口，否则显示AI聊天窗口
+                if (g_IsVisualDesignerActive) {
+                    // 可视化设计模式：隐藏AI聊天，显示属性窗口
+                    if (hAIChatWnd) {
                         hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 0, topH, 0, centerTotalH, 
                             SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                    }
+                    if (hPropertyGridWnd) {
+                        if (g_LeftPanelVisible) {
+                            hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, 0, topH, leftW, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                        } else {
+                            hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, 0, topH, 0, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                        }
+                    }
+                } else {
+                    // 正常模式：显示AI聊天，隐藏属性窗口
+                    if (hPropertyGridWnd) {
+                        hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, 0, topH, 0, centerTotalH, 
+                            SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                    }
+                    if (hAIChatWnd) {
+                        if (g_LeftPanelVisible) {
+                            hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 0, topH, leftW, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                        } else {
+                            hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 0, topH, 0, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                        }
                     }
                 }
                 
@@ -531,6 +603,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 
                 if (hEllEditorWnd)
                     hdwp = DeferWindowPos(hdwp, hEllEditorWnd, NULL, leftW, editorTop, centerW, editorHeight,
+                        SWP_NOZORDER | SWP_NOACTIVATE);
+                
+                // 可视化设计器
+                if (hVisualDesignerWnd)
+                    hdwp = DeferWindowPos(hdwp, hVisualDesignerWnd, NULL, leftW, editorTop, centerW, editorHeight,
                         SWP_NOZORDER | SWP_NOACTIVATE);
                 
                 // 中间：欢迎页（占据整个编辑器区域）
@@ -605,8 +682,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     
                     // 根据编辑器类型显示对应的编辑器，隐藏其他
                     if (editorType == 0) { // YiEditor
+                        SwitchToVisualDesignerMode(false);  // 退出可视化设计模式
                         ShowWindow(hEditorWnd, SW_SHOW);
                         ShowWindow(hEllEditorWnd, SW_HIDE);
+                        ShowWindow(hVisualDesignerWnd, SW_HIDE);
                         // 切换到对应的文档
                         if (g_EditorData) {
                             int docIndex = g_EditorData->FindDocument(tabData->tabs[tabIndex].filePath);
@@ -616,14 +695,26 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             }
                         }
                     } else if (editorType == 1) { // EllEditor (包括 .ell, .edt 等)
+                        SwitchToVisualDesignerMode(false);  // 退出可视化设计模式
                         ShowWindow(hEditorWnd, SW_HIDE);
                         ShowWindow(hEllEditorWnd, SW_SHOW);
+                        ShowWindow(hVisualDesignerWnd, SW_HIDE);
                         // 切换到对应的文档
                         EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
                         if (dllData) {
                             // 加载对应的文件
                             dllData->LoadFile(tabData->tabs[tabIndex].filePath);
                             InvalidateRect(hEllEditorWnd, NULL, TRUE);
+                        }
+                    } else if (editorType == 2) { // VisualDesigner
+                        SwitchToVisualDesignerMode(true);  // 进入可视化设计模式
+                        ShowWindow(hEditorWnd, SW_HIDE);
+                        ShowWindow(hEllEditorWnd, SW_HIDE);
+                        ShowWindow(hVisualDesignerWnd, SW_SHOW);
+                        // 加载窗体文件
+                        if (g_pVisualDesigner) {
+                            g_pVisualDesigner->LoadFile(tabData->tabs[tabIndex].filePath);
+                            InvalidateRect(hVisualDesignerWnd, NULL, TRUE);
                         }
                     }
                 }
@@ -3097,4 +3188,449 @@ INT_PTR CALLBACK ThemeConfigDlg(HWND hDlg, UINT message, WPARAM wParam, LPARAM l
         break;
     }
     return (INT_PTR)FALSE;
+}
+
+// ==================== 可视化设计器相关窗口 ====================
+
+// 可视化设计器窗口过程
+LRESULT CALLBACK VisualDesignerWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    VisualDesigner* pDesigner = (VisualDesigner*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
+    
+    switch (message)
+    {
+    case WM_CREATE:
+        {
+            pDesigner = new VisualDesigner(hWnd, nullptr);
+            SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pDesigner);
+            g_pVisualDesigner = pDesigner;
+        }
+        return 0;
+        
+    case WM_DESTROY:
+        if (pDesigner) {
+            delete pDesigner;
+            g_pVisualDesigner = nullptr;
+        }
+        SetWindowLongPtr(hWnd, GWLP_USERDATA, 0);
+        return 0;
+        
+    case WM_PAINT:
+        {
+            PAINTSTRUCT ps;
+            HDC hdc = BeginPaint(hWnd, &ps);
+            if (pDesigner) {
+                pDesigner->OnPaint(hdc);
+            }
+            EndPaint(hWnd, &ps);
+        }
+        return 0;
+        
+    case WM_SIZE:
+        if (pDesigner) {
+            pDesigner->OnSize(LOWORD(lParam), HIWORD(lParam));
+        }
+        return 0;
+        
+    case WM_LBUTTONDOWN:
+        if (pDesigner) {
+            pDesigner->OnLButtonDown(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
+        }
+        return 0;
+        
+    case WM_LBUTTONUP:
+        if (pDesigner) {
+            pDesigner->OnLButtonUp(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
+        }
+        return 0;
+        
+    case WM_MOUSEMOVE:
+        if (pDesigner) {
+            pDesigner->OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
+        }
+        return 0;
+        
+    case WM_KEYDOWN:
+        if (pDesigner) {
+            pDesigner->OnKeyDown((UINT)wParam, (UINT)lParam);
+        }
+        return 0;
+        
+    case WM_ERASEBKGND:
+        return 1;
+    }
+    
+    return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+// 属性窗口过程
+LRESULT CALLBACK PropertyGridWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    PropertyGrid* pGrid = (PropertyGrid*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
+    
+    switch (message)
+    {
+    case WM_CREATE:
+        {
+            pGrid = new PropertyGrid(hWnd);
+            SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pGrid);
+            g_pPropertyGrid = pGrid;
+        }
+        return 0;
+        
+    case WM_DESTROY:
+        if (pGrid) {
+            delete pGrid;
+            g_pPropertyGrid = nullptr;
+        }
+        SetWindowLongPtr(hWnd, GWLP_USERDATA, 0);
+        return 0;
+        
+    case WM_PAINT:
+        {
+            PAINTSTRUCT ps;
+            HDC hdc = BeginPaint(hWnd, &ps);
+            if (pGrid) {
+                pGrid->OnPaint(hdc);
+            }
+            EndPaint(hWnd, &ps);
+        }
+        return 0;
+        
+    case WM_SIZE:
+        if (pGrid) {
+            pGrid->OnSize(LOWORD(lParam), HIWORD(lParam));
+        }
+        return 0;
+        
+    case WM_LBUTTONDOWN:
+        if (pGrid) {
+            pGrid->OnLButtonDown(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        }
+        return 0;
+        
+    case WM_LBUTTONUP:
+        if (pGrid) {
+            pGrid->OnLButtonUp(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        }
+        return 0;
+        
+    case WM_MOUSEMOVE:
+        if (pGrid) {
+            pGrid->OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        }
+        return 0;
+        
+    case WM_LBUTTONDBLCLK:
+        if (pGrid) {
+            pGrid->OnLButtonDblClick(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        }
+        return 0;
+        
+    case WM_VSCROLL:
+        if (pGrid) {
+            pGrid->OnVScroll(wParam);
+        }
+        return 0;
+        
+    case WM_ERASEBKGND:
+        return 1;
+    }
+    
+    return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+// 组件箱窗口过程（浮动窗口）
+LRESULT CALLBACK ToolboxWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    static bool isDragging = false;
+    static POINT dragStart;
+    static RECT windowRect;
+    
+    ControlToolbox* pToolbox = (ControlToolbox*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
+    
+    switch (message)
+    {
+    case WM_CREATE:
+        {
+            pToolbox = new ControlToolbox(hWnd);
+            SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pToolbox);
+            g_pControlToolbox = pToolbox;
+            
+            // 初始化控件渲染器并加载到组件箱
+            if (!g_pControlRenderer) {
+                g_pControlRenderer = new ControlRenderer();
+            }
+            pToolbox->LoadFromRenderer(g_pControlRenderer);
+        }
+        return 0;
+        
+    case WM_DESTROY:
+        if (pToolbox) {
+            delete pToolbox;
+            g_pControlToolbox = nullptr;
+        }
+        SetWindowLongPtr(hWnd, GWLP_USERDATA, 0);
+        return 0;
+        
+    case WM_PAINT:
+        {
+            PAINTSTRUCT ps;
+            HDC hdc = BeginPaint(hWnd, &ps);
+            if (pToolbox) {
+                pToolbox->OnPaint(hdc);
+            }
+            EndPaint(hWnd, &ps);
+        }
+        return 0;
+        
+    case WM_SIZE:
+        if (pToolbox) {
+            pToolbox->OnSize(LOWORD(lParam), HIWORD(lParam));
+        }
+        return 0;
+        
+    case WM_LBUTTONDOWN:
+        {
+            int x = GET_X_LPARAM(lParam);
+            int y = GET_Y_LPARAM(lParam);
+            
+            // 检查是否点击在标题栏区域（顶部30像素）
+            if (y < 30) {
+                isDragging = true;
+                dragStart.x = x;
+                dragStart.y = y;
+                GetWindowRect(hWnd, &windowRect);
+                SetCapture(hWnd);
+            } else if (pToolbox) {
+                pToolbox->OnLButtonDown(x, y);
+            }
+        }
+        return 0;
+        
+    case WM_LBUTTONUP:
+        if (isDragging) {
+            isDragging = false;
+            ReleaseCapture();
+        }
+        return 0;
+        
+    case WM_MOUSEMOVE:
+        if (isDragging) {
+            POINT pt;
+            GetCursorPos(&pt);
+            int newX = windowRect.left + (pt.x - dragStart.x - windowRect.left);
+            int newY = windowRect.top + (pt.y - dragStart.y - windowRect.top);
+            SetWindowPos(hWnd, NULL, 
+                         windowRect.left + pt.x - dragStart.x - windowRect.left,
+                         windowRect.top + pt.y - dragStart.y - windowRect.top,
+                         0, 0, SWP_NOSIZE | SWP_NOZORDER);
+        } else if (pToolbox) {
+            pToolbox->OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        }
+        return 0;
+        
+    case WM_LBUTTONDBLCLK:
+        if (pToolbox) {
+            pToolbox->OnLButtonDblClick(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        }
+        return 0;
+        
+    case WM_VSCROLL:
+        if (pToolbox) {
+            pToolbox->OnVScroll(wParam);
+        }
+        return 0;
+        
+    case WM_ERASEBKGND:
+        return 1;
+        
+    case WM_NCHITTEST:
+        {
+            // 允许在边缘调整大小
+            LRESULT hit = DefWindowProc(hWnd, message, wParam, lParam);
+            if (hit == HTCLIENT) {
+                POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
+                ScreenToClient(hWnd, &pt);
+                if (pt.y < 30) {
+                    return HTCAPTION;  // 标题栏区域可拖动
+                }
+            }
+            return hit;
+        }
+        
+    case WM_MOVING:
+        {
+            // 限制组件箱只能在主窗口内移动
+            RECT* pRect = (RECT*)lParam;
+            HWND hMainWnd = GetParent(hWnd);
+            if (hMainWnd) {
+                RECT mainRect;
+                GetWindowRect(hMainWnd, &mainRect);
+                
+                int toolboxWidth = pRect->right - pRect->left;
+                int toolboxHeight = pRect->bottom - pRect->top;
+                
+                // 限制左边界
+                if (pRect->left < mainRect.left) {
+                    pRect->left = mainRect.left;
+                    pRect->right = pRect->left + toolboxWidth;
+                }
+                // 限制右边界
+                if (pRect->right > mainRect.right) {
+                    pRect->right = mainRect.right;
+                    pRect->left = pRect->right - toolboxWidth;
+                }
+                // 限制上边界
+                if (pRect->top < mainRect.top) {
+                    pRect->top = mainRect.top;
+                    pRect->bottom = pRect->top + toolboxHeight;
+                }
+                // 限制下边界
+                if (pRect->bottom > mainRect.bottom) {
+                    pRect->bottom = mainRect.bottom;
+                    pRect->top = pRect->bottom - toolboxHeight;
+                }
+            }
+        }
+        return TRUE;
+        
+    case WM_SIZING:
+        {
+            // 限制组件箱调整大小时也不能超出主窗口
+            RECT* pRect = (RECT*)lParam;
+            HWND hMainWnd = GetParent(hWnd);
+            if (hMainWnd) {
+                RECT mainRect;
+                GetWindowRect(hMainWnd, &mainRect);
+                
+                // 限制右边界
+                if (pRect->right > mainRect.right) {
+                    pRect->right = mainRect.right;
+                }
+                // 限制下边界
+                if (pRect->bottom > mainRect.bottom) {
+                    pRect->bottom = mainRect.bottom;
+                }
+                // 限制左边界
+                if (pRect->left < mainRect.left) {
+                    pRect->left = mainRect.left;
+                }
+                // 限制上边界
+                if (pRect->top < mainRect.top) {
+                    pRect->top = mainRect.top;
+                }
+            }
+        }
+        return TRUE;
+    }
+    
+    return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+// 注册可视化设计器窗口类
+ATOM RegisterVisualDesignerClass(HINSTANCE hInstance)
+{
+    WNDCLASSEXW wcex = {0};
+    wcex.cbSize = sizeof(WNDCLASSEX);
+    wcex.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
+    wcex.lpfnWndProc = VisualDesignerWndProc;
+    wcex.hInstance = hInstance;
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.lpszClassName = szVisualDesignerClass;
+    return RegisterClassExW(&wcex);
+}
+
+// 注册属性窗口类
+ATOM RegisterPropertyGridClass(HINSTANCE hInstance)
+{
+    WNDCLASSEXW wcex = {0};
+    wcex.cbSize = sizeof(WNDCLASSEX);
+    wcex.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
+    wcex.lpfnWndProc = PropertyGridWndProc;
+    wcex.hInstance = hInstance;
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.lpszClassName = szPropertyGridClass;
+    return RegisterClassExW(&wcex);
+}
+
+// 注册组件箱窗口类
+ATOM RegisterToolboxClass(HINSTANCE hInstance)
+{
+    WNDCLASSEXW wcex = {0};
+    wcex.cbSize = sizeof(WNDCLASSEX);
+    wcex.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
+    wcex.lpfnWndProc = ToolboxWndProc;
+    wcex.hInstance = hInstance;
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.lpszClassName = szToolboxClass;
+    return RegisterClassExW(&wcex);
+}
+
+// ==================== 可视化设计器辅助函数 ====================
+
+// 切换可视化设计器模式
+void SwitchToVisualDesignerMode(bool enable)
+{
+    if (g_IsVisualDesignerActive == enable) return;
+    
+    g_IsVisualDesignerActive = enable;
+    
+    if (enable) {
+        // 进入可视化设计模式
+        // 显示组件箱浮动窗口
+        if (hToolboxWnd) {
+            // 定位组件箱到设计器右侧
+            RECT mainRect;
+            GetWindowRect(hMainWnd, &mainRect);
+            int toolboxX = mainRect.right - 220;
+            int toolboxY = mainRect.top + 100;
+            SetWindowPos(hToolboxWnd, HWND_TOP, toolboxX, toolboxY, 200, 400, SWP_SHOWWINDOW);
+        }
+        
+        // 刷新属性窗口
+        if (hPropertyGridWnd) {
+            InvalidateRect(hPropertyGridWnd, NULL, TRUE);
+        }
+    } else {
+        // 退出可视化设计模式
+        // 隐藏组件箱
+        if (hToolboxWnd) {
+            ShowWindow(hToolboxWnd, SW_HIDE);
+        }
+    }
+    
+    // 触发窗口重新布局
+    RECT rect;
+    GetClientRect(hMainWnd, &rect);
+    SendMessage(hMainWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rect.right, rect.bottom));
+}
+
+// 更新属性窗口显示选中控件的属性
+void UpdatePropertyGridForSelection()
+{
+    if (!g_pPropertyGrid || !g_pVisualDesigner) return;
+    
+    // 获取选中的控件
+    auto selectedControls = g_pVisualDesigner->GetSelectedControls();
+    
+    if (selectedControls.empty()) {
+        // 没有选中控件，显示窗体属性
+        g_pPropertyGrid->SetObjectInfo(L"窗体", g_pVisualDesigner->GetFormInfo().name);
+        // TODO: 设置窗体属性
+    } else if (selectedControls.size() == 1) {
+        // 选中单个控件
+        auto ctrl = selectedControls[0];
+        g_pPropertyGrid->SetObjectInfo(ctrl->type, ctrl->name);
+        // TODO: 设置控件属性
+    } else {
+        // 选中多个控件
+        g_pPropertyGrid->SetObjectInfo(L"多个控件", L"");
+        g_pPropertyGrid->Clear();
+    }
+    
+    InvalidateRect(hPropertyGridWnd, NULL, TRUE);
 }

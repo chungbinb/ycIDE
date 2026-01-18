@@ -12414,3 +12414,39 @@
 [EPL_CONVERT] Read line 5: []
 [EPL_CONVERT] Read line 6: [.子程序 _启动窗口_创建完毕]
 [EPL_CONVERT] Pass 3: Processing 7 lines
+[EPL_CONVERT] Start ConvertEPLToInternal
+[EPL_CONVERT] Read line 0: [.版本 2]
+[EPL_CONVERT] Read line 1: [.程序集 窗口程序集1]
+[EPL_CONVERT] Read line 2: [.子程序 子程序]
+[EPL_CONVERT] Read line 3: [555]
+[EPL_CONVERT] Read line 4: []
+[EPL_CONVERT] Read line 5: []
+[EPL_CONVERT] Read line 6: [.子程序 _启动窗口_创建完毕]
+[EPL_CONVERT] Pass 3: Processing 7 lines
+[EPL_CONVERT] Start ConvertEPLToInternal
+[EPL_CONVERT] Read line 0: [.版本 2]
+[EPL_CONVERT] Read line 1: [.程序集 窗口程序集1]
+[EPL_CONVERT] Read line 2: [.子程序 子程序]
+[EPL_CONVERT] Read line 3: [555]
+[EPL_CONVERT] Read line 4: []
+[EPL_CONVERT] Read line 5: []
+[EPL_CONVERT] Read line 6: [.子程序 _启动窗口_创建完毕]
+[EPL_CONVERT] Pass 3: Processing 7 lines
+[EPL_CONVERT] Start ConvertEPLToInternal
+[EPL_CONVERT] Read line 0: [.版本 2]
+[EPL_CONVERT] Read line 1: [.程序集 窗口程序集1]
+[EPL_CONVERT] Read line 2: [.子程序 子程序]
+[EPL_CONVERT] Read line 3: [555]
+[EPL_CONVERT] Read line 4: []
+[EPL_CONVERT] Read line 5: []
+[EPL_CONVERT] Read line 6: [.子程序 _启动窗口_创建完毕]
+[EPL_CONVERT] Pass 3: Processing 7 lines
+[EPL_CONVERT] Start ConvertEPLToInternal
+[EPL_CONVERT] Read line 0: [.版本 2]
+[EPL_CONVERT] Read line 1: [.程序集 窗口程序集1]
+[EPL_CONVERT] Read line 2: [.子程序 子程序]
+[EPL_CONVERT] Read line 3: [555]
+[EPL_CONVERT] Read line 4: []
+[EPL_CONVERT] Read line 5: []
+[EPL_CONVERT] Read line 6: [.子程序 _启动窗口_创建完毕]
+[EPL_CONVERT] Pass 3: Processing 7 lines
