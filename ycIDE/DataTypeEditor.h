@@ -74,6 +74,7 @@ public:
     virtual bool GetCellCheckState(int row, int col) const override;
     virtual void SetCellCheckState(int row, int col, bool checked) override;
     virtual std::wstring ValidateCell(int row, int col, const std::wstring& value) const override;
+    virtual bool IsCellTextEditable(int row, int col) const override;  // 判断单元格是否可以文本编辑
     
     virtual std::vector<std::wstring> SerializeState() const override;
     virtual void RestoreState(const std::vector<std::wstring>& state) override;

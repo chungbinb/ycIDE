@@ -62,12 +62,17 @@ void ConstantEditor::SetCellValue(int row, int col, const std::wstring& value) {
         case 4: constant.comment = value; break;
     }
     
-    m_modified = true;
+    SetModified(true);
     
     // 通知数据变更
     if (m_pContext && col == 0) {
         m_pContext->NotifyDataChanged(EditorFileType::EclConstant, value);
     }
+}
+
+bool ConstantEditor::IsCellTextEditable(int row, int col) const {
+    // col == 3 是公开复选框，不可文本编辑
+    return col != 3;
 }
 
 bool ConstantEditor::GetCellCheckState(int row, int col) const {
@@ -89,7 +94,7 @@ void ConstantEditor::SetCellCheckState(int row, int col, bool checked) {
     
     if (col == 3) {
         m_constants[row].isPublic = checked;
-        m_modified = true;
+        SetModified(true);
     }
 }
 

@@ -113,6 +113,7 @@ public:
     bool LoadFile(const std::wstring& path);
     bool SaveFile(const std::wstring& path);
     bool IsModified() const { return m_modified; }
+    void SetModified(bool modified);
     std::wstring GetFileName() const { return m_fileName; }
     std::wstring GetFilePath() const { return m_filePath; }
     

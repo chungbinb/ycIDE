@@ -124,6 +124,9 @@ public:
     // 验证单元格（返回空字符串表示有效，否则返回错误信息）
     virtual std::wstring ValidateCell(int row, int col, const std::wstring& value) const { return L""; }
     
+    // 判断单元格是否可以文本编辑（不是复选框且是可编辑的）
+    virtual bool IsCellTextEditable(int row, int col) const { return true; }
+    
     // 序列化当前状态到字符串数组（用于快照）
     virtual std::vector<std::wstring> SerializeState() const = 0;
     
@@ -155,9 +158,13 @@ public:
     
     // === 访问器 ===
     bool IsModified() const { return m_modified; }
-    void SetModified(bool modified) { m_modified = modified; }
+    void SetModified(bool modified);
     std::wstring GetFilePath() const { return m_filePath; }
     std::wstring GetFileName() const { return m_fileName; }
+    
+protected:
+    // 通知主窗口文件已被修改
+    void NotifyModified();
     
 protected:
     // === 绘制相关 ===

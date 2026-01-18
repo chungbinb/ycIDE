@@ -315,7 +315,23 @@ void DataTypeEditor::SetCellValue(int row, int col, const std::wstring& value) {
         }
     }
     
-    m_modified = true;
+    SetModified(true);
+}
+
+bool DataTypeEditor::IsCellTextEditable(int row, int col) const {
+    RowInfo info = GetRowInfo(row);
+    
+    // 数据类型数据行: col==1 是公开复选框
+    if (info.rowType == DataTypeRowType::TypeData && col == 1) {
+        return false;
+    }
+    
+    // 成员数据行: col==2 是传址复选框, col==3 是数组复选框
+    if (info.rowType == DataTypeRowType::MemberData && (col == 2 || col == 3)) {
+        return false;
+    }
+    
+    return true;
 }
 
 bool DataTypeEditor::GetCellCheckState(int row, int col) const {
@@ -353,7 +369,7 @@ void DataTypeEditor::SetCellCheckState(int row, int col, bool checked) {
     
     if (info.rowType == DataTypeRowType::TypeData && col == 1) {
         dt.isPublic = checked;
-        m_modified = true;
+        SetModified(true);
     }
     
     if (info.rowType == DataTypeRowType::MemberData) {
@@ -361,11 +377,11 @@ void DataTypeEditor::SetCellCheckState(int row, int col, bool checked) {
             DataTypeMember& member = dt.members[info.memberIndex];
             if (col == 2) {
                 member.byRef = checked;
-                m_modified = true;
+                SetModified(true);
             }
             if (col == 3) {
                 member.isArray = checked;
-                m_modified = true;
+                SetModified(true);
             }
         }
     }
@@ -629,7 +645,7 @@ void DataTypeEditor::InsertRow(int afterRow) {
         InsertMember(info.dataTypeIndex);
     }
     
-    m_modified = true;
+    SetModified(true);
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
@@ -643,13 +659,13 @@ void DataTypeEditor::DeleteRow(int row) {
     if (info.rowType == DataTypeRowType::TypeData) {
         // 删除整个数据类型
         m_dataTypes.erase(m_dataTypes.begin() + info.dataTypeIndex);
-        m_modified = true;
+        SetModified(true);
     } else if (info.rowType == DataTypeRowType::MemberData) {
         // 删除成员
         DataType& dt = m_dataTypes[info.dataTypeIndex];
         if (info.memberIndex >= 0 && info.memberIndex < (int)dt.members.size()) {
             dt.members.erase(dt.members.begin() + info.memberIndex);
-            m_modified = true;
+            SetModified(true);
         }
     }
     
@@ -702,7 +718,7 @@ void DataTypeEditor::DeleteMember(int row) {
         DataType& dt = m_dataTypes[info.dataTypeIndex];
         if (info.memberIndex >= 0 && info.memberIndex < (int)dt.members.size()) {
             dt.members.erase(dt.members.begin() + info.memberIndex);
-            m_modified = true;
+            SetModified(true);
         }
     }
 }
@@ -1461,7 +1477,7 @@ void DataTypeEditor::OnLButtonDown(int x, int y) {
         if (info.rowType == DataTypeRowType::TypeData && col == 1) {
             if (info.dataTypeIndex >= 0 && info.dataTypeIndex < (int)m_dataTypes.size()) {
                 m_dataTypes[info.dataTypeIndex].isPublic = !m_dataTypes[info.dataTypeIndex].isPublic;
-                m_modified = true;
+                SetModified(true);
                 CreateSnapshot(L"Toggle public");
                 InvalidateRect(m_hWnd, NULL, FALSE);
             }
@@ -1476,7 +1492,7 @@ void DataTypeEditor::OnLButtonDown(int x, int y) {
                 if (col == 2) {
                     m_dataTypes[info.dataTypeIndex].members[info.memberIndex].byRef = 
                         !m_dataTypes[info.dataTypeIndex].members[info.memberIndex].byRef;
-                    m_modified = true;
+                    SetModified(true);
                     CreateSnapshot(L"Toggle byRef");
                     InvalidateRect(m_hWnd, NULL, FALSE);
                     return;
@@ -1484,7 +1500,7 @@ void DataTypeEditor::OnLButtonDown(int x, int y) {
                 if (col == 3) {
                     m_dataTypes[info.dataTypeIndex].members[info.memberIndex].isArray = 
                         !m_dataTypes[info.dataTypeIndex].members[info.memberIndex].isArray;
-                    m_modified = true;
+                    SetModified(true);
                     CreateSnapshot(L"Toggle isArray");
                     InvalidateRect(m_hWnd, NULL, FALSE);
                     return;
@@ -1712,7 +1728,7 @@ void DataTypeEditor::OnKeyDown(WPARAM wParam) {
             EndEditCell(true);
             // 插入新成员
             InsertMember(info.dataTypeIndex);
-            m_modified = true;
+            SetModified(true);
             InvalidateRect(m_hWnd, NULL, FALSE);
             return;
         }

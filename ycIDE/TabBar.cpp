@@ -55,6 +55,11 @@ void TabBarData::CloseTab(int index) {
     }
     
     InvalidateRect(hWnd, NULL, TRUE);
+    
+    // 如果还有标签，通知父窗口切换到新的活动标签
+    if (activeTabIndex >= 0 && hParent) {
+        SendMessage(hParent, WM_COMMAND, MAKEWPARAM(2000, activeTabIndex), (LPARAM)hWnd);
+    }
 }
 
 // 切换到指定标签

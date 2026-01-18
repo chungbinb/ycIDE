@@ -453,6 +453,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_TIMER:
         if (wParam == 1) {
+            // 检查代码编辑器的修改状态（YiEditor 使用文档列表管理，需要定时检查）
             if (g_EditorData) {
                 EditorDocument* doc = g_EditorData->GetActiveDoc();
                 if (doc && doc->modified) {
@@ -460,13 +461,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                      
                      // 同时标记标签页为已修改
                      TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
-                     if (tabData && tabData->activeTabIndex >= 0 && tabData->activeTabIndex < tabData->tabs.size()) {
+                     if (tabData && tabData->activeTabIndex >= 0 && tabData->activeTabIndex < (int)tabData->tabs.size()) {
                          if (!tabData->tabs[tabData->activeTabIndex].isModified) {
                              tabData->SetTabModified(tabData->activeTabIndex, true);
                          }
                      }
                 }
             }
+            // 注意：TableEditor（DllEditor、DataTypeEditor、GlobalVarEditor、ConstantEditor）
+            // 现在通过 NotifyModified() 主动发送 WM_COMMAND 消息通知修改状态，不再需要定时轮询
         }
         break;
     case WM_SIZE:
@@ -707,6 +710,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                     }
                                 }
                             }
+                            
+                            // 同时清除 EllEditor 的修改标志
+                            EllEditorData* ellData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                            if (ellData && ellData->editor && ellData->currentFilePath == filePath) {
+                                ellData->editor->SetModified(false);
+                            }
                         }
                     }
                     
@@ -732,26 +741,45 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             // 编辑器修改通知 (wmId=0, wmEvent=0x1000)
             if (wmId == 0 && wmEvent == 0x1000) {
-                HWND hEditorWnd = (HWND)lParam;
+                HWND hSourceWnd = (HWND)lParam;
                 TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
-                if (tabData && tabData->activeTabIndex >= 0) {
-                    // 标记标签为已修改
-                    tabData->SetTabModified(tabData->activeTabIndex, true);
-                    
-                    // 标记资源管理器中的文件为已修改
-                    std::wstring filePath = tabData->tabs[tabData->activeTabIndex].filePath;
-                    ExplorerSetFileModified(filePath, true);
-                    
-                    // 通过文件路径查找并标记对应的文档为已修改
-                    if (g_EditorData && !filePath.empty()) {
-                        for (auto doc : g_EditorData->documents) {
-                            if (doc && doc->filePath == filePath) {
-                                doc->modified = true;
-                                break;
-                            }
-                        }
+                
+                // 判断通知来源，获取对应的文件路径
+                std::wstring filePath;
+                
+                // 检查是否来自 EllEditor（TableEditor）
+                EllEditorData* ellData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                if (ellData && ellData->editor && IsWindow(hSourceWnd)) {
+                    // 检查源窗口是否是 EllEditor 或其子窗口
+                    if (hSourceWnd == hEllEditorWnd || IsChild(hEllEditorWnd, hSourceWnd) || 
+                        GetParent(hSourceWnd) == hEllEditorWnd) {
+                        filePath = ellData->currentFilePath;
                     }
                 }
+                
+                // 如果不是来自 EllEditor，检查是否来自 YiEditor
+                if (filePath.empty() && g_EditorData) {
+                    EditorDocument* doc = g_EditorData->GetActiveDoc();
+                    if (doc) {
+                        filePath = doc->filePath;
+                    }
+                }
+                
+                // 找到对应的标签页并标记为已修改
+                if (tabData && !filePath.empty()) {
+                    for (int i = 0; i < (int)tabData->tabs.size(); i++) {
+                        if (tabData->tabs[i].filePath == filePath) {
+                            if (!tabData->tabs[i].isModified) {
+                                tabData->SetTabModified(i, true);
+                            }
+                            break;
+                        }
+                    }
+                    
+                    // 标记资源管理器中的文件为已修改
+                    ExplorerSetFileModified(filePath, true);
+                }
+                
                 return 0;
             }
             

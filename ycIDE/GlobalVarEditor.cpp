@@ -155,12 +155,17 @@ void GlobalVarEditor::SetCellValue(int row, int col, const std::wstring& value) 
         case 4: var.comment = value; break;
     }
     
-    m_modified = true;
+    SetModified(true);
     
     // 通知数据变更
     if (m_pContext && col == 0) {
         m_pContext->NotifyDataChanged(EditorFileType::EalGlobalVar, value);
     }
+}
+
+bool GlobalVarEditor::IsCellTextEditable(int row, int col) const {
+    // col == 3 是公开复选框，不可文本编辑
+    return col != 3;
 }
 
 bool GlobalVarEditor::GetCellCheckState(int row, int col) const {
@@ -184,7 +189,7 @@ void GlobalVarEditor::SetCellCheckState(int row, int col, bool checked) {
     
     if (col == 3) {  // 只有公开列是复选框
         var.isPublic = checked;
-        m_modified = true;
+        SetModified(true);
     }
 }
 
@@ -407,14 +412,14 @@ void GlobalVarEditor::InsertRow(int afterRow) {
         m_variables.insert(m_variables.begin() + afterRow + 1, newVar);
     }
     
-    m_modified = true;
+    SetModified(true);
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
 void GlobalVarEditor::DeleteRow(int row) {
     if (row >= 0 && row < (int)m_variables.size()) {
         m_variables.erase(m_variables.begin() + row);
-        m_modified = true;
+        SetModified(true);
         InvalidateRect(m_hWnd, NULL, FALSE);
     }
 }
@@ -925,7 +930,7 @@ void GlobalVarEditor::OnLButtonDown(int x, int y) {
         if (col == 3) {  // 公开复选框
             if (row >= 0 && row < (int)m_variables.size()) {
                 m_variables[row].isPublic = !m_variables[row].isPublic;
-                m_modified = true;
+                SetModified(true);
                 CreateSnapshot(L"Toggle public");
                 InvalidateRect(m_hWnd, NULL, FALSE);
             }
@@ -1075,7 +1080,7 @@ void GlobalVarEditor::OnKeyDown(WPARAM wParam) {
         
         // 插入新行
         InsertRow(currentRow);
-        m_modified = true;
+        SetModified(true);
         InvalidateRect(m_hWnd, NULL, FALSE);
         return;
     }
@@ -1100,7 +1105,7 @@ void GlobalVarEditor::OnKeyDown(WPARAM wParam) {
                     m_variables.erase(m_variables.begin() + row);
                 }
             }
-            m_modified = true;
+            SetModified(true);
             ClearSelection();
             InvalidateRect(m_hWnd, NULL, FALSE);
         } else {

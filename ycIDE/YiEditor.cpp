@@ -5014,21 +5014,48 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     bool isIndented = (line.length() > 0 && line[0] == L' ');
                     
                     if (isTableLine) {
-                        // 表格行：插入制表符
-                        line.insert(doc->cursorCol, L"\t");
-                        doc->cursorCol++;
+                        // 表格行：移动光标到下一个单元格（下一个制表符之后）
+                        bool shiftPressed = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
+                        
+                        if (shiftPressed) {
+                            // Shift+TAB: 移动到前一个单元格
+                            // 找到光标前面最近的制表符
+                            size_t prevTab = line.rfind(L'\t', doc->cursorCol > 0 ? doc->cursorCol - 1 : 0);
+                            if (prevTab != std::wstring::npos && (int)prevTab < doc->cursorCol) {
+                                // 找到了前一个制表符，再找它前面的制表符来确定单元格起始位置
+                                size_t prevPrevTab = line.rfind(L'\t', prevTab > 0 ? prevTab - 1 : 0);
+                                if (prevPrevTab != std::wstring::npos && prevPrevTab < prevTab) {
+                                    doc->cursorCol = (int)prevPrevTab + 1;  // 移动到前前一个制表符之后
+                                } else {
+                                    doc->cursorCol = 0;  // 移动到行首
+                                }
+                            } else {
+                                doc->cursorCol = 0;  // 移动到行首
+                            }
+                        } else {
+                            // TAB: 移动到下一个单元格
+                            size_t nextTab = line.find(L'\t', doc->cursorCol);
+                            if (nextTab != std::wstring::npos) {
+                                doc->cursorCol = (int)nextTab + 1;  // 移动到制表符之后
+                            } else {
+                                // 没有下一个制表符，移动到行尾
+                                doc->cursorCol = (int)line.length();
+                            }
+                        }
+                        InvalidateRect(hWnd, NULL, TRUE);
                     } else if (isIndented) {
                         // 流程控制内：插入单个空格（保持缩进标记）
                         line.insert(doc->cursorCol, L" ");
                         doc->cursorCol++;
+                        doc->modified = true;
+                        InvalidateRect(hWnd, NULL, TRUE);
                     } else {
                         // 普通代码行：插入4个空格
                         line.insert(doc->cursorCol, L"    ");
                         doc->cursorCol += 4;
+                        doc->modified = true;
+                        InvalidateRect(hWnd, NULL, TRUE);
                     }
-                    
-                    doc->modified = true;
-                    InvalidateRect(hWnd, NULL, TRUE);
                 }
             }
             UpdateScrollBars(hWnd);

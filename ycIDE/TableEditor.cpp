@@ -381,7 +381,7 @@ void TableEditor::CreateSnapshot(const std::wstring& description) {
     // 清空重做栈
     m_redoStack.clear();
     
-    m_modified = true;
+    SetModified(true);
 }
 
 void TableEditor::Undo() {
@@ -402,7 +402,7 @@ void TableEditor::Undo() {
     m_undoStack.pop_back();
     RestoreState(snapshot.data);
     
-    m_modified = true;
+    SetModified(true);
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
@@ -424,7 +424,7 @@ void TableEditor::Redo() {
     m_redoStack.pop_back();
     RestoreState(snapshot.data);
     
-    m_modified = true;
+    SetModified(true);
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
@@ -963,6 +963,79 @@ void TableEditor::OnKeyDown(WPARAM wParam) {
                 OnTextModified();
                 InvalidateRect(m_hWnd, NULL, FALSE);
                 break;
+            
+            case VK_TAB:
+                {
+                    // TAB键：移动到下一个可编辑的单元格
+                    bool shiftPressed = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
+                    
+                    // 保存当前编辑位置（EndEditCell会重置m_editingRow和m_editingCol）
+                    int currentRow = m_editingRow;
+                    int currentCol = m_editingCol;
+                    
+                    // 保存当前单元格
+                    EndEditCell(true);
+                    
+                    // 获取列定义
+                    std::vector<ColumnDef> cols = GetColumnDefs();
+                    int totalCols = (int)cols.size();
+                    int totalRows = GetRowCount();
+                    
+                    if (totalRows == 0 || totalCols == 0) break;
+                    
+                    int nextRow = currentRow;
+                    int nextCol = currentCol;
+                    
+                    // 寻找下一个可编辑的单元格
+                    bool found = false;
+                    int iterations = 0;
+                    int maxIterations = totalRows * totalCols;  // 防止无限循环
+                    
+                    while (!found && iterations < maxIterations) {
+                        iterations++;
+                        
+                        if (shiftPressed) {
+                            // Shift+TAB: 向前移动
+                            nextCol--;
+                            if (nextCol < 0) {
+                                nextCol = totalCols - 1;
+                                nextRow--;
+                                if (nextRow < 0) {
+                                    nextRow = totalRows - 1;  // 循环到最后一行
+                                }
+                            }
+                        } else {
+                            // TAB: 向后移动
+                            nextCol++;
+                            if (nextCol >= totalCols) {
+                                nextCol = 0;
+                                nextRow++;
+                                if (nextRow >= totalRows) {
+                                    nextRow = 0;  // 循环到第一行
+                                }
+                            }
+                        }
+                        
+                        // 检查该单元格是否可以文本编辑
+                        if (IsCellTextEditable(nextRow, nextCol)) {
+                            found = true;
+                        }
+                    }
+                    
+                    if (found) {
+                        // 开始编辑新的单元格
+                        StartEditCell(nextRow, nextCol, 0);
+                        // 选中全部文本
+                        std::wstring* newText = GetEditingCellTextPtr();
+                        if (newText) {
+                            m_selectionStart = 0;
+                            m_selectionEnd = (int)newText->length();
+                            m_editingCursorPos = m_selectionEnd;
+                        }
+                        InvalidateRect(m_hWnd, NULL, FALSE);
+                    }
+                }
+                break;
         }
     } else {
         // 非编辑模式的快捷键
@@ -1243,5 +1316,28 @@ void TableEditor::HitTest(int x, int y, int& row, int& col, RECT& cellRect) {
             return;
         }
         currentX += cols[i].width;
+    }
+}
+
+// === 修改状态管理 ===
+
+void TableEditor::SetModified(bool modified) {
+    bool wasModified = m_modified;
+    m_modified = modified;
+    
+    // 只有从未修改变为已修改时才通知
+    if (modified && !wasModified) {
+        NotifyModified();
+    }
+}
+
+void TableEditor::NotifyModified() {
+    if (!m_modified) return;
+    
+    // 向主窗口发送修改通知消息
+    // 使用与 YiEditor 相同的消息格式: wmId=0, wmEvent=0x1000
+    HWND hMainWnd = GetAncestor(m_hWnd, GA_ROOT);
+    if (hMainWnd) {
+        PostMessage(hMainWnd, WM_COMMAND, MAKEWPARAM(0, 0x1000), (LPARAM)m_hWnd);
     }
 }

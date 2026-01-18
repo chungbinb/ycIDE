@@ -240,7 +240,7 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
         }
         
         UpdateSelectionBounds();
-        m_modified = true;
+        SetModified(true);
         InvalidateRect(m_hWnd, NULL, FALSE);
     } else if (m_dragMode != DragMode::None) {
         // 调整大小
@@ -300,7 +300,7 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
         }
         
         UpdateSelectionBounds();
-        m_modified = true;
+        SetModified(true);
         InvalidateRect(m_hWnd, NULL, FALSE);
     }
 }
@@ -391,6 +391,20 @@ bool VisualDesigner::SaveFile(const std::wstring& path)
     }
 }
 
+void VisualDesigner::SetModified(bool modified) {
+    bool wasModified = m_modified;
+    m_modified = modified;
+    
+    // 只有从未修改变为已修改时才通知
+    if (modified && !wasModified) {
+        // 向主窗口发送修改通知消息
+        HWND hMainWnd = GetAncestor(m_hWnd, GA_ROOT);
+        if (hMainWnd) {
+            PostMessage(hMainWnd, WM_COMMAND, MAKEWPARAM(0, 0x1000), (LPARAM)m_hWnd);
+        }
+    }
+}
+
 // === 控件操作 ===
 
 void VisualDesigner::AddControl(const std::wstring& type, const Rect& bounds)
@@ -412,7 +426,7 @@ void VisualDesigner::AddControl(const std::wstring& type, const Rect& bounds)
     SelectControl(control->id);
     CreateSnapshot(L"Add Control");
     
-    m_modified = true;
+    SetModified(true);
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
@@ -432,7 +446,7 @@ void VisualDesigner::DeleteControl(const std::wstring& id)
         }
         
         UpdateSelectionBounds();
-        m_modified = true;
+        SetModified(true);
         InvalidateRect(m_hWnd, NULL, FALSE);
     }
 }
@@ -1128,7 +1142,7 @@ void VisualDesigner::Paste()
             SelectControl(ctrl->id, true);
         }
         
-        m_modified = true;
+        SetModified(true);
         InvalidateRect(m_hWnd, NULL, FALSE);
         
     } catch (...) {

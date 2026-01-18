@@ -36,6 +36,7 @@ public:
     bool GetCellCheckState(int row, int col) const override;
     void SetCellCheckState(int row, int col, bool checked) override;
     std::wstring ValidateCell(int row, int col, const std::wstring& value) const override;
+    bool IsCellTextEditable(int row, int col) const override;  // 判断单元格是否可以文本编辑
     
     std::vector<std::wstring> SerializeState() const override;
     void RestoreState(const std::vector<std::wstring>& state) override;

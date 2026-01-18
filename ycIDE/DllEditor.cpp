@@ -558,12 +558,24 @@ void DllEditor::SetCellValue(int row, int col, const std::wstring& value) {
             break;
     }
     
-    m_modified = true;
+    SetModified(true);
+}
+
+bool DllEditor::IsCellTextEditable(int row, int col) const {
+    int cmdIndex, paramIndex;
+    DllRowType rowType = GetRowType(row, cmdIndex, paramIndex);
     
-    // 通知父窗口文件已修改
-    HWND hParent = GetParent(m_hWnd);
-    if (hParent) {
-        SendMessage(hParent, WM_COMMAND, MAKEWPARAM(0, 0x1000), (LPARAM)m_hWnd);
+    switch (rowType) {
+        case DllRowType::CommandData:
+            // 命令数据行: col==2 是公开复选框
+            return col != 2;
+            
+        case DllRowType::ParamData:
+            // 参数数据行: col==2 是传址复选框, col==3 是数组复选框
+            return col != 2 && col != 3;
+            
+        default:
+            return true;
     }
 }
 
@@ -640,13 +652,7 @@ void DllEditor::SetCellCheckState(int row, int col, bool checked) {
             break;
     }
     
-    m_modified = true;
-    
-    // 通知父窗口文件已修改
-    HWND hParent = GetParent(m_hWnd);
-    if (hParent) {
-        SendMessage(hParent, WM_COMMAND, MAKEWPARAM(0, 0x1000), (LPARAM)m_hWnd);
-    }
+    SetModified(true);
 }
 
 bool DllEditor::IsCellCheckbox(int row, int col) const {
@@ -857,7 +863,7 @@ void DllEditor::OnKeyDown(WPARAM wParam) {
             InsertParameter(cmdIndex, paramIndex);
             
             // 标记为已修改
-            m_modified = true;
+            SetModified(true);
             
             // 创建快照
             CreateSnapshot(L"Insert parameter");
@@ -1584,13 +1590,7 @@ std::wstring* DllEditor::GetEditingCellTextPtr() {
 void DllEditor::OnTextModified() {
     // 标记文件为已修改
     if (!m_modified) {
-        m_modified = true;
-        
-        // 通知父窗口文件已被修改
-        HWND hParent = GetParent(m_hWnd);
-        if (hParent) {
-            SendMessage(hParent, WM_COMMAND, MAKEWPARAM(0, 0x1000), (LPARAM)m_hWnd);
-        }
+        SetModified(true);
     }
     
     // 如果正在编辑数据类型列，更新自动补全
@@ -1830,14 +1830,14 @@ void DllEditor::InsertCommand(int afterCmdIndex) {
         m_commands.insert(m_commands.begin() + afterCmdIndex + 1, newCmd);
     }
     
-    m_modified = true;
+    SetModified(true);
 }
 
 void DllEditor::DeleteCommand(int cmdIndex) {
     if (cmdIndex >= 0 && cmdIndex < (int)m_commands.size()) {
         // 删除关联的参数索引（不删除参数本身，避免索引混乱）
         m_commands.erase(m_commands.begin() + cmdIndex);
-        m_modified = true;
+        SetModified(true);
     }
 }
 
@@ -1868,7 +1868,7 @@ void DllEditor::InsertParameter(int cmdIndex, int afterParamIndex) {
         cmd.paramLines.insert(cmd.paramLines.begin() + afterParamIndex + 1, newParamIdx);
     }
     
-    m_modified = true;
+    SetModified(true);
 }
 
 void DllEditor::DeleteParameter(int cmdIndex, int paramIndex) {
@@ -1879,7 +1879,7 @@ void DllEditor::DeleteParameter(int cmdIndex, int paramIndex) {
     DllCommand& cmd = m_commands[cmdIndex];
     if (paramIndex >= 0 && paramIndex < (int)cmd.paramLines.size()) {
         cmd.paramLines.erase(cmd.paramLines.begin() + paramIndex);
-        m_modified = true;
+        SetModified(true);
     }
 }
 
@@ -2952,7 +2952,7 @@ void DllEditor::DeleteSelectedRows() {
     }
     
     ClearRowSelection();
-    m_modified = true;
+    SetModified(true);
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 // === 新建DLL命令 ===
@@ -3284,7 +3284,7 @@ void DllEditor::ParseAndInsertDllCommandsAt(const std::wstring& text, int insert
             m_commands.insert(m_commands.begin() + insertAt, std::move(cmd));
             insertAt++;
         }
-        m_modified = true;
+        SetModified(true);
         InvalidateRect(m_hWnd, NULL, FALSE);
     }
 }
@@ -3362,7 +3362,7 @@ void DllEditor::ParseAndInsertParameters(const std::wstring& text, int cmdIndex)
             cmd.paramLines.push_back(paramIdx);
         }
         
-        m_modified = true;
+        SetModified(true);
         InvalidateRect(m_hWnd, NULL, FALSE);
     }
 }
@@ -3519,7 +3519,7 @@ void DllEditor::CreateNewDllCommand() {
     m_commands.push_back(newCmd);
     
     // 标记为已修改
-    m_modified = true;
+    SetModified(true);
     
     // 刷新界面
     InvalidateRect(m_hWnd, NULL, FALSE);
