@@ -4271,9 +4271,66 @@ void DllEditor::UpdateTypeCompletion() {
     // 获取当前输入的文本
     std::wstring input = m_editBuffer;
     
-    // 转换为小写进行匹配
-    std::wstring lowerInput = input;
-    std::transform(lowerInput.begin(), lowerInput.end(), lowerInput.begin(), ::towlower);
+    // 辅助函数：转小写（支持所有Unicode字符）
+    auto toLowerUnicode = [](const std::wstring& str) -> std::wstring {
+        std::wstring result = str;
+        CharLowerBuffW(&result[0], (DWORD)result.length());
+        return result;
+    };
+    
+    // 辅助函数：判断字符是否为ASCII字母
+    auto isAsciiAlpha = [](wchar_t ch) -> bool {
+        return (ch >= L'a' && ch <= L'z') || (ch >= L'A' && ch <= L'Z');
+    };
+    
+    // 辅助函数：中英混合智能匹配
+    auto mixedMatch = [&](const std::wstring& inputStr, const std::wstring& target) -> bool {
+        std::wstring lowerInput = toLowerUnicode(inputStr);
+        std::wstring lowerTarget = toLowerUnicode(target);
+        
+        size_t inputPos = 0;
+        size_t targetPos = 0;
+        
+        while (inputPos < lowerInput.length() && targetPos < lowerTarget.length()) {
+            wchar_t inputChar = lowerInput[inputPos];
+            wchar_t targetChar = lowerTarget[targetPos];
+            
+            if (inputChar == targetChar) {
+                inputPos++;
+                targetPos++;
+            } else if (isAsciiAlpha(inputChar)) {
+                std::wstring targetCharStr(1, target[targetPos]);
+                std::wstring targetPinyin = PinyinHelper::GetStringPinyin(targetCharStr);
+                std::wstring targetInitial = PinyinHelper::GetStringInitials(targetCharStr);
+                std::wstring lowerPinyin = toLowerUnicode(targetPinyin);
+                std::wstring lowerInitial = toLowerUnicode(targetInitial);
+                
+                if (lowerPinyin.length() > 0 && inputPos + lowerPinyin.length() <= lowerInput.length()) {
+                    std::wstring inputSubstr = lowerInput.substr(inputPos, lowerPinyin.length());
+                    if (inputSubstr == lowerPinyin) {
+                        inputPos += lowerPinyin.length();
+                        targetPos++;
+                    }
+                    else if (!lowerInitial.empty() && lowerInitial[0] == inputChar) {
+                        inputPos++;
+                        targetPos++;
+                    } else {
+                        return false;
+                    }
+                }
+                else if (!lowerInitial.empty() && lowerInitial[0] == inputChar) {
+                    inputPos++;
+                    targetPos++;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        
+        return inputPos == lowerInput.length();
+    };
     
     // 获取所有数据类型
     std::vector<std::wstring> allTypes = GetAllDataTypes();
@@ -4284,44 +4341,39 @@ void DllEditor::UpdateTypeCompletion() {
     // 用于存储匹配项和分数
     std::vector<std::pair<std::wstring, int>> scoredItems;
     
+    std::wstring lowerInput = toLowerUnicode(input);
+    
     for (const auto& type : allTypes) {
         int score = 0;
+        std::wstring lowerType = toLowerUnicode(type);
         
-        // 转换类型名为小写
-        std::wstring lowerType = type;
-        std::transform(lowerType.begin(), lowerType.end(), lowerType.begin(), ::towlower);
-        
-        // 1. 中文前缀匹配（如"整"匹配"整数型"）
-        if (type.find(input) == 0) {
-            score = 1000;  // 前缀完全匹配最高分
-        } else if (lowerType.find(lowerInput) == 0) {
-            score = 900;   // 前缀匹配（忽略大小写）
-        } else if (type.find(input) != std::wstring::npos) {
-            score = 500;   // 包含匹配
+        // 1. 直接字符串前缀匹配
+        if (lowerType.find(lowerInput) == 0) {
+            score = 1000;
         }
-        
-        // 2. 拼音匹配
-        if (score == 0 && !input.empty()) {
-            // 获取类型名的拼音
+        // 2. 纯拼音匹配
+        else {
             std::wstring fullPinyin = PinyinHelper::GetStringPinyin(type);
             std::wstring initials = PinyinHelper::GetStringInitials(type);
+            std::wstring lowerFullPinyin = toLowerUnicode(fullPinyin);
+            std::wstring lowerInitials = toLowerUnicode(initials);
             
-            std::wstring lowerFullPinyin = fullPinyin;
-            std::transform(lowerFullPinyin.begin(), lowerFullPinyin.end(), lowerFullPinyin.begin(), ::towlower);
-            std::wstring lowerInitials = initials;
-            std::transform(lowerInitials.begin(), lowerInitials.end(), lowerInitials.begin(), ::towlower);
-            
-            // 首字母匹配（如"zsx"匹配"整数型"）
             if (lowerInitials.find(lowerInput) == 0) {
                 score = 800;
-            } else if (lowerInitials.find(lowerInput) != std::wstring::npos) {
-                score = 400;
-            }
-            // 全拼匹配（如"zheng"匹配"整数型"）
-            else if (lowerFullPinyin.find(lowerInput) == 0) {
+            } else if (lowerFullPinyin.find(lowerInput) == 0) {
                 score = 700;
+            }
+            // 3. 中英混合智能匹配
+            else if (mixedMatch(input, type)) {
+                score = 600;
+            }
+            // 4. 包含匹配
+            else if (lowerType.find(lowerInput) != std::wstring::npos) {
+                score = 500;
             } else if (lowerFullPinyin.find(lowerInput) != std::wstring::npos) {
                 score = 300;
+            } else if (lowerInitials.find(lowerInput) != std::wstring::npos) {
+                score = 400;
             }
         }
         

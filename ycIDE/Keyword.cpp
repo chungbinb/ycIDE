@@ -1,5 +1,6 @@
 #include "Keyword.h"
 #include "PinyinHelper.h"
+#include <windows.h>
 #include <algorithm>
 #include <map>
 
@@ -22,6 +23,69 @@ std::vector<CompletionItem> KeywordManager::GetCompletions(const std::wstring& i
     
     std::wstring lowerInput = input;
     std::transform(lowerInput.begin(), lowerInput.end(), lowerInput.begin(), ::towlower);
+    
+    // 辅助函数：转小写（支持所有Unicode字符）
+    auto toLowerUnicode = [](const std::wstring& str) -> std::wstring {
+        std::wstring result = str;
+        if (!result.empty()) {
+            CharLowerBuffW(const_cast<wchar_t*>(result.c_str()), (DWORD)result.length());
+        }
+        return result;
+    };
+    
+    // 辅助函数：判断字符是否为ASCII字母
+    auto isAsciiAlpha = [](wchar_t ch) -> bool {
+        return (ch >= L'a' && ch <= L'z') || (ch >= L'A' && ch <= L'Z');
+    };
+    
+    // 辅助函数：中英混合智能匹配
+    auto mixedMatch = [&toLowerUnicode, &isAsciiAlpha](const std::wstring& inputStr, const std::wstring& target) -> bool {
+        std::wstring lowerInputStr = toLowerUnicode(inputStr);
+        std::wstring lowerTarget = toLowerUnicode(target);
+        
+        size_t inputPos = 0;
+        size_t targetPos = 0;
+        
+        while (inputPos < lowerInputStr.length() && targetPos < lowerTarget.length()) {
+            wchar_t inputChar = lowerInputStr[inputPos];
+            wchar_t targetChar = lowerTarget[targetPos];
+            
+            if (inputChar == targetChar) {
+                inputPos++;
+                targetPos++;
+            } else if (isAsciiAlpha(inputChar)) {
+                std::wstring targetCharStr(1, target[targetPos]);
+                std::wstring targetPinyin = PinyinHelper::GetStringPinyin(targetCharStr);
+                std::wstring targetInitial = PinyinHelper::GetStringInitials(targetCharStr);
+                std::wstring lowerPinyin = toLowerUnicode(targetPinyin);
+                std::wstring lowerInitial = toLowerUnicode(targetInitial);
+                
+                if (lowerPinyin.length() > 0 && inputPos + lowerPinyin.length() <= lowerInputStr.length()) {
+                    std::wstring inputSubstr = lowerInputStr.substr(inputPos, lowerPinyin.length());
+                    if (inputSubstr == lowerPinyin) {
+                        inputPos += lowerPinyin.length();
+                        targetPos++;
+                    }
+                    else if (!lowerInitial.empty() && lowerInitial[0] == inputChar) {
+                        inputPos++;
+                        targetPos++;
+                    } else {
+                        return false;
+                    }
+                }
+                else if (!lowerInitial.empty() && lowerInitial[0] == inputChar) {
+                    inputPos++;
+                    targetPos++;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        
+        return inputPos == lowerInputStr.length();
+    };
     
     // 辅助函数：计算匹配分数
     auto CalculateScore = [&](const std::wstring& chinese, const std::vector<std::wstring>& pinyin, const std::vector<std::wstring>& initials, const std::vector<std::wstring>* aliases = nullptr) -> int {
@@ -77,6 +141,11 @@ std::vector<CompletionItem> KeywordManager::GetCompletions(const std::wstring& i
                     if (currentScore > score) score = currentScore;
                 }
             }
+        }
+        
+        // 3.5. 中英混合智能匹配（如"如g" -> "如果"）
+        if (score == 0 && mixedMatch(input, chinese)) {
+            score = 550; // 介于前缀匹配和完全匹配之间
         }
         
         // 4. 别名匹配（仅针对关键字）

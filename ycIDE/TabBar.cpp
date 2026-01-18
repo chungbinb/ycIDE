@@ -360,6 +360,7 @@ int GetEditorTypeByExtension(const std::wstring& filePath) {
     if (ext == L".eyc") return 0;  // YiEditor
     if (ext == L".ell") return 1;  // EllEditor
     if (ext == L".edt") return 1;  // EllEditor (DataTypeEditor)
+    if (ext == L".egv") return 1;  // EllEditor (GlobalVarEditor)
     
     return 0; // 默认YiEditor
 }

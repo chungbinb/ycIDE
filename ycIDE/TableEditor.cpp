@@ -2,6 +2,7 @@
 #include "TableEditor.h"
 #include "DllEditor.h"
 #include "DataTypeEditor.h"
+#include "GlobalVarEditor.h"
 #include "EditorContext.h"
 #include "Theme.h"
 #include <fstream>
@@ -97,6 +98,18 @@ LRESULT TableEditor::WndProcWithEditor(HWND hWnd, UINT message, WPARAM wParam, L
             if (pEditor) pEditor->OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), wParam);
             return 0;
         
+        case WM_SETCURSOR:
+            if (pEditor) {
+                POINT pt;
+                GetCursorPos(&pt);
+                ScreenToClient(hWnd, &pt);
+                GlobalVarEditor* gvEditor = dynamic_cast<GlobalVarEditor*>(pEditor);
+                if (gvEditor && gvEditor->OnSetCursor(pt.x, pt.y)) {
+                    return TRUE;
+                }
+            }
+            return DefWindowProc(hWnd, message, wParam, lParam);
+        
         case WM_LBUTTONDOWN:
             if (pEditor) pEditor->OnLButtonDown(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             return 0;
@@ -187,6 +200,15 @@ LRESULT TableEditor::WndProcWithEditor(HWND hWnd, UINT message, WPARAM wParam, L
                     if (wParam == DataTypeEditor::CURSOR_TIMER_ID) { // 光标闪烁
                         if (dtEditor->m_isEditing) {
                             dtEditor->m_cursorVisible = !dtEditor->m_cursorVisible;
+                            InvalidateRect(hWnd, NULL, FALSE);
+                        }
+                    }
+                }
+                GlobalVarEditor* gvEditor = dynamic_cast<GlobalVarEditor*>(pEditor);
+                if (gvEditor) {
+                    if (wParam == 3) { // CURSOR_TIMER_ID = 3 - 光标闪烁
+                        if (gvEditor->m_isEditing) {
+                            gvEditor->m_cursorVisible = !gvEditor->m_cursorVisible;
                             InvalidateRect(hWnd, NULL, FALSE);
                         }
                     }
@@ -672,7 +694,7 @@ void TableEditor::DrawCellTextWithSelection(HDC hdc, const std::wstring& text, c
         graphics.MeasureString(beforeCursor.c_str(), -1, &font, PointF(0, 0), &typographicFormat, &measureRect);
         int cursorX = x + (int)measureRect.Width;
         
-        Pen cursorPen(ColorFromCOLORREF(g_CurrentTheme.text), 2);
+        Pen cursorPen(ColorFromCOLORREF(g_CurrentTheme.text), 1);
         graphics.DrawLine(&cursorPen, cursorX, cellRect.top, cursorX, cellRect.bottom);
     }
 }

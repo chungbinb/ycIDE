@@ -1344,55 +1344,67 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     if (pm.HasOpenProject()) {
                         const ProjectInfo* project = pm.GetCurrentProject();
                         if (project) {
-                            // 生成唯一的数据类型文件名
-                            int counter = 1;
-                            std::wstring baseName = L"数据类型";
-                            std::wstring fileName;
-                            std::wstring filePath;
-                            do {
-                                fileName = baseName + std::to_wstring(counter) + L".edt";
-                                filePath = project->projectDirectory + L"\\" + fileName;
-                                counter++;
-                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            // 检查是否已存在数据类型文件（一个项目只能有一个数据类型文件）
+                            bool hasDataTypeFile = false;
+                            for (const auto& file : project->files) {
+                                std::wstring ext = file.filePath.substr(file.filePath.find_last_of(L'.'));
+                                std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
+                                if (ext == L".edt") {
+                                    hasDataTypeFile = true;
+                                    // 提取文件名
+                                    size_t pos = file.filePath.find_last_of(L"\\/");
+                                    std::wstring existingFileName = (pos != std::wstring::npos) ? file.filePath.substr(pos + 1) : file.filePath;
+                                    MessageBoxW(hWnd, 
+                                        (L"项目中已存在数据类型文件：" + existingFileName + L"\n\n一个项目只能有一个数据类型文件！").c_str(), 
+                                        L"提示", MB_OK | MB_ICONINFORMATION);
+                                    break;
+                                }
+                            }
                             
-                            // 创建数据类型文件
-                            std::wstring content = L".版本 2\n\n.数据类型 新数据类型, 公开\n    .成员 成员1, 整数型\n\n";
-                            
-                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
-                            if (utf8Len > 0) {
-                                std::string utf8Content(utf8Len - 1, 0);
-                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                            // 如果不存在数据类型文件，则创建
+                            if (!hasDataTypeFile) {
+                                std::wstring fileName = L"数据类型.edt";
+                                std::wstring filePath = project->projectDirectory + L"\\" + fileName;
                                 
-                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
-                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
-                                if (hFile != INVALID_HANDLE_VALUE) {
-                                    DWORD bytesWritten;
-                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
-                                    CloseHandle(hFile);
+                                // 创建数据类型文件
+                                std::wstring content = L".版本 2\n\n.数据类型 新数据类型, 公开\n    .成员 成员1, 整数型\n\n";
+                                
+                                int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                                if (utf8Len > 0) {
+                                    std::string utf8Content(utf8Len - 1, 0);
+                                    WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
                                     
-                                    // 添加到项目
-                                    pm.AddFileToProject(filePath);
-                                    ExplorerLoadProject();
-                                    ExplorerSelectFile(filePath);
-                                    
-                                    // 添加标签并打开数据类型编辑器（通过 EllEditor）
-                                    TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
-                                    if (tabData) {
-                                        tabData->AddTab(filePath, fileName, 1); // editorType = 1 for EllEditor
-                                        InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                    HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                              CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                    if (hFile != INVALID_HANDLE_VALUE) {
+                                        DWORD bytesWritten;
+                                        WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                        CloseHandle(hFile);
+                                        
+                                        // 添加到项目
+                                        pm.AddFileToProject(filePath);
+                                        ExplorerLoadProject();
+                                        ExplorerSelectFile(filePath);
+                                        
+                                        // 添加标签并打开数据类型编辑器（通过 EllEditor）
+                                        TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                                        if (tabData) {
+                                            tabData->AddTab(filePath, fileName, 1); // editorType = 1 for EllEditor
+                                            InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                        }
+                                        
+                                        // 通过 EllEditor 打开数据类型文件
+                                        EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
+                                        if (dllData) {
+                                            ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                            ShowWindow(hEditorWnd, SW_HIDE);
+                                            ShowWindow(hEllEditorWnd, SW_SHOW);
+                                            dllData->LoadFile(filePath);
+                                            InvalidateRect(hEllEditorWnd, NULL, TRUE);
+                                        }
+                                    } else {
+                                        MessageBoxW(hWnd, L"创建数据类型文件失败！", L"错误", MB_OK | MB_ICONERROR);
                                     }
-                                    
-                                    // 通过 EllEditor 打开数据类型文件
-                                    EllEditorData* dllData = (EllEditorData*)GetWindowLongPtr(hEllEditorWnd, GWLP_USERDATA);
-                                    if (dllData) {
-                                        ShowWindow(hWelcomePageWnd, SW_HIDE);
-                                        ShowWindow(hEditorWnd, SW_HIDE);
-                                        ShowWindow(hEllEditorWnd, SW_SHOW);
-                                        dllData->LoadFile(filePath);
-                                        InvalidateRect(hEllEditorWnd, NULL, TRUE);
-                                    }
-                                } else {
-                                    MessageBoxW(hWnd, L"创建数据类型文件失败！", L"错误", MB_OK | MB_ICONERROR);
                                 }
                             }
                         }
@@ -1405,41 +1417,53 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     if (pm.HasOpenProject()) {
                         const ProjectInfo* project = pm.GetCurrentProject();
                         if (project) {
-                            // 生成唯一的全局变量文件名
-                            int counter = 1;
-                            std::wstring baseName = L"全局变量";
-                            std::wstring fileName;
-                            std::wstring filePath;
-                            do {
-                                fileName = baseName + std::to_wstring(counter) + L".egv";
-                                filePath = project->projectDirectory + L"\\" + fileName;
-                                counter++;
-                            } while (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                            // 检查是否已存在全局变量文件（一个项目只能有一个全局变量文件）
+                            bool hasGlobalVarFile = false;
+                            for (const auto& file : project->files) {
+                                std::wstring ext = file.filePath.substr(file.filePath.find_last_of(L'.'));
+                                std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
+                                if (ext == L".egv") {
+                                    hasGlobalVarFile = true;
+                                    // 提取文件名
+                                    size_t pos = file.filePath.find_last_of(L"\\/");
+                                    std::wstring existingFileName = (pos != std::wstring::npos) ? file.filePath.substr(pos + 1) : file.filePath;
+                                    MessageBoxW(hWnd, 
+                                        (L"项目中已存在全局变量文件：" + existingFileName + L"\n\n一个项目只能有一个全局变量文件！").c_str(), 
+                                        L"提示", MB_OK | MB_ICONINFORMATION);
+                                    break;
+                                }
+                            }
                             
-                            // 创建全局变量文件
-                            std::wstring content = L"# 全局变量定义文件\n# 格式: 变量名, 类型, 静态/非静态, 数组/非数组, 数组维度, 备注\n\n";
-                            
-                            int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
-                            if (utf8Len > 0) {
-                                std::string utf8Content(utf8Len - 1, 0);
-                                WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                            // 如果不存在全局变量文件，则创建
+                            if (!hasGlobalVarFile) {
+                                std::wstring fileName = L"全局变量.egv";
+                                std::wstring filePath = project->projectDirectory + L"\\" + fileName;
                                 
-                                HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
-                                                          CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
-                                if (hFile != INVALID_HANDLE_VALUE) {
-                                    DWORD bytesWritten;
-                                    WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
-                                    CloseHandle(hFile);
+                                // 创建全局变量文件
+                                std::wstring content = L".版本 2\n\n";
+                                
+                                int utf8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, NULL, 0, NULL, NULL);
+                                if (utf8Len > 0) {
+                                    std::string utf8Content(utf8Len - 1, 0);
+                                    WideCharToMultiByte(CP_UTF8, 0, content.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
                                     
-                                    // 添加到项目
-                                    pm.AddFileToProject(filePath);
-                                    ExplorerLoadProject();
-                                    ExplorerSelectFile(filePath);
-                                    
-                                    // TODO: 打开全局变量编辑器
-                                    MessageBoxW(hWnd, (L"已创建全局变量文件：" + fileName).c_str(), L"提示", MB_OK | MB_ICONINFORMATION);
-                                } else {
-                                    MessageBoxW(hWnd, L"创建全局变量文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                    HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                              CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                    if (hFile != INVALID_HANDLE_VALUE) {
+                                        DWORD bytesWritten;
+                                        WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                        CloseHandle(hFile);
+                                        
+                                        // 添加到项目
+                                        pm.AddFileToProject(filePath);
+                                        ExplorerLoadProject();
+                                        ExplorerSelectFile(filePath);
+                                        
+                                        // TODO: 打开全局变量编辑器
+                                        MessageBoxW(hWnd, (L"已创建全局变量文件：" + fileName).c_str(), L"提示", MB_OK | MB_ICONINFORMATION);
+                                    } else {
+                                        MessageBoxW(hWnd, L"创建全局变量文件失败！", L"错误", MB_OK | MB_ICONERROR);
+                                    }
                                 }
                             }
                         }
