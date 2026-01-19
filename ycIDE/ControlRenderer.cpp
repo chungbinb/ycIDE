@@ -9,14 +9,32 @@
 #include <codecvt>
 #include <set>
 
+// 调试日志函数
+static void DebugLog(const std::wstring& msg) {
+    static bool firstWrite = true;
+    static std::wstring logPath;
+    
+    if (firstWrite) {
+        // 创建 logs 目录
+        CreateDirectoryW(L"logs", NULL);
+        logPath = L"logs\\control_renderer_debug.txt";
+    }
+    
+    FILE* f = nullptr;
+    _wfopen_s(&f, logPath.c_str(), firstWrite ? L"w" : L"a");
+    if (f) {
+        fwprintf(f, L"%s\n", msg.c_str());
+        fclose(f);
+        firstWrite = false;
+    }
+    OutputDebugStringW((msg + L"\n").c_str());
+}
+
 ControlRenderer::ControlRenderer()
     : m_fneParser(nullptr)
 {
-    // 尝试加载krnln.fne
-    if (!LoadControlsFromKrnln()) {
-        // 如果加载失败，使用内置控件定义
-        RegisterBuiltinControls();
-    }
+    // 从支持库加载控件（不使用内置控件）
+    LoadControlsFromKrnln();
 }
 
 ControlRenderer::~ControlRenderer()
@@ -29,54 +47,185 @@ ControlRenderer::~ControlRenderer()
 // 从krnln.fne加载窗口组件
 bool ControlRenderer::LoadControlsFromKrnln()
 {
-    // 尝试多个可能的路径
+    DebugLog(L"========== ControlRenderer::LoadControlsFromKrnln 开始 ==========");
+    
+    // 获取当前工作目录
+    wchar_t currentDir[MAX_PATH];
+    GetCurrentDirectoryW(MAX_PATH, currentDir);
+    DebugLog(L"当前工作目录: " + std::wstring(currentDir));
+    
+    // 获取可执行文件目录
+    wchar_t exePath[MAX_PATH];
+    GetModuleFileNameW(NULL, exePath, MAX_PATH);
+    std::wstring exeDir = exePath;
+    size_t lastSlash = exeDir.find_last_of(L"\\");
+    if (lastSlash != std::wstring::npos) {
+        exeDir = exeDir.substr(0, lastSlash);
+    }
+    DebugLog(L"可执行文件目录: " + exeDir);
+    
+    // 尝试多个可能的路径（优先从exe目录的lib子目录加载）
     std::vector<std::wstring> paths = {
-        L"krnln.fne",
-        L"..\\krnln.fne",
-        L"功能库\\krnln\\krnln.fne"
+        exeDir + L"\\lib\\krnln.fne",   // 首选：exe目录的lib子目录
+        L"lib\\krnln.fne",               // 当前工作目录的lib子目录
+        L"x64\\Debug\\lib\\krnln.fne",   // VS调试时的相对路径
+        L"krnln.fne",                    // 当前目录
+        L"..\\krnln.fne",                // 上级目录
     };
     
     for (const auto& path : paths) {
+        DebugLog(L"尝试加载: " + path);
+        
+        // 检查文件是否存在
+        FILE* testFile = nullptr;
+        _wfopen_s(&testFile, path.c_str(), L"rb");
+        if (testFile) {
+            fseek(testFile, 0, SEEK_END);
+            long fileSize = ftell(testFile);
+            fclose(testFile);
+            DebugLog(L"  文件存在，大小: " + std::to_wstring(fileSize) + L" 字节");
+        } else {
+            DebugLog(L"  文件不存在或无法打开");
+            continue;
+        }
+        
         if (LoadControlsFromFne(path)) {
+            DebugLog(L"成功从 " + path + L" 加载控件");
+            DebugLog(L"总共加载 " + std::to_wstring(m_controlMetadata.size()) + L" 个控件");
+            
+            // 列出所有加载的控件
+            DebugLog(L"\n已加载的控件列表:");
+            for (const auto& pair : m_controlMetadata) {
+                DebugLog(L"  - " + pair.first + L" (分类: " + pair.second.category + L")");
+            }
+            
+            DebugLog(L"========== LoadControlsFromKrnln 成功 ==========");
             return true;
+        } else {
+            DebugLog(L"  加载失败");
         }
     }
     
-    // 如果FNE文件加载失败，尝试从帮助文档解析
-    std::vector<std::wstring> helpPaths = {
-        L"系统核心支持库帮助说明文件.txt",
-        L"..\\系统核心支持库帮助说明文件.txt"
-    };
-    
-    for (const auto& path : helpPaths) {
-        if (ParseControlsFromHelpFile(path)) {
-            return true;
-        }
-    }
-    
+    DebugLog(L"所有路径都加载失败！");
+    DebugLog(L"========== LoadControlsFromKrnln 失败 ==========");
     return false;
 }
 
 bool ControlRenderer::LoadControlsFromFne(const std::wstring& fnePath)
 {
-    // TODO: 使用FneParser加载控件定义
-    // 当前FneParser主要解析命令，需要扩展以支持数据类型（窗口组件）解析
+    DebugLog(L"\n--- LoadControlsFromFne: " + fnePath + L" ---");
     
     m_fneParser = new FneParser();
     if (!m_fneParser->LoadFneFile(fnePath)) {
+        DebugLog(L"FneParser::LoadFneFile 失败");
         delete m_fneParser;
         m_fneParser = nullptr;
         return false;
     }
     
-    // 暂时返回false，让它使用ParseControlsFromHelpFile
-    return false;
+    DebugLog(L"FneParser::LoadFneFile 成功");
+    DebugLog(L"支持库名称: " + m_fneParser->GetLibraryName());
+    
+    // 从FneParser获取窗口组件
+    const auto& windowUnits = m_fneParser->GetWindowUnits();
+    DebugLog(L"GetWindowUnits 返回 " + std::to_wstring(windowUnits.size()) + L" 个窗口组件");
+    
+    // 列出所有窗口组件
+    for (size_t i = 0; i < windowUnits.size() && i < 10; i++) {
+        DebugLog(L"  窗口组件[" + std::to_wstring(i) + L"]: " + windowUnits[i].name + 
+                 L" (libraryName=" + windowUnits[i].libraryName + L")");
+    }
+    if (windowUnits.size() > 10) {
+        DebugLog(L"  ... 还有 " + std::to_wstring(windowUnits.size() - 10) + L" 个组件");
+    }
+    
+    // 判断是否为核心支持库（根据文件名判断）
+    bool isKernelLib = (fnePath.find(L"krnln.fne") != std::wstring::npos);
+    
+    for (const auto& unit : windowUnits) {
+        ControlMetadata metadata;
+        metadata.type = unit.name;
+        metadata.englishName = unit.englishName;
+        metadata.displayName = unit.name;
+        metadata.description = unit.description;
+        metadata.isContainer = unit.isContainer;
+        metadata.canAcceptFocus = unit.canGetFocus;
+        
+        // 根据支持库文件确定分类
+        // 核心支持库(krnln.fne) -> 基础组件
+        // 其他.fne支持库 -> 扩展组件  
+        // 外部组件 -> 暂时保留占位
+        if (isKernelLib) {
+            metadata.category = L"基础组件";
+        } else {
+            metadata.category = L"扩展组件";
+        }
+        
+        // 使用默认尺寸
+        metadata.defaultWidth = 80;
+        metadata.defaultHeight = 24;
+        
+        // 加载属性
+        for (const auto& prop : unit.properties) {
+            ControlPropertyInfo propInfo;
+            propInfo.name = prop.name;
+            propInfo.englishName = prop.englishName;
+            
+            // 根据属性类型设置编辑器类型
+            switch (prop.type) {
+                case PropertyType::Bool:
+                    propInfo.editorType = PropertyEditorType::Boolean;
+                    propInfo.defaultValue = L"假";
+                    break;
+                case PropertyType::Int:
+                case PropertyType::Double:
+                    if (prop.name.find(L"颜色") != std::wstring::npos) {
+                        propInfo.editorType = PropertyEditorType::Color;
+                        propInfo.defaultValue = L"16777215";
+                    } else {
+                        propInfo.editorType = PropertyEditorType::Number;
+                        propInfo.defaultValue = L"0";
+                    }
+                    break;
+                case PropertyType::PickInt:
+                case PropertyType::PickText:
+                case PropertyType::EditPickText:
+                case PropertyType::PickSpecInt:
+                    propInfo.editorType = PropertyEditorType::Enum;
+                    propInfo.enumValues = prop.pickOptions;
+                    if (!prop.pickOptions.empty()) {
+                        propInfo.defaultValue = prop.pickOptions[0];
+                    }
+                    break;
+                case PropertyType::Color:
+                case PropertyType::ColorTrans:
+                case PropertyType::ColorBack:
+                    propInfo.editorType = PropertyEditorType::Color;
+                    propInfo.defaultValue = L"16777215";
+                    break;
+                case PropertyType::Font:
+                    propInfo.editorType = PropertyEditorType::Font;
+                    propInfo.defaultValue = L"";
+                    break;
+                default:
+                    propInfo.editorType = PropertyEditorType::Text;
+                    propInfo.defaultValue = L"";
+                    break;
+            }
+            
+            metadata.properties.push_back(propInfo);
+        }
+        
+        m_controlMetadata[unit.name] = metadata;
+    }
+    
+    return !m_controlMetadata.empty();
 }
 
 // 从帮助文档解析控件信息
 bool ControlRenderer::ParseControlsFromHelpFile(const std::wstring& helpFilePath)
 {
-    std::wifstream file(helpFilePath);
+    std::wifstream file(helpFilePath.c_str());
     if (!file.is_open()) {
         return false;
     }

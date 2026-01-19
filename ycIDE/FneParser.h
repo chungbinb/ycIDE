@@ -71,6 +71,54 @@ typedef struct {
 #define LDT_IS_HIDED            (1 << 0)    // 是否隐藏
 #define LDT_IS_ERROR            (1 << 1)    // 是否错误
 #define LDT_WIN_UNIT            (1 << 6)    // 是否窗口组件
+#define LDT_IS_CONTAINER        (1 << 7)    // 是否容器组件
+#define LDT_IS_TAB_UNIT         (1 << 8)    // 是否Tab控件
+#define LDT_CANNOT_GET_FOCUS    (1 << 16)   // 不能获取焦点
+
+// 属性标志
+#define UW_HAS_INDENT           (1 << 0)    // 有缩进
+#define UW_GROUP_LINE           (1 << 1)    // 分组线
+#define UW_ONLY_READ            (1 << 2)    // 只读
+#define UW_CANNOT_INIT          (1 << 3)    // 不能初始化
+#define UW_IS_HIDED             (1 << 4)    // 隐藏
+
+// 事件标志
+#define EV_IS_HIDED             (1 << 0)    // 隐藏事件
+#define EV_IS_KEY_EVENT         (1 << 2)    // 键盘事件
+#define EV_RETURN_INT           (1 << 3)    // 返回整数
+#define EV_RETURN_BOOL          (1 << 4)    // 返回逻辑值
+#define EV_IS_VER2              (1 << 31)   // 第二版事件结构
+
+// 事件参数标志
+#define EAS_BY_REF              (1 << 1)    // 引用传递
+
+// 窗口组件属性结构（原始）
+typedef struct {
+    const char* m_szName;       // 属性名称
+    const char* m_szEgName;     // 英文名称
+    const char* m_szExplain;    // 属性说明
+    short       m_shtType;      // 属性类型
+    WORD        m_wState;       // 状态标志
+    const char* m_szzPickStr;   // 选择字符串
+} UNIT_PROPERTY_RAW, * PUNIT_PROPERTY_RAW;
+
+// 事件参数结构（第二版）
+typedef struct {
+    const char* m_szName;       // 参数名称
+    const char* m_szExplain;    // 参数说明
+    DWORD       m_dwState;      // 状态
+    DATA_TYPE   m_dtDataType;   // 数据类型
+} EVENT_ARG_INFO2_RAW, * PEVENT_ARG_INFO2_RAW;
+
+// 事件结构（第二版）
+typedef struct {
+    const char* m_szName;       // 事件名称
+    const char* m_szExplain;    // 事件说明
+    DWORD       m_dwState;      // 状态
+    int         m_nArgCount;    // 参数数目
+    PEVENT_ARG_INFO2_RAW m_pEventArgInfo;  // 参数信息
+    DATA_TYPE   m_dtRetDataType;  // 返回类型
+} EVENT_INFO2_RAW, * PEVENT_INFO2_RAW;
 
 // 自定义数据类型结构
 typedef struct {
@@ -133,6 +181,75 @@ typedef struct {
 // GetNewInf 函数原型
 typedef PLIB_INFO(WINAPI* PFN_GET_LIB_INFO)();
 
+// 窗口组件属性类型
+enum class PropertyType {
+    PickSpecInt = 1000,  // UD_PICK_SPEC_INT
+    Int = 1001,          // UD_INT
+    Double = 1002,       // UD_DOUBLE
+    Bool = 1003,         // UD_BOOL
+    DateTime = 1004,     // UD_DATE_TIME
+    Text = 1005,         // UD_TEXT
+    PickInt = 1006,      // UD_PICK_INT
+    PickText = 1007,     // UD_PICK_TEXT
+    EditPickText = 1008, // UD_EDIT_PICK_TEXT
+    Picture = 1009,      // UD_PIC
+    Icon = 1010,         // UD_ICON
+    Cursor = 1011,       // UD_CURSOR
+    Music = 1012,        // UD_MUSIC
+    Font = 1013,         // UD_FONT
+    Color = 1014,        // UD_COLOR
+    ColorTrans = 1015,   // UD_COLOR_TRANS
+    FileName = 1016,     // UD_FILE_NAME
+    ColorBack = 1017,    // UD_COLOR_BACK
+    ImageList = 1023,    // UD_IMAGE_LIST
+    Customize = 1024     // UD_CUSTOMIZE
+};
+
+// 窗口组件属性信息
+struct FnePropertyInfo {
+    std::wstring name;           // 属性名称
+    std::wstring englishName;    // 英文名称
+    std::wstring description;    // 属性说明
+    PropertyType type;           // 属性类型
+    bool isReadOnly;             // 是否只读
+    bool isHidden;               // 是否隐藏
+    std::vector<std::wstring> pickOptions;  // 选择选项（用于PickInt等类型）
+};
+
+// 事件参数信息
+struct FneEventArgInfo {
+    std::wstring name;           // 参数名称
+    std::wstring description;    // 参数说明
+    std::wstring dataType;       // 参数数据类型
+    bool isByRef;                // 是否引用传递
+};
+
+// 窗口组件事件信息
+struct FneEventInfo {
+    std::wstring name;           // 事件名称
+    std::wstring description;    // 事件说明
+    bool isHidden;               // 是否隐藏
+    bool isKeyEvent;             // 是否键盘事件
+    bool returnsInt;             // 是否返回整数
+    bool returnsBool;            // 是否返回逻辑值
+    std::vector<FneEventArgInfo> arguments;  // 事件参数
+};
+
+// 窗口组件信息
+struct FneWindowUnitInfo {
+    std::wstring name;           // 组件名称
+    std::wstring englishName;    // 英文名称
+    std::wstring description;    // 组件说明
+    std::wstring libraryName;    // 所属支持库名称
+    bool isContainer;            // 是否容器组件
+    bool isTabUnit;              // 是否Tab控件
+    bool canGetFocus;            // 是否可获取焦点
+    DWORD bitmapId;              // 图标资源ID
+    std::vector<FnePropertyInfo> properties;  // 属性列表
+    std::vector<FneEventInfo> events;         // 事件列表
+    std::vector<int> memberCommands;          // 成员命令索引
+};
+
 // FNE 数据类型信息
 struct FneDataTypeInfo {
     std::wstring name;          // 数据类型名称
@@ -167,16 +284,23 @@ public:
     // 获取所有数据类型
     const std::vector<FneDataTypeInfo>& GetDataTypes() const { return dataTypes; }
 
+    // 获取所有窗口组件
+    const std::vector<FneWindowUnitInfo>& GetWindowUnits() const { return windowUnits; }
+
     // 获取支持库名称
     std::wstring GetLibraryName() const { return libraryName; }
 
     // 获取支持库说明
     std::wstring GetLibraryDescription() const { return libraryDescription; }
 
+    // 根据名称查找窗口组件
+    const FneWindowUnitInfo* FindWindowUnit(const std::wstring& name) const;
+
 private:
     HMODULE hModule;                    // DLL 句柄
     std::vector<FneCommandInfo> commands;  // 命令信息
     std::vector<FneDataTypeInfo> dataTypes; // 数据类型信息
+    std::vector<FneWindowUnitInfo> windowUnits; // 窗口组件信息
     std::wstring libraryName;           // 支持库名称
     std::wstring libraryDescription;    // 支持库说明
 
@@ -185,4 +309,10 @@ private:
 
     // UTF-8 转 UTF-16
     std::wstring UTF8ToUTF16(const char* utf8Str);
+    
+    // 解析窗口组件属性
+    void ParseWindowUnitProperties(PLIB_DATA_TYPE_INFO pDataTypeInfo, FneWindowUnitInfo& unitInfo);
+    
+    // 解析窗口组件事件
+    void ParseWindowUnitEvents(PLIB_DATA_TYPE_INFO pDataTypeInfo, FneWindowUnitInfo& unitInfo);
 };

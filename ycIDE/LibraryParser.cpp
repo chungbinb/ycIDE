@@ -25,7 +25,8 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
     const auto& fneCommands = fneParser.GetCommands();
     
     // 调试输出到文件
-    std::wofstream debugFile(L"d:\\chungbin\\ycide\\library_load_debug.txt", std::ios::app);
+    CreateDirectoryW(L"logs", NULL);
+    std::wofstream debugFile(L"logs\\library_load_debug.txt", std::ios::app);
     debugFile.imbue(std::locale(""));
     debugFile << L"========================================" << std::endl;
     debugFile << L"加载支持库: " << libraryName << std::endl;
@@ -119,6 +120,38 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
         }
     }
     
+    // 解析窗口组件
+    const auto& fneWindowUnits = fneParser.GetWindowUnits();
+    debugFile << L"窗口组件数: " << fneWindowUnits.size() << std::endl;
+    
+    for (const auto& fneUnit : fneWindowUnits) {
+        WindowUnitInfo unit;
+        unit.name = fneUnit.name;
+        unit.englishName = fneUnit.englishName;
+        unit.description = fneUnit.description;
+        unit.libraryName = libraryName;
+        unit.isContainer = fneUnit.isContainer;
+        unit.properties = fneUnit.properties;
+        unit.events = fneUnit.events;
+        
+        // 根据组件类型确定分类
+        if (unit.isContainer) {
+            unit.category = L"容器控件";
+        } else if (unit.name == L"窗口" || unit.name == L"窗体") {
+            unit.category = L"窗口";
+        } else {
+            unit.category = L"常用控件";
+        }
+        
+        windowUnits.push_back(unit);
+        unitIndex[unit.name] = windowUnits.size() - 1;
+        
+        // 调试输出窗口组件
+        debugFile << L"  窗口组件: " << unit.name 
+                  << L", 属性数: " << unit.properties.size()
+                  << L", 事件数: " << unit.events.size() << std::endl;
+    }
+    
     debugFile << L"========================================" << std::endl << std::endl;
     debugFile.close();
     
@@ -129,6 +162,14 @@ const LibraryCommand* LibraryParser::FindCommand(const std::wstring& name) const
     auto it = nameIndex.find(name);
     if (it != nameIndex.end() && it->second < commands.size()) {
         return &commands[it->second];
+    }
+    return nullptr;
+}
+
+const WindowUnitInfo* LibraryParser::FindWindowUnit(const std::wstring& name) const {
+    auto it = unitIndex.find(name);
+    if (it != unitIndex.end() && it->second < windowUnits.size()) {
+        return &windowUnits[it->second];
     }
     return nullptr;
 }

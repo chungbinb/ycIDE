@@ -1,9 +1,44 @@
 #include "ControlToolbox.h"
 #include "EditorContext.h"
 #include "ControlRenderer.h"
+#include "LibraryParser.h"
 #include "Theme.h"
+#include <cstdio>
+
+// 防止 Windows 头文件中的 min/max 宏与 std::min/std::max 冲突
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#undef min
+#undef max
 
 extern AppTheme g_CurrentTheme;
+
+// 将 Windows COLORREF (BGR) 转换为 GDI+ Color (ARGB)
+inline Gdiplus::Color ColorRefToGdiplus(COLORREF cr) {
+    return Gdiplus::Color(255, GetRValue(cr), GetGValue(cr), GetBValue(cr));
+}
+
+// 调试日志函数
+static void ToolboxDebugLog(const std::wstring& msg) {
+    static bool firstWrite = true;
+    static std::wstring logPath;
+    
+    if (firstWrite) {
+        // 创建 logs 目录
+        CreateDirectoryW(L"logs", NULL);
+        logPath = L"logs\\toolbox_debug.txt";
+    }
+    
+    FILE* f = nullptr;
+    _wfopen_s(&f, logPath.c_str(), firstWrite ? L"w" : L"a");
+    if (f) {
+        fwprintf(f, L"%s\n", msg.c_str());
+        fclose(f);
+        firstWrite = false;
+    }
+    OutputDebugStringW((msg + L"\n").c_str());
+}
 
 // ControlToolbox 构造函数
 ControlToolbox::ControlToolbox(HWND hWnd)
@@ -16,8 +51,13 @@ ControlToolbox::ControlToolbox(HWND hWnd)
     GdiplusStartupInput gdiplusStartupInput;
     GdiplusStartup(&m_gdiplusToken, &gdiplusStartupInput, NULL);
     
-    // 添加默认控件类型
-    AddDefaultControls();
+    // 先尝试从支持库加载控件
+    LoadControlsFromLibrary();
+    
+    // 如果支持库没有控件，使用默认控件
+    if (m_categories.empty()) {
+        AddDefaultControls();
+    }
 }
 
 ControlToolbox::~ControlToolbox()
@@ -90,6 +130,59 @@ void ControlToolbox::AddDefaultControls()
     m_categories.push_back(containerCat);
 }
 
+// 从支持库加载控件
+void ControlToolbox::LoadControlsFromLibrary()
+{
+    const auto& windowUnits = LibraryParser::GetInstance().GetWindowUnits();
+    
+    if (windowUnits.empty()) {
+        OutputDebugStringW(L"[ControlToolbox] 支持库中没有窗口组件\n");
+        return;
+    }
+    
+    OutputDebugStringW((L"[ControlToolbox] 从支持库加载 " + std::to_wstring(windowUnits.size()) + L" 个窗口组件\n").c_str());
+    
+    for (const auto& unit : windowUnits) {
+        // 跳过窗口类型（窗口不在组件箱中选择）
+        if (unit.name == L"窗口" || unit.name == L"窗体" || unit.name == L"启动窗口") {
+            continue;
+        }
+        
+        // 查找或创建分类
+        ToolboxCategory* category = FindOrCreateCategory(unit.category);
+        
+        // 创建工具箱项
+        ToolboxItem* item = new ToolboxItem();
+        item->type = unit.name;
+        item->displayName = unit.name;
+        item->category = unit.category;
+        
+        category->items.push_back(item);
+        m_itemMap[unit.name] = item;
+        
+        OutputDebugStringW((L"[ControlToolbox] 添加组件: " + unit.name + L" -> " + unit.category + L"\n").c_str());
+    }
+}
+
+// 查找或创建分类
+ToolboxCategory* ControlToolbox::FindOrCreateCategory(const std::wstring& categoryName)
+{
+    // 查找现有分类
+    for (auto& cat : m_categories) {
+        if (cat.name == categoryName) {
+            return &cat;
+        }
+    }
+    
+    // 创建新分类
+    ToolboxCategory newCat;
+    newCat.name = categoryName;
+    newCat.expanded = true;
+    m_categories.push_back(newCat);
+    
+    return &m_categories.back();
+}
+
 void ControlToolbox::OnPaint(HDC hdc)
 {
     RECT rect;
@@ -105,15 +198,15 @@ void ControlToolbox::OnPaint(HDC hdc)
     graphics.SetTextRenderingHint(TextRenderingHintClearTypeGridFit);
     
     // 填充背景
-    SolidBrush bgBrush(Color(g_CurrentTheme.editorBg));
+    SolidBrush bgBrush(ColorRefToGdiplus(g_CurrentTheme.editorBg));
     graphics.FillRectangle(&bgBrush, 0, 0, rect.right, rect.bottom);
     
     // 绘制标题栏（用于拖动）
-    SolidBrush headerBrush(Color(g_CurrentTheme.tableHeaderBg));
+    SolidBrush headerBrush(ColorRefToGdiplus(g_CurrentTheme.tableHeaderBg));
     graphics.FillRectangle(&headerBrush, 0, 0, rect.right, 30);
     
     Font titleFont(L"微软雅黑", 11, FontStyleBold);
-    SolidBrush textBrush(Color(g_CurrentTheme.text));
+    SolidBrush textBrush(ColorRefToGdiplus(g_CurrentTheme.text));
     graphics.DrawString(L"组件箱", -1, &titleFont, PointF(8, 6), &textBrush);
     
     // 绘制控件列表
@@ -200,6 +293,14 @@ void ControlToolbox::OnLButtonDown(int x, int y)
                 if (clickY >= itemY && clickY < itemY + ITEM_HEIGHT) {
                     m_selectedType = item->type;
                     InvalidateRect(m_hWnd, NULL, FALSE);
+                    
+                    // 向主窗口发送选择变更通知
+                    HWND hMainWnd = GetAncestor(m_hWnd, GA_ROOT);
+                    if (hMainWnd) {
+                        PostMessage(hMainWnd, WM_COMMAND, 
+                                   MAKEWPARAM(0, WM_TOOLBOX_SELECTION_CHANGED), 
+                                   (LPARAM)m_selectedType.c_str());
+                    }
                     return;
                 }
                 itemY += ITEM_HEIGHT;
@@ -231,13 +332,13 @@ void ControlToolbox::OnVScroll(WPARAM wParam)
     
     switch (action) {
         case SB_LINEUP:
-            m_scrollPos = max(0, m_scrollPos - ITEM_HEIGHT);
+            m_scrollPos = std::max(0, m_scrollPos - ITEM_HEIGHT);
             break;
         case SB_LINEDOWN:
             m_scrollPos += ITEM_HEIGHT;
             break;
         case SB_PAGEUP:
-            m_scrollPos = max(0, m_scrollPos - 100);
+            m_scrollPos = std::max(0, m_scrollPos - 100);
             break;
         case SB_PAGEDOWN:
             m_scrollPos += 100;
@@ -251,7 +352,28 @@ void ControlToolbox::OnVScroll(WPARAM wParam)
     // 限制滚动范围
     int maxScroll = GetTotalHeight() - 100;
     if (maxScroll < 0) maxScroll = 0;
-    m_scrollPos = min(m_scrollPos, maxScroll);
+    m_scrollPos = std::min(m_scrollPos, maxScroll);
+    
+    if (m_scrollPos != oldPos) {
+        SetScrollPos(m_hWnd, SB_VERT, m_scrollPos, TRUE);
+        InvalidateRect(m_hWnd, NULL, FALSE);
+    }
+}
+
+void ControlToolbox::OnMouseWheel(WPARAM wParam)
+{
+    int delta = GET_WHEEL_DELTA_WPARAM(wParam);
+    int oldPos = m_scrollPos;
+    
+    // 每次滚动3行
+    int scrollAmount = (ITEM_HEIGHT * 3) * delta / WHEEL_DELTA;
+    m_scrollPos -= scrollAmount;
+    
+    // 限制滚动范围
+    if (m_scrollPos < 0) m_scrollPos = 0;
+    int maxScroll = GetTotalHeight() - 100;
+    if (maxScroll < 0) maxScroll = 0;
+    m_scrollPos = std::min(m_scrollPos, maxScroll);
     
     if (m_scrollPos != oldPos) {
         SetScrollPos(m_hWnd, SB_VERT, m_scrollPos, TRUE);
@@ -261,8 +383,76 @@ void ControlToolbox::OnVScroll(WPARAM wParam)
 
 void ControlToolbox::LoadFromRenderer(ControlRenderer* renderer)
 {
-    // 从ControlRenderer加载控件类型
-    // TODO: 实现
+    ToolboxDebugLog(L"========== LoadFromRenderer 开始 ==========");
+    
+    if (!renderer) {
+        ToolboxDebugLog(L"错误: renderer 为 nullptr!");
+        return;
+    }
+    
+    // 清空现有分类
+    ToolboxDebugLog(L"清空现有分类，当前有 " + std::to_wstring(m_categories.size()) + L" 个分类");
+    for (auto& cat : m_categories) {
+        for (auto item : cat.items) {
+            delete item;
+        }
+        cat.items.clear();
+    }
+    m_categories.clear();
+    
+    // 获取所有分类
+    auto categories = renderer->GetControlCategories();
+    ToolboxDebugLog(L"从 renderer 获取到 " + std::to_wstring(categories.size()) + L" 个分类");
+    
+    for (const auto& catName : categories) {
+        ToolboxDebugLog(L"\n处理分类: " + catName);
+        
+        ToolboxCategory category;
+        category.name = catName;
+        category.expanded = true;
+        
+        // 首先添加"指针"选项用于取消选择
+        ToolboxItem* pointerItem = new ToolboxItem();
+        pointerItem->type = L"";
+        pointerItem->displayName = L"↖ 指针";
+        pointerItem->category = catName;
+        pointerItem->icon = nullptr;
+        category.items.push_back(pointerItem);
+        
+        // 获取该分类下的所有控件
+        auto controls = renderer->GetControlsInCategory(catName);
+        ToolboxDebugLog(L"  该分类有 " + std::to_wstring(controls.size()) + L" 个控件");
+        
+        for (const auto& controlType : controls) {
+            auto metadata = renderer->GetMetadata(controlType);
+            
+            ToolboxItem* item = new ToolboxItem();
+            item->type = controlType;
+            item->displayName = metadata.displayName.empty() ? controlType : metadata.displayName;
+            item->category = catName;
+            item->icon = nullptr;  // TODO: 加载图标
+            
+            category.items.push_back(item);
+            ToolboxDebugLog(L"    添加控件: " + controlType);
+        }
+        
+        if (!category.items.empty()) {
+            m_categories.push_back(category);
+            ToolboxDebugLog(L"  分类已添加到列表");
+        } else {
+            ToolboxDebugLog(L"  分类为空，跳过");
+        }
+    }
+    
+    ToolboxDebugLog(L"\n最终结果: " + std::to_wstring(m_categories.size()) + L" 个分类");
+    for (const auto& cat : m_categories) {
+        ToolboxDebugLog(L"  - " + cat.name + L": " + std::to_wstring(cat.items.size()) + L" 个控件");
+    }
+    
+    ToolboxDebugLog(L"========== LoadFromRenderer 结束 ==========");
+    
+    // 刷新显示
+    InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
 std::wstring ControlToolbox::GetSelectedControlType() const

@@ -6,9 +6,13 @@
 #include <vector>
 #include <string>
 #include <memory>
+#include <functional>
 
 using json = nlohmann::json;
 using namespace Gdiplus;
+
+// 前向声明
+class ControlRenderer;
 
 // 控件信息
 struct ControlInfo {
@@ -28,10 +32,18 @@ struct FormInfo {
     int width;                    // 窗体宽度
     int height;                   // 窗体高度
     std::wstring title;           // 窗体标题
+    int borderStyle;              // 边框样式 (0=无边框, 1=普通可调, 2=普通固定...)
+    bool hasControlBox;           // 是否有控制按钮
+    bool hasMaxButton;            // 是否有最大化按钮
+    bool hasMinButton;            // 是否有最小化按钮
+    COLORREF backColor;           // 背景色
     std::vector<std::shared_ptr<ControlInfo>> controls;  // 控件列表
     std::map<std::wstring, std::wstring> properties;     // 窗体属性
     
-    FormInfo() : width(640), height(480), title(L"窗体") {}
+    FormInfo() : width(640), height(480), title(L"窗体"), 
+                 borderStyle(1), hasControlBox(true), 
+                 hasMaxButton(true), hasMinButton(true),
+                 backColor(RGB(240, 240, 240)) {}
 };
 
 // 设计器快照（用于撤销/重做）
@@ -49,8 +61,9 @@ struct SelectionInfo {
     std::vector<std::wstring> selectedControlIds;
     Rect selectionBounds;         // 选中控件的包围框
     bool isMultiSelect;
+    bool isFormSelected;          // 是否选中了窗口本身
     
-    SelectionInfo() : isMultiSelect(false) {}
+    SelectionInfo() : isMultiSelect(false), isFormSelected(false) {}
 };
 
 // 拖动模式
@@ -107,6 +120,8 @@ public:
     void OnRButtonDown(int x, int y);
     void OnKeyDown(UINT vk, UINT flags);
     void OnMouseWheel(int delta);
+    void OnHScroll(UINT nSBCode, UINT nPos);  // 水平滚动条处理
+    void OnVScroll(UINT nSBCode, UINT nPos);  // 垂直滚动条处理
     
     // === 文件操作 ===
     
@@ -116,6 +131,11 @@ public:
     void SetModified(bool modified);
     std::wstring GetFileName() const { return m_fileName; }
     std::wstring GetFilePath() const { return m_filePath; }
+    void SetFilePath(const std::wstring& path) { 
+        m_filePath = path; 
+        size_t pos = path.find_last_of(L"\\/");
+        m_fileName = (pos != std::wstring::npos) ? path.substr(pos + 1) : path;
+    }
     
     // === 控件操作 ===
     
@@ -128,9 +148,11 @@ public:
     // === 选择操作 ===
     
     void SelectControl(const std::wstring& id, bool addToSelection = false);
+    void SelectForm();  // 选中窗口本身
     void ClearSelection();
     void SelectAll();
     std::shared_ptr<ControlInfo> HitTest(int x, int y);
+    bool IsFormSelected() const { return m_selection.isFormSelected; }
     
     // === 对齐和排列 ===
     
@@ -192,9 +214,20 @@ public:
     void SetToolMode(const std::wstring& controlType);  // 设置要创建的控件类型
     void SetSelectMode();  // 切换到选择模式
     
+    // 获取ControlRenderer
+    ControlRenderer* GetControlRenderer() const { return m_pControlRenderer; }
+    
+    // 选择变更通知回调
+    using SelectionChangedCallback = std::function<void()>;
+    void SetSelectionChangedCallback(SelectionChangedCallback callback) { m_selectionChangedCallback = callback; }
+    
+    // 光标
+    HCURSOR GetResizeCursor();  // 根据鼠标位置获取调整大小光标
+    
 private:
     HWND m_hWnd;
     EditorContext* m_pContext;
+    ControlRenderer* m_pControlRenderer;  // 控件渲染器
     
     // 窗体数据
     FormInfo m_formInfo;
@@ -204,6 +237,7 @@ private:
     
     // 选择状态
     SelectionInfo m_selection;
+    SelectionChangedCallback m_selectionChangedCallback;  // 选择变更回调
     
     // 拖动状态
     DragMode m_dragMode;
@@ -225,6 +259,9 @@ private:
     int m_scrollX;
     int m_scrollY;
     
+    // 客户区域（标题栏下方的内容区域）
+    Gdiplus::Rect m_clientAreaRect;
+    
     // 撤销/重做
     std::vector<DesignerSnapshot> m_undoStack;
     std::vector<DesignerSnapshot> m_redoStack;
@@ -244,6 +281,10 @@ private:
     void DrawControl(Graphics& g, const ControlInfo& control);
     void DrawSelection(Graphics& g);
     void DrawSelectionHandles(Graphics& g, const Rect& bounds);
+    void DrawFormSelectionHandles(Graphics& g, const Rect& bounds);  // 窗口选择手柄（只有右边、下边、右下角）
+    
+    // 滚动条管理
+    void UpdateScrollRange();  // 根据窗口大小更新滚动范围
     
     // 坐标转换
     Point ScreenToCanvas(int x, int y) const;

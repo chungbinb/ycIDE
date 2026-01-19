@@ -9,7 +9,8 @@
 #include <sstream>
 
 void DebugLog(const std::wstring& msg) {
-    std::ofstream logFile("d:\\chungbin\\ycide\\debug_log.txt", std::ios::app);
+    CreateDirectoryA("logs", NULL);
+    std::ofstream logFile("logs\\debug_log.txt", std::ios::app);
     if (logFile.is_open()) {
         int len = WideCharToMultiByte(CP_UTF8, 0, msg.c_str(), -1, NULL, 0, NULL, NULL);
         if (len > 0) {

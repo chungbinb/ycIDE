@@ -67,12 +67,17 @@ void TabBarData::SetActiveTab(int index) {
     if (index < 0 || index >= (int)tabs.size()) return;
     if (activeTabIndex == index) return;
     
+    int oldIndex = activeTabIndex;  // 保存旧索引
     activeTabIndex = index;
     InvalidateRect(hWnd, NULL, TRUE);
     
-    // 通知父窗口标签已切换
+    // 通知父窗口标签已切换，传递旧索引和新索引
+    // 使用 2002 消息传递旧索引（用于保存状态）
     HWND hParent = GetParent(hWnd);
     if (hParent) {
+        // 先发送旧索引（用于保存状态）
+        SendMessage(hParent, WM_COMMAND, MAKEWPARAM(2002, oldIndex), (LPARAM)hWnd);
+        // 再发送新索引（用于加载状态）
         SendMessage(hParent, WM_COMMAND, MAKEWPARAM(2000, index), (LPARAM)hWnd);
     }
 }

@@ -1971,7 +1971,8 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
             std::wstring libFilePath = exeDir + L"\\lib\\krnln.fne";
             
             // 调试：输出路径和加载结果
-            std::wofstream debugFile(L"d:\\chungbin\\ycide\\yieditor_init_debug.txt");
+            CreateDirectoryW(L"logs", NULL);
+            std::wofstream debugFile(L"logs\\yieditor_init_debug.txt");
             debugFile.imbue(std::locale(""));
             debugFile << L"exe路径: " << exePath << std::endl;
             debugFile << L"exe目录: " << exeDir << std::endl;

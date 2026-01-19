@@ -18,10 +18,10 @@ enum class EditorFileType {
     Unknown = 0,
     EycCode = 1,        // .eyc 代码文件
     EllDll = 2,         // .ell DLL声明文件
-    EclConstant = 3,    // .ecl 常量文件
-    EalGlobalVar = 4,   // .eal 全局变量文件
-    EdlDataType = 5,    // .edl 自定义数据类型文件
-    EformDesigner = 6   // .eform 窗体设计文件
+    EcsConstant = 3,    // .ecs 常量文件
+    EgvGlobalVar = 4,   // .egv 全局变量文件
+    EdtDataType = 5,    // .edt 自定义数据类型文件
+    EfwDesigner = 6     // .efw 窗体设计文件
 };
 
 // 数据变更通知回调

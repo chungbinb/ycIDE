@@ -444,11 +444,6 @@ void TableEditor::OnPaint() {
     RECT clientRect;
     GetClientRect(m_hWnd, &clientRect);
     
-    wchar_t debugMsg[512];
-    swprintf_s(debugMsg, L"[TableEditor::OnPaint] 开始绘制 - m_showWelcomePage: %d, 主题背景色: 0x%08X, 窗口大小: %d x %d\n", 
-               m_showWelcomePage, g_CurrentTheme.bg, clientRect.right, clientRect.bottom);
-    OutputDebugStringW(debugMsg);
-    
     // 双缓冲
     HDC hMemDC = CreateCompatibleDC(hdc);
     HBITMAP hBitmap = CreateCompatibleBitmap(hdc, clientRect.right, clientRect.bottom);
@@ -464,7 +459,6 @@ void TableEditor::OnPaint() {
     graphics.FillRectangle(&bgBrush, (INT)0, (INT)0, (INT)clientRect.right, (INT)clientRect.bottom);
     
     if (m_showWelcomePage) {
-        OutputDebugStringW(L"[TableEditor::OnPaint] 绘制欢迎页\n");
         // 绘制欢迎页
         SolidBrush textBrush(ColorFromCOLORREF(g_CurrentTheme.text));
         FontFamily fontFamily(L"Microsoft YaHei");
@@ -476,7 +470,6 @@ void TableEditor::OnPaint() {
         RectF rect(0, 0, (REAL)clientRect.right, (REAL)clientRect.bottom);
         graphics.DrawString(L"打开文件以开始编辑", -1, &font, rect, &format, &textBrush);
     } else {
-        OutputDebugStringW(L"[TableEditor::OnPaint] 绘制表格\n");
         // 绘制表格 - 子类可以重写DrawTable来自定义绘制
         DrawTable(hMemDC, clientRect);
         DrawScrollbars(hMemDC, clientRect);
@@ -495,18 +488,11 @@ void TableEditor::OnPaint() {
 void TableEditor::DrawTable(HDC hdc, const RECT& clientRect) {
     std::vector<ColumnDef> cols = GetColumnDefs();
     
-    wchar_t debugMsg[256];
-    swprintf_s(debugMsg, L"[TableEditor::DrawTable] 列数: %zu\n", cols.size());
-    OutputDebugStringW(debugMsg);
-    
     if (cols.empty()) {
-        OutputDebugStringW(L"[TableEditor::DrawTable] 列定义为空，返回\n");
         return;
     }
     
     int rowCount = GetRowCount();
-    swprintf_s(debugMsg, L"[TableEditor::DrawTable] 行数: %d\n", rowCount);
-    OutputDebugStringW(debugMsg);
     
     // 只有在有表头高度时才绘制表头
     if (m_headerHeight > 0) {
@@ -530,8 +516,6 @@ void TableEditor::DrawTable(HDC hdc, const RECT& clientRect) {
         
         y += m_rowHeight;
     }
-    
-    OutputDebugStringW(L"[TableEditor::DrawTable] 绘制完成\n");
 }
 
 void TableEditor::DrawHeader(HDC hdc, const RECT& rect, const std::vector<ColumnDef>& cols) {

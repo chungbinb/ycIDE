@@ -830,16 +830,30 @@ void ExplorerLoadProject() {
     projectRoot->isExpanded = true;
     
     // 按文件类型分组
-    std::vector<ProjectFileItem> eycFiles;
-    std::vector<ProjectFileItem> ellFiles;
-    std::vector<ProjectFileItem> ecFiles;
-    std::vector<ProjectFileItem> otherFiles;
+    std::vector<ProjectFileItem> eycFiles;    // 源代码文件
+    std::vector<ProjectFileItem> ellFiles;    // DLL声明文件
+    std::vector<ProjectFileItem> ecFiles;     // 模块文件
+    std::vector<ProjectFileItem> efwFiles;    // 窗口文件
+    std::vector<ProjectFileItem> ecsFiles;    // 常量数据文件
+    std::vector<ProjectFileItem> edtFiles;    // 自定义数据类型文件
+    std::vector<ProjectFileItem> egvFiles;    // 全局变量文件
+    std::vector<ProjectFileItem> imageFiles;  // 图片资源
+    std::vector<ProjectFileItem> audioFiles;  // 音频资源
+    std::vector<ProjectFileItem> dataFiles;   // 数据资源
+    std::vector<ProjectFileItem> otherFiles;  // 其他文件
     
     for (const auto& item : project->files) {
         switch (item.fileType) {
             case PROJECT_FILE_EYC: eycFiles.push_back(item); break;
             case PROJECT_FILE_ELL: ellFiles.push_back(item); break;
             case PROJECT_FILE_EC: ecFiles.push_back(item); break;
+            case PROJECT_FILE_EFW: efwFiles.push_back(item); break;
+            case PROJECT_FILE_ECS: ecsFiles.push_back(item); break;
+            case PROJECT_FILE_EDT: edtFiles.push_back(item); break;
+            case PROJECT_FILE_EGV: egvFiles.push_back(item); break;
+            case PROJECT_FILE_RES_IMAGE: imageFiles.push_back(item); break;
+            case PROJECT_FILE_RES_AUDIO: audioFiles.push_back(item); break;
+            case PROJECT_FILE_RES_DATA: dataFiles.push_back(item); break;
             default: otherFiles.push_back(item); break;
         }
     }
@@ -857,6 +871,18 @@ void ExplorerLoadProject() {
             eycGroup->children.push_back(fileNode);
         }
         projectRoot->children.push_back(eycGroup);
+    }
+    
+    // 添加窗口文件组
+    if (!efwFiles.empty()) {
+        FileNode* efwGroup = new FileNode(L"窗口文件", L"GROUP_EFW", true, 1, projectRoot);
+        efwGroup->isExpanded = true;
+        for (const auto& item : efwFiles) {
+            std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+            FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 2, efwGroup);
+            efwGroup->children.push_back(fileNode);
+        }
+        projectRoot->children.push_back(efwGroup);
     }
     
     // 添加DLL声明文件组
@@ -881,6 +907,87 @@ void ExplorerLoadProject() {
             ecGroup->children.push_back(fileNode);
         }
         projectRoot->children.push_back(ecGroup);
+    }
+    
+    // 添加常量数据文件组
+    if (!ecsFiles.empty()) {
+        FileNode* ecsGroup = new FileNode(L"常量数据", L"GROUP_ECS", true, 1, projectRoot);
+        ecsGroup->isExpanded = true;
+        for (const auto& item : ecsFiles) {
+            std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+            FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 2, ecsGroup);
+            ecsGroup->children.push_back(fileNode);
+        }
+        projectRoot->children.push_back(ecsGroup);
+    }
+    
+    // 添加自定义数据类型文件组
+    if (!edtFiles.empty()) {
+        FileNode* edtGroup = new FileNode(L"自定义数据类型", L"GROUP_EDT", true, 1, projectRoot);
+        edtGroup->isExpanded = true;
+        for (const auto& item : edtFiles) {
+            std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+            FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 2, edtGroup);
+            edtGroup->children.push_back(fileNode);
+        }
+        projectRoot->children.push_back(edtGroup);
+    }
+    
+    // 添加全局变量文件组
+    if (!egvFiles.empty()) {
+        FileNode* egvGroup = new FileNode(L"全局变量", L"GROUP_EGV", true, 1, projectRoot);
+        egvGroup->isExpanded = true;
+        for (const auto& item : egvFiles) {
+            std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+            FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 2, egvGroup);
+            egvGroup->children.push_back(fileNode);
+        }
+        projectRoot->children.push_back(egvGroup);
+    }
+    
+    // 添加资源文件组（图片、音频、数据）
+    bool hasResources = !imageFiles.empty() || !audioFiles.empty() || !dataFiles.empty();
+    if (hasResources) {
+        FileNode* resGroup = new FileNode(L"资源文件", L"GROUP_RES", true, 1, projectRoot);
+        resGroup->isExpanded = true;
+        
+        // 图片资源子组
+        if (!imageFiles.empty()) {
+            FileNode* imgGroup = new FileNode(L"图片资源", L"GROUP_RES_IMAGE", true, 2, resGroup);
+            imgGroup->isExpanded = false;
+            for (const auto& item : imageFiles) {
+                std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+                FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 3, imgGroup);
+                imgGroup->children.push_back(fileNode);
+            }
+            resGroup->children.push_back(imgGroup);
+        }
+        
+        // 音频资源子组
+        if (!audioFiles.empty()) {
+            FileNode* audGroup = new FileNode(L"音频资源", L"GROUP_RES_AUDIO", true, 2, resGroup);
+            audGroup->isExpanded = false;
+            for (const auto& item : audioFiles) {
+                std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+                FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 3, audGroup);
+                audGroup->children.push_back(fileNode);
+            }
+            resGroup->children.push_back(audGroup);
+        }
+        
+        // 数据资源子组
+        if (!dataFiles.empty()) {
+            FileNode* datGroup = new FileNode(L"数据资源", L"GROUP_RES_DATA", true, 2, resGroup);
+            datGroup->isExpanded = false;
+            for (const auto& item : dataFiles) {
+                std::wstring fullPath = pm.GetAbsolutePath(item.filePath);
+                FileNode* fileNode = new FileNode(item.fileName, fullPath, false, 3, datGroup);
+                datGroup->children.push_back(fileNode);
+            }
+            resGroup->children.push_back(datGroup);
+        }
+        
+        projectRoot->children.push_back(resGroup);
     }
     
     // 添加其他文件组

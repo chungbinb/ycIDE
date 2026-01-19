@@ -41,6 +41,10 @@
 #define IDM_INSERT_WINDOW		136
 #define IDM_INSERT_CLASS_MODULE	137
 
+// 视图菜单项
+#define IDM_VIEW				140
+#define IDM_VIEW_TOOLBOX		141
+
 #define IDI_YCIDE			112
 #define IDI_SMALL				113
 #define IDC_YCIDE			114

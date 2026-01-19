@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include <functional>
+#include "FneParser.h"  // 需要 PropertyType 和 FnePropertyInfo
 
 using namespace Gdiplus;
 
@@ -16,7 +17,10 @@ enum class PropertyEditorType {
     Color,          // 颜色选择器
     Font,           // 字体选择器
     Enum,           // 下拉列表
-    File            // 文件选择器
+    File,           // 文件选择器
+    Image,          // 图片选择器
+    Cursor,         // 鼠标指针选择器
+    ReadOnly        // 只读（不可编辑）
 };
 
 // 属性定义
@@ -30,8 +34,9 @@ struct PropertyDef {
     std::vector<std::wstring> enumValues;  // 枚举值列表（用于Enum类型）
     std::wstring description;       // 属性描述
     bool readOnly;                  // 是否只读
+    PropertyType fneType;           // FNE 属性类型（原始类型）
     
-    PropertyDef() : editorType(PropertyEditorType::Text), readOnly(false) {}
+    PropertyDef() : editorType(PropertyEditorType::Text), readOnly(false), fneType(PropertyType::Text) {}
 };
 
 // 属性变更回调
@@ -60,6 +65,17 @@ public:
     void UpdateProperty(const std::wstring& name, const std::wstring& value);
     std::wstring GetPropertyValue(const std::wstring& name) const;
     void Clear();
+    
+    // === 从支持库加载属性 ===
+    
+    void LoadPropertiesFromLibrary(const std::wstring& controlType, 
+                                   const std::map<std::wstring, std::wstring>& currentValues);
+    
+    // === 辅助函数：将 FNE 属性类型转换为编辑器类型 ===
+    
+    static PropertyEditorType ConvertPropertyType(PropertyType fneType);
+    static PropertyDef ConvertFneProperty(const FnePropertyInfo& fneProp, 
+                                          const std::wstring& currentValue = L"");
     
     // === 对象信息 ===
     
@@ -140,7 +156,7 @@ private:
     
     // 编辑器
     void BeginEdit(int row);
-    void EndEdit(bool apply);
+    void FinishEdit(bool apply);  // 完成编辑
     void CreateTextEditor(const PropertyDef& prop, const Rect& rect);
     void CreateComboEditor(const PropertyDef& prop, const Rect& rect);
     void ToggleBooleanValue(PropertyDef& prop);

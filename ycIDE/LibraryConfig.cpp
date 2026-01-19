@@ -41,7 +41,8 @@ void LibraryConfigManager::ScanLibraryFolders() {
     }
     
     // 输出调试信息到文件
-    std::wstring debugPath = exeDir + L"\\library_scan_debug.txt";
+    CreateDirectoryW(L"logs", NULL);
+    std::wstring debugPath = L"logs\\library_scan_debug.txt";
     HANDLE hDebug = CreateFileW(debugPath.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
     if (hDebug != INVALID_HANDLE_VALUE) {
         std::wstring msg = L"程序目录: " + exeDir + L"\r\n";
@@ -161,7 +162,8 @@ int LibraryConfigManager::LoadSelectedLibraries() {
         if (lastSlash != std::wstring::npos) {
             exeDir = exeDir.substr(0, lastSlash);
         }
-        std::wstring debugPath = exeDir + L"\\loaded_commands.txt";
+        CreateDirectoryW(L"logs", NULL);
+        std::wstring debugPath = L"logs\\loaded_commands.txt";
         
         HANDLE hDebug = CreateFileW(debugPath.c_str(), GENERIC_WRITE, FILE_SHARE_READ, 
                                     NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);

@@ -66,7 +66,7 @@ void ConstantEditor::SetCellValue(int row, int col, const std::wstring& value) {
     
     // 通知数据变更
     if (m_pContext && col == 0) {
-        m_pContext->NotifyDataChanged(EditorFileType::EclConstant, value);
+        m_pContext->NotifyDataChanged(EditorFileType::EcsConstant, value);
     }
 }
 

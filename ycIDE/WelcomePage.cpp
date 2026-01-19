@@ -49,7 +49,6 @@ LRESULT CALLBACK WelcomePageWndProc(HWND hWnd, UINT message, WPARAM wParam, LPAR
         {
             data = new WelcomePageData(hWnd);
             SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)data);
-            OutputDebugStringW(L"[WelcomePage] WM_CREATE - 欢迎页窗口已创建\n");
         }
         return 0;
         
@@ -66,17 +65,11 @@ LRESULT CALLBACK WelcomePageWndProc(HWND hWnd, UINT message, WPARAM wParam, LPAR
         
     case WM_PAINT:
         {
-            OutputDebugStringW(L"[WelcomePage] WM_PAINT - 开始绘制欢迎页\n");
-            
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
             
             RECT clientRect;
             GetClientRect(hWnd, &clientRect);
-            
-            wchar_t debugMsg[256];
-            swprintf_s(debugMsg, L"[WelcomePage] 客户区大小: %d x %d\n", clientRect.right, clientRect.bottom);
-            OutputDebugStringW(debugMsg);
             
             // 使用双缓冲
             HDC memDC = CreateCompatibleDC(hdc);

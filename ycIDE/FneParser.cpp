@@ -77,7 +77,8 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
     hModule = LoadLibraryW(filePath.c_str());
     if (!hModule) {
         DWORD error = GetLastError();
-        std::wstring debugPath = filePath.substr(0, filePath.find_last_of(L"\\")) + L"\\..\\fne_error.txt";
+        CreateDirectoryW(L"logs", NULL);
+        std::wstring debugPath = L"logs\\fne_error.txt";
         HANDLE hDebug = CreateFileW(debugPath.c_str(), GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
         if (hDebug != INVALID_HANDLE_VALUE) {
             SetFilePointer(hDebug, 0, NULL, FILE_END);
@@ -97,7 +98,8 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
         pfnGetNewInf = (PFN_GET_LIB_INFO)GetProcAddress(hModule, funcName);
         if (pfnGetNewInf) {
             // 找到了导出函数，记录成功的函数名
-            std::wstring debugPath = filePath.substr(0, filePath.find_last_of(L"\\")) + L"\\..\\fne_error.txt";
+            CreateDirectoryW(L"logs", NULL);
+            std::wstring debugPath = L"logs\\fne_error.txt";
             HANDLE hDebug = CreateFileW(debugPath.c_str(), GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
             if (hDebug != INVALID_HANDLE_VALUE) {
                 SetFilePointer(hDebug, 0, NULL, FILE_END);
@@ -111,7 +113,8 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
     }
     
     if (!pfnGetNewInf) {
-        std::wstring debugPath = filePath.substr(0, filePath.find_last_of(L"\\")) + L"\\..\\fne_error.txt";
+        CreateDirectoryW(L"logs", NULL);
+        std::wstring debugPath = L"logs\\fne_error.txt";
         HANDLE hDebug = CreateFileW(debugPath.c_str(), GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
         if (hDebug != INVALID_HANDLE_VALUE) {
             SetFilePointer(hDebug, 0, NULL, FILE_END);
@@ -243,40 +246,221 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
         }
     }
 
-    // 解析自定义数据类型
+    // 解析自定义数据类型和窗口组件
     if (pLibInfo->m_pDataType && pLibInfo->m_nDataTypeCount > 0) {
         for (int i = 0; i < pLibInfo->m_nDataTypeCount; i++) {
             PLIB_DATA_TYPE_INFO pDataTypeInfo = &pLibInfo->m_pDataType[i];
             
-            FneDataTypeInfo dtInfo;
-            
-            // 数据类型名称
-            if (pDataTypeInfo->m_szName) {
-                dtInfo.name = UTF8ToUTF16(pDataTypeInfo->m_szName);
-            }
-            
-            // 英文名称
-            if (pDataTypeInfo->m_szEgName) {
-                dtInfo.englishName = UTF8ToUTF16(pDataTypeInfo->m_szEgName);
-            }
-            
-            // 说明
-            if (pDataTypeInfo->m_szExplain) {
-                dtInfo.description = UTF8ToUTF16(pDataTypeInfo->m_szExplain);
-            }
-            
-            // 是否隐藏
-            dtInfo.isHidden = (pDataTypeInfo->m_dwState & LDT_IS_HIDED) != 0;
-            
             // 是否窗口组件
-            dtInfo.isWindowUnit = (pDataTypeInfo->m_dwState & LDT_WIN_UNIT) != 0;
+            bool isWindowUnit = (pDataTypeInfo->m_dwState & LDT_WIN_UNIT) != 0;
+            bool isHidden = (pDataTypeInfo->m_dwState & LDT_IS_HIDED) != 0;
             
-            // 只添加非隐藏且非窗口组件的数据类型
-            if (!dtInfo.isHidden && !dtInfo.isWindowUnit && !dtInfo.name.empty()) {
-                dataTypes.push_back(dtInfo);
+            if (isWindowUnit && !isHidden) {
+                // 解析窗口组件
+                FneWindowUnitInfo unitInfo;
+                
+                // 组件名称
+                if (pDataTypeInfo->m_szName) {
+                    unitInfo.name = UTF8ToUTF16(pDataTypeInfo->m_szName);
+                }
+                
+                // 英文名称
+                if (pDataTypeInfo->m_szEgName) {
+                    unitInfo.englishName = UTF8ToUTF16(pDataTypeInfo->m_szEgName);
+                }
+                
+                // 说明
+                if (pDataTypeInfo->m_szExplain) {
+                    unitInfo.description = UTF8ToUTF16(pDataTypeInfo->m_szExplain);
+                }
+                
+                // 所属支持库
+                unitInfo.libraryName = libraryName;
+                
+                // 是否容器
+                unitInfo.isContainer = (pDataTypeInfo->m_dwState & LDT_IS_CONTAINER) != 0;
+                
+                // 是否Tab控件
+                unitInfo.isTabUnit = (pDataTypeInfo->m_dwState & LDT_IS_TAB_UNIT) != 0;
+                
+                // 是否可获取焦点
+                unitInfo.canGetFocus = (pDataTypeInfo->m_dwState & LDT_CANNOT_GET_FOCUS) == 0;
+                
+                // 图标ID
+                unitInfo.bitmapId = pDataTypeInfo->m_dwUnitBmpID;
+                
+                // 成员命令索引
+                if (pDataTypeInfo->m_pnCmdsIndex && pDataTypeInfo->m_nCmdCount > 0) {
+                    for (int j = 0; j < pDataTypeInfo->m_nCmdCount; j++) {
+                        unitInfo.memberCommands.push_back(pDataTypeInfo->m_pnCmdsIndex[j]);
+                    }
+                }
+                
+                // 解析属性
+                ParseWindowUnitProperties(pDataTypeInfo, unitInfo);
+                
+                // 解析事件
+                ParseWindowUnitEvents(pDataTypeInfo, unitInfo);
+                
+                if (!unitInfo.name.empty()) {
+                    windowUnits.push_back(unitInfo);
+                    OutputDebugStringW((L"[FneParser] 窗口组件: " + unitInfo.name + 
+                        L", 属性数: " + std::to_wstring(unitInfo.properties.size()) +
+                        L", 事件数: " + std::to_wstring(unitInfo.events.size()) + L"\n").c_str());
+                }
+            }
+            else if (!isHidden && !isWindowUnit) {
+                // 普通数据类型
+                FneDataTypeInfo dtInfo;
+                
+                if (pDataTypeInfo->m_szName) {
+                    dtInfo.name = UTF8ToUTF16(pDataTypeInfo->m_szName);
+                }
+                if (pDataTypeInfo->m_szEgName) {
+                    dtInfo.englishName = UTF8ToUTF16(pDataTypeInfo->m_szEgName);
+                }
+                if (pDataTypeInfo->m_szExplain) {
+                    dtInfo.description = UTF8ToUTF16(pDataTypeInfo->m_szExplain);
+                }
+                dtInfo.isHidden = false;
+                dtInfo.isWindowUnit = false;
+                
+                if (!dtInfo.name.empty()) {
+                    dataTypes.push_back(dtInfo);
+                }
             }
         }
     }
 
     return true;
+}
+
+// 解析窗口组件属性
+void FneParser::ParseWindowUnitProperties(PLIB_DATA_TYPE_INFO pDataTypeInfo, FneWindowUnitInfo& unitInfo) {
+    OutputDebugStringW((L"[ParseWindowUnitProperties] 组件: " + unitInfo.name + 
+        L", m_pPropertyBegin=" + std::to_wstring((uintptr_t)pDataTypeInfo->m_pPropertyBegin) + 
+        L", m_nPropertyCount=" + std::to_wstring(pDataTypeInfo->m_nPropertyCount) + L"\n").c_str());
+    
+    if (!pDataTypeInfo->m_pPropertyBegin || pDataTypeInfo->m_nPropertyCount <= 0) {
+        return;
+    }
+    
+    PUNIT_PROPERTY_RAW pProperties = (PUNIT_PROPERTY_RAW)pDataTypeInfo->m_pPropertyBegin;
+    
+    for (int i = 0; i < pDataTypeInfo->m_nPropertyCount; i++) {
+        PUNIT_PROPERTY_RAW pProp = &pProperties[i];
+        
+        FnePropertyInfo propInfo;
+        
+        // 属性名称
+        if (pProp->m_szName) {
+            propInfo.name = UTF8ToUTF16(pProp->m_szName);
+        }
+        
+        // 英文名称
+        if (pProp->m_szEgName) {
+            propInfo.englishName = UTF8ToUTF16(pProp->m_szEgName);
+        }
+        
+        // 属性说明
+        if (pProp->m_szExplain) {
+            propInfo.description = UTF8ToUTF16(pProp->m_szExplain);
+        }
+        
+        // 属性类型
+        propInfo.type = static_cast<PropertyType>(pProp->m_shtType);
+        
+        // 是否只读
+        propInfo.isReadOnly = (pProp->m_wState & UW_ONLY_READ) != 0;
+        
+        // 是否隐藏
+        propInfo.isHidden = (pProp->m_wState & UW_IS_HIDED) != 0;
+        
+        // 解析选择选项
+        if (pProp->m_szzPickStr) {
+            const char* pStr = pProp->m_szzPickStr;
+            while (*pStr) {
+                std::wstring option = UTF8ToUTF16(pStr);
+                if (!option.empty()) {
+                    propInfo.pickOptions.push_back(option);
+                }
+                pStr += strlen(pStr) + 1;
+            }
+        }
+        
+        // 添加非隐藏属性
+        if (!propInfo.isHidden && !propInfo.name.empty()) {
+            unitInfo.properties.push_back(propInfo);
+        }
+    }
+}
+
+// 解析窗口组件事件
+void FneParser::ParseWindowUnitEvents(PLIB_DATA_TYPE_INFO pDataTypeInfo, FneWindowUnitInfo& unitInfo) {
+    if (!pDataTypeInfo->m_pEventBegin || pDataTypeInfo->m_nEventCount <= 0) {
+        return;
+    }
+    
+    PEVENT_INFO2_RAW pEvents = (PEVENT_INFO2_RAW)pDataTypeInfo->m_pEventBegin;
+    
+    for (int i = 0; i < pDataTypeInfo->m_nEventCount; i++) {
+        PEVENT_INFO2_RAW pEvent = &pEvents[i];
+        
+        FneEventInfo eventInfo;
+        
+        // 事件名称
+        if (pEvent->m_szName) {
+            eventInfo.name = UTF8ToUTF16(pEvent->m_szName);
+        }
+        
+        // 事件说明
+        if (pEvent->m_szExplain) {
+            eventInfo.description = UTF8ToUTF16(pEvent->m_szExplain);
+        }
+        
+        // 是否隐藏
+        eventInfo.isHidden = (pEvent->m_dwState & EV_IS_HIDED) != 0;
+        
+        // 是否键盘事件
+        eventInfo.isKeyEvent = (pEvent->m_dwState & EV_IS_KEY_EVENT) != 0;
+        
+        // 返回类型
+        eventInfo.returnsInt = (pEvent->m_dwState & EV_RETURN_INT) != 0;
+        eventInfo.returnsBool = (pEvent->m_dwState & EV_RETURN_BOOL) != 0;
+        
+        // 解析事件参数
+        if (pEvent->m_pEventArgInfo && pEvent->m_nArgCount > 0) {
+            for (int j = 0; j < pEvent->m_nArgCount; j++) {
+                PEVENT_ARG_INFO2_RAW pArg = &pEvent->m_pEventArgInfo[j];
+                
+                FneEventArgInfo argInfo;
+                
+                if (pArg->m_szName) {
+                    argInfo.name = UTF8ToUTF16(pArg->m_szName);
+                }
+                if (pArg->m_szExplain) {
+                    argInfo.description = UTF8ToUTF16(pArg->m_szExplain);
+                }
+                argInfo.dataType = DataTypeToString(pArg->m_dtDataType);
+                argInfo.isByRef = (pArg->m_dwState & EAS_BY_REF) != 0;
+                
+                eventInfo.arguments.push_back(argInfo);
+            }
+        }
+        
+        // 添加非隐藏事件
+        if (!eventInfo.isHidden && !eventInfo.name.empty()) {
+            unitInfo.events.push_back(eventInfo);
+        }
+    }
+}
+
+// 根据名称查找窗口组件
+const FneWindowUnitInfo* FneParser::FindWindowUnit(const std::wstring& name) const {
+    for (const auto& unit : windowUnits) {
+        if (unit.name == name) {
+            return &unit;
+        }
+    }
+    return nullptr;
 }

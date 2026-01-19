@@ -5,10 +5,17 @@
 
 // 项目文件类型
 enum ProjectFileType {
-    PROJECT_FILE_EYC,    // 源代码文件
-    PROJECT_FILE_ELL,    // DLL声明文件
-    PROJECT_FILE_EC,     // 模块文件
-    PROJECT_FILE_OTHER   // 其他文件
+    PROJECT_FILE_EYC,       // 源代码文件 (.eyc)
+    PROJECT_FILE_ELL,       // DLL声明文件 (.ell)
+    PROJECT_FILE_EC,        // 模块文件 (.ec)
+    PROJECT_FILE_EFW,       // 窗口文件 (.efw)
+    PROJECT_FILE_ECS,       // 常量数据文件 (.ecs)
+    PROJECT_FILE_EDT,       // 自定义数据类型文件 (.edt)
+    PROJECT_FILE_EGV,       // 全局变量文件 (.egv)
+    PROJECT_FILE_RES_IMAGE, // 图片资源 (.png, .jpg, .bmp, .ico, .gif)
+    PROJECT_FILE_RES_AUDIO, // 音频资源 (.wav, .mp3)
+    PROJECT_FILE_RES_DATA,  // 数据资源 (.txt, .dat, .bin)
+    PROJECT_FILE_OTHER      // 其他文件
 };
 
 // 项目文件项

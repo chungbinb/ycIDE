@@ -77,14 +77,14 @@ EditorFileType EditorContext::GetFileTypeFromExtension(const std::wstring& fileP
         return EditorFileType::EycCode;
     } else if (ext == L".ell") {
         return EditorFileType::EllDll;
-    } else if (ext == L".ecl") {
-        return EditorFileType::EclConstant;
-    } else if (ext == L".eal") {
-        return EditorFileType::EalGlobalVar;
-    } else if (ext == L".edl") {
-        return EditorFileType::EdlDataType;
-    } else if (ext == L".eform") {
-        return EditorFileType::EformDesigner;
+    } else if (ext == L".ecs") {
+        return EditorFileType::EcsConstant;
+    } else if (ext == L".egv") {
+        return EditorFileType::EgvGlobalVar;
+    } else if (ext == L".edt") {
+        return EditorFileType::EdtDataType;
+    } else if (ext == L".efw") {
+        return EditorFileType::EfwDesigner;
     }
     
     return EditorFileType::Unknown;
@@ -94,10 +94,10 @@ std::wstring EditorContext::GetDefaultExtension(EditorFileType type) {
     switch (type) {
         case EditorFileType::EycCode:       return L".eyc";
         case EditorFileType::EllDll:        return L".ell";
-        case EditorFileType::EclConstant:   return L".ecl";
-        case EditorFileType::EalGlobalVar:  return L".eal";
-        case EditorFileType::EdlDataType:   return L".edl";
-        case EditorFileType::EformDesigner: return L".eform";
+        case EditorFileType::EcsConstant:   return L".ecs";
+        case EditorFileType::EgvGlobalVar:  return L".egv";
+        case EditorFileType::EdtDataType:   return L".edt";
+        case EditorFileType::EfwDesigner: return L".efw";
         default:                            return L"";
     }
 }
@@ -106,10 +106,10 @@ std::wstring EditorContext::GetFileTypeName(EditorFileType type) {
     switch (type) {
         case EditorFileType::EycCode:       return L"代码文件";
         case EditorFileType::EllDll:        return L"DLL声明文件";
-        case EditorFileType::EclConstant:   return L"常量文件";
-        case EditorFileType::EalGlobalVar:  return L"全局变量文件";
-        case EditorFileType::EdlDataType:   return L"数据类型文件";
-        case EditorFileType::EformDesigner: return L"窗体设计文件";
+        case EditorFileType::EcsConstant:   return L"常量文件";
+        case EditorFileType::EgvGlobalVar:  return L"全局变量文件";
+        case EditorFileType::EdtDataType:   return L"数据类型文件";
+        case EditorFileType::EfwDesigner: return L"窗体设计文件";
         default:                            return L"未知文件";
     }
 }

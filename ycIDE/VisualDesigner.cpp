@@ -1,14 +1,35 @@
 #include "VisualDesigner.h"
 #include "EditorContext.h"
 #include "ControlRenderer.h"
+#include "LibraryParser.h"
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <windowsx.h>
 
+// 定义min和max宏（如果未定义）
+#ifndef min
+#define min(a,b) (((a) < (b)) ? (a) : (b))
+#endif
+#ifndef max
+#define max(a,b) (((a) > (b)) ? (a) : (b))
+#endif
+
+// 全局ControlRenderer单例
+static ControlRenderer* g_pControlRenderer = nullptr;
+
+ControlRenderer* GetGlobalControlRenderer()
+{
+    if (!g_pControlRenderer) {
+        g_pControlRenderer = new ControlRenderer();
+    }
+    return g_pControlRenderer;
+}
+
 VisualDesigner::VisualDesigner(HWND hWnd, EditorContext* context)
     : m_hWnd(hWnd)
     , m_pContext(context)
+    , m_pControlRenderer(GetGlobalControlRenderer())
     , m_modified(false)
     , m_dragMode(DragMode::None)
     , m_zoom(1.0f)
@@ -17,7 +38,7 @@ VisualDesigner::VisualDesigner(HWND hWnd, EditorContext* context)
     , m_nextSnapshotId(1)
     , m_showGuideLines(true)
 {
-    m_fileName = L"未命名.eform";
+    m_fileName = L"未命名.efw";
     
     // 初始化GDI+
     GdiplusStartupInput gdiplusStartupInput;
@@ -51,6 +72,24 @@ LRESULT VisualDesigner::HandleMessage(UINT msg, WPARAM wParam, LPARAM lParam)
             OnSize(LOWORD(lParam), HIWORD(lParam));
             return 0;
         }
+        case WM_SETCURSOR: {
+            if (LOWORD(lParam) == HTCLIENT) {
+                HCURSOR hCursor = GetResizeCursor();
+                if (hCursor) {
+                    SetCursor(hCursor);
+                    return TRUE;
+                }
+                // 创建模式时使用十字光标
+                if (!m_toolControlType.empty()) {
+                    SetCursor(LoadCursor(NULL, IDC_CROSS));
+                    return TRUE;
+                }
+                // 默认使用箭头光标
+                SetCursor(LoadCursor(NULL, IDC_ARROW));
+                return TRUE;
+            }
+            break;
+        }
         case WM_LBUTTONDOWN: {
             OnLButtonDown(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
             return 0;
@@ -73,6 +112,14 @@ LRESULT VisualDesigner::HandleMessage(UINT msg, WPARAM wParam, LPARAM lParam)
         }
         case WM_MOUSEWHEEL: {
             OnMouseWheel(GET_WHEEL_DELTA_WPARAM(wParam));
+            return 0;
+        }
+        case WM_HSCROLL: {
+            OnHScroll(LOWORD(wParam), HIWORD(wParam));
+            return 0;
+        }
+        case WM_VSCROLL: {
+            OnVScroll(LOWORD(wParam), HIWORD(wParam));
             return 0;
         }
     }
@@ -110,6 +157,7 @@ void VisualDesigner::OnPaint(HDC hdc)
 
 void VisualDesigner::OnSize(int width, int height)
 {
+    UpdateScrollRange();
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
@@ -126,7 +174,45 @@ void VisualDesigner::OnLButtonDown(int x, int y, UINT flags)
         return;
     }
     
-    // 检查是否点击了调整大小手柄
+    // 检查是否点击了窗口调整大小手柄（只有右边中点、下边中点、右下角的手柄）
+    if (m_selection.isFormSelected) {
+        // 手柄大小（与绘制时一致）
+        const int handleSize = 8;
+        const int halfHandle = handleSize / 2;
+        const int tolerance = (int)(halfHandle / m_zoom) + 2;
+        
+        int right = m_formInfo.width;
+        int bottom = m_formInfo.height;
+        int centerX = right / 2;
+        int centerY = bottom / 2;
+        
+        DragMode resizeMode = DragMode::None;
+        
+        // 右下角手柄
+        if (abs(canvasPt.X - right) <= tolerance && abs(canvasPt.Y - bottom) <= tolerance) {
+            resizeMode = DragMode::ResizeBottomRight;
+        }
+        // 右边中点手柄
+        else if (abs(canvasPt.X - right) <= tolerance && abs(canvasPt.Y - centerY) <= tolerance) {
+            resizeMode = DragMode::ResizeRight;
+        }
+        // 下边中点手柄
+        else if (abs(canvasPt.X - centerX) <= tolerance && abs(canvasPt.Y - bottom) <= tolerance) {
+            resizeMode = DragMode::ResizeBottom;
+        }
+        
+        if (resizeMode != DragMode::None) {
+            m_dragMode = resizeMode;
+            m_dragStartPoint = canvasPt;
+            m_dragLastPoint = canvasPt;
+            // 保存原始窗口大小
+            m_dragOriginalBounds = Rect(0, 0, m_formInfo.width, m_formInfo.height);
+            SetCapture(m_hWnd);
+            return;
+        }
+    }
+    
+    // 检查是否点击了控件调整大小手柄
     if (!m_selection.selectedControlIds.empty()) {
         DragMode resizeMode = HitTestResizeHandle(canvasPt.X, canvasPt.Y, m_selection.selectionBounds);
         if (resizeMode != DragMode::None) {
@@ -172,8 +258,15 @@ void VisualDesigner::OnLButtonDown(int x, int y, UINT flags)
         
         SetCapture(m_hWnd);
     } else {
-        if (!(flags & MK_CONTROL)) {
-            ClearSelection();
+        // 检查是否点击在窗口客户区内
+        if (canvasPt.X >= 0 && canvasPt.X < m_formInfo.width &&
+            canvasPt.Y >= 0 && canvasPt.Y < m_formInfo.height) {
+            // 选中窗口
+            SelectForm();
+        } else {
+            if (!(flags & MK_CONTROL)) {
+                ClearSelection();
+            }
         }
     }
 }
@@ -247,7 +340,39 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
         int dx = canvasPt.X - m_dragStartPoint.X;
         int dy = canvasPt.Y - m_dragStartPoint.Y;
         
-        // 计算新边界
+        // 检查是否是调整窗口大小
+        if (m_selection.isFormSelected) {
+            // 调整窗口大小 - 只允许从右边和下边调整
+            int newWidth = m_dragOriginalBounds.Width;
+            int newHeight = m_dragOriginalBounds.Height;
+            
+            // 右边调整
+            if (m_dragMode == DragMode::ResizeRight || m_dragMode == DragMode::ResizeBottomRight) {
+                newWidth = max(100, m_dragOriginalBounds.Width + dx);
+            }
+            // 下边调整
+            if (m_dragMode == DragMode::ResizeBottom || m_dragMode == DragMode::ResizeBottomRight) {
+                newHeight = max(100, m_dragOriginalBounds.Height + dy);
+            }
+            
+            if (m_gridConfig.snapToGrid) {
+                newWidth = SnapToGrid(newWidth);
+                newHeight = SnapToGrid(newHeight);
+            }
+            
+            m_formInfo.width = newWidth;
+            m_formInfo.height = newHeight;
+            m_selection.selectionBounds = Rect(0, 0, m_formInfo.width, m_formInfo.height);
+            
+            // 更新滚动范围
+            UpdateScrollRange();
+            
+            SetModified(true);
+            InvalidateRect(m_hWnd, NULL, FALSE);
+            return;
+        }
+        
+        // 计算新边界（控件）
         Rect newBounds = m_dragOriginalBounds;
         
         if (m_dragMode == DragMode::ResizeRight || m_dragMode == DragMode::ResizeTopRight || 
@@ -307,7 +432,98 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
 
 void VisualDesigner::OnRButtonDown(int x, int y)
 {
-    // TODO: 显示上下文菜单
+    Point canvasPt = ScreenToCanvas(x, y);
+    
+    // 首先检查是否点击了某个控件
+    auto hitControl = HitTest(canvasPt.X, canvasPt.Y);
+    if (hitControl) {
+        // 如果点击的控件未被选中，选中它
+        if (std::find(m_selection.selectedControlIds.begin(),
+                     m_selection.selectedControlIds.end(),
+                     hitControl->id) == m_selection.selectedControlIds.end()) {
+            SelectControl(hitControl->id, false);
+        }
+    }
+    
+    // 创建上下文菜单
+    HMENU hMenu = CreatePopupMenu();
+    
+    if (m_selection.selectedControlIds.empty()) {
+        // 没有选中控件时的菜单
+        AppendMenuW(hMenu, MF_STRING, 101, L"粘贴(&V)\tCtrl+V");
+        AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
+        AppendMenuW(hMenu, MF_STRING, 102, L"全选(&A)\tCtrl+A");
+        AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
+        AppendMenuW(hMenu, m_gridConfig.showGrid ? MF_STRING | MF_CHECKED : MF_STRING, 103, L"显示网格");
+        AppendMenuW(hMenu, m_gridConfig.snapToGrid ? MF_STRING | MF_CHECKED : MF_STRING, 104, L"对齐到网格");
+    } else {
+        // 有选中控件时的菜单
+        AppendMenuW(hMenu, MF_STRING, 105, L"剪切(&T)\tCtrl+X");
+        AppendMenuW(hMenu, MF_STRING, 106, L"复制(&C)\tCtrl+C");
+        AppendMenuW(hMenu, MF_STRING, 107, L"删除(&D)\tDelete");
+        AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
+        
+        // 对齐子菜单
+        HMENU hAlignMenu = CreatePopupMenu();
+        AppendMenuW(hAlignMenu, MF_STRING, 111, L"左对齐");
+        AppendMenuW(hAlignMenu, MF_STRING, 112, L"右对齐");
+        AppendMenuW(hAlignMenu, MF_STRING, 113, L"顶端对齐");
+        AppendMenuW(hAlignMenu, MF_STRING, 114, L"底端对齐");
+        AppendMenuW(hAlignMenu, MF_SEPARATOR, 0, NULL);
+        AppendMenuW(hAlignMenu, MF_STRING, 115, L"水平居中");
+        AppendMenuW(hAlignMenu, MF_STRING, 116, L"垂直居中");
+        AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hAlignMenu, L"对齐(&A)");
+        
+        // 大小子菜单
+        HMENU hSizeMenu = CreatePopupMenu();
+        AppendMenuW(hSizeMenu, MF_STRING, 121, L"相同宽度");
+        AppendMenuW(hSizeMenu, MF_STRING, 122, L"相同高度");
+        AppendMenuW(hSizeMenu, MF_STRING, 123, L"相同大小");
+        AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hSizeMenu, L"调整大小(&S)");
+        
+        // 层级子菜单
+        HMENU hOrderMenu = CreatePopupMenu();
+        AppendMenuW(hOrderMenu, MF_STRING, 131, L"置于顶层");
+        AppendMenuW(hOrderMenu, MF_STRING, 132, L"置于底层");
+        AppendMenuW(hOrderMenu, MF_STRING, 133, L"上移一层");
+        AppendMenuW(hOrderMenu, MF_STRING, 134, L"下移一层");
+        AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hOrderMenu, L"层级(&O)");
+        
+        AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
+        AppendMenuW(hMenu, m_gridConfig.showGrid ? MF_STRING | MF_CHECKED : MF_STRING, 103, L"显示网格");
+        AppendMenuW(hMenu, m_gridConfig.snapToGrid ? MF_STRING | MF_CHECKED : MF_STRING, 104, L"对齐到网格");
+    }
+    
+    // 显示菜单
+    POINT pt = { x, y };
+    ClientToScreen(m_hWnd, &pt);
+    int cmd = TrackPopupMenu(hMenu, TPM_RETURNCMD | TPM_LEFTALIGN | TPM_TOPALIGN,
+                            pt.x, pt.y, 0, m_hWnd, NULL);
+    DestroyMenu(hMenu);
+    
+    // 处理菜单命令
+    switch (cmd) {
+        case 101: Paste(); break;
+        case 102: SelectAll(); break;
+        case 103: m_gridConfig.showGrid = !m_gridConfig.showGrid; InvalidateRect(m_hWnd, NULL, FALSE); break;
+        case 104: m_gridConfig.snapToGrid = !m_gridConfig.snapToGrid; break;
+        case 105: Cut(); break;
+        case 106: Copy(); break;
+        case 107: DeleteSelectedControls(); break;
+        case 111: AlignLeft(); break;
+        case 112: AlignRight(); break;
+        case 113: AlignTop(); break;
+        case 114: AlignBottom(); break;
+        case 115: AlignCenterHorizontal(); break;
+        case 116: AlignCenterVertical(); break;
+        case 121: MakeSameWidth(); break;
+        case 122: MakeSameHeight(); break;
+        case 123: MakeSameSize(); break;
+        case 131: BringToFront(); break;
+        case 132: SendToBack(); break;
+        case 133: BringForward(); break;
+        case 134: SendBackward(); break;
+    }
 }
 
 void VisualDesigner::OnKeyDown(UINT vk, UINT flags)
@@ -333,16 +549,114 @@ void VisualDesigner::OnKeyDown(UINT vk, UINT flags)
 
 void VisualDesigner::OnMouseWheel(int delta)
 {
-    // TODO: 缩放支持
+    // Ctrl+滚轮进行缩放
+    if (GetKeyState(VK_CONTROL) & 0x8000) {
+        float zoomStep = 0.1f;
+        if (delta > 0) {
+            SetZoom(m_zoom + zoomStep);
+        } else {
+            SetZoom(m_zoom - zoomStep);
+        }
+    } else {
+        // 普通滚动 - 垂直滚动
+        int scrollStep = 30;
+        SCROLLINFO si = { sizeof(SCROLLINFO), SIF_POS | SIF_RANGE | SIF_PAGE };
+        GetScrollInfo(m_hWnd, SB_VERT, &si);
+        
+        int maxScroll = si.nMax - (int)si.nPage;
+        if (maxScroll > 0) {
+            if (delta > 0) {
+                m_scrollY = min(0, m_scrollY + scrollStep);
+            } else {
+                m_scrollY = max(-maxScroll, m_scrollY - scrollStep);
+            }
+            SetScrollPos(m_hWnd, SB_VERT, -m_scrollY, TRUE);
+            InvalidateRect(m_hWnd, NULL, FALSE);
+        }
+    }
+}
+
+void VisualDesigner::OnHScroll(UINT nSBCode, UINT nPos)
+{
+    SCROLLINFO si = { sizeof(SCROLLINFO), SIF_POS | SIF_RANGE | SIF_PAGE | SIF_TRACKPOS };
+    GetScrollInfo(m_hWnd, SB_HORZ, &si);
+    
+    int maxScroll = si.nMax - (int)si.nPage;
+    int newPos = -m_scrollX;
+    
+    switch (nSBCode) {
+        case SB_LINELEFT:
+            newPos = max(0, newPos - 20);
+            break;
+        case SB_LINERIGHT:
+            newPos = min(maxScroll, newPos + 20);
+            break;
+        case SB_PAGELEFT:
+            newPos = max(0, newPos - (int)si.nPage);
+            break;
+        case SB_PAGERIGHT:
+            newPos = min(maxScroll, newPos + (int)si.nPage);
+            break;
+        case SB_THUMBTRACK:
+        case SB_THUMBPOSITION:
+            newPos = si.nTrackPos;
+            break;
+    }
+    
+    m_scrollX = -newPos;
+    SetScrollPos(m_hWnd, SB_HORZ, newPos, TRUE);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::OnVScroll(UINT nSBCode, UINT nPos)
+{
+    SCROLLINFO si = { sizeof(SCROLLINFO), SIF_POS | SIF_RANGE | SIF_PAGE | SIF_TRACKPOS };
+    GetScrollInfo(m_hWnd, SB_VERT, &si);
+    
+    int maxScroll = si.nMax - (int)si.nPage;
+    int newPos = -m_scrollY;
+    
+    switch (nSBCode) {
+        case SB_LINEUP:
+            newPos = max(0, newPos - 20);
+            break;
+        case SB_LINEDOWN:
+            newPos = min(maxScroll, newPos + 20);
+            break;
+        case SB_PAGEUP:
+            newPos = max(0, newPos - (int)si.nPage);
+            break;
+        case SB_PAGEDOWN:
+            newPos = min(maxScroll, newPos + (int)si.nPage);
+            break;
+        case SB_THUMBTRACK:
+        case SB_THUMBPOSITION:
+            newPos = si.nTrackPos;
+            break;
+    }
+    
+    m_scrollY = -newPos;
+    SetScrollPos(m_hWnd, SB_VERT, newPos, TRUE);
+    InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
 // === 文件操作 ===
 
 bool VisualDesigner::LoadFile(const std::wstring& path)
 {
-    std::ifstream file(path);
+    // 将wstring转换为窄字符串用于文件操作
+    std::string narrowPath = WStringToUtf8(path);
+    std::ifstream file(narrowPath);
     if (!file.is_open()) {
+        // 尝试直接用宽字符路径（MSVC支持）
+#ifdef _MSC_VER
+        file.open(path);
+        if (!file.is_open()) {
+            return false;
+        }
+#else
         return false;
+#endif
     }
     
     try {
@@ -369,14 +683,34 @@ bool VisualDesigner::LoadFile(const std::wstring& path)
 
 bool VisualDesigner::SaveFile(const std::wstring& path)
 {
-    std::ofstream file(path);
+    wchar_t debugMsg[512];
+    swprintf_s(debugMsg, L"[VisualDesigner::SaveFile] Saving to: %s\n", path.c_str());
+    OutputDebugStringW(debugMsg);
+    
+    // 将wstring转换为窄字符串用于文件操作
+    std::string narrowPath = WStringToUtf8(path);
+    std::ofstream file(narrowPath);
     if (!file.is_open()) {
+        OutputDebugStringW(L"[VisualDesigner::SaveFile] Failed to open file with narrow path, trying wide path...\n");
+        // 尝试直接用宽字符路径（MSVC支持）
+#ifdef _MSC_VER
+        file.open(path);
+        if (!file.is_open()) {
+            OutputDebugStringW(L"[VisualDesigner::SaveFile] Failed to open file with wide path!\n");
+            return false;
+        }
+#else
         return false;
+#endif
     }
     
     try {
         json j = ToJson();
-        file << j.dump(2);
+        std::string content = j.dump(2);
+        swprintf_s(debugMsg, L"[VisualDesigner::SaveFile] Content size: %zu bytes\n", content.size());
+        OutputDebugStringW(debugMsg);
+        
+        file << content;
         file.close();
         
         m_filePath = path;
@@ -384,9 +718,16 @@ bool VisualDesigner::SaveFile(const std::wstring& path)
         m_fileName = (pos != std::wstring::npos) ? path.substr(pos + 1) : path;
         m_modified = false;
         
+        OutputDebugStringW(L"[VisualDesigner::SaveFile] File saved successfully!\n");
         InvalidateRect(m_hWnd, NULL, FALSE);
         return true;
+    } catch (const std::exception& e) {
+        char errMsg[256];
+        sprintf_s(errMsg, "[VisualDesigner::SaveFile] Exception: %s\n", e.what());
+        OutputDebugStringA(errMsg);
+        return false;
     } catch (...) {
+        OutputDebugStringW(L"[VisualDesigner::SaveFile] Unknown exception!\n");
         return false;
     }
 }
@@ -416,10 +757,76 @@ void VisualDesigner::AddControl(const std::wstring& type, const Rect& bounds)
     control->bounds = bounds;
     control->zOrder = (int)m_formInfo.controls.size();
     
-    // 设置默认属性
-    control->properties[L"标题"] = type;
-    control->properties[L"可视"] = L"真";
-    control->properties[L"禁止"] = L"假";
+    // 从支持库获取组件默认属性
+    const WindowUnitInfo* unitInfo = LibraryParser::GetInstance().FindWindowUnit(type);
+    if (unitInfo) {
+        OutputDebugStringW((L"[VisualDesigner] 从支持库加载控件属性: " + type + 
+            L", 属性数: " + std::to_wstring(unitInfo->properties.size()) + L"\n").c_str());
+        
+        // 设置默认属性
+        for (const auto& prop : unitInfo->properties) {
+            // 设置属性默认值
+            std::wstring defaultValue;
+            switch (prop.type) {
+                case PropertyType::Bool:
+                    defaultValue = L"假";
+                    break;
+                case PropertyType::Int:
+                case PropertyType::PickInt:
+                case PropertyType::PickSpecInt:
+                    defaultValue = L"0";
+                    break;
+                case PropertyType::Text:
+                case PropertyType::PickText:
+                case PropertyType::EditPickText:
+                    // 对于标题属性，使用控件名称
+                    if (prop.name == L"标题" || prop.englishName == L"caption") {
+                        defaultValue = control->name;
+                    } else {
+                        defaultValue = L"";
+                    }
+                    break;
+                case PropertyType::Color:
+                case PropertyType::ColorTrans:
+                case PropertyType::ColorBack:
+                    defaultValue = L"16777215"; // 白色
+                    break;
+                default:
+                    defaultValue = L"";
+                    break;
+            }
+            
+            // 如果有选择选项，使用第一个选项作为默认值
+            if (!prop.pickOptions.empty() && 
+                (prop.type == PropertyType::PickInt || 
+                 prop.type == PropertyType::PickText ||
+                 prop.type == PropertyType::PickSpecInt)) {
+                defaultValue = L"0"; // 选择第一项（索引0）
+            }
+            
+            control->properties[prop.name] = defaultValue;
+        }
+    }
+    else {
+        // 后备：使用基本默认属性
+        control->properties[L"标题"] = control->name;
+        control->properties[L"可视"] = L"真";
+        control->properties[L"禁止"] = L"假";
+    }
+    
+    // 确保基本属性存在
+    if (control->properties.find(L"左边") == control->properties.end()) {
+        control->properties[L"左边"] = std::to_wstring(bounds.X);
+    }
+    if (control->properties.find(L"顶边") == control->properties.end()) {
+        control->properties[L"顶边"] = std::to_wstring(bounds.Y);
+    }
+    if (control->properties.find(L"宽度") == control->properties.end()) {
+        control->properties[L"宽度"] = std::to_wstring(bounds.Width);
+    }
+    if (control->properties.find(L"高度") == control->properties.end()) {
+        control->properties[L"高度"] = std::to_wstring(bounds.Height);
+    }
     
     m_formInfo.controls.push_back(control);
     
@@ -491,6 +898,9 @@ std::vector<std::shared_ptr<ControlInfo>> VisualDesigner::GetSelectedControls()
 
 void VisualDesigner::SelectControl(const std::wstring& id, bool addToSelection)
 {
+    // 选择控件时取消窗口选中
+    m_selection.isFormSelected = false;
+    
     if (!addToSelection) {
         m_selection.selectedControlIds.clear();
     }
@@ -505,6 +915,27 @@ void VisualDesigner::SelectControl(const std::wstring& id, bool addToSelection)
     m_selection.isMultiSelect = m_selection.selectedControlIds.size() > 1;
     UpdateSelectionBounds();
     
+    // 触发选择变更回调
+    if (m_selectionChangedCallback) {
+        m_selectionChangedCallback();
+    }
+    
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::SelectForm()
+{
+    // 清除控件选择，选中窗口
+    m_selection.selectedControlIds.clear();
+    m_selection.isMultiSelect = false;
+    m_selection.isFormSelected = true;
+    m_selection.selectionBounds = Rect(0, 0, m_formInfo.width, m_formInfo.height);
+    
+    // 触发选择变更回调
+    if (m_selectionChangedCallback) {
+        m_selectionChangedCallback();
+    }
+    
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
@@ -512,6 +943,13 @@ void VisualDesigner::ClearSelection()
 {
     m_selection.selectedControlIds.clear();
     m_selection.isMultiSelect = false;
+    m_selection.isFormSelected = false;
+    
+    // 触发选择变更回调
+    if (m_selectionChangedCallback) {
+        m_selectionChangedCallback();
+    }
+    
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
@@ -548,31 +986,124 @@ void VisualDesigner::DrawCanvas(Graphics& g)
     RECT clientRect;
     GetClientRect(m_hWnd, &clientRect);
     
-    // 计算画布位置（居中）
-    int canvasScreenX = (clientRect.right - (int)(m_formInfo.width * m_zoom)) / 2 + m_scrollX;
-    int canvasScreenY = (clientRect.bottom - (int)(m_formInfo.height * m_zoom)) / 2 + m_scrollY;
+    // 标题栏高度
+    const int titleBarHeight = 30;
+    const int borderWidth = 1;
+    const int margin = 20;  // 边距
     
-    Rect canvasRect(canvasScreenX, canvasScreenY, 
-                    (int)(m_formInfo.width * m_zoom), 
-                    (int)(m_formInfo.height * m_zoom));
+    // 计算画布位置（左上角基点 + 滚动偏移）
+    int totalHeight = m_formInfo.height + titleBarHeight;
+    int canvasScreenX = margin + m_scrollX;
+    int canvasScreenY = margin + m_scrollY;
     
-    // 绘制画布阴影
-    SolidBrush shadowBrush(Color(150, 0, 0, 0));
-    g.FillRectangle(&shadowBrush, canvasRect.X + 4, canvasRect.Y + 4, 
-                    canvasRect.Width, canvasRect.Height);
+    int scaledWidth = (int)(m_formInfo.width * m_zoom);
+    int scaledTotalHeight = (int)(totalHeight * m_zoom);
+    int scaledTitleHeight = (int)(titleBarHeight * m_zoom);
+    int scaledClientHeight = (int)(m_formInfo.height * m_zoom);
     
-    // 绘制画布背景
-    SolidBrush canvasBrush(Color(255, 255, 255));
-    g.FillRectangle(&canvasBrush, canvasRect);
+    // 整个窗口区域（包含标题栏）
+    Rect windowRect(canvasScreenX, canvasScreenY, scaledWidth, scaledTotalHeight);
+    
+    // 绘制窗口阴影
+    SolidBrush shadowBrush(Color(100, 0, 0, 0));
+    g.FillRectangle(&shadowBrush, windowRect.X + 4, windowRect.Y + 4, 
+                    windowRect.Width, windowRect.Height);
+    
+    // 绘制窗口边框
+    if (m_formInfo.borderStyle > 0) {
+        SolidBrush borderBrush(Color(100, 100, 100));
+        g.FillRectangle(&borderBrush, windowRect);
+    }
+    
+    // 绘制标题栏
+    Rect titleBarRect(canvasScreenX + borderWidth, canvasScreenY + borderWidth, 
+                      scaledWidth - borderWidth * 2, scaledTitleHeight - borderWidth);
+    LinearGradientBrush titleBrush(
+        Point(titleBarRect.X, titleBarRect.Y),
+        Point(titleBarRect.X, titleBarRect.Y + titleBarRect.Height),
+        Color(0, 120, 215),  // 标题栏颜色（蓝色）
+        Color(0, 100, 180));
+    g.FillRectangle(&titleBrush, titleBarRect);
+    
+    // 绘制标题文字
+    Font titleFont(L"微软雅黑", 9.0f * m_zoom, FontStyleRegular, UnitPoint);
+    SolidBrush titleTextBrush(Color(255, 255, 255));
+    StringFormat titleFormat;
+    titleFormat.SetAlignment(StringAlignmentNear);
+    titleFormat.SetLineAlignment(StringAlignmentCenter);
+    RectF titleTextRect((float)titleBarRect.X + 8, (float)titleBarRect.Y,
+                        (float)titleBarRect.Width - 100, (float)titleBarRect.Height);
+    g.DrawString(m_formInfo.title.c_str(), -1, &titleFont, titleTextRect, &titleFormat, &titleTextBrush);
+    
+    // 绘制控制按钮（关闭、最大化、最小化）
+    if (m_formInfo.hasControlBox) {
+        int btnWidth = (int)(46 * m_zoom);
+        int btnHeight = scaledTitleHeight - borderWidth;
+        int btnX = titleBarRect.X + titleBarRect.Width - btnWidth;
+        int btnY = titleBarRect.Y;
+        
+        // 关闭按钮（红色）
+        Rect closeRect(btnX, btnY, btnWidth, btnHeight);
+        SolidBrush closeBrush(Color(232, 17, 35));
+        g.FillRectangle(&closeBrush, closeRect);
+        // 绘制 X
+        Pen closePen(Color(255, 255, 255), 1.0f * m_zoom);
+        int cx = closeRect.X + closeRect.Width / 2;
+        int cy = closeRect.Y + closeRect.Height / 2;
+        int cs = (int)(5 * m_zoom);
+        g.DrawLine(&closePen, cx - cs, cy - cs, cx + cs, cy + cs);
+        g.DrawLine(&closePen, cx + cs, cy - cs, cx - cs, cy + cs);
+        
+        // 最大化按钮
+        if (m_formInfo.hasMaxButton) {
+            btnX -= btnWidth;
+            Rect maxRect(btnX, btnY, btnWidth, btnHeight);
+            SolidBrush maxBrush(Color(60, 60, 60));
+            // 绘制方块
+            Pen maxPen(Color(255, 255, 255), 1.0f * m_zoom);
+            int mx = maxRect.X + maxRect.Width / 2;
+            int my = maxRect.Y + maxRect.Height / 2;
+            int ms = (int)(5 * m_zoom);
+            g.DrawRectangle(&maxPen, mx - ms, my - ms, ms * 2, ms * 2);
+        }
+        
+        // 最小化按钮
+        if (m_formInfo.hasMinButton) {
+            btnX -= btnWidth;
+            Rect minRect(btnX, btnY, btnWidth, btnHeight);
+            SolidBrush minBrush(Color(60, 60, 60));
+            // 绘制横线
+            Pen minPen(Color(255, 255, 255), 1.0f * m_zoom);
+            int mx = minRect.X + minRect.Width / 2;
+            int my = minRect.Y + minRect.Height / 2;
+            int ms = (int)(5 * m_zoom);
+            g.DrawLine(&minPen, mx - ms, my, mx + ms, my);
+        }
+    }
+    
+    // 绘制客户区（窗口内容区域）
+    Rect clientArea(canvasScreenX + borderWidth, 
+                    canvasScreenY + scaledTitleHeight,
+                    scaledWidth - borderWidth * 2, 
+                    scaledClientHeight - borderWidth);
+    
+    // 背景色
+    SolidBrush clientBrush(Color(GetRValue(m_formInfo.backColor), 
+                                 GetGValue(m_formInfo.backColor), 
+                                 GetBValue(m_formInfo.backColor)));
+    g.FillRectangle(&clientBrush, clientArea);
+    
+    // 保存客户区信息用于后续绘制
+    m_clientAreaRect = clientArea;
     
     // 绘制网格
     if (m_gridConfig.showGrid) {
-        DrawGrid(g, canvasRect);
+        DrawGrid(g, clientArea);
     }
     
     // 绘制辅助线
     if (m_showGuideLines) {
-        DrawGuideLines(g, canvasRect);
+        DrawGuideLines(g, clientArea);
     }
     
     // 绘制控件
@@ -593,10 +1124,6 @@ void VisualDesigner::DrawCanvas(Graphics& g)
         dashedPen.SetDashStyle(DashStyleDash);
         g.DrawRectangle(&dashedPen, previewRect);
     }
-    
-    // 绘制画布边框
-    Pen borderPen(Color(200, 200, 200), 1.0f);
-    g.DrawRectangle(&borderPen, canvasRect);
 }
 
 void VisualDesigner::DrawGrid(Graphics& g, const Rect& canvasRect)
@@ -638,7 +1165,7 @@ void VisualDesigner::DrawGuideLines(Graphics& g, const Rect& canvasRect)
 
 void VisualDesigner::DrawControls(Graphics& g)
 {
-    // TODO: 使用ControlRenderer绘制控件
+    // 按zOrder排序后绘制控件
     for (const auto& ctrl : m_formInfo.controls) {
         DrawControl(g, *ctrl);
     }
@@ -648,29 +1175,66 @@ void VisualDesigner::DrawControl(Graphics& g, const ControlInfo& control)
 {
     Rect screenBounds = CanvasToScreen(control.bounds);
     
-    // 简单的默认渲染（实际应该使用ControlRenderer）
-    SolidBrush bgBrush(Color(240, 240, 240));
-    Pen borderPen(Color(128, 128, 128), 1.0f);
+    // 创建一个临时的控件信息用于渲染（屏幕坐标）
+    ControlInfo screenCtrl = control;
+    screenCtrl.bounds = screenBounds;
     
-    g.FillRectangle(&bgBrush, screenBounds);
-    g.DrawRectangle(&borderPen, screenBounds);
-    
-    // 绘制控件名称
-    FontFamily fontFamily(L"微软雅黑");
-    Font font(&fontFamily, 9, FontStyleRegular, UnitPoint);
-    SolidBrush textBrush(Color(0, 0, 0));
-    
-    StringFormat format;
-    format.SetAlignment(StringAlignmentCenter);
-    format.SetLineAlignment(StringAlignmentCenter);
-    
-    RectF textRect((REAL)screenBounds.X, (REAL)screenBounds.Y, 
-                   (REAL)screenBounds.Width, (REAL)screenBounds.Height);
-    g.DrawString(control.type.c_str(), -1, &font, textRect, &format, &textBrush);
+    // 使用ControlRenderer进行专业渲染
+    if (m_pControlRenderer) {
+        bool isSelected = std::find(m_selection.selectedControlIds.begin(),
+                                   m_selection.selectedControlIds.end(),
+                                   control.id) != m_selection.selectedControlIds.end();
+        m_pControlRenderer->RenderControl(g, screenCtrl, isSelected);
+    } else {
+        // 备用的简单渲染（当ControlRenderer不可用时）
+        SolidBrush bgBrush(Color(240, 240, 240));
+        Pen borderPen(Color(128, 128, 128), 1.0f);
+        
+        g.FillRectangle(&bgBrush, screenBounds);
+        g.DrawRectangle(&borderPen, screenBounds);
+        
+        // 绘制控件名称
+        FontFamily fontFamily(L"微软雅黑");
+        Font font(&fontFamily, 9, FontStyleRegular, UnitPoint);
+        SolidBrush textBrush(Color(0, 0, 0));
+        
+        StringFormat format;
+        format.SetAlignment(StringAlignmentCenter);
+        format.SetLineAlignment(StringAlignmentCenter);
+        
+        RectF textRect((REAL)screenBounds.X, (REAL)screenBounds.Y, 
+                       (REAL)screenBounds.Width, (REAL)screenBounds.Height);
+        g.DrawString(control.type.c_str(), -1, &font, textRect, &format, &textBrush);
+    }
 }
 
 void VisualDesigner::DrawSelection(Graphics& g)
 {
+    // 绘制窗口选择框
+    if (m_selection.isFormSelected) {
+        // 窗口选中时，选择框应包围整个窗口（包括标题栏）
+        const int titleBarHeight = 30;
+        const int margin = 20;
+        int totalHeight = m_formInfo.height + titleBarHeight;
+        
+        // 计算整个窗口的屏幕坐标（左上角基点）
+        int canvasScreenX = margin + m_scrollX;
+        int canvasScreenY = margin + m_scrollY;
+        
+        int scaledWidth = (int)(m_formInfo.width * m_zoom);
+        int scaledTotalHeight = (int)(totalHeight * m_zoom);
+        
+        Rect screenBounds(canvasScreenX, canvasScreenY, scaledWidth, scaledTotalHeight);
+        
+        // 绘制选择框
+        Pen selectionPen(Color(0, 120, 215), 2.0f);
+        g.DrawRectangle(&selectionPen, screenBounds);
+        
+        // 绘制调整大小手柄（只绘制右边、下边和右下角）
+        DrawFormSelectionHandles(g, screenBounds);
+        return;
+    }
+    
     if (m_selection.selectedControlIds.empty()) {
         return;
     }
@@ -709,17 +1273,95 @@ void VisualDesigner::DrawSelectionHandles(Graphics& g, const Rect& bounds)
     }
 }
 
-// 坐标转换
-Point VisualDesigner::ScreenToCanvas(int x, int y) const
+// 窗口选择手柄（显示所有8个，但只有右边、下边、右下角可调整）
+void VisualDesigner::DrawFormSelectionHandles(Graphics& g, const Rect& bounds)
+{
+    const int handleSize = 6;
+    SolidBrush activeBrush(Color(255, 255, 255));   // 可调整的手柄 - 白色
+    SolidBrush inactiveBrush(Color(200, 200, 200)); // 不可调整的手柄 - 灰色
+    Pen handlePen(Color(0, 120, 215), 1.0f);
+    
+    // 所有8个手柄位置
+    struct HandleInfo {
+        Point position;
+        bool canResize;  // 是否可调整
+    };
+    
+    HandleInfo handles[8] = {
+        { Point(bounds.X, bounds.Y), false },                                    // 左上 - 不可调整
+        { Point(bounds.X + bounds.Width / 2, bounds.Y), false },                 // 上中 - 不可调整
+        { Point(bounds.X + bounds.Width, bounds.Y), false },                     // 右上 - 不可调整
+        { Point(bounds.X + bounds.Width, bounds.Y + bounds.Height / 2), true },  // 右中 - 可调整
+        { Point(bounds.X + bounds.Width, bounds.Y + bounds.Height), true },      // 右下 - 可调整
+        { Point(bounds.X + bounds.Width / 2, bounds.Y + bounds.Height), true },  // 下中 - 可调整
+        { Point(bounds.X, bounds.Y + bounds.Height), false },                    // 左下 - 不可调整
+        { Point(bounds.X, bounds.Y + bounds.Height / 2), false }                 // 左中 - 不可调整
+    };
+    
+    for (const auto& handle : handles) {
+        Rect handleRect(handle.position.X - handleSize / 2, handle.position.Y - handleSize / 2, handleSize, handleSize);
+        g.FillRectangle(handle.canResize ? &activeBrush : &inactiveBrush, handleRect);
+        g.DrawRectangle(&handlePen, handleRect);
+    }
+}
+
+// 更新滚动范围
+void VisualDesigner::UpdateScrollRange()
 {
     RECT clientRect;
     GetClientRect(m_hWnd, &clientRect);
     
-    int canvasScreenX = (clientRect.right - (int)(m_formInfo.width * m_zoom)) / 2 + m_scrollX;
-    int canvasScreenY = (clientRect.bottom - (int)(m_formInfo.height * m_zoom)) / 2 + m_scrollY;
+    const int titleBarHeight = 30;
+    const int margin = 20;
     
-    int canvasX = (int)((x - canvasScreenX) / m_zoom);
-    int canvasY = (int)((y - canvasScreenY) / m_zoom);
+    // 计算窗口实际大小（包含标题栏和边距）
+    int totalWidth = (int)(m_formInfo.width * m_zoom) + margin * 2;
+    int totalHeight = (int)((m_formInfo.height + titleBarHeight) * m_zoom) + margin * 2;
+    
+    // 计算滚动范围
+    int scrollMaxX = max(0, totalWidth - clientRect.right);
+    int scrollMaxY = max(0, totalHeight - clientRect.bottom);
+    
+    // 设置滚动条信息
+    SCROLLINFO siH = { sizeof(SCROLLINFO), SIF_RANGE | SIF_PAGE };
+    siH.nMin = 0;
+    siH.nMax = scrollMaxX > 0 ? totalWidth : 0;
+    siH.nPage = clientRect.right;
+    SetScrollInfo(m_hWnd, SB_HORZ, &siH, TRUE);
+    
+    SCROLLINFO siV = { sizeof(SCROLLINFO), SIF_RANGE | SIF_PAGE };
+    siV.nMin = 0;
+    siV.nMax = scrollMaxY > 0 ? totalHeight : 0;
+    siV.nPage = clientRect.bottom;
+    SetScrollInfo(m_hWnd, SB_VERT, &siV, TRUE);
+    
+    // 显示或隐藏滚动条
+    ShowScrollBar(m_hWnd, SB_HORZ, scrollMaxX > 0);
+    ShowScrollBar(m_hWnd, SB_VERT, scrollMaxY > 0);
+    
+    // 确保滚动位置在有效范围内
+    if (m_scrollX < -scrollMaxX) m_scrollX = -scrollMaxX;
+    if (m_scrollX > 0) m_scrollX = 0;
+    if (m_scrollY < -scrollMaxY) m_scrollY = -scrollMaxY;
+    if (m_scrollY > 0) m_scrollY = 0;
+}
+
+// 坐标转换
+Point VisualDesigner::ScreenToCanvas(int x, int y) const
+{
+    const int titleBarHeight = 30;
+    const int borderWidth = 1;
+    const int margin = 20;
+    
+    // 左上角基点 + 滚动偏移
+    int canvasScreenX = margin + m_scrollX;
+    int canvasScreenY = margin + m_scrollY;
+    
+    // 转换到客户区坐标（标题栏下方）
+    int clientAreaScreenY = canvasScreenY + (int)(titleBarHeight * m_zoom);
+    
+    int canvasX = (int)((x - canvasScreenX - borderWidth) / m_zoom);
+    int canvasY = (int)((y - clientAreaScreenY) / m_zoom);
     
     return Point(canvasX, canvasY);
 }
@@ -735,14 +1377,19 @@ Rect VisualDesigner::ScreenToCanvas(const Rect& rect) const
 
 Point VisualDesigner::CanvasToScreen(int x, int y) const
 {
-    RECT clientRect;
-    GetClientRect(m_hWnd, &clientRect);
+    const int titleBarHeight = 30;
+    const int borderWidth = 1;
+    const int margin = 20;
     
-    int canvasScreenX = (clientRect.right - (int)(m_formInfo.width * m_zoom)) / 2 + m_scrollX;
-    int canvasScreenY = (clientRect.bottom - (int)(m_formInfo.height * m_zoom)) / 2 + m_scrollY;
+    // 左上角基点 + 滚动偏移
+    int canvasScreenX = margin + m_scrollX;
+    int canvasScreenY = margin + m_scrollY;
     
-    int screenX = (int)(x * m_zoom) + canvasScreenX;
-    int screenY = (int)(y * m_zoom) + canvasScreenY;
+    // 转换到客户区坐标（标题栏下方）
+    int clientAreaScreenY = canvasScreenY + (int)(titleBarHeight * m_zoom);
+    
+    int screenX = (int)(x * m_zoom) + canvasScreenX + borderWidth;
+    int screenY = (int)(y * m_zoom) + clientAreaScreenY;
     
     return Point(screenX, screenY);
 }
@@ -779,7 +1426,9 @@ Rect VisualDesigner::SnapToGrid(const Rect& rect) const
 // 命中测试调整大小手柄
 DragMode VisualDesigner::HitTestResizeHandle(int x, int y, const Rect& bounds)
 {
-    const int tolerance = 4;
+    // 容差值需要考虑缩放，以确保在不同缩放级别下都能正确检测
+    // 使用较大的容差值使手柄更容易被点击
+    const int tolerance = (int)(10 / m_zoom);  // 在屏幕上约10像素的容差
     
     bool nearLeft = abs(x - bounds.X) <= tolerance;
     bool nearRight = abs(x - (bounds.X + bounds.Width)) <= tolerance;
@@ -798,6 +1447,69 @@ DragMode VisualDesigner::HitTestResizeHandle(int x, int y, const Rect& bounds)
     if (nearBottom && inHRange) return DragMode::ResizeBottom;
     
     return DragMode::None;
+}
+
+// 根据鼠标位置获取调整大小光标
+HCURSOR VisualDesigner::GetResizeCursor()
+{
+    POINT pt;
+    GetCursorPos(&pt);
+    ScreenToClient(m_hWnd, &pt);
+    
+    // 获取画布坐标
+    Point canvasPt = ScreenToCanvas(pt.x, pt.y);
+    
+    DragMode mode = DragMode::None;
+    
+    // 手柄大小（与绘制时一致）
+    const int handleSize = 8;
+    const int halfHandle = handleSize / 2;
+    
+    // 检查窗口调整手柄（只检查右边中点、下边中点、右下角）
+    if (m_selection.isFormSelected) {
+        // 窗口边界
+        int right = m_formInfo.width;
+        int bottom = m_formInfo.height;
+        int centerX = right / 2;
+        int centerY = bottom / 2;
+        
+        const int tolerance = (int)(halfHandle / m_zoom) + 2;
+        
+        // 右下角手柄
+        if (abs(canvasPt.X - right) <= tolerance && abs(canvasPt.Y - bottom) <= tolerance) {
+            mode = DragMode::ResizeBottomRight;
+        }
+        // 右边中点手柄
+        else if (abs(canvasPt.X - right) <= tolerance && abs(canvasPt.Y - centerY) <= tolerance) {
+            mode = DragMode::ResizeRight;
+        }
+        // 下边中点手柄
+        else if (abs(canvasPt.X - centerX) <= tolerance && abs(canvasPt.Y - bottom) <= tolerance) {
+            mode = DragMode::ResizeBottom;
+        }
+    }
+    // 检查控件调整手柄（所有8个方向）
+    else if (!m_selection.selectedControlIds.empty()) {
+        mode = HitTestResizeHandle(canvasPt.X, canvasPt.Y, m_selection.selectionBounds);
+    }
+    
+    // 根据调整模式返回对应光标
+    switch (mode) {
+        case DragMode::ResizeTopLeft:
+        case DragMode::ResizeBottomRight:
+            return LoadCursor(NULL, IDC_SIZENWSE);
+        case DragMode::ResizeTopRight:
+        case DragMode::ResizeBottomLeft:
+            return LoadCursor(NULL, IDC_SIZENESW);
+        case DragMode::ResizeTop:
+        case DragMode::ResizeBottom:
+            return LoadCursor(NULL, IDC_SIZENS);
+        case DragMode::ResizeLeft:
+        case DragMode::ResizeRight:
+            return LoadCursor(NULL, IDC_SIZEWE);
+        default:
+            return NULL;  // 使用默认光标
+    }
 }
 
 // 更新选择框边界
@@ -916,11 +1628,20 @@ void VisualDesigner::SetSelectMode()
 json VisualDesigner::ToJson() const
 {
     json j;
-    j["version"] = 1;
-    j["formName"] = WStringToUtf8(m_formInfo.name);
-    j["formTitle"] = WStringToUtf8(m_formInfo.title);
-    j["formWidth"] = m_formInfo.width;
-    j["formHeight"] = m_formInfo.height;
+    j["type"] = "window";
+    j["name"] = WStringToUtf8(m_formInfo.name);
+    j["title"] = WStringToUtf8(m_formInfo.title);
+    j["width"] = m_formInfo.width;
+    j["height"] = m_formInfo.height;
+    
+    // 保存窗体属性
+    json formProps = json::object();
+    for (const auto& prop : m_formInfo.properties) {
+        formProps[WStringToUtf8(prop.first)] = WStringToUtf8(prop.second);
+    }
+    if (!formProps.empty()) {
+        j["properties"] = formProps;
+    }
     
     j["controls"] = json::array();
     for (const auto& ctrl : m_formInfo.controls) {
@@ -949,11 +1670,41 @@ json VisualDesigner::ToJson() const
 void VisualDesigner::FromJson(const json& j)
 {
     m_formInfo.controls.clear();
+    m_formInfo.properties.clear();
     
-    if (j.contains("formName")) m_formInfo.name = Utf8ToWString(j["formName"]);
-    if (j.contains("formTitle")) m_formInfo.title = Utf8ToWString(j["formTitle"]);
-    if (j.contains("formWidth")) m_formInfo.width = j["formWidth"];
-    if (j.contains("formHeight")) m_formInfo.height = j["formHeight"];
+    // 兼容两种格式：旧格式使用 name/title/width/height，新格式使用 formName/formTitle 等
+    if (j.contains("formName")) {
+        m_formInfo.name = Utf8ToWString(j["formName"]);
+    } else if (j.contains("name")) {
+        m_formInfo.name = Utf8ToWString(j["name"]);
+    }
+    
+    if (j.contains("formTitle")) {
+        m_formInfo.title = Utf8ToWString(j["formTitle"]);
+    } else if (j.contains("title")) {
+        m_formInfo.title = Utf8ToWString(j["title"]);
+    }
+    
+    if (j.contains("formWidth")) {
+        m_formInfo.width = j["formWidth"];
+    } else if (j.contains("width")) {
+        m_formInfo.width = j["width"];
+    }
+    
+    if (j.contains("formHeight")) {
+        m_formInfo.height = j["formHeight"];
+    } else if (j.contains("height")) {
+        m_formInfo.height = j["height"];
+    }
+    
+    // 加载窗体属性
+    if (j.contains("properties") && j["properties"].is_object()) {
+        for (auto& [key, value] : j["properties"].items()) {
+            if (value.is_string()) {
+                m_formInfo.properties[Utf8ToWString(key)] = Utf8ToWString(value.get<std::string>());
+            }
+        }
+    }
     
     if (j.contains("controls") && j["controls"].is_array()) {
         for (const auto& ctrlJson : j["controls"]) {
@@ -1151,4 +1902,466 @@ void VisualDesigner::Paste()
     }
 }
 
-// 省略其他方法实现（对齐、排列、层级操作等）...
+// === 对齐操作 ===
+
+void VisualDesigner::AlignLeft()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    int minX = INT_MAX;
+    for (const auto& ctrl : controls) {
+        minX = min(minX, ctrl->bounds.X);
+    }
+    
+    CreateSnapshot(L"左对齐");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.X = minX;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::AlignRight()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    int maxRight = INT_MIN;
+    for (const auto& ctrl : controls) {
+        maxRight = max(maxRight, ctrl->bounds.X + ctrl->bounds.Width);
+    }
+    
+    CreateSnapshot(L"右对齐");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.X = maxRight - ctrl->bounds.Width;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::AlignTop()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    int minY = INT_MAX;
+    for (const auto& ctrl : controls) {
+        minY = min(minY, ctrl->bounds.Y);
+    }
+    
+    CreateSnapshot(L"顶端对齐");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.Y = minY;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::AlignBottom()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    int maxBottom = INT_MIN;
+    for (const auto& ctrl : controls) {
+        maxBottom = max(maxBottom, ctrl->bounds.Y + ctrl->bounds.Height);
+    }
+    
+    CreateSnapshot(L"底端对齐");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.Y = maxBottom - ctrl->bounds.Height;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::AlignCenterHorizontal()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    int sumCenterX = 0;
+    for (const auto& ctrl : controls) {
+        sumCenterX += ctrl->bounds.X + ctrl->bounds.Width / 2;
+    }
+    int avgCenterX = sumCenterX / (int)controls.size();
+    
+    CreateSnapshot(L"水平居中");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.X = avgCenterX - ctrl->bounds.Width / 2;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::AlignCenterVertical()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    int sumCenterY = 0;
+    for (const auto& ctrl : controls) {
+        sumCenterY += ctrl->bounds.Y + ctrl->bounds.Height / 2;
+    }
+    int avgCenterY = sumCenterY / (int)controls.size();
+    
+    CreateSnapshot(L"垂直居中");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.Y = avgCenterY - ctrl->bounds.Height / 2;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::DistributeHorizontal()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 3) return;
+    
+    // 按X坐标排序
+    std::sort(controls.begin(), controls.end(),
+        [](const std::shared_ptr<ControlInfo>& a, const std::shared_ptr<ControlInfo>& b) {
+            return a->bounds.X < b->bounds.X;
+        });
+    
+    int minX = controls.front()->bounds.X;
+    int maxX = controls.back()->bounds.X + controls.back()->bounds.Width;
+    int totalWidth = 0;
+    for (const auto& ctrl : controls) {
+        totalWidth += ctrl->bounds.Width;
+    }
+    
+    int totalGap = maxX - minX - totalWidth;
+    int gapCount = (int)controls.size() - 1;
+    int gap = gapCount > 0 ? totalGap / gapCount : 0;
+    
+    CreateSnapshot(L"水平分布");
+    int currentX = minX;
+    for (auto& ctrl : controls) {
+        ctrl->bounds.X = currentX;
+        currentX += ctrl->bounds.Width + gap;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::DistributeVertical()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 3) return;
+    
+    // 按Y坐标排序
+    std::sort(controls.begin(), controls.end(),
+        [](const std::shared_ptr<ControlInfo>& a, const std::shared_ptr<ControlInfo>& b) {
+            return a->bounds.Y < b->bounds.Y;
+        });
+    
+    int minY = controls.front()->bounds.Y;
+    int maxY = controls.back()->bounds.Y + controls.back()->bounds.Height;
+    int totalHeight = 0;
+    for (const auto& ctrl : controls) {
+        totalHeight += ctrl->bounds.Height;
+    }
+    
+    int totalGap = maxY - minY - totalHeight;
+    int gapCount = (int)controls.size() - 1;
+    int gap = gapCount > 0 ? totalGap / gapCount : 0;
+    
+    CreateSnapshot(L"垂直分布");
+    int currentY = minY;
+    for (auto& ctrl : controls) {
+        ctrl->bounds.Y = currentY;
+        currentY += ctrl->bounds.Height + gap;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::MakeSameWidth()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    // 使用第一个选中控件的宽度作为基准
+    int targetWidth = controls.front()->bounds.Width;
+    
+    CreateSnapshot(L"相同宽度");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.Width = targetWidth;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::MakeSameHeight()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    int targetHeight = controls.front()->bounds.Height;
+    
+    CreateSnapshot(L"相同高度");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.Height = targetHeight;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::MakeSameSize()
+{
+    auto controls = GetSelectedControls();
+    if (controls.size() < 2) return;
+    
+    int targetWidth = controls.front()->bounds.Width;
+    int targetHeight = controls.front()->bounds.Height;
+    
+    CreateSnapshot(L"相同大小");
+    for (auto& ctrl : controls) {
+        ctrl->bounds.Width = targetWidth;
+        ctrl->bounds.Height = targetHeight;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+// === 层级操作 ===
+
+void VisualDesigner::BringToFront()
+{
+    auto controls = GetSelectedControls();
+    if (controls.empty()) return;
+    
+    CreateSnapshot(L"置于顶层");
+    
+    // 获取最大zOrder
+    int maxZOrder = 0;
+    for (const auto& ctrl : m_formInfo.controls) {
+        maxZOrder = max(maxZOrder, ctrl->zOrder);
+    }
+    
+    // 设置选中控件的zOrder为最大值+1
+    for (auto& ctrl : controls) {
+        ctrl->zOrder = ++maxZOrder;
+    }
+    
+    // 重新排序控件列表（按zOrder）
+    std::sort(m_formInfo.controls.begin(), m_formInfo.controls.end(),
+        [](const std::shared_ptr<ControlInfo>& a, const std::shared_ptr<ControlInfo>& b) {
+            return a->zOrder < b->zOrder;
+        });
+    
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::SendToBack()
+{
+    auto controls = GetSelectedControls();
+    if (controls.empty()) return;
+    
+    CreateSnapshot(L"置于底层");
+    
+    // 获取最小zOrder
+    int minZOrder = INT_MAX;
+    for (const auto& ctrl : m_formInfo.controls) {
+        minZOrder = min(minZOrder, ctrl->zOrder);
+    }
+    
+    // 设置选中控件的zOrder为最小值-1
+    for (auto& ctrl : controls) {
+        ctrl->zOrder = --minZOrder;
+    }
+    
+    // 重新排序控件列表
+    std::sort(m_formInfo.controls.begin(), m_formInfo.controls.end(),
+        [](const std::shared_ptr<ControlInfo>& a, const std::shared_ptr<ControlInfo>& b) {
+            return a->zOrder < b->zOrder;
+        });
+    
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::BringForward()
+{
+    auto controls = GetSelectedControls();
+    if (controls.empty()) return;
+    
+    CreateSnapshot(L"上移一层");
+    
+    for (auto& ctrl : controls) {
+        // 找到zOrder比当前控件大的最小zOrder控件
+        int nextZOrder = INT_MAX;
+        std::shared_ptr<ControlInfo> nextCtrl = nullptr;
+        
+        for (auto& other : m_formInfo.controls) {
+            if (other->id != ctrl->id && other->zOrder > ctrl->zOrder && other->zOrder < nextZOrder) {
+                nextZOrder = other->zOrder;
+                nextCtrl = other;
+            }
+        }
+        
+        if (nextCtrl) {
+            // 交换zOrder
+            std::swap(ctrl->zOrder, nextCtrl->zOrder);
+        }
+    }
+    
+    // 重新排序
+    std::sort(m_formInfo.controls.begin(), m_formInfo.controls.end(),
+        [](const std::shared_ptr<ControlInfo>& a, const std::shared_ptr<ControlInfo>& b) {
+            return a->zOrder < b->zOrder;
+        });
+    
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::SendBackward()
+{
+    auto controls = GetSelectedControls();
+    if (controls.empty()) return;
+    
+    CreateSnapshot(L"下移一层");
+    
+    for (auto& ctrl : controls) {
+        // 找到zOrder比当前控件小的最大zOrder控件
+        int prevZOrder = INT_MIN;
+        std::shared_ptr<ControlInfo> prevCtrl = nullptr;
+        
+        for (auto& other : m_formInfo.controls) {
+            if (other->id != ctrl->id && other->zOrder < ctrl->zOrder && other->zOrder > prevZOrder) {
+                prevZOrder = other->zOrder;
+                prevCtrl = other;
+            }
+        }
+        
+        if (prevCtrl) {
+            // 交换zOrder
+            std::swap(ctrl->zOrder, prevCtrl->zOrder);
+        }
+    }
+    
+    // 重新排序
+    std::sort(m_formInfo.controls.begin(), m_formInfo.controls.end(),
+        [](const std::shared_ptr<ControlInfo>& a, const std::shared_ptr<ControlInfo>& b) {
+            return a->zOrder < b->zOrder;
+        });
+    
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+// === 网格和辅助线 ===
+
+void VisualDesigner::SetGridConfig(const GridConfig& config)
+{
+    m_gridConfig = config;
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::AddGuideLine(bool isHorizontal, int position)
+{
+    GuideLine guide;
+    guide.isHorizontal = isHorizontal;
+    guide.position = position;
+    m_guideLines.push_back(guide);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::RemoveGuideLine(int index)
+{
+    if (index >= 0 && index < (int)m_guideLines.size()) {
+        m_guideLines.erase(m_guideLines.begin() + index);
+        InvalidateRect(m_hWnd, NULL, FALSE);
+    }
+}
+
+void VisualDesigner::ClearGuideLines()
+{
+    m_guideLines.clear();
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+// === 缩放和滚动 ===
+
+void VisualDesigner::SetZoom(float zoom)
+{
+    m_zoom = max(0.1f, min(4.0f, zoom));
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::SetScroll(int x, int y)
+{
+    m_scrollX = x;
+    m_scrollY = y;
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+// === 属性设置 ===
+
+void VisualDesigner::SetFormProperty(const std::wstring& key, const std::wstring& value)
+{
+    if (key == L"名称" || key == L"name") {
+        m_formInfo.name = value;
+    } else if (key == L"标题" || key == L"title") {
+        m_formInfo.title = value;
+    } else if (key == L"宽度" || key == L"width") {
+        m_formInfo.width = std::stoi(value);
+    } else if (key == L"高度" || key == L"height") {
+        m_formInfo.height = std::stoi(value);
+    } else {
+        m_formInfo.properties[key] = value;
+    }
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+void VisualDesigner::SetControlProperty(const std::wstring& controlId, const std::wstring& key, const std::wstring& value)
+{
+    auto ctrl = GetControl(controlId);
+    if (!ctrl) return;
+    
+    if (key == L"名称" || key == L"name") {
+        ctrl->name = value;
+    } else if (key == L"左边" || key == L"left") {
+        ctrl->bounds.X = std::stoi(value);
+    } else if (key == L"顶边" || key == L"top") {
+        ctrl->bounds.Y = std::stoi(value);
+    } else if (key == L"宽度" || key == L"width") {
+        ctrl->bounds.Width = std::stoi(value);
+    } else if (key == L"高度" || key == L"height") {
+        ctrl->bounds.Height = std::stoi(value);
+    } else {
+        ctrl->properties[key] = value;
+    }
+    
+    UpdateSelectionBounds();
+    SetModified(true);
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+

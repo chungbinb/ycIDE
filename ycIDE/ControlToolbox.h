@@ -46,6 +46,7 @@ public:
     void OnLButtonDblClick(int x, int y);
     void OnMouseMove(int x, int y);
     void OnVScroll(WPARAM wParam);
+    void OnMouseWheel(WPARAM wParam);
     
     // === 初始化 ===
     
@@ -66,6 +67,12 @@ public:
     void ExpandCategory(const std::wstring& category, bool expand);
     void ExpandAll();
     void CollapseAll();
+    
+    // === 通知消息 ===
+    // 当选择控件类型时发送WM_COMMAND消息到父窗口
+    // WPARAM: MAKEWPARAM(0, WM_TOOLBOX_SELECTION_CHANGED)
+    // LPARAM: 指向控件类型字符串的指针
+    static const UINT WM_TOOLBOX_SELECTION_CHANGED = 0x2000;
     
 private:
     HWND m_hWnd;
@@ -97,6 +104,7 @@ private:
     
     // 初始化
     void AddDefaultControls();
+    void LoadControlsFromLibrary();  // 从支持库加载控件
     
     // 渲染
     void DrawToolbox(Graphics& g);
@@ -115,4 +123,7 @@ private:
     // 布局
     int GetTotalHeight();
     void UpdateScrollBar();
+    
+    // 辅助
+    ToolboxCategory* FindOrCreateCategory(const std::wstring& categoryName);
 };

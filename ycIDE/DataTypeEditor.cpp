@@ -296,7 +296,7 @@ void DataTypeEditor::SetCellValue(int row, int col, const std::wstring& value) {
         
         // 通知数据变更
         if (m_pContext && col == 0) {
-            m_pContext->NotifyDataChanged(EditorFileType::EdlDataType, value);
+            m_pContext->NotifyDataChanged(EditorFileType::EdtDataType, value);
         }
     } else if (info.rowType == DataTypeRowType::MemberData) {
         // 成员数据行（5列：名称、类型、传址、数组、备注）

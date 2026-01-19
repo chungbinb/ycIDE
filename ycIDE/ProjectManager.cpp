@@ -177,6 +177,21 @@ bool ProjectManager::AddFileToProject(const std::wstring& filePath) {
             newItem.fileType = PROJECT_FILE_ELL;
         } else if (ext == L".ec") {
             newItem.fileType = PROJECT_FILE_EC;
+        } else if (ext == L".efw") {
+            newItem.fileType = PROJECT_FILE_EFW;
+        } else if (ext == L".ecs") {
+            newItem.fileType = PROJECT_FILE_ECS;
+        } else if (ext == L".edt") {
+            newItem.fileType = PROJECT_FILE_EDT;
+        } else if (ext == L".egv") {
+            newItem.fileType = PROJECT_FILE_EGV;
+        } else if (ext == L".png" || ext == L".jpg" || ext == L".jpeg" || 
+                   ext == L".bmp" || ext == L".ico" || ext == L".gif") {
+            newItem.fileType = PROJECT_FILE_RES_IMAGE;
+        } else if (ext == L".wav" || ext == L".mp3") {
+            newItem.fileType = PROJECT_FILE_RES_AUDIO;
+        } else if (ext == L".txt" || ext == L".dat" || ext == L".bin") {
+            newItem.fileType = PROJECT_FILE_RES_DATA;
         } else {
             newItem.fileType = PROJECT_FILE_OTHER;
         }
@@ -315,6 +330,13 @@ bool ProjectManager::ParseProjectFile(const std::wstring& content, ProjectInfo* 
             if (typeStr == L"EYC") item.fileType = PROJECT_FILE_EYC;
             else if (typeStr == L"ELL") item.fileType = PROJECT_FILE_ELL;
             else if (typeStr == L"EC") item.fileType = PROJECT_FILE_EC;
+            else if (typeStr == L"EFW") item.fileType = PROJECT_FILE_EFW;
+            else if (typeStr == L"ECS") item.fileType = PROJECT_FILE_ECS;
+            else if (typeStr == L"EDT") item.fileType = PROJECT_FILE_EDT;
+            else if (typeStr == L"EGV") item.fileType = PROJECT_FILE_EGV;
+            else if (typeStr == L"RES_IMAGE") item.fileType = PROJECT_FILE_RES_IMAGE;
+            else if (typeStr == L"RES_AUDIO") item.fileType = PROJECT_FILE_RES_AUDIO;
+            else if (typeStr == L"RES_DATA") item.fileType = PROJECT_FILE_RES_DATA;
             else item.fileType = PROJECT_FILE_OTHER;
             
             // 解析是否主文件
@@ -323,6 +345,27 @@ bool ProjectManager::ParseProjectFile(const std::wstring& content, ProjectInfo* 
             // 提取文件名
             size_t lastSlash = item.filePath.find_last_of(L"\\/");
             item.fileName = (lastSlash != std::wstring::npos) ? item.filePath.substr(lastSlash + 1) : item.filePath;
+            
+            // 如果类型是OTHER，根据扩展名重新判断（兼容旧项目文件）
+            if (item.fileType == PROJECT_FILE_OTHER) {
+                size_t dotPos = item.fileName.find_last_of(L'.');
+                if (dotPos != std::wstring::npos) {
+                    std::wstring ext = item.fileName.substr(dotPos);
+                    std::transform(ext.begin(), ext.end(), ext.begin(), ::towlower);
+                    
+                    if (ext == L".efw") item.fileType = PROJECT_FILE_EFW;
+                    else if (ext == L".edt") item.fileType = PROJECT_FILE_EDT;
+                    else if (ext == L".egv") item.fileType = PROJECT_FILE_EGV;
+                    else if (ext == L".ecs") item.fileType = PROJECT_FILE_ECS;
+                    else if (ext == L".ec") item.fileType = PROJECT_FILE_EC;
+                    else if (ext == L".png" || ext == L".jpg" || ext == L".jpeg" || 
+                             ext == L".bmp" || ext == L".ico" || ext == L".gif") {
+                        item.fileType = PROJECT_FILE_RES_IMAGE;
+                    } else if (ext == L".wav" || ext == L".mp3") {
+                        item.fileType = PROJECT_FILE_RES_AUDIO;
+                    }
+                }
+            }
             
             project->files.push_back(item);
         }
@@ -347,6 +390,13 @@ std::wstring ProjectManager::GenerateProjectFile(const ProjectInfo* project) {
             case PROJECT_FILE_EYC: content += L"EYC"; break;
             case PROJECT_FILE_ELL: content += L"ELL"; break;
             case PROJECT_FILE_EC: content += L"EC"; break;
+            case PROJECT_FILE_EFW: content += L"EFW"; break;
+            case PROJECT_FILE_ECS: content += L"ECS"; break;
+            case PROJECT_FILE_EDT: content += L"EDT"; break;
+            case PROJECT_FILE_EGV: content += L"EGV"; break;
+            case PROJECT_FILE_RES_IMAGE: content += L"RES_IMAGE"; break;
+            case PROJECT_FILE_RES_AUDIO: content += L"RES_AUDIO"; break;
+            case PROJECT_FILE_RES_DATA: content += L"RES_DATA"; break;
             default: content += L"OTHER"; break;
         }
         
