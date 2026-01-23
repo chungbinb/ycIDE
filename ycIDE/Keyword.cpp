@@ -105,18 +105,14 @@ std::vector<CompletionItem> KeywordManager::GetCompletions(const std::wstring& i
             return score;
         }
         
-        // 2. 全拼匹配
+        // 2. 全拼匹配（只匹配前缀，不匹配中间包含的情况）
         for (const auto& py : pinyin) {
             if (!py.empty()) {
-                pos = py.find(lowerInput);
-                if (pos != std::wstring::npos) {
+                // 只检查前缀匹配
+                if (py.length() >= lowerInput.length() && py.substr(0, lowerInput.length()) == lowerInput) {
                     int currentScore = 0;
-                    if (pos == 0) {
-                        if (py == lowerInput) currentScore = 800; // 全拼完全匹配
-                        else currentScore = 400; // 全拼前缀匹配
-                    } else {
-                        currentScore = 50; // 全拼包含匹配
-                    }
+                    if (py == lowerInput) currentScore = 800; // 全拼完全匹配
+                    else currentScore = 400; // 全拼前缀匹配
                     // 长度惩罚
                     currentScore -= (int)(py.length() - lowerInput.length());
                     if (currentScore > score) score = currentScore;
@@ -124,18 +120,14 @@ std::vector<CompletionItem> KeywordManager::GetCompletions(const std::wstring& i
             }
         }
         
-        // 3. 首字母匹配
+        // 3. 首字母匹配（只匹配前缀，不匹配中间包含的情况）
         for (const auto& ini : initials) {
             if (!ini.empty()) {
-                pos = ini.find(lowerInput);
-                if (pos != std::wstring::npos) {
+                // 只检查前缀匹配
+                if (ini.length() >= lowerInput.length() && ini.substr(0, lowerInput.length()) == lowerInput) {
                     int currentScore = 0;
-                    if (pos == 0) {
-                        if (ini == lowerInput) currentScore = 600; // 首字母完全匹配
-                        else currentScore = 300; // 首字母前缀匹配
-                    } else {
-                        currentScore = 20; // 首字母包含匹配
-                    }
+                    if (ini == lowerInput) currentScore = 600; // 首字母完全匹配
+                    else currentScore = 300; // 首字母前缀匹配
                     // 长度惩罚
                     currentScore -= (int)(ini.length() - lowerInput.length());
                     if (currentScore > score) score = currentScore;

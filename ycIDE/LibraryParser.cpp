@@ -38,6 +38,7 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
         const auto& fneCmd = fneCommands[idx];
         LibraryCommand cmd;
         cmd.chineseName = fneCmd.name;
+        cmd.englishName = fneCmd.englishName;  // 设置英文名称
         cmd.returnType = fneCmd.returnType;
         cmd.description = fneCmd.description;
         cmd.library = libraryName;
@@ -66,32 +67,14 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
             debugFile << L"  命令[" << idx << L"]: " << cmd.chineseName << L", 类别: [" << cmd.category << L"]" << std::endl;
         }
         
-        // 解析参数：FNE 的参数格式是 "参数名 : 参数类型 [标志]"
-        for (const auto& paramStr : fneCmd.parameters) {
+        // 使用新的结构化参数信息
+        for (const auto& fneParam : fneCmd.params) {
             LibraryParameter param;
-            
-            size_t colonPos = paramStr.find(L" : ");
-            if (colonPos != std::wstring::npos) {
-                param.name = paramStr.substr(0, colonPos);
-                std::wstring typeAndFlags = paramStr.substr(colonPos + 3);
-                
-                // 检查是否可选
-                param.optional = (typeAndFlags.find(L"[可选]") != std::wstring::npos);
-                
-                // 提取类型
-                size_t bracketPos = typeAndFlags.find(L" [");
-                if (bracketPos != std::wstring::npos) {
-                    param.type = typeAndFlags.substr(0, bracketPos);
-                } else {
-                    param.type = typeAndFlags;
-                }
-            } else {
-                // 没有冒号，整个就是类型
-                param.type = paramStr;
-                param.name = L"";
-            }
-            
-            param.description = L"";
+            param.name = fneParam.name;
+            param.type = fneParam.type;
+            param.typeWithEnglish = fneParam.typeWithEnglish;
+            param.description = fneParam.description;
+            param.optional = fneParam.optional;
             cmd.parameters.push_back(param);
         }
         

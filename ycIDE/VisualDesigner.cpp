@@ -165,8 +165,11 @@ void VisualDesigner::OnLButtonDown(int x, int y, UINT flags)
 {
     Point canvasPt = ScreenToCanvas(x, y);
     
+    OutputDebugStringW((L"[VisualDesigner] OnLButtonDown: toolControlType=" + m_toolControlType + L"\n").c_str());
+    
     // 如果是创建模式
     if (!m_toolControlType.empty()) {
+        OutputDebugStringW(L"[VisualDesigner] 进入创建模式\n");
         m_dragMode = DragMode::CreateNew;
         m_dragStartPoint = canvasPt;
         m_dragLastPoint = canvasPt;
@@ -258,9 +261,10 @@ void VisualDesigner::OnLButtonDown(int x, int y, UINT flags)
         
         SetCapture(m_hWnd);
     } else {
-        // 检查是否点击在窗口客户区内
+        // 检查是否点击在窗口区域内（包括标题栏）
+        const int titleBarHeight = 30;
         if (canvasPt.X >= 0 && canvasPt.X < m_formInfo.width &&
-            canvasPt.Y >= 0 && canvasPt.Y < m_formInfo.height) {
+            canvasPt.Y >= -titleBarHeight && canvasPt.Y < m_formInfo.height) {
             // 选中窗口
             SelectForm();
         } else {
@@ -285,6 +289,28 @@ void VisualDesigner::OnLButtonUp(int x, int y, UINT flags)
         if (right - left < 20 || bottom - top < 20) {
             right = left + 80;
             bottom = top + 24;
+        }
+        
+        // 限制控件不能超出窗口客户区
+        if (left < 0) left = 0;
+        if (top < 0) top = 0;
+        if (right > m_formInfo.width) right = m_formInfo.width;
+        if (bottom > m_formInfo.height) bottom = m_formInfo.height;
+        
+        // 确保控件有最小尺寸
+        if (right - left < 20) right = left + 20;
+        if (bottom - top < 20) bottom = top + 20;
+        
+        // 再次检查是否超出边界（调整最小尺寸后可能超出）
+        if (right > m_formInfo.width) {
+            left = m_formInfo.width - (right - left);
+            right = m_formInfo.width;
+            if (left < 0) left = 0;
+        }
+        if (bottom > m_formInfo.height) {
+            top = m_formInfo.height - (bottom - top);
+            bottom = m_formInfo.height;
+            if (top < 0) top = 0;
         }
         
         Rect bounds(left, top, right - left, bottom - top);
@@ -327,6 +353,16 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
                     newBounds = SnapToGrid(newBounds);
                 }
                 
+                // 限制控件不能移出窗口客户区
+                if (newBounds.X < 0) newBounds.X = 0;
+                if (newBounds.Y < 0) newBounds.Y = 0;
+                if (newBounds.X + newBounds.Width > m_formInfo.width) {
+                    newBounds.X = m_formInfo.width - newBounds.Width;
+                }
+                if (newBounds.Y + newBounds.Height > m_formInfo.height) {
+                    newBounds.Y = m_formInfo.height - newBounds.Height;
+                }
+                
                 ctrl->bounds = newBounds;
             }
             index++;
@@ -334,6 +370,12 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
         
         UpdateSelectionBounds();
         SetModified(true);
+        
+        // 实时更新属性窗口
+        if (m_selectionChangedCallback) {
+            m_selectionChangedCallback();
+        }
+        
         InvalidateRect(m_hWnd, NULL, FALSE);
     } else if (m_dragMode != DragMode::None) {
         // 调整大小
@@ -406,6 +448,20 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
             newBounds = SnapToGrid(newBounds);
         }
         
+        // 限制控件不能超出窗口客户区
+        if (newBounds.X < 0) newBounds.X = 0;
+        if (newBounds.Y < 0) newBounds.Y = 0;
+        if (newBounds.X + newBounds.Width > m_formInfo.width) {
+            newBounds.Width = m_formInfo.width - newBounds.X;
+        }
+        if (newBounds.Y + newBounds.Height > m_formInfo.height) {
+            newBounds.Height = m_formInfo.height - newBounds.Y;
+        }
+        
+        // 确保控件有最小尺寸
+        if (newBounds.Width < 20) newBounds.Width = 20;
+        if (newBounds.Height < 20) newBounds.Height = 20;
+        
         // 应用到所有选中控件（等比例缩放）
         float scaleX = (float)newBounds.Width / m_dragOriginalBounds.Width;
         float scaleY = (float)newBounds.Height / m_dragOriginalBounds.Height;
@@ -420,12 +476,28 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
                 ctrl->bounds.Height = (int)(originalBounds.Height * scaleY);
                 ctrl->bounds.X = newBounds.X + (int)((originalBounds.X - m_dragOriginalBounds.X) * scaleX);
                 ctrl->bounds.Y = newBounds.Y + (int)((originalBounds.Y - m_dragOriginalBounds.Y) * scaleY);
+                
+                // 限制每个控件不能超出窗口客户区
+                if (ctrl->bounds.X < 0) ctrl->bounds.X = 0;
+                if (ctrl->bounds.Y < 0) ctrl->bounds.Y = 0;
+                if (ctrl->bounds.X + ctrl->bounds.Width > m_formInfo.width) {
+                    ctrl->bounds.Width = m_formInfo.width - ctrl->bounds.X;
+                }
+                if (ctrl->bounds.Y + ctrl->bounds.Height > m_formInfo.height) {
+                    ctrl->bounds.Height = m_formInfo.height - ctrl->bounds.Y;
+                }
             }
             index++;
         }
         
         UpdateSelectionBounds();
         SetModified(true);
+        
+        // 实时更新属性窗口
+        if (m_selectionChangedCallback) {
+            m_selectionChangedCallback();
+        }
+        
         InvalidateRect(m_hWnd, NULL, FALSE);
     }
 }
@@ -769,7 +841,12 @@ void VisualDesigner::AddControl(const std::wstring& type, const Rect& bounds)
             std::wstring defaultValue;
             switch (prop.type) {
                 case PropertyType::Bool:
-                    defaultValue = L"假";
+                    // 可视属性默认为真
+                    if (prop.name == L"可视" || prop.englishName == L"visible") {
+                        defaultValue = L"真";
+                    } else {
+                        defaultValue = L"假";
+                    }
                     break;
                 case PropertyType::Int:
                 case PropertyType::PickInt:
@@ -1615,13 +1692,19 @@ std::wstring VisualDesigner::GenerateControlName(const std::wstring& type)
 void VisualDesigner::SetToolMode(const std::wstring& controlType)
 {
     m_toolControlType = controlType;
-    // TODO: 更改鼠标光标
+    OutputDebugStringW((L"[VisualDesigner] SetToolMode: " + controlType + L"\n").c_str());
 }
 
 void VisualDesigner::SetSelectMode()
 {
     m_toolControlType.clear();
-    // TODO: 恢复默认光标
+    
+    // 通知组件箱清除选择状态
+    HWND hMainWnd = GetAncestor(m_hWnd, GA_ROOT);
+    if (hMainWnd) {
+        // 发送消息通知主窗口切换到选择模式
+        PostMessage(hMainWnd, WM_USER + 200, 0, 0);
+    }
 }
 
 // JSON序列化
@@ -2326,14 +2409,41 @@ void VisualDesigner::SetScroll(int x, int y)
 
 void VisualDesigner::SetFormProperty(const std::wstring& key, const std::wstring& value)
 {
+    // 辅助函数：判断值是否为真
+    auto isTrueValue = [](const std::wstring& v) {
+        return v == L"真" || v == L"true" || v == L"1" || v == L"True" || v == L"TRUE";
+    };
+    
     if (key == L"名称" || key == L"name") {
         m_formInfo.name = value;
     } else if (key == L"标题" || key == L"title") {
         m_formInfo.title = value;
     } else if (key == L"宽度" || key == L"width") {
-        m_formInfo.width = std::stoi(value);
+        try { m_formInfo.width = std::stoi(value); } catch (...) {}
     } else if (key == L"高度" || key == L"height") {
-        m_formInfo.height = std::stoi(value);
+        try { m_formInfo.height = std::stoi(value); } catch (...) {}
+    } else if (key == L"控制按钮" || key == L"controlBox") {
+        m_formInfo.hasControlBox = isTrueValue(value);
+        m_formInfo.properties[key] = value;
+    } else if (key == L"最大化按钮" || key == L"maxButton") {
+        m_formInfo.hasMaxButton = isTrueValue(value);
+        m_formInfo.properties[key] = value;
+    } else if (key == L"最小化按钮" || key == L"minButton") {
+        m_formInfo.hasMinButton = isTrueValue(value);
+        m_formInfo.properties[key] = value;
+    } else if (key == L"边框" || key == L"border") {
+        // 边框样式映射
+        if (value == L"无边框") {
+            m_formInfo.borderStyle = 0;
+        } else if (value == L"普通可调边框") {
+            m_formInfo.borderStyle = 1;
+        } else if (value == L"普通固定边框") {
+            m_formInfo.borderStyle = 2;
+        }
+        m_formInfo.properties[key] = value;
+    } else if (key == L"背景颜色" || key == L"backColor") {
+        try { m_formInfo.backColor = std::stoul(value); } catch (...) {}
+        m_formInfo.properties[key] = value;
     } else {
         m_formInfo.properties[key] = value;
     }

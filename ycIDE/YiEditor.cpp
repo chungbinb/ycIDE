@@ -8,6 +8,7 @@
 #include "Keyword.h"
 #include "LibraryParser.h"
 #include "PinyinHelper.h"
+#include "OutputPanel.h"
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -23,6 +24,7 @@ using namespace Gdiplus;
 
 extern WCHAR szYiEditorClass[];
 extern bool g_LeftPanelVisible;  // 左侧AI面板是否可见
+extern OutputPanel* g_pOutputPanel;  // 输出面板实例
 
 // 类型补全相关常量
 static const int TYPE_COMPLETION_MAX_VISIBLE = 8;
@@ -42,6 +44,120 @@ static std::vector<LibraryParameter> GetCommandParameters(const std::wstring& cm
     }
     
     return params;
+}
+
+// 从行中提取命令名称
+static std::wstring ExtractCommandName(const std::wstring& line) {
+    if (line.empty()) return L"";
+    
+    // 跳过特殊标记字符
+    size_t start = 0;
+    while (start < line.length() && (line[start] == L'\u200C' || line[start] == L'\u200D' || line[start] == L' ' || line[start] == L'\t')) {
+        start++;
+    }
+    
+    // 跳过点号（流程控制命令）
+    if (start < line.length() && line[start] == L'.') {
+        start++;
+    }
+    
+    // 查找命令名称（到左括号或行尾）
+    size_t end = line.find(L'(', start);
+    if (end == std::wstring::npos) {
+        end = line.length();
+    }
+    
+    // 提取命令名称并去除前后空格
+    std::wstring cmdName = line.substr(start, end - start);
+    
+    // 去除末尾空格
+    while (!cmdName.empty() && (cmdName.back() == L' ' || cmdName.back() == L'\t')) {
+        cmdName.pop_back();
+    }
+    
+    return cmdName;
+}
+
+// 更新输出面板的命令提示信息
+static void UpdateCommandHint(const std::wstring& line, int lineNumber) {
+    if (!g_pOutputPanel) return;
+    
+    // 检查是否是参数行（以特殊标记开头）
+    if (!line.empty() && line[0] == L'\u2060') {
+        // 参数行，不更新提示
+        return;
+    }
+    
+    // 检查是否是表格行（包含Tab）
+    if (line.find(L'\t') != std::wstring::npos) {
+        // 表格行（子程序定义、参数定义、变量定义等），清除提示
+        g_pOutputPanel->ClearHint();
+        return;
+    }
+    
+    // 提取命令名称
+    std::wstring cmdName = ExtractCommandName(line);
+    if (cmdName.empty()) {
+        g_pOutputPanel->ClearHint();
+        return;
+    }
+    
+    // 从支持库中查找命令信息
+    const LibraryCommand* cmd = LibraryParser::GetInstance().FindCommand(cmdName);
+    if (cmd) {
+        CommandHint hint;
+        hint.commandName = cmd->chineseName;
+        
+        // 构建调用格式：〈返回值类型〉 命令名 （参数类型 参数名, ...） - 支持库名->类别
+        std::wstring callFormat = L"调用格式： 〈";
+        callFormat += cmd->returnType;  // 直接使用支持库中的类型（已经正确格式化）
+        callFormat += L"〉 " + cmd->chineseName + L" （";
+        
+        for (size_t i = 0; i < cmd->parameters.size(); i++) {
+            if (i > 0) callFormat += L"，";
+            callFormat += cmd->parameters[i].type + L" " + cmd->parameters[i].name;
+        }
+        callFormat += L"） - " + cmd->library + L"->" + cmd->category;
+        
+        hint.syntax = callFormat;
+        
+        // 英文名称
+        if (!cmd->englishName.empty()) {
+            hint.syntax += L"\r\n英文名称：" + cmd->englishName;
+        }
+        
+        // 命令说明
+        hint.description = cmd->description;
+        
+        // 添加参数详细信息
+        for (size_t i = 0; i < cmd->parameters.size(); i++) {
+            const auto& param = cmd->parameters[i];
+            // 使用 typeWithEnglish（如：逻辑型（bool）），如果为空则使用 type
+            std::wstring typeDisplay = param.typeWithEnglish.empty() ? param.type : param.typeWithEnglish;
+            std::wstring paramInfo = L"参数<";
+            paramInfo += std::to_wstring(i + 1);
+            paramInfo += L">的名称为\"";
+            paramInfo += param.name;
+            paramInfo += L"\"，类型为\"";
+            paramInfo += typeDisplay;
+            paramInfo += L"\"。";
+            if (!param.description.empty()) {
+                paramInfo += param.description;
+            }
+            hint.parameters.push_back(paramInfo);
+        }
+        
+        // 操作系统需求
+        hint.returnValue = L"Windows";
+        
+        g_pOutputPanel->SetHint(hint);
+    } else {
+        // 没有找到命令信息，显示基本信息
+        CommandHint hint;
+        hint.commandName = cmdName;
+        hint.description = L"未找到命令帮助信息";
+        g_pOutputPanel->SetHint(hint);
+    }
 }
 
 // 检查行是否是隐藏命令（.否则、.如果结束等）
@@ -3046,10 +3162,10 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         // 光标只能在冒号之后（colonPos + 1），不能编辑参数名部分
                         indentChars = colonPos + 1;  // 跳过 "\u2060参数名:"，光标从冒号后开始
                     } else {
-                        // 计算缩进
+                        // 计算缩进（与光标绘制逻辑保持一致，处理制表符）
                         int indent = 0;
-                        while (indentChars < line.length() && line[indentChars] == L' ') {
-                            indent += 4;
+                        while (indentChars < line.length() && line[indentChars] == L'\t') {
+                            indent += 20;
                             indentChars++;
                         }
                         textStartX = startX + indent;
@@ -3061,32 +3177,39 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         // 只对实际文本部分（去除缩进）计算位置
                         std::wstring textPart = line.substr(indentChars);
                         SIZE textSize;
+                        bool found = false;
                         for (size_t i = 0; i < textPart.length(); i++) {
                             std::wstring substr = textPart.substr(0, i + 1);
                             GetTextExtentPoint32W(hdc, substr.c_str(), (int)substr.length(), &textSize);
                             if (textSize.cx > relativeX) {
-                                // 检查是靠近左边还是右边
-                                SIZE prevSize;
+                                // 计算当前字符的左边界和右边界
+                                SIZE prevSize = {0, 0};
                                 if (i > 0) {
                                     std::wstring prevSubstr = textPart.substr(0, i);
                                     GetTextExtentPoint32W(hdc, prevSubstr.c_str(), (int)prevSubstr.length(), &prevSize);
-                                    if (relativeX - prevSize.cx < textSize.cx - relativeX) {
-                                        clickedCol = (int)indentChars + (int)i;
-                                    } else {
-                                        clickedCol = (int)indentChars + (int)i + 1;
-                                    }
-                                } else {
-                                    clickedCol = (textSize.cx / 2 > relativeX) ? (int)indentChars : (int)indentChars + 1;
                                 }
+                                // 计算点击位置距离左边界和右边界的距离
+                                int distToLeft = relativeX - prevSize.cx;
+                                int distToRight = textSize.cx - relativeX;
+                                // 选择距离更近的边界
+                                if (distToLeft < distToRight) {
+                                    clickedCol = (int)indentChars + (int)i;
+                                } else {
+                                    clickedCol = (int)indentChars + (int)i + 1;
+                                }
+                                found = true;
                                 break;
                             }
-                            clickedCol = (int)indentChars + (int)i + 1;
+                        }
+                        if (!found) {
+                            // 点击在文本末尾右侧
+                            clickedCol = (int)indentChars + (int)textPart.length();
                         }
                     } else if (relativeX <= 0) {
                         // 点击在文本起始位置左侧，光标放在缩进后的位置
                         clickedCol = (int)indentChars;
                     } else {
-                        // 点击在文本末尾右侧
+                        // 点击在空行或末尾
                         clickedCol = (int)line.length();
                     }
                 }
@@ -3143,6 +3266,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 DestroyCaret();  // 先销毁可能存在的光标
                 CreateCaret(hWnd, NULL, 1, caretHeight);
                 ShowCaret(hWnd);
+            }
+            
+            // 更新命令提示信息
+            if (clickedLine >= 0 && clickedLine < (int)doc->lines.size()) {
+                UpdateCommandHint(doc->lines[clickedLine], clickedLine);
             }
             
             InvalidateRect(hWnd, NULL, TRUE);

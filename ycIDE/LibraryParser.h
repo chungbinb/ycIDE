@@ -6,10 +6,11 @@
 
 // 支持库命令参数
 struct LibraryParameter {
-    std::wstring name;         // 参数名称
-    std::wstring type;         // 参数类型
-    std::wstring description;  // 参数说明
-    bool optional;             // 是否可选
+    std::wstring name;              // 参数名称
+    std::wstring type;              // 参数类型（如：逻辑型）
+    std::wstring typeWithEnglish;   // 参数类型带英文（如：逻辑型（bool））
+    std::wstring description;       // 参数说明
+    bool optional;                  // 是否可选
 };
 
 // 支持库命令

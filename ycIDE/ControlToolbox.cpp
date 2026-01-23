@@ -13,6 +13,7 @@
 #undef max
 
 extern AppTheme g_CurrentTheme;
+extern HWND hMainWnd;  // 主窗口句柄
 
 // 将 Windows COLORREF (BGR) 转换为 GDI+ Color (ARGB)
 inline Gdiplus::Color ColorRefToGdiplus(COLORREF cr) {
@@ -294,12 +295,16 @@ void ControlToolbox::OnLButtonDown(int x, int y)
                     m_selectedType = item->type;
                     InvalidateRect(m_hWnd, NULL, FALSE);
                     
+                    OutputDebugStringW((L"[ControlToolbox] 选中组件: " + m_selectedType + L"\n").c_str());
+                    
                     // 向主窗口发送选择变更通知
-                    HWND hMainWnd = GetAncestor(m_hWnd, GA_ROOT);
                     if (hMainWnd) {
+                        OutputDebugStringW(L"[ControlToolbox] 发送消息到主窗口\n");
                         PostMessage(hMainWnd, WM_COMMAND, 
                                    MAKEWPARAM(0, WM_TOOLBOX_SELECTION_CHANGED), 
                                    (LPARAM)m_selectedType.c_str());
+                    } else {
+                        OutputDebugStringW(L"[ControlToolbox] 主窗口句柄为空!\n");
                     }
                     return;
                 }
@@ -424,6 +429,13 @@ void ControlToolbox::LoadFromRenderer(ControlRenderer* renderer)
         ToolboxDebugLog(L"  该分类有 " + std::to_wstring(controls.size()) + L" 个控件");
         
         for (const auto& controlType : controls) {
+            // 跳过窗口类型（窗口不在组件箱中选择）
+            if (controlType == L"窗口" || controlType == L"窗体" || controlType == L"启动窗口" ||
+                controlType == L"Window" || controlType == L"Form") {
+                ToolboxDebugLog(L"    跳过窗口类型: " + controlType);
+                continue;
+            }
+            
             auto metadata = renderer->GetMetadata(controlType);
             
             ToolboxItem* item = new ToolboxItem();

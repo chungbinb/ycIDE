@@ -158,6 +158,7 @@
     <ClInclude Include="PinyinHelper.h" />
     <ClInclude Include="ProjectManager.h" />
     <ClInclude Include="PropertyGrid.h" />
+    <ClInclude Include="OutputPanel.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="TabBar.h" />
     <ClInclude Include="TableEditor.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="PinyinHelper.cpp" />
     <ClCompile Include="ProjectManager.cpp" />
     <ClCompile Include="PropertyGrid.cpp" />
+    <ClCompile Include="OutputPanel.cpp" />
     <ClCompile Include="TabBar.cpp" />
     <ClCompile Include="TableEditor.cpp" />
     <ClCompile Include="Theme.cpp" />

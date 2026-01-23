@@ -20,6 +20,12 @@ PropertyGrid::PropertyGrid(HWND hWnd)
     , m_editingRow(-1)
     , m_hEditControl(nullptr)
     , m_hComboBox(nullptr)
+    , m_hDropdownPopup(nullptr)
+    , m_dropdownSelectedIndex(-1)
+    , m_dropdownHoverIndex(-1)
+    , m_dropdownItemHeight(22)
+    , m_dropdownCloseTime(0)
+    , m_dropdownCloseRow(-1)
     , m_scrollPos(0)
     , m_rowHeight(ROW_HEIGHT)
     , m_gdiplusToken(0)
@@ -78,22 +84,63 @@ void PropertyGrid::OnPaint(HDC hdc)
         graphics.DrawString(L"选择一个控件以查看其属性", -1, &propFont, 
                           PointF(10, (float)y), &hintBrush);
     } else {
+        // 禁用状态的灰色画刷
+        SolidBrush disabledBrush(Color(128, 128, 128));
+        
         // 绘制属性
         for (const auto& prop : m_properties) {
             if (y > rect.bottom) break;
             
+            // 根据是否只读选择文本颜色
+            SolidBrush* currentBrush = prop.readOnly ? &disabledBrush : &textBrush;
+            
             // 绘制属性名
             RectF nameRect(4, (float)y, NAME_COLUMN_WIDTH - 8, (float)m_rowHeight);
-            graphics.DrawString(prop.displayName.c_str(), -1, &propFont, nameRect, nullptr, &textBrush);
+            graphics.DrawString(prop.displayName.c_str(), -1, &propFont, nameRect, nullptr, currentBrush);
             
             // 绘制分隔线
             Pen linePen(Color(60, 60, 60));
             graphics.DrawLine(&linePen, NAME_COLUMN_WIDTH, y, NAME_COLUMN_WIDTH, y + m_rowHeight);
             
+            // 检查是否需要绘制选择按钮（资源类属性）
+            bool needsPickButton = (prop.editorType == PropertyEditorType::Image ||
+                                   prop.editorType == PropertyEditorType::File ||
+                                   prop.editorType == PropertyEditorType::Font ||
+                                   prop.fneType == PropertyType::Picture ||
+                                   prop.fneType == PropertyType::Icon ||
+                                   prop.fneType == PropertyType::ImageList ||
+                                   prop.fneType == PropertyType::Music);
+            
+            int buttonWidth = needsPickButton ? 20 : 0;
+            
             // 绘制属性值
             RectF valueRect((float)NAME_COLUMN_WIDTH + 4, (float)y, 
-                           (float)(rect.right - NAME_COLUMN_WIDTH - 8), (float)m_rowHeight);
-            graphics.DrawString(prop.value.c_str(), -1, &propFont, valueRect, nullptr, &textBrush);
+                           (float)(rect.right - NAME_COLUMN_WIDTH - 8 - buttonWidth), (float)m_rowHeight);
+            graphics.DrawString(prop.value.c_str(), -1, &propFont, valueRect, nullptr, currentBrush);
+            
+            // 绘制选择按钮
+            if (needsPickButton && !prop.readOnly) {
+                int btnX = rect.right - buttonWidth - 2;
+                int btnY = y + 2;
+                int btnH = m_rowHeight - 4;
+                
+                // 按钮背景
+                SolidBrush btnBrush(Color(60, 60, 60));
+                graphics.FillRectangle(&btnBrush, btnX, btnY, buttonWidth - 2, btnH);
+                
+                // 按钮边框
+                Pen btnPen(Color(80, 80, 80));
+                graphics.DrawRectangle(&btnPen, btnX, btnY, buttonWidth - 2, btnH);
+                
+                // 按钮文字 "..."
+                Font btnFont(L"微软雅黑", 8);
+                SolidBrush btnTextBrush(Color(200, 200, 200));
+                RectF btnTextRect((float)btnX, (float)btnY, (float)(buttonWidth - 2), (float)btnH);
+                StringFormat btnFormat;
+                btnFormat.SetAlignment(StringAlignmentCenter);
+                btnFormat.SetLineAlignment(StringAlignmentCenter);
+                graphics.DrawString(L"...", -1, &btnFont, btnTextRect, &btnFormat, &btnTextBrush);
+            }
             
             // 绘制行分隔线
             graphics.DrawLine(&linePen, 0, y + m_rowHeight, rect.right, y + m_rowHeight);
@@ -124,6 +171,28 @@ void PropertyGrid::OnLButtonDown(int x, int y)
     if (row >= 0 && row < (int)m_properties.size()) {
         m_selectedRow = row;
         InvalidateRect(m_hWnd, NULL, FALSE);
+        
+        PropertyDef& prop = m_properties[row];
+        
+        // 检查是否是资源类属性需要选择按钮
+        bool needsPickButton = (prop.editorType == PropertyEditorType::Image ||
+                               prop.editorType == PropertyEditorType::File ||
+                               prop.editorType == PropertyEditorType::Font ||
+                               prop.fneType == PropertyType::Picture ||
+                               prop.fneType == PropertyType::Icon ||
+                               prop.fneType == PropertyType::ImageList ||
+                               prop.fneType == PropertyType::Music);
+        
+        RECT clientRect;
+        GetClientRect(m_hWnd, &clientRect);
+        int buttonWidth = 20;
+        int btnX = clientRect.right - buttonWidth - 2;
+        
+        // 如果点击了选择按钮
+        if (needsPickButton && !prop.readOnly && x >= btnX) {
+            ShowResourcePicker(prop);
+            return;
+        }
         
         // 如果点击值列，开始编辑
         if (x > NAME_COLUMN_WIDTH) {
@@ -196,6 +265,19 @@ void PropertyGrid::BeginEdit(int row)
     PropertyDef& prop = m_properties[row];
     if (prop.readOnly) return;
     
+    // 如果点击的是同一行且下拉列表已展开，则关闭它
+    if (m_editingRow == row && m_hDropdownPopup && IsWindow(m_hDropdownPopup)) {
+        CloseCustomDropdown(false);
+        return;
+    }
+    
+    // 如果刚刚关闭了同一行的下拉列表（200毫秒内），不要重新打开
+    DWORD currentTime = GetTickCount();
+    if (m_dropdownCloseRow == row && (currentTime - m_dropdownCloseTime) < 200) {
+        m_dropdownCloseRow = -1;  // 重置，下次可以正常打开
+        return;
+    }
+    
     // 结束之前的编辑
     if (m_editingRow >= 0) {
         FinishEdit(true);
@@ -207,17 +289,27 @@ void PropertyGrid::BeginEdit(int row)
     RECT rect;
     GetClientRect(m_hWnd, &rect);
     
-    int editY = 35 + row * m_rowHeight - m_scrollPos;
+    // 检查是否需要选择按钮（资源类属性）
+    bool needsPickButton = (prop.editorType == PropertyEditorType::Image ||
+                           prop.editorType == PropertyEditorType::File ||
+                           prop.editorType == PropertyEditorType::Font ||
+                           prop.fneType == PropertyType::Picture ||
+                           prop.fneType == PropertyType::Icon ||
+                           prop.fneType == PropertyType::ImageList ||
+                           prop.fneType == PropertyType::Music);
+    
+    int buttonWidth = needsPickButton ? 22 : 0;
+    
+    int editY = 35 + row * m_rowHeight - m_scrollPos + 2;
     int editX = NAME_COLUMN_WIDTH + 2;
-    int editW = rect.right - NAME_COLUMN_WIDTH - 4;
-    int editH = m_rowHeight - 2;
+    int editW = rect.right - NAME_COLUMN_WIDTH - 4 - buttonWidth;
+    int editH = m_rowHeight - 4;
     
     // 根据属性类型创建不同的编辑控件
     switch (prop.editorType) {
         case PropertyEditorType::Boolean:
-            // 布尔型直接切换值
-            ToggleBooleanValue(prop);
-            m_editingRow = -1;
+            // 布尔型使用下拉框选择真/假
+            CreateBooleanComboEditor(prop, Rect(editX, editY, editW, editH));
             break;
             
         case PropertyEditorType::Enum:
@@ -293,10 +385,36 @@ void PropertyGrid::FinishEdit(bool apply)
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
+void PropertyGrid::ApplyEditWithoutFinish()
+{
+    if (m_editingRow < 0 || m_editingRow >= (int)m_properties.size()) return;
+    
+    if (m_hEditControl && IsWindow(m_hEditControl)) {
+        // 获取编辑框内容
+        int len = GetWindowTextLength(m_hEditControl);
+        std::wstring newValue(len + 1, L'\0');
+        GetWindowText(m_hEditControl, &newValue[0], len + 1);
+        newValue.resize(len);
+        
+        PropertyDef& prop = m_properties[m_editingRow];
+        if (prop.value != newValue) {
+            prop.value = newValue;
+            
+            // 触发属性变更回调
+            if (m_propertyChangedCallback) {
+                m_propertyChangedCallback(prop.name, newValue);
+            }
+            
+            // 刷新显示（不销毁编辑框）
+            InvalidateRect(m_hWnd, NULL, FALSE);
+        }
+    }
+}
+
 void PropertyGrid::CreateTextEditor(const PropertyDef& prop, const Rect& rect)
 {
     m_hEditControl = CreateWindowW(L"EDIT", prop.value.c_str(),
-        WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL,
+        WS_CHILD | WS_VISIBLE | ES_AUTOHSCROLL,
         rect.X, rect.Y, rect.Width, rect.Height,
         m_hWnd, nullptr, GetModuleHandle(nullptr), nullptr);
     
@@ -308,23 +426,20 @@ void PropertyGrid::CreateTextEditor(const PropertyDef& prop, const Rect& rect)
 
 void PropertyGrid::CreateComboEditor(const PropertyDef& prop, const Rect& rect)
 {
-    m_hComboBox = CreateWindowW(L"COMBOBOX", nullptr,
-        WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | WS_VSCROLL,
-        rect.X, rect.Y, rect.Width, rect.Height * 6,
-        m_hWnd, nullptr, GetModuleHandle(nullptr), nullptr);
+    // 使用自绘下拉列表
+    ShowCustomDropdown(prop, rect);
+}
+
+void PropertyGrid::CreateBooleanComboEditor(const PropertyDef& prop, const Rect& rect)
+{
+    // 创建临时属性用于布尔值
+    PropertyDef boolProp = prop;
+    boolProp.enumValues.clear();
+    boolProp.enumValues.push_back(L"真");
+    boolProp.enumValues.push_back(L"假");
     
-    if (m_hComboBox) {
-        // 添加枚举值
-        int selectedIndex = 0;
-        for (int i = 0; i < (int)prop.enumValues.size(); i++) {
-            SendMessage(m_hComboBox, CB_ADDSTRING, 0, (LPARAM)prop.enumValues[i].c_str());
-            if (prop.enumValues[i] == prop.value) {
-                selectedIndex = i;
-            }
-        }
-        SendMessage(m_hComboBox, CB_SETCURSEL, selectedIndex, 0);
-        SetFocus(m_hComboBox);
-    }
+    // 使用自绘下拉列表
+    ShowCustomDropdown(boolProp, rect);
 }
 
 void PropertyGrid::ToggleBooleanValue(PropertyDef& prop)
@@ -338,6 +453,260 @@ void PropertyGrid::ToggleBooleanValue(PropertyDef& prop)
     if (m_propertyChangedCallback) {
         m_propertyChangedCallback(prop.name, prop.value);
     }
+    
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+// 自绘下拉列表窗口过程
+LRESULT CALLBACK PropertyGrid::DropdownWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+{
+    PropertyGrid* pGrid = (PropertyGrid*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
+    
+    switch (msg) {
+        case WM_PAINT: {
+            if (!pGrid) break;
+            
+            PAINTSTRUCT ps;
+            HDC hdc = BeginPaint(hWnd, &ps);
+            
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            
+            // 创建双缓冲
+            HDC memDC = CreateCompatibleDC(hdc);
+            HBITMAP memBitmap = CreateCompatibleBitmap(hdc, rect.right, rect.bottom);
+            HBITMAP oldBitmap = (HBITMAP)SelectObject(memDC, memBitmap);
+            
+            Graphics graphics(memDC);
+            graphics.SetSmoothingMode(SmoothingModeAntiAlias);
+            graphics.SetTextRenderingHint(TextRenderingHintClearTypeGridFit);
+            
+            // 背景
+            SolidBrush bgBrush(Color(45, 45, 48));
+            graphics.FillRectangle(&bgBrush, 0, 0, rect.right, rect.bottom);
+            
+            // 边框
+            Pen borderPen(Color(70, 70, 70));
+            graphics.DrawRectangle(&borderPen, 0, 0, rect.right - 1, rect.bottom - 1);
+            
+            // 绘制列表项
+            Font itemFont(L"微软雅黑", 10);
+            SolidBrush textBrush(Color(220, 220, 220));
+            SolidBrush hoverBrush(Color(62, 62, 64));
+            SolidBrush selectedBrush(Color(0, 122, 204));
+            
+            int y = 2;
+            for (int i = 0; i < (int)pGrid->m_dropdownItems.size(); i++) {
+                RectF itemRect(2.0f, (float)y, (float)(rect.right - 4), (float)pGrid->m_dropdownItemHeight);
+                
+                // 绘制悬停或选中背景
+                if (i == pGrid->m_dropdownSelectedIndex) {
+                    graphics.FillRectangle(&selectedBrush, itemRect);
+                } else if (i == pGrid->m_dropdownHoverIndex) {
+                    graphics.FillRectangle(&hoverBrush, itemRect);
+                }
+                
+                // 绘制文本
+                RectF textRect(6.0f, (float)y + 2, (float)(rect.right - 12), (float)pGrid->m_dropdownItemHeight - 4);
+                graphics.DrawString(pGrid->m_dropdownItems[i].c_str(), -1, &itemFont, textRect, nullptr, &textBrush);
+                
+                y += pGrid->m_dropdownItemHeight;
+            }
+            
+            BitBlt(hdc, 0, 0, rect.right, rect.bottom, memDC, 0, 0, SRCCOPY);
+            
+            SelectObject(memDC, oldBitmap);
+            DeleteObject(memBitmap);
+            DeleteDC(memDC);
+            
+            EndPaint(hWnd, &ps);
+            return 0;
+        }
+        
+        case WM_MOUSEMOVE: {
+            if (!pGrid) break;
+            
+            int y = HIWORD(lParam);
+            int newHover = (y - 2) / pGrid->m_dropdownItemHeight;
+            if (newHover >= 0 && newHover < (int)pGrid->m_dropdownItems.size()) {
+                if (newHover != pGrid->m_dropdownHoverIndex) {
+                    pGrid->m_dropdownHoverIndex = newHover;
+                    InvalidateRect(hWnd, NULL, FALSE);
+                }
+            }
+            
+            // 启用鼠标追踪以便检测鼠标离开
+            TRACKMOUSEEVENT tme = {0};
+            tme.cbSize = sizeof(tme);
+            tme.dwFlags = TME_LEAVE;
+            tme.hwndTrack = hWnd;
+            TrackMouseEvent(&tme);
+            return 0;
+        }
+        
+        case WM_MOUSELEAVE: {
+            if (!pGrid) break;
+            pGrid->m_dropdownHoverIndex = -1;
+            InvalidateRect(hWnd, NULL, FALSE);
+            return 0;
+        }
+        
+        case WM_LBUTTONDOWN: {
+            if (!pGrid) break;
+            
+            int y = HIWORD(lParam);
+            int clickedIndex = (y - 2) / pGrid->m_dropdownItemHeight;
+            if (clickedIndex >= 0 && clickedIndex < (int)pGrid->m_dropdownItems.size()) {
+                pGrid->m_dropdownSelectedIndex = clickedIndex;
+                pGrid->CloseCustomDropdown(true);
+            }
+            return 0;
+        }
+        
+        case WM_KILLFOCUS: {
+            if (pGrid) {
+                pGrid->CloseCustomDropdown(false);
+            }
+            return 0;
+        }
+        
+        case WM_KEYDOWN: {
+            if (!pGrid) break;
+            
+            switch (wParam) {
+                case VK_UP:
+                    if (pGrid->m_dropdownSelectedIndex > 0) {
+                        pGrid->m_dropdownSelectedIndex--;
+                        InvalidateRect(hWnd, NULL, FALSE);
+                    }
+                    return 0;
+                case VK_DOWN:
+                    if (pGrid->m_dropdownSelectedIndex < (int)pGrid->m_dropdownItems.size() - 1) {
+                        pGrid->m_dropdownSelectedIndex++;
+                        InvalidateRect(hWnd, NULL, FALSE);
+                    }
+                    return 0;
+                case VK_RETURN:
+                    pGrid->CloseCustomDropdown(true);
+                    return 0;
+                case VK_ESCAPE:
+                    pGrid->CloseCustomDropdown(false);
+                    return 0;
+            }
+            break;
+        }
+    }
+    
+    return DefWindowProc(hWnd, msg, wParam, lParam);
+}
+
+void PropertyGrid::ShowCustomDropdown(const PropertyDef& prop, const Rect& rect)
+{
+    // 关闭已有的下拉列表
+    if (m_hDropdownPopup && IsWindow(m_hDropdownPopup)) {
+        DestroyWindow(m_hDropdownPopup);
+        m_hDropdownPopup = nullptr;
+    }
+    
+    // 保存列表项
+    m_dropdownItems = prop.enumValues;
+    m_dropdownItemHeight = 22;
+    m_dropdownHoverIndex = -1;
+    
+    // 找到当前选中项
+    m_dropdownSelectedIndex = 0;
+    for (int i = 0; i < (int)m_dropdownItems.size(); i++) {
+        if (m_dropdownItems[i] == prop.value) {
+            m_dropdownSelectedIndex = i;
+            break;
+        }
+    }
+    
+    // 对于布尔值特殊处理
+    if (prop.value == L"真" || prop.value == L"true" || prop.value == L"1") {
+        for (int i = 0; i < (int)m_dropdownItems.size(); i++) {
+            if (m_dropdownItems[i] == L"真") {
+                m_dropdownSelectedIndex = i;
+                break;
+            }
+        }
+    } else if (prop.value == L"假" || prop.value == L"false" || prop.value == L"0") {
+        for (int i = 0; i < (int)m_dropdownItems.size(); i++) {
+            if (m_dropdownItems[i] == L"假") {
+                m_dropdownSelectedIndex = i;
+                break;
+            }
+        }
+    }
+    
+    // 注册窗口类
+    static bool classRegistered = false;
+    if (!classRegistered) {
+        WNDCLASSEX wc = {0};
+        wc.cbSize = sizeof(wc);
+        wc.lpfnWndProc = DropdownWndProc;
+        wc.hInstance = GetModuleHandle(nullptr);
+        wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+        wc.lpszClassName = L"PropertyGridDropdown";
+        RegisterClassEx(&wc);
+        classRegistered = true;
+    }
+    
+    // 计算弹出窗口位置和大小
+    POINT pt = {rect.X, rect.Y + rect.Height};
+    ClientToScreen(m_hWnd, &pt);
+    
+    int popupHeight = (int)m_dropdownItems.size() * m_dropdownItemHeight + 4;
+    int maxHeight = 200;
+    if (popupHeight > maxHeight) popupHeight = maxHeight;
+    
+    // 创建弹出窗口
+    m_hDropdownPopup = CreateWindowExW(
+        WS_EX_TOPMOST | WS_EX_TOOLWINDOW,
+        L"PropertyGridDropdown",
+        nullptr,
+        WS_POPUP | WS_VISIBLE,
+        pt.x, pt.y,
+        rect.Width, popupHeight,
+        m_hWnd,
+        nullptr,
+        GetModuleHandle(nullptr),
+        nullptr
+    );
+    
+    if (m_hDropdownPopup) {
+        SetWindowLongPtr(m_hDropdownPopup, GWLP_USERDATA, (LONG_PTR)this);
+        SetFocus(m_hDropdownPopup);
+    }
+}
+
+void PropertyGrid::CloseCustomDropdown(bool apply)
+{
+    if (!m_hDropdownPopup || !IsWindow(m_hDropdownPopup)) return;
+    
+    // 记录关闭时间和行号，用于防止立即重新打开
+    m_dropdownCloseTime = GetTickCount();
+    m_dropdownCloseRow = m_editingRow;
+    
+    if (apply && m_editingRow >= 0 && m_editingRow < (int)m_properties.size()) {
+        if (m_dropdownSelectedIndex >= 0 && m_dropdownSelectedIndex < (int)m_dropdownItems.size()) {
+            PropertyDef& prop = m_properties[m_editingRow];
+            std::wstring newValue = m_dropdownItems[m_dropdownSelectedIndex];
+            
+            if (prop.value != newValue) {
+                prop.value = newValue;
+                
+                if (m_propertyChangedCallback) {
+                    m_propertyChangedCallback(prop.name, newValue);
+                }
+            }
+        }
+    }
+    
+    DestroyWindow(m_hDropdownPopup);
+    m_hDropdownPopup = nullptr;
+    m_editingRow = -1;
+    m_dropdownItems.clear();
     
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
@@ -379,6 +748,64 @@ void PropertyGrid::ShowFontPicker(PropertyDef& prop)
 void PropertyGrid::ShowFilePicker(PropertyDef& prop)
 {
     // TODO: 实现文件选择器
+}
+
+void PropertyGrid::ShowResourcePicker(PropertyDef& prop)
+{
+    if (prop.readOnly) return;
+    
+    // 根据属性类型设置不同的文件过滤器
+    std::wstring filter;
+    std::wstring title;
+    
+    if (prop.fneType == PropertyType::Picture || 
+        prop.fneType == PropertyType::Icon ||
+        prop.fneType == PropertyType::ImageList ||
+        prop.editorType == PropertyEditorType::Image) {
+        filter = L"图片文件 (*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.ico)\0*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.ico\0所有文件 (*.*)\0*.*\0\0";
+        title = L"选择图片";
+    } else if (prop.fneType == PropertyType::Music) {
+        filter = L"音频文件 (*.wav;*.mp3;*.mid;*.midi)\0*.wav;*.mp3;*.mid;*.midi\0所有文件 (*.*)\0*.*\0\0";
+        title = L"选择音频";
+    } else if (prop.fneType == PropertyType::Font || prop.editorType == PropertyEditorType::Font) {
+        // 字体选择使用系统字体对话框
+        ShowFontPicker(prop);
+        return;
+    } else {
+        filter = L"所有文件 (*.*)\0*.*\0\0";
+        title = L"选择文件";
+    }
+    
+    wchar_t fileName[MAX_PATH] = {0};
+    
+    OPENFILENAME ofn = {0};
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = m_hWnd;
+    ofn.lpstrFilter = filter.c_str();
+    ofn.lpstrFile = fileName;
+    ofn.nMaxFile = MAX_PATH;
+    ofn.lpstrTitle = title.c_str();
+    ofn.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST | OFN_HIDEREADONLY;
+    
+    if (GetOpenFileName(&ofn)) {
+        // 获取文件名（不含路径）
+        std::wstring fullPath = fileName;
+        std::wstring fileNameOnly = fullPath;
+        size_t lastSlash = fullPath.find_last_of(L"\\/");
+        if (lastSlash != std::wstring::npos) {
+            fileNameOnly = fullPath.substr(lastSlash + 1);
+        }
+        
+        prop.value = fileNameOnly;
+        
+        // 触发属性变更回调
+        if (m_propertyChangedCallback) {
+            // 传递完整路径，由回调处理资源附加
+            m_propertyChangedCallback(prop.name, fullPath);
+        }
+        
+        InvalidateRect(m_hWnd, NULL, FALSE);
+    }
 }
 
 void PropertyGrid::SetProperties(const std::vector<PropertyDef>& properties)
@@ -473,7 +900,7 @@ PropertyEditorType PropertyGrid::ConvertPropertyType(PropertyType fneType)
         case PropertyType::ImageList:
             return PropertyEditorType::Image;
         case PropertyType::Cursor:
-            return PropertyEditorType::Cursor;
+            return PropertyEditorType::Enum;  // 鼠标指针使用下拉框选择
         case PropertyType::FileName:
             return PropertyEditorType::File;
         case PropertyType::DateTime:
@@ -492,33 +919,104 @@ PropertyDef PropertyGrid::ConvertFneProperty(const FnePropertyInfo& fneProp,
     PropertyDef prop;
     prop.name = fneProp.name;
     prop.displayName = fneProp.name;
+    
+    // 属性名称映射（显示名称与内部名称不同）
+    if (fneProp.name == L"帮助按钮") {
+        prop.displayName = L"F1键打开帮助";
+    } else if (fneProp.name == L"播放音乐") {
+        prop.displayName = L"背景音乐";
+    }
+    
     prop.description = fneProp.description;
     prop.readOnly = fneProp.isReadOnly;
     prop.fneType = fneProp.type;
     prop.editorType = ConvertPropertyType(fneProp.type);
-    prop.value = currentValue;
     
     // 设置枚举值
     prop.enumValues = fneProp.pickOptions;
     
+    // 鼠标指针类型需要预定义选项
+    if (fneProp.type == PropertyType::Cursor) {
+        prop.enumValues = {
+            L"默认", L"箭头", L"十字", L"文本选择", L"不可用",
+            L"垂直调整", L"水平调整", L"左斜调整", L"右斜调整",
+            L"移动", L"忙", L"后台运行", L"帮助选择", L"全部选择",
+            L"手型"
+        };
+    }
+    
+    // 边框属性需要预定义选项
+    if (fneProp.name == L"边框") {
+        prop.enumValues = {
+            L"无边框", L"普通可调边框", L"普通固定边框"
+        };
+    }
+    
+    // 位置属性需要预定义选项
+    if (fneProp.name == L"位置") {
+        prop.enumValues = {
+            L"通常", L"居中"
+        };
+    }
+    
     // 设置默认值
     switch (fneProp.type) {
         case PropertyType::Bool:
-            prop.defaultValue = L"假";
+            // 某些布尔属性默认为"真"
+            if (fneProp.name == L"可视" || fneProp.name == L"最大化按钮" || 
+                fneProp.name == L"最小化按钮" || fneProp.name == L"控制按钮" ||
+                fneProp.name == L"随意移动") {
+                prop.defaultValue = L"真";
+            } else {
+                prop.defaultValue = L"假";
+            }
             break;
         case PropertyType::Int:
+            prop.defaultValue = L"0";
+            break;
         case PropertyType::PickInt:
         case PropertyType::PickSpecInt:
-            prop.defaultValue = L"0";
+            // 特定属性设置默认值
+            if (fneProp.name == L"边框") {
+                prop.defaultValue = L"普通可调边框";
+            } else if (fneProp.name == L"位置") {
+                prop.defaultValue = L"通常";
+            } else if (!prop.enumValues.empty()) {
+                prop.defaultValue = prop.enumValues[0];
+            } else {
+                prop.defaultValue = L"0";
+            }
+            break;
+        case PropertyType::Double:
+            prop.defaultValue = L"0.0";
             break;
         case PropertyType::Color:
         case PropertyType::ColorTrans:
         case PropertyType::ColorBack:
             prop.defaultValue = L"16777215";  // 白色
             break;
+        case PropertyType::PickText:
+        case PropertyType::EditPickText:
+            // 枚举类型使用第一个选项作为默认值
+            if (!fneProp.pickOptions.empty()) {
+                prop.defaultValue = fneProp.pickOptions[0];
+            } else {
+                prop.defaultValue = L"";
+            }
+            break;
+        case PropertyType::Cursor:
+            prop.defaultValue = L"默认";
+            break;
         default:
             prop.defaultValue = L"";
             break;
+    }
+    
+    // 如果当前值为空，使用默认值
+    if (currentValue.empty()) {
+        prop.value = prop.defaultValue;
+    } else {
+        prop.value = currentValue;
     }
     
     // 设置分类（基于属性名或固定规则）
@@ -552,7 +1050,24 @@ void PropertyGrid::LoadPropertiesFromLibrary(const std::wstring& controlType,
         
         std::vector<PropertyDef> props;
         
+        // 检查控制按钮的值，用于决定子选项是否禁用
+        bool controlBoxEnabled = true;
+        auto itControlBox = currentValues.find(L"控制按钮");
+        if (itControlBox != currentValues.end()) {
+            controlBoxEnabled = (itControlBox->second == L"真" || itControlBox->second == L"true" || itControlBox->second == L"1");
+        }
+        
         for (const auto& fneProp : unitInfo->properties) {
+            // 跳过"底图方式"，稍后添加到"背景图片"后面
+            if (fneProp.name == L"底图方式") {
+                continue;
+            }
+            
+            // 跳过"最大化按钮"和"最小化按钮"，稍后添加到"控制按钮"后面
+            if (fneProp.name == L"最大化按钮" || fneProp.name == L"最小化按钮") {
+                continue;
+            }
+            
             // 获取当前值
             std::wstring currentValue;
             auto it = currentValues.find(fneProp.name);
@@ -562,6 +1077,85 @@ void PropertyGrid::LoadPropertiesFromLibrary(const std::wstring& controlType,
             
             PropertyDef prop = ConvertFneProperty(fneProp, currentValue);
             props.push_back(prop);
+            
+            // 在"控制按钮"属性后添加"最大化按钮"和"最小化按钮"属性
+            if (fneProp.name == L"控制按钮") {
+                // 添加"最大化按钮"
+                for (const auto& searchProp : unitInfo->properties) {
+                    if (searchProp.name == L"最大化按钮") {
+                        std::wstring maxBtnValue;
+                        auto itMaxBtn = currentValues.find(L"最大化按钮");
+                        if (itMaxBtn != currentValues.end()) {
+                            maxBtnValue = itMaxBtn->second;
+                        }
+                        
+                        PropertyDef maxBtnProp = ConvertFneProperty(searchProp, maxBtnValue);
+                        maxBtnProp.displayName = L"    最大化按钮";  // 缩进表示子选项
+                        maxBtnProp.readOnly = !controlBoxEnabled;  // 控制按钮为假时禁用
+                        props.push_back(maxBtnProp);
+                        break;
+                    }
+                }
+                
+                // 添加"最小化按钮"
+                for (const auto& searchProp : unitInfo->properties) {
+                    if (searchProp.name == L"最小化按钮") {
+                        std::wstring minBtnValue;
+                        auto itMinBtn = currentValues.find(L"最小化按钮");
+                        if (itMinBtn != currentValues.end()) {
+                            minBtnValue = itMinBtn->second;
+                        }
+                        
+                        PropertyDef minBtnProp = ConvertFneProperty(searchProp, minBtnValue);
+                        minBtnProp.displayName = L"    最小化按钮";  // 缩进表示子选项
+                        minBtnProp.readOnly = !controlBoxEnabled;  // 控制按钮为假时禁用
+                        props.push_back(minBtnProp);
+                        break;
+                    }
+                }
+            }
+            
+            // 在"背景图片"属性后添加"底图方式"属性
+            if (fneProp.name == L"背景图片") {
+                // 查找"底图方式"属性
+                for (const auto& searchProp : unitInfo->properties) {
+                    if (searchProp.name == L"底图方式") {
+                        std::wstring modeValue;
+                        auto itMode = currentValues.find(L"底图方式");
+                        if (itMode != currentValues.end()) {
+                            modeValue = itMode->second;
+                        }
+                        
+                        PropertyDef modeProp = ConvertFneProperty(searchProp, modeValue);
+                        modeProp.displayName = L"    底图方式";  // 缩进表示子选项
+                        props.push_back(modeProp);
+                        break;
+                    }
+                }
+            }
+            
+            // 在"播放音乐"属性后添加"播放次数"属性
+            if (fneProp.name == L"播放音乐") {
+                PropertyDef playCountProp;
+                playCountProp.name = L"播放次数";
+                playCountProp.displayName = L"    播放次数";  // 缩进表示子选项
+                playCountProp.description = L"背景音乐播放次数";
+                playCountProp.editorType = PropertyEditorType::Enum;
+                playCountProp.enumValues = { L"循环播放", L"仅播放一次", L"不播放" };
+                playCountProp.defaultValue = L"不播放";
+                playCountProp.category = L"杂项";
+                playCountProp.readOnly = false;
+                
+                // 获取当前值
+                auto itPlayCount = currentValues.find(L"播放次数");
+                if (itPlayCount != currentValues.end()) {
+                    playCountProp.value = itPlayCount->second;
+                } else {
+                    playCountProp.value = playCountProp.defaultValue;
+                }
+                
+                props.push_back(playCountProp);
+            }
         }
         
         SetProperties(props);

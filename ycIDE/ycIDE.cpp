@@ -1,4 +1,4 @@
-﻿#include "framework.h"
+#include "framework.h"
 #include "ycIDE.h"
 #include "AIModel.h"
 #include "AIChat.h"
@@ -16,6 +16,7 @@
 #include "PropertyGrid.h"
 #include "ControlToolbox.h"
 #include "ControlRenderer.h"
+#include "OutputPanel.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -87,11 +88,13 @@ VisualDesigner* g_pVisualDesigner = nullptr;  // 可视化设计器实例
 PropertyGrid* g_pPropertyGrid = nullptr;      // 属性窗口实例
 ControlToolbox* g_pControlToolbox = nullptr;  // 组件箱实例
 ControlRenderer* g_pControlRenderer = nullptr; // 控件渲染器实例
+OutputPanel* g_pOutputPanel = nullptr;        // 输出面板实例
 
 // 可视化设计器窗口类名
 const wchar_t szVisualDesignerClass[] = L"VisualDesignerClass";
 const wchar_t szPropertyGridClass[] = L"PropertyGridClass";
 const wchar_t szToolboxClass[] = L"ToolboxClass";
+const wchar_t szOutputPanelClass[] = L"OutputPanelClass";
 
 // 标签栏高度
 const int g_TabBarHeight = 35;
@@ -143,6 +146,7 @@ ATOM                RegisterMenuPopupClass(HINSTANCE hInstance);
 ATOM                RegisterVisualDesignerClass(HINSTANCE hInstance);
 ATOM                RegisterPropertyGridClass(HINSTANCE hInstance);
 ATOM                RegisterToolboxClass(HINSTANCE hInstance);
+ATOM                RegisterOutputPanelClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    AIChatWndProc(HWND, UINT, WPARAM, LPARAM);
@@ -150,6 +154,7 @@ LRESULT CALLBACK    MenuPopupWndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    VisualDesignerWndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    PropertyGridWndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    ToolboxWndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    OutputPanelWndProc(HWND, UINT, WPARAM, LPARAM);
 LRESULT CALLBACK    OutputWindowSubclassProc(HWND, UINT, WPARAM, LPARAM, UINT_PTR, DWORD_PTR);
 LRESULT CALLBACK    StatusBarSubclassProc(HWND, UINT, WPARAM, LPARAM, UINT_PTR, DWORD_PTR);
 LRESULT CALLBACK    LibraryConfigWndProc(HWND, UINT, WPARAM, LPARAM);
@@ -259,6 +264,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     RegisterVisualDesignerClass(hInstance);
     RegisterPropertyGridClass(hInstance);
     RegisterToolboxClass(hInstance);
+    RegisterOutputPanelClass(hInstance);
     
     // 加载模型配置
     LoadModelsConfig();
@@ -542,19 +548,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 WS_CHILD | WS_VISIBLE,
                 0, 0, 0, 0, hWnd, (HMENU)1003, hInst, nullptr);
             
-            // 4. 底部: 输出信息
-            hOutputWnd = CreateWindowW(L"EDIT", L"输出信息:\r\n就绪.",
-                WS_CHILD | WS_VISIBLE | ES_MULTILINE | ES_AUTOVSCROLL | ES_READONLY,
+            // 4. 底部: 输出面板（带标签切换）
+            hOutputWnd = CreateWindowW(szOutputPanelClass, nullptr,
+                WS_CHILD | WS_VISIBLE,
                 0, 0, 0, 0, hWnd, (HMENU)1004, hInst, nullptr);
-            
-            // 设置输出窗口字体
-            HFONT hOutputFont = CreateFont(20, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
-                DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
-                DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, L"微软雅黑");
-            SendMessage(hOutputWnd, WM_SETFONT, (WPARAM)hOutputFont, TRUE);
-            
-            // 子类化输出窗口以自定义绘制边框
-            SetWindowSubclass(hOutputWnd, OutputWindowSubclassProc, 0, 0);
             
             // 5. 状态栏
             hStatusBar = CreateWindowW(L"STATIC", L"就绪",
@@ -1035,16 +1032,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             // 组件箱选择控件类型通知 (wmEvent=0x2000)
             if (wmEvent == 0x2000) {
+                OutputDebugStringW(L"[ycIDE] 收到组件箱选择通知\n");
                 // 获取选中的控件类型
                 if (g_pControlToolbox && g_pVisualDesigner && g_IsVisualDesignerActive) {
                     std::wstring controlType = g_pControlToolbox->GetSelectedControlType();
+                    OutputDebugStringW((L"[ycIDE] 选中控件类型: " + controlType + L"\n").c_str());
                     if (!controlType.empty()) {
                         // 设置设计器为创建控件模式
                         g_pVisualDesigner->SetToolMode(controlType);
                         
                         // 更改鼠标光标提示用户可以绘制控件
                         SetCursor(LoadCursor(NULL, IDC_CROSS));
+                        OutputDebugStringW(L"[ycIDE] 已设置创建模式\n");
                     }
+                } else {
+                    OutputDebugStringW((L"[ycIDE] 条件不满足: toolbox=" + std::to_wstring((LONG_PTR)g_pControlToolbox) + 
+                        L", designer=" + std::to_wstring((LONG_PTR)g_pVisualDesigner) + 
+                        L", active=" + std::to_wstring(g_IsVisualDesignerActive) + L"\n").c_str());
                 }
                 return 0;
             }
@@ -2690,6 +2694,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         return 0;
+    
+    case WM_USER + 200:
+        // 切换到选择模式，清除组件箱的选择状态
+        if (g_pControlToolbox) {
+            g_pControlToolbox->ClearSelection();
+        }
+        return 0;
+        
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
@@ -3658,6 +3670,63 @@ LRESULT CALLBACK PropertyGridWndProc(HWND hWnd, UINT message, WPARAM wParam, LPA
         
     case WM_ERASEBKGND:
         return 1;
+        
+    case WM_CTLCOLOREDIT:
+    case WM_CTLCOLORLISTBOX:
+        {
+            // 设置编辑框和下拉列表的背景和文字颜色，使用主题颜色
+            HDC hdcCtrl = (HDC)wParam;
+            SetTextColor(hdcCtrl, g_CurrentTheme.text);
+            SetBkColor(hdcCtrl, g_CurrentTheme.editorBg);
+            
+            // 创建或获取背景画刷
+            static HBRUSH hBrushEdit = NULL;
+            static COLORREF lastBgColor = 0;
+            if (hBrushEdit == NULL || lastBgColor != g_CurrentTheme.editorBg) {
+                if (hBrushEdit) DeleteObject(hBrushEdit);
+                hBrushEdit = CreateSolidBrush(g_CurrentTheme.editorBg);
+                lastBgColor = g_CurrentTheme.editorBg;
+            }
+            return (LRESULT)hBrushEdit;
+        }
+        
+    case WM_COMMAND:
+        {
+            int notifyCode = HIWORD(wParam);
+            // 处理下拉框关闭事件（选择完成后下拉列表关闭时触发）
+            if (notifyCode == CBN_CLOSEUP) {
+                // 使用 PostMessage 延迟处理，避免在消息处理中销毁控件
+                PostMessage(hWnd, WM_USER + 100, 0, 0);
+                return 0;
+            }
+            // 处理编辑框内容变化 - 实时更新
+            if (notifyCode == EN_CHANGE) {
+                // 使用 PostMessage 延迟处理，实时应用变更
+                PostMessage(hWnd, WM_USER + 101, 0, 0);
+                return 0;
+            }
+            // 处理编辑框失去焦点
+            if (notifyCode == EN_KILLFOCUS) {
+                // 使用 PostMessage 延迟处理
+                PostMessage(hWnd, WM_USER + 100, 0, 0);
+                return 0;
+            }
+        }
+        break;
+        
+    case WM_USER + 100:
+        // 延迟处理：完成编辑
+        if (pGrid) {
+            pGrid->FinishEdit(true);
+        }
+        return 0;
+        
+    case WM_USER + 101:
+        // 延迟处理：实时更新属性（不结束编辑）
+        if (pGrid) {
+            pGrid->ApplyEditWithoutFinish();
+        }
+        return 0;
     }
     
     return DefWindowProc(hWnd, message, wParam, lParam);
@@ -3870,6 +3939,68 @@ LRESULT CALLBACK ToolboxWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
     return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
+// 输出面板窗口过程
+LRESULT CALLBACK OutputPanelWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    OutputPanel* pPanel = (OutputPanel*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
+    
+    switch (message)
+    {
+    case WM_CREATE:
+        {
+            pPanel = new OutputPanel(hWnd);
+            SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pPanel);
+            g_pOutputPanel = pPanel;
+        }
+        return 0;
+        
+    case WM_DESTROY:
+        if (pPanel) {
+            delete pPanel;
+            g_pOutputPanel = nullptr;
+        }
+        SetWindowLongPtr(hWnd, GWLP_USERDATA, 0);
+        return 0;
+        
+    case WM_PAINT:
+        {
+            PAINTSTRUCT ps;
+            HDC hdc = BeginPaint(hWnd, &ps);
+            if (pPanel) {
+                pPanel->OnPaint(hdc);
+            }
+            EndPaint(hWnd, &ps);
+        }
+        return 0;
+        
+    case WM_SIZE:
+        if (pPanel) {
+            pPanel->OnSize(LOWORD(lParam), HIWORD(lParam));
+        }
+        return 0;
+        
+    case WM_LBUTTONDOWN:
+        if (pPanel) {
+            pPanel->OnLButtonDown(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        }
+        return 0;
+    
+    case WM_CTLCOLOREDIT:
+    case WM_CTLCOLORSTATIC:
+        {
+            HDC hdcEdit = (HDC)wParam;
+            SetTextColor(hdcEdit, g_CurrentTheme.text);
+            SetBkColor(hdcEdit, g_CurrentTheme.editorBg);
+            static HBRUSH hBrush = NULL;
+            if (hBrush) DeleteObject(hBrush);
+            hBrush = CreateSolidBrush(g_CurrentTheme.editorBg);
+            return (LRESULT)hBrush;
+        }
+    }
+    
+    return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
 // 注册可视化设计器窗口类
 ATOM RegisterVisualDesignerClass(HINSTANCE hInstance)
 {
@@ -3912,6 +4043,19 @@ ATOM RegisterToolboxClass(HINSTANCE hInstance)
     return RegisterClassExW(&wcex);
 }
 
+ATOM RegisterOutputPanelClass(HINSTANCE hInstance)
+{
+    WNDCLASSEXW wcex = {0};
+    wcex.cbSize = sizeof(WNDCLASSEX);
+    wcex.style = CS_HREDRAW | CS_VREDRAW;
+    wcex.lpfnWndProc = OutputPanelWndProc;
+    wcex.hInstance = hInstance;
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.lpszClassName = szOutputPanelClass;
+    return RegisterClassExW(&wcex);
+}
+
 // ==================== 可视化设计器辅助函数 ====================
 
 // 切换可视化设计器模式
@@ -3945,6 +4089,11 @@ void SwitchToVisualDesignerMode(bool enable)
                 if (selectedControls.empty()) {
                     // 修改窗体属性
                     g_pVisualDesigner->SetFormProperty(propName, newValue);
+                    
+                    // 如果修改的是"控制按钮"，需要刷新属性面板以更新子选项的禁用状态
+                    if (propName == L"控制按钮") {
+                        UpdatePropertyGridForSelection();
+                    }
                 } else if (selectedControls.size() == 1) {
                     // 修改单个控件属性
                     g_pVisualDesigner->SetControlProperty(selectedControls[0]->id, propName, newValue);
@@ -3990,6 +4139,11 @@ void UpdatePropertyGridForSelection()
         formProps[L"标题"] = formInfo.title;
         formProps[L"宽度"] = std::to_wstring(formInfo.width);
         formProps[L"高度"] = std::to_wstring(formInfo.height);
+        
+        // 添加布尔属性（控制按钮、最大化按钮、最小化按钮）
+        formProps[L"控制按钮"] = formInfo.hasControlBox ? L"真" : L"假";
+        formProps[L"最大化按钮"] = formInfo.hasMaxButton ? L"真" : L"假";
+        formProps[L"最小化按钮"] = formInfo.hasMinButton ? L"真" : L"假";
         
         // 添加窗体的自定义属性
         for (const auto& [key, value] : formInfo.properties) {

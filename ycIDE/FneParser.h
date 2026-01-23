@@ -259,13 +259,26 @@ struct FneDataTypeInfo {
     bool isWindowUnit;          // 是否窗口组件
 };
 
+// FNE 命令参数信息
+struct FneCommandParam {
+    std::wstring name;           // 参数名称
+    std::wstring type;           // 参数类型（如：逻辑型）
+    std::wstring typeWithEnglish; // 参数类型带英文（如：逻辑型（bool））
+    std::wstring description;    // 参数说明
+    bool optional;               // 是否可选
+    bool isVariable;             // 是否为变量参数
+    bool isArray;                // 是否为数组参数
+};
+
 // FNE 命令信息类
 struct FneCommandInfo {
     std::wstring name;          // 命令名称
+    std::wstring englishName;   // 英文名称
     std::wstring description;   // 命令说明
     std::wstring returnType;    // 返回值类型
     std::wstring category;      // 命令类别（如：流程控制、算术运算等）
-    std::vector<std::wstring> parameters;  // 参数列表
+    std::vector<FneCommandParam> params;  // 参数列表（结构化）
+    std::vector<std::wstring> parameters;  // 参数列表（兼容旧格式）
     bool isHidden;              // 是否隐藏命令
 };
 
@@ -306,6 +319,9 @@ private:
 
     // 数据类型转换为字符串
     std::wstring DataTypeToString(DATA_TYPE dataType);
+    
+    // 数据类型转换为带英文名的字符串
+    std::wstring DataTypeToStringWithEnglish(DATA_TYPE dataType);
 
     // UTF-8 转 UTF-16
     std::wstring UTF8ToUTF16(const char* utf8Str);

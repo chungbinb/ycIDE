@@ -97,6 +97,11 @@ public:
     void SetSearchText(const std::wstring& text);
     std::wstring GetSearchText() const { return m_searchText; }
     
+    // === 编辑控制 ===
+    
+    void FinishEdit(bool apply);  // 完成编辑
+    void ApplyEditWithoutFinish();  // 实时应用编辑但不结束编辑
+    
 private:
     HWND m_hWnd;
     
@@ -121,6 +126,15 @@ private:
     int m_editingRow;     // 正在编辑的行
     HWND m_hEditControl;  // 编辑控件句柄
     HWND m_hComboBox;     // 下拉框句柄
+    
+    // 自绘下拉列表
+    HWND m_hDropdownPopup;           // 自绘下拉列表窗口
+    std::vector<std::wstring> m_dropdownItems;  // 下拉列表项
+    int m_dropdownSelectedIndex;     // 当前选中项索引
+    int m_dropdownHoverIndex;        // 鼠标悬停项索引
+    int m_dropdownItemHeight;        // 列表项高度
+    DWORD m_dropdownCloseTime;       // 下拉列表关闭时间
+    int m_dropdownCloseRow;          // 下拉列表关闭时的行号
     
     // 滚动
     int m_scrollPos;
@@ -156,13 +170,17 @@ private:
     
     // 编辑器
     void BeginEdit(int row);
-    void FinishEdit(bool apply);  // 完成编辑
     void CreateTextEditor(const PropertyDef& prop, const Rect& rect);
     void CreateComboEditor(const PropertyDef& prop, const Rect& rect);
+    void CreateBooleanComboEditor(const PropertyDef& prop, const Rect& rect);
     void ToggleBooleanValue(PropertyDef& prop);
     void ShowColorPicker(PropertyDef& prop);
     void ShowFontPicker(PropertyDef& prop);
     void ShowFilePicker(PropertyDef& prop);
+    void ShowResourcePicker(PropertyDef& prop);
+    void ShowCustomDropdown(const PropertyDef& prop, const Rect& rect);
+    void CloseCustomDropdown(bool apply);
+    static LRESULT CALLBACK DropdownWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
     
     // 分类和过滤
     std::vector<std::wstring> GetCategories() const;

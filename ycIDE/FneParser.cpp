@@ -31,24 +31,31 @@ std::wstring FneParser::UTF8ToUTF16(const char* utf8Str) {
 
 // 数据类型转换为字符串
 std::wstring FneParser::DataTypeToString(DATA_TYPE dataType) {
-    // 如果最 HIWORD 最高位 0 表示系统基本类型
-    if ((dataType & 0x80000000) == 0) {
-        return L"自定义类型";
+    // 如果 dataType 为 0，表示无返回值
+    if (dataType == 0) {
+        return L"无返回值";
     }
-
-    if (dataType == SDT_BYTE) return L"字节";
-    if (dataType == SDT_SHORT) return L"短整数";
-    if (dataType == SDT_INT) return L"整数";
-    if (dataType == SDT_INT64) return L"长整数";
-    if (dataType == SDT_FLOAT) return L"小数";
-    if (dataType == SDT_DOUBLE) return L"双精度小数";
-    if (dataType == SDT_BOOL) return L"逻辑";
-    if (dataType == SDT_DATE_TIME) return L"日期时间";
-    if (dataType == SDT_TEXT) return L"文本";
+    
+    // 检查系统基本类型（最高位为1表示系统类型）
+    if (dataType == SDT_BYTE) return L"字节型";
+    if (dataType == SDT_SHORT) return L"短整数型";
+    if (dataType == SDT_INT) return L"整数型";
+    if (dataType == SDT_INT64) return L"长整数型";
+    if (dataType == SDT_FLOAT) return L"小数型";
+    if (dataType == SDT_DOUBLE) return L"双精度小数型";
+    if (dataType == SDT_BOOL) return L"逻辑型";
+    if (dataType == SDT_DATE_TIME) return L"日期时间型";
+    if (dataType == SDT_TEXT) return L"文本型";
     if (dataType == SDT_BIN) return L"字节集";
     if (dataType == SDT_SUB_PTR) return L"子程序指针";
 
-    // 处理一些特殊状态类型，这里获取原始值
+    // 如果最高位为0但不是0，可能是自定义类型索引
+    if ((dataType & 0x80000000) == 0) {
+        // 非零的自定义类型索引，返回自定义类型
+        return L"自定义类型";
+    }
+
+    // 处理一些特殊状态类型
     DWORD lowWord = LOWORD(dataType);
     DWORD highWord = HIWORD(dataType);
 
@@ -58,11 +65,44 @@ std::wstring FneParser::DataTypeToString(DATA_TYPE dataType) {
         return L"用户自定义类型";
     }
 
-    // 可能是特殊状态中的对象数组（ LOWORD
+    // 可能是特殊状态中的对象数组
     if ((dataType & 0x20000000) != 0) {
-        return L"数组[]";
+        return L"数组";
     }
 
+    return L"未知类型";
+}
+
+// 数据类型转换为带英文名的完整格式字符串（用于参数说明）
+std::wstring FneParser::DataTypeToStringWithEnglish(DATA_TYPE dataType) {
+    if (dataType == 0) {
+        return L"无返回值";
+    }
+    
+    if (dataType == SDT_BYTE) return L"字节型（byte）";
+    if (dataType == SDT_SHORT) return L"短整数型（short）";
+    if (dataType == SDT_INT) return L"整数型（int）";
+    if (dataType == SDT_INT64) return L"长整数型（long）";
+    if (dataType == SDT_FLOAT) return L"小数型（float）";
+    if (dataType == SDT_DOUBLE) return L"双精度小数型（double）";
+    if (dataType == SDT_BOOL) return L"逻辑型（bool）";
+    if (dataType == SDT_DATE_TIME) return L"日期时间型（datetime）";
+    if (dataType == SDT_TEXT) return L"文本型（string）";
+    if (dataType == SDT_BIN) return L"字节集（bin）";
+    if (dataType == SDT_SUB_PTR) return L"子程序指针（subptr）";
+    
+    if ((dataType & 0x80000000) == 0) {
+        return L"自定义类型";
+    }
+    
+    if ((dataType & 0x40000000) != 0) {
+        return L"用户自定义类型";
+    }
+    
+    if ((dataType & 0x20000000) != 0) {
+        return L"数组";
+    }
+    
     return L"未知类型";
 }
 
@@ -173,6 +213,11 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
                 cmdInfo.name = UTF8ToUTF16(pCmdInfo->m_szName);
             }
 
+            // 英文名称
+            if (pCmdInfo->m_szEgName) {
+                cmdInfo.englishName = UTF8ToUTF16(pCmdInfo->m_szEgName);
+            }
+
             // 命令说明
             if (pCmdInfo->m_szExplain) {
                 cmdInfo.description = UTF8ToUTF16(pCmdInfo->m_szExplain);
@@ -201,23 +246,40 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
                 for (int j = 0; j < pCmdInfo->m_nArgCount; j++) {
                     PARG_INFO pArgInfo = &pCmdInfo->m_pBeginArgInfo[j];
 
-                    std::wstring paramStr;
-
+                    // 填充结构化参数信息
+                    FneCommandParam param;
+                    
                     // 参数名称
                     if (pArgInfo->m_szName) {
-                        paramStr = UTF8ToUTF16(pArgInfo->m_szName);
+                        param.name = UTF8ToUTF16(pArgInfo->m_szName);
                     }
-
+                    
                     // 参数类型
-                    std::wstring paramType = DataTypeToString(pArgInfo->m_dtType);
-                    if (!paramStr.empty()) {
-                        paramStr += L" : " + paramType;
+                    param.type = DataTypeToString(pArgInfo->m_dtType);
+                    param.typeWithEnglish = DataTypeToStringWithEnglish(pArgInfo->m_dtType);
+                    
+                    // 参数说明
+                    if (pArgInfo->m_szExplain) {
+                        param.description = UTF8ToUTF16(pArgInfo->m_szExplain);
                     }
-                    else {
-                        paramStr = paramType;
+                    
+                    // 参数标志
+                    param.optional = (pArgInfo->m_dwState & AS_HAS_DEFAULT_VALUE) != 0 ||
+                                     (pArgInfo->m_dwState & AS_DEFAULT_VALUE_IS_EMPTY) != 0;
+                    param.isVariable = (pArgInfo->m_dwState & AS_RECEIVE_VAR) != 0;
+                    param.isArray = (pArgInfo->m_dwState & AS_RECEIVE_ARRAY_DATA) != 0 ||
+                                    (pArgInfo->m_dwState & AS_RECEIVE_VAR_ARRAY) != 0;
+                    
+                    cmdInfo.params.push_back(param);
+
+                    // 兼容旧格式：构建参数字符串
+                    std::wstring paramStr;
+                    if (!param.name.empty()) {
+                        paramStr = param.name + L" : " + param.type;
+                    } else {
+                        paramStr = param.type;
                     }
 
-                    // 参数标志
                     if (pArgInfo->m_dwState & AS_HAS_DEFAULT_VALUE) {
                         paramStr += L" = " + std::to_wstring(pArgInfo->m_nDefault);
                     }
