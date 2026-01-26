@@ -99,9 +99,9 @@ struct AIChatData {
     bool isDraggingVScroll;              // 是否正在拖动垂直滚动条
     int dragStartY;                      // 拖动起始Y位置
     int dragStartScrollY;                // 拖动起始滚动位置    
-    // 右边框拖动相关
-    bool isRightBorderHover;             // 右边框是否悬停
-    bool isDraggingRightBorder;          // 是否正在拖动右边框
+    // 边框拖动相关（根据面板位置可能是左边框或右边框）
+    bool isBorderHover;                  // 边框是否悬停
+    bool isDraggingBorder;               // 是否正在拖动边框
     int borderDragStartX;                // 边框拖动起始位置    
     // 选中相关
     bool isSelecting;                    // 是否正在选中
@@ -135,7 +135,7 @@ struct AIChatData {
     AIChatData() : scrollY(0), fontSize(16), contentHeight(0), 
                    scrollbarWidth(12), vScrollHover(false), isDraggingVScroll(false),
                    dragStartY(0), dragStartScrollY(0),
-                   isRightBorderHover(false), isDraggingRightBorder(false), borderDragStartX(0),
+                   isBorderHover(false), isDraggingBorder(false), borderDragStartX(0),
                    isSelecting(false),
                    selStartMsgIdx(-1), selStartBlockIdx(-1), selStartChar(0),
                    selEndMsgIdx(-1), selEndBlockIdx(-1), selEndChar(0),

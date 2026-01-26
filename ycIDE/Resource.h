@@ -31,6 +31,10 @@
 #define IDM_LIBRARY_CONFIG		124
 #define IDD_LIBRARY_CONFIG		125
 
+// 动态主题菜单项ID范围 (5000-5099，支持最多100个主题)
+#define IDM_THEME_FIRST			5000
+#define IDM_THEME_LAST			5099
+
 // 插入菜单项
 #define IDM_INSERT				130
 #define IDM_INSERT_MODULE		131
@@ -44,6 +48,21 @@
 // 视图菜单项
 #define IDM_VIEW				140
 #define IDM_VIEW_TOOLBOX		141
+
+// 工具栏命令ID
+#define ID_FILE_NEW             150
+#define ID_FILE_OPEN            151
+#define ID_FILE_SAVE            152
+#define ID_FILE_SAVEALL         153
+#define ID_EDIT_UNDO            154
+#define ID_EDIT_REDO            155
+#define ID_EDIT_CUT             156
+#define ID_EDIT_COPY            157
+#define ID_EDIT_PASTE           158
+#define ID_BUILD_RUN            159
+#define ID_BUILD_DEBUG          160
+#define ID_BUILD_STOP           161
+#define ID_BUILD_COMPILE        162
 
 #define IDI_YCIDE			112
 #define IDI_SMALL				113

@@ -20,7 +20,9 @@ using namespace Gdiplus;
 ResourceExplorerData g_ExplorerData;
 
 ResourceExplorerData::ResourceExplorerData() : selectedNode(nullptr), itemHeight(30), isWorkspaceMode(false), isProjectMode(false), workspacePath(L""), 
-    hDirChangeNotify(INVALID_HANDLE_VALUE), hMonitorThread(NULL), stopMonitoring(false) {
+    hDirChangeNotify(INVALID_HANDLE_VALUE), hMonitorThread(NULL), stopMonitoring(false),
+    activeTab(TAB_PROJECT), tabBarHeight(28), hoverTab(-1),
+    isBorderHover(false), isDraggingBorder(false) {
 }
 
 ResourceExplorerData::~ResourceExplorerData() {
@@ -293,16 +295,90 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
     switch (message) {
     case WM_NCHITTEST:
         {
-            // 让右边缘5px的鼠标消息穿透到主窗口，用于调整窗口大小
-            POINT pt = {GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)};
-            ScreenToClient(hWnd, &pt);
-            RECT rect;
-            GetClientRect(hWnd, &rect);
-            if (pt.x > rect.right - 5) {
-                return HTTRANSPARENT;
-            }
+            // 资源管理器的边缘用于调整自身宽度
             return HTCLIENT;
         }
+    
+    case WM_SETCURSOR:
+        {
+            // 如果在边框区域或正在拖动，显示调整大小光标
+            if (g_ExplorerData.isBorderHover || g_ExplorerData.isDraggingBorder) {
+                SetCursor(LoadCursor(NULL, IDC_SIZEWE));
+                return TRUE;
+            }
+            return DefWindowProc(hWnd, message, wParam, lParam);
+        }
+    
+    case WM_LBUTTONDOWN:
+        {
+            int x = GET_X_LPARAM(lParam);
+            int y = GET_Y_LPARAM(lParam);
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            
+            extern bool g_PanelsSwapped;
+            const int borderWidth = 8;
+            
+            // 检查是否点击了边框区域
+            bool inBorder = false;
+            if (g_PanelsSwapped) {
+                // 交换模式：资源管理器在右边，左边缘可调整
+                inBorder = (x <= borderWidth);
+            } else {
+                // 正常模式：资源管理器在左边，右边缘可调整
+                inBorder = (x >= rect.right - borderWidth);
+            }
+            
+            if (inBorder) {
+                g_ExplorerData.isDraggingBorder = true;
+                SetCapture(hWnd);
+                return 0;
+            }
+            
+            // 检查是否点击了标签栏
+            if (y < g_ExplorerData.tabBarHeight) {
+                int tabWidth = rect.right / 3;
+                int clickedTab = x / tabWidth;
+                if (clickedTab >= 0 && clickedTab < 3) {
+                    g_ExplorerData.activeTab = (ExplorerTabType)clickedTab;
+                    InvalidateRect(hWnd, NULL, TRUE);
+                }
+                return 0;
+            }
+            
+            // 计算文件列表中的索引（需要减去标签栏高度）
+            int listY = y - g_ExplorerData.tabBarHeight;
+            size_t index = listY / g_ExplorerData.itemHeight;
+            
+            if (index < g_ExplorerData.visibleNodes.size()) {
+                FileNode* node = g_ExplorerData.visibleNodes[index];
+                g_ExplorerData.selectedNode = node;
+                
+                // 检查是否点击了展开箭头区域
+                int indentSize = 20;
+                int arrowX = 10 + node->level * indentSize - 12;
+                
+                // 如果点击了箭头区域或者是文件夹被点击
+                if (node->isFolder && (x < arrowX + 20)) { // 简单判定点击左侧区域
+                    node->isExpanded = !node->isExpanded;
+                    g_ExplorerData.UpdateVisibleNodes();
+                }
+                
+                InvalidateRect(hWnd, NULL, TRUE);
+            }
+        }
+        break;
+    
+    case WM_LBUTTONUP:
+        {
+            if (g_ExplorerData.isDraggingBorder) {
+                g_ExplorerData.isDraggingBorder = false;
+                ReleaseCapture();
+                return 0;
+            }
+        }
+        break;
+    
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
@@ -331,6 +407,65 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             Pen borderPen(borderColor, 1.0f);
             graphics.DrawRectangle(&borderPen, 0, 0, rect.right - 1, rect.bottom - 1);
             
+            // === 绘制标签栏 ===
+            int tabBarHeight = g_ExplorerData.tabBarHeight;
+            const wchar_t* tabNames[] = {L"支持库", L"项目", L"属性"};
+            int tabCount = 3;
+            int tabWidth = rect.right / tabCount;
+            
+            // 标签栏背景 - 使用主题颜色
+            COLORREF tabBgCol = g_CurrentTheme.explorerTabBg;
+            Color tabBarBgColor(255, GetRValue(tabBgCol), GetGValue(tabBgCol), GetBValue(tabBgCol));
+            SolidBrush tabBarBgBrush(tabBarBgColor);
+            graphics.FillRectangle(&tabBarBgBrush, 0, 0, rect.right, tabBarHeight);
+            
+            // 标签栏底部边框 - 使用主题颜色
+            COLORREF borderCol = g_CurrentTheme.border;
+            Color tabBorderColor(255, GetRValue(borderCol), GetGValue(borderCol), GetBValue(borderCol));
+            Pen tabBorderPen(tabBorderColor, 1.0f);
+            graphics.DrawLine(&tabBorderPen, 0, tabBarHeight - 1, rect.right, tabBarHeight - 1);
+            
+            // 创建标签字体
+            HFONT hTabFont = CreateFontW(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+                DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Microsoft YaHei");
+            HFONT oldTabFont = (HFONT)SelectObject(hMemDC, hTabFont);
+            SetBkMode(hMemDC, TRANSPARENT);
+            
+            for (int i = 0; i < tabCount; i++) {
+                int tabX = i * tabWidth;
+                bool isActive = (i == (int)g_ExplorerData.activeTab);
+                bool isHover = (i == g_ExplorerData.hoverTab);
+                
+                // 选中标签背景 - 使用主题颜色
+                if (isActive) {
+                    COLORREF activeCol = g_CurrentTheme.explorerTabActive;
+                    Color activeTabColor(255, GetRValue(activeCol), GetGValue(activeCol), GetBValue(activeCol));
+                    SolidBrush activeTabBrush(activeTabColor);
+                    graphics.FillRectangle(&activeTabBrush, tabX, 0, tabWidth, tabBarHeight);
+                    
+                    // 选中标签底部指示条 - 使用主题高亮色
+                    COLORREF indicatorCol = g_CurrentTheme.activityBarIndicator;
+                    Color indicatorColor(255, GetRValue(indicatorCol), GetGValue(indicatorCol), GetBValue(indicatorCol));
+                    SolidBrush indicatorBrush(indicatorColor);
+                    graphics.FillRectangle(&indicatorBrush, tabX, tabBarHeight - 2, tabWidth, 2);
+                } else if (isHover) {
+                    // 悬停背景 - 使用主题颜色
+                    COLORREF hoverCol = g_CurrentTheme.explorerTabHover;
+                    Color hoverTabColor(255, GetRValue(hoverCol), GetGValue(hoverCol), GetBValue(hoverCol));
+                    SolidBrush hoverTabBrush(hoverTabColor);
+                    graphics.FillRectangle(&hoverTabBrush, tabX, 0, tabWidth, tabBarHeight);
+                }
+                
+                // 标签文本
+                SetTextColor(hMemDC, isActive ? g_CurrentTheme.textBright : g_CurrentTheme.textDim);
+                RECT tabTextRect = {tabX, 0, tabX + tabWidth, tabBarHeight};
+                DrawTextW(hMemDC, tabNames[i], -1, &tabTextRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+            }
+            
+            SelectObject(hMemDC, oldTabFont);
+            DeleteObject(hTabFont);
+            
             // 文本颜色
             Color textColor;
             textColor.SetFromCOLORREF(g_CurrentTheme.text);
@@ -346,16 +481,17 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             SetTextColor(hMemDC, g_CurrentTheme.text);
             SetBkMode(hMemDC, TRANSPARENT);
             
-            // 绘制文件列表
-            int y = 0;
+            // 绘制文件列表（从标签栏下方开始）
+            int y = tabBarHeight;
             int indentSize = 20;
             
             for (size_t i = 0; i < g_ExplorerData.visibleNodes.size(); ++i) {
                 FileNode* node = g_ExplorerData.visibleNodes[i];
                 
-                // 选中项背景
+                // 选中项背景 - 使用主题颜色
                 if (node == g_ExplorerData.selectedNode) {
-                    Color selColor(50, 100, 100, 100); // 半透明灰色
+                    COLORREF selCol = g_CurrentTheme.explorerSelection;
+                    Color selColor(180, GetRValue(selCol), GetGValue(selCol), GetBValue(selCol));
                     SolidBrush selBrush(selColor);
                     graphics.FillRectangle(&selBrush, 0, y, rect.right, g_ExplorerData.itemHeight);
                 }
@@ -403,7 +539,7 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
                         DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Microsoft YaHei");
                     HFONT prevFont = (HFONT)SelectObject(hMemDC, hSmallFont);
-                    SetTextColor(hMemDC, RGB(80, 220, 100));
+                    SetTextColor(hMemDC, g_CurrentTheme.explorerModified);
                     
                     RECT labelRect;
                     labelRect.left = x + 18 + textSize.cx + 5;
@@ -440,6 +576,23 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             SelectObject(hMemDC, oldFont);
             DeleteObject(hGdiFont);
             
+            // 绘制可拖动边框高亮（根据面板位置决定在哪一侧）
+            extern bool g_PanelsSwapped;
+            if (g_ExplorerData.isBorderHover || g_ExplorerData.isDraggingBorder) {
+                // 只有在悬停或拖动时才显示5px蓝色边框
+                HBRUSH hBorderBrush = CreateSolidBrush(g_CurrentTheme.activityBarIndicator);
+                RECT borderRect;
+                if (g_PanelsSwapped) {
+                    // 交换模式：资源管理器在右边，可拖动边框在左边
+                    borderRect = { 0, 0, 5, rect.bottom };
+                } else {
+                    // 正常模式：资源管理器在左边，可拖动边框在右边
+                    borderRect = { rect.right - 5, 0, rect.right, rect.bottom };
+                }
+                FillRect(hMemDC, &borderRect, hBorderBrush);
+                DeleteObject(hBorderBrush);
+            }
+            
             BitBlt(hdc, 0, 0, rect.right, rect.bottom, hMemDC, 0, 0, SRCCOPY);
             
             DeleteObject(hBitmap);
@@ -448,36 +601,18 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
         }
         break;
         
-    case WM_LBUTTONDOWN:
-        {
-            int y = HIWORD(lParam);
-            size_t index = y / g_ExplorerData.itemHeight;
-            
-            if (index < g_ExplorerData.visibleNodes.size()) {
-                FileNode* node = g_ExplorerData.visibleNodes[index];
-                g_ExplorerData.selectedNode = node;
-                
-                // 检查是否点击了展开箭头区域
-                int indentSize = 20;
-                int x = LOWORD(lParam);
-                int arrowX = 10 + node->level * indentSize - 12;
-                
-                // 如果点击了箭头区域或者是文件夹被点击
-                if (node->isFolder && (x < arrowX + 20)) { // 简单判定点击左侧区域
-                    node->isExpanded = !node->isExpanded;
-                    g_ExplorerData.UpdateVisibleNodes();
-                }
-                
-                InvalidateRect(hWnd, NULL, TRUE);
-            }
-        }
-        break;
-        
     case WM_RBUTTONDOWN:
         {
             // 右键菜单
             int y = HIWORD(lParam);
-            size_t index = y / g_ExplorerData.itemHeight;
+            
+            // 如果点击在标签栏区域，忽略
+            if (y < g_ExplorerData.tabBarHeight) {
+                return 0;
+            }
+            
+            int listY = y - g_ExplorerData.tabBarHeight;
+            size_t index = listY / g_ExplorerData.itemHeight;
             
             if (index < g_ExplorerData.visibleNodes.size()) {
                 FileNode* node = g_ExplorerData.visibleNodes[index];
@@ -543,7 +678,14 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
     case WM_LBUTTONDBLCLK:
         {
             int y = HIWORD(lParam);
-            size_t index = y / g_ExplorerData.itemHeight;
+            
+            // 如果双击在标签栏区域，忽略
+            if (y < g_ExplorerData.tabBarHeight) {
+                return 0;
+            }
+            
+            int listY = y - g_ExplorerData.tabBarHeight;
+            size_t index = listY / g_ExplorerData.itemHeight;
             
             if (index < g_ExplorerData.visibleNodes.size()) {
                 FileNode* node = g_ExplorerData.visibleNodes[index];
@@ -576,6 +718,94 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                         // 发送双击消息给父窗口
                         SendMessage(GetParent(hWnd), WM_COMMAND, MAKEWPARAM(GetWindowLong(hWnd, GWL_ID), LBN_DBLCLK), (LPARAM)hWnd);
                     }
+                }
+            }
+        }
+        break;
+    
+    case WM_MOUSEMOVE:
+        {
+            int x = GET_X_LPARAM(lParam);
+            int y = GET_Y_LPARAM(lParam);
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            
+            extern bool g_PanelsSwapped;
+            extern int g_LeftPanelWidth;
+            extern int g_MinLeftPanelWidth;
+            const int activityBarWidth = 48;  // 活动栏宽度
+            const int borderWidth = 8;
+            
+            // 处理边框拖动
+            if (g_ExplorerData.isDraggingBorder) {
+                // 将鼠标位置转换到主窗口坐标
+                POINT screenPt = {x, y};
+                ClientToScreen(hWnd, &screenPt);
+                HWND hMainWnd = GetParent(hWnd);
+                ScreenToClient(hMainWnd, &screenPt);
+                
+                RECT mainRect;
+                GetClientRect(hMainWnd, &mainRect);
+                int maxWidth = mainRect.right - 350;  // 最大宽度
+                int newWidth;
+                
+                if (g_PanelsSwapped) {
+                    // 交换模式：资源管理器在右边，拖动左边框
+                    newWidth = mainRect.right - screenPt.x;
+                } else {
+                    // 正常模式：资源管理器在左边，拖动右边框
+                    newWidth = screenPt.x - activityBarWidth;
+                }
+                
+                if (newWidth < g_MinLeftPanelWidth) newWidth = g_MinLeftPanelWidth;
+                if (newWidth > maxWidth) newWidth = maxWidth;
+                
+                if (newWidth != g_LeftPanelWidth) {
+                    // 节流：限制更新频率（约60fps）
+                    static DWORD lastUpdateTime = 0;
+                    DWORD currentTime = GetTickCount();
+                    if (currentTime - lastUpdateTime >= 8) {  // 约120fps
+                        lastUpdateTime = currentTime;
+                        g_LeftPanelWidth = newWidth;
+                        
+                        // 使用 PostMessage 异步更新，减少卡顿
+                        #define WM_UPDATE_PANEL_LAYOUT (WM_USER + 300)
+                        PostMessage(hMainWnd, WM_UPDATE_PANEL_LAYOUT, 0, 0);
+                    }
+                }
+                return 0;
+            }
+            
+            // 检测是否在边框区域
+            bool inBorder = false;
+            if (g_PanelsSwapped) {
+                // 交换模式：资源管理器在右边，左边缘可调整
+                inBorder = (x <= borderWidth);
+            } else {
+                // 正常模式：资源管理器在左边，右边缘可调整
+                inBorder = (x >= rect.right - borderWidth);
+            }
+            
+            if (inBorder != g_ExplorerData.isBorderHover) {
+                g_ExplorerData.isBorderHover = inBorder;
+                InvalidateRect(hWnd, NULL, FALSE);  // 触发重绘以显示/隐藏边框高亮
+            }
+            
+            // 检查是否在标签栏区域内
+            if (y < g_ExplorerData.tabBarHeight) {
+                int tabWidth = rect.right / 3;
+                int hoverTab = x / tabWidth;
+                if (hoverTab >= 0 && hoverTab < 3) {
+                    if (g_ExplorerData.hoverTab != (ExplorerTabType)hoverTab) {
+                        g_ExplorerData.hoverTab = (ExplorerTabType)hoverTab;
+                        InvalidateRect(hWnd, NULL, TRUE);
+                    }
+                }
+            } else {
+                // 不在标签区域，清除悬停状态
+                if (g_ExplorerData.hoverTab != (ExplorerTabType)-1) {
+                    g_ExplorerData.hoverTab = (ExplorerTabType)-1;
+                    InvalidateRect(hWnd, NULL, TRUE);
                 }
             }
         }

@@ -138,7 +138,7 @@ LRESULT CALLBACK WelcomePageWndProc(HWND hWnd, UINT message, WPARAM wParam, LPAR
                 
                 // 按钮边框
                 HPEN borderPen = CreatePen(PS_SOLID, isHover ? 2 : 1, 
-                    isHover ? RGB(0, 122, 204) : g_CurrentTheme.grid);
+                    isHover ? g_CurrentTheme.syntaxKeyword : g_CurrentTheme.grid);
                 HPEN oldPen = (HPEN)SelectObject(memDC, borderPen);
                 HBRUSH oldBrush = (HBRUSH)SelectObject(memDC, GetStockObject(NULL_BRUSH));
                 Rectangle(memDC, buttons[i].rect.left, buttons[i].rect.top, 

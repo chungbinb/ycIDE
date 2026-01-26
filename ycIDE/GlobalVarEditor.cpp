@@ -1342,12 +1342,12 @@ int GlobalVarEditor::GetTotalContentWidth() const {
 void GlobalVarEditor::DrawTable(HDC hdc, const RECT& clientRect) {
     Graphics graphics(hdc);
     
-    // 绘制整个编辑器背景（rgb(31, 31, 31)）
-    SolidBrush bgBrush(Color(255, 31, 31, 31));
+    // 绘制整个编辑器背景
+    SolidBrush bgBrush(ColorFromCOLORREF(g_CurrentTheme.editorBg));
     graphics.FillRectangle(&bgBrush, 0, 0, clientRect.right, clientRect.bottom);
     
-    // 绘制左边距背景（行号区域，rgb(37, 37, 38)）
-    SolidBrush lineNumBgBrush(Color(255, 37, 37, 38));
+    // 绘制左边距背景（行号区域）
+    SolidBrush lineNumBgBrush(ColorFromCOLORREF(g_CurrentTheme.lineNumBg));
     RectF lineNumRect(0, 0, (REAL)m_leftMarginWidth, (REAL)clientRect.bottom);
     graphics.FillRectangle(&lineNumBgBrush, lineNumRect);
     
@@ -1416,9 +1416,9 @@ void GlobalVarEditor::DrawGlobalVarTable(Graphics& graphics, int yPos, const REC
     
     Pen gridPen(ColorFromCOLORREF(g_CurrentTheme.grid), 1);
     SolidBrush textBrush(ColorFromCOLORREF(g_CurrentTheme.text));
-    SolidBrush headerBrush(Color(255, 58, 65, 81));  // 表头背景色（与DataTypeEditor一致）
-    SolidBrush typeBrush(Color(255, 174, 144, 194)); // 类型列文本色（紫色）
-    SolidBrush commentBrush(Color(255, 0, 200, 0));  // 备注列文本色（绿色）
+    SolidBrush headerBrush(ColorFromCOLORREF(g_CurrentTheme.tableHeaderBg));  // 表头背景色
+    SolidBrush typeBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxType));       // 类型列文本色
+    SolidBrush commentBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxRemark));  // 备注列文本色
     
     FontFamily fontFamily(L"Microsoft YaHei");
     Font normalFont(&fontFamily, (REAL)m_fontSize, FontStyleRegular, UnitPixel);
@@ -1600,10 +1600,10 @@ void GlobalVarEditor::DrawTypeCompletionWindow(HDC hdc) {
         
         // 选中项背景
         if (itemIndex == m_typeCompletionSelectedIndex) {
-            HBRUSH selBrush = CreateSolidBrush(RGB(0, 120, 215));  // 蓝色选中
+            HBRUSH selBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
             FillRect(hdc, &itemRect, selBrush);
             DeleteObject(selBrush);
-            SetTextColor(hdc, RGB(255, 255, 255));  // 白色文字
+            SetTextColor(hdc, g_CurrentTheme.textBright);  // 高亮文字
         } else {
             SetTextColor(hdc, g_CurrentTheme.text);
         }
@@ -1628,7 +1628,7 @@ void GlobalVarEditor::DrawTypeCompletionWindow(HDC hdc) {
         // 滚动条轨道
         RECT trackRect = {scrollBarX, m_typeCompletionRect.top + 2,
                           scrollBarX + scrollBarWidth, m_typeCompletionRect.bottom - 2};
-        HBRUSH trackBrush = CreateSolidBrush(RGB(60, 60, 60));
+        HBRUSH trackBrush = CreateSolidBrush(g_CurrentTheme.scrollTrack);
         FillRect(hdc, &trackRect, trackBrush);
         DeleteObject(trackBrush);
         
@@ -1639,7 +1639,7 @@ void GlobalVarEditor::DrawTypeCompletionWindow(HDC hdc) {
                      (scrollBarHeight - thumbHeight) * m_typeCompletionScrollOffset / maxScroll;
         
         RECT thumbRect = {scrollBarX, thumbY, scrollBarX + scrollBarWidth, thumbY + thumbHeight};
-        HBRUSH thumbBrush = CreateSolidBrush(RGB(100, 100, 100));
+        HBRUSH thumbBrush = CreateSolidBrush(g_CurrentTheme.scrollThumb);
         FillRect(hdc, &thumbRect, thumbBrush);
         DeleteObject(thumbBrush);
     }

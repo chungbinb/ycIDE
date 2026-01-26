@@ -105,7 +105,7 @@ RECT TabBarData::GetTabRect(int index, int clientWidth) {
     RECT rect = {0};
     if (index < 0 || index >= (int)tabs.size()) return rect;
     
-    int x = 5;
+    int x = 0;  // 从最左边开始，与编辑器对齐
     for (int i = 0; i < index; i++) {
         x += tabMaxWidth + 2;
     }
@@ -165,6 +165,10 @@ LRESULT CALLBACK TabBarWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
             SetWindowLongPtr(hWnd, GWLP_USERDATA, 0);
         }
         return 0;
+    
+    case WM_ERASEBKGND:
+        // 阻止背景擦除，由 WM_PAINT 的双缓冲处理
+        return 1;
         
     case WM_PAINT:
         {
@@ -182,12 +186,7 @@ LRESULT CALLBACK TabBarWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
             // 绘制背景
             FillRect(memDC, &clientRect, CreateSolidBrush(g_CurrentTheme.bg));
             
-            if (!data || data->tabs.empty()) {
-                // 没有标签时显示提示
-                SetTextColor(memDC, g_CurrentTheme.text);
-                SetBkMode(memDC, TRANSPARENT);
-                DrawTextW(memDC, L"没有打开的文件", -1, &clientRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
-            } else {
+            if (data && !data->tabs.empty()) {
                 // 设置字体
                 HFONT hFont = CreateFontW(18, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
                     DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
@@ -264,7 +263,7 @@ LRESULT CALLBACK TabBarWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                     
                     // 关闭按钮
                     RECT closeRect = data->GetCloseButtonRect(tabRect);
-                    SetTextColor(memDC, RGB(150, 150, 150));
+                    SetTextColor(memDC, g_CurrentTheme.textDim);
                     DrawTextW(memDC, L"×", -1, &closeRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
                 }
                 

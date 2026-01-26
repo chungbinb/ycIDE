@@ -184,13 +184,16 @@
     <ClCompile Include="FneParser.cpp" />
     <ClCompile Include="GlobalVarEditor.cpp" />
     <ClCompile Include="Keyword.cpp" />
+    <ClCompile Include="Lexer.cpp" />
     <ClCompile Include="LibraryConfig.cpp" />
     <ClCompile Include="LibraryParser.cpp" />
     <ClCompile Include="NameValidator.cpp" />
+    <ClCompile Include="Parser.cpp" />
     <ClCompile Include="PinyinHelper.cpp" />
     <ClCompile Include="ProjectManager.cpp" />
     <ClCompile Include="PropertyGrid.cpp" />
     <ClCompile Include="OutputPanel.cpp" />
+    <ClCompile Include="SyntaxChecker.cpp" />
     <ClCompile Include="TabBar.cpp" />
     <ClCompile Include="TableEditor.cpp" />
     <ClCompile Include="Theme.cpp" />

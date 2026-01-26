@@ -9,6 +9,7 @@
 #include "LibraryParser.h"
 #include "PinyinHelper.h"
 #include "OutputPanel.h"
+#include "SyntaxChecker.h"  // 添加语法检查器
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -25,6 +26,9 @@ using namespace Gdiplus;
 extern WCHAR szYiEditorClass[];
 extern bool g_LeftPanelVisible;  // 左侧AI面板是否可见
 extern OutputPanel* g_pOutputPanel;  // 输出面板实例
+
+// 全局语法检查器实例
+static SyntaxChecker g_SyntaxChecker;
 
 // 类型补全相关常量
 static const int TYPE_COMPLETION_MAX_VISIBLE = 8;
@@ -695,6 +699,45 @@ static void SyncParamLineToCommandLine(EditorDocument* doc, int paramLineIndex) 
     cmdLine = cmdLine.substr(0, leftBracket + 1) + newBracketContent + cmdLine.substr(rightBracket);
 }
 
+// 执行语法检查（在文本变化后调用）
+static void PerformSyntaxCheck(EditorDocument* doc) {
+    if (!doc || !doc->syntaxCheckEnabled) return;
+    
+    // 初始化语法检查器（如果还没有初始化）
+    static bool initialized = false;
+    if (!initialized) {
+        g_SyntaxChecker.SetKeywordManager(&KeywordManager::GetInstance());
+        g_SyntaxChecker.SetLibraryParser(&LibraryParser::GetInstance());
+        initialized = true;
+    }
+    
+    // 获取整个文档的文本
+    std::wstring fullText;
+    for (size_t i = 0; i < doc->lines.size(); i++) {
+        fullText += doc->lines[i];
+        if (i < doc->lines.size() - 1) {
+            fullText += L"\n";
+        }
+    }
+    
+    // 执行语法检查
+    auto result = g_SyntaxChecker.Check(fullText);
+    
+    // 更新错误列表
+    doc->syntaxErrors = result.errors;
+    
+    // 调试输出：显示语法错误（如果有）
+    if (!result.errors.empty()) {
+        std::wstring debugMsg = L"[语法检查] 发现 " + std::to_wstring(result.errors.size()) + L" 个语法错误:\n";
+        for (size_t i = 0; i < result.errors.size() && i < 5; i++) {  // 最多显示5个错误
+            const auto& err = result.errors[i];
+            debugMsg += L"  行" + std::to_wstring(err.line) + L":" + std::to_wstring(err.column) 
+                       + L" - " + err.message + L"\n";
+        }
+        OutputDebugStringW(debugMsg.c_str());
+    }
+}
+
 // 检查并格式化行上的关键词（离开行时调用）
 static void CheckAndFormatKeywords(EditorDocument* doc, int lineIndex) {
     if (lineIndex < 0 || lineIndex >= (int)doc->lines.size()) return;
@@ -841,7 +884,7 @@ EditorData* g_EditorData = nullptr;
 
 EditorDocument::EditorDocument() : cursorLine(0), cursorCol(0), scrollY(0), scrollX(0), modified(false),
                                    hasSelection(false), selStartLine(0), selStartCol(0), selEndLine(0), selEndCol(0), isSelecting(false), hFileLock(INVALID_HANDLE_VALUE),
-                                   showDiff(false), hasUserInteraction(false), fileType(FILE_TYPE_EYC) {
+                                   showDiff(false), hasUserInteraction(false), fileType(FILE_TYPE_EYC), syntaxCheckEnabled(true) {
     fileName = L"未命名";
 }
 
@@ -5868,19 +5911,19 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 
                 // 绘制标题
                 SelectObject(hdc, hWelcomeFont);
-                SetTextColor(hdc, RGB(200, 200, 200));
+                SetTextColor(hdc, g_CurrentTheme.text);
                 RECT titleRect = {0, centerY, rect.right, centerY + 50};
                 DrawTextW(hdc, L"ycIDE", -1, &titleRect, DT_CENTER | DT_SINGLELINE);
                 
                 // 绘制副标题
                 SelectObject(hdc, hSubFont);
-                SetTextColor(hdc, RGB(130, 130, 130));
+                SetTextColor(hdc, g_CurrentTheme.textDim);
                 RECT subRect = {0, centerY + 50, rect.right, centerY + 80};
                 DrawTextW(hdc, L"易承语言集成开发环境", -1, &subRect, DT_CENTER | DT_SINGLELINE);
                 
                 // 绘制快捷操作提示
                 SelectObject(hdc, hLinkFont);
-                SetTextColor(hdc, RGB(80, 160, 230));
+                SetTextColor(hdc, g_CurrentTheme.syntaxKeyword);
                 
                 int linkY = centerY + 120;
                 RECT linkRect1 = {0, linkY, rect.right, linkY + 25};
@@ -5893,7 +5936,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 DrawTextW(hdc, L"打开文件夹", -1, &linkRect3, DT_CENTER | DT_SINGLELINE);
                 
                 // 绘制版本信息
-                SetTextColor(hdc, RGB(80, 80, 80));
+                SetTextColor(hdc, g_CurrentTheme.textDim);
                 RECT versionRect = {0, rect.bottom - 40, rect.right, rect.bottom - 20};
                 DrawTextW(hdc, L"Version 1.0.0", -1, &versionRect, DT_CENTER | DT_SINGLELINE);
                 
@@ -5955,14 +5998,14 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
             int currentY = 5 + data->tabHeight - doc->scrollY;
             int lineNum = 1;
             
-            // 颜色定义
+            // 颜色定义 - 使用主题变量
             COLORREF clrText = g_CurrentTheme.text;
-            COLORREF clrKeyword = RGB(170, 79, 110);  // 流程块文本颜色
-            COLORREF clrComment = RGB(0, 128, 0);
-            COLORREF clrLineNum = RGB(110, 118, 129);  // 行号颜色
-            COLORREF clrGridLine = RGB(80, 80, 80);  // 表格框线颜色，调亮
-            COLORREF clrSubHeaderBg = RGB(58, 65, 81);  // 子程序表头背景色
-            COLORREF clrVarHeaderBg = RGB(56, 56, 48);  // 变量表头背景色
+            COLORREF clrKeyword = g_CurrentTheme.syntaxKeyword;  // 流程块文本颜色
+            COLORREF clrComment = g_CurrentTheme.syntaxComment;
+            COLORREF clrLineNum = g_CurrentTheme.lineNumText;  // 行号颜色
+            COLORREF clrGridLine = g_CurrentTheme.tableGridLine;  // 表格框线颜色
+            COLORREF clrSubHeaderBg = g_CurrentTheme.tableSubHeaderBg;  // 子程序表头背景色
+            COLORREF clrVarHeaderBg = g_CurrentTheme.tableVarHeaderBg;  // 变量表头背景色
             
             // Lambda 函数：绘制行号（带流程控制符号）
             auto DrawLineNum = [&](int y, bool skipNumber = false, int currentLineIndex = -1) {
@@ -6015,7 +6058,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 doc->parametersExpanded.push_back(false);
                             }
                             bool isExpanded = doc->parametersExpanded[currentLineIndex];
-                            SetTextColor(hdc, RGB(150, 150, 150));
+                            SetTextColor(hdc, g_CurrentTheme.textDim);
                             SelectObject(hdc, hBoldFont);  // 使用加粗字体使符号更明显
                             const wchar_t* expandSymbol = isExpanded ? L"-" : L"+";
                             TextOutW(hdc, 61, textY - 1, expandSymbol, 1);  // 稍微调整位置使其居中
@@ -6036,8 +6079,8 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 DeleteObject(hPen);
             };
             
-            // Lambda 函数：绘制表格单元格
-            auto DrawTableCell = [&](int x, int y, int w, int h, const wchar_t* text, COLORREF color, bool isHeader = false, COLORREF headerBgColor = RGB(192, 192, 192), bool centerAlign = false, bool isCheckbox = false, COLORREF diffBgColor = RGB(0, 0, 0), bool hasDiffBg = false) {
+            // Lambda 函数：绘制表格单元格 (默认参数使用主题颜色)
+            auto DrawTableCell = [&](int x, int y, int w, int h, const wchar_t* text, COLORREF color, bool isHeader = false, COLORREF headerBgColor = g_CurrentTheme.tableHeaderBg, bool centerAlign = false, bool isCheckbox = false, COLORREF diffBgColor = g_CurrentTheme.bg, bool hasDiffBg = false) {
                 // 如果有diff背景色，先绘制
                 if (hasDiffBg) {
                     RECT diffRc = { x, y, x + w, y + h };
@@ -6118,7 +6161,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
             
             // Lambda 函数：绘制实心向下箭头
             auto DrawDownArrow = [&](int x, int y) {
-                HBRUSH hArrowBrush = CreateSolidBrush(RGB(128, 128, 128));
+                HBRUSH hArrowBrush = CreateSolidBrush(g_CurrentTheme.textDim);
                 HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hArrowBrush);
                 HPEN hNoPen = (HPEN)GetStockObject(NULL_PEN);
                 HPEN hOldPen = (HPEN)SelectObject(hdc, hNoPen);
@@ -6137,7 +6180,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 
             // Lambda 函数：绘制实心向右箭头
             auto DrawRightArrow = [&](int x, int y) {
-                HBRUSH hArrowBrush = CreateSolidBrush(RGB(128, 128, 128));
+                HBRUSH hArrowBrush = CreateSolidBrush(g_CurrentTheme.textDim);
                 HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hArrowBrush);
                 HPEN hNoPen = (HPEN)GetStockObject(NULL_PEN);
                 HPEN hOldPen = (HPEN)SelectObject(hdc, hNoPen);
@@ -6727,7 +6770,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         
                         if (selWidth > 0) {
                             RECT selRect = {selX, currentY, selX + selWidth, currentY + rowHeight};
-                            HBRUSH selBrush = CreateSolidBrush(RGB(38, 79, 120));  // 选中背景色
+                            HBRUSH selBrush = CreateSolidBrush(g_CurrentTheme.editorSelection);  // 选中背景色
                             FillRect(hdc, &selRect, selBrush);
                             DeleteObject(selBrush);
                         }
@@ -6789,16 +6832,16 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     }
                     
                     // 确定表头背景色
-                    COLORREF headerBg = RGB(220, 220, 220);
+                    COLORREF headerBg = g_CurrentTheme.tableHeaderBg;
                     if (cells.size() > 0) {
                         if (cells[0] == L"子程序名") {
                             headerBg = clrSubHeaderBg;
                         } else if (cells[0] == L"程序集名") {
-                            headerBg = RGB(58, 65, 81);
+                            headerBg = g_CurrentTheme.tableSubHeaderBg;
                         } else if (cells[0] == L"变量名") {
                             headerBg = clrVarHeaderBg;
                         } else if (cells[0] == L"参数名") {
-                            headerBg = RGB(56, 56, 48);  // 参数表头背景色
+                            headerBg = g_CurrentTheme.tableVarHeaderBg;  // 参数表头背景色
                         }
                     }
                     
@@ -6824,21 +6867,21 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     
                     // 检查当前行是否有diff标记
                     bool hasDiffBg = false;
-                    COLORREF diffBgColor = RGB(0, 0, 0);
+                    COLORREF diffBgColor = g_CurrentTheme.bg;
                     if (doc->showDiff && i < doc->diffTypes.size()) {
                         DiffLineType diffType = doc->diffTypes[i];
                         if (diffType == DIFF_ADDED || diffType == DIFF_DELETED) {
                             hasDiffBg = true;
-                            diffBgColor = (diffType == DIFF_ADDED) ? RGB(76, 94, 36) : RGB(76, 25, 25);
+                            diffBgColor = (diffType == DIFF_ADDED) ? g_CurrentTheme.diffAdded : g_CurrentTheme.diffRemoved;
                         }
                     }
                     
                     // 如果在参数表区域内且有超过5列，使用分割绘制
                     if (inParamTable && cells.size() >= 6 && colWidths.size() >= 4) {
                         // 参数表：使用子程序表的4列宽度，将第3列拆分为可空+数组+备注
-                        COLORREF checkColor = isHeader ? clrText : RGB(139, 0, 0);  // 深红色
-                        COLORREF typeColor = isHeader ? clrText : RGB(78, 201, 176);   // 类型列颜色
-                        COLORREF remarkColor = isHeader ? clrText : RGB(0, 128, 0); // 备注列绿色
+                        COLORREF checkColor = isHeader ? clrText : g_CurrentTheme.syntaxCheckbox;  // 深红色
+                        COLORREF typeColor = isHeader ? clrText : g_CurrentTheme.syntaxType;   // 类型列颜色
+                        COLORREF remarkColor = isHeader ? clrText : g_CurrentTheme.syntaxRemark; // 备注列绿色
                         
                         // 绘制第0列：参数名
                         DrawTableCell(cellX, currentY, colWidths[0], rowHeight, 
@@ -6878,9 +6921,9 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         cellX += remarkWidth;
                     } else {
                         // 普通表格行：正常绘制，但第2、第3列（复选框列）居中并使用深红色
-                        COLORREF checkColor = RGB(139, 0, 0);  // 深红色
-                        COLORREF typeColor = isHeader ? clrText : RGB(78, 201, 176);   // 类型列颜色
-                        COLORREF remarkColor = isHeader ? clrText : RGB(0, 128, 0); // 备注列绿色
+                        COLORREF checkColor = g_CurrentTheme.syntaxCheckbox;  // 深红色
+                        COLORREF typeColor = isHeader ? clrText : g_CurrentTheme.syntaxType;   // 类型列颜色
+                        COLORREF remarkColor = isHeader ? clrText : g_CurrentTheme.syntaxRemark; // 备注列绿色
                         
                         // 判断是否为子程序表（4列）
                         bool isSubProgramTable = false;
@@ -6963,7 +7006,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     // 绘制横向虚线
                     int lineX = startX + 10;
                     int textCenterOffset = (rowHeight - fontSize) / 2 + fontSize / 2;  // 文本垂直中心位置
-                    HPEN hDashPen = CreatePen(PS_DOT, 1, RGB(128, 128, 128));
+                    HPEN hDashPen = CreatePen(PS_DOT, 1, g_CurrentTheme.textDim);
                     HPEN hOldDashPen = (HPEN)SelectObject(hdc, hDashPen);
                     MoveToEx(hdc, lineX, currentY + textCenterOffset, NULL);
                     LineTo(hdc, startX + 18, currentY + textCenterOffset);
@@ -7205,7 +7248,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 int arrowX = paramTextX + prefixSize.cx;
                                 
                                 // 绘制虚线：从参数文本位置向下，然后向右到参数内容位置
-                                HPEN hDashPen = CreatePen(PS_DOT, 1, RGB(128, 128, 128));
+                                HPEN hDashPen = CreatePen(PS_DOT, 1, g_CurrentTheme.textDim);
                                 HPEN hOldPen = (HPEN)SelectObject(hdc, hDashPen);
                                 
                                 // 垂直线：从上一行底部到当前行中心
@@ -7225,7 +7268,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                     upArrow[0] = {flowLineX, prevLineBottom - 5};      // 顶点（向上）
                                     upArrow[1] = {flowLineX - 5, prevLineBottom};      // 左下角
                                     upArrow[2] = {flowLineX + 5, prevLineBottom};      // 右下角
-                                    HBRUSH hArrowBrush = CreateSolidBrush(RGB(128, 128, 128));
+                                    HBRUSH hArrowBrush = CreateSolidBrush(g_CurrentTheme.textDim);
                                     HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hArrowBrush);
                                     Polygon(hdc, upArrow, 3);
                                     SelectObject(hdc, hOldBrush);
@@ -7235,7 +7278,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         }
                     }
                     
-                    SetTextColor(hdc, RGB(100, 150, 200));  // 浅蓝色
+                    SetTextColor(hdc, g_CurrentTheme.syntaxVariable);  // 浅蓝色
                     // 提取参数名和参数值（格式：\u2060参数名:参数值）
                     std::wstring lineContent = line.substr(1);  // 跳过标记字符
                     size_t colonPos = lineContent.find(L':');
@@ -7265,7 +7308,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         DiffLineType diffType = doc->diffTypes[i];
                         if (diffType == DIFF_ADDED || diffType == DIFF_DELETED) {
                             // 绘制背景色（删除行：深红色，新增行：深绿色），只绘制代码区域（从startX开始）
-                            COLORREF bgColor = (diffType == DIFF_ADDED) ? RGB(76, 94, 36) : RGB(76, 25, 25);
+                            COLORREF bgColor = (diffType == DIFF_ADDED) ? g_CurrentTheme.diffAdded : g_CurrentTheme.diffRemoved;
                             HBRUSH hDiffBrush = CreateSolidBrush(bgColor);
                             RECT diffRect = {startX, currentY, rect.right, currentY + rowHeight};  // 从startX开始，不覆盖行号区域
                             FillRect(hdc, &diffRect, hDiffBrush);
@@ -7645,12 +7688,12 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
             // 绘制自定义滚动条
             // 垂直滚动条背景
             if (data->vScrollThumbRect.bottom > data->vScrollThumbRect.top) {
-                HBRUSH hScrollBgBrush = CreateSolidBrush(g_CurrentTheme.editorBg);
+                HBRUSH hScrollBgBrush = CreateSolidBrush(g_CurrentTheme.scrollTrack);
                 FillRect(hdc, &data->vScrollbarRect, hScrollBgBrush);
                 DeleteObject(hScrollBgBrush);
                 
                 // 垂直滚动条滑块
-                COLORREF thumbColor = data->vScrollHover ? RGB(90, 90, 90) : RGB(70, 70, 70);
+                COLORREF thumbColor = data->vScrollHover ? g_CurrentTheme.scrollThumbHover : g_CurrentTheme.scrollThumb;
                 HBRUSH hThumbBrush = CreateSolidBrush(thumbColor);
                 FillRect(hdc, &data->vScrollThumbRect, hThumbBrush);
                 DeleteObject(hThumbBrush);
@@ -7658,12 +7701,12 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
             
             // 水平滚动条背景
             if (data->hScrollThumbRect.right > data->hScrollThumbRect.left) {
-                HBRUSH hScrollBgBrush = CreateSolidBrush(g_CurrentTheme.editorBg);
+                HBRUSH hScrollBgBrush = CreateSolidBrush(g_CurrentTheme.scrollTrack);
                 FillRect(hdc, &data->hScrollbarRect, hScrollBgBrush);
                 DeleteObject(hScrollBgBrush);
                 
                 // 水平滚动条滑块
-                COLORREF thumbColor = data->hScrollHover ? RGB(90, 90, 90) : RGB(70, 70, 70);
+                COLORREF thumbColor = data->hScrollHover ? g_CurrentTheme.scrollThumbHover : g_CurrentTheme.scrollThumb;
                 HBRUSH hThumbBrush = CreateSolidBrush(thumbColor);
                 FillRect(hdc, &data->hScrollThumbRect, hThumbBrush);
                 DeleteObject(hThumbBrush);
@@ -7728,12 +7771,12 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 
                 // 绘制弹窗背景
                 RECT popupRect = data->completionRect;
-                HBRUSH hPopupBrush = CreateSolidBrush(RGB(40, 40, 40));
+                HBRUSH hPopupBrush = CreateSolidBrush(g_CurrentTheme.popupBg);
                 FillRect(hdc, &popupRect, hPopupBrush);
                 DeleteObject(hPopupBrush);
                 
                 // 绘制边框
-                HPEN hBorderPen = CreatePen(PS_SOLID, 1, RGB(80, 80, 80));
+                HPEN hBorderPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.popupBorder);
                 HPEN hOldPen = (HPEN)SelectObject(hdc, hBorderPen);
                 HBRUSH hOldBrush2 = (HBRUSH)SelectObject(hdc, GetStockObject(NULL_BRUSH));
                 Rectangle(hdc, completionX, completionY, completionX + popupWidth, completionY + popupHeight);
@@ -7750,7 +7793,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     // 绘制选中项背景
                     if (isSelected) {
                         RECT selRect = {completionX + 1, itemY, completionX + popupWidth - scrollbarWidth - 1, itemY + itemHeight};
-                        HBRUSH hSelBrush = CreateSolidBrush(RGB(60, 100, 150));
+                        HBRUSH hSelBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
                         FillRect(hdc, &selRect, hSelBrush);
                         DeleteObject(hSelBrush);
                     }
@@ -7763,24 +7806,24 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     // 根据命令类型选择图标和颜色
                     if (data->completionItems[i].isLibraryCommand) {
                         iconChar = L'◆';  // 库命令
-                        iconColor = RGB(86, 156, 214);  // 蓝色
+                        iconColor = g_CurrentTheme.syntaxKeyword;  // 蓝色
                     } else {
                         switch (data->completionItems[i].type) {
                             case KW_CONTROL:
                                 iconChar = L'►';  // 流程控制
-                                iconColor = RGB(197, 134, 192);  // 紫色
+                                iconColor = g_CurrentTheme.syntaxFunction;  // 紫色
                                 break;
                             case KW_TYPE:
                                 iconChar = L'▣';  // 数据类型
-                                iconColor = RGB(78, 201, 176);  // 青色
+                                iconColor = g_CurrentTheme.syntaxType;  // 青色
                                 break;
                             case KW_OPERATOR:
                                 iconChar = L'＋';  // 运算符
-                                iconColor = RGB(220, 220, 170);  // 黄色
+                                iconColor = g_CurrentTheme.syntaxNumber;  // 黄色
                                 break;
                             default:
                                 iconChar = L'○';  // 其他
-                                iconColor = RGB(156, 220, 254);  // 浅蓝
+                                iconColor = g_CurrentTheme.syntaxVariable;  // 浅蓝
                                 break;
                         }
                     }
@@ -7790,7 +7833,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     DrawTextW(hdc, &iconChar, 1, &iconRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
                     
                     // 绘制关键词文本
-                    SetTextColor(hdc, RGB(220, 220, 220));
+                    SetTextColor(hdc, g_CurrentTheme.popupText);
                     RECT textRect = {completionX + iconWidth + 5, itemY, completionX + popupWidth - scrollbarWidth - 5, itemY + itemHeight};
                     std::wstring displayText = data->completionItems[i].displayText;
                     // 只显示主命令名称，不显示description中的"-返回"等描述信息
@@ -7806,7 +7849,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 if (needScrollbar) {
                     int scrollX = completionX + popupWidth - scrollbarWidth;
                     RECT scrollTrack = {scrollX, completionY, scrollX + scrollbarWidth, completionY + popupHeight};
-                    HBRUSH hTrackBrush = CreateSolidBrush(RGB(60, 60, 60));
+                    HBRUSH hTrackBrush = CreateSolidBrush(g_CurrentTheme.scrollTrack);
                     FillRect(hdc, &scrollTrack, hTrackBrush);
                     DeleteObject(hTrackBrush);
                     
@@ -7817,7 +7860,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     int thumbY = completionY + (int)((popupHeight - thumbHeight) * scrollRatio);
                     
                     RECT scrollThumb = {scrollX + 2, thumbY, scrollX + scrollbarWidth - 2, thumbY + thumbHeight};
-                    HBRUSH hThumbBrush = CreateSolidBrush(RGB(120, 120, 120));
+                    HBRUSH hThumbBrush = CreateSolidBrush(g_CurrentTheme.scrollThumb);
                     FillRect(hdc, &scrollThumb, hThumbBrush);
                     DeleteObject(hThumbBrush);
                 }
@@ -7865,12 +7908,12 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 
                 // 绘制弹窗背景
                 RECT typePopupRect = data->typeCompletionRect;
-                HBRUSH hTypePopupBrush = CreateSolidBrush(RGB(40, 40, 40));
+                HBRUSH hTypePopupBrush = CreateSolidBrush(g_CurrentTheme.popupBg);
                 FillRect(hdc, &typePopupRect, hTypePopupBrush);
                 DeleteObject(hTypePopupBrush);
                 
                 // 绘制边框
-                HPEN hTypeBorderPen = CreatePen(PS_SOLID, 1, RGB(80, 80, 80));
+                HPEN hTypeBorderPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.popupBorder);
                 HPEN hOldTypePen = (HPEN)SelectObject(hdc, hTypeBorderPen);
                 HBRUSH hOldTypeBrush = (HBRUSH)SelectObject(hdc, GetStockObject(NULL_BRUSH));
                 Rectangle(hdc, typeCompletionX, typeCompletionY, 
@@ -7891,20 +7934,20 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         RECT typeSelRect = {typeCompletionX + 1, typeItemY, 
                                            typeCompletionX + typePopupWidth - typeScrollbarWidth - 1, 
                                            typeItemY + typeItemHeight};
-                        HBRUSH hTypeSelBrush = CreateSolidBrush(RGB(60, 100, 150));
+                        HBRUSH hTypeSelBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
                         FillRect(hdc, &typeSelRect, hTypeSelBrush);
                         DeleteObject(hTypeSelBrush);
                     }
                     
                     // 绘制类型图标
                     SetBkMode(hdc, TRANSPARENT);
-                    SetTextColor(hdc, RGB(78, 201, 176));  // 青色
+                    SetTextColor(hdc, g_CurrentTheme.syntaxType);  // 青色
                     RECT typeIconRect = {typeCompletionX + 5, typeItemY, 
                                         typeCompletionX + 22, typeItemY + typeItemHeight};
                     DrawTextW(hdc, L"▣", 1, &typeIconRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
                     
                     // 绘制类型名称
-                    SetTextColor(hdc, RGB(220, 220, 220));
+                    SetTextColor(hdc, g_CurrentTheme.popupText);
                     RECT typeTextRect = {typeCompletionX + 25, typeItemY, 
                                         typeCompletionX + typePopupWidth - typeScrollbarWidth - 5, 
                                         typeItemY + typeItemHeight};
@@ -7920,7 +7963,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     RECT typeScrollTrack = {typeScrollX, typeCompletionY, 
                                            typeScrollX + typeScrollbarWidth, 
                                            typeCompletionY + typePopupHeight};
-                    HBRUSH hTypeTrackBrush = CreateSolidBrush(RGB(60, 60, 60));
+                    HBRUSH hTypeTrackBrush = CreateSolidBrush(g_CurrentTheme.scrollTrack);
                     FillRect(hdc, &typeScrollTrack, hTypeTrackBrush);
                     DeleteObject(hTypeTrackBrush);
                     
@@ -7934,7 +7977,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     RECT typeScrollThumb = {typeScrollX + 2, typeThumbY, 
                                            typeScrollX + typeScrollbarWidth - 2, 
                                            typeThumbY + typeThumbHeight};
-                    HBRUSH hTypeThumbBrush = CreateSolidBrush(RGB(120, 120, 120));
+                    HBRUSH hTypeThumbBrush = CreateSolidBrush(g_CurrentTheme.scrollThumb);
                     FillRect(hdc, &typeScrollThumb, hTypeThumbBrush);
                     DeleteObject(hTypeThumbBrush);
                 }

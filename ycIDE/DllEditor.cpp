@@ -1,4 +1,4 @@
-#include "DllEditor.h"
+﻿#include "DllEditor.h"
 #include "EditorContext.h"
 #include "NameValidator.h"
 #include "Theme.h"
@@ -1888,12 +1888,12 @@ void DllEditor::DeleteParameter(int cmdIndex, int paramIndex) {
 void DllEditor::DrawTable(HDC hdc, const RECT& clientRect) {
     Graphics graphics(hdc);
     
-    // 绘制整个编辑器背景（rgb(31, 31, 31)）
-    SolidBrush bgBrush(Color(255, 31, 31, 31));
+    // 绘制整个编辑器背景
+    SolidBrush bgBrush(ColorFromCOLORREF(g_CurrentTheme.editorBg));
     graphics.FillRectangle(&bgBrush, 0, 0, clientRect.right, clientRect.bottom);
     
-    // 绘制左边距背景（行号区域，rgb(37, 37, 38)）
-    SolidBrush lineNumBgBrush(Color(255, 37, 37, 38));
+    // 绘制左边距背景（行号区域）
+    SolidBrush lineNumBgBrush(ColorFromCOLORREF(g_CurrentTheme.lineNumBg));
     RectF lineNumRect(0, 0, (REAL)m_leftMarginWidth, (REAL)clientRect.bottom);
     graphics.FillRectangle(&lineNumBgBrush, lineNumRect);
     
@@ -2046,15 +2046,17 @@ void DllEditor::DrawCommandTable(HDC hdc, int cmdIndex, int& yPos, const RECT& c
     
     Pen gridPen(ColorFromCOLORREF(g_CurrentTheme.grid), 2);  // 使用稍粗的边框
     SolidBrush textBrush(ColorFromCOLORREF(g_CurrentTheme.text));
-    SolidBrush commentBrush(Color(255, 0, 200, 0));  // 备注列：绿色
-    SolidBrush typeBrush(Color(255, 174, 144, 194));  // 类型列：rgb(174, 144, 194)
-    SolidBrush libInfoBrush(Color(255, 238, 121, 121));  // 库文件名和DLL命令名：rgb(238, 121, 121)
-    SolidBrush paramNameBrush(Color(255, 153, 216, 249));  // 参数名：rgb(153, 216, 249)
-    SolidBrush cmdNameBrush(Color(255, 220, 220, 170));  // DLL命令名：rgb(220, 220, 170)
-    SolidBrush cmdHeaderBrush(Color(255, 58, 65, 81));  // 命令表头背景色
-    SolidBrush paramHeaderBrush(Color(255, 56, 56, 48));  // 参数表头背景色
-    SolidBrush bgBrush(Color(255, 31, 31, 31));  // 编辑器背景色
-    SolidBrush rowSelectBrush(Color(100, 51, 153, 255));  // 行选择高亮背景色（半透明蓝色）
+    SolidBrush commentBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxRemark));  // 备注列
+    SolidBrush typeBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxType));  // 类型列
+    SolidBrush libInfoBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxString));  // 库文件名和DLL命令名
+    SolidBrush paramNameBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxVariable));  // 参数名
+    SolidBrush cmdNameBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxFunction));  // DLL命令名
+    SolidBrush cmdHeaderBrush(ColorFromCOLORREF(g_CurrentTheme.tableHeaderBg));  // 命令表头背景色
+    SolidBrush paramHeaderBrush(ColorFromCOLORREF(g_CurrentTheme.tableSubHeaderBg));  // 参数表头背景色
+    SolidBrush bgBrush(ColorFromCOLORREF(g_CurrentTheme.editorBg));  // 编辑器背景色
+    SolidBrush rowSelectBrush(Color(100, GetRValue(g_CurrentTheme.editorSelection), 
+                                     GetGValue(g_CurrentTheme.editorSelection),
+                                     GetBValue(g_CurrentTheme.editorSelection)));  // 行选择高亮背景色
     FontFamily fontFamily(L"Microsoft YaHei");
     Font headerFont(&fontFamily, (REAL)m_fontSize, FontStyleBold, UnitPixel);
     Font dataFont(&fontFamily, (REAL)m_fontSize, FontStyleRegular, UnitPixel);
@@ -2272,7 +2274,7 @@ void DllEditor::DrawCommandTable(HDC hdc, int cmdIndex, int& yPos, const RECT& c
                 int selX = textX + (int)beforeRect.Width;
                 int selWidth = (int)selRect.Width;
                 
-                SolidBrush selBrush(Color(255, 51, 153, 255));  // 选区背景色
+                SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));  // 选区背景色
                 graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
             }
             
@@ -2362,7 +2364,7 @@ void DllEditor::DrawCommandTable(HDC hdc, int cmdIndex, int& yPos, const RECT& c
         int selX = libTextX + (int)beforeRect.Width;
         int selWidth = (int)selRect.Width;
         
-        SolidBrush selBrush(Color(255, 51, 153, 255));  // 选区背景色
+        SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));  // 选区背景色
         graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
     }
     
@@ -2435,7 +2437,7 @@ void DllEditor::DrawCommandTable(HDC hdc, int cmdIndex, int& yPos, const RECT& c
         int selX = dllTextX + (int)beforeRect.Width;
         int selWidth = (int)selRect.Width;
         
-        SolidBrush selBrush(Color(255, 51, 153, 255));  // 选区背景色
+        SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));  // 选区背景色
         graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
     }
     
@@ -2554,7 +2556,7 @@ void DllEditor::DrawCommandTable(HDC hdc, int cmdIndex, int& yPos, const RECT& c
                         int selX = textX + (int)beforeRect.Width;
                         int selWidth = (int)selRect.Width;
                         
-                        SolidBrush selBrush(Color(255, 51, 153, 255));  // 选区背景色
+                        SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));  // 选区背景色
                         graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
                     }
                     
@@ -2613,7 +2615,7 @@ void DllEditor::DrawCellWithCursor(Gdiplus::Graphics& graphics, const std::wstri
         graphics.MeasureString(selection.c_str(), -1, &font, PointF(0, 0), &leftFormat, &measureRect);
         int selWidth = (int)measureRect.Width;
         
-        SolidBrush selBrush(Color(255, 100, 100, 200)); // 选区背景色
+        SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection)); // 选区背景色
         graphics.FillRectangle(&selBrush, selX, y, selWidth, m_rowHeight);
     }
     
@@ -3591,14 +3593,14 @@ static LRESULT CALLBACK DllEditorCustomMenuWndProc(HWND hWnd, UINT message, WPAR
                 HBITMAP memBitmap = CreateCompatibleBitmap(hdc, clientRect.right, clientRect.bottom);
                 HBITMAP oldBitmap = (HBITMAP)SelectObject(memDC, memBitmap);
                 
-                // 颜色定义
-                COLORREF bgColor = RGB(37, 37, 38);
-                COLORREF hoverColor = RGB(4, 57, 94);
-                COLORREF textColor = RGB(204, 204, 204);
-                COLORREF disabledColor = RGB(109, 109, 109);
-                COLORREF shortcutColor = RGB(133, 133, 133);
-                COLORREF separatorColor = RGB(72, 72, 72);
-                COLORREF borderColor = RGB(69, 69, 69);
+                // 颜色定义 - 使用主题色
+                COLORREF bgColor = g_CurrentTheme.popupBg;
+                COLORREF hoverColor = g_CurrentTheme.popupSelection;
+                COLORREF textColor = g_CurrentTheme.popupText;
+                COLORREF disabledColor = g_CurrentTheme.textDim;
+                COLORREF shortcutColor = g_CurrentTheme.textDim;
+                COLORREF separatorColor = g_CurrentTheme.border;
+                COLORREF borderColor = g_CurrentTheme.popupBorder;
                 
                 // 绘制背景
                 HBRUSH bgBrush = CreateSolidBrush(bgColor);
@@ -4539,7 +4541,8 @@ void DllEditor::DrawTypeCompletion(HDC hdc) {
     textColor.SetFromCOLORREF(g_CurrentTheme.text);
     SolidBrush textBrush(textColor);
     
-    Color selBgColor(255, 51, 102, 153);  // 选中项背景色（更明显的蓝色）
+    Color selBgColor;
+    selBgColor.SetFromCOLORREF(g_CurrentTheme.popupSelection);  // 选中项背景色
     SolidBrush selBgBrush(selBgColor);
     
     // 绘制列表项

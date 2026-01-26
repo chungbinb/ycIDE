@@ -23,6 +23,7 @@
 #include <commdlg.h>
 #include <gdiplus.h>
 #include <shlobj.h>
+#include <shellapi.h>
 #include <windowsx.h>
 #include <dwmapi.h>
 #include <commctrl.h>
@@ -56,6 +57,9 @@ const wchar_t szAIChatClass[] = L"AIChatClass";      // AI聊天窗口类
 #define IDC_LABEL_KEY       3010
 #define IDC_BTN_ADD         3011
 #define IDC_BTN_DELETE      3012
+
+// 自定义消息：面板边框拖动时的布局更新（不触发标题栏/工具栏/活动栏重绘）
+#define WM_UPDATE_PANEL_LAYOUT (WM_USER + 300)
 
 // 支持库配置对话框控件ID
 #define IDC_LIBRARY_LIST    4001
@@ -99,20 +103,52 @@ const wchar_t szOutputPanelClass[] = L"OutputPanelClass";
 // 标签栏高度
 const int g_TabBarHeight = 35;
 
+// 活动栏相关 (VS Code风格)
+const int g_ActivityBarWidth = 48;  // 活动栏宽度
+
+// 活动栏按钮ID定义
+#define AB_EXPLORER     200  // 资源管理器
+#define AB_SEARCH       201  // 搜索
+#define AB_SCM          202  // 源代码管理
+#define AB_DEBUG        203  // 运行和调试
+#define AB_EXTENSIONS   204  // 扩展
+#define AB_AI           205  // AI助手
+#define AB_ACCOUNT      206  // 账号
+#define AB_SETTINGS     207  // 设置
+
+// 活动栏按钮结构
+struct ActivityBarButton {
+    int id;                 // 按钮ID
+    std::wstring tooltip;   // 提示文本
+    RECT rect;              // 按钮区域
+    bool selected;          // 是否选中
+};
+std::vector<ActivityBarButton> g_ActivityBarButtons;
+std::vector<ActivityBarButton> g_ActivityBarBottomButtons;  // 底部按钮（账号、设置）
+int g_HoverActivityButton = -1;  // 悬停的活动栏按钮ID (-1表示无)
+int g_ActiveActivityButton = AB_EXPLORER;  // 当前激活的活动栏按钮
+bool g_ExplorerPanelVisible = true;  // 资源管理器面板是否可见
+bool g_AIPanelVisible = true;  // AI面板是否可见
+
 // 分隔条相关
-int g_LeftPanelWidth = 400;  // AI聊天框宽度(默认400)
-int g_SavedLeftPanelWidth = 400;  // 保存收起前的宽度
+int g_LeftPanelWidth = 250;  // 左侧面板宽度(资源管理器，默认250)
+int g_SavedLeftPanelWidth = 250;  // 保存收起前的宽度
 bool g_LeftPanelVisible = true;  // 左侧面板是否可见
-int g_RightPanelWidth = 250; // 右侧面板宽度
+int g_RightPanelWidth = 400; // 右侧面板宽度(AI聊天框，默认400)
+int g_SavedRightPanelWidth = 400;  // 保存收起前的宽度
 const int g_StatusBarHeight = 24;  // 状态栏高度
 bool g_IsDraggingLeftSplitter = false;  // 是否正在拖拽左侧分隔条
+bool g_IsDraggingRightSplitter = false;  // 是否正在拖拽右侧分隔条
 int g_SplitterWidth = 1;  // 分隔条宽度（1像素边框）
-int g_MinLeftPanelWidth = 330;  // AI聊天框最小宽度
+int g_MinLeftPanelWidth = 150;  // 左侧面板最小宽度
+int g_MinRightPanelWidth = 330;  // AI聊天框最小宽度
 bool g_IsHoveringLeftSplitter = false;  // 鼠标是否悬停在左侧分隔条上
+bool g_IsHoveringRightSplitter = false;  // 鼠标是否悬停在右侧分隔条上
 
 // 自绘标题栏相关
 const int g_TitleBarHeight = 32;  // 标题栏高度
-const int g_TotalTopHeight = g_TitleBarHeight;  // 顶部总高度
+const int g_ToolBarHeight = 32;   // 工具栏高度
+const int g_TotalTopHeight = g_TitleBarHeight + g_ToolBarHeight;  // 顶部总高度（标题栏+工具栏）
 bool g_IsMaximized = false;
 bool g_IsDraggingWindow = false;
 POINT g_DragStartPos;
@@ -122,9 +158,44 @@ RECT g_DragStartRect;
 RECT g_CloseButtonRect = {0};
 RECT g_MaxButtonRect = {0};
 RECT g_MinButtonRect = {0};
-int g_HoverButton = 0;  // 0=无, 1=最小化, 2=最大化, 3=关闭, 4=侧边栏切换
+// 标题栏右侧功能图标按钮
+RECT g_ToggleAIButtonRect = {0};      // AI助手显示/隐藏
+RECT g_SwapPanelsButtonRect = {0};    // 左右面板切换
+RECT g_ToggleOutputButtonRect = {0};  // 输出面板显示/隐藏
+RECT g_ToggleSidebarButtonRect = {0}; // 侧边栏显示/隐藏
+int g_HoverButton = 0;  // 0=无, 1=最小化, 2=最大化, 3=关闭, 4=AI, 5=切换, 6=输出, 7=侧边栏
 bool g_IsTrackingMouse = false;  // 是否正在追踪鼠标离开事件
-RECT g_SidebarToggleRect = {0};  // 侧边栏切换按钮区域
+bool g_OutputPanelVisible = false;  // 输出面板是否可见
+bool g_PanelsSwapped = false;  // 资源管理器和AI面板是否已交换位置
+
+// 工具栏相关
+struct ToolBarButton {
+    int id;                 // 按钮ID
+    std::wstring tooltip;   // 提示文本
+    RECT rect;              // 按钮区域
+    bool enabled;           // 是否启用
+    int iconIndex;          // 图标在图片中的索引（从左到右）
+};
+std::vector<ToolBarButton> g_ToolBarButtons;
+Image* g_ToolBarImage = nullptr;  // 工具栏图标图片
+const int g_ToolBarIconSize = 16;  // 每个图标的大小（图片是1376x16，每个图标16x16）
+const int g_ToolBarButtonSize = 24; // 按钮大小（包含边距）
+int g_HoverToolBarButton = -1;  // 悬停的工具栏按钮索引
+
+// 工具栏按钮ID定义
+#define TB_NEW_FILE     100
+#define TB_OPEN_FILE    101
+#define TB_SAVE_FILE    102
+#define TB_SAVE_ALL     103
+#define TB_UNDO         104
+#define TB_REDO         105
+#define TB_CUT          106
+#define TB_COPY         107
+#define TB_PASTE        108
+#define TB_RUN          109
+#define TB_DEBUG        110
+#define TB_STOP         111
+#define TB_BUILD        112
 
 // 菜单项
 struct MenuItem {
@@ -138,6 +209,9 @@ struct MenuItem {
 std::vector<MenuItem> g_MenuItems;
 int g_ActiveMenu = -1;  // 当前激活的菜单
 HWND g_MenuPopupWnd = NULL;  // 菜单弹出窗口
+
+// 动态主题列表
+std::vector<ThemeInfo> g_ThemeList;
 
 // 此代码模块中包含的函数的前向声明:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -224,6 +298,25 @@ void LoadToolboxPosition() {
     if (y + height > workArea.bottom) y = workArea.bottom - height;
     
     SetWindowPos(hToolboxWnd, NULL, x, y, width, height, SWP_NOZORDER);
+}
+
+// 保存面板布局状态
+void SavePanelLayoutState() {
+    std::wstring configPath = GetWindowConfigPath();
+    WritePrivateProfileStringW(L"PanelLayout", L"PanelsSwapped", g_PanelsSwapped ? L"1" : L"0", configPath.c_str());
+    WritePrivateProfileStringW(L"PanelLayout", L"AIPanelVisible", g_AIPanelVisible ? L"1" : L"0", configPath.c_str());
+    WritePrivateProfileStringW(L"PanelLayout", L"LeftPanelVisible", g_LeftPanelVisible ? L"1" : L"0", configPath.c_str());
+    WritePrivateProfileStringW(L"PanelLayout", L"OutputPanelVisible", g_OutputPanelVisible ? L"1" : L"0", configPath.c_str());
+}
+
+// 加载面板布局状态
+void LoadPanelLayoutState() {
+    std::wstring configPath = GetWindowConfigPath();
+    g_PanelsSwapped = GetPrivateProfileIntW(L"PanelLayout", L"PanelsSwapped", 0, configPath.c_str()) != 0;
+    g_AIPanelVisible = GetPrivateProfileIntW(L"PanelLayout", L"AIPanelVisible", 1, configPath.c_str()) != 0;
+    g_LeftPanelVisible = GetPrivateProfileIntW(L"PanelLayout", L"LeftPanelVisible", 1, configPath.c_str()) != 0;
+    g_ExplorerPanelVisible = g_LeftPanelVisible;
+    g_OutputPanelVisible = GetPrivateProfileIntW(L"PanelLayout", L"OutputPanelVisible", 0, configPath.c_str()) != 0;
 }
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -331,13 +424,22 @@ void UpdateMenuItems() {
         {L"类模块", {0}, IDM_INSERT_CLASS_MODULE, false, true, {}}
     };
     
-    // 主题菜单
+    // 主题菜单 - 动态加载主题文件
     MenuItem themeMenu = {L"主题", {0}, IDM_THEME, false, true, {}};
-    themeMenu.subItems = {
-        {L"深色主题", {0}, IDM_THEME_DARK, false, true, {}},
-        {L"浅色主题", {0}, IDM_THEME_LIGHT, false, true, {}},
-        {L"自定义主题...", {0}, IDM_THEME_CUSTOM, false, true, {}}
-    };
+    g_ThemeList = GetAvailableThemes();
+    for (size_t i = 0; i < g_ThemeList.size() && i < 100; ++i) {
+        // 在当前选中的主题前面加上 ✓ 标记
+        std::wstring displayName = g_ThemeList[i].name;
+        if (g_ThemeList[i].filename == g_CurrentThemeFile) {
+            displayName = L"✓ " + displayName;
+        }
+        themeMenu.subItems.push_back({displayName, {0}, IDM_THEME_FIRST + (int)i, false, true, {}});
+    }
+    // 添加分隔线和自定义主题选项
+    if (!g_ThemeList.empty()) {
+        themeMenu.subItems.push_back({L"─────────", {0}, 0, false, false, {}});  // 分隔线（禁用状态）
+    }
+    themeMenu.subItems.push_back({L"打开主题文件夹...", {0}, IDM_THEME_CUSTOM, false, true, {}});
     
     // 视图菜单
     MenuItem viewMenu = {L"视图", {0}, IDM_VIEW, false, true, {}};
@@ -379,10 +481,6 @@ void UpdateMenuItems() {
         menuX += 60;
     }
     
-    // 更新侧边栏切换按钮位置（在所有菜单右边）
-    extern RECT g_SidebarToggleRect;
-    g_SidebarToggleRect = {menuX + 10, 0, menuX + 42, g_TitleBarHeight};
-    
     // 刷新标题栏
     extern HWND hMainWnd;
     if (hMainWnd) {
@@ -390,6 +488,184 @@ void UpdateMenuItems() {
         GetClientRect(hMainWnd, &titleRect);
         titleRect.bottom = g_TitleBarHeight;
         InvalidateRect(hMainWnd, &titleRect, FALSE);
+    }
+}
+
+// 初始化工具栏
+void InitToolBar() {
+    g_ToolBarButtons.clear();
+    
+    // 加载工具栏图标图片
+    if (g_ToolBarImage) {
+        delete g_ToolBarImage;
+        g_ToolBarImage = nullptr;
+    }
+    
+    // 获取exe所在目录
+    wchar_t exePath[MAX_PATH];
+    GetModuleFileNameW(NULL, exePath, MAX_PATH);
+    std::wstring basePath(exePath);
+    size_t lastSlash = basePath.find_last_of(L"\\");
+    if (lastSlash != std::wstring::npos) {
+        basePath = basePath.substr(0, lastSlash);
+    }
+    
+    // 尝试多个可能的路径加载工具栏图片
+    std::vector<std::wstring> tryPaths = {
+        basePath + L"\\img\\ToolBar.png",
+        basePath + L"\\..\\img\\ToolBar.png",
+        basePath + L"\\..\\..\\img\\ToolBar.png"
+    };
+    
+    for (const auto& path : tryPaths) {
+        g_ToolBarImage = Image::FromFile(path.c_str());
+        if (g_ToolBarImage && g_ToolBarImage->GetLastStatus() == Ok) {
+            // 调试信息：输出图片尺寸
+            OutputDebugStringW((L"[ToolBar] 成功加载图片: " + path + L"\n").c_str());
+            OutputDebugStringW((L"[ToolBar] 图片尺寸: " + std::to_wstring(g_ToolBarImage->GetWidth()) + L"x" + std::to_wstring(g_ToolBarImage->GetHeight()) + L"\n").c_str());
+            break;
+        }
+        if (g_ToolBarImage) {
+            delete g_ToolBarImage;
+            g_ToolBarImage = nullptr;
+        }
+    }
+    
+    if (!g_ToolBarImage) {
+        OutputDebugStringW(L"[ToolBar] 警告: 无法加载工具栏图片!\n");
+    }
+    
+    // 定义工具栏按钮（按顺序，图标索引从0开始）
+    struct ToolBarDef {
+        int id;
+        const wchar_t* tooltip;
+        int iconIndex;
+    };
+    
+    ToolBarDef buttons[] = {
+        {TB_NEW_FILE,  L"新建文件", 0},   // 索引0: 新建文件
+        {TB_OPEN_FILE, L"打开文件", 2},   // 索引2: 打开文件夹
+        {TB_SAVE_FILE, L"保存", 4},       // 索引4: 保存
+        {0, nullptr, -1},  // 分隔符
+        {TB_CUT,       L"剪切", 6},       // 索引6: 剪切
+        {TB_COPY,      L"复制", 8},       // 索引8: 复制
+        {TB_PASTE,     L"粘贴", 10},      // 索引10: 粘贴
+        {0, nullptr, -1},  // 分隔符
+        {TB_REDO,      L"重做", 12},      // 索引12: 向前（重做）
+        {TB_UNDO,      L"撤销", 14},      // 索引14: 撤销
+        {0, nullptr, -1},  // 分隔符
+        {TB_BUILD,     L"搜索", 16},      // 索引16: 搜索文件夹
+        {TB_RUN,       L"运行", 18},      // 索引18: 运行
+        {TB_STOP,      L"停止", 20},      // 索引20: 停止
+        {TB_DEBUG,     L"调试", 22},      // 索引22: 下一个图标
+        {100,          L"图标24", 24},    // 索引24
+        {101,          L"图标26", 26},    // 索引26
+        {102,          L"图标28", 28},    // 索引28
+        {103,          L"图标30", 30},    // 索引30
+        {104,          L"图标32", 32},    // 索引32
+        {105,          L"图标34", 34},    // 索引34
+        {106,          L"图标36", 36},    // 索引36
+        {107,          L"图标38", 38},    // 索引38
+        {108,          L"图标40", 40},    // 索引40
+        {109,          L"图标42", 42}     // 索引42
+    };
+    
+    int x = 10;  // 起始X位置
+    int y = g_TitleBarHeight + (g_ToolBarHeight - g_ToolBarButtonSize) / 2;  // 垂直居中
+    
+    for (const auto& btn : buttons) {
+        if (btn.id == 0) {
+            // 分隔符：增加间距
+            x += 8;
+            continue;
+        }
+        
+        ToolBarButton tbBtn;
+        tbBtn.id = btn.id;
+        tbBtn.tooltip = btn.tooltip;
+        tbBtn.enabled = true;
+        tbBtn.iconIndex = btn.iconIndex;
+        tbBtn.rect = {x, y, x + g_ToolBarButtonSize, y + g_ToolBarButtonSize};
+        g_ToolBarButtons.push_back(tbBtn);
+        
+        x += g_ToolBarButtonSize + 2;  // 按钮间隔
+    }
+}
+
+// 初始化活动栏
+void InitActivityBar() {
+    g_ActivityBarButtons.clear();
+    g_ActivityBarBottomButtons.clear();
+    
+    // 定义活动栏主按钮（从上到下）
+    struct ActivityBarDef {
+        int id;
+        const wchar_t* tooltip;
+    };
+    
+    ActivityBarDef topButtons[] = {
+        {AB_EXPLORER,   L"资源管理器 (Ctrl+Shift+E)"},
+        {AB_SEARCH,     L"搜索 (Ctrl+Shift+F)"},
+        {AB_SCM,        L"源代码管理 (Ctrl+Shift+G)"},
+        {AB_DEBUG,      L"运行和调试 (Ctrl+Shift+D)"},
+        {AB_EXTENSIONS, L"扩展 (Ctrl+Shift+X)"}
+        // AI助手按钮已移到标题栏
+    };
+    
+    // 底部按钮（从下到上）
+    ActivityBarDef bottomButtons[] = {
+        {AB_SETTINGS,   L"设置 (Ctrl+,)"},
+        {AB_ACCOUNT,    L"账号"}
+    };
+    
+    int btnSize = 48;  // 按钮大小等于活动栏宽度
+    int y = g_TotalTopHeight;  // 从标题栏+工具栏下面开始
+    
+    for (const auto& btn : topButtons) {
+        ActivityBarButton abBtn;
+        abBtn.id = btn.id;
+        abBtn.tooltip = btn.tooltip;
+        abBtn.selected = (btn.id == g_ActiveActivityButton);
+        abBtn.rect = {0, y, btnSize, y + btnSize};
+        g_ActivityBarButtons.push_back(abBtn);
+        y += btnSize;
+    }
+    
+    // 底部按钮位置会在 WM_SIZE 中动态计算
+    for (const auto& btn : bottomButtons) {
+        ActivityBarButton abBtn;
+        abBtn.id = btn.id;
+        abBtn.tooltip = btn.tooltip;
+        abBtn.selected = false;
+        abBtn.rect = {0, 0, btnSize, btnSize};  // 位置稍后更新
+        g_ActivityBarBottomButtons.push_back(abBtn);
+    }
+}
+
+// 更新活动栏底部按钮位置
+void UpdateActivityBarBottomButtonsPosition(int windowHeight) {
+    int btnSize = 48;
+    int y = windowHeight - g_StatusBarHeight - btnSize;
+    
+    // 获取窗口宽度
+    RECT rc;
+    GetClientRect(hMainWnd, &rc);
+    int windowWidth = rc.right;
+    
+    // 计算活动栏X位置
+    int activityBarX = g_PanelsSwapped ? (windowWidth - g_ActivityBarWidth) : 0;
+    
+    // 从下往上排列底部按钮
+    for (int i = (int)g_ActivityBarBottomButtons.size() - 1; i >= 0; i--) {
+        g_ActivityBarBottomButtons[i].rect = {activityBarX, y, activityBarX + btnSize, y + btnSize};
+        y -= btnSize;
+    }
+    
+    // 同时更新顶部按钮位置
+    y = g_TotalTopHeight;
+    for (auto& btn : g_ActivityBarButtons) {
+        btn.rect = {activityBarX, y, activityBarX + btnSize, y + btnSize};
+        y += btnSize;
     }
 }
 
@@ -442,7 +718,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    int y = (screenHeight - windowHeight) / 2;
    
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, 
-      WS_POPUP | WS_THICKFRAME | WS_MAXIMIZEBOX | WS_MINIMIZEBOX,
+      WS_POPUP | WS_THICKFRAME | WS_MAXIMIZEBOX | WS_MINIMIZEBOX | WS_CLIPCHILDREN,
       x, y, windowWidth, windowHeight, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
@@ -481,13 +757,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 初始化菜单项
             UpdateMenuItems();
             
+            // 初始化工具栏
+            InitToolBar();
+            
+            // 初始化活动栏
+            InitActivityBar();
+            
             // 加载主题配置
             LoadThemeConfig();
             
-            // 1. 左侧: AI 聊天框（使用自定义类）
-            hAIChatWnd = CreateWindowW(szAIChatClass, nullptr,
+            // 1. 左侧: 资源管理器 (自定义类) - 现在在活动栏右边
+            hRightPanelWnd = CreateWindowW(L"ResourceExplorer", nullptr,
                 WS_CHILD | WS_VISIBLE,
-                0, 0, 0, 0, hWnd, (HMENU)1001, hInst, nullptr);
+                0, 0, 0, 0, hWnd, (HMENU)1003, hInst, nullptr);
 
             // 2. 中间区域：标签栏 + 编辑器
             // 2.1 标签栏
@@ -542,11 +824,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             // 加载组件箱保存的位置
             LoadToolboxPosition();
+            
+            // 加载面板布局状态
+            LoadPanelLayoutState();
 
-            // 3. 右侧: 资源管理器 (自定义类)
-            hRightPanelWnd = CreateWindowW(L"ResourceExplorer", nullptr,
+            // 3. 右侧: AI 聊天框（使用自定义类）- 现在在最右边
+            hAIChatWnd = CreateWindowW(szAIChatClass, nullptr,
                 WS_CHILD | WS_VISIBLE,
-                0, 0, 0, 0, hWnd, (HMENU)1003, hInst, nullptr);
+                0, 0, 0, 0, hWnd, (HMENU)1001, hInst, nullptr);
             
             // 4. 底部: 输出面板（带标签切换）
             hOutputWnd = CreateWindowW(szOutputPanelClass, nullptr,
@@ -606,18 +891,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             GetWindowPlacement(hWnd, &wp);
             g_IsMaximized = (wp.showCmd == SW_SHOWMAXIMIZED);
 
-            int leftW = g_LeftPanelVisible ? g_LeftPanelWidth : 0;
-            int rightW = g_RightPanelWidth;
-            int outputH = 150;  // 输出窗口高度
+            // 新布局：活动栏 | 资源管理器 | 编辑器区域 | AI聊天 (或交换时：AI | 编辑器 | 资源管理器 | 活动栏)
+            int activityBarW = g_ActivityBarWidth;  // 活动栏宽度
+            int leftPanelW = g_LeftPanelVisible ? g_LeftPanelWidth : 0;  // 资源管理器宽度
+            int rightPanelW = g_AIPanelVisible ? g_RightPanelWidth : 0;  // AI聊天框宽度
+            int outputH = g_OutputPanelVisible ? 150 : 0;  // 输出窗口高度（根据可见性）
             int topH = g_TotalTopHeight;  // 标题栏+工具栏高度
             int statusH = g_StatusBarHeight;  // 状态栏高度
             
-            // 确保中间区域不为负（窗口之间不留间距，分隔线绘制在窗口上）
-            int centerW = width - leftW - rightW;
+            // 活动栏位置（交换时在右侧）
+            int activityBarX = g_PanelsSwapped ? (width - activityBarW) : 0;
+            
+            // 面板交换时，交换左右面板宽度
+            int effectiveLeftW = g_PanelsSwapped ? rightPanelW : leftPanelW;
+            int effectiveRightW = g_PanelsSwapped ? leftPanelW : rightPanelW;
+            
+            // 计算中间编辑器区域宽度
+            int centerW = width - activityBarW - effectiveLeftW - effectiveRightW;
             if (centerW < 100) {
                 centerW = 100;
-                leftW = width - centerW - rightW;
-                if (leftW < 100) leftW = 100;
             }
             
             // 中间区域可用高度（减去状态栏）
@@ -625,46 +917,67 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 编辑器高度 = 中间总高度 - 输出窗口高度
             int editorH = centerTotalH - outputH;
             if (editorH < 0) editorH = 0;
+            
+            // 更新活动栏底部按钮位置
+            UpdateActivityBarBottomButtonsPosition(height);
 
             // 调整各窗口位置（使用 DeferWindowPos 批量更新，减少闪烁）
             HDWP hdwp = BeginDeferWindowPos(12);
             if (hdwp) {
-                // 左侧面板：在可视化设计模式下显示属性窗口，否则显示AI聊天窗口
-                if (g_IsVisualDesignerActive) {
-                    // 可视化设计模式：隐藏AI聊天，显示属性窗口
+                // 面板交换逻辑
+                if (g_PanelsSwapped) {
+                    // 交换模式：AI在最左侧，活动栏在最右侧
+                    // 布局：AI | 编辑器 | 资源管理器 | 活动栏
+                    
+                    // 左侧：AI聊天面板（从x=0开始）
                     if (hAIChatWnd) {
-                        hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 0, topH, 0, centerTotalH, 
-                            SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
-                    }
-                    if (hPropertyGridWnd) {
-                        if (g_LeftPanelVisible) {
-                            hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, 0, topH, leftW, centerTotalH, 
+                        if (g_AIPanelVisible) {
+                            hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 
+                                0, topH, effectiveLeftW, centerTotalH, 
                                 SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
                         } else {
-                            hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, 0, topH, 0, centerTotalH, 
+                            hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 
+                                0, topH, 0, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                        }
+                    }
+                    // 右侧：资源管理器（在活动栏左边）
+                    int rightPanelLeft = width - activityBarW - effectiveRightW;
+                    if (hRightPanelWnd) {
+                        if (g_LeftPanelVisible) {
+                            hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, 
+                                rightPanelLeft, topH, effectiveRightW, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                        } else {
+                            hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, 
+                                rightPanelLeft, topH, 0, centerTotalH, 
                                 SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
                         }
                     }
                 } else {
-                    // 正常模式：显示AI聊天，隐藏属性窗口
-                    if (hPropertyGridWnd) {
-                        hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, 0, topH, 0, centerTotalH, 
-                            SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
-                    }
-                    if (hAIChatWnd) {
+                    // 正常模式：活动栏在最左侧，AI在最右侧
+                    // 布局：活动栏 | 资源管理器 | 编辑器 | AI
+                    
+                    // 左侧面板（资源管理器）- 在活动栏右边
+                    if (hRightPanelWnd) {
                         if (g_LeftPanelVisible) {
-                            hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 0, topH, leftW, centerTotalH, 
+                            hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, 
+                                activityBarW, topH, effectiveLeftW, centerTotalH, 
                                 SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
                         } else {
-                            hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, 0, topH, 0, centerTotalH, 
+                            hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, 
+                                activityBarW, topH, 0, centerTotalH, 
                                 SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
                         }
                     }
                 }
                 
+                // 计算编辑器区域起始X坐标
+                int editorLeft = g_PanelsSwapped ? effectiveLeftW : (activityBarW + effectiveLeftW);
+                
                 // 中间上部：标签栏
                 if (hTabBarWnd)
-                    hdwp = DeferWindowPos(hdwp, hTabBarWnd, NULL, leftW, topH, centerW, g_TabBarHeight,
+                    hdwp = DeferWindowPos(hdwp, hTabBarWnd, NULL, editorLeft, topH, centerW, g_TabBarHeight,
                         SWP_NOZORDER | SWP_NOACTIVATE);
                 
                 // 中间上部：编辑器（在标签栏下方）
@@ -672,16 +985,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 int editorHeight = editorH - g_TabBarHeight;
                 
                 if (hEditorWnd) 
-                    hdwp = DeferWindowPos(hdwp, hEditorWnd, NULL, leftW, editorTop, centerW, editorHeight, 
+                    hdwp = DeferWindowPos(hdwp, hEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight, 
                         SWP_NOZORDER | SWP_NOACTIVATE);
                 
                 if (hEllEditorWnd)
-                    hdwp = DeferWindowPos(hdwp, hEllEditorWnd, NULL, leftW, editorTop, centerW, editorHeight,
+                    hdwp = DeferWindowPos(hdwp, hEllEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight,
                         SWP_NOZORDER | SWP_NOACTIVATE);
                 
                 // 可视化设计器
                 if (hVisualDesignerWnd)
-                    hdwp = DeferWindowPos(hdwp, hVisualDesignerWnd, NULL, leftW, editorTop, centerW, editorHeight,
+                    hdwp = DeferWindowPos(hdwp, hVisualDesignerWnd, NULL, editorLeft, editorTop, centerW, editorHeight,
                         SWP_NOZORDER | SWP_NOACTIVATE);
                 
                 // 中间：欢迎页（占据整个编辑器区域）
@@ -692,26 +1005,65 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     
                     if (hasOpenFiles) {
                         // 有文件打开，确保欢迎页隐藏
-                        hdwp = DeferWindowPos(hdwp, hWelcomePageWnd, NULL, leftW, editorTop, centerW, editorHeight,
+                        hdwp = DeferWindowPos(hdwp, hWelcomePageWnd, NULL, editorLeft, editorTop, centerW, editorHeight,
                             SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
                     } else {
                         // 没有文件打开，显示欢迎页
-                        hdwp = DeferWindowPos(hdwp, hWelcomePageWnd, HWND_TOP, leftW, editorTop, centerW, editorHeight,
+                        hdwp = DeferWindowPos(hdwp, hWelcomePageWnd, HWND_TOP, editorLeft, editorTop, centerW, editorHeight,
                             SWP_NOACTIVATE | SWP_SHOWWINDOW);
                     }
                 }
                 
                 // 中间下部：输出窗口
-                if (hOutputWnd) 
-                    hdwp = DeferWindowPos(hdwp, hOutputWnd, NULL, leftW, topH + editorH, centerW, outputH, 
-                        SWP_NOZORDER | SWP_NOACTIVATE);
-                // 右侧资源管理器占满整个高度（不包括状态栏）
-                if (hRightPanelWnd) 
-                    hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, leftW + centerW, topH, rightW, centerTotalH, 
-                        SWP_NOZORDER | SWP_NOACTIVATE);
-                // 底部状态栏横跨整个宽度（左边留10px边距）
+                if (hOutputWnd) {
+                    if (g_OutputPanelVisible) {
+                        hdwp = DeferWindowPos(hdwp, hOutputWnd, NULL, editorLeft, topH + editorH, centerW, outputH, 
+                            SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                    } else {
+                        hdwp = DeferWindowPos(hdwp, hOutputWnd, NULL, editorLeft, topH + editorH, centerW, 0, 
+                            SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                    }
+                }
+                
+                // 右侧面板（AI聊天或属性窗口）- 只在非交换模式下处理
+                if (!g_PanelsSwapped) {
+                    int rightPanelLeft = width - effectiveRightW;
+                    if (g_IsVisualDesignerActive) {
+                        // 可视化设计模式：隐藏AI聊天，显示属性窗口
+                        if (hAIChatWnd) {
+                            hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                        }
+                        if (hPropertyGridWnd) {
+                            if (g_AIPanelVisible) {
+                                hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, rightPanelLeft, topH, effectiveRightW, centerTotalH, 
+                                    SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                            } else {
+                                hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
+                                    SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                            }
+                        }
+                    } else {
+                        // 正常模式：显示AI聊天，隐藏属性窗口
+                        if (hPropertyGridWnd) {
+                            hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                        }
+                        if (hAIChatWnd) {
+                            if (g_AIPanelVisible) {
+                                hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, rightPanelLeft, topH, effectiveRightW, centerTotalH, 
+                                    SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                            } else {
+                                hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
+                                    SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
+                            }
+                        }
+                    }
+                }
+                
+                // 底部状态栏横跨整个宽度（从最左边开始）
                 if (hStatusBar) 
-                    hdwp = DeferWindowPos(hdwp, hStatusBar, NULL, 10, height - statusH, width - 10, statusH, 
+                    hdwp = DeferWindowPos(hdwp, hStatusBar, NULL, 0, height - statusH, width, statusH, 
                         SWP_NOZORDER | SWP_NOACTIVATE);
                 
                 if (hdwp) EndDeferWindowPos(hdwp);
@@ -719,10 +1071,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             // 更新标题栏按钮位置
             int btnWidth = 46;
+            int iconBtnWidth = 32;  // 功能图标按钮宽度（较小）
             int btnHeight = g_TitleBarHeight;
             g_CloseButtonRect = {width - btnWidth, 0, width, btnHeight};
             g_MaxButtonRect = {width - btnWidth * 2, 0, width - btnWidth, btnHeight};
             g_MinButtonRect = {width - btnWidth * 3, 0, width - btnWidth * 2, btnHeight};
+            // 功能图标按钮（从右到左：侧边栏、输出、切换、AI）
+            int iconStartX = width - btnWidth * 3 - iconBtnWidth * 4 - 8;  // 在最小化按钮左边留8px间隙
+            g_ToggleSidebarButtonRect = {iconStartX + iconBtnWidth * 3, 0, iconStartX + iconBtnWidth * 4, btnHeight};
+            g_ToggleOutputButtonRect = {iconStartX + iconBtnWidth * 2, 0, iconStartX + iconBtnWidth * 3, btnHeight};
+            g_SwapPanelsButtonRect = {iconStartX + iconBtnWidth, 0, iconStartX + iconBtnWidth * 2, btnHeight};
+            g_ToggleAIButtonRect = {iconStartX, 0, iconStartX + iconBtnWidth, btnHeight};
             
             // 更新菜单项位置
             int menuX = 50;  // 从标题后开始
@@ -731,12 +1090,102 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 menuX += 60;
             }
             
-            // 更新侧边栏切换按钮位置（在菜单右边）
-            g_SidebarToggleRect = {menuX + 10, 0, menuX + 42, g_TitleBarHeight};
-            
-            InvalidateRect(hWnd, NULL, TRUE);
+            // 只在窗口真正调整大小时才需要完全重绘
+            // 面板拖动只改变子窗口布局，不需要重绘标题栏等固定区域
+            static int lastWidth = 0, lastHeight = 0;
+            if (width != lastWidth || height != lastHeight) {
+                lastWidth = width;
+                lastHeight = height;
+                InvalidateRect(hWnd, NULL, TRUE);
+            }
         }
         break;
+    
+    // 面板边框拖动时的布局更新（只更新面板相关窗口，不重绘标题栏/工具栏/活动栏）
+    case WM_UPDATE_PANEL_LAYOUT:
+        {
+            // 清除消息队列中多余的 WM_UPDATE_PANEL_LAYOUT 消息，只处理最新的
+            MSG msg;
+            while (PeekMessage(&msg, hWnd, WM_UPDATE_PANEL_LAYOUT, WM_UPDATE_PANEL_LAYOUT, PM_REMOVE)) {
+                // 丢弃重复的消息
+            }
+            
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            int width = rect.right;
+            int height = rect.bottom;
+            
+            int activityBarW = g_ActivityBarWidth;
+            int leftPanelW = g_LeftPanelVisible ? g_LeftPanelWidth : 0;
+            int rightPanelW = g_AIPanelVisible ? g_RightPanelWidth : 0;
+            int outputH = g_OutputPanelVisible ? 150 : 0;
+            int topH = g_TotalTopHeight;
+            int statusH = g_StatusBarHeight;
+            
+            int effectiveLeftW = g_PanelsSwapped ? rightPanelW : leftPanelW;
+            int effectiveRightW = g_PanelsSwapped ? leftPanelW : rightPanelW;
+            
+            int centerW = width - activityBarW - effectiveLeftW - effectiveRightW;
+            if (centerW < 100) centerW = 100;
+            
+            int centerTotalH = height - topH - statusH;
+            int editorH = centerTotalH - outputH;
+            if (editorH < 0) editorH = 0;
+            
+            // 计算编辑器区域起始X坐标
+            int editorLeft = g_PanelsSwapped ? effectiveLeftW : (activityBarW + effectiveLeftW);
+            int editorTop = topH + g_TabBarHeight;
+            int editorHeight = editorH - g_TabBarHeight;
+            
+            // 锁定窗口更新，避免中间状态显示
+            LockWindowUpdate(hWnd);
+            
+            // 使用 SetWindowPos 直接更新各窗口，添加 SWP_NOCOPYBITS 避免闪烁
+            UINT swpFlags = SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOCOPYBITS;
+            
+            // 资源管理器
+            if (hRightPanelWnd) {
+                int panelLeft = g_PanelsSwapped ? (width - activityBarW - effectiveRightW) : activityBarW;
+                int panelWidth = g_PanelsSwapped ? effectiveRightW : effectiveLeftW;
+                SetWindowPos(hRightPanelWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
+            }
+            
+            // AI聊天面板
+            if (hAIChatWnd) {
+                int panelLeft = g_PanelsSwapped ? 0 : (width - effectiveRightW);
+                int panelWidth = g_PanelsSwapped ? effectiveLeftW : effectiveRightW;
+                SetWindowPos(hAIChatWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
+            }
+            
+            // 标签栏 - 位置和大小改变时不复制旧内容
+            if (hTabBarWnd)
+                SetWindowPos(hTabBarWnd, NULL, editorLeft, topH, centerW, g_TabBarHeight, swpFlags);
+            
+            // 编辑器
+            if (hEditorWnd)
+                SetWindowPos(hEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
+            
+            // ELL编辑器
+            if (hEllEditorWnd)
+                SetWindowPos(hEllEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
+            
+            // 可视化设计器
+            if (hVisualDesignerWnd)
+                SetWindowPos(hVisualDesignerWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
+            
+            // 欢迎页
+            if (hWelcomePageWnd)
+                SetWindowPos(hWelcomePageWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
+            
+            // 输出窗口
+            if (hOutputWnd)
+                SetWindowPos(hOutputWnd, NULL, editorLeft, topH + editorH, centerW, outputH, swpFlags);
+            
+            // 解锁窗口更新
+            LockWindowUpdate(NULL);
+        }
+        break;
+        
     case WM_COMMAND:
         {
             int wmId = LOWORD(wParam);
@@ -1203,47 +1652,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case IDM_THEME_DARK:
-                SetTheme(true);
-                SaveThemeConfig();
-                // 销毁旧的菜单弹出窗口，下次点击时会重新创建
-                if (g_MenuPopupWnd) {
-                    DestroyWindow(g_MenuPopupWnd);
-                    g_MenuPopupWnd = NULL;
-                }
-                InvalidateRect(hWnd, NULL, TRUE);
-                InvalidateRect(hAIChatWnd, NULL, TRUE);
-                InvalidateRect(hEditorWnd, NULL, TRUE);
-                InvalidateRect(hRightPanelWnd, NULL, TRUE);
-                InvalidateRect(hOutputWnd, NULL, TRUE);
-                break;
             case IDM_THEME_LIGHT:
-                SetTheme(false);
-                SaveThemeConfig();
-                // 销毁旧的菜单弹出窗口，下次点击时会重新创建
-                if (g_MenuPopupWnd) {
-                    DestroyWindow(g_MenuPopupWnd);
-                    g_MenuPopupWnd = NULL;
-                }
-                InvalidateRect(hWnd, NULL, TRUE);
-                InvalidateRect(hAIChatWnd, NULL, TRUE);
-                InvalidateRect(hEditorWnd, NULL, TRUE);
-                InvalidateRect(hRightPanelWnd, NULL, TRUE);
-                InvalidateRect(hOutputWnd, NULL, TRUE);
+                // 旧的固定主题处理（保留兼容性，但实际不再使用）
                 break;
             case IDM_THEME_CUSTOM:
-                MessageBoxW(hWnd, 
-                    L"主题配置功能正在开发中...\n\n"
-                    L"当前可用功能：\n"
-                    L"✓ 深色主题（默认）\n"
-                    L"✓ 浅色主题\n\n"
-                    L"即将推出：\n"
-                    L"• 自定义标题栏颜色\n"
-                    L"• 自定义菜单文本色\n"
-                    L"• 自定义代码编辑器配色\n"
-                    L"• 自定义AI聊天气泡颜色\n"
-                    L"• 自定义语法高亮配色\n\n"
-                    L"敬请期待！",
-                    L"自定义主题配置", MB_OK | MB_ICONINFORMATION);
+                // 打开主题文件夹
+                {
+                    wchar_t exePath[MAX_PATH];
+                    GetModuleFileNameW(NULL, exePath, MAX_PATH);
+                    std::wstring themesFolder(exePath);
+                    size_t pos = themesFolder.find_last_of(L"\\");
+                    if (pos != std::wstring::npos) {
+                        themesFolder = themesFolder.substr(0, pos + 1) + L"themes";
+                    }
+                    // 确保文件夹存在
+                    CreateDirectoryW(themesFolder.c_str(), NULL);
+                    // 打开文件夹
+                    ShellExecuteW(NULL, L"explore", themesFolder.c_str(), NULL, NULL, SW_SHOWNORMAL);
+                }
                 break;
             case IDM_SYSTEM_CONFIG:
                 MessageBoxW(hWnd, L"系统配置功能正在开发中...", L"系统配置", MB_OK | MB_ICONINFORMATION);
@@ -2011,6 +2437,34 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 SendMessage(hWnd, WM_COMMAND, IDM_OPEN_FOLDER, 0);
                 break;
             default:
+                // 处理动态主题菜单项
+                if (wmId >= IDM_THEME_FIRST && wmId <= IDM_THEME_LAST) {
+                    int themeIndex = wmId - IDM_THEME_FIRST;
+                    if (themeIndex >= 0 && themeIndex < (int)g_ThemeList.size()) {
+                        // 加载选中的主题
+                        SetThemeByFile(g_ThemeList[themeIndex].filename);
+                        SaveThemeConfig();
+                        
+                        // 更新菜单项（重新构建菜单以更新选中标记）
+                        UpdateMenuItems();
+                        
+                        // 销毁旧的菜单弹出窗口，下次点击时会重新创建
+                        if (g_MenuPopupWnd) {
+                            DestroyWindow(g_MenuPopupWnd);
+                            g_MenuPopupWnd = NULL;
+                        }
+                        
+                        // 刷新所有窗口
+                        InvalidateRect(hWnd, NULL, TRUE);
+                        InvalidateRect(hAIChatWnd, NULL, TRUE);
+                        InvalidateRect(hEditorWnd, NULL, TRUE);
+                        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+                        InvalidateRect(hOutputWnd, NULL, TRUE);
+                        if (hTabBarWnd) InvalidateRect(hTabBarWnd, NULL, TRUE);
+                        if (hWelcomePageWnd) InvalidateRect(hWelcomePageWnd, NULL, TRUE);
+                    }
+                    break;
+                }
                 return DefWindowProc(hWnd, message, wParam, lParam);
             }
         }
@@ -2021,6 +2475,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CTLCOLORLISTBOX:
         {
             HDC hdc = (HDC)wParam;
+            HWND hCtrl = (HWND)lParam;
+            
+            // 状态栏使用主题背景色
+            if (hCtrl == hStatusBar) {
+                SetTextColor(hdc, g_CurrentTheme.statusBarText);
+                SetBkColor(hdc, g_CurrentTheme.statusBarBg);
+                return (LRESULT)g_CurrentTheme.hStatusBarBrush;
+            }
+            
             SetTextColor(hdc, g_CurrentTheme.text);
             SetBkColor(hdc, g_CurrentTheme.bg);
             return (LRESULT)g_CurrentTheme.hBgBrush;
@@ -2071,22 +2534,194 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 return 0;
             }
             
+            // 检查功能图标按钮点击
+            if (PtInRect(&g_ToggleAIButtonRect, {x, y})) {
+                // 切换AI面板显示/隐藏
+                g_AIPanelVisible = !g_AIPanelVisible;
+                // 触发窗口大小调整
+                RECT rc;
+                GetClientRect(hWnd, &rc);
+                SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rc.right, rc.bottom));
+                InvalidateRect(hWnd, NULL, TRUE);
+                return 0;
+            }
+            if (PtInRect(&g_SwapPanelsButtonRect, {x, y})) {
+                // 交换资源管理器和AI面板的位置
+                g_PanelsSwapped = !g_PanelsSwapped;
+                // 触发窗口大小调整以重新布局
+                RECT rc;
+                GetClientRect(hWnd, &rc);
+                SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rc.right, rc.bottom));
+                
+                // 强制AI窗口重新布局其子窗口
+                if (hAIChatWnd && IsWindowVisible(hAIChatWnd)) {
+                    RECT aiRect;
+                    GetClientRect(hAIChatWnd, &aiRect);
+                    SendMessage(hAIChatWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(aiRect.right, aiRect.bottom));
+                    RedrawWindow(hAIChatWnd, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW | RDW_ALLCHILDREN);
+                }
+                
+                InvalidateRect(hWnd, NULL, TRUE);
+                return 0;
+            }
+            if (PtInRect(&g_ToggleOutputButtonRect, {x, y})) {
+                // 切换输出面板显示/隐藏
+                g_OutputPanelVisible = !g_OutputPanelVisible;
+                // TODO: 实际显示/隐藏输出面板
+                // 触发窗口大小调整
+                RECT rc;
+                GetClientRect(hWnd, &rc);
+                SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rc.right, rc.bottom));
+                InvalidateRect(hWnd, NULL, TRUE);
+                return 0;
+            }
+            if (PtInRect(&g_ToggleSidebarButtonRect, {x, y})) {
+                // 切换侧边栏显示/隐藏
+                g_ExplorerPanelVisible = !g_ExplorerPanelVisible;
+                g_LeftPanelVisible = g_ExplorerPanelVisible;
+                // 触发窗口大小调整
+                RECT rc;
+                GetClientRect(hWnd, &rc);
+                SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rc.right, rc.bottom));
+                InvalidateRect(hWnd, NULL, TRUE);
+                return 0;
+            }
+            
             // 检查侧边栏切换按钮点击
             POINT ptClick = {x, y};
-            if (PtInRect(&g_SidebarToggleRect, ptClick)) {
-                g_LeftPanelVisible = !g_LeftPanelVisible;
-                if (g_LeftPanelVisible) {
-                    // 恢复之前保存的宽度
-                    g_LeftPanelWidth = g_SavedLeftPanelWidth;
+            RECT clientRect;
+            GetClientRect(hWnd, &clientRect);
+            
+            // 检查活动栏按钮点击（根据面板交换状态判断位置）
+            bool inActivityBarArea = false;
+            if (y >= g_TotalTopHeight && y < clientRect.bottom - g_StatusBarHeight) {
+                if (g_PanelsSwapped) {
+                    // 交换模式：活动栏在右侧
+                    inActivityBarArea = (x >= clientRect.right - g_ActivityBarWidth);
                 } else {
-                    // 保存当前宽度
-                    g_SavedLeftPanelWidth = g_LeftPanelWidth;
+                    // 正常模式：活动栏在左侧
+                    inActivityBarArea = (x < g_ActivityBarWidth);
                 }
-                // 触发窗口重新布局
-                RECT rect;
-                GetClientRect(hWnd, &rect);
-                SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rect.right, rect.bottom));
-                return 0;
+            }
+            
+            if (inActivityBarArea) {
+                // 检查顶部按钮
+                for (const auto& btn : g_ActivityBarButtons) {
+                    if (PtInRect(&btn.rect, ptClick)) {
+                        // 处理活动栏按钮点击
+                        switch (btn.id) {
+                            case AB_EXPLORER:
+                                // 切换资源管理器面板
+                                if (g_ActiveActivityButton == AB_EXPLORER) {
+                                    g_LeftPanelVisible = !g_LeftPanelVisible;
+                                } else {
+                                    g_ActiveActivityButton = AB_EXPLORER;
+                                    g_LeftPanelVisible = true;
+                                }
+                                break;
+                            case AB_SEARCH:
+                                g_ActiveActivityButton = AB_SEARCH;
+                                // TODO: 显示搜索面板
+                                MessageBoxW(hWnd, L"搜索功能正在开发中...", L"提示", MB_OK | MB_ICONINFORMATION);
+                                break;
+                            case AB_SCM:
+                                g_ActiveActivityButton = AB_SCM;
+                                // TODO: 显示源代码管理面板
+                                MessageBoxW(hWnd, L"源代码管理功能正在开发中...", L"提示", MB_OK | MB_ICONINFORMATION);
+                                break;
+                            case AB_DEBUG:
+                                g_ActiveActivityButton = AB_DEBUG;
+                                // TODO: 显示调试面板
+                                MessageBoxW(hWnd, L"运行和调试功能正在开发中...", L"提示", MB_OK | MB_ICONINFORMATION);
+                                break;
+                            case AB_EXTENSIONS:
+                                g_ActiveActivityButton = AB_EXTENSIONS;
+                                // TODO: 显示扩展面板
+                                MessageBoxW(hWnd, L"扩展功能正在开发中...", L"提示", MB_OK | MB_ICONINFORMATION);
+                                break;
+                            // AB_AI 已移到标题栏按钮
+                        }
+                        
+                        // 更新按钮选中状态
+                        for (auto& b : g_ActivityBarButtons) {
+                            b.selected = (b.id == g_ActiveActivityButton);
+                        }
+                        
+                        // 触发窗口重新布局
+                        RECT rect;
+                        GetClientRect(hWnd, &rect);
+                        SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rect.right, rect.bottom));
+                        InvalidateRect(hWnd, NULL, TRUE);
+                        return 0;
+                    }
+                }
+                
+                // 检查底部按钮
+                for (const auto& btn : g_ActivityBarBottomButtons) {
+                    if (PtInRect(&btn.rect, ptClick)) {
+                        switch (btn.id) {
+                            case AB_ACCOUNT:
+                                MessageBoxW(hWnd, L"账号功能正在开发中...", L"提示", MB_OK | MB_ICONINFORMATION);
+                                break;
+                            case AB_SETTINGS:
+                                // 打开设置
+                                SendMessage(hWnd, WM_COMMAND, IDM_SYSTEM_CONFIG, 0);
+                                break;
+                        }
+                        return 0;
+                    }
+                }
+            }
+            
+            // 检查工具栏按钮点击
+            if (y >= g_TitleBarHeight && y < g_TitleBarHeight + g_ToolBarHeight) {
+                for (size_t i = 0; i < g_ToolBarButtons.size(); i++) {
+                    if (PtInRect(&g_ToolBarButtons[i].rect, {x, y})) {
+                        // 执行工具栏按钮对应的操作
+                        switch (g_ToolBarButtons[i].id) {
+                            case TB_NEW_FILE:
+                                SendMessage(hWnd, WM_COMMAND, ID_FILE_NEW, 0);
+                                break;
+                            case TB_OPEN_FILE:
+                                SendMessage(hWnd, WM_COMMAND, ID_FILE_OPEN, 0);
+                                break;
+                            case TB_SAVE_FILE:
+                                SendMessage(hWnd, WM_COMMAND, ID_FILE_SAVE, 0);
+                                break;
+                            case TB_SAVE_ALL:
+                                SendMessage(hWnd, WM_COMMAND, ID_FILE_SAVEALL, 0);
+                                break;
+                            case TB_UNDO:
+                                SendMessage(hWnd, WM_COMMAND, ID_EDIT_UNDO, 0);
+                                break;
+                            case TB_REDO:
+                                SendMessage(hWnd, WM_COMMAND, ID_EDIT_REDO, 0);
+                                break;
+                            case TB_CUT:
+                                SendMessage(hWnd, WM_COMMAND, ID_EDIT_CUT, 0);
+                                break;
+                            case TB_COPY:
+                                SendMessage(hWnd, WM_COMMAND, ID_EDIT_COPY, 0);
+                                break;
+                            case TB_PASTE:
+                                SendMessage(hWnd, WM_COMMAND, ID_EDIT_PASTE, 0);
+                                break;
+                            case TB_RUN:
+                                SendMessage(hWnd, WM_COMMAND, ID_BUILD_RUN, 0);
+                                break;
+                            case TB_DEBUG:
+                                SendMessage(hWnd, WM_COMMAND, ID_BUILD_DEBUG, 0);
+                                break;
+                            case TB_STOP:
+                                SendMessage(hWnd, WM_COMMAND, ID_BUILD_STOP, 0);
+                                break;
+                            case TB_BUILD:
+                                SendMessage(hWnd, WM_COMMAND, ID_BUILD_COMPILE, 0);
+                                break;
+                        }
+                        return 0;
+                    }
+                }
             }
             
             // 检查菜单点击（只在标题栏区域）
@@ -2197,7 +2832,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 if (PtInRect(&g_CloseButtonRect, ptHover)) g_HoverButton = 3;
                 else if (PtInRect(&g_MaxButtonRect, ptHover)) g_HoverButton = 2;
                 else if (PtInRect(&g_MinButtonRect, ptHover)) g_HoverButton = 1;
-                else if (PtInRect(&g_SidebarToggleRect, ptHover)) g_HoverButton = 4;
+                else if (PtInRect(&g_ToggleAIButtonRect, ptHover)) g_HoverButton = 4;
+                else if (PtInRect(&g_SwapPanelsButtonRect, ptHover)) g_HoverButton = 5;
+                else if (PtInRect(&g_ToggleOutputButtonRect, ptHover)) g_HoverButton = 6;
+                else if (PtInRect(&g_ToggleSidebarButtonRect, ptHover)) g_HoverButton = 7;
             }
             
             // 只在悬停状态改变时才重绘
@@ -2208,6 +2846,72 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 titleRect.bottom = g_TitleBarHeight;
                 InvalidateRect(hWnd, &titleRect, FALSE);
             }
+            
+            // 检查工具栏按钮悬停
+            int oldToolBarHover = g_HoverToolBarButton;
+            g_HoverToolBarButton = -1;
+            if (y >= g_TitleBarHeight && y < g_TitleBarHeight + g_ToolBarHeight) {
+                POINT pt = {x, y};
+                for (size_t i = 0; i < g_ToolBarButtons.size(); i++) {
+                    if (PtInRect(&g_ToolBarButtons[i].rect, pt)) {
+                        g_HoverToolBarButton = (int)i;
+                        break;
+                    }
+                }
+            }
+            
+            if (oldToolBarHover != g_HoverToolBarButton) {
+                // 重绘工具栏区域
+                RECT toolBarRect = {0, g_TitleBarHeight, 0, g_TitleBarHeight + g_ToolBarHeight};
+                GetClientRect(hWnd, &toolBarRect);
+                toolBarRect.top = g_TitleBarHeight;
+                toolBarRect.bottom = g_TitleBarHeight + g_ToolBarHeight;
+                InvalidateRect(hWnd, &toolBarRect, FALSE);
+            }
+            
+            // 检查活动栏按钮悬停（根据面板交换状态判断位置）
+            int oldActivityHover = g_HoverActivityButton;
+            g_HoverActivityButton = -1;
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            
+            bool inActivityBarHoverArea = false;
+            if (y >= g_TotalTopHeight && y < rect.bottom - g_StatusBarHeight) {
+                if (g_PanelsSwapped) {
+                    // 交换模式：活动栏在右侧
+                    inActivityBarHoverArea = (x >= rect.right - g_ActivityBarWidth);
+                } else {
+                    // 正常模式：活动栏在左侧
+                    inActivityBarHoverArea = (x < g_ActivityBarWidth);
+                }
+            }
+            
+            if (inActivityBarHoverArea) {
+                POINT pt = {x, y};
+                // 检查顶部按钮
+                for (const auto& btn : g_ActivityBarButtons) {
+                    if (PtInRect(&btn.rect, pt)) {
+                        g_HoverActivityButton = btn.id;
+                        break;
+                    }
+                }
+                // 检查底部按钮
+                if (g_HoverActivityButton == -1) {
+                    for (const auto& btn : g_ActivityBarBottomButtons) {
+                        if (PtInRect(&btn.rect, pt)) {
+                            g_HoverActivityButton = btn.id;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if (oldActivityHover != g_HoverActivityButton) {
+                // 重绘活动栏区域（根据位置计算）
+                int activityBarX = g_PanelsSwapped ? (rect.right - g_ActivityBarWidth) : 0;
+                RECT activityRect = {activityBarX, g_TotalTopHeight, activityBarX + g_ActivityBarWidth, rect.bottom - g_StatusBarHeight};
+                InvalidateRect(hWnd, &activityRect, FALSE);
+            }
         }
         return 0;
         
@@ -2217,6 +2921,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             g_IsTrackingMouse = false;
             
             bool needRepaint = false;
+            bool needToolBarRepaint = false;
+            bool needActivityBarRepaint = false;
             
             // 清除按钮悬停状态
             if (g_HoverButton != 0) {
@@ -2232,11 +2938,40 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 }
             }
             
+            // 清除工具栏按钮悬停状态
+            if (g_HoverToolBarButton != -1) {
+                g_HoverToolBarButton = -1;
+                needToolBarRepaint = true;
+            }
+            
+            // 清除活动栏按钮悬停状态
+            if (g_HoverActivityButton != -1) {
+                g_HoverActivityButton = -1;
+                needActivityBarRepaint = true;
+            }
+            
             if (needRepaint) {
                 RECT titleRect = {0, 0, 0, g_TitleBarHeight};
                 GetClientRect(hWnd, &titleRect);
                 titleRect.bottom = g_TitleBarHeight;
                 InvalidateRect(hWnd, &titleRect, FALSE);
+            }
+            
+            if (needToolBarRepaint) {
+                RECT toolBarRect = {0, g_TitleBarHeight, 0, g_TitleBarHeight + g_ToolBarHeight};
+                GetClientRect(hWnd, &toolBarRect);
+                toolBarRect.top = g_TitleBarHeight;
+                toolBarRect.bottom = g_TitleBarHeight + g_ToolBarHeight;
+                InvalidateRect(hWnd, &toolBarRect, FALSE);
+            }
+            
+            if (needActivityBarRepaint) {
+                RECT rect;
+                GetClientRect(hWnd, &rect);
+                // 根据面板交换状态计算活动栏位置
+                int activityBarX = g_PanelsSwapped ? (rect.right - g_ActivityBarWidth) : 0;
+                RECT activityRect = {activityBarX, g_TotalTopHeight, activityBarX + g_ActivityBarWidth, rect.bottom - g_StatusBarHeight};
+                InvalidateRect(hWnd, &activityRect, FALSE);
             }
         }
         return 0;
@@ -2320,9 +3055,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             // 边框调整大小（优先级最高）
             const int borderSize = 5;
-            // 当AI窗口隐藏时，左边缘可以调整窗口大小（扩大到8像素更容易抓取）
-            const int leftBorderSize = g_LeftPanelVisible ? 0 : 8;
-            bool onLeft = pt.x < leftBorderSize;
+            // 左右边缘始终可以调整窗口大小
+            bool onLeft = pt.x < borderSize;
             bool onRight = pt.x > rect.right - borderSize;
             bool onTop = pt.y < borderSize;
             bool onBottom = pt.y > rect.bottom - borderSize;
@@ -2347,12 +3081,37 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 }
             }
             
-            // 检查是否在侧边栏切换按钮区域
-            bool inSidebarButton = PtInRect(&g_SidebarToggleRect, pt);
+            // 检查是否在功能图标按钮区域（AI、切换、输出、侧边栏）
+            bool inIconButtons = false;
+            if (pt.y < g_TitleBarHeight) {
+                if (PtInRect(&g_ToggleAIButtonRect, pt) ||
+                    PtInRect(&g_SwapPanelsButtonRect, pt) ||
+                    PtInRect(&g_ToggleOutputButtonRect, pt) ||
+                    PtInRect(&g_ToggleSidebarButtonRect, pt)) {
+                    inIconButtons = true;
+                }
+            }
             
-            // 标题栏区域可以拖动窗口（但排除菜单区域、侧边栏按钮和右侧按钮区域）
-            if (!inMenuArea && !inSidebarButton && pt.y < g_TitleBarHeight && pt.x < rect.right - 46 * 3) {
+            // 检查是否在活动栏区域（根据面板交换状态判断位置）
+            bool inActivityBar = false;
+            if (pt.y >= g_TotalTopHeight) {
+                if (g_PanelsSwapped) {
+                    // 交换模式：活动栏在右侧
+                    inActivityBar = (pt.x >= rect.right - g_ActivityBarWidth);
+                } else {
+                    // 正常模式：活动栏在左侧
+                    inActivityBar = (pt.x < g_ActivityBarWidth);
+                }
+            }
+            
+            // 标题栏区域可以拖动窗口（但排除菜单区域、功能图标和右侧按钮区域）
+            if (!inMenuArea && !inIconButtons && pt.y < g_TitleBarHeight && pt.x < rect.right - 46 * 3) {
                 return HTCAPTION;
+            }
+            
+            // 活动栏区域不能拖动窗口
+            if (inActivityBar) {
+                return HTCLIENT;
             }
             
             return HTCLIENT;
@@ -2398,13 +3157,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             // === 绘制标题栏 ===
             RECT titleBarRect = {0, 0, rect.right, g_TitleBarHeight};
-            HBRUSH titleBrush = CreateSolidBrush(RGB(24, 24, 24));
+            HBRUSH titleBrush = CreateSolidBrush(g_CurrentTheme.titleBarBg);
             FillRect(memDC, &titleBarRect, titleBrush);
             DeleteObject(titleBrush);
             
             // 绘制标题栏底部1像素边框
             RECT borderRect = {0, g_TitleBarHeight - 1, rect.right, g_TitleBarHeight};
-            HBRUSH borderBrush = CreateSolidBrush(RGB(45, 45, 45));
+            HBRUSH borderBrush = CreateSolidBrush(g_CurrentTheme.border);
             FillRect(memDC, &borderRect, borderBrush);
             DeleteObject(borderBrush);
             
@@ -2452,7 +3211,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 绘制标题栏按钮
             auto DrawButton = [&](RECT rc, const wchar_t* symbol, int btnId) {
                 if (g_HoverButton == btnId) {
-                    COLORREF hoverColor = (btnId == 3) ? RGB(232, 17, 35) : g_CurrentTheme.grid;
+                    COLORREF hoverColor = (btnId == 3) ? g_CurrentTheme.closeButtonHover : g_CurrentTheme.menuHoverBg;
                     HBRUSH hoverBrush = CreateSolidBrush(hoverColor);
                     FillRect(memDC, &rc, hoverBrush);
                     DeleteObject(hoverBrush);
@@ -2464,16 +3223,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             DrawButton(g_MaxButtonRect, g_IsMaximized ? L"❐" : L"□", 2);
             DrawButton(g_CloseButtonRect, L"✕", 3);
             
-            // 绘制侧边栏切换按钮
-            {
-                RECT rc = g_SidebarToggleRect;
-                
+            // 绘制功能图标按钮（使用 Segoe Fluent Icons）
+            auto DrawIconButton = [&](RECT rc, const wchar_t* iconChar, int btnId, bool isActive = false) {
                 // 悬停背景
-                if (g_HoverButton == 4) {
-                    Color hoverColor(255, 45, 46, 46);
+                if (g_HoverButton == btnId) {
+                    Color hoverColor(255, GetRValue(g_CurrentTheme.menuHoverBg), 
+                                    GetGValue(g_CurrentTheme.menuHoverBg), 
+                                    GetBValue(g_CurrentTheme.menuHoverBg));
                     SolidBrush hoverBrush(hoverColor);
-                    RectF rectF((REAL)rc.left, (REAL)rc.top, 
-                        (REAL)(rc.right - rc.left), (REAL)(rc.bottom - rc.top));
+                    RectF rectF((REAL)rc.left + 2, (REAL)rc.top + 4, 
+                               (REAL)(rc.right - rc.left - 4), (REAL)(rc.bottom - rc.top - 8));
                     GraphicsPath path;
                     float radius = 4.0f;
                     path.AddArc(rectF.X, rectF.Y, radius * 2, radius * 2, 180, 90);
@@ -2484,64 +3243,214 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     graphics.FillPath(&hoverBrush, &path);
                 }
                 
-                // 加载并绘制 ai.png 图标
-                wchar_t exePath[MAX_PATH];
-                GetModuleFileNameW(NULL, exePath, MAX_PATH);
-                std::wstring basePath(exePath);
-                size_t lastSlash = basePath.find_last_of(L"\\");
-                if (lastSlash != std::wstring::npos) {
-                    basePath = basePath.substr(0, lastSlash);
+                // 绘制图标
+                HFONT iconFont = CreateFont(16, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                    DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+                    CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Segoe Fluent Icons");
+                HFONT oldIconFont = (HFONT)SelectObject(memDC, iconFont);
+                
+                // 根据激活状态设置颜色
+                if (isActive) {
+                    SetTextColor(memDC, g_CurrentTheme.activityBarIndicator);
+                } else if (g_HoverButton == btnId) {
+                    SetTextColor(memDC, g_CurrentTheme.activityBarIconHover);
+                } else {
+                    SetTextColor(memDC, g_CurrentTheme.activityBarIcon);
                 }
                 
-                // 尝试多个可能的路径
-                std::wstring iconPath;
-                std::vector<std::wstring> tryPaths = {
-                    basePath + L"\\img\\ai.png",           // exe同目录下的img
-                    basePath + L"\\..\\img\\ai.png",       // 上一级目录的img (x64\Debug -> x64)
-                    basePath + L"\\..\\..\\img\\ai.png"    // 上两级目录的img (x64\Debug -> ycIDE)
-                };
+                DrawTextW(memDC, iconChar, -1, &rc, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
                 
-                Image* aiIcon = nullptr;
-                for (const auto& path : tryPaths) {
-                    aiIcon = Image::FromFile(path.c_str());
-                    if (aiIcon && aiIcon->GetLastStatus() == Ok) {
-                        break;
-                    }
-                    if (aiIcon) {
-                        delete aiIcon;
-                        aiIcon = nullptr;
-                    }
-                }
+                SelectObject(memDC, oldIconFont);
+                DeleteObject(iconFont);
+            };
+            
+            // AI助手按钮 (使用 AI/机器人图标)
+            DrawIconButton(g_ToggleAIButtonRect, L"\uE8D4", 4, g_AIPanelVisible);
+            // 左右面板切换按钮 (使用双向箭头图标)
+            DrawIconButton(g_SwapPanelsButtonRect, L"\uE8AB", 5, g_PanelsSwapped);
+            // 输出面板按钮 (使用终端图标)
+            DrawIconButton(g_ToggleOutputButtonRect, L"\uE756", 6, g_OutputPanelVisible);
+            // 侧边栏按钮 (使用面板图标)
+            DrawIconButton(g_ToggleSidebarButtonRect, L"\uE700", 7, g_ExplorerPanelVisible);
+            
+            // === 绘制工具栏 ===
+            {
+                // 工具栏背景
+                RECT toolBarRect = {0, g_TitleBarHeight, rect.right, g_TitleBarHeight + g_ToolBarHeight};
+                HBRUSH toolBarBrush = CreateSolidBrush(g_CurrentTheme.toolBarBg);
+                FillRect(memDC, &toolBarRect, toolBarBrush);
+                DeleteObject(toolBarBrush);
                 
-                if (aiIcon && aiIcon->GetLastStatus() == Ok) {
-                    int iconSize = 20;
-                    int cx = (rc.left + rc.right) / 2;
-                    int cy = (rc.top + rc.bottom) / 2;
+                // 工具栏底部边框
+                RECT toolBarBorder = {0, g_TitleBarHeight + g_ToolBarHeight - 1, rect.right, g_TitleBarHeight + g_ToolBarHeight};
+                HBRUSH toolBarBorderBrush = CreateSolidBrush(g_CurrentTheme.border);
+                FillRect(memDC, &toolBarBorder, toolBarBorderBrush);
+                DeleteObject(toolBarBorderBrush);
+                
+                // 绘制工具栏按钮
+                for (size_t i = 0; i < g_ToolBarButtons.size(); i++) {
+                    const auto& btn = g_ToolBarButtons[i];
                     
-                    // 如果侧边栏隐藏，降低图标透明度
-                    if (!g_LeftPanelVisible) {
-                        ColorMatrix colorMatrix = {
-                            1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-                            0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
-                            0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-                            0.0f, 0.0f, 0.0f, 0.5f, 0.0f,
-                            0.0f, 0.0f, 0.0f, 0.0f, 1.0f
-                        };
-                        ImageAttributes imgAttr;
-                        imgAttr.SetColorMatrix(&colorMatrix);
-                        graphics.DrawImage(aiIcon, 
-                            RectF((REAL)(cx - iconSize/2), (REAL)(cy - iconSize/2), (REAL)iconSize, (REAL)iconSize),
-                            0, 0, (REAL)aiIcon->GetWidth(), (REAL)aiIcon->GetHeight(),
-                            UnitPixel, &imgAttr);
-                    } else {
-                        graphics.DrawImage(aiIcon, cx - iconSize/2, cy - iconSize/2, iconSize, iconSize);
+                    // 悬停背景
+                    if (g_HoverToolBarButton == (int)i) {
+                        Color hoverColor(255, 55, 55, 55);
+                        SolidBrush hoverBrush(hoverColor);
+                        RectF rectF((REAL)btn.rect.left, (REAL)btn.rect.top,
+                            (REAL)(btn.rect.right - btn.rect.left),
+                            (REAL)(btn.rect.bottom - btn.rect.top));
+                        GraphicsPath path;
+                        float radius = 4.0f;
+                        path.AddArc(rectF.X, rectF.Y, radius * 2, radius * 2, 180, 90);
+                        path.AddArc(rectF.X + rectF.Width - radius * 2, rectF.Y, radius * 2, radius * 2, 270, 90);
+                        path.AddArc(rectF.X + rectF.Width - radius * 2, rectF.Y + rectF.Height - radius * 2, radius * 2, radius * 2, 0, 90);
+                        path.AddArc(rectF.X, rectF.Y + rectF.Height - radius * 2, radius * 2, radius * 2, 90, 90);
+                        path.CloseFigure();
+                        graphics.FillPath(&hoverBrush, &path);
                     }
-                    delete aiIcon;
+                    
+                    // 绘制图标
+                    if (g_ToolBarImage && g_ToolBarImage->GetLastStatus() == Ok && btn.iconIndex >= 0) {
+                        int srcX = btn.iconIndex * g_ToolBarIconSize;
+                        int destX = btn.rect.left + (g_ToolBarButtonSize - g_ToolBarIconSize) / 2;
+                        int destY = btn.rect.top + (g_ToolBarButtonSize - g_ToolBarIconSize) / 2;
+                        
+                        // 如果按钮禁用，降低透明度
+                        if (!btn.enabled) {
+                            ColorMatrix colorMatrix = {
+                                1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                                0.0f, 1.0f, 0.0f, 0.0f, 0.0f,
+                                0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+                                0.0f, 0.0f, 0.0f, 0.3f, 0.0f,
+                                0.0f, 0.0f, 0.0f, 0.0f, 1.0f
+                            };
+                            ImageAttributes imgAttr;
+                            imgAttr.SetColorMatrix(&colorMatrix);
+                            graphics.DrawImage(g_ToolBarImage,
+                                RectF((REAL)destX, (REAL)destY, (REAL)g_ToolBarIconSize, (REAL)g_ToolBarIconSize),
+                                (REAL)srcX, 0, (REAL)g_ToolBarIconSize, (REAL)g_ToolBarIconSize,
+                                UnitPixel, &imgAttr);
+                        } else {
+                            graphics.DrawImage(g_ToolBarImage, destX, destY, 
+                                srcX, 0, g_ToolBarIconSize, g_ToolBarIconSize, UnitPixel);
+                        }
+                    } else {
+                        // 没有图标时绘制占位符文本
+                        SetTextColor(memDC, g_CurrentTheme.textDim);
+                        DrawTextW(memDC, L"?", -1, (LPRECT)&btn.rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+                    }
                 }
             }
             
+            // === 绘制活动栏 (VS Code风格) ===
+            {
+                // 计算活动栏X位置（根据面板交换状态）
+                int activityBarX = g_PanelsSwapped ? (rect.right - g_ActivityBarWidth) : 0;
+                
+                // 活动栏背景（与主背景色一致）
+                RECT activityBarRect = {activityBarX, g_TotalTopHeight, activityBarX + g_ActivityBarWidth, rect.bottom - g_StatusBarHeight};
+                HBRUSH activityBarBrush = CreateSolidBrush(g_CurrentTheme.activityBarBg);
+                FillRect(memDC, &activityBarRect, activityBarBrush);
+                DeleteObject(activityBarBrush);
+                
+                // 活动栏边框（正常模式在右侧，交换模式在左侧）
+                HPEN activityBorderPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
+                HPEN oldActPen = (HPEN)SelectObject(memDC, activityBorderPen);
+                int borderX = g_PanelsSwapped ? activityBarX : (activityBarX + g_ActivityBarWidth - 1);
+                MoveToEx(memDC, borderX, g_TotalTopHeight, NULL);
+                LineTo(memDC, borderX, rect.bottom - g_StatusBarHeight);
+                SelectObject(memDC, oldActPen);
+                DeleteObject(activityBorderPen);
+                
+                // 绘制活动栏图标的辅助函数
+                auto DrawActivityIcon = [&](const RECT& btnRect, const wchar_t* iconChar, bool isSelected, bool isHovered) {
+                    // 选中状态的指示条（正常模式在左侧，交换模式在右侧）
+                    if (isSelected) {
+                        int indicatorX = g_PanelsSwapped ? (btnRect.right - 2) : btnRect.left;
+                        RECT indicatorRect = {indicatorX, btnRect.top + 8, indicatorX + 2, btnRect.bottom - 8};
+                        HBRUSH indicatorBrush = CreateSolidBrush(g_CurrentTheme.activityBarIndicator);
+                        FillRect(memDC, &indicatorRect, indicatorBrush);
+                        DeleteObject(indicatorBrush);
+                    }
+                    
+                    // 悬停时不再绘制背景色，只通过图标前景色变化来指示悬停状态
+                    
+                    // 绘制图标（使用Segoe Fluent Icons或文本替代）
+                    HFONT iconFont = CreateFont(24, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                        DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+                        CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Segoe Fluent Icons");
+                    HFONT oldIconFont = (HFONT)SelectObject(memDC, iconFont);
+                    
+                    // 根据选中/悬停状态设置颜色
+                    if (isSelected) {
+                        SetTextColor(memDC, g_CurrentTheme.activityBarIconActive);
+                    } else if (isHovered) {
+                        SetTextColor(memDC, g_CurrentTheme.activityBarIconHover);
+                    } else {
+                        SetTextColor(memDC, g_CurrentTheme.activityBarIcon);
+                    }
+                    
+                    DrawTextW(memDC, iconChar, -1, (LPRECT)&btnRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+                    
+                    SelectObject(memDC, oldIconFont);
+                    DeleteObject(iconFont);
+                };
+                
+                // 绘制顶部按钮
+                for (const auto& btn : g_ActivityBarButtons) {
+                    bool isHovered = (g_HoverActivityButton == btn.id);
+                    bool isSelected = (g_ActiveActivityButton == btn.id);
+                    
+                    // 根据按钮ID选择图标
+                    const wchar_t* iconChar = L"?";
+                    switch (btn.id) {
+                        case AB_EXPLORER:   iconChar = L"\uE8B7"; break;  // 文件图标
+                        case AB_SEARCH:     iconChar = L"\uE721"; break;  // 搜索图标
+                        case AB_SCM:        iconChar = L"\uE943"; break;  // 分支图标
+                        case AB_DEBUG:      iconChar = L"\uEBE8"; break;  // 播放调试图标
+                        case AB_EXTENSIONS: iconChar = L"\uE74C"; break;  // 扩展图标
+                        case AB_AI:         iconChar = L"\uE8D4"; break;  // AI/机器人图标
+                    }
+                    
+                    DrawActivityIcon(btn.rect, iconChar, isSelected, isHovered);
+                }
+                
+                // 绘制底部按钮
+                for (const auto& btn : g_ActivityBarBottomButtons) {
+                    bool isHovered = (g_HoverActivityButton == btn.id);
+                    
+                    const wchar_t* iconChar = L"?";
+                    switch (btn.id) {
+                        case AB_ACCOUNT:    iconChar = L"\uE77B"; break;  // 用户图标
+                        case AB_SETTINGS:   iconChar = L"\uE713"; break;  // 设置图标
+                    }
+                    
+                    DrawActivityIcon(btn.rect, iconChar, false, isHovered);
+                }
+            }
+            
+            // 绘制编辑器/欢迎页与AI面板之间的边框
+            if (g_AIPanelVisible) {
+                HPEN editorBorderPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
+                HPEN oldEditorBorderPen = (HPEN)SelectObject(memDC, editorBorderPen);
+                
+                if (g_PanelsSwapped) {
+                    // 交换模式：AI在左侧，绘制编辑器左边框
+                    int leftPanelW = g_RightPanelWidth;  // 交换模式下左侧是AI面板
+                    MoveToEx(memDC, leftPanelW, g_TotalTopHeight, NULL);
+                    LineTo(memDC, leftPanelW, rect.bottom - g_StatusBarHeight);
+                } else {
+                    // 正常模式：AI在右侧，绘制编辑器右边框
+                    int rightPanelLeft = rect.right - g_RightPanelWidth;
+                    MoveToEx(memDC, rightPanelLeft, g_TotalTopHeight, NULL);
+                    LineTo(memDC, rightPanelLeft, rect.bottom - g_StatusBarHeight);
+                }
+                
+                SelectObject(memDC, oldEditorBorderPen);
+                DeleteObject(editorBorderPen);
+            }
+            
             // 绘制状态栏顶部分隔线
-            HPEN statusSepPen = CreatePen(PS_SOLID, 1, RGB(45, 45, 45));
+            HPEN statusSepPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
             HPEN oldStatusPen = (HPEN)SelectObject(memDC, statusSepPen);
             int statusBarY = rect.bottom - g_StatusBarHeight;
             MoveToEx(memDC, 0, statusBarY, NULL);
@@ -2550,7 +3459,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             DeleteObject(statusSepPen);
             
             // 绘制窗口边框（1像素灰色）
-            HPEN borderPen = CreatePen(PS_SOLID, 1, RGB(128, 128, 128));
+            HPEN borderPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.windowBorder);
             HPEN oldBorderPen = (HPEN)SelectObject(memDC, borderPen);
             HBRUSH hOldBrush = (HBRUSH)SelectObject(memDC, GetStockObject(NULL_BRUSH));
             Rectangle(memDC, 0, 0, rect.right, rect.bottom);
@@ -2574,6 +3483,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             // 保存组件箱位置
             SaveToolboxPosition();
+            
+            // 保存面板布局状态
+            SavePanelLayoutState();
             
             // 统一的保存文档函数
             auto SaveDocument = [](HWND hMainWnd, EditorDocument* doc) -> bool {
@@ -2931,9 +3843,10 @@ LRESULT CALLBACK LibraryConfigWndProc(HWND hWnd, UINT message, WPARAM wParam, LP
     case WM_CTLCOLOREDIT:
         {
             HDC hdcStatic = (HDC)wParam;
-            SetTextColor(hdcStatic, RGB(0, 0, 0));      // 黑色文字
-            SetBkColor(hdcStatic, RGB(255, 255, 255));  // 白色背景
-            return (INT_PTR)GetStockObject(WHITE_BRUSH);
+            // 关于对话框使用固定色
+            SetTextColor(hdcStatic, g_CurrentTheme.text);
+            SetBkColor(hdcStatic, g_CurrentTheme.bg);
+            return (INT_PTR)g_CurrentTheme.hBgBrush;
         }
         
     case WM_DESTROY:
@@ -3252,14 +4165,14 @@ LRESULT CALLBACK SimpleMenuWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
                     
                     // 绘制悬停背景（只有启用的菜单项才显示悬停效果）
                     if ((int)i == hoverIndex && isEnabled) {
-                        HBRUSH hoverBrush = CreateSolidBrush(RGB(50, 50, 50));
+                        HBRUSH hoverBrush = CreateSolidBrush(g_CurrentTheme.menuHoverBg);
                         FillRect(hdc, &itemRect, hoverBrush);
                         DeleteObject(hoverBrush);
                     }
                     
                     // 禁用的菜单项显示灰色
                     if (!isEnabled) {
-                        SetTextColor(hdc, RGB(100, 100, 100));
+                        SetTextColor(hdc, g_CurrentTheme.textDim);
                     } else {
                         SetTextColor(hdc, g_CurrentTheme.text);
                     }
@@ -3439,11 +4352,32 @@ LRESULT CALLBACK OutputWindowSubclassProc(HWND hWnd, UINT message, WPARAM wParam
     return DefSubclassProc(hWnd, message, wParam, lParam);
 }
 
-// 状态栏子类化过程 - 让下边缘穿透
+// 状态栏子类化过程 - 让下边缘穿透，并绘制顶部边框
 LRESULT CALLBACK StatusBarSubclassProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData)
 {
     switch (message)
     {
+    case WM_PAINT:
+        {
+            // 先让默认处理绘制文本
+            LRESULT result = DefSubclassProc(hWnd, message, wParam, lParam);
+            
+            // 然后在顶部绘制1像素边框线
+            HDC hdc = GetDC(hWnd);
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            
+            HPEN borderPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
+            HPEN oldPen = (HPEN)SelectObject(hdc, borderPen);
+            MoveToEx(hdc, 0, 0, NULL);
+            LineTo(hdc, rect.right, 0);
+            SelectObject(hdc, oldPen);
+            DeleteObject(borderPen);
+            
+            ReleaseDC(hWnd, hdc);
+            return result;
+        }
+        
     case WM_NCHITTEST:
         {
             // 让下边缘5px的鼠标消息穿透到主窗口，用于调整窗口大小

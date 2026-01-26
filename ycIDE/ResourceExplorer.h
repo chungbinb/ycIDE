@@ -36,6 +36,13 @@ struct FileNode {
     }
 };
 
+// 资源管理器标签类型
+enum ExplorerTabType {
+    TAB_LIBRARY = 0,    // 支持库
+    TAB_PROJECT = 1,    // 项目
+    TAB_PROPERTY = 2    // 属性
+};
+
 // 资源管理器数据
 struct ResourceExplorerData {
     std::vector<FileNode*> rootNodes; // 根节点列表
@@ -48,6 +55,15 @@ struct ResourceExplorerData {
     HANDLE hDirChangeNotify; // 文件系统监控句柄
     HANDLE hMonitorThread; // 监控线程句柄
     bool stopMonitoring; // 停止监控标志
+    
+    // 标签相关
+    ExplorerTabType activeTab;  // 当前激活的标签
+    int tabBarHeight;           // 标签栏高度
+    int hoverTab;               // 悬停的标签 (-1表示无)
+    
+    // 边框拖动相关
+    bool isBorderHover;         // 鼠标是否在边框区域
+    bool isDraggingBorder;      // 是否正在拖动边框
     
     ResourceExplorerData();
     ~ResourceExplorerData();

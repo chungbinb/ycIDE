@@ -1,0 +1,80 @@
+{
+    "name": "ycIDE Dark",
+    "type": "dark",
+    
+    "bg": "#090D0D",
+    "text": "#CCCCCC",
+    "textDim": "#808080",
+    "textBright": "#FFFFFF",
+    "border": "#1E2E26",
+    "borderLight": "#2A3A32",
+    
+    "titleBarBg": "#141E1A",
+    "menuText": "#CCCCCC",
+    "menuHoverBg": "#0071EA",
+    "closeButtonHover": "#E81123",
+    
+    "toolBarBg": "#141E1A",
+    "toolBarHoverBg": "#0071EA",
+    
+    "activityBarBg": "#141E1A",
+    "activityBarIcon": "#808080",
+    "activityBarIconActive": "#FFFFFF",
+    "activityBarIconHover": "#CCCCCC",
+    "activityBarIndicator": "#0071EA",
+    "activityBarHoverBg": "#0071EA",
+    
+    "statusBarBg": "#141E1A",
+    "statusBarText": "#CCCCCC",
+    
+    "chatBg": "#090D0D",
+    "chatBubbleBg": "#141E1A",
+    "chatText": "#CCCCCC",
+    
+    "explorerBg": "#090D0D",
+    "explorerText": "#CCCCCC",
+    "explorerTabBg": "#141E1A",
+    "explorerTabActive": "#090D0D",
+    "explorerTabHover": "#0071EA",
+    "explorerModified": "#50C878",
+    "explorerSelection": "#0071EA",
+    
+    "editorBg": "#090D0D",
+    "lineNumBg": "#090D0D",
+    "lineNumText": "#808080",
+    "editorSelection": "#0071EA",
+    "editorCurrentLine": "#141E1A",
+    
+    "tableHeaderBg": "#141E1A",
+    "tableSubHeaderBg": "#1A2A24",
+    "tableVarHeaderBg": "#141E1A",
+    "tableGridLine": "#2A3A32",
+    "tableRowAlt": "#0C1010",
+    
+    "syntaxKeyword": "#569CD6",
+    "syntaxType": "#4EC9B0",
+    "syntaxComment": "#6A9955",
+    "syntaxString": "#CE9178",
+    "syntaxNumber": "#B5CEA8",
+    "syntaxFunction": "#DCDCAA",
+    "syntaxVariable": "#9CDCFE",
+    "syntaxOperator": "#D4D4D4",
+    "syntaxRemark": "#6A9955",
+    "syntaxCheckbox": "#802828",
+    
+    "popupBg": "#141E1A",
+    "popupBorder": "#2A3A32",
+    "popupSelection": "#0071EA",
+    "popupText": "#CCCCCC",
+    
+    "scrollTrack": "#090D0D",
+    "scrollThumb": "#2A3A32",
+    "scrollThumbHover": "#3A4A42",
+    
+    "diffAdded": "#1E3A1E",
+    "diffRemoved": "#3A1E1E",
+    
+    "welcomeButtonHover": "#0071EA",
+    
+    "windowBorder": "#1E2E26"
+}

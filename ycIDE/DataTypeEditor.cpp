@@ -1,4 +1,4 @@
-#include "DataTypeEditor.h"
+﻿#include "DataTypeEditor.h"
 #include "EditorContext.h"
 #include "NameValidator.h"
 #include "Theme.h"
@@ -1852,12 +1852,12 @@ void DataTypeEditor::DrawTable(HDC hdc, const RECT& clientRect) {
     
     Graphics graphics(hdc);
     
-    // 绘制整个编辑器背景（rgb(31, 31, 31)）
-    SolidBrush bgBrush(Color(255, 31, 31, 31));
+    // 绘制整个编辑器背景
+    SolidBrush bgBrush(ColorFromCOLORREF(g_CurrentTheme.editorBg));
     graphics.FillRectangle(&bgBrush, 0, 0, clientRect.right, clientRect.bottom);
     
-    // 绘制左边距背景（行号区域，rgb(37, 37, 38)）
-    SolidBrush lineNumBgBrush(Color(255, 37, 37, 38));
+    // 绘制左边距背景（行号区域）
+    SolidBrush lineNumBgBrush(ColorFromCOLORREF(g_CurrentTheme.lineNumBg));
     RectF lineNumRect(0, 0, (REAL)m_leftMarginWidth, (REAL)clientRect.bottom);
     graphics.FillRectangle(&lineNumBgBrush, lineNumRect);
     
@@ -2259,14 +2259,16 @@ void DataTypeEditor::DrawDataTypeTable(HDC hdc, int dtIndex, int& yPos, const RE
     // 创建GDI+绘图对象
     Pen gridPen(ColorFromCOLORREF(g_CurrentTheme.grid), 2);
     SolidBrush textBrush(ColorFromCOLORREF(g_CurrentTheme.text));
-    SolidBrush commentBrush(Color(255, 0, 200, 0));           // 备注列：绿色
-    SolidBrush typeBrush(Color(255, 174, 144, 194));          // 类型列
-    SolidBrush dtNameBrush(Color(255, 220, 220, 170));        // 数据类型名
-    SolidBrush memberNameBrush(Color(255, 153, 216, 249));    // 成员名
-    SolidBrush dtHeaderBrush(Color(255, 58, 65, 81));         // 数据类型表头背景色
-    SolidBrush memberHeaderBrush(Color(255, 56, 56, 48));     // 成员表头背景色
-    SolidBrush bgBrush(Color(255, 31, 31, 31));               // 编辑器背景色
-    SolidBrush rowSelectBrush(Color(100, 51, 153, 255));      // 行选择高亮背景色
+    SolidBrush commentBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxRemark));  // 备注列
+    SolidBrush typeBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxType));       // 类型列
+    SolidBrush dtNameBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxFunction)); // 数据类型名
+    SolidBrush memberNameBrush(ColorFromCOLORREF(g_CurrentTheme.syntaxVariable)); // 成员名
+    SolidBrush dtHeaderBrush(ColorFromCOLORREF(g_CurrentTheme.tableHeaderBg));    // 数据类型表头背景色
+    SolidBrush memberHeaderBrush(ColorFromCOLORREF(g_CurrentTheme.tableSubHeaderBg)); // 成员表头背景色
+    SolidBrush bgBrush(ColorFromCOLORREF(g_CurrentTheme.editorBg));            // 编辑器背景色
+    SolidBrush rowSelectBrush(Color(100, GetRValue(g_CurrentTheme.editorSelection),
+                                     GetGValue(g_CurrentTheme.editorSelection),
+                                     GetBValue(g_CurrentTheme.editorSelection)));  // 行选择高亮背景色
     
     FontFamily fontFamily(L"Microsoft YaHei");
     Font headerFont(&fontFamily, (REAL)m_fontSize, FontStyleBold, UnitPixel);
@@ -2442,7 +2444,7 @@ void DataTypeEditor::DrawDataTypeTable(HDC hdc, int dtIndex, int& yPos, const RE
         int selX = textX + (int)beforeRect.Width;
         int selWidth = (int)selRect.Width;
         
-        SolidBrush selBrush(Color(255, 51, 153, 255));
+        SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));
         graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
     }
     
@@ -2500,7 +2502,7 @@ void DataTypeEditor::DrawDataTypeTable(HDC hdc, int dtIndex, int& yPos, const RE
         int selX = textX + (int)beforeRect.Width;
         int selWidth = (int)selRect.Width;
         
-        SolidBrush selBrush(Color(255, 51, 153, 255));
+        SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));
         graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
     }
     
@@ -2630,7 +2632,7 @@ void DataTypeEditor::DrawDataTypeTable(HDC hdc, int dtIndex, int& yPos, const RE
             int selX = textX + (int)beforeRect.Width;
             int selWidth = (int)selRect.Width;
             
-            SolidBrush selBrush(Color(255, 51, 153, 255));
+            SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));
             graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
         }
         
@@ -2677,7 +2679,7 @@ void DataTypeEditor::DrawDataTypeTable(HDC hdc, int dtIndex, int& yPos, const RE
             int selX = textX + (int)beforeRect.Width;
             int selWidth = (int)selRect.Width;
             
-            SolidBrush selBrush(Color(255, 51, 153, 255));
+            SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));
             graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
         }
         
@@ -2744,7 +2746,7 @@ void DataTypeEditor::DrawDataTypeTable(HDC hdc, int dtIndex, int& yPos, const RE
             int selX = textX + (int)beforeRect.Width;
             int selWidth = (int)selRect.Width;
             
-            SolidBrush selBrush(Color(255, 51, 153, 255));
+            SolidBrush selBrush(ColorFromCOLORREF(g_CurrentTheme.editorSelection));
             graphics.FillRectangle(&selBrush, selX, currentY + 2, selWidth, m_rowHeight - 4);
         }
         
@@ -2817,10 +2819,10 @@ void DataTypeEditor::DrawTypeCompletionWindow(HDC hdc) {
         
         // 选中项背景
         if (itemIndex == m_typeCompletionSelectedIndex) {
-            HBRUSH selBrush = CreateSolidBrush(RGB(0, 120, 215));  // 蓝色选中
+            HBRUSH selBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
             FillRect(hdc, &itemRect, selBrush);
             DeleteObject(selBrush);
-            SetTextColor(hdc, RGB(255, 255, 255));  // 白色文字
+            SetTextColor(hdc, g_CurrentTheme.textBright);  // 高亮文字
         } else {
             SetTextColor(hdc, g_CurrentTheme.text);
         }
@@ -2845,7 +2847,7 @@ void DataTypeEditor::DrawTypeCompletionWindow(HDC hdc) {
         // 滚动条轨道
         RECT trackRect = {scrollBarX, m_typeCompletionRect.top + 2,
                           scrollBarX + scrollBarWidth, m_typeCompletionRect.bottom - 2};
-        HBRUSH trackBrush = CreateSolidBrush(RGB(60, 60, 60));
+        HBRUSH trackBrush = CreateSolidBrush(g_CurrentTheme.scrollTrack);
         FillRect(hdc, &trackRect, trackBrush);
         DeleteObject(trackBrush);
         
@@ -2856,7 +2858,7 @@ void DataTypeEditor::DrawTypeCompletionWindow(HDC hdc) {
                      (scrollBarHeight - thumbHeight) * m_typeCompletionScrollOffset / maxScroll;
         
         RECT thumbRect = {scrollBarX, thumbY, scrollBarX + scrollBarWidth, thumbY + thumbHeight};
-        HBRUSH thumbBrush = CreateSolidBrush(RGB(100, 100, 100));
+        HBRUSH thumbBrush = CreateSolidBrush(g_CurrentTheme.scrollThumb);
         FillRect(hdc, &thumbRect, thumbBrush);
         DeleteObject(thumbBrush);
     }

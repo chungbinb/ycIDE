@@ -1,0 +1,77 @@
+// 语法检查集成说明
+//
+// 已完成的工作：
+// 1. 修改Lexer，支持从KeywordManager和LibraryParser动态获取关键字和命令
+// 2. 创建SyntaxChecker类，封装语法检查功能
+// 3. 在EditorDocument中添加syntaxErrors字段存储错误
+// 4. 添加PerformSyntaxCheck函数用于执行语法检查
+// 5. 在EditorDocument构造函数中启用语法检查
+//
+// 待完成的集成工作（手动完成）：
+//
+// 1. 在文本修改后调用语法检查：
+//    在WM_CHAR、WM_KEYDOWN等消息处理完成并设置doc->modified = true后，
+//    调用 PerformSyntaxCheck(doc); 
+//    注意：为避免频繁检查，可以使用计时器延迟检查（如300ms后）
+//
+// 2. 在WM_PAINT中绘制错误标记：
+//    在绘制每行文本后，检查该行是否有错误：
+//    
+//    for (const auto& error : doc->syntaxErrors) {
+//        if (error.line - 1 == currentLineIndex) {  // line是1-based，需要转换
+//            // 计算错误位置的X坐标
+//            int errorX = startX + MeasureTextWidth(line, 0, error.column - 1);
+//            int errorY = currentY + rowHeight - 2;
+//            
+//            // 绘制红色波浪下划线
+//            HPEN hErrorPen = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+//            HPEN hOldPen = (HPEN)SelectObject(hdc, hErrorPen);
+//            
+//            for (int x = 0; x < 50; x += 2) {  // 波浪宽度约50像素
+//                int y = (x % 4 < 2) ? 0 : 2;
+//                if (x == 0) MoveToEx(hdc, errorX + x, errorY + y, NULL);
+//                else LineTo(hdc, errorX + x, errorY + y);
+//            }
+//            
+//            SelectObject(hdc, hOldPen);
+//            DeleteObject(hErrorPen);
+//        }
+//    }
+//
+// 3. 添加鼠标悬停显示错误提示：
+//    在WM_MOUSEMOVE中检测鼠标位置是否在错误标记上，
+//    如果是，使用Tooltip显示错误消息（error.message）
+//
+// 4. 优化性能：
+//    使用计时器延迟检查，避免每次按键都检查：
+//    
+//    // 在全局或EditorData中添加：
+//    UINT_PTR syntaxCheckTimerId = 0;
+//    const UINT SYNTAX_CHECK_DELAY = 300;  // 300ms延迟
+//    
+//    // 在文本修改后：
+//    if (syntaxCheckTimerId) {
+//        KillTimer(hWnd, syntaxCheckTimerId);
+//    }
+//    syntaxCheckTimerId = SetTimer(hWnd, 9999, SYNTAX_CHECK_DELAY, NULL);
+//    
+//    // 在WM_TIMER中：
+//    case WM_TIMER:
+//        if (wParam == 9999) {
+//            KillTimer(hWnd, 9999);
+//            syntaxCheckTimerId = 0;
+//            if (doc) {
+//                PerformSyntaxCheck(doc);
+//                InvalidateRect(hWnd, NULL, FALSE);
+//            }
+//        }
+//        break;
+//
+// 5. 添加菜单项控制语法检查开关：
+//    在主菜单中添加"视图 -> 语法检查"选项，
+//    切换 doc->syntaxCheckEnabled 标志
+//
+// 注意事项：
+// - 语法检查可能比较耗时，大文件建议使用后台线程
+// - 错误标记绘制要考虑滚动偏移量（scrollX, scrollY）
+// - 确保Lexer和Parser使用了正确的KeywordManager和LibraryParser实例

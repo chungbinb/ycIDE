@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Keyword.h"
+#include "Parser.h"  // 添加语法检查支持
 
 // Diff行类型
 enum DiffLineType {
@@ -60,6 +61,10 @@ struct EditorDocument {
     // 流程控制条件展开状态
     std::vector<bool> conditionExpanded;     // 每行是否展开了条件行（已废弃，保留兼容性）
     std::vector<bool> parametersExpanded;    // 每行是否展开了参数列表
+    
+    // 语法检查相关
+    std::vector<SyntaxError> syntaxErrors;   // 语法错误列表
+    bool syntaxCheckEnabled;                 // 是否启用语法检查
     
     EditorDocument();
     ~EditorDocument();

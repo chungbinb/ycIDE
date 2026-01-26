@@ -25,6 +25,7 @@ using namespace Gdiplus;
 
 extern HINSTANCE hInst;
 extern INT_PTR CALLBACK ModelSettingsDlg(HWND, UINT, WPARAM, LPARAM);
+extern bool g_PanelsSwapped;  // 面板交换状态
 
 // 全局变量：待处理的编辑列表
 std::vector<FileEditInfo> g_PendingEdits;
@@ -156,8 +157,8 @@ HFONT hChatControlFont = nullptr;
 WNDPROC g_OriginalEditProc = nullptr;
 WNDPROC g_OriginalInputProc = nullptr;
 
-// 输入框边框颜色（默认为编辑器边框颜色，焦点时为蓝色）
-COLORREF g_InputBorderColor = RGB(0, 120, 215);
+// 输入框边框颜色（默认为编辑器边框颜色，焦点时为强调色）
+COLORREF g_InputBorderColor = 0;  // 初始值会在运行时根据主题设置
 bool g_InputHasFocus = false;
 
 // 菜单项数据结构
@@ -219,13 +220,13 @@ LRESULT CALLBACK InputSubclassProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
     switch (message) {
     case WM_SETFOCUS:
         g_InputHasFocus = true;
-        g_InputBorderColor = RGB(0, 120, 215);  // 焦点时为蓝色
+        g_InputBorderColor = g_CurrentTheme.activityBarIndicator;  // 焦点时为强调色
         InvalidateRect(GetParent(hWnd), nullptr, FALSE);
         break;
         
     case WM_KILLFOCUS:
         g_InputHasFocus = false;
-        g_InputBorderColor = g_CurrentTheme.grid;  // 失去焦点时为编辑器边框颜色
+        g_InputBorderColor = g_CurrentTheme.border;  // 失去焦点时为边框颜色
         InvalidateRect(GetParent(hWnd), nullptr, FALSE);
         break;
     }
@@ -279,7 +280,7 @@ LRESULT CALLBACK CustomMenuWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARA
                 } else {
                     // 绘制悬停背景
                     if ((int)i == g_HoverMenuItemIndex) {
-                        HBRUSH hHoverBrush = CreateSolidBrush(RGB(40, 40, 40));
+                        HBRUSH hHoverBrush = CreateSolidBrush(g_CurrentTheme.menuHoverBg);
                         FillRect(hdc, &itemRect, hHoverBrush);
                         DeleteObject(hHoverBrush);
                     }
@@ -1302,7 +1303,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         
                         // 设置文字
                         SetBkMode(hdc, TRANSPARENT);
-                        SetTextColor(hdc, RGB(120, 120, 120));  // 稍微亮一点的灰色
+                        SetTextColor(hdc, g_CurrentTheme.textDim);  // 使用主题暗淡文字颜色
                         HFONT hReadFont = CreateFont(16, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,  // 字体从14增加到16
                             DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
                             CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_SWISS, L"微软雅黑");
@@ -1312,7 +1313,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         int iconSize = 16;
                         int iconX = readRect.left + 4;
                         int iconY = readRect.top + (blockHeight - iconSize) / 2;
-                        HBRUSH hIconBrush = CreateSolidBrush(RGB(100, 100, 100));
+                        HBRUSH hIconBrush = CreateSolidBrush(g_CurrentTheme.textDim);
                         RECT iconRect = {iconX, iconY, iconX + iconSize, iconY + iconSize};
                         FillRect(hdc, &iconRect, hIconBrush);
                         DeleteObject(hIconBrush);
@@ -1345,10 +1346,10 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         editRect.top = yPos;
                         editRect.bottom = yPos + blockHeight;
                         
-                        // 绘制方框背景和边框（更现代的样式）
-                        HBRUSH hEditBrush = CreateSolidBrush(RGB(248, 249, 250));  // 浅灰背景
+                        // 绘制方框背景和边框（使用主题颜色）
+                        HBRUSH hEditBrush = CreateSolidBrush(g_CurrentTheme.editorBg);
                         HBRUSH hOldEditBrush = (HBRUSH)SelectObject(hdc, hEditBrush);
-                        HPEN hEditPen = CreatePen(PS_SOLID, 1, RGB(206, 212, 218));  // 边框颜色
+                        HPEN hEditPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
                         HPEN hOldEditPen = (HPEN)SelectObject(hdc, hEditPen);
                         
                         RoundRect(hdc, editRect.left, editRect.top, editRect.right, editRect.bottom, 6, 6);
@@ -1364,7 +1365,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         int iconY = editRect.top + (blockHeight - iconSize) / 2;
                         
                         // 绘制文档图标外框
-                        HPEN hIconPen = CreatePen(PS_SOLID, 2, RGB(108, 117, 125));
+                        HPEN hIconPen = CreatePen(PS_SOLID, 2, g_CurrentTheme.textDim);
                         HPEN hOldIconPen = (HPEN)SelectObject(hdc, hIconPen);
                         HBRUSH hIconBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
                         HBRUSH hOldIconBrush = (HBRUSH)SelectObject(hdc, hIconBrush);
@@ -1392,7 +1393,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                             CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_SWISS, L"微软雅黑");
                         HFONT hOldNameFont = (HFONT)SelectObject(hdc, hNameFont);
                         
-                        SetTextColor(hdc, RGB(33, 37, 41));  // 深色文字
+                        SetTextColor(hdc, g_CurrentTheme.text);  // 使用主题文字色
                         RECT nameRect = editRect;
                         nameRect.left = iconX + iconSize + 12;
                         nameRect.right = editRect.right - 15;
@@ -1415,7 +1416,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         statsRect.bottom = editRect.bottom - 10;
                         
                         // 绘制 "Edited" 标签
-                        SetTextColor(hdc, RGB(108, 117, 125));  // 灰色
+                        SetTextColor(hdc, g_CurrentTheme.textDim);  // 使用主题暗淡文字
                         DrawTextW(hdc, L"Edited ", -1, &statsRect, DT_LEFT | DT_SINGLELINE);
                         
                         SIZE editedSize;
@@ -1423,7 +1424,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         
                         // 绘制增加部分（绿色）
                         statsRect.left += editedSize.cx;
-                        SetTextColor(hdc, RGB(40, 167, 69));  // Bootstrap success 绿色
+                        SetTextColor(hdc, g_CurrentTheme.syntaxComment);  // 使用主题中的绿色
                         std::wstring addText = L"+";
                         addText += std::to_wstring(block.addedLines);
                         SIZE addSize;
@@ -1432,7 +1433,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         
                         // 绘制删除部分（红色）
                         statsRect.left += addSize.cx + 8;
-                        SetTextColor(hdc, RGB(220, 53, 69));  // Bootstrap danger 红色
+                        SetTextColor(hdc, g_CurrentTheme.closeButtonHover);  // 使用主题中的红色
                         std::wstring delText = L"-";
                         delText += std::to_wstring(block.deletedLines);
                         DrawTextW(hdc, delText.c_str(), -1, &statsRect, DT_LEFT | DT_SINGLELINE);
@@ -1459,10 +1460,10 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                             bubbleRect.top = yPos;
                             bubbleRect.bottom = yPos + textHeight + bubblePadding * 2;
                             
-                            // 绘制用户消息气泡 RGB(28, 41, 53)
-                            HBRUSH hBrush = CreateSolidBrush(RGB(28, 41, 53));
+                            // 绘制用户消息气泡 - 使用主题颜色
+                            HBRUSH hBrush = CreateSolidBrush(g_CurrentTheme.chatBubbleBg);
                             HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hBrush);
-                            HPEN hPen = CreatePen(PS_SOLID, 1, RGB(28, 41, 53));
+                            HPEN hPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.chatBubbleBg);
                             HPEN hOldPen = (HPEN)SelectObject(hdc, hPen);
                             
                             RoundRect(hdc, bubbleRect.left, bubbleRect.top, 
@@ -1480,7 +1481,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                             textRect.top += bubblePadding;
                             textRect.bottom -= bubblePadding;
                             
-                            SetTextColor(hdc, RGB(255, 255, 255));
+                            SetTextColor(hdc, g_CurrentTheme.chatText);
                             DrawTextW(hdc, block.content.c_str(), -1, &textRect, DT_WORDBREAK);
                         } else {
                             // AI消息：左对齐，不使用气泡，直接显示文字
@@ -1522,7 +1523,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                                     
                                     // 设置字体和灰色
                                     SetBkMode(hdc, TRANSPARENT);
-                                    SetTextColor(hdc, RGB(120, 120, 120));
+                                    SetTextColor(hdc, g_CurrentTheme.textDim);
                                     HFONT hFileFont = CreateFont(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,  // 字体从12增加到14
                                         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
                                         CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_SWISS, L"微软雅黑");
@@ -1546,7 +1547,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                                     
                                     // 绘制方框边框
                                     HBRUSH hBoxBrush = CreateSolidBrush(g_CurrentTheme.bg);  // 使用背景色填充
-                                    HPEN hBoxPen = CreatePen(PS_SOLID, 1, RGB(100, 100, 100));
+                                    HPEN hBoxPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.textDim);
                                     HBRUSH hOldBoxBrush = (HBRUSH)SelectObject(hdc, hBoxBrush);
                                     HPEN hOldBoxPen = (HPEN)SelectObject(hdc, hBoxPen);
                                     
@@ -1561,7 +1562,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                                     int iconX = boxRect.left + boxPadding;
                                     int iconY = boxRect.top + (boxHeight - iconSize) / 2;
                                     RECT iconRect = {iconX, iconY, iconX + iconSize, iconY + iconSize};
-                                    HBRUSH hIconBrush = CreateSolidBrush(RGB(100, 100, 100));
+                                    HBRUSH hIconBrush = CreateSolidBrush(g_CurrentTheme.textDim);
                                     FillRect(hdc, &iconRect, hIconBrush);
                                     DeleteObject(hIconBrush);
                                     
@@ -1681,10 +1682,10 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         int undoBtnX = copyBtnX - btnSpacing - codeBtnSize;
                         int btnY = codeRect.top - btnMarginTop;  // 按钮在代码块上方
                         
-                        // 绘制代码块背景
-                        HBRUSH hCodeBrush = CreateSolidBrush(RGB(250, 250, 250));
+                        // 绘制代码块背景 - 使用主题颜色
+                        HBRUSH hCodeBrush = CreateSolidBrush(g_CurrentTheme.editorBg);
                         HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hCodeBrush);
-                        HPEN hBorderPen = CreatePen(PS_SOLID, 1, RGB(200, 200, 200));
+                        HPEN hBorderPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
                         HPEN hOldPen = (HPEN)SelectObject(hdc, hBorderPen);
                         
                         // 绘制圆角矩形背景和边框
@@ -1695,14 +1696,14 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         DeleteObject(hBorderPen);
                         DeleteObject(hCodeBrush);
                         
-                        // 颜色定义
+                        // 颜色定义 - 使用主题颜色
                         COLORREF clrText = g_CurrentTheme.text;
-                        COLORREF clrKeyword = RGB(0, 0, 255);
-                        COLORREF clrComment = RGB(0, 128, 0);
+                        COLORREF clrKeyword = g_CurrentTheme.syntaxKeyword;
+                        COLORREF clrComment = g_CurrentTheme.syntaxComment;
                         COLORREF clrGridLine = g_CurrentTheme.grid;
-                        COLORREF clrType = RGB(0, 0, 255);
-                        COLORREF clrCheck = RGB(139, 0, 0);
-                        COLORREF clrRemark = RGB(0, 128, 0);
+                        COLORREF clrType = g_CurrentTheme.syntaxType;
+                        COLORREF clrCheck = g_CurrentTheme.syntaxCheckbox;
+                        COLORREF clrRemark = g_CurrentTheme.syntaxRemark;
                         
                         int codeLineY = codeStartY + codeBlockPadding;
                         int codeStartX = codeRect.left + 10;
@@ -1727,7 +1728,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         };
                         
                         // Lambda: 绘制表格单元格
-                        auto DrawTableCell = [&](int x, int y, int w, int h, const wchar_t* text, COLORREF color, bool isHeader = false, COLORREF headerBg = RGB(220, 220, 220), bool centerAlign = false) {
+                        auto DrawTableCell = [&](int x, int y, int w, int h, const wchar_t* text, COLORREF color, bool isHeader = false, COLORREF headerBg = g_CurrentTheme.tableHeaderBg, bool centerAlign = false) {
                             if (isHeader) {
                                 RECT rc = {x, y, x + w, y + h};
                                 HBRUSH hHeaderBrush = CreateSolidBrush(headerBg);
@@ -1774,17 +1775,17 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                                 
                                 // 确定列宽
                                 std::vector<int> colWidths;
-                                COLORREF headerBg = RGB(220, 220, 220);
+                                COLORREF headerBg = g_CurrentTheme.tableHeaderBg;
                                 if (cells.size() > 0) {
                                     if (cells[0] == L"子程序名") {
                                         colWidths = {150, 100, 30, 30, 200};
-                                        headerBg = RGB(0xE4, 0xED, 0xE6);
+                                        headerBg = g_CurrentTheme.tableSubHeaderBg;
                                     } else if (cells[0] == L"参数名") {
                                         colWidths = {150, 100, 30, 30, 200};
-                                        headerBg = RGB(0xF0, 0xE3, 0xD9);
+                                        headerBg = g_CurrentTheme.tableVarHeaderBg;
                                     } else if (cells[0] == L"变量名") {
                                         colWidths = {100, 80, 30, 30, 200};
-                                        headerBg = RGB(0xF0, 0xE3, 0xD9);
+                                        headerBg = g_CurrentTheme.tableVarHeaderBg;
                                     } else {
                                         for (size_t i = 0; i < cells.size(); i++) colWidths.push_back(100);
                                     }
@@ -1819,7 +1820,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                                 // 绘制横向虚线到"如"字左侧
                                 int lineX = codeStartX + indentX;
                                 int textCenterY = codeLineY + rowHeight / 2;
-                                HPEN hDashPen = CreatePen(PS_DOT, 1, RGB(128, 128, 128));
+                                HPEN hDashPen = CreatePen(PS_DOT, 1, g_CurrentTheme.textDim);
                                 HPEN hOldDashPen = (HPEN)SelectObject(hdc, hDashPen);
                                 MoveToEx(hdc, lineX, textCenterY, NULL);
                                 LineTo(hdc, codeStartX + indentX + 8, textCenterY);
@@ -1937,8 +1938,8 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         if (isHoveringCopy) {
                             RECT hoverRect = block.copyBtnRect;
                             InflateRect(&hoverRect, 4, 4);  // 扩大一点
-                            HBRUSH hHoverBrush = CreateSolidBrush(RGB(230, 230, 230));
-                            HPEN hHoverPen = CreatePen(PS_SOLID, 1, RGB(200, 200, 200));
+                            HBRUSH hHoverBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
+                            HPEN hHoverPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
                             HBRUSH hOldBrush2 = (HBRUSH)SelectObject(hdc, hHoverBrush);
                             HPEN hOldPen2 = (HPEN)SelectObject(hdc, hHoverPen);
                             RoundRect(hdc, hoverRect.left, hoverRect.top, hoverRect.right, hoverRect.bottom, 6, 6);
@@ -1952,8 +1953,8 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         if (isHoveringInsert) {
                             RECT hoverRect = block.insertBtnRect;
                             InflateRect(&hoverRect, 4, 4);
-                            HBRUSH hHoverBrush = CreateSolidBrush(RGB(230, 230, 230));
-                            HPEN hHoverPen = CreatePen(PS_SOLID, 1, RGB(200, 200, 200));
+                            HBRUSH hHoverBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
+                            HPEN hHoverPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
                             HBRUSH hOldBrush2 = (HBRUSH)SelectObject(hdc, hHoverBrush);
                             HPEN hOldPen2 = (HPEN)SelectObject(hdc, hHoverPen);
                             RoundRect(hdc, hoverRect.left, hoverRect.top, hoverRect.right, hoverRect.bottom, 6, 6);
@@ -1967,8 +1968,8 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                         if (isHoveringUndo) {
                             RECT hoverRect = block.undoBtnRect;
                             InflateRect(&hoverRect, 4, 4);
-                            HBRUSH hHoverBrush = CreateSolidBrush(RGB(230, 230, 230));
-                            HPEN hHoverPen = CreatePen(PS_SOLID, 1, RGB(200, 200, 200));
+                            HBRUSH hHoverBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
+                            HPEN hHoverPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
                             HBRUSH hOldBrush2 = (HBRUSH)SelectObject(hdc, hHoverBrush);
                             HPEN hOldPen2 = (HPEN)SelectObject(hdc, hHoverPen);
                             RoundRect(hdc, hoverRect.left, hoverRect.top, hoverRect.right, hoverRect.bottom, 6, 6);
@@ -2035,7 +2036,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                     // 只在流式输出完成后绘制虚线和按钮
                     if (!isCurrentlyStreaming) {
                         // 绘制虚线分隔线(===样式)
-                        HPEN hLinePen = CreatePen(PS_DOT, 1, RGB(180, 180, 180));
+                        HPEN hLinePen = CreatePen(PS_DOT, 1, g_CurrentTheme.textDim);
                         HPEN hOldPen = (HPEN)SelectObject(hdc, hLinePen);
                     
                     // 绘制多条短线形成===效果
@@ -2085,8 +2086,8 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                     if (isHoveringRetry) {
                         RECT hoverRect = msg.retryButtonRect;
                         InflateRect(&hoverRect, 4, 4);
-                        HBRUSH hHoverBrush = CreateSolidBrush(RGB(230, 230, 230));
-                        HPEN hHoverPen = CreatePen(PS_SOLID, 1, RGB(200, 200, 200));
+                        HBRUSH hHoverBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
+                        HPEN hHoverPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
                         HBRUSH hOldBrush2 = (HBRUSH)SelectObject(hdc, hHoverBrush);
                         HPEN hOldPen2 = (HPEN)SelectObject(hdc, hHoverPen);
                         RoundRect(hdc, hoverRect.left, hoverRect.top, hoverRect.right, hoverRect.bottom, 6, 6);
@@ -2100,8 +2101,8 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                     if (isHoveringCopy) {
                         RECT hoverRect = msg.copyAllButtonRect;
                         InflateRect(&hoverRect, 4, 4);
-                        HBRUSH hHoverBrush = CreateSolidBrush(RGB(230, 230, 230));
-                        HPEN hHoverPen = CreatePen(PS_SOLID, 1, RGB(200, 200, 200));
+                        HBRUSH hHoverBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
+                        HPEN hHoverPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
                         HBRUSH hOldBrush2 = (HBRUSH)SelectObject(hdc, hHoverBrush);
                         HPEN hOldPen2 = (HPEN)SelectObject(hdc, hHoverPen);
                         RoundRect(hdc, hoverRect.left, hoverRect.top, hoverRect.right, hoverRect.bottom, 6, 6);
@@ -2115,8 +2116,8 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                     if (isHoveringUndo) {
                         RECT hoverRect = msg.undoButtonRect;
                         InflateRect(&hoverRect, 4, 4);
-                        HBRUSH hHoverBrush = CreateSolidBrush(RGB(230, 230, 230));
-                        HPEN hHoverPen = CreatePen(PS_SOLID, 1, RGB(200, 200, 200));
+                        HBRUSH hHoverBrush = CreateSolidBrush(g_CurrentTheme.popupSelection);
+                        HPEN hHoverPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
                         HBRUSH hOldBrush2 = (HBRUSH)SelectObject(hdc, hHoverBrush);
                         HPEN hOldPen2 = (HPEN)SelectObject(hdc, hHoverPen);
                         RoundRect(hdc, hoverRect.left, hoverRect.top, hoverRect.right, hoverRect.bottom, 6, 6);
@@ -2219,7 +2220,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                 DeleteObject(hScrollBgBrush);
                 
                 // 垂直滚动条滑块
-                COLORREF thumbColor = data->vScrollHover ? RGB(90, 90, 90) : RGB(70, 70, 70);
+                COLORREF thumbColor = data->vScrollHover ? g_CurrentTheme.scrollThumbHover : g_CurrentTheme.scrollThumb;
                 HBRUSH hThumbBrush = CreateSolidBrush(thumbColor);
                 FillRect(hdc, &data->vScrollThumbRect, hThumbBrush);
                 DeleteObject(hThumbBrush);
@@ -2228,13 +2229,8 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
             SelectObject(hdc, hOldFont);
             DeleteObject(hFont);
 
-            // 绘制右边框（如果处于悬停或拖动状态）
-            if (data->isRightBorderHover || data->isDraggingRightBorder) {
-                HBRUSH hBorderBrush = CreateSolidBrush(RGB(0, 122, 204));
-                RECT borderRect = { rect.right - 5, 0, rect.right, rect.bottom };
-                FillRect(hdc, &borderRect, hBorderBrush);
-                DeleteObject(hBorderBrush);
-            }
+            // 边框分隔线和可拖动边框都由主AI窗口绘制
+            // 聊天消息窗口不绘制边框
 
             // 将内存DC内容复制到屏幕
             BitBlt(hRealDC, 0, 0, rect.right, rect.bottom, hdc, 0, 0, SRCCOPY);
@@ -2250,7 +2246,7 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
     
     case WM_SETCURSOR:
         {
-            if (data && (data->isRightBorderHover || data->isDraggingRightBorder)) {
+            if (data && (data->isBorderHover || data->isDraggingBorder)) {
                 SetCursor(LoadCursor(NULL, IDC_SIZEWE));
                 return TRUE;
             }
@@ -2265,9 +2261,9 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
             pt.x = LOWORD(lParam);
             pt.y = HIWORD(lParam);
             
-            // 检查是否点击了右边框
-            if (data->isRightBorderHover) {
-                data->isDraggingRightBorder = true;
+            // 检查是否点击了边框
+            if (data->isBorderHover) {
+                data->isDraggingBorder = true;
                 data->borderDragStartX = pt.x;
                 SetCapture(hWnd);
                 return 0;
@@ -2313,9 +2309,9 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
         {
             if (!data) return 0;
             
-            // 停止右边框拖动
-            if (data->isDraggingRightBorder) {
-                data->isDraggingRightBorder = false;
+            // 停止边框拖动
+            if (data->isDraggingBorder) {
+                data->isDraggingBorder = false;
                 ReleaseCapture();
                 // 通知父窗口重绘
                 HWND hParent = GetParent(hWnd);
@@ -2503,11 +2499,10 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
             int mouseX = LOWORD(lParam);
             int mouseY = HIWORD(lParam);
             
-            // 处理右边框拖动
-            if (data->isDraggingRightBorder) {
-                // 更新主窗口的g_LeftPanelWidth
-                extern int g_LeftPanelWidth;
-                extern int g_MinLeftPanelWidth;
+            // 处理边框拖动（根据面板位置调整AI面板宽度）
+            if (data->isDraggingBorder) {
+                extern int g_RightPanelWidth;
+                extern int g_MinRightPanelWidth;
                 
                 // 将鼠标位置转换到主窗口坐标
                 POINT screenPt = {mouseX, mouseY};
@@ -2519,38 +2514,38 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
                 RECT mainRect;
                 GetClientRect(hMainWnd, &mainRect);
                 int maxWidth = mainRect.right - 350;
+                int newWidth;
                 
-                int newWidth = screenPt.x;
-                if (newWidth < g_MinLeftPanelWidth) newWidth = g_MinLeftPanelWidth;
+                if (g_PanelsSwapped) {
+                    // 交换模式：AI在左侧，拖动右边框
+                    newWidth = screenPt.x;
+                } else {
+                    // 正常模式：AI在右侧，拖动左边框
+                    newWidth = mainRect.right - screenPt.x;
+                }
+                
+                if (newWidth < g_MinRightPanelWidth) newWidth = g_MinRightPanelWidth;
                 if (newWidth > maxWidth) newWidth = maxWidth;
                 
                 // 只有宽度真正改变时才更新
-                if (newWidth != g_LeftPanelWidth) {
-                    g_LeftPanelWidth = newWidth;
-                    
-                    // 直接触发布局更新，让系统处理重绘
-                    SendMessage(hMainWnd, WM_SIZE, 0, MAKELPARAM(mainRect.right, mainRect.bottom));
-                    
-                    // 强制立即更新显示，避免残影
-                    RedrawWindow(hMainWnd, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW | RDW_ALLCHILDREN);
+                if (newWidth != g_RightPanelWidth) {
+                    // 节流：限制更新频率（约120fps）
+                    static DWORD lastUpdateTime = 0;
+                    DWORD currentTime = GetTickCount();
+                    if (currentTime - lastUpdateTime >= 8) {
+                        lastUpdateTime = currentTime;
+                        g_RightPanelWidth = newWidth;
+                        
+                        // 使用 PostMessage 异步更新，减少卡顿
+                        #define WM_UPDATE_PANEL_LAYOUT (WM_USER + 300)
+                        PostMessage(hMainWnd, WM_UPDATE_PANEL_LAYOUT, 0, 0);
+                    }
                 }
                 
                 return 0;
             }
             
-            // 检测是否在右边框区域（最右侧5px）
-            RECT rect;
-            GetClientRect(hWnd, &rect);
-            bool isInRightBorder = (mouseX >= rect.right - 5);
-            
-            if (isInRightBorder != data->isRightBorderHover && !data->isDraggingRightBorder) {
-                data->isRightBorderHover = isInRightBorder;
-                // 通知父窗口重绘边框
-                HWND hParent = GetParent(hWnd);
-                if (hParent) {
-                    InvalidateRect(hParent, NULL, FALSE);
-                }
-            }
+            // 边框检测完全由主AI窗口处理，聊天消息窗口不处理
             
             // 启用鼠标跟踪以检测鼠标离开
             TRACKMOUSEEVENT tme = {};
@@ -2813,8 +2808,8 @@ LRESULT CALLBACK AIChatWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
         
     case WM_MOUSELEAVE:
         {
-            if (data && !data->isDraggingRightBorder && data->isRightBorderHover) {
-                data->isRightBorderHover = false;
+            if (data && !data->isDraggingBorder && data->isBorderHover) {
+                data->isBorderHover = false;
                 HWND hParent = GetParent(hWnd);
                 if (hParent) {
                     InvalidateRect(hParent, NULL, FALSE);
@@ -2868,12 +2863,30 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
     switch (message) {
     case WM_NCHITTEST:
         {
-            // 让左边缘5px的鼠标消息穿透到主窗口，用于调整窗口大小
             POINT pt = {GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)};
             ScreenToClient(hWnd, &pt);
-            if (pt.x < 5) {
-                return HTTRANSPARENT;
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            
+            // 程序窗口边缘穿透区域宽度（用于调整整个程序窗口大小）
+            const int windowResizeMargin = 5;
+            
+            if (g_PanelsSwapped) {
+                // 交换模式：AI在左边
+                // 左边缘穿透到主窗口（用于调整程序窗口大小）
+                if (pt.x <= windowResizeMargin) {
+                    return HTTRANSPARENT;
+                }
+                // 右边是AI窗口的拖动边框区域，返回HTCLIENT让AI窗口处理
+            } else {
+                // 正常模式：AI在右边
+                // 右边缘穿透到主窗口（用于调整程序窗口大小）
+                if (pt.x >= rect.right - windowResizeMargin) {
+                    return HTTRANSPARENT;
+                }
+                // 左边是AI窗口的拖动边框区域，返回HTCLIENT让AI窗口处理
             }
+            
             return HTCLIENT;
         }
     case WM_CREATE:
@@ -2939,20 +2952,37 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
             int padding = 8;
             int controlAreaHeight = statusBarHeight + fileNameHeight + 4 + inputHeight + 6 + buttonHeight + padding;
             
+            // 边框拖动区域宽度
+            int borderDragWidth = 8;
+            
             if (hChatWindow) {
-                // 聊天窗口占据从顶部到控制区
-                MoveWindow(hChatWindow, 0, 0, width, height - controlAreaHeight, TRUE);
+                // 聊天窗口需要为边框拖动区域留出空间
+                int chatX, chatWidth;
+                if (g_PanelsSwapped) {
+                    // 交换模式：AI在左侧，右边留出空间
+                    chatX = 0;
+                    chatWidth = width - borderDragWidth;
+                } else {
+                    // 正常模式：AI在右侧，左边留出空间
+                    chatX = borderDragWidth;
+                    chatWidth = width - borderDragWidth;
+                }
+                MoveWindow(hChatWindow, chatX, 0, chatWidth, height - controlAreaHeight, TRUE);
             }
             
             int controlAreaTop = height - controlAreaHeight;
+            
+            // 根据面板位置计算控制区域的X偏移
+            int controlOffsetX = g_PanelsSwapped ? 0 : borderDragWidth;
+            int controlWidth = width - borderDragWidth;
             
             if (hChatInput) {
                 // 输入框在状态栏+文件名下方
                 int inputTop = controlAreaTop + statusBarHeight + fileNameHeight + 4;
                 MoveWindow(hChatInput, 
-                    padding + 2, 
+                    controlOffsetX + padding + 2, 
                     inputTop,
-                    width - 2 * padding - 4, 
+                    controlWidth - 2 * padding - 4, 
                     inputHeight, 
                     TRUE);
             }
@@ -2960,7 +2990,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
             int btnAreaTop = controlAreaTop + statusBarHeight + fileNameHeight + 4 + inputHeight + 6;
             
             // 计算模式选择区域
-            g_ModeRect.left = padding + 6;
+            g_ModeRect.left = controlOffsetX + padding + 6;
             g_ModeRect.top = btnAreaTop;
             g_ModeRect.right = g_ModeRect.left + 75;
             g_ModeRect.bottom = btnAreaTop + buttonHeight;
@@ -2972,7 +3002,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
             g_ModelRect.bottom = btnAreaTop + buttonHeight;
             
             if (hChatSendBtn) {
-                int x = width - 16 - padding - 12;
+                int x = controlOffsetX + controlWidth - 16 - padding - 12;
                 int y = btnAreaTop + (buttonHeight - 16) / 2;
                 MoveWindow(hChatSendBtn, x, y, 16, 16, TRUE);
             }
@@ -3072,13 +3102,36 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
         return 0;
     
     case WM_LBUTTONUP:
+        {
+            AIChatData* data = (AIChatData*)GetWindowLongPtr(hChatWindow, GWLP_USERDATA);
+            if (data && data->isDraggingBorder) {
+                data->isDraggingBorder = false;
+                ReleaseCapture();
+                InvalidateRect(hWnd, NULL, FALSE);
+                return 0;
+            }
+        }
         return 0;
     
     case WM_MOUSELEAVE:
+        {
+            AIChatData* data = (AIChatData*)GetWindowLongPtr(hChatWindow, GWLP_USERDATA);
+            if (data && !data->isDraggingBorder && data->isBorderHover) {
+                data->isBorderHover = false;
+                InvalidateRect(hWnd, NULL, FALSE);
+            }
+        }
         return 0;
     
     case WM_SETCURSOR:
         {
+            // 检查边框拖动状态
+            AIChatData* data = (AIChatData*)GetWindowLongPtr(hChatWindow, GWLP_USERDATA);
+            if (data && (data->isBorderHover || data->isDraggingBorder)) {
+                SetCursor(LoadCursor(NULL, IDC_SIZEWE));
+                return TRUE;
+            }
+            
             // 获取鼠标位置
             POINT pt;
             GetCursorPos(&pt);
@@ -3129,11 +3182,17 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
         
     case WM_CTLCOLOREDIT:
         {
-            // 输入框使用特定背景色 RGB(49, 49, 49)
+            // 输入框使用编辑器背景色
             HDC hdcEdit = (HDC)wParam;
             SetTextColor(hdcEdit, g_CurrentTheme.text);
-            SetBkColor(hdcEdit, RGB(49, 49, 49));
-            static HBRUSH hInputBrush = CreateSolidBrush(RGB(49, 49, 49));
+            SetBkColor(hdcEdit, g_CurrentTheme.editorBg);
+            static HBRUSH hInputBrush = NULL;
+            static COLORREF lastEditorBg = 0;
+            if (!hInputBrush || lastEditorBg != g_CurrentTheme.editorBg) {
+                if (hInputBrush) DeleteObject(hInputBrush);
+                hInputBrush = CreateSolidBrush(g_CurrentTheme.editorBg);
+                lastEditorBg = g_CurrentTheme.editorBg;
+            }
             return (LRESULT)hInputBrush;
         }
     case WM_CTLCOLORSTATIC:
@@ -3153,8 +3212,8 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 HDC hdc = lpDis->hDC;
                 RECT rect = lpDis->rcItem;
                 
-                // 填充背景为输入框背景色（RGB(49, 49, 49)）
-                HBRUSH hBgBrush = CreateSolidBrush(RGB(49, 49, 49));
+                // 填充背景为编辑器背景色
+                HBRUSH hBgBrush = CreateSolidBrush(g_CurrentTheme.editorBg);
                 FillRect(hdc, &rect, hBgBrush);
                 DeleteObject(hBgBrush);
 
@@ -3167,8 +3226,8 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                     // 绘制扩展的圆角矩形
                     RECT hoverRect = rect;
                     InflateRect(&hoverRect, 2, 2);
-                    HBRUSH hHoverBrush = CreateSolidBrush(RGB(70, 70, 70));
-                    HPEN hHoverPen = CreatePen(PS_SOLID, 1, RGB(100, 100, 100));
+                    HBRUSH hHoverBrush = CreateSolidBrush(g_CurrentTheme.menuHoverBg);
+                    HPEN hHoverPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.textDim);
                     HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hHoverBrush);
                     HPEN hOldPen = (HPEN)SelectObject(hdc, hHoverPen);
                     RoundRect(hdc, hoverRect.left, hoverRect.top, hoverRect.right, hoverRect.bottom, 5, 5);
@@ -3208,8 +3267,17 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
     case WM_LBUTTONDOWN:
         {
             POINT pt;
-            pt.x = LOWORD(lParam);
-            pt.y = HIWORD(lParam);
+            pt.x = GET_X_LPARAM(lParam);  // 使用GET_X_LPARAM正确处理负坐标
+            pt.y = GET_Y_LPARAM(lParam);  // 使用GET_Y_LPARAM正确处理负坐标
+            
+            // 检查边框点击
+            AIChatData* data = (AIChatData*)GetWindowLongPtr(hChatWindow, GWLP_USERDATA);
+            if (data && data->isBorderHover) {
+                data->isDraggingBorder = true;
+                data->borderDragStartX = pt.x;
+                SetCapture(hWnd);
+                return 0;
+            }
             
             // 检测是否点击了状态栏（但不是接受和撤销按钮）
             if (PtInRect(&g_StatusBarRect, pt) && !g_PendingEdits.empty() &&
@@ -3411,7 +3479,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 g_StatusBarRect = statusOuterRect;
                 
                 // 绘制状态方框边框
-                HPEN hStatusPen = CreatePen(PS_SOLID, 1, RGB(100, 100, 100));
+                HPEN hStatusPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.textDim);
                 HPEN hOldStatusPen = (HPEN)SelectObject(hdc, hStatusPen);
                 HBRUSH hStatusBrush = CreateSolidBrush(g_CurrentTheme.bg);  // 使用编辑器背景色
                 HBRUSH hOldStatusBrush = (HBRUSH)SelectObject(hdc, hStatusBrush);
@@ -3426,7 +3494,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 
                 // 设置字体和颜色
                 SetBkMode(hdc, TRANSPARENT);
-                SetTextColor(hdc, RGB(200, 200, 200));
+                SetTextColor(hdc, g_CurrentTheme.textDim);
                 HFONT hStatusFont = CreateFont(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
                     DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
                     CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_SWISS, L"微软雅黑");
@@ -3451,8 +3519,8 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 g_AcceptBtnRect.top = statusOuterRect.top + 6;
                 g_AcceptBtnRect.bottom = statusOuterRect.bottom - 6;
                 
-                HBRUSH hAcceptBrush = CreateSolidBrush(RGB(0, 120, 215));
-                HPEN hAcceptPen = CreatePen(PS_SOLID, 1, RGB(0, 120, 215));
+                HBRUSH hAcceptBrush = CreateSolidBrush(g_CurrentTheme.activityBarIndicator);
+                HPEN hAcceptPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.activityBarIndicator);
                 HBRUSH hOldAcceptBrush = (HBRUSH)SelectObject(hdc, hAcceptBrush);
                 HPEN hOldAcceptPen = (HPEN)SelectObject(hdc, hAcceptPen);
                 
@@ -3463,7 +3531,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 DeleteObject(hAcceptPen);
                 DeleteObject(hAcceptBrush);
                 
-                SetTextColor(hdc, RGB(255, 255, 255));
+                SetTextColor(hdc, g_CurrentTheme.textBright);
                 DrawTextW(hdc, L"接受", -1, &g_AcceptBtnRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
                 
                 // 绘制"撤销"按钮（圆角矩形）
@@ -3472,8 +3540,8 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 g_UndoBtnRect.top = statusOuterRect.top + 6;
                 g_UndoBtnRect.bottom = statusOuterRect.bottom - 6;
                 
-                HBRUSH hUndoBrush = CreateSolidBrush(RGB(80, 80, 80));
-                HPEN hUndoPen = CreatePen(PS_SOLID, 1, RGB(100, 100, 100));
+                HBRUSH hUndoBrush = CreateSolidBrush(g_CurrentTheme.menuHoverBg);
+                HPEN hUndoPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.textDim);
                 HBRUSH hOldUndoBrush = (HBRUSH)SelectObject(hdc, hUndoBrush);
                 HPEN hOldUndoPen = (HPEN)SelectObject(hdc, hUndoPen);
                 
@@ -3484,7 +3552,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 DeleteObject(hUndoPen);
                 DeleteObject(hUndoBrush);
                 
-                SetTextColor(hdc, RGB(200, 200, 200));
+                SetTextColor(hdc, g_CurrentTheme.textDim);
                 DrawTextW(hdc, L"撤销", -1, &g_UndoBtnRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
                 
                 SelectObject(hdc, hOldStatusFont);
@@ -3504,7 +3572,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                     
                     // 绘制列表背景
                     HBRUSH hListBrush = CreateSolidBrush(g_CurrentTheme.bg);
-                    HPEN hListPen = CreatePen(PS_SOLID, 1, RGB(100, 100, 100));
+                    HPEN hListPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.textDim);
                     HBRUSH hOldListBrush = (HBRUSH)SelectObject(hdc, hListBrush);
                     HPEN hOldListPen = (HPEN)SelectObject(hdc, hListPen);
                     
@@ -3532,7 +3600,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                         std::wstring itemText = fileName + L"  (+" + std::to_wstring(editInfo.addedLines) + 
                                                L" -" + std::to_wstring(editInfo.deletedLines) + L")";
                         
-                        SetTextColor(hdc, RGB(180, 180, 180));
+                        SetTextColor(hdc, g_CurrentTheme.textDim);
                         DrawTextW(hdc, itemText.c_str(), -1, &itemRect, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
                         
                         yPos += itemHeight;
@@ -3550,8 +3618,8 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
             borderRect.right = rect.right - padding;
             borderRect.bottom = rect.bottom - padding;
             
-            // 先填充边框内部区域为 RGB(49, 49, 49)
-            HBRUSH hInnerBrush = CreateSolidBrush(RGB(49, 49, 49));
+            // 先填充边框内部区域
+            HBRUSH hInnerBrush = CreateSolidBrush(g_CurrentTheme.editorBg);
             RECT innerRect = borderRect;
             InflateRect(&innerRect, -1, -1);
             FillRect(hdc, &innerRect, hInnerBrush);
@@ -3581,7 +3649,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                     
                     // 设置字体和颜色
                     SetBkMode(hdc, TRANSPARENT);
-                    SetTextColor(hdc, RGB(150, 150, 150));  // 灰色文字
+                    SetTextColor(hdc, g_CurrentTheme.textDim);  // 暗淡文字
                     HFONT hFont = CreateFont(16, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
                         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
                         CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_SWISS, L"微软雅黑");
@@ -3598,7 +3666,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                     int frameRight = frameLeft + iconSize + 10 + textSize.cx + 8;
                     int frameBottom = frameTop + fileNameHeight - 2;
                     
-                    HPEN hSolidPen = CreatePen(PS_SOLID, 1, RGB(100, 100, 100));
+                    HPEN hSolidPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.textDim);
                     HPEN hOldSolidPen = (HPEN)SelectObject(hdc, hSolidPen);
                     HBRUSH hNullBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
                     HBRUSH hOldNullBrush = (HBRUSH)SelectObject(hdc, hNullBrush);
@@ -3613,7 +3681,7 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                     int iconX = frameLeft + 4;
                     int iconY = frameTop + (frameBottom - frameTop - iconSize) / 2;
                     
-                    HBRUSH hIconBrush = CreateSolidBrush(RGB(80, 80, 80));
+                    HBRUSH hIconBrush = CreateSolidBrush(g_CurrentTheme.menuHoverBg);
                     RECT iconRect = {iconX, iconY, iconX + iconSize, iconY + iconSize};
                     FillRect(hdc, &iconRect, hIconBrush);
                     DeleteObject(hIconBrush);
@@ -3680,12 +3748,34 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                 SelectObject(hdc, hOldFont);
             }
             
-            // 绘制右边框（整个面板的右侧）
+            // 绘制边框分隔线（根据面板位置决定左边框还是右边框）
+            HPEN hSideBorderPen2 = CreatePen(PS_SOLID, 1, g_CurrentTheme.border);
+            HPEN hOldSidePen2 = (HPEN)SelectObject(hdc, hSideBorderPen2);
+            if (g_PanelsSwapped) {
+                // 交换模式：AI在左侧，绘制右边框
+                MoveToEx(hdc, rect.right - 1, 0, NULL);
+                LineTo(hdc, rect.right - 1, rect.bottom);
+            } else {
+                // 正常模式：AI在右侧，绘制左边框
+                MoveToEx(hdc, 0, 0, NULL);
+                LineTo(hdc, 0, rect.bottom);
+            }
+            SelectObject(hdc, hOldSidePen2);
+            DeleteObject(hSideBorderPen2);
+            
+            // 绘制可拖动边框（根据面板位置决定在哪一侧）
             AIChatData* chatData = (AIChatData*)GetWindowLongPtr(hChatWindow, GWLP_USERDATA);
-            if (chatData && (chatData->isRightBorderHover || chatData->isDraggingRightBorder)) {
+            if (chatData && (chatData->isBorderHover || chatData->isDraggingBorder)) {
                 // 只有在悬停或拖动时才显示5px蓝色边框
-                HBRUSH hBorderBrush = CreateSolidBrush(RGB(0, 122, 204));
-                RECT borderRect = { rect.right - 5, 0, rect.right, rect.bottom };
+                HBRUSH hBorderBrush = CreateSolidBrush(g_CurrentTheme.activityBarIndicator);
+                RECT borderRect;
+                if (g_PanelsSwapped) {
+                    // 交换模式：AI在左侧，可拖动边框在右边
+                    borderRect = { rect.right - 5, 0, rect.right, rect.bottom };
+                } else {
+                    // 正常模式：AI在右侧，可拖动边框在左边
+                    borderRect = { 0, 0, 5, rect.bottom };
+                }
                 FillRect(hdc, &borderRect, hBorderBrush);
                 DeleteObject(hBorderBrush);
             }
@@ -3697,11 +3787,83 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
     case WM_MOUSEMOVE:
         {
             POINT pt;
-            pt.x = LOWORD(lParam);
-            pt.y = HIWORD(lParam);
+            pt.x = GET_X_LPARAM(lParam);  // 使用GET_X_LPARAM正确处理负坐标
+            pt.y = GET_Y_LPARAM(lParam);  // 使用GET_Y_LPARAM正确处理负坐标
             
             AIChatData* data = (AIChatData*)GetWindowLongPtr(hChatWindow, GWLP_USERDATA);
-            if (!data) return 0;
+            if (!data) {
+                return 0;
+            }
+            
+            // 处理边框拖动
+            if (data->isDraggingBorder) {
+                extern int g_RightPanelWidth;
+                extern int g_MinRightPanelWidth;
+                
+                // 将鼠标位置转换到主窗口坐标
+                POINT screenPt = pt;
+                ClientToScreen(hWnd, &screenPt);
+                HWND hMainWnd = GetParent(hWnd);
+                ScreenToClient(hMainWnd, &screenPt);
+                
+                RECT mainRect;
+                GetClientRect(hMainWnd, &mainRect);
+                int maxWidth = mainRect.right - 350;
+                int newWidth;
+                
+                if (g_PanelsSwapped) {
+                    // 交换模式：AI在左侧，拖动右边框
+                    newWidth = screenPt.x;
+                } else {
+                    // 正常模式：AI在右侧，拖动左边框
+                    newWidth = mainRect.right - screenPt.x;
+                }
+                
+                if (newWidth < g_MinRightPanelWidth) newWidth = g_MinRightPanelWidth;
+                if (newWidth > maxWidth) newWidth = maxWidth;
+                
+                // 只有宽度真正改变时才更新
+                if (newWidth != g_RightPanelWidth) {
+                    // 节流：限制更新频率（约120fps）
+                    static DWORD lastUpdateTime = 0;
+                    DWORD currentTime = GetTickCount();
+                    if (currentTime - lastUpdateTime >= 8) {
+                        lastUpdateTime = currentTime;
+                        g_RightPanelWidth = newWidth;
+                        
+                        // 使用 PostMessage 异步更新，减少卡顿
+                        #ifndef WM_UPDATE_PANEL_LAYOUT
+                        #define WM_UPDATE_PANEL_LAYOUT (WM_USER + 300)
+                        #endif
+                        PostMessage(hMainWnd, WM_UPDATE_PANEL_LAYOUT, 0, 0);
+                    }
+                }
+                return 0;
+            }
+            
+            // 启用鼠标跟踪（在边框检测之前）
+            TRACKMOUSEEVENT tme = {};
+            tme.cbSize = sizeof(TRACKMOUSEEVENT);
+            tme.dwFlags = TME_LEAVE;
+            tme.hwndTrack = hWnd;
+            TrackMouseEvent(&tme);
+            
+            // 检测是否在可拖动边框区域
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            bool isInBorder;
+            if (g_PanelsSwapped) {
+                // 交换模式：检测右边框（最右侧8px）
+                isInBorder = (pt.x >= rect.right - 8);
+            } else {
+                // 正常模式：检测左边框（最左侧8px）
+                isInBorder = (pt.x <= 8);
+            }
+            
+            if (isInBorder != data->isBorderHover && !data->isDraggingBorder) {
+                data->isBorderHover = isInBorder;
+                InvalidateRect(hWnd, NULL, FALSE);
+            }
             
             // 检查鼠标是否在发送按钮上
             RECT btnRect;
