@@ -39,7 +39,7 @@ bool EllEditorData::CreateEditorForFile(const std::wstring& filePath)
         editor = new DllEditor(hwnd, context);
         editorType = 0;
         OutputDebugStringW(L"[EllEditor] 创建 DllEditor\n");
-    } else if (ext == L".ecl") {
+    } else if (ext == L".ecs") {
         editor = new ConstantEditor(hwnd, context);
         editorType = 1;
         OutputDebugStringW(L"[EllEditor] 创建 ConstantEditor\n");

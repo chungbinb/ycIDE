@@ -88,6 +88,8 @@ RECT g_LastMainWindowRect = {0};
 
 // 可视化设计器相关
 bool g_IsVisualDesignerActive = false;  // 当前是否处于可视化设计模式
+bool g_IsToolboxDocked = false;         // 组件箱是否停靠到设计器内
+static const int DOCKED_TOOLBOX_WIDTH = 180;  // 停靠时组件箱宽度
 VisualDesigner* g_pVisualDesigner = nullptr;  // 可视化设计器实例
 PropertyGrid* g_pPropertyGrid = nullptr;      // 属性窗口实例
 ControlToolbox* g_pControlToolbox = nullptr;  // 组件箱实例
@@ -256,14 +258,30 @@ std::wstring GetWindowConfigPath() {
 void SaveToolboxPosition() {
     if (!hToolboxWnd) return;
     
+    // 组件箱是可视化设计器的子窗口，保存相对于父窗口的坐标
     RECT rc;
     GetWindowRect(hToolboxWnd, &rc);
     
+    // 获取窗口大小
+    int width = rc.right - rc.left;
+    int height = rc.bottom - rc.top;
+    
+    // 转换为父窗口坐标
+    HWND hParent = GetParent(hToolboxWnd);
+    int x = rc.left;
+    int y = rc.top;
+    if (hParent) {
+        POINT pos = { rc.left, rc.top };
+        ScreenToClient(hParent, &pos);
+        x = pos.x;
+        y = pos.y;
+    }
+    
     std::wstring configPath = GetWindowConfigPath();
-    WritePrivateProfileStringW(L"Toolbox", L"X", std::to_wstring(rc.left).c_str(), configPath.c_str());
-    WritePrivateProfileStringW(L"Toolbox", L"Y", std::to_wstring(rc.top).c_str(), configPath.c_str());
-    WritePrivateProfileStringW(L"Toolbox", L"Width", std::to_wstring(rc.right - rc.left).c_str(), configPath.c_str());
-    WritePrivateProfileStringW(L"Toolbox", L"Height", std::to_wstring(rc.bottom - rc.top).c_str(), configPath.c_str());
+    WritePrivateProfileStringW(L"Toolbox", L"X", std::to_wstring(x).c_str(), configPath.c_str());
+    WritePrivateProfileStringW(L"Toolbox", L"Y", std::to_wstring(y).c_str(), configPath.c_str());
+    WritePrivateProfileStringW(L"Toolbox", L"Width", std::to_wstring(width).c_str(), configPath.c_str());
+    WritePrivateProfileStringW(L"Toolbox", L"Height", std::to_wstring(height).c_str(), configPath.c_str());
 }
 
 void LoadToolboxPosition() {
@@ -276,26 +294,35 @@ void LoadToolboxPosition() {
     int width = GetPrivateProfileIntW(L"Toolbox", L"Width", 200, configPath.c_str());
     int height = GetPrivateProfileIntW(L"Toolbox", L"Height", 400, configPath.c_str());
     
-    // 如果没有保存的位置，使用默认位置（相对于主窗口）
+    // 组件箱是可视化设计器的子窗口，坐标是相对于父窗口的
+    // 获取父窗口（可视化设计器）的大小
+    HWND hParent = GetParent(hToolboxWnd);
+    RECT parentRect = {0};
+    if (hParent) {
+        GetClientRect(hParent, &parentRect);
+    }
+    
+    // 如果没有保存的位置，或者父窗口尚未初始化，使用默认位置
     if (x == -1 || y == -1) {
-        if (hMainWnd) {
-            RECT mainRc;
-            GetWindowRect(hMainWnd, &mainRc);
-            x = mainRc.left + 50;
-            y = mainRc.top + 100;
+        // 默认放在父窗口右上角
+        if (parentRect.right > 0) {
+            x = parentRect.right - width - 10;
+            y = 10;
         } else {
-            x = 100;
-            y = 100;
+            x = 50;
+            y = 10;
         }
     }
     
-    // 确保窗口在屏幕可见范围内
-    RECT workArea;
-    SystemParametersInfo(SPI_GETWORKAREA, 0, &workArea, 0);
-    if (x < workArea.left) x = workArea.left;
-    if (y < workArea.top) y = workArea.top;
-    if (x + width > workArea.right) x = workArea.right - width;
-    if (y + height > workArea.bottom) y = workArea.bottom - height;
+    // 确保窗口在父窗口可见范围内（相对于父窗口的坐标）
+    if (hParent && parentRect.right > 0 && parentRect.bottom > 0) {
+        if (x < 0) x = 0;
+        if (y < 0) y = 0;
+        if (x + width > parentRect.right) x = parentRect.right - width;
+        if (y + height > parentRect.bottom) y = parentRect.bottom - height;
+        if (x < 0) x = 0;
+        if (y < 0) y = 0;
+    }
     
     SetWindowPos(hToolboxWnd, NULL, x, y, width, height, SWP_NOZORDER);
 }
@@ -728,9 +755,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
-   
-   // 初始化主窗口位置记录（用于组件箱跟随移动）
-   GetWindowRect(hWnd, &g_LastMainWindowRect);
 
    return TRUE;
 }
@@ -806,7 +830,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             // 2.5 可视化设计器 - 初始隐藏
             hVisualDesignerWnd = CreateWindowW(szVisualDesignerClass, nullptr,
-                WS_CHILD,
+                WS_CHILD | WS_CLIPCHILDREN,  // 添加 WS_CLIPCHILDREN 防止子窗口闪烁
                 0, 0, 0, 0, hWnd, (HMENU)1008, hInst, nullptr);
             
             // 2.6 属性窗口 - 初始隐藏，在可视化设计模式下替代AI聊天窗口
@@ -814,13 +838,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 WS_CHILD,
                 0, 0, 0, 0, hWnd, (HMENU)1009, hInst, nullptr);
             
-            // 2.7 组件箱浮动窗口 - 初始隐藏，使用 WS_EX_TOOLWINDOW 不带 TOPMOST
+            // 2.7 组件箱 - 作为可视化设计器的子窗口，初始隐藏
+            // 注意：这里先创建为主窗口的子窗口，在进入设计器模式时会重新设置父窗口
             hToolboxWnd = CreateWindowExW(
-                WS_EX_TOOLWINDOW,
+                0,
                 szToolboxClass, L"组件箱",
-                WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME,
-                100, 100, 200, 400,
-                hWnd, nullptr, hInst, nullptr);
+                WS_CHILD,  // 作为子窗口
+                0, 0, 200, 400,
+                hVisualDesignerWnd, nullptr, hInst, nullptr);  // 父窗口是可视化设计器
             
             // 加载组件箱保存的位置
             LoadToolboxPosition();
@@ -894,7 +919,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 新布局：活动栏 | 资源管理器 | 编辑器区域 | AI聊天 (或交换时：AI | 编辑器 | 资源管理器 | 活动栏)
             int activityBarW = g_ActivityBarWidth;  // 活动栏宽度
             int leftPanelW = g_LeftPanelVisible ? g_LeftPanelWidth : 0;  // 资源管理器宽度
-            int rightPanelW = g_AIPanelVisible ? g_RightPanelWidth : 0;  // AI聊天框宽度
+            // 可视化设计器模式下隐藏AI面板
+            int rightPanelW = (g_AIPanelVisible && !g_IsVisualDesignerActive) ? g_RightPanelWidth : 0;  // AI聊天框宽度
             int outputH = g_OutputPanelVisible ? 150 : 0;  // 输出窗口高度（根据可见性）
             int topH = g_TotalTopHeight;  // 标题栏+工具栏高度
             int statusH = g_StatusBarHeight;  // 状态栏高度
@@ -948,6 +974,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, 
                                 rightPanelLeft, topH, effectiveRightW, centerTotalH, 
                                 SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                            
+                            // 交换模式下，如果是可视化设计模式且当前是属性标签，将PropertyGrid嵌入资源管理器
+                            if (g_IsVisualDesignerActive && g_ExplorerData.activeTab == TAB_PROPERTY && hPropertyGridWnd) {
+                                // PropertyGrid 放在资源管理器的标签栏下方
+                                int propHeight = centerTotalH - g_ExplorerData.tabBarHeight;
+                                int borderMargin = 8;  // 边框拖动区域宽度
+                                
+                                // 交换模式下边框在左边，PropertyGrid 需要右移留出左边框拖动区域
+                                SetParent(hPropertyGridWnd, hRightPanelWnd);
+                                SetWindowPos(hPropertyGridWnd, NULL, borderMargin, g_ExplorerData.tabBarHeight, 
+                                    effectiveRightW - borderMargin, propHeight, SWP_NOZORDER | SWP_SHOWWINDOW);
+                                ExplorerSetPropertyGridWindow(hPropertyGridWnd);
+                            } else if (hPropertyGridWnd && GetParent(hPropertyGridWnd) == hRightPanelWnd) {
+                                // 不再需要嵌入时，将 PropertyGrid 移回主窗口并隐藏
+                                SetParent(hPropertyGridWnd, hMainWnd);
+                                ShowWindow(hPropertyGridWnd, SW_HIDE);
+                                ExplorerSetPropertyGridWindow(NULL);
+                            }
                         } else {
                             hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, 
                                 rightPanelLeft, topH, 0, centerTotalH, 
@@ -964,6 +1008,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, 
                                 activityBarW, topH, effectiveLeftW, centerTotalH, 
                                 SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                            
+                            // 如果是可视化设计模式且当前是属性标签，将PropertyGrid嵌入资源管理器
+                            if (g_IsVisualDesignerActive && g_ExplorerData.activeTab == TAB_PROPERTY && hPropertyGridWnd) {
+                                // PropertyGrid 放在资源管理器的标签栏下方
+                                int propTop = topH + g_ExplorerData.tabBarHeight;
+                                int propHeight = centerTotalH - g_ExplorerData.tabBarHeight;
+                                int borderMargin = 8;  // 边框拖动区域宽度
+                                
+                                // 设置 PropertyGrid 为资源管理器的子窗口，留出右边框拖动区域
+                                SetParent(hPropertyGridWnd, hRightPanelWnd);
+                                SetWindowPos(hPropertyGridWnd, NULL, 0, g_ExplorerData.tabBarHeight, 
+                                    effectiveLeftW - borderMargin, propHeight, SWP_NOZORDER | SWP_SHOWWINDOW);
+                                ExplorerSetPropertyGridWindow(hPropertyGridWnd);
+                            } else if (hPropertyGridWnd && GetParent(hPropertyGridWnd) == hRightPanelWnd) {
+                                // 不再需要嵌入时，将 PropertyGrid 移回主窗口并隐藏
+                                SetParent(hPropertyGridWnd, hMainWnd);
+                                ShowWindow(hPropertyGridWnd, SW_HIDE);
+                                ExplorerSetPropertyGridWindow(NULL);
+                            }
                         } else {
                             hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, 
                                 activityBarW, topH, 0, centerTotalH, 
@@ -975,7 +1038,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 // 计算编辑器区域起始X坐标
                 int editorLeft = g_PanelsSwapped ? effectiveLeftW : (activityBarW + effectiveLeftW);
                 
-                // 中间上部：标签栏
+                // 中间上部：标签栏（占据整个中间宽度）
                 if (hTabBarWnd)
                     hdwp = DeferWindowPos(hdwp, hTabBarWnd, NULL, editorLeft, topH, centerW, g_TabBarHeight,
                         SWP_NOZORDER | SWP_NOACTIVATE);
@@ -992,10 +1055,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     hdwp = DeferWindowPos(hdwp, hEllEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight,
                         SWP_NOZORDER | SWP_NOACTIVATE);
                 
-                // 可视化设计器
+                // 可视化设计器（占据整个中间区域，组件箱作为其子窗口在内部布局）
                 if (hVisualDesignerWnd)
                     hdwp = DeferWindowPos(hdwp, hVisualDesignerWnd, NULL, editorLeft, editorTop, centerW, editorHeight,
                         SWP_NOZORDER | SWP_NOACTIVATE);
+                
+                // 组件箱的布局由可视化设计器的 WM_SIZE 处理（因为它是设计器的子窗口）
                 
                 // 中间：欢迎页（占据整个编辑器区域）
                 if (hWelcomePageWnd) {
@@ -1025,39 +1090,24 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     }
                 }
                 
-                // 右侧面板（AI聊天或属性窗口）- 只在非交换模式下处理
+                // 右侧面板（AI聊天）- 只在非交换模式下处理
                 if (!g_PanelsSwapped) {
                     int rightPanelLeft = width - effectiveRightW;
-                    if (g_IsVisualDesignerActive) {
-                        // 可视化设计模式：隐藏AI聊天，显示属性窗口
-                        if (hAIChatWnd) {
+                    // 可视化设计模式下隐藏AI窗口
+                    if (hAIChatWnd) {
+                        if (g_AIPanelVisible && !g_IsVisualDesignerActive) {
+                            hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, rightPanelLeft, topH, effectiveRightW, centerTotalH, 
+                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
+                        } else {
                             hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
                                 SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
                         }
-                        if (hPropertyGridWnd) {
-                            if (g_AIPanelVisible) {
-                                hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, rightPanelLeft, topH, effectiveRightW, centerTotalH, 
-                                    SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
-                            } else {
-                                hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
-                                    SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
-                            }
-                        }
-                    } else {
-                        // 正常模式：显示AI聊天，隐藏属性窗口
-                        if (hPropertyGridWnd) {
-                            hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
-                                SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
-                        }
-                        if (hAIChatWnd) {
-                            if (g_AIPanelVisible) {
-                                hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, rightPanelLeft, topH, effectiveRightW, centerTotalH, 
-                                    SWP_NOZORDER | SWP_NOACTIVATE | SWP_SHOWWINDOW);
-                            } else {
-                                hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
-                                    SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
-                            }
-                        }
+                    }
+                    // PropertyGrid 不再在右侧显示（已嵌入左侧资源管理器的属性标签）
+                    // 如果 PropertyGrid 仍在主窗口下且不需要显示，隐藏它
+                    if (hPropertyGridWnd && GetParent(hPropertyGridWnd) == hMainWnd) {
+                        hdwp = DeferWindowPos(hdwp, hPropertyGridWnd, NULL, rightPanelLeft, topH, 0, centerTotalH, 
+                            SWP_NOZORDER | SWP_NOACTIVATE | SWP_HIDEWINDOW);
                     }
                 }
                 
@@ -1117,7 +1167,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             int activityBarW = g_ActivityBarWidth;
             int leftPanelW = g_LeftPanelVisible ? g_LeftPanelWidth : 0;
-            int rightPanelW = g_AIPanelVisible ? g_RightPanelWidth : 0;
+            // 可视化设计器模式下隐藏AI面板
+            int rightPanelW = (g_AIPanelVisible && !g_IsVisualDesignerActive) ? g_RightPanelWidth : 0;
             int outputH = g_OutputPanelVisible ? 150 : 0;
             int topH = g_TotalTopHeight;
             int statusH = g_StatusBarHeight;
@@ -1150,11 +1201,19 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 SetWindowPos(hRightPanelWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
             }
             
-            // AI聊天面板
+            // AI聊天面板 - 可视化设计模式下隐藏
             if (hAIChatWnd) {
-                int panelLeft = g_PanelsSwapped ? 0 : (width - effectiveRightW);
-                int panelWidth = g_PanelsSwapped ? effectiveLeftW : effectiveRightW;
-                SetWindowPos(hAIChatWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
+                if (g_IsVisualDesignerActive) {
+                    // 可视化设计模式下隐藏AI面板
+                    ShowWindow(hAIChatWnd, SW_HIDE);
+                } else {
+                    int panelLeft = g_PanelsSwapped ? 0 : (width - effectiveRightW);
+                    int panelWidth = g_PanelsSwapped ? effectiveLeftW : effectiveRightW;
+                    SetWindowPos(hAIChatWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
+                    if (g_AIPanelVisible) {
+                        ShowWindow(hAIChatWnd, SW_SHOW);
+                    }
+                }
             }
             
             // 标签栏 - 位置和大小改变时不复制旧内容
@@ -1498,6 +1557,62 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     OutputDebugStringW((L"[ycIDE] 条件不满足: toolbox=" + std::to_wstring((LONG_PTR)g_pControlToolbox) + 
                         L", designer=" + std::to_wstring((LONG_PTR)g_pVisualDesigner) + 
                         L", active=" + std::to_wstring(g_IsVisualDesignerActive) + L"\n").c_str());
+                }
+                return 0;
+            }
+            
+            // 组件箱停靠/浮动切换通知 (wmEvent=0x2001)
+            if (wmEvent == 0x2001) {
+                OutputDebugStringW(L"[ycIDE] 收到组件箱停靠/浮动切换通知\n");
+                if (g_pControlToolbox) {
+                    g_IsToolboxDocked = !g_IsToolboxDocked;
+                    g_pControlToolbox->SetDocked(g_IsToolboxDocked);
+                    
+                    if (g_IsToolboxDocked) {
+                        // 切换到停靠模式
+                        OutputDebugStringW(L"[ycIDE] 组件箱切换到停靠模式\n");
+                        // 保存浮动位置
+                        SaveToolboxPosition();
+                    } else {
+                        // 切换到浮动模式
+                        OutputDebugStringW(L"[ycIDE] 组件箱切换到浮动模式\n");
+                        // 恢复保存的浮动位置
+                        LoadToolboxPosition();
+                    }
+                    
+                    // 触发可视化设计器重新布局
+                    if (hVisualDesignerWnd) {
+                        RECT rect;
+                        GetClientRect(hVisualDesignerWnd, &rect);
+                        SendMessage(hVisualDesignerWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rect.right, rect.bottom));
+                    }
+                    
+                    // 重绘组件箱以更新按钮状态
+                    InvalidateRect(hToolboxWnd, NULL, FALSE);
+                }
+                return 0;
+            }
+            
+            // 组件箱关闭通知 (wmEvent=0x2002)
+            if (wmEvent == 0x2002) {
+                OutputDebugStringW(L"[ycIDE] 收到组件箱关闭通知\n");
+                ShowWindow(hToolboxWnd, SW_HIDE);
+                return 0;
+            }
+            
+            // 组件箱显示模式切换通知 (wmEvent=0x2003)
+            if (wmEvent == 0x2003) {
+                OutputDebugStringW(L"[ycIDE] 收到组件箱显示模式切换通知\n");
+                // 如果是列表模式，且在停靠状态，恢复默认宽度
+                if (g_pControlToolbox && !g_pControlToolbox->IsIconMode() && g_IsToolboxDocked) {
+                    // 列表模式停靠时使用固定宽度
+                    if (hToolboxWnd && hVisualDesignerWnd) {
+                        RECT designerRect;
+                        GetClientRect(hVisualDesignerWnd, &designerRect);
+                        int toolboxLeft = designerRect.right - DOCKED_TOOLBOX_WIDTH;
+                        SetWindowPos(hToolboxWnd, HWND_TOP, toolboxLeft, 0, 
+                            DOCKED_TOOLBOX_WIDTH, designerRect.bottom, SWP_SHOWWINDOW);
+                    }
                 }
                 return 0;
             }
@@ -3009,28 +3124,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 g_ActiveMenu = -1;
                 InvalidateRect(hWnd, NULL, TRUE);
             }
-            
-            // 移动组件箱窗口跟随主窗口
-            if (hToolboxWnd && IsWindowVisible(hToolboxWnd)) {
-                RECT currentMainRect;
-                GetWindowRect(hWnd, &currentMainRect);
-                
-                // 计算主窗口的移动偏移量
-                if (g_LastMainWindowRect.left != 0 || g_LastMainWindowRect.top != 0) {
-                    int deltaX = currentMainRect.left - g_LastMainWindowRect.left;
-                    int deltaY = currentMainRect.top - g_LastMainWindowRect.top;
-                    
-                    if (deltaX != 0 || deltaY != 0) {
-                        RECT toolboxRect;
-                        GetWindowRect(hToolboxWnd, &toolboxRect);
-                        SetWindowPos(hToolboxWnd, NULL,
-                                     toolboxRect.left + deltaX,
-                                     toolboxRect.top + deltaY,
-                                     0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
-                    }
-                }
-                g_LastMainWindowRect = currentMainRect;
-            }
+            // 注意：组件箱现在是可视化设计器的子窗口，会自动跟随父窗口移动，无需手动处理
         }
         break;
         
@@ -4468,8 +4562,69 @@ LRESULT CALLBACK VisualDesignerWndProc(HWND hWnd, UINT message, WPARAM wParam, L
         return 0;
         
     case WM_SIZE:
-        if (pDesigner) {
-            pDesigner->OnSize(LOWORD(lParam), HIWORD(lParam));
+        {
+            int width = LOWORD(lParam);
+            int height = HIWORD(lParam);
+            
+            // 布局组件箱（作为可视化设计器的子窗口）
+            if (hToolboxWnd && g_IsVisualDesignerActive) {
+                if (g_IsToolboxDocked) {
+                    // 停靠模式：组件箱在设计器内部右侧
+                    int toolboxLeft = width - DOCKED_TOOLBOX_WIDTH;
+                    SetWindowPos(hToolboxWnd, HWND_TOP, toolboxLeft, 0, DOCKED_TOOLBOX_WIDTH, height,
+                        SWP_SHOWWINDOW);
+                } else {
+                    // 浮动模式：子窗口会自动跟随父窗口移动
+                    // 只需要检查边界并确保可见
+                    
+                    // 使用 GetWindowRect 获取子窗口相对于父窗口的位置
+                    RECT toolboxRect;
+                    GetWindowRect(hToolboxWnd, &toolboxRect);
+                    int toolboxW = toolboxRect.right - toolboxRect.left;
+                    int toolboxH = toolboxRect.bottom - toolboxRect.top;
+                    
+                    // 获取组件箱在父窗口中的位置（子窗口坐标是相对于父窗口的）
+                    RECT childRect;
+                    GetWindowRect(hToolboxWnd, &childRect);
+                    MapWindowPoints(HWND_DESKTOP, hWnd, (LPPOINT)&childRect, 2);
+                    int posX = childRect.left;
+                    int posY = childRect.top;
+                    
+                    bool needReposition = false;
+                    
+                    // 检查是否需要调整位置（只有超出边界时才调整）
+                    if (posX + toolboxW > width) {
+                        posX = width - toolboxW;
+                        needReposition = true;
+                    }
+                    if (posY + toolboxH > height) {
+                        posY = height - toolboxH;
+                        needReposition = true;
+                    }
+                    if (posX < 0) {
+                        posX = 0;
+                        needReposition = true;
+                    }
+                    if (posY < 0) {
+                        posY = 0;
+                        needReposition = true;
+                    }
+                    
+                    if (needReposition) {
+                        SetWindowPos(hToolboxWnd, HWND_TOP, posX, posY, 0, 0,
+                            SWP_NOSIZE | SWP_SHOWWINDOW);
+                    } else {
+                        // 只确保可见，不改变位置
+                        ShowWindow(hToolboxWnd, SW_SHOW);
+                    }
+                }
+            }
+            
+            if (pDesigner) {
+                // 通知设计器可用区域变化（如果停靠，需要减去组件箱宽度）
+                int designerWidth = g_IsToolboxDocked ? (width - DOCKED_TOOLBOX_WIDTH) : width;
+                pDesigner->OnSize(designerWidth, height);
+            }
         }
         return 0;
         
@@ -4588,7 +4743,20 @@ LRESULT CALLBACK PropertyGridWndProc(HWND hWnd, UINT message, WPARAM wParam, LPA
         if (pGrid) {
             pGrid->OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
         }
+        // 当鼠标进入 PropertyGrid 时，清除资源管理器的边框悬停状态
+        if (g_ExplorerData.isBorderHover) {
+            g_ExplorerData.isBorderHover = false;
+            if (hRightPanelWnd) {
+                InvalidateRect(hRightPanelWnd, NULL, FALSE);
+            }
+        }
         return 0;
+        
+    case WM_SETCURSOR:
+        // 在 PropertyGrid 内部，始终使用箭头光标
+        // 这样当鼠标从资源管理器边框拖动区域移入时，光标会正确变回箭头
+        SetCursor(LoadCursor(NULL, IDC_ARROW));
+        return TRUE;
         
     case WM_LBUTTONDBLCLK:
         if (pGrid) {
@@ -4670,8 +4838,11 @@ LRESULT CALLBACK PropertyGridWndProc(HWND hWnd, UINT message, WPARAM wParam, LPA
 LRESULT CALLBACK ToolboxWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     static bool isDragging = false;
+    static bool isResizing = false;      // 正在调整大小
+    static int resizeEdge = 0;           // 0=无, 1=左边, 2=右边
     static POINT dragStart;
     static RECT windowRect;
+    static int originalWidth = 0;
     
     ControlToolbox* pToolbox = (ControlToolbox*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
     
@@ -4724,13 +4895,41 @@ LRESULT CALLBACK ToolboxWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
             int x = GET_X_LPARAM(lParam);
             int y = GET_Y_LPARAM(lParam);
             
-            // 检查是否点击在标题栏区域（顶部30像素）
-            if (y < 30) {
-                isDragging = true;
-                dragStart.x = x;
-                dragStart.y = y;
-                GetWindowRect(hWnd, &windowRect);
-                SetCapture(hWnd);
+            // 检查是否点击在标题栏区域（顶部28像素，与 ControlToolbox::TITLEBAR_HEIGHT 一致）
+            if (y < 28) {
+                // 先检查是否点击了标题栏按钮
+                if (pToolbox) {
+                    ControlToolbox::TitlebarButton btn = pToolbox->HitTestTitlebarButton(x, y);
+                    if (btn != ControlToolbox::BTN_NONE) {
+                        // 标题栏按钮点击，交给 ControlToolbox 处理
+                        pToolbox->OnLButtonDown(x, y);
+                        return 0;
+                    }
+                }
+                // 停靠模式下不允许拖动
+                if (!g_IsToolboxDocked) {
+                    // 浮动模式 - 开始拖动
+                    isDragging = true;
+                    
+                    // 获取当前窗口位置（相对于父窗口）
+                    RECT wndRect;
+                    GetWindowRect(hWnd, &wndRect);
+                    HWND hParent = GetParent(hWnd);
+                    if (hParent) {
+                        POINT pos = { wndRect.left, wndRect.top };
+                        ScreenToClient(hParent, &pos);
+                        windowRect.left = pos.x;
+                        windowRect.top = pos.y;
+                        
+                        // 获取鼠标在父窗口中的位置作为拖动起始点
+                        POINT mousePos;
+                        GetCursorPos(&mousePos);
+                        ScreenToClient(hParent, &mousePos);
+                        dragStart.x = mousePos.x;
+                        dragStart.y = mousePos.y;
+                    }
+                    SetCapture(hWnd);
+                }
             } else if (pToolbox) {
                 pToolbox->OnLButtonDown(x, y);
             }
@@ -4741,19 +4940,73 @@ LRESULT CALLBACK ToolboxWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
         if (isDragging) {
             isDragging = false;
             ReleaseCapture();
+            // 保存浮动位置
+            SaveToolboxPosition();
+        } else if (pToolbox) {
+            pToolbox->OnLButtonUp(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
         }
         return 0;
         
     case WM_MOUSEMOVE:
+        {
+            // 启用鼠标离开追踪
+            TRACKMOUSEEVENT tme = { sizeof(TRACKMOUSEEVENT) };
+            tme.dwFlags = TME_LEAVE;
+            tme.hwndTrack = hWnd;
+            TrackMouseEvent(&tme);
+        }
         if (isDragging) {
+            // 获取鼠标当前位置（相对于父窗口）
             POINT pt;
             GetCursorPos(&pt);
-            int newX = windowRect.left + (pt.x - dragStart.x - windowRect.left);
-            int newY = windowRect.top + (pt.y - dragStart.y - windowRect.top);
-            SetWindowPos(hWnd, NULL, 
-                         windowRect.left + pt.x - dragStart.x - windowRect.left,
-                         windowRect.top + pt.y - dragStart.y - windowRect.top,
-                         0, 0, SWP_NOSIZE | SWP_NOZORDER);
+            HWND hParent = GetParent(hWnd);
+            if (hParent) {
+                ScreenToClient(hParent, &pt);
+                
+                // 获取组件箱当前大小
+                RECT toolboxRect;
+                GetWindowRect(hWnd, &toolboxRect);
+                int toolboxW = toolboxRect.right - toolboxRect.left;
+                int toolboxH = toolboxRect.bottom - toolboxRect.top;
+                
+                // 获取父窗口（可视化设计器）大小
+                RECT parentRect;
+                GetClientRect(hParent, &parentRect);
+                
+                // 计算新位置：初始窗口位置 + 鼠标移动偏移
+                int newX = windowRect.left + (pt.x - dragStart.x);
+                int newY = windowRect.top + (pt.y - dragStart.y);
+                
+                // 严格限制在父窗口范围内（组件箱边框不能超出设计器边框）
+                // 左边界
+                if (newX < 0) {
+                    newX = 0;
+                }
+                // 右边界
+                if (newX + toolboxW > parentRect.right) {
+                    newX = parentRect.right - toolboxW;
+                }
+                // 上边界
+                if (newY < 0) {
+                    newY = 0;
+                }
+                // 下边界
+                if (newY + toolboxH > parentRect.bottom) {
+                    newY = parentRect.bottom - toolboxH;
+                }
+                
+                // 如果父窗口太小，至少让组件箱左上角可见
+                if (newX < 0) newX = 0;
+                if (newY < 0) newY = 0;
+                
+                SetWindowPos(hWnd, NULL, newX, newY, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+                
+                // 更新拖动起始点和窗口位置
+                dragStart.x = pt.x;
+                dragStart.y = pt.y;
+                windowRect.left = newX;
+                windowRect.top = newY;
+            }
         } else if (pToolbox) {
             pToolbox->OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
         }
@@ -4777,92 +5030,79 @@ LRESULT CALLBACK ToolboxWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
         }
         return 0;
         
+    case WM_MOUSELEAVE:
+        // 鼠标离开窗口，重置悬停状态
+        if (pToolbox) {
+            pToolbox->OnMouseMove(-1, -1);  // 用无效坐标触发清除悬停
+        }
+        return 0;
+        
     case WM_ERASEBKGND:
         return 1;
         
+    case WM_SETCURSOR:
+        {
+            // 图标模式下，在边框区域显示调整大小光标
+            if (pToolbox && pToolbox->IsIconMode()) {
+                POINT pt;
+                GetCursorPos(&pt);
+                ScreenToClient(hWnd, &pt);
+                
+                RECT rect;
+                GetClientRect(hWnd, &rect);
+                const int BORDER_WIDTH = 5;
+                
+                if (pt.y >= 28) {  // 标题栏下方
+                    if (g_IsToolboxDocked) {
+                        // 停靠模式：只有左边框
+                        if (pt.x <= BORDER_WIDTH) {
+                            SetCursor(LoadCursor(NULL, IDC_SIZEWE));
+                            return TRUE;
+                        }
+                    } else {
+                        // 浮动模式：左右边框
+                        if (pt.x <= BORDER_WIDTH || pt.x >= rect.right - BORDER_WIDTH) {
+                            SetCursor(LoadCursor(NULL, IDC_SIZEWE));
+                            return TRUE;
+                        }
+                    }
+                }
+            }
+            // 默认箭头光标
+            SetCursor(LoadCursor(NULL, IDC_ARROW));
+            return TRUE;
+        }
+        
     case WM_NCHITTEST:
         {
-            // 允许在边缘调整大小
-            LRESULT hit = DefWindowProc(hWnd, message, wParam, lParam);
-            if (hit == HTCLIENT) {
-                POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
-                ScreenToClient(hWnd, &pt);
-                if (pt.y < 30) {
-                    return HTCAPTION;  // 标题栏区域可拖动
+            POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
+            ScreenToClient(hWnd, &pt);
+            
+            RECT rect;
+            GetClientRect(hWnd, &rect);
+            const int BORDER_WIDTH = 5;
+            
+            // 图标模式下支持调整宽度
+            if (pToolbox && pToolbox->IsIconMode()) {
+                if (g_IsToolboxDocked) {
+                    // 停靠模式：只能调整左边框
+                    if (pt.x <= BORDER_WIDTH && pt.y >= 28) {  // 28 是标题栏高度
+                        return HTLEFT;
+                    }
+                } else {
+                    // 浮动模式：左右边框都可以调整
+                    if (pt.x <= BORDER_WIDTH && pt.y >= 28) {
+                        return HTLEFT;
+                    }
+                    if (pt.x >= rect.right - BORDER_WIDTH && pt.y >= 28) {
+                        return HTRIGHT;
+                    }
                 }
             }
-            return hit;
+            
+            // 其他区域返回客户区，拖动由 WM_LBUTTONDOWN/WM_MOUSEMOVE 处理
+            return HTCLIENT;
         }
-        
-    case WM_MOVING:
-        {
-            // 限制组件箱只能在主窗口内移动
-            RECT* pRect = (RECT*)lParam;
-            HWND hMainWnd = GetParent(hWnd);
-            if (hMainWnd) {
-                RECT mainRect;
-                GetWindowRect(hMainWnd, &mainRect);
-                
-                int toolboxWidth = pRect->right - pRect->left;
-                int toolboxHeight = pRect->bottom - pRect->top;
-                
-                // 限制左边界
-                if (pRect->left < mainRect.left) {
-                    pRect->left = mainRect.left;
-                    pRect->right = pRect->left + toolboxWidth;
-                }
-                // 限制右边界
-                if (pRect->right > mainRect.right) {
-                    pRect->right = mainRect.right;
-                    pRect->left = pRect->right - toolboxWidth;
-                }
-                // 限制上边界
-                if (pRect->top < mainRect.top) {
-                    pRect->top = mainRect.top;
-                    pRect->bottom = pRect->top + toolboxHeight;
-                }
-                // 限制下边界
-                if (pRect->bottom > mainRect.bottom) {
-                    pRect->bottom = mainRect.bottom;
-                    pRect->top = pRect->bottom - toolboxHeight;
-                }
-            }
-        }
-        return TRUE;
-        
-    case WM_SIZING:
-        {
-            // 限制组件箱调整大小时也不能超出主窗口
-            RECT* pRect = (RECT*)lParam;
-            HWND hMainWnd = GetParent(hWnd);
-            if (hMainWnd) {
-                RECT mainRect;
-                GetWindowRect(hMainWnd, &mainRect);
-                
-                // 限制右边界
-                if (pRect->right > mainRect.right) {
-                    pRect->right = mainRect.right;
-                }
-                // 限制下边界
-                if (pRect->bottom > mainRect.bottom) {
-                    pRect->bottom = mainRect.bottom;
-                }
-                // 限制左边界
-                if (pRect->left < mainRect.left) {
-                    pRect->left = mainRect.left;
-                }
-                // 限制上边界
-                if (pRect->top < mainRect.top) {
-                    pRect->top = mainRect.top;
-                }
-            }
-        }
-        return TRUE;
-    
-    case WM_EXITSIZEMOVE:
-        // 移动或调整大小结束后保存位置
-        SaveToolboxPosition();
-        return 0;
     
     case WM_CLOSE:
         // 点击关闭按钮时只隐藏窗口，不销毁
@@ -5001,13 +5241,24 @@ void SwitchToVisualDesignerMode(bool enable)
     
     if (enable) {
         // 进入可视化设计模式
-        // 显示组件箱浮动窗口
+        // 组件箱是可视化设计器的子窗口，显示它
         if (hToolboxWnd) {
-            // 加载保存的位置（如果没有保存的位置则使用默认位置）
-            LoadToolboxPosition();
+            // 同步 ControlToolbox 的停靠状态
+            if (g_pControlToolbox) {
+                g_pControlToolbox->SetDocked(g_IsToolboxDocked);
+            }
+            
+            // 显示组件箱
             ShowWindow(hToolboxWnd, SW_SHOW);
-            SetWindowPos(hToolboxWnd, HWND_TOP, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+            
+            // 如果是浮动模式，加载保存的位置
+            if (!g_IsToolboxDocked) {
+                LoadToolboxPosition();
+            }
         }
+        
+        // 切换资源管理器到属性标签
+        ExplorerSwitchToTab(TAB_PROPERTY);
         
         // 设置设计器的选择变更回调
         if (g_pVisualDesigner) {
@@ -5039,17 +5290,31 @@ void SwitchToVisualDesignerMode(bool enable)
         UpdatePropertyGridForSelection();
     } else {
         // 退出可视化设计模式
-        // 保存组件箱位置并隐藏
+        // 隐藏组件箱
         if (hToolboxWnd) {
-            SaveToolboxPosition();  // 先保存位置
+            if (!g_IsToolboxDocked) {
+                // 浮动模式 - 保存位置
+                SaveToolboxPosition();
+            }
             ShowWindow(hToolboxWnd, SW_HIDE);
         }
+        
+        // 切换资源管理器回项目标签
+        ExplorerSwitchToTab(TAB_PROJECT);
     }
     
     // 触发窗口重新布局
     RECT rect;
     GetClientRect(hMainWnd, &rect);
     SendMessage(hMainWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rect.right, rect.bottom));
+    
+    // 进入设计器模式时，额外触发可视化设计器的 WM_SIZE 来布局组件箱
+    if (enable && hVisualDesignerWnd) {
+        RECT designerRect;
+        GetClientRect(hVisualDesignerWnd, &designerRect);
+        SendMessage(hVisualDesignerWnd, WM_SIZE, SIZE_RESTORED, 
+            MAKELPARAM(designerRect.right, designerRect.bottom));
+    }
     
     // 更新菜单状态（组件箱菜单项的启用/禁用状态）
     UpdateMenuItems();

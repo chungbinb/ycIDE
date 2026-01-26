@@ -227,37 +227,35 @@ LRESULT CALLBACK TabBarWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                     // 文件名文本
                     SetTextColor(memDC, g_CurrentTheme.text);
                     RECT textRect = tabRect;
-                    textRect.left += 10;
-                    textRect.right -= 25; // 为关闭按钮留空间
+                    textRect.left += 10;  // 左边留空间给未来的文件类型图标
                     
-                    // 如果文件已修改，为修改标记留出空间
+                    // 如果文件已修改，为修改标记留出空间（在关闭按钮左边）
                     if (data->tabs[i].isModified) {
-                        textRect.left += 22; // 为修改标记留空间
+                        textRect.right -= 45; // 为关闭按钮和修改标记留空间
+                    } else {
+                        textRect.right -= 25; // 只为关闭按钮留空间
                     }
                     
                     DrawTextW(memDC, data->tabs[i].fileName.c_str(), -1, &textRect, 
                              DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS);
                     
-                    // 绘制修改标记 (圆角矩形 + 圆点)
+                    // 绘制修改标记 (圆点) - 在关闭按钮左边
                     if (data->tabs[i].isModified) {
                         Graphics graphics(memDC);
                         graphics.SetSmoothingMode(SmoothingModeAntiAlias);
                         
-                        float boxSize = 14.0f;
-                        float boxX = (float)tabRect.left + 8;
-                        float boxY = (float)tabRect.top + (tabRect.bottom - tabRect.top - boxSize) / 2.0f;
+                        // 获取关闭按钮位置
+                        RECT closeRect = data->GetCloseButtonRect(tabRect);
                         
-                        // 将 COLORREF 转换为 GDI+ Color (COLORREF 是 0x00BBGGRR, GDI+ 需要 ARGB)
+                        // 在关闭按钮左边绘制修改标记圆点
+                        float dotSize = 8.0f;
+                        float dotX = (float)closeRect.left - dotSize - 4;  // 关闭按钮左边4像素
+                        float dotY = (float)tabRect.top + (tabRect.bottom - tabRect.top - dotSize) / 2.0f;
+                        
+                        // 将 COLORREF 转换为 GDI+ Color
                         COLORREF textColor = g_CurrentTheme.text;
-                        Color penColor(255, GetRValue(textColor), GetGValue(textColor), GetBValue(textColor));
-                        Pen pen(penColor, 1.0f);
-                        RectF boxRect(boxX, boxY, boxSize, boxSize);
-                        DrawRoundedRectangle(graphics, &pen, boxRect, 3.0f);
-                        
-                        float dotSize = 5.0f;
-                        float dotX = boxX + (boxSize - dotSize) / 2.0f;
-                        float dotY = boxY + (boxSize - dotSize) / 2.0f;
-                        SolidBrush brush(penColor);
+                        Color dotColor(255, GetRValue(textColor), GetGValue(textColor), GetBValue(textColor));
+                        SolidBrush brush(dotColor);
                         graphics.FillEllipse(&brush, dotX, dotY, dotSize, dotSize);
                     }
                     
@@ -370,6 +368,7 @@ int GetEditorTypeByExtension(const std::wstring& filePath) {
     if (ext == L".ell") return 1;  // EllEditor
     if (ext == L".edt") return 1;  // EllEditor (DataTypeEditor)
     if (ext == L".egv") return 1;  // EllEditor (GlobalVarEditor)
+    if (ext == L".ecs") return 1;  // EllEditor (ConstantEditor)
     if (ext == L".efw") return 2;  // VisualDesigner
     
     return 0; // 默认YiEditor

@@ -299,6 +299,31 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             return HTCLIENT;
         }
     
+    case WM_SIZE:
+        {
+            // 窗口大小变化时，更新嵌入的PropertyGrid尺寸
+            extern bool g_IsVisualDesignerActive;
+            extern bool g_PanelsSwapped;
+            HWND hPropertyGrid = ExplorerGetEmbeddedPropertyGrid();
+            if (g_IsVisualDesignerActive && g_ExplorerData.activeTab == TAB_PROPERTY && hPropertyGrid) {
+                RECT rect;
+                GetClientRect(hWnd, &rect);
+                int borderMargin = 8;  // 边框拖动区域宽度
+                int propHeight = rect.bottom - g_ExplorerData.tabBarHeight;
+                
+                if (g_PanelsSwapped) {
+                    // 交换模式：资源管理器在右边，边框在左边，PropertyGrid 右移
+                    SetWindowPos(hPropertyGrid, NULL, borderMargin, g_ExplorerData.tabBarHeight, 
+                        rect.right - borderMargin, propHeight, SWP_NOZORDER | SWP_NOACTIVATE);
+                } else {
+                    // 正常模式：资源管理器在左边，边框在右边
+                    SetWindowPos(hPropertyGrid, NULL, 0, g_ExplorerData.tabBarHeight, 
+                        rect.right - borderMargin, propHeight, SWP_NOZORDER | SWP_NOACTIVATE);
+                }
+            }
+        }
+        break;
+    
     case WM_SETCURSOR:
         {
             // 如果在边框区域或正在拖动，显示调整大小光标
@@ -340,8 +365,19 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                 int tabWidth = rect.right / 3;
                 int clickedTab = x / tabWidth;
                 if (clickedTab >= 0 && clickedTab < 3) {
-                    g_ExplorerData.activeTab = (ExplorerTabType)clickedTab;
-                    InvalidateRect(hWnd, NULL, TRUE);
+                    ExplorerTabType newTab = (ExplorerTabType)clickedTab;
+                    if (g_ExplorerData.activeTab != newTab) {
+                        g_ExplorerData.activeTab = newTab;
+                        InvalidateRect(hWnd, NULL, TRUE);
+                        
+                        // 触发主窗口重新布局（以更新PropertyGrid的显示/隐藏状态）
+                        extern HWND hMainWnd;
+                        if (hMainWnd) {
+                            RECT mainRect;
+                            GetClientRect(hMainWnd, &mainRect);
+                            SendMessage(hMainWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(mainRect.right, mainRect.bottom));
+                        }
+                    }
                 }
                 return 0;
             }
@@ -481,6 +517,14 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             SetTextColor(hMemDC, g_CurrentTheme.text);
             SetBkMode(hMemDC, TRANSPARENT);
             
+            // 如果是属性标签且有嵌入的PropertyGrid，不绘制文件列表（PropertyGrid会覆盖）
+            extern bool g_IsVisualDesignerActive;
+            if (g_ExplorerData.activeTab == TAB_PROPERTY && g_IsVisualDesignerActive) {
+                // 属性标签页 - PropertyGrid 作为子窗口显示，不需要在这里绘制
+                // 清理GDI字体资源
+                SelectObject(hMemDC, oldFont);
+                DeleteObject(hGdiFont);
+            } else {
             // 绘制文件列表（从标签栏下方开始）
             int y = tabBarHeight;
             int indentSize = 20;
@@ -575,6 +619,7 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             // 清理GDI字体资源
             SelectObject(hMemDC, oldFont);
             DeleteObject(hGdiFont);
+            } // end of else (not property tab in visual designer mode)
             
             // 绘制可拖动边框高亮（根据面板位置决定在哪一侧）
             extern bool g_PanelsSwapped;
@@ -1263,3 +1308,38 @@ void ExplorerCloseProject() {
     }
 }
 
+// 切换到指定标签
+void ExplorerSwitchToTab(ExplorerTabType tab) {
+    if (g_ExplorerData.activeTab != tab) {
+        g_ExplorerData.activeTab = tab;
+        
+        extern HWND hRightPanelWnd;
+        if (hRightPanelWnd) {
+            InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        }
+    }
+}
+
+// 内部静态变量：嵌入的属性面板窗口句柄
+static HWND g_hEmbeddedPropertyGrid = NULL;
+
+// 设置属性面板窗口句柄（用于嵌入）
+void ExplorerSetPropertyGridWindow(HWND hPropertyGrid) {
+    g_hEmbeddedPropertyGrid = hPropertyGrid;
+}
+
+// 获取属性面板所需的区域
+RECT ExplorerGetPropertyPanelRect(HWND hExplorer) {
+    RECT rect = {0, 0, 0, 0};
+    if (hExplorer) {
+        GetClientRect(hExplorer, &rect);
+        // 属性面板在标签栏下方
+        rect.top = g_ExplorerData.tabBarHeight;
+    }
+    return rect;
+}
+
+// 获取嵌入的属性面板窗口句柄
+HWND ExplorerGetEmbeddedPropertyGrid() {
+    return g_hEmbeddedPropertyGrid;
+}

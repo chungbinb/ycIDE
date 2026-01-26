@@ -97,4 +97,11 @@ void ExplorerUnloadModule(FileNode* node);
 // 加载项目文件到资源管理器
 void ExplorerLoadProject();
 // 关闭项目
-void ExplorerCloseProject();
+void ExplorerCloseProject();// 切换到指定标签
+void ExplorerSwitchToTab(ExplorerTabType tab);
+// 设置属性面板窗口句柄（用于嵌入）
+void ExplorerSetPropertyGridWindow(HWND hPropertyGrid);
+// 获取嵌入的属性面板窗口句柄
+HWND ExplorerGetEmbeddedPropertyGrid();
+// 获取属性面板所需的区域
+RECT ExplorerGetPropertyPanelRect(HWND hExplorer);
