@@ -64,6 +64,9 @@
 #define ID_BUILD_STOP           161
 #define ID_BUILD_COMPILE        162
 
+// 自定义消息 - 用于线程安全的编译输出更新
+#define WM_COMPILE_OUTPUT       (WM_USER + 500)
+
 #define IDI_YCIDE			112
 #define IDI_SMALL				113
 #define IDC_YCIDE			114

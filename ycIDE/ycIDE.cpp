@@ -12,11 +12,13 @@
 #include "Keyword.h"
 #include "LibraryConfig.h"
 #include "ProjectManager.h"
+#include "NewProjectDialog.h"
 #include "VisualDesigner.h"
 #include "PropertyGrid.h"
 #include "ControlToolbox.h"
 #include "ControlRenderer.h"
 #include "OutputPanel.h"
+#include "Compiler.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -27,6 +29,7 @@
 #include <windowsx.h>
 #include <dwmapi.h>
 #include <commctrl.h>
+#include <thread>
 
 #pragma comment(lib, "gdiplus.lib")
 #pragma comment(lib, "shell32.lib")
@@ -1708,6 +1711,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                     OutputDebugStringW(debugMsg);
                                     
                                     if (loadResult) {
+                                        // 格式化所有命令行（添加括号等）
+                                        FormatAllCommandLines(doc);
                                         ShowWindow(hWelcomePageWnd, SW_HIDE);
                                         ShowWindow(hEditorWnd, SW_SHOW);
                                         ShowWindow(hEllEditorWnd, SW_HIDE);
@@ -1850,6 +1855,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             EditorDocument* doc = g_EditorData->GetActiveDoc();
                             if (doc) {
                                 LoadFile(openPath, doc);
+                                // 格式化所有命令行（添加括号等）
+                                FormatAllCommandLines(doc);
                             }
                             InvalidateRect(hEditorWnd, NULL, TRUE);
                             // 发送WM_SIZE消息以更新滚动条
@@ -2006,23 +2013,112 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             case IDM_NEW_PROJECT:
                 {
-                    // 创建新项目
-                    std::wstring projectPath, projectName;
-                    if (ShowCreateProjectDialog(hWnd, projectPath, projectName)) {
+                    // 创建新项目 - 使用新的项目对话框
+                    
+                    // 检查是否有未保存的文件
+                    TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                    bool hasUnsavedFiles = false;
+                    if (tabData) {
+                        for (const auto& tab : tabData->tabs) {
+                            if (tab.isModified) {
+                                hasUnsavedFiles = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (hasUnsavedFiles) {
+                        int saveResult = MessageBoxW(hWnd, 
+                            L"有文件尚未保存，是否保存更改？\n\n"
+                            L"是 - 保存后新建项目\n"
+                            L"否 - 不保存直接新建项目\n"
+                            L"取消 - 放弃新建", 
+                            L"保存更改", MB_YESNOCANCEL | MB_ICONWARNING);
+                        if (saveResult == IDCANCEL) {
+                            break;  // 取消操作，放弃新建
+                        } else if (saveResult == IDYES) {
+                            // 保存所有已修改的文件 - 逐个保存
+                            for (int i = 0; i < (int)tabData->tabs.size(); i++) {
+                                if (tabData->tabs[i].isModified) {
+                                    // 切换到该标签并保存
+                                    tabData->activeTabIndex = i;
+                                    SendMessage(hWnd, WM_COMMAND, IDM_SAVE, 0);
+                                }
+                            }
+                        }
+                        // 如果选择"否"，不保存直接继续新建项目
+                    }
+                    
+                    NewProjectResult result = NewProjectDialog::Show(hWnd);
+                    if (result.success) {
                         auto& pm = ProjectManager::GetInstance();
-                        if (pm.CreateProject(projectPath, projectName)) {
-                            // 关闭所有打开的文件
+                        // 转换项目类型
+                        ProjectOutputType outputType;
+                        switch (result.type) {
+                            case ProjectType::Console: outputType = ProjectOutputType::Console; break;
+                            case ProjectType::WindowsApp: outputType = ProjectOutputType::WindowsApp; break;
+                            case ProjectType::DynamicLibrary: outputType = ProjectOutputType::DynamicLibrary; break;
+                            default: outputType = ProjectOutputType::Console; break;
+                        }
+                        
+                        if (pm.CreateProject(result.projectPath, result.projectName, outputType)) {
+                            // 关闭所有打开的文件和标签
                             if (g_EditorData) {
                                 while (!g_EditorData->documents.empty()) {
                                     g_EditorData->CloseDocument(0);
                                 }
                             }
+                            // 清空标签栏
+                            if (tabData) {
+                                tabData->tabs.clear();
+                                tabData->activeTabIndex = -1;
+                                InvalidateRect(hTabBarWnd, NULL, TRUE);
+                            }
+                            
                             // 加载项目到资源管理器
                             ExplorerLoadProject();
                             // 更新菜单（添加"插入"菜单）
                             UpdateMenuItems();
                             InvalidateRect(hEditorWnd, NULL, TRUE);
-                            MessageBoxW(hWnd, L"项目创建成功！", L"提示", MB_OK | MB_ICONINFORMATION);
+                            
+                            // 自动打开主源代码文件
+                            std::wstring mainFile = pm.GetMainFile();
+                            if (!mainFile.empty() && g_EditorData) {
+                                // 关闭欢迎页
+                                g_EditorData->showWelcomePage = false;
+                                g_EditorData->AddDocument(mainFile);
+                                EditorDocument* doc = g_EditorData->GetActiveDoc();
+                                if (doc) {
+                                    LoadFile(mainFile, doc);
+                                    // 格式化所有命令行（添加括号等）
+                                    FormatAllCommandLines(doc);
+                                }
+                                
+                                // 添加到标签栏
+                                if (tabData) {
+                                    size_t lastSlash = mainFile.find_last_of(L"\\/");
+                                    std::wstring fileName = (lastSlash != std::wstring::npos) ? mainFile.substr(lastSlash + 1) : mainFile;
+                                    tabData->AddTab(mainFile, fileName, 0);  // editorType = 0 for YiEditor
+                                    InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                }
+                                
+                                // 显示编辑器窗口，隐藏欢迎页
+                                ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                ShowWindow(hEditorWnd, SW_SHOW);
+                                // 强制刷新编辑器窗口
+                                InvalidateRect(hEditorWnd, NULL, TRUE);
+                                UpdateWindow(hEditorWnd);
+                                RECT rect;
+                                GetClientRect(hEditorWnd, &rect);
+                                SendMessage(hEditorWnd, WM_SIZE, 0, MAKELPARAM(rect.right, rect.bottom));
+                            }
+                            
+                            // 显示成功消息
+                            std::wstring msg = L"项目创建成功！\n\n";
+                            msg += L"项目名称: " + result.projectName + L"\n";
+                            msg += L"项目类型: " + std::wstring(GetProjectTypeName(result.type)) + L"\n";
+                            msg += L"保存位置: " + result.projectDir;
+                            MessageBoxW(hWnd, msg.c_str(), L"提示", MB_OK | MB_ICONINFORMATION);
                         } else {
                             MessageBoxW(hWnd, L"创建项目失败！", L"错误", MB_OK | MB_ICONERROR);
                         }
@@ -2042,6 +2138,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                     g_EditorData->CloseDocument(0);
                                 }
                             }
+                            // 清空标签栏
+                            TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                            if (tabData) {
+                                tabData->tabs.clear();
+                                tabData->activeTabIndex = -1;
+                                InvalidateRect(hTabBarWnd, NULL, TRUE);
+                            }
+                            
                             // 加载项目到资源管理器
                             ExplorerLoadProject();
                             // 更新菜单（添加"插入"菜单）
@@ -2051,18 +2155,34 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             // 打开主文件（如果有）
                             std::wstring mainFile = pm.GetMainFile();
                             if (!mainFile.empty() && g_EditorData) {
+                                // 关闭欢迎页
+                                g_EditorData->showWelcomePage = false;
                                 g_EditorData->AddDocument(mainFile);
                                 EditorDocument* doc = g_EditorData->GetActiveDoc();
                                 if (doc) {
                                     LoadFile(mainFile, doc);
+                                    // 格式化所有命令行（添加括号等）
+                                    FormatAllCommandLines(doc);
                                 }
+                                
+                                // 添加到标签栏
+                                if (tabData) {
+                                    size_t lastSlash = mainFile.find_last_of(L"\\/");
+                                    std::wstring fileName = (lastSlash != std::wstring::npos) ? mainFile.substr(lastSlash + 1) : mainFile;
+                                    tabData->AddTab(mainFile, fileName, 0);  // editorType = 0 for YiEditor
+                                    InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                }
+                                
+                                // 显示编辑器窗口，隐藏欢迎页
+                                ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                ShowWindow(hEditorWnd, SW_SHOW);
+                                // 强制刷新编辑器窗口
                                 InvalidateRect(hEditorWnd, NULL, TRUE);
+                                UpdateWindow(hEditorWnd);
                                 RECT rect;
                                 GetClientRect(hEditorWnd, &rect);
                                 SendMessage(hEditorWnd, WM_SIZE, 0, MAKELPARAM(rect.right, rect.bottom));
                             }
-                            
-                            MessageBoxW(hWnd, L"项目打开成功！", L"提示", MB_OK | MB_ICONINFORMATION);
                         } else {
                             MessageBoxW(hWnd, L"打开项目失败！", L"错误", MB_OK | MB_ICONERROR);
                         }
@@ -2551,6 +2671,153 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             case ID_WELCOME_OPEN_FOLDER:
                 SendMessage(hWnd, WM_COMMAND, IDM_OPEN_FOLDER, 0);
                 break;
+            
+            // 编译运行命令
+            case ID_BUILD_RUN:
+                {
+                    OutputDebugStringW(L"[Compile] ID_BUILD_RUN triggered\n");
+                    
+                    // 显示输出面板
+                    if (!g_OutputPanelVisible) {
+                        g_OutputPanelVisible = true;
+                        // 触发布局更新
+                        RECT rect;
+                        GetClientRect(hWnd, &rect);
+                        SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rect.right, rect.bottom));
+                    }
+                    
+                    // 清空并切换到输出标签
+                    if (g_pOutputPanel) {
+                        g_pOutputPanel->ClearOutput();
+                        g_pOutputPanel->SetActiveTab(OutputTabType::Output);
+                    }
+                    
+                    // 在后台线程中执行编译
+                    HWND hMainWnd = hWnd;
+                    std::thread compileThread([hMainWnd]() {
+                        // 设置编译回调（使用 PostMessage 线程安全地更新 UI）
+                        Compiler& compiler = Compiler::GetInstance();
+                        compiler.SetCallback([hMainWnd](const CompileMessage& msg) {
+                            std::wstring prefix;
+                            switch (msg.type) {
+                                case CompileMessageType::Error:
+                                    prefix = L"[错误] ";
+                                    break;
+                                case CompileMessageType::Warning:
+                                    prefix = L"[警告] ";
+                                    break;
+                                case CompileMessageType::Success:
+                                    prefix = L"[成功] ";
+                                    break;
+                                default:
+                                    prefix = L"";
+                                    break;
+                            }
+                            // 使用 PostMessage 线程安全地更新 UI
+                            // 动态分配消息字符串，由主线程负责释放
+                            std::wstring* pMsg = new std::wstring(prefix + msg.message + L"\r\n");
+                            if (!PostMessage(hMainWnd, WM_COMPILE_OUTPUT, reinterpret_cast<WPARAM>(pMsg), 0)) {
+                                delete pMsg;  // 如果发送失败，释放内存
+                            }
+                        });
+                        
+                        // 编译项目
+                        CompileOptions options;
+                        options.debug = true;
+                        CompileResult result = compiler.CompileProject(options);
+                        
+                        // 如果编译成功，运行程序
+                        if (result.success) {
+                            compiler.RunExecutable(result.outputFile);
+                        }
+                    });
+                    compileThread.detach();  // 分离线程，让它在后台运行
+                }
+                break;
+            
+            case ID_BUILD_COMPILE:
+                {
+                    OutputDebugStringW(L"[Compile] ID_BUILD_COMPILE triggered\n");
+                    
+                    // 显示输出面板
+                    if (!g_OutputPanelVisible) {
+                        g_OutputPanelVisible = true;
+                        RECT rect;
+                        GetClientRect(hWnd, &rect);
+                        SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rect.right, rect.bottom));
+                    }
+                    
+                    // 清空并切换到输出标签
+                    if (g_pOutputPanel) {
+                        g_pOutputPanel->ClearOutput();
+                        g_pOutputPanel->SetActiveTab(OutputTabType::Output);
+                    }
+                    
+                    // 在后台线程中执行编译
+                    HWND hMainWnd2 = hWnd;
+                    std::thread compileOnlyThread([hMainWnd2]() {
+                        // 设置编译回调（使用 PostMessage 线程安全地更新 UI）
+                        Compiler& compiler = Compiler::GetInstance();
+                        compiler.SetCallback([hMainWnd2](const CompileMessage& msg) {
+                            std::wstring prefix;
+                            switch (msg.type) {
+                                case CompileMessageType::Error:
+                                    prefix = L"[错误] ";
+                                    break;
+                                case CompileMessageType::Warning:
+                                    prefix = L"[警告] ";
+                                    break;
+                                case CompileMessageType::Success:
+                                    prefix = L"[成功] ";
+                                    break;
+                                default:
+                                    prefix = L"";
+                                    break;
+                            }
+                            // 使用 PostMessage 线程安全地更新 UI
+                            std::wstring* pMsg = new std::wstring(prefix + msg.message + L"\r\n");
+                            if (!PostMessage(hMainWnd2, WM_COMPILE_OUTPUT, reinterpret_cast<WPARAM>(pMsg), 0)) {
+                                delete pMsg;
+                            }
+                        });
+                        
+                        // 仅编译项目
+                        CompileOptions options;
+                        options.debug = true;
+                        compiler.CompileProject(options);
+                    });
+                    compileOnlyThread.detach();
+                }
+                break;
+            
+            case ID_BUILD_DEBUG:
+                {
+                    OutputDebugStringW(L"[Compile] ID_BUILD_DEBUG triggered\n");
+                    // TODO: 实现调试功能
+                    MessageBoxW(hWnd, L"调试功能正在开发中...", L"调试", MB_OK | MB_ICONINFORMATION);
+                }
+                break;
+            
+            case ID_BUILD_STOP:
+                {
+                    OutputDebugStringW(L"[Compile] ID_BUILD_STOP triggered\n");
+                    Compiler& compiler = Compiler::GetInstance();
+                    if (compiler.IsRunning()) {
+                        compiler.StopExecutable();
+                        if (g_pOutputPanel) {
+                            g_pOutputPanel->AppendOutput(L"程序已被用户终止\r\n", false);
+                        }
+                    } else if (compiler.IsCompiling()) {
+                        // TODO: 实现取消编译功能
+                        MessageBoxW(hWnd, L"编译过程中无法停止", L"提示", MB_OK | MB_ICONINFORMATION);
+                    } else {
+                        if (g_pOutputPanel) {
+                            g_pOutputPanel->AppendOutput(L"没有正在运行的程序\r\n", false);
+                        }
+                    }
+                }
+                break;
+            
             default:
                 // 处理动态主题菜单项
                 if (wmId >= IDM_THEME_FIRST && wmId <= IDM_THEME_LAST) {
@@ -3705,6 +3972,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         // 切换到选择模式，清除组件箱的选择状态
         if (g_pControlToolbox) {
             g_pControlToolbox->ClearSelection();
+        }
+        return 0;
+    
+    case WM_COMPILE_OUTPUT:
+        // 线程安全的编译输出消息处理
+        // wParam 指向动态分配的 wstring*
+        if (wParam) {
+            std::wstring* pMsg = reinterpret_cast<std::wstring*>(wParam);
+            if (g_pOutputPanel) {
+                g_pOutputPanel->AppendOutput(*pMsg, false);
+            }
+            delete pMsg;  // 释放内存
         }
         return 0;
         

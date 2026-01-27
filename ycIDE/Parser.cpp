@@ -23,10 +23,17 @@ void Parser::Advance() {
     previousToken_ = currentToken_;
     currentToken_ = lexer_.NextToken();
     
-    // 跳过注释和空白
-    while (currentToken_.type == EYTokenType::COMMENT || 
-           currentToken_.type == EYTokenType::WHITESPACE) {
+    // 跳过注释和空白，但要检查 EOF 和错误 避免无限循环
+    while ((currentToken_.type == EYTokenType::COMMENT || 
+            currentToken_.type == EYTokenType::WHITESPACE) &&
+           currentToken_.type != EYTokenType::EOF_TOKEN &&
+           currentToken_.type != EYTokenType::TOKEN_ERROR) {
         currentToken_ = lexer_.NextToken();
+    }
+    
+    // 如果遇到 lexer 错误，记录它
+    if (currentToken_.type == EYTokenType::TOKEN_ERROR) {
+        AddError(currentToken_.errorMsg.empty() ? L"词法错误" : currentToken_.errorMsg, currentToken_);
     }
 }
 
@@ -118,11 +125,18 @@ std::shared_ptr<ProgramNode> Parser::ParseProgram() {
     
     SkipNewlines();
     
-    while (!IsAtEnd()) {
+    int maxIterations = 50000;  // 防止无限循环的安全机制
+    int iterations = 0;
+    
+    while (!IsAtEnd() && iterations++ < maxIterations) {
         // 跳过空行
         if (Match(EYTokenType::NEWLINE)) {
             continue;
         }
+        
+        // 记录当前位置，用于检测是否卡住
+        EYTokenType prevType = currentToken_.type;
+        int prevLine = currentToken_.line;
         
         auto decl = ParseDeclaration();
         if (decl) {
@@ -131,9 +145,19 @@ std::shared_ptr<ProgramNode> Parser::ParseProgram() {
             } else {
                 program->declarations.push_back(decl);
             }
+        } else {
+            // 解析失败，尝试同步到下一个有效位置
+            // 如果位置没有变化，强制前进
+            if (currentToken_.type == prevType && currentToken_.line == prevLine) {
+                Advance();
+            }
         }
         
         SkipNewlines();
+    }
+    
+    if (iterations >= maxIterations) {
+        AddError(L"源代码解析超时，可能存在语法错误");
     }
     
     return program;
@@ -255,7 +279,22 @@ std::shared_ptr<SubroutineNode> Parser::ParseSubroutine() {
     SkipNewlines();
     
     // 解析参数、局部变量和语句
-    while (!IsAtEnd()) {
+    // 当遇到下一个顶级声明（子程序、变量、常量等）时退出
+    int maxIterations = 10000;  // 防止无限循环的安全机制
+    int iterations = 0;
+    
+    while (!IsAtEnd() && iterations++ < maxIterations) {
+        // 检查是否遇到了新的子程序声明（表示当前子程序结束）
+        if (Check(EYTokenType::KEYWORD_SUB)) {
+            break;  // 下一个子程序开始了，退出当前子程序解析
+        }
+        
+        // 检查是否遇到了其他顶级声明（如全局变量、常量）
+        // 注意：这里 KEYWORD_VAR 在子程序内部可能是局部变量
+        if (Check(EYTokenType::KEYWORD_CONST)) {
+            break;  // 常量声明通常是全局的，退出子程序
+        }
+        
         if (Check(EYTokenType::KEYWORD_VAR)) {
             // 局部变量
             auto varDecl = ParseVarDecl();
@@ -270,11 +309,17 @@ std::shared_ptr<SubroutineNode> Parser::ParseSubroutine() {
             auto stmt = ParseStatement();
             if (stmt) {
                 sub->statements.push_back(stmt);
+            } else {
+                // 解析失败，跳过这一行避免无限循环
+                if (!Match(EYTokenType::NEWLINE) && !IsAtEnd()) {
+                    Advance();  // 强制前进一个 token
+                }
             }
         }
-        
-        // TODO: 检测子程序结束标记
-        // 易语言没有明确的子程序结束标记，需要根据缩进或特定规则判断
+    }
+    
+    if (iterations >= maxIterations) {
+        AddError(L"子程序解析超时，可能存在语法错误");
     }
     
     return sub;
@@ -602,6 +647,13 @@ std::shared_ptr<ASTNode> Parser::ParseUnary() {
 }
 
 std::shared_ptr<ASTNode> Parser::ParsePrimary() {
+    // 处理词法错误 - 跳过并继续
+    if (Check(EYTokenType::TOKEN_ERROR)) {
+        // 错误已经在 Advance() 中记录了
+        Advance();  // 跳过错误 token
+        return nullptr;
+    }
+    
     // 数字字面量
     if (Match(EYTokenType::NUMBER)) {
         auto literal = std::make_shared<LiteralExprNode>();

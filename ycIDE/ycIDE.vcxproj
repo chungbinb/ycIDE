@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="AIChat.h" />
     <ClInclude Include="AIModel.h" />
+    <ClInclude Include="Compiler.h" />
     <ClInclude Include="ConstantEditor.h" />
     <ClInclude Include="ControlRenderer.h" />
     <ClInclude Include="ControlToolbox.h" />
@@ -155,6 +156,7 @@
     <ClInclude Include="LibraryConfig.h" />
     <ClInclude Include="LibraryParser.h" />
     <ClInclude Include="NameValidator.h" />
+    <ClInclude Include="NewProjectDialog.h" />
     <ClInclude Include="PinyinHelper.h" />
     <ClInclude Include="ProjectManager.h" />
     <ClInclude Include="PropertyGrid.h" />
@@ -174,6 +176,7 @@
   <ItemGroup>
     <ClCompile Include="AIChat.cpp" />
     <ClCompile Include="AIModel.cpp" />
+    <ClCompile Include="Compiler.cpp" />
     <ClCompile Include="ConstantEditor.cpp" />
     <ClCompile Include="ControlRenderer.cpp" />
     <ClCompile Include="ControlToolbox.cpp" />
@@ -188,6 +191,7 @@
     <ClCompile Include="LibraryConfig.cpp" />
     <ClCompile Include="LibraryParser.cpp" />
     <ClCompile Include="NameValidator.cpp" />
+    <ClCompile Include="NewProjectDialog.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="PinyinHelper.cpp" />
     <ClCompile Include="ProjectManager.cpp" />

@@ -3,6 +3,13 @@
 #include <string>
 #include <vector>
 
+// 项目类型（输出类型）
+enum class ProjectOutputType {
+    Console,        // 控制台程序
+    WindowsApp,     // 窗口程序
+    DynamicLibrary  // 动态链接库 (DLL)
+};
+
 // 项目文件类型
 enum ProjectFileType {
     PROJECT_FILE_EYC,       // 源代码文件 (.eyc)
@@ -33,11 +40,12 @@ struct ProjectInfo {
     std::wstring projectName;           // 项目名称
     std::wstring projectPath;           // 项目文件路径（.epp）
     std::wstring projectDirectory;      // 项目所在目录
+    ProjectOutputType outputType;       // 项目输出类型
     int version;                        // 项目文件版本
     
     std::vector<ProjectFileItem> files; // 项目包含的文件列表
     
-    ProjectInfo() : version(1) {}
+    ProjectInfo() : outputType(ProjectOutputType::Console), version(1) {}
 };
 
 // 项目管理器
@@ -46,7 +54,8 @@ public:
     static ProjectManager& GetInstance();
     
     // 创建新项目
-    bool CreateProject(const std::wstring& projectPath, const std::wstring& projectName);
+    bool CreateProject(const std::wstring& projectPath, const std::wstring& projectName,
+                      ProjectOutputType outputType = ProjectOutputType::Console);
     
     // 打开项目
     bool OpenProject(const std::wstring& projectPath);

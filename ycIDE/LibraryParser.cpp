@@ -53,12 +53,19 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
         cmd.needsBrackets = false;
         
         if (cmd.category == L"流程控制") {
-            cmd.needsFlowLine = true;
-            cmd.needsBrackets = true;
+            // 大部分流程控制命令需要流程线，但有些特殊命令不需要
+            // 不需要流程线的命令：返回、跳出循环、到循环尾、结束
+            bool noFlowLine = (cmd.chineseName == L"返回" || 
+                               cmd.chineseName == L"跳出循环" || 
+                               cmd.chineseName == L"到循环尾" ||
+                               cmd.chineseName == L"结束");
+            
+            cmd.needsFlowLine = !noFlowLine;
+            cmd.needsBrackets = true;  // 所有流程控制命令都需要括号
             flowControlCount++;
             // 调试输出流程控制命令
             if (flowControlCount <= 15) {
-                debugFile << L"  流程控制命令: " << cmd.chineseName << L" (类别: " << cmd.category << L")" << std::endl;
+                debugFile << L"  流程控制命令: " << cmd.chineseName << L" (类别: " << cmd.category << L", 流程线: " << (cmd.needsFlowLine ? "是" : "否") << L")" << std::endl;
             }
         }
         

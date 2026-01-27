@@ -149,5 +149,8 @@ struct EditorData {
 
 extern EditorData* g_EditorData;
 
+// 格式化文档中所有普通命令行（添加括号等）
+void FormatAllCommandLines(EditorDocument* doc);
+
 ATOM RegisterYiEditorClass(HINSTANCE hInstance);
 LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

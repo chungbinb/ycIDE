@@ -317,6 +317,7 @@ Token Lexer::ScanComment() {
     
     if (first == L'\'') {
         // 单引号注释，到行尾
+        Advance();  // 消耗单引号
         while (!IsAtEnd() && Peek() != L'\n') {
             Advance();
         }
@@ -332,6 +333,8 @@ Token Lexer::ScanComment() {
         return MakeToken(EYTokenType::COMMENT);
     }
     
+    // 不应该到这里，但为了安全还是要前进
+    Advance();
     return MakeErrorToken(L"未知的注释格式");
 }
 
@@ -353,6 +356,7 @@ Token Lexer::ScanOperator() {
             return MakeToken(EYTokenType::OP_DIVIDE);
         case L'%': Advance(); return MakeToken(EYTokenType::OP_MOD);
         case L'^': Advance(); return MakeToken(EYTokenType::OP_POWER);
+        case L'\\': Advance(); return MakeToken(EYTokenType::OP_DIVIDE);  // 反斜杠也当作除法（易语言兼容）
         
         case L'=':
             Advance();
@@ -369,7 +373,9 @@ Token Lexer::ScanOperator() {
             if (Match(L'=')) return MakeToken(EYTokenType::OP_GTE);
             return MakeToken(EYTokenType::OP_GT);
             
-        case L'≠': Advance(); return MakeToken(EYTokenType::OP_NEQ);
+        case L'≤': Advance(); return MakeToken(EYTokenType::OP_LTE);  // Unicode 小于等于
+        case L'≥': Advance(); return MakeToken(EYTokenType::OP_GTE);  // Unicode 大于等于
+        case L'≠': Advance(); return MakeToken(EYTokenType::OP_NEQ);  // Unicode 不等于
         
         case L'(': Advance(); return MakeToken(EYTokenType::LPAREN);
         case L')': Advance(); return MakeToken(EYTokenType::RPAREN);
@@ -377,13 +383,37 @@ Token Lexer::ScanOperator() {
         case L']': Advance(); return MakeToken(EYTokenType::RBRACKET);
         case L'{': Advance(); return MakeToken(EYTokenType::LBRACE);
         case L'}': Advance(); return MakeToken(EYTokenType::RBRACE);
-        case L',': Advance(); return MakeToken(EYTokenType::COMMA);
-        case L'.': Advance(); return MakeToken(EYTokenType::DOT);
-        case L':': Advance(); return MakeToken(EYTokenType::COLON);
-        case L';': Advance(); return MakeToken(EYTokenType::SEMICOLON);
-        
+        case L',': 
+        case L'，':  // 中文逗号也支持
+            Advance(); return MakeToken(EYTokenType::COMMA);
+        case L'.': 
+        case L'。':  // 中文句号作为成员访问符
+            Advance(); return MakeToken(EYTokenType::DOT);
+        case L':': 
+        case L'：':  // 中文冒号
+            Advance(); return MakeToken(EYTokenType::COLON);
+        case L';': 
+        case L'；':  // 中文分号
+            Advance(); return MakeToken(EYTokenType::SEMICOLON);
+        case L'#':   // 井号 - 易语言中可能用于特殊用途
+            Advance(); return MakeToken(EYTokenType::IDENTIFIER, L"#");  // 暂时当作标识符
+        case L'&':   // 按位与
+            Advance(); return MakeToken(EYTokenType::OP_AND);
+        case L'|':   // 按位或
+            Advance(); return MakeToken(EYTokenType::OP_OR);
+        case L'!':   // 逻辑非
+            Advance();
+            if (Match(L'=')) return MakeToken(EYTokenType::OP_NEQ);  // !=
+            return MakeToken(EYTokenType::OP_NOT);
+        case L'@':   // @ 符号
+            Advance(); return MakeToken(EYTokenType::IDENTIFIER, L"@");
+        case L'_':   // 下划线开头
+            return ScanIdentifierOrKeyword();
+            
         default:
-            return MakeErrorToken(L"未知的运算符");
+            // 重要：必须 Advance() 跳过未知字符，否则会导致无限循环
+            Advance();
+            return MakeErrorToken(L"未知的运算符: " + std::wstring(1, c));
     }
 }
 

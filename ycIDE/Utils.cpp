@@ -27,9 +27,11 @@ void DebugLog(const std::wstring& msg) {
 bool IsFlowControlLine(const std::wstring& line) {
     if (line.empty()) return false;
     
-    // 去掉前导空格和制表符
+    // 去掉前导空格、制表符和嵌套标记字符
     size_t start = 0;
-    while (start < line.length() && (line[start] == L' ' || line[start] == L'\t')) {
+    while (start < line.length() && 
+           (line[start] == L' ' || line[start] == L'\t' ||
+            line[start] == L'\u200C' || line[start] == L'\u200D' || line[start] == L'\u200B')) {
         start++;
     }
     
@@ -148,14 +150,14 @@ std::wstring ConvertEPLToInternal(const std::wstring& eplCode) {
                 // 跳过空行
                 if (targetLine.empty()) continue;
                 
-                // 去除原有缩进，转换为单空格开头
+                // 去除原有缩进，转换为\u200C开头（条件达成分支）
                 size_t targetFirst = targetLine.find_first_not_of(L" \t");
                 if (targetFirst != std::wstring::npos) {
                     std::wstring targetTrimmed = targetLine.substr(targetFirst);
-                    allLines[j] = L" " + targetTrimmed;
+                    allLines[j] = L"\u200C" + targetTrimmed;
                 } else {
-                    // 全是空白的行，转换为单空格
-                    allLines[j] = L" ";
+                    // 全是空白的行，转换为\u200C
+                    allLines[j] = L"\u200C";
                 }
                 DebugLog(L"Line " + std::to_wstring(j) + L" converted to: [" + allLines[j] + L"]");
             }
@@ -172,14 +174,14 @@ std::wstring ConvertEPLToInternal(const std::wstring& eplCode) {
                     // 跳过空行
                     if (targetLine.empty()) continue;
                     
-                    // 去除原有缩进，转换为双空格开头
+                    // 去除原有缩进，转换为\u200D开头（否则分支）
                     size_t targetFirst = targetLine.find_first_not_of(L" \t");
                     if (targetFirst != std::wstring::npos) {
                         std::wstring targetTrimmed = targetLine.substr(targetFirst);
-                        allLines[j] = L"  " + targetTrimmed;
+                        allLines[j] = L"\u200D" + targetTrimmed;
                     } else {
-                        // 全是空白的行，转换为双空格
-                        allLines[j] = L"  ";
+                        // 全是空白的行，转换为\u200D
+                        allLines[j] = L"\u200D";
                     }
                     DebugLog(L"Line " + std::to_wstring(j) + L" converted to: [" + allLines[j] + L"]");
                 }
@@ -207,7 +209,178 @@ std::wstring ConvertEPLToInternal(const std::wstring& eplCode) {
         }
     }
     
-    // 第二遍：过滤删除标记的行
+    // 第二遍：处理嵌套流程控制（检测已标记行中的流程控制命令）
+    // 使用循环多次处理，支持任意深度的嵌套
+    bool foundNested = true;
+    int maxIterations = 10;  // 最多支持10层嵌套，防止无限循环
+    int iteration = 0;
+    
+    while (foundNested && iteration < maxIterations) {
+        foundNested = false;
+        iteration++;
+        
+        for (size_t i = 0; i < allLines.size(); i++) {
+            std::wstring& line = allLines[i];
+            
+            // 检查是否是已标记的行（\u200C 或 \u200D 开头）
+            if (line.length() < 2) continue;
+            wchar_t outerMarker = line[0];
+            if (outerMarker != L'\u200C' && outerMarker != L'\u200D') continue;
+            
+            // 计算当前行的嵌套深度（\u200B 的数量）
+            int currentDepth = 1;
+            size_t markerEnd = 1;
+            while (markerEnd < line.length() && line[markerEnd] == L'\u200B') {
+                currentDepth++;
+                markerEnd++;
+            }
+            
+            // 获取标记后的内容（去除前导空格）
+            std::wstring content = line.substr(markerEnd);
+            size_t contentFirst = content.find_first_not_of(L" \t");
+            if (contentFirst != std::wstring::npos && contentFirst > 0) {
+                content = content.substr(contentFirst);
+            }
+            
+            // 检查是否是嵌套的流程控制命令
+            bool isNestedIfCommand = (content.find(L".如果 (") == 0 || content.find(L".如果(") == 0 ||
+                                      content.find(L"如果 (") == 0 || content.find(L"如果(") == 0);
+            bool isNestedIfTrueCommand = (content.find(L".如果真") == 0 || content.find(L"如果真") == 0);
+            
+            if (isNestedIfCommand || isNestedIfTrueCommand) {
+                // 检查下一行是否已经是更深嵌套（已经处理过）
+                if (i + 1 < allLines.size()) {
+                    const std::wstring& nextLine = allLines[i + 1];
+                    if (nextLine.length() >= markerEnd + 1 && 
+                        (nextLine[0] == L'\u200C' || nextLine[0] == L'\u200D')) {
+                        // 计算下一行的嵌套深度
+                        int nextDepth = 1;
+                        size_t nextMarkerEnd = 1;
+                        while (nextMarkerEnd < nextLine.length() && nextLine[nextMarkerEnd] == L'\u200B') {
+                            nextDepth++;
+                            nextMarkerEnd++;
+                        }
+                        if (nextDepth > currentDepth) {
+                            // 下一行已经是更深嵌套，跳过
+                            continue;
+                        }
+                    }
+                }
+                
+                DebugLog(L"Found nested If/IfTrue at line " + std::to_wstring(i) + L" depth=" + std::to_wstring(currentDepth));
+                foundNested = true;
+                
+                // 查找嵌套的结束位置
+                int nestedEndIdx = -1;
+                int nestLevel = 1;
+                
+                for (size_t j = i + 1; j < allLines.size(); j++) {
+                    std::wstring& checkLine = allLines[j];
+                    
+                    // 跳过删除标记的行
+                    if (checkLine.find(L"\x01DELETE\x01") != std::wstring::npos) continue;
+                    if (checkLine.empty()) continue;
+                    
+                    // 检查是否仍在同一外层流程块内
+                    if (checkLine[0] != L'\u200C' && checkLine[0] != L'\u200D') {
+                        // 离开外层流程块
+                        nestedEndIdx = (int)j;
+                        break;
+                    }
+                    
+                    // 计算此行的嵌套深度
+                    int checkDepth = 1;
+                    size_t checkMarkerEnd = 1;
+                    while (checkMarkerEnd < checkLine.length() && checkLine[checkMarkerEnd] == L'\u200B') {
+                        checkDepth++;
+                        checkMarkerEnd++;
+                    }
+                    
+                    // 如果已经是更深嵌套，跳过
+                    if (checkDepth > currentDepth) {
+                        continue;
+                    }
+                    
+                    // 如果是更浅嵌套，结束
+                    if (checkDepth < currentDepth) {
+                        nestedEndIdx = (int)j;
+                        break;
+                    }
+                    
+                    std::wstring checkContent = checkLine.substr(checkMarkerEnd);
+                    // 去除前导空格
+                    size_t checkFirst = checkContent.find_first_not_of(L" \t");
+                    if (checkFirst != std::wstring::npos && checkFirst > 0) {
+                        checkContent = checkContent.substr(checkFirst);
+                    }
+                    
+                    // 检查是否是另一个嵌套流程控制开始
+                    bool isAnotherNestedIf = (checkContent.find(L".如果 (") == 0 || checkContent.find(L".如果(") == 0 ||
+                                              checkContent.find(L"如果 (") == 0 || checkContent.find(L"如果(") == 0 ||
+                                              checkContent.find(L".如果真") == 0 || checkContent.find(L"如果真") == 0);
+                    
+                    // 检查是否是结束标记
+                    bool isNestedEnd = (checkContent.find(L".如果结束") == 0 || checkContent.find(L"如果结束") == 0 ||
+                                       checkContent.find(L".如果真结束") == 0 || checkContent.find(L"如果真结束") == 0);
+                    
+                    if (isAnotherNestedIf) {
+                        nestLevel++;
+                    } else if (isNestedEnd) {
+                        nestLevel--;
+                        if (nestLevel == 0) {
+                            // 标记删除这个结束行
+                            allLines[j] = L"\x01DELETE\x01";
+                            nestedEndIdx = (int)j;
+                            break;
+                        }
+                    }
+                }
+                
+                // 如果没有找到结束，使用外层流程块的结束
+                if (nestedEndIdx == -1) {
+                    for (size_t j = i + 1; j < allLines.size(); j++) {
+                        if (allLines[j].length() < 1 || (allLines[j][0] != L'\u200C' && allLines[j][0] != L'\u200D')) {
+                            nestedEndIdx = (int)j;
+                            break;
+                        }
+                    }
+                    if (nestedEndIdx == -1) nestedEndIdx = (int)allLines.size();
+                }
+                
+                // 将嵌套流程块内的行增加一个 \u200B 标记
+                for (int j = i + 1; j < nestedEndIdx; j++) {
+                    std::wstring& targetLine = allLines[j];
+                    
+                    // 跳过删除标记的行
+                    if (targetLine.find(L"\x01DELETE\x01") != std::wstring::npos) continue;
+                    
+                    // 跳过已处理的行和空行
+                    if (targetLine.empty()) continue;
+                    if (targetLine[0] != L'\u200C' && targetLine[0] != L'\u200D') break;
+                    
+                    // 计算此行的嵌套深度
+                    int targetDepth = 1;
+                    size_t targetMarkerEnd = 1;
+                    while (targetMarkerEnd < targetLine.length() && targetLine[targetMarkerEnd] == L'\u200B') {
+                        targetDepth++;
+                        targetMarkerEnd++;
+                    }
+                    
+                    // 只处理同级嵌套的行（不处理已经更深的嵌套）
+                    if (targetDepth > currentDepth) continue;
+                    
+                    // 在标记后插入一个 \u200B
+                    wchar_t marker = targetLine[0];
+                    std::wstring existingMarkers = targetLine.substr(1, targetMarkerEnd - 1);
+                    std::wstring innerContent = targetLine.substr(targetMarkerEnd);
+                    allLines[j] = std::wstring(1, marker) + existingMarkers + L"\u200B" + innerContent;
+                    DebugLog(L"Line " + std::to_wstring(j) + L" marked as depth " + std::to_wstring(targetDepth + 1));
+                }
+            }
+        }
+    }
+    
+    // 第四遍：过滤删除标记的行
     std::vector<std::wstring> finalLines;
     for (const std::wstring& line : allLines) {
         // 跳过删除标记的行
@@ -217,7 +390,7 @@ std::wstring ConvertEPLToInternal(const std::wstring& eplCode) {
     }
     DebugLog(L"Pass 3: Processing " + std::to_wstring(finalLines.size()) + L" lines");
     
-    // 第三遍：处理表格等其他内容
+    // 第五遍：处理表格等其他内容
     for (const std::wstring& line : finalLines) {
         // 检查是否是流程控制代码行（以单空格或双空格开头）
         bool isFlowControlLine = false;
@@ -353,9 +526,10 @@ std::wstring ConvertEPLToInternal(const std::wstring& eplCode) {
             
             std::vector<std::wstring> parts = splitParts(content);
             
-            // EPL子程序格式: .子程序 名称, [返回类型], [公开], [备注]
+            // EPL子程序格式: .子程序 名称, 返回类型, 公开, 备注
+            // 第1个是名称，第2个是返回类型，第3个是公开（可为空），第4个是备注
             std::wstring name = parts.size() > 0 ? parts[0] : L"";
-            std::wstring retType = L"";
+            std::wstring retType = parts.size() > 1 ? parts[1] : L"";
             std::wstring pub = L"";
             std::wstring remark = L"";
             
@@ -364,17 +538,17 @@ std::wstring ConvertEPLToInternal(const std::wstring& eplCode) {
                 name = L"子程序1";
             }
             
-            // 从第2个参数开始检查
-            for (size_t i = 1; i < parts.size(); i++) {
-                std::wstring& p = parts[i];
-                if (p.size() >= 2 && p.front() == L'"' && p.back() == L'"') {
-                    // 带引号的是备注
-                    remark = p.substr(1, p.size() - 2);
-                } else if (p == L"公开") {
-                    pub = p;
-                } else if (!p.empty() && retType.empty()) {
-                    // 第一个非公开、非备注的是返回类型
-                    retType = p;
+            // 第3个参数是公开标记
+            if (parts.size() > 2 && parts[2] == L"公开") {
+                pub = L"公开";
+            }
+            
+            // 第4个参数是备注
+            if (parts.size() > 3) {
+                remark = parts[3];
+                // 去除可能的引号
+                if (remark.size() >= 2 && remark.front() == L'"' && remark.back() == L'"') {
+                    remark = remark.substr(1, remark.size() - 2);
                 }
             }
             
@@ -607,15 +781,23 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 // 向后查找，找到流程控制结束位置（缩进行之后的普通空行）
                 size_t j = i + 1;
                 
-                // 输出所有单空格缩进行
+                // 输出所有缩进行（使用\u200C标记）
                 while (j < lines.size()) {
                     const std::wstring& nextLine = lines[j];
-                    if (nextLine.length() > 0 && nextLine[0] == L' ' && (nextLine.length() == 1 || nextLine[1] != L' ')) {
-                        // 单空格缩进行，转换为4个空格缩进后输出
+                    // 检查是否是流程控制内的行（使用\u200C特殊字符标记，或者普通空格开头）
+                    bool isIndentedLine = (nextLine.length() > 0 && nextLine[0] == L'\u200C');
+                    bool isOldIndentedLine = (nextLine.length() > 0 && nextLine[0] == L' ' && (nextLine.length() == 1 || nextLine[1] != L' '));
+                    
+                    if (isIndentedLine) {
+                        // \u200C标记的缩进行，转换为4个空格缩进后输出
+                        result += L"    " + nextLine.substr(1) + L"\n";
+                        j++;
+                    } else if (isOldIndentedLine) {
+                        // 旧格式的单空格缩进行
                         result += L"    " + nextLine.substr(1) + L"\n";
                         j++;
                     } else {
-                        // 非单空格缩进行，流程控制结束
+                        // 非缩进行，流程控制结束
                         break;
                     }
                 }
@@ -632,11 +814,17 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 // 向后查找条件达成分支和否则分支
                 size_t j = i + 1;
                 
-                // 输出所有单空格缩进行（条件达成分支）
+                // 输出所有条件达成分支行（使用\u200C标记）
                 while (j < lines.size()) {
                     const std::wstring& nextLine = lines[j];
-                    if (nextLine.length() > 0 && nextLine[0] == L' ' && (nextLine.length() == 1 || nextLine[1] != L' ')) {
-                        // 单空格缩进行，转换为4个空格缩进后输出
+                    // 检查是否是条件达成分支（\u200C标记或单空格）
+                    bool isIndentedLine = (nextLine.length() > 0 && nextLine[0] == L'\u200C');
+                    bool isOldIndentedLine = (nextLine.length() > 0 && nextLine[0] == L' ' && (nextLine.length() == 1 || nextLine[1] != L' '));
+                    
+                    if (isIndentedLine) {
+                        result += L"    " + nextLine.substr(1) + L"\n";
+                        j++;
+                    } else if (isOldIndentedLine) {
                         result += L"    " + nextLine.substr(1) + L"\n";
                         j++;
                     } else {
@@ -647,11 +835,17 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 // 插入.否则
                 result += L".否则\n";
                 
-                // 输出所有双空格缩进行（否则分支）
+                // 输出所有否则分支行（使用\u200D标记）
                 while (j < lines.size()) {
                     const std::wstring& nextLine = lines[j];
-                    if (nextLine.length() >= 2 && nextLine[0] == L' ' && nextLine[1] == L' ') {
-                        // 双空格缩进行，去掉前两个空格，添加4个空格缩进后输出
+                    // 检查是否是否则分支（\u200D标记或双空格）
+                    bool isElseLine = (nextLine.length() > 0 && nextLine[0] == L'\u200D');
+                    bool isOldElseLine = (nextLine.length() >= 2 && nextLine[0] == L' ' && nextLine[1] == L' ');
+                    
+                    if (isElseLine) {
+                        result += L"    " + nextLine.substr(1) + L"\n";
+                        j++;
+                    } else if (isOldElseLine) {
                         result += L"    " + nextLine.substr(2) + L"\n";
                         j++;
                     } else {
@@ -664,9 +858,18 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 
                 // 跳过已处理的行
                 i = j - 1;  // -1因为for循环会i++
+            } else if (!line.empty() && (line[0] == L'\u200C' || line[0] == L'\u200D' || line[0] == L'\u2060')) {
+                // 跳过孤立的特殊标记行（参数展开行或流程控制内的行）
+                // 这些行不应该直接出现在保存的文件中
+                continue;
             } else {
-                // 普通行，直接输出
-                result += line + L"\n";
+                // 普通行，直接输出（去除可能的特殊字符）
+                std::wstring cleanLine = line;
+                // 移除开头的特殊字符
+                while (!cleanLine.empty() && (cleanLine[0] == L'\u200C' || cleanLine[0] == L'\u200D' || cleanLine[0] == L'\u2060')) {
+                    cleanLine = cleanLine.substr(1);
+                }
+                result += cleanLine + L"\n";
             }
         }
     }
@@ -705,11 +908,11 @@ bool SaveFile(const std::wstring& path, EditorDocument* data) {
     
     std::ofstream file(pathStr, std::ios::binary);
     if (!file.is_open()) {
-        // 保存失败，尝试重新锁定文件
+        // 保存失败，尝试重新锁定文件（允许共享读取）
         data->hFileLock = CreateFileW(
             path.c_str(),
             GENERIC_READ | GENERIC_WRITE,
-            0,
+            FILE_SHARE_READ, // 允许其他程序读取
             NULL,
             OPEN_EXISTING,
             FILE_ATTRIBUTE_NORMAL,
@@ -729,11 +932,11 @@ bool SaveFile(const std::wstring& path, EditorDocument* data) {
     data->modified = false;
     data->filePath = path;
     
-    // 保存成功后重新锁定文件
+    // 保存成功后重新锁定文件（允许共享读取）
     data->hFileLock = CreateFileW(
         path.c_str(),
         GENERIC_READ | GENERIC_WRITE,
-        0,
+        FILE_SHARE_READ, // 允许其他程序读取（如编译器）
         NULL,
         OPEN_EXISTING,
         FILE_ATTRIBUTE_NORMAL,
@@ -770,11 +973,11 @@ bool LoadFile(const std::wstring& path, EditorDocument* data) {
         data->hFileLock = INVALID_HANDLE_VALUE;
     }
     
-    // 以独占模式打开文件（防止其他程序修改）
+    // 以共享读取模式打开文件（允许其他程序读取，但不允许写入）
     HANDLE hFile = CreateFileW(
         path.c_str(),
         GENERIC_READ | GENERIC_WRITE,
-        0, // 不共享，独占访问
+        FILE_SHARE_READ, // 允许其他程序读取（如编译器）
         NULL,
         OPEN_EXISTING,
         FILE_ATTRIBUTE_NORMAL,

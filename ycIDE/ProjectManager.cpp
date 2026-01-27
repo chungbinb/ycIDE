@@ -14,7 +14,8 @@ ProjectManager::~ProjectManager() {
     }
 }
 
-bool ProjectManager::CreateProject(const std::wstring& projectPath, const std::wstring& projectName) {
+bool ProjectManager::CreateProject(const std::wstring& projectPath, const std::wstring& projectName,
+                                  ProjectOutputType outputType) {
     if (currentProject_) {
         delete currentProject_;
     }
@@ -22,6 +23,7 @@ bool ProjectManager::CreateProject(const std::wstring& projectPath, const std::w
     currentProject_ = new ProjectInfo();
     currentProject_->projectName = projectName;
     currentProject_->projectPath = projectPath;
+    currentProject_->outputType = outputType;
     
     // 提取项目目录
     size_t lastSlash = projectPath.find_last_of(L"\\/");
@@ -40,10 +42,59 @@ bool ProjectManager::CreateProject(const std::wstring& projectPath, const std::w
     mainFile.isMainFile = true;
     currentProject_->files.push_back(mainFile);
     
-    // 创建主文件内容（空的易语言源代码文件）
-    std::wstring defaultContent = 
-        L".版本 2\n"
-        L".程序集 窗口程序集1\n";
+    // 根据项目类型创建不同的默认内容
+    std::wstring defaultContent;
+    switch (outputType) {
+    case ProjectOutputType::Console:
+        defaultContent = 
+            L".版本 2\n"
+            L".程序集 控制台程序集1\n"
+            L"\n"
+            L".子程序 _启动子程序, 整数型, , 本子程序在程序启动后最先执行\n"
+            L"\n"
+            L"    调试输出 (\"程序开始运行...\")\n"
+            L"    \n"
+            L"    ' TODO: 在这里编写程序逻辑\n"
+            L"    \n"
+            L"    调试输出 (\"程序运行结束.\")\n"
+            L"    返回 (0)\n";
+        break;
+        
+    case ProjectOutputType::WindowsApp:
+        defaultContent = 
+            L".版本 2\n"
+            L".程序集 窗口程序集1\n"
+            L".程序集变量 启动窗口, 窗口\n"
+            L"\n"
+            L".子程序 _启动子程序, 整数型, , 本子程序在程序启动后最先执行\n"
+            L"\n"
+            L"    载入 (启动窗口, , 真)\n"
+            L"    返回 (0)\n"
+            L"\n"
+            L".子程序 _启动窗口_创建完毕\n"
+            L"\n"
+            L"    ' TODO: 窗口创建完成后的初始化代码\n";
+        break;
+        
+    case ProjectOutputType::DynamicLibrary:
+        defaultContent = 
+            L".版本 2\n"
+            L".程序集 DLL程序集\n"
+            L"\n"
+            L".子程序 DllMain, 整数型, 公开, DLL入口函数\n"
+            L".参数 hModule, 整数型\n"
+            L".参数 reason, 整数型\n"
+            L".参数 reserved, 整数型\n"
+            L"\n"
+            L"    返回 (1)  ' 返回真表示初始化成功\n"
+            L"\n"
+            L".子程序 示例导出函数, 整数型, 公开, 可被外部程序调用\n"
+            L".参数 参数1, 整数型\n"
+            L"\n"
+            L"    ' TODO: 在这里编写函数逻辑\n"
+            L"    返回 (参数1 × 2)\n";
+        break;
+    }
     
     // 将内容写入文件
     int utf8Len = WideCharToMultiByte(CP_UTF8, 0, defaultContent.c_str(), -1, NULL, 0, NULL, NULL);
@@ -310,6 +361,19 @@ bool ProjectManager::ParseProjectFile(const std::wstring& content, ProjectInfo* 
             continue;
         }
         
+        // 解析项目输出类型
+        if (line.find(L"OutputType=") == 0) {
+            std::wstring typeStr = line.substr(11);
+            if (typeStr == L"Console") {
+                project->outputType = ProjectOutputType::Console;
+            } else if (typeStr == L"WindowsApp") {
+                project->outputType = ProjectOutputType::WindowsApp;
+            } else if (typeStr == L"DynamicLibrary") {
+                project->outputType = ProjectOutputType::DynamicLibrary;
+            }
+            continue;
+        }
+        
         // 解析文件
         if (line.find(L"File=") == 0) {
             std::wstring fileInfo = line.substr(5);
@@ -380,7 +444,15 @@ std::wstring ProjectManager::GenerateProjectFile(const ProjectInfo* project) {
     content += L"# YiCode Project File\n";
     content += L"Version=" + std::to_wstring(project->version) + L"\n";
     content += L"ProjectName=" + project->projectName + L"\n";
-    content += L"\n";
+    
+    // 保存项目输出类型
+    content += L"OutputType=";
+    switch (project->outputType) {
+        case ProjectOutputType::Console: content += L"Console"; break;
+        case ProjectOutputType::WindowsApp: content += L"WindowsApp"; break;
+        case ProjectOutputType::DynamicLibrary: content += L"DynamicLibrary"; break;
+    }
+    content += L"\n\n";
     
     for (const auto& item : project->files) {
         content += L"File=";
