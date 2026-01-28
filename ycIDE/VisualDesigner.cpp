@@ -2,10 +2,13 @@
 #include "EditorContext.h"
 #include "ControlRenderer.h"
 #include "LibraryParser.h"
+#include "Theme.h"
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <windowsx.h>
+
+extern AppTheme g_CurrentTheme;
 
 // 定义min和max宏（如果未定义）
 #ifndef min
@@ -140,8 +143,8 @@ void VisualDesigner::OnPaint(HDC hdc)
     g.SetSmoothingMode(SmoothingModeAntiAlias);
     g.SetTextRenderingHint(TextRenderingHintAntiAlias);
     
-    // 绘制背景
-    SolidBrush bgBrush(Color(240, 240, 240));
+    // 绘制背景（使用主题色）
+    SolidBrush bgBrush(Color(255, GetRValue(g_CurrentTheme.editorBg), GetGValue(g_CurrentTheme.editorBg), GetBValue(g_CurrentTheme.editorBg)));
     g.FillRectangle(&bgBrush, 0, 0, rc.right, rc.bottom);
     
     // 绘制画布
@@ -1081,50 +1084,60 @@ void VisualDesigner::DrawCanvas(Graphics& g)
     // 整个窗口区域（包含标题栏）
     Rect windowRect(canvasScreenX, canvasScreenY, scaledWidth, scaledTotalHeight);
     
-    // 绘制窗口阴影
-    SolidBrush shadowBrush(Color(100, 0, 0, 0));
-    g.FillRectangle(&shadowBrush, windowRect.X + 4, windowRect.Y + 4, 
-                    windowRect.Width, windowRect.Height);
+    // 绘制窗口阴影（Windows 11 风格 - 更柔和的阴影）
+    for (int i = 8; i > 0; i--) {
+        int alpha = 15 - i;
+        SolidBrush shadowBrush(Color(alpha, 0, 0, 0));
+        g.FillRectangle(&shadowBrush, windowRect.X + i, windowRect.Y + i, 
+                        windowRect.Width, windowRect.Height);
+    }
+    
+    // Windows 11 风格圆角（使用普通矩形，因为 GDI+ 圆角效果有限）
+    // 绘制窗口背景
+    SolidBrush windowBgBrush(Color(243, 243, 243)); // Windows 11 窗口背景色
+    g.FillRectangle(&windowBgBrush, windowRect);
     
     // 绘制窗口边框
     if (m_formInfo.borderStyle > 0) {
-        SolidBrush borderBrush(Color(100, 100, 100));
-        g.FillRectangle(&borderBrush, windowRect);
+        Pen borderPen(Color(200, 200, 200), 1.0f);
+        g.DrawRectangle(&borderPen, windowRect);
     }
     
-    // 绘制标题栏
+    // 绘制标题栏（Windows 11 风格 - 浅色标题栏）
     Rect titleBarRect(canvasScreenX + borderWidth, canvasScreenY + borderWidth, 
                       scaledWidth - borderWidth * 2, scaledTitleHeight - borderWidth);
-    LinearGradientBrush titleBrush(
-        Point(titleBarRect.X, titleBarRect.Y),
-        Point(titleBarRect.X, titleBarRect.Y + titleBarRect.Height),
-        Color(0, 120, 215),  // 标题栏颜色（蓝色）
-        Color(0, 100, 180));
-    g.FillRectangle(&titleBrush, titleBarRect);
+    SolidBrush titleBarBrush(Color(243, 243, 243));  // Windows 11 浅色标题栏
+    g.FillRectangle(&titleBarBrush, titleBarRect);
+    
+    // 绘制窗口图标区域（小图标占位）
+    int iconSize = (int)(16 * m_zoom);
+    int iconX = titleBarRect.X + (int)(10 * m_zoom);
+    int iconY = titleBarRect.Y + (titleBarRect.Height - iconSize) / 2;
+    // 绘制一个简单的应用图标占位
+    SolidBrush iconBrush(Color(0, 120, 215));
+    g.FillRectangle(&iconBrush, iconX, iconY, iconSize, iconSize);
     
     // 绘制标题文字
-    Font titleFont(L"微软雅黑", 9.0f * m_zoom, FontStyleRegular, UnitPoint);
-    SolidBrush titleTextBrush(Color(255, 255, 255));
+    Font titleFont(L"Segoe UI", 9.0f * m_zoom, FontStyleRegular, UnitPoint);
+    SolidBrush titleTextBrush(Color(0, 0, 0));  // 黑色文字
     StringFormat titleFormat;
     titleFormat.SetAlignment(StringAlignmentNear);
     titleFormat.SetLineAlignment(StringAlignmentCenter);
-    RectF titleTextRect((float)titleBarRect.X + 8, (float)titleBarRect.Y,
-                        (float)titleBarRect.Width - 100, (float)titleBarRect.Height);
+    RectF titleTextRect((float)iconX + iconSize + 8 * m_zoom, (float)titleBarRect.Y,
+                        (float)titleBarRect.Width - 150 * m_zoom, (float)titleBarRect.Height);
     g.DrawString(m_formInfo.title.c_str(), -1, &titleFont, titleTextRect, &titleFormat, &titleTextBrush);
     
-    // 绘制控制按钮（关闭、最大化、最小化）
+    // 绘制控制按钮（Windows 11 风格）
     if (m_formInfo.hasControlBox) {
         int btnWidth = (int)(46 * m_zoom);
         int btnHeight = scaledTitleHeight - borderWidth;
         int btnX = titleBarRect.X + titleBarRect.Width - btnWidth;
         int btnY = titleBarRect.Y;
         
-        // 关闭按钮（红色）
+        // 关闭按钮（鼠标悬停时红色，默认透明）
         Rect closeRect(btnX, btnY, btnWidth, btnHeight);
-        SolidBrush closeBrush(Color(232, 17, 35));
-        g.FillRectangle(&closeBrush, closeRect);
-        // 绘制 X
-        Pen closePen(Color(255, 255, 255), 1.0f * m_zoom);
+        // 绘制 X（Windows 11 风格细线）
+        Pen closePen(Color(100, 100, 100), 1.0f * m_zoom);
         int cx = closeRect.X + closeRect.Width / 2;
         int cy = closeRect.Y + closeRect.Height / 2;
         int cs = (int)(5 * m_zoom);
@@ -1135,9 +1148,8 @@ void VisualDesigner::DrawCanvas(Graphics& g)
         if (m_formInfo.hasMaxButton) {
             btnX -= btnWidth;
             Rect maxRect(btnX, btnY, btnWidth, btnHeight);
-            SolidBrush maxBrush(Color(60, 60, 60));
-            // 绘制方块
-            Pen maxPen(Color(255, 255, 255), 1.0f * m_zoom);
+            // 绘制方块（Windows 11 风格）
+            Pen maxPen(Color(100, 100, 100), 1.0f * m_zoom);
             int mx = maxRect.X + maxRect.Width / 2;
             int my = maxRect.Y + maxRect.Height / 2;
             int ms = (int)(5 * m_zoom);
@@ -1148,9 +1160,8 @@ void VisualDesigner::DrawCanvas(Graphics& g)
         if (m_formInfo.hasMinButton) {
             btnX -= btnWidth;
             Rect minRect(btnX, btnY, btnWidth, btnHeight);
-            SolidBrush minBrush(Color(60, 60, 60));
-            // 绘制横线
-            Pen minPen(Color(255, 255, 255), 1.0f * m_zoom);
+            // 绘制横线（Windows 11 风格）
+            Pen minPen(Color(100, 100, 100), 1.0f * m_zoom);
             int mx = minRect.X + minRect.Width / 2;
             int my = minRect.Y + minRect.Height / 2;
             int ms = (int)(5 * m_zoom);

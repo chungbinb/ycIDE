@@ -229,13 +229,13 @@ void PropertyGrid::OnVScroll(WPARAM wParam)
     
     switch (action) {
         case SB_LINEUP:
-            m_scrollPos = max(0, m_scrollPos - m_rowHeight);
+            m_scrollPos = (std::max)(0, m_scrollPos - m_rowHeight);
             break;
         case SB_LINEDOWN:
             m_scrollPos += m_rowHeight;
             break;
         case SB_PAGEUP:
-            m_scrollPos = max(0, m_scrollPos - 100);
+            m_scrollPos = (std::max)(0, m_scrollPos - 100);
             break;
         case SB_PAGEDOWN:
             m_scrollPos += 100;
@@ -249,7 +249,7 @@ void PropertyGrid::OnVScroll(WPARAM wParam)
     // 限制滚动范围
     int maxScroll = (int)m_properties.size() * m_rowHeight - 100;
     if (maxScroll < 0) maxScroll = 0;
-    m_scrollPos = min(m_scrollPos, maxScroll);
+    m_scrollPos = (std::min)(m_scrollPos, maxScroll);
     
     if (m_scrollPos != oldPos) {
         SetScrollPos(m_hWnd, SB_VERT, m_scrollPos, TRUE);
@@ -481,19 +481,39 @@ LRESULT CALLBACK PropertyGrid::DropdownWndProc(HWND hWnd, UINT msg, WPARAM wPara
             graphics.SetSmoothingMode(SmoothingModeAntiAlias);
             graphics.SetTextRenderingHint(TextRenderingHintClearTypeGridFit);
             
+            // 根据主题背景色判断是深色还是浅色主题
+            bool isDarkTheme = (GetRValue(g_CurrentTheme.bg) < 128);
+            
+            // 根据主题设置颜色
+            Color bgColor, borderColor, textColor, hoverColor, selectedColor;
+            if (isDarkTheme) {
+                bgColor = Color(45, 45, 48);
+                borderColor = Color(70, 70, 70);
+                textColor = Color(220, 220, 220);
+                hoverColor = Color(62, 62, 64);
+                selectedColor = Color(0, 122, 204);
+            } else {
+                bgColor = Color(255, 255, 255);
+                borderColor = Color(200, 200, 200);
+                textColor = Color(30, 30, 30);
+                hoverColor = Color(229, 243, 255);
+                selectedColor = Color(0, 120, 215);
+            }
+            
             // 背景
-            SolidBrush bgBrush(Color(45, 45, 48));
+            SolidBrush bgBrush(bgColor);
             graphics.FillRectangle(&bgBrush, 0, 0, rect.right, rect.bottom);
             
             // 边框
-            Pen borderPen(Color(70, 70, 70));
+            Pen borderPen(borderColor);
             graphics.DrawRectangle(&borderPen, 0, 0, rect.right - 1, rect.bottom - 1);
             
             // 绘制列表项
             Font itemFont(L"微软雅黑", 10);
-            SolidBrush textBrush(Color(220, 220, 220));
-            SolidBrush hoverBrush(Color(62, 62, 64));
-            SolidBrush selectedBrush(Color(0, 122, 204));
+            SolidBrush textBrush(textColor);
+            SolidBrush textBrushSelected(Color(255, 255, 255));  // 选中项始终用白色文字
+            SolidBrush hoverBrush(hoverColor);
+            SolidBrush selectedBrush(selectedColor);
             
             int y = 2;
             for (int i = 0; i < (int)pGrid->m_dropdownItems.size(); i++) {
@@ -502,13 +522,17 @@ LRESULT CALLBACK PropertyGrid::DropdownWndProc(HWND hWnd, UINT msg, WPARAM wPara
                 // 绘制悬停或选中背景
                 if (i == pGrid->m_dropdownSelectedIndex) {
                     graphics.FillRectangle(&selectedBrush, itemRect);
-                } else if (i == pGrid->m_dropdownHoverIndex) {
-                    graphics.FillRectangle(&hoverBrush, itemRect);
+                    // 选中项使用白色文本
+                    RectF textRect(6.0f, (float)y + 2, (float)(rect.right - 12), (float)pGrid->m_dropdownItemHeight - 4);
+                    graphics.DrawString(pGrid->m_dropdownItems[i].c_str(), -1, &itemFont, textRect, nullptr, &textBrushSelected);
+                } else {
+                    if (i == pGrid->m_dropdownHoverIndex) {
+                        graphics.FillRectangle(&hoverBrush, itemRect);
+                    }
+                    // 正常项使用主题文本颜色
+                    RectF textRect(6.0f, (float)y + 2, (float)(rect.right - 12), (float)pGrid->m_dropdownItemHeight - 4);
+                    graphics.DrawString(pGrid->m_dropdownItems[i].c_str(), -1, &itemFont, textRect, nullptr, &textBrush);
                 }
-                
-                // 绘制文本
-                RectF textRect(6.0f, (float)y + 2, (float)(rect.right - 12), (float)pGrid->m_dropdownItemHeight - 4);
-                graphics.DrawString(pGrid->m_dropdownItems[i].c_str(), -1, &itemFont, textRect, nullptr, &textBrush);
                 
                 y += pGrid->m_dropdownItemHeight;
             }

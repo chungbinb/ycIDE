@@ -57,6 +57,20 @@ const wchar_t* GetProjectOutputType(ProjectType type) {
     }
 }
 
+// 获取默认项目名称
+const wchar_t* GetDefaultProjectName(ProjectType type) {
+    switch (type) {
+    case ProjectType::Console:
+        return L"新控制台项目";
+    case ProjectType::WindowsApp:
+        return L"新窗口项目";
+    case ProjectType::DynamicLibrary:
+        return L"新DLL项目";
+    default:
+        return L"新项目";
+    }
+}
+
 // 静态成员初始化
 NewProjectResult NewProjectDialog::s_result;
 
@@ -450,8 +464,8 @@ void NewProjectDialog::OnInitDialog(HWND hDlg) {
     SendMessage(hLabel2, WM_SETFONT, (WPARAM)hFont, TRUE);
     rightY += 22;
     
-    // 项目名称输入框
-    HWND hName = CreateWindowExW(0, L"EDIT", L"新项目",
+    // 项目名称输入框（根据默认项目类型设置默认名称）
+    HWND hName = CreateWindowExW(0, L"EDIT", GetDefaultProjectName(ProjectType::Console),
         WS_CHILD | WS_VISIBLE | ES_AUTOHSCROLL | WS_BORDER,
         rightPanelX, rightY, rightPanelWidth, 24,
         hDlg, (HMENU)IDC_PROJECT_NAME, GetModuleHandle(NULL), NULL);
@@ -600,6 +614,13 @@ void NewProjectDialog::OnCommand(HWND hDlg, WPARAM wParam, LPARAM lParam) {
                 
                 // 更新输出类型
                 SetDlgItemTextW(hDlg, IDC_INFO_OUTPUT, GetProjectOutputType(type));
+                
+                // 更新默认项目名称
+                SetDlgItemTextW(hDlg, IDC_PROJECT_NAME, GetDefaultProjectName(type));
+                // 选中全部文本，方便用户直接输入
+                HWND hName = GetDlgItem(hDlg, IDC_PROJECT_NAME);
+                SendMessage(hName, EM_SETSEL, 0, -1);
+                SetFocus(hName);
             }
         }
         break;

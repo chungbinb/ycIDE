@@ -92,6 +92,7 @@ RECT g_LastMainWindowRect = {0};
 // 可视化设计器相关
 bool g_IsVisualDesignerActive = false;  // 当前是否处于可视化设计模式
 bool g_IsToolboxDocked = false;         // 组件箱是否停靠到设计器内
+bool g_ToolboxVisible = true;           // 组件箱是否可见
 static const int DOCKED_TOOLBOX_WIDTH = 180;  // 停靠时组件箱宽度
 VisualDesigner* g_pVisualDesigner = nullptr;  // 可视化设计器实例
 PropertyGrid* g_pPropertyGrid = nullptr;      // 属性窗口实例
@@ -285,12 +286,25 @@ void SaveToolboxPosition() {
     WritePrivateProfileStringW(L"Toolbox", L"Y", std::to_wstring(y).c_str(), configPath.c_str());
     WritePrivateProfileStringW(L"Toolbox", L"Width", std::to_wstring(width).c_str(), configPath.c_str());
     WritePrivateProfileStringW(L"Toolbox", L"Height", std::to_wstring(height).c_str(), configPath.c_str());
+    
+    // 保存停靠状态
+    WritePrivateProfileStringW(L"Toolbox", L"Docked", g_IsToolboxDocked ? L"1" : L"0", configPath.c_str());
+    
+    // 保存可见状态
+    bool isVisible = IsWindowVisible(hToolboxWnd) != FALSE;
+    WritePrivateProfileStringW(L"Toolbox", L"Visible", isVisible ? L"1" : L"0", configPath.c_str());
 }
 
 void LoadToolboxPosition() {
     if (!hToolboxWnd) return;
     
     std::wstring configPath = GetWindowConfigPath();
+    
+    // 加载停靠状态
+    g_IsToolboxDocked = GetPrivateProfileIntW(L"Toolbox", L"Docked", 0, configPath.c_str()) != 0;
+    if (g_pControlToolbox) {
+        g_pControlToolbox->SetDocked(g_IsToolboxDocked);
+    }
     
     int x = GetPrivateProfileIntW(L"Toolbox", L"X", -1, configPath.c_str());
     int y = GetPrivateProfileIntW(L"Toolbox", L"Y", -1, configPath.c_str());
@@ -1599,6 +1613,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 组件箱关闭通知 (wmEvent=0x2002)
             if (wmEvent == 0x2002) {
                 OutputDebugStringW(L"[ycIDE] 收到组件箱关闭通知\n");
+                g_ToolboxVisible = false;
+                SaveToolboxPosition();  // 保存位置和可见状态
                 ShowWindow(hToolboxWnd, SW_HIDE);
                 return 0;
             }
@@ -1798,9 +1814,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 // 切换组件箱显示
                 if (hToolboxWnd) {
                     if (IsWindowVisible(hToolboxWnd)) {
+                        g_ToolboxVisible = false;
+                        SaveToolboxPosition();  // 保存位置和可见状态
                         ShowWindow(hToolboxWnd, SW_HIDE);
                     } else {
+                        g_ToolboxVisible = true;
                         ShowWindow(hToolboxWnd, SW_SHOW);
+                        SaveToolboxPosition();  // 保存位置和可见状态
                     }
                 }
                 break;
@@ -2081,36 +2101,89 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             UpdateMenuItems();
                             InvalidateRect(hEditorWnd, NULL, TRUE);
                             
-                            // 自动打开主源代码文件
-                            std::wstring mainFile = pm.GetMainFile();
-                            if (!mainFile.empty() && g_EditorData) {
-                                // 关闭欢迎页
-                                g_EditorData->showWelcomePage = false;
-                                g_EditorData->AddDocument(mainFile);
-                                EditorDocument* doc = g_EditorData->GetActiveDoc();
-                                if (doc) {
-                                    LoadFile(mainFile, doc);
-                                    // 格式化所有命令行（添加括号等）
-                                    FormatAllCommandLines(doc);
-                                }
+                            // 如果是窗口程序，自动创建并打开一个窗口文件（不创建.eyc文件）
+                            if (result.type == ProjectType::WindowsApp) {
+                                // 创建窗口文件，新建项目默认窗口名为 _启动窗口
+                                std::wstring windowFileName = L"_启动窗口.efw";
+                                std::wstring windowFilePath = result.projectDir + L"\\" + windowFileName;
                                 
-                                // 添加到标签栏
-                                if (tabData) {
-                                    size_t lastSlash = mainFile.find_last_of(L"\\/");
-                                    std::wstring fileName = (lastSlash != std::wstring::npos) ? mainFile.substr(lastSlash + 1) : mainFile;
-                                    tabData->AddTab(mainFile, fileName, 0);  // editorType = 0 for YiEditor
-                                    InvalidateRect(hTabBarWnd, NULL, TRUE);
-                                }
+                                // 创建窗口文件内容（JSON格式）
+                                std::wstring windowContent = L"{\n  \"type\": \"window\",\n  \"name\": \"_启动窗口\",\n  \"width\": 640,\n  \"height\": 480,\n  \"title\": \"" + result.projectName + L"\",\n  \"controls\": []\n}\n";
                                 
-                                // 显示编辑器窗口，隐藏欢迎页
-                                ShowWindow(hWelcomePageWnd, SW_HIDE);
-                                ShowWindow(hEditorWnd, SW_SHOW);
-                                // 强制刷新编辑器窗口
-                                InvalidateRect(hEditorWnd, NULL, TRUE);
-                                UpdateWindow(hEditorWnd);
-                                RECT rect;
-                                GetClientRect(hEditorWnd, &rect);
-                                SendMessage(hEditorWnd, WM_SIZE, 0, MAKELPARAM(rect.right, rect.bottom));
+                                int utf8Len = WideCharToMultiByte(CP_UTF8, 0, windowContent.c_str(), -1, NULL, 0, NULL, NULL);
+                                if (utf8Len > 0) {
+                                    std::string utf8Content(utf8Len - 1, 0);
+                                    WideCharToMultiByte(CP_UTF8, 0, windowContent.c_str(), -1, &utf8Content[0], utf8Len, NULL, NULL);
+                                    
+                                    HANDLE hFile = CreateFileW(windowFilePath.c_str(), GENERIC_WRITE, 0, NULL,
+                                                              CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                                    if (hFile != INVALID_HANDLE_VALUE) {
+                                        DWORD bytesWritten;
+                                        WriteFile(hFile, utf8Content.c_str(), (DWORD)utf8Content.size(), &bytesWritten, NULL);
+                                        CloseHandle(hFile);
+                                        
+                                        // 添加到项目并设置为主文件（默认打开的文件）
+                                        pm.AddFileToProject(windowFilePath);
+                                        pm.SetMainFile(windowFilePath);
+                                        ExplorerLoadProject();
+                                        
+                                        // 关闭欢迎页
+                                        if (g_EditorData) {
+                                            g_EditorData->showWelcomePage = false;
+                                        }
+                                        
+                                        // 添加到标签栏并打开可视化设计器
+                                        if (tabData) {
+                                            tabData->AddTab(windowFilePath, windowFileName, 2);  // editorType = 2 for VisualDesigner
+                                            InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                        }
+                                        
+                                        // 切换到可视化设计器模式并加载文件
+                                        SwitchToVisualDesignerMode(true);
+                                        ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                        ShowWindow(hEditorWnd, SW_HIDE);
+                                        ShowWindow(hEllEditorWnd, SW_HIDE);
+                                        ShowWindow(hVisualDesignerWnd, SW_SHOW);
+                                        
+                                        if (g_pVisualDesigner) {
+                                            g_pVisualDesigner->LoadFile(windowFilePath);
+                                            InvalidateRect(hVisualDesignerWnd, NULL, TRUE);
+                                            UpdatePropertyGridForSelection();
+                                        }
+                                    }
+                                }
+                            } else {
+                                // 非窗口程序：自动打开主源代码文件
+                                std::wstring mainFile = pm.GetMainFile();
+                                if (!mainFile.empty() && g_EditorData) {
+                                    // 关闭欢迎页
+                                    g_EditorData->showWelcomePage = false;
+                                    g_EditorData->AddDocument(mainFile);
+                                    EditorDocument* doc = g_EditorData->GetActiveDoc();
+                                    if (doc) {
+                                        LoadFile(mainFile, doc);
+                                        // 格式化所有命令行（添加括号等）
+                                        FormatAllCommandLines(doc);
+                                    }
+                                    
+                                    // 添加到标签栏
+                                    if (tabData) {
+                                        size_t lastSlash = mainFile.find_last_of(L"\\/");
+                                        std::wstring fileName = (lastSlash != std::wstring::npos) ? mainFile.substr(lastSlash + 1) : mainFile;
+                                        tabData->AddTab(mainFile, fileName, 0);  // editorType = 0 for YiEditor
+                                        InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                    }
+                                    
+                                    // 显示编辑器窗口，隐藏欢迎页
+                                    ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                    ShowWindow(hEditorWnd, SW_SHOW);
+                                    // 强制刷新编辑器窗口
+                                    InvalidateRect(hEditorWnd, NULL, TRUE);
+                                    UpdateWindow(hEditorWnd);
+                                    RECT rect;
+                                    GetClientRect(hEditorWnd, &rect);
+                                    SendMessage(hEditorWnd, WM_SIZE, 0, MAKELPARAM(rect.right, rect.bottom));
+                                }
                             }
                             
                             // 显示成功消息
@@ -2154,34 +2227,68 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             
                             // 打开主文件（如果有）
                             std::wstring mainFile = pm.GetMainFile();
-                            if (!mainFile.empty() && g_EditorData) {
+                            if (!mainFile.empty()) {
                                 // 关闭欢迎页
-                                g_EditorData->showWelcomePage = false;
-                                g_EditorData->AddDocument(mainFile);
-                                EditorDocument* doc = g_EditorData->GetActiveDoc();
-                                if (doc) {
-                                    LoadFile(mainFile, doc);
-                                    // 格式化所有命令行（添加括号等）
-                                    FormatAllCommandLines(doc);
+                                if (g_EditorData) {
+                                    g_EditorData->showWelcomePage = false;
                                 }
                                 
-                                // 添加到标签栏
-                                if (tabData) {
-                                    size_t lastSlash = mainFile.find_last_of(L"\\/");
-                                    std::wstring fileName = (lastSlash != std::wstring::npos) ? mainFile.substr(lastSlash + 1) : mainFile;
-                                    tabData->AddTab(mainFile, fileName, 0);  // editorType = 0 for YiEditor
-                                    InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                // 获取文件扩展名，判断文件类型
+                                std::wstring ext;
+                                size_t dotPos = mainFile.find_last_of(L'.');
+                                if (dotPos != std::wstring::npos) {
+                                    ext = mainFile.substr(dotPos);
+                                    std::transform(ext.begin(), ext.end(), ext.begin(), ::towlower);
                                 }
                                 
-                                // 显示编辑器窗口，隐藏欢迎页
-                                ShowWindow(hWelcomePageWnd, SW_HIDE);
-                                ShowWindow(hEditorWnd, SW_SHOW);
-                                // 强制刷新编辑器窗口
-                                InvalidateRect(hEditorWnd, NULL, TRUE);
-                                UpdateWindow(hEditorWnd);
-                                RECT rect;
-                                GetClientRect(hEditorWnd, &rect);
-                                SendMessage(hEditorWnd, WM_SIZE, 0, MAKELPARAM(rect.right, rect.bottom));
+                                size_t lastSlash = mainFile.find_last_of(L"\\/");
+                                std::wstring fileName = (lastSlash != std::wstring::npos) ? mainFile.substr(lastSlash + 1) : mainFile;
+                                
+                                if (ext == L".efw") {
+                                    // 窗口文件，用可视化设计器打开
+                                    if (tabData) {
+                                        tabData->AddTab(mainFile, fileName, 2);  // editorType = 2 for VisualDesigner
+                                        InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                    }
+                                    
+                                    // 切换到可视化设计器模式
+                                    SwitchToVisualDesignerMode(true);
+                                    ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                    ShowWindow(hEditorWnd, SW_HIDE);
+                                    ShowWindow(hEllEditorWnd, SW_HIDE);
+                                    ShowWindow(hVisualDesignerWnd, SW_SHOW);
+                                    
+                                    if (g_pVisualDesigner) {
+                                        g_pVisualDesigner->LoadFile(mainFile);
+                                        InvalidateRect(hVisualDesignerWnd, NULL, TRUE);
+                                        UpdatePropertyGridForSelection();
+                                    }
+                                } else if (g_EditorData) {
+                                    // 源代码文件，用代码编辑器打开
+                                    g_EditorData->AddDocument(mainFile);
+                                    EditorDocument* doc = g_EditorData->GetActiveDoc();
+                                    if (doc) {
+                                        LoadFile(mainFile, doc);
+                                        // 格式化所有命令行（添加括号等）
+                                        FormatAllCommandLines(doc);
+                                    }
+                                    
+                                    // 添加到标签栏
+                                    if (tabData) {
+                                        tabData->AddTab(mainFile, fileName, 0);  // editorType = 0 for YiEditor
+                                        InvalidateRect(hTabBarWnd, NULL, TRUE);
+                                    }
+                                    
+                                    // 显示编辑器窗口，隐藏欢迎页
+                                    ShowWindow(hWelcomePageWnd, SW_HIDE);
+                                    ShowWindow(hEditorWnd, SW_SHOW);
+                                    // 强制刷新编辑器窗口
+                                    InvalidateRect(hEditorWnd, NULL, TRUE);
+                                    UpdateWindow(hEditorWnd);
+                                    RECT rect;
+                                    GetClientRect(hEditorWnd, &rect);
+                                    SendMessage(hEditorWnd, WM_SIZE, 0, MAKELPARAM(rect.right, rect.bottom));
+                                }
                             }
                         } else {
                             MessageBoxW(hWnd, L"打开项目失败！", L"错误", MB_OK | MB_ICONERROR);
@@ -2844,6 +2951,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                         InvalidateRect(hOutputWnd, NULL, TRUE);
                         if (hTabBarWnd) InvalidateRect(hTabBarWnd, NULL, TRUE);
                         if (hWelcomePageWnd) InvalidateRect(hWelcomePageWnd, NULL, TRUE);
+                        if (hVisualDesignerWnd) InvalidateRect(hVisualDesignerWnd, NULL, TRUE);
+                        if (hToolboxWnd) InvalidateRect(hToolboxWnd, NULL, TRUE);
                     }
                     break;
                 }
@@ -5520,19 +5629,28 @@ void SwitchToVisualDesignerMode(bool enable)
     
     if (enable) {
         // 进入可视化设计模式
-        // 组件箱是可视化设计器的子窗口，显示它
+        // 组件箱是可视化设计器的子窗口
         if (hToolboxWnd) {
+            // 加载保存的状态（停靠状态和位置）
+            std::wstring configPath = GetWindowConfigPath();
+            g_IsToolboxDocked = GetPrivateProfileIntW(L"Toolbox", L"Docked", 0, configPath.c_str()) != 0;
+            g_ToolboxVisible = GetPrivateProfileIntW(L"Toolbox", L"Visible", 1, configPath.c_str()) != 0;
+            
             // 同步 ControlToolbox 的停靠状态
             if (g_pControlToolbox) {
                 g_pControlToolbox->SetDocked(g_IsToolboxDocked);
             }
             
-            // 显示组件箱
-            ShowWindow(hToolboxWnd, SW_SHOW);
-            
-            // 如果是浮动模式，加载保存的位置
-            if (!g_IsToolboxDocked) {
-                LoadToolboxPosition();
+            // 根据保存的可见状态显示或隐藏组件箱
+            if (g_ToolboxVisible) {
+                ShowWindow(hToolboxWnd, SW_SHOW);
+                
+                // 如果是浮动模式，加载保存的位置
+                if (!g_IsToolboxDocked) {
+                    LoadToolboxPosition();
+                }
+            } else {
+                ShowWindow(hToolboxWnd, SW_HIDE);
             }
         }
         

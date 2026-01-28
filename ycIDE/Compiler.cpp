@@ -3,11 +3,14 @@
 #include "SyntaxChecker.h"
 #include "Keyword.h"
 #include "YiEditor.h"
+#include "json.hpp"
 #include <shlobj.h>
 #include <sstream>
 #include <fstream>
 #include <chrono>
 #include <algorithm>
+
+using json = nlohmann::json;
 
 // 宽字符串转UTF-8字符串
 static std::string WideToUtf8(const std::wstring& wstr) {
@@ -95,113 +98,6 @@ std::wstring Compiler::GetAppDirectory() const {
     return exeDir;
 }
 
-// 查找C++编译器路径
-std::wstring Compiler::FindCppCompiler() {
-    // 1. 优先查找程序目录下附带的编译器
-    std::wstring appDir = GetAppDirectory();
-    
-    // 查找程序目录下的 compiler/mingw64/bin/g++.exe
-    std::wstring bundledGpp = appDir + L"\\compiler\\mingw64\\bin\\g++.exe";
-    if (GetFileAttributesW(bundledGpp.c_str()) != INVALID_FILE_ATTRIBUTES) {
-        return bundledGpp;
-    }
-    
-    // 查找程序目录下的 compiler/bin/g++.exe (简化结构)
-    bundledGpp = appDir + L"\\compiler\\bin\\g++.exe";
-    if (GetFileAttributesW(bundledGpp.c_str()) != INVALID_FILE_ATTRIBUTES) {
-        return bundledGpp;
-    }
-    
-    // 查找程序目录下的 mingw64/bin/g++.exe
-    bundledGpp = appDir + L"\\mingw64\\bin\\g++.exe";
-    if (GetFileAttributesW(bundledGpp.c_str()) != INVALID_FILE_ATTRIBUTES) {
-        return bundledGpp;
-    }
-    
-    // 2. 查找 Visual Studio 编译器
-    std::vector<std::wstring> vsBasePaths = {
-        L"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC",
-        L"C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC",
-        L"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Tools\\MSVC",
-        L"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC",
-        L"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\VC\\Tools\\MSVC",
-        L"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC"
-    };
-    
-    for (const auto& basePath : vsBasePaths) {
-        WIN32_FIND_DATAW findData;
-        HANDLE hFind = FindFirstFileW((basePath + L"\\*").c_str(), &findData);
-        if (hFind != INVALID_HANDLE_VALUE) {
-            std::wstring latestVersion;
-            do {
-                if (findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-                    if (findData.cFileName[0] != '.') {
-                        std::wstring version = findData.cFileName;
-                        if (version > latestVersion) {
-                            latestVersion = version;
-                        }
-                    }
-                }
-            } while (FindNextFileW(hFind, &findData));
-            FindClose(hFind);
-            
-            if (!latestVersion.empty()) {
-                std::wstring clPath = basePath + L"\\" + latestVersion + L"\\bin\\Hostx64\\x64\\cl.exe";
-                if (GetFileAttributesW(clPath.c_str()) != INVALID_FILE_ATTRIBUTES) {
-                    return clPath;
-                }
-                // 尝试32位版本
-                clPath = basePath + L"\\" + latestVersion + L"\\bin\\Hostx86\\x86\\cl.exe";
-                if (GetFileAttributesW(clPath.c_str()) != INVALID_FILE_ATTRIBUTES) {
-                    return clPath;
-                }
-            }
-        }
-    }
-    
-    // 尝试查找 MinGW g++
-    std::vector<std::wstring> gppPaths = {
-        L"C:\\MinGW\\bin\\g++.exe",
-        L"C:\\mingw64\\bin\\g++.exe",
-        L"C:\\msys64\\mingw64\\bin\\g++.exe",
-        L"C:\\msys64\\ucrt64\\bin\\g++.exe"
-    };
-    
-    for (const auto& path : gppPaths) {
-        if (GetFileAttributesW(path.c_str()) != INVALID_FILE_ATTRIBUTES) {
-            return path;
-        }
-    }
-    
-    // 在 PATH 中查找
-    wchar_t pathEnv[32767];
-    GetEnvironmentVariableW(L"PATH", pathEnv, 32767);
-    std::wstring pathStr = pathEnv;
-    
-    size_t start = 0;
-    size_t end = pathStr.find(L';');
-    while (end != std::wstring::npos || start < pathStr.length()) {
-        std::wstring dir = pathStr.substr(start, end - start);
-        if (!dir.empty()) {
-            std::wstring clPath = dir + L"\\cl.exe";
-            if (GetFileAttributesW(clPath.c_str()) != INVALID_FILE_ATTRIBUTES) {
-                return clPath;
-            }
-            std::wstring gppPath = dir + L"\\g++.exe";
-            if (GetFileAttributesW(gppPath.c_str()) != INVALID_FILE_ATTRIBUTES) {
-                return gppPath;
-            }
-        }
-        start = end + 1;
-        end = pathStr.find(L';', start);
-        if (end == std::wstring::npos && start < pathStr.length()) {
-            end = pathStr.length();
-        }
-    }
-    
-    return L"";
-}
-
 // 查找TCC编译器路径
 // target32bit: true 表示查找32位交叉编译器，false 表示查找64位编译器
 std::wstring Compiler::FindTccCompiler(bool target32bit) {
@@ -227,8 +123,180 @@ std::wstring Compiler::FindTccCompiler(bool target32bit) {
     return L"";
 }
 
+// 从项目中查找启动窗口文件
+static std::wstring FindStartupWindowFile(const ProjectInfo* project) {
+    if (!project) return L"";
+    
+    // 优先查找 _启动窗口.efw
+    for (const auto& file : project->files) {
+        if (file.fileName == L"_启动窗口.efw" || file.filePath.find(L"_启动窗口.efw") != std::wstring::npos) {
+            std::wstring fullPath = file.filePath;
+            if (fullPath.length() < 2 || fullPath[1] != L':') {
+                fullPath = project->projectDirectory + L"\\" + fullPath;
+            }
+            return fullPath;
+        }
+    }
+    
+    // 查找任意 .efw 文件
+    for (const auto& file : project->files) {
+        std::wstring ext = file.filePath;
+        size_t dotPos = ext.find_last_of(L'.');
+        if (dotPos != std::wstring::npos) {
+            ext = ext.substr(dotPos);
+            std::transform(ext.begin(), ext.end(), ext.begin(), ::towlower);
+            if (ext == L".efw") {
+                std::wstring fullPath = file.filePath;
+                if (fullPath.length() < 2 || fullPath[1] != L':') {
+                    fullPath = project->projectDirectory + L"\\" + fullPath;
+                }
+                return fullPath;
+            }
+        }
+    }
+    
+    return L"";
+}
+
+// 控件信息结构
+struct WindowControlInfo {
+    std::string type;       // 控件类型: Button, Label, Edit, etc.
+    std::string name;       // 控件名称
+    int x, y, width, height;
+    std::string text;       // 标题/文本
+};
+
+// 窗口信息结构
+struct WindowFileInfo {
+    int width = 640;
+    int height = 480;
+    std::wstring title = L"窗口";
+    std::vector<WindowControlInfo> controls;
+};
+
+// UTF-8 转宽字符串
+static std::wstring Utf8ToWide(const std::string& utf8) {
+    if (utf8.empty()) return L"";
+    int wideLen = MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), -1, NULL, 0);
+    if (wideLen <= 0) return L"";
+    std::wstring result(wideLen - 1, 0);
+    MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), -1, &result[0], wideLen);
+    return result;
+}
+
+// 解析窗口文件获取窗口信息和控件
+static bool ParseWindowFile(const std::wstring& efwPath, WindowFileInfo& info) {
+    // 默认值
+    info.width = 640;
+    info.height = 480;
+    info.title = L"窗口";
+    info.controls.clear();
+    
+    std::ifstream file(efwPath.c_str(), std::ios::binary);
+    if (!file.is_open()) {
+        return false;
+    }
+    
+    std::string content((std::istreambuf_iterator<char>(file)),
+                        std::istreambuf_iterator<char>());
+    file.close();
+    
+    try {
+        json j = json::parse(content);
+        
+        // 解析窗口尺寸 (兼容两种格式)
+        if (j.contains("formWidth")) {
+            info.width = j["formWidth"].get<int>();
+        } else if (j.contains("width")) {
+            info.width = j["width"].get<int>();
+        }
+        
+        if (j.contains("formHeight")) {
+            info.height = j["formHeight"].get<int>();
+        } else if (j.contains("height")) {
+            info.height = j["height"].get<int>();
+        }
+        
+        // 解析窗口标题
+        if (j.contains("formTitle")) {
+            info.title = Utf8ToWide(j["formTitle"].get<std::string>());
+        } else if (j.contains("title")) {
+            info.title = Utf8ToWide(j["title"].get<std::string>());
+        }
+        
+        // 解析控件列表
+        if (j.contains("controls") && j["controls"].is_array()) {
+            for (const auto& ctrlJson : j["controls"]) {
+                WindowControlInfo ctrl;
+                ctrl.type = ctrlJson.value("type", "");
+                ctrl.name = ctrlJson.value("name", "");
+                ctrl.x = ctrlJson.value("x", 0);
+                ctrl.y = ctrlJson.value("y", 0);
+                ctrl.width = ctrlJson.value("width", 80);
+                ctrl.height = ctrlJson.value("height", 24);
+                
+                // 从 properties 中获取标题/文本
+                if (ctrlJson.contains("properties") && ctrlJson["properties"].is_object()) {
+                    const auto& props = ctrlJson["properties"];
+                    if (props.contains("标题")) {
+                        ctrl.text = props["标题"].get<std::string>();
+                    } else if (props.contains("文本")) {
+                        ctrl.text = props["文本"].get<std::string>();
+                    } else if (props.contains("title")) {
+                        ctrl.text = props["title"].get<std::string>();
+                    } else if (props.contains("text")) {
+                        ctrl.text = props["text"].get<std::string>();
+                    }
+                }
+                
+                info.controls.push_back(ctrl);
+            }
+        }
+        
+        return true;
+    }
+    catch (...) {
+        return false;
+    }
+}
+
+// 获取控件对应的 Win32 类名
+static std::string GetWin32ClassName(const std::string& ctrlType) {
+    if (ctrlType == "Button" || ctrlType == "按钮") return "BUTTON";
+    if (ctrlType == "Label" || ctrlType == "标签") return "STATIC";
+    if (ctrlType == "Edit" || ctrlType == "编辑框") return "EDIT";
+    if (ctrlType == "TextBox" || ctrlType == "文本框") return "EDIT";
+    if (ctrlType == "CheckBox" || ctrlType == "复选框") return "BUTTON";
+    if (ctrlType == "RadioButton" || ctrlType == "单选框") return "BUTTON";
+    if (ctrlType == "ListBox" || ctrlType == "列表框") return "LISTBOX";
+    if (ctrlType == "ComboBox" || ctrlType == "组合框") return "COMBOBOX";
+    if (ctrlType == "GroupBox" || ctrlType == "分组框") return "BUTTON";
+    return "STATIC";  // 默认为静态文本
+}
+
+// 获取控件的窗口样式
+static std::string GetWin32Style(const std::string& ctrlType) {
+    if (ctrlType == "Button" || ctrlType == "按钮") 
+        return "WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON";
+    if (ctrlType == "Label" || ctrlType == "标签") 
+        return "WS_CHILD | WS_VISIBLE | SS_LEFT";
+    if (ctrlType == "Edit" || ctrlType == "编辑框" || ctrlType == "TextBox" || ctrlType == "文本框") 
+        return "WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL";
+    if (ctrlType == "CheckBox" || ctrlType == "复选框") 
+        return "WS_CHILD | WS_VISIBLE | BS_AUTOCHECKBOX";
+    if (ctrlType == "RadioButton" || ctrlType == "单选框") 
+        return "WS_CHILD | WS_VISIBLE | BS_AUTORADIOBUTTON";
+    if (ctrlType == "ListBox" || ctrlType == "列表框") 
+        return "WS_CHILD | WS_VISIBLE | WS_BORDER | WS_VSCROLL | LBS_NOTIFY";
+    if (ctrlType == "ComboBox" || ctrlType == "组合框") 
+        return "WS_CHILD | WS_VISIBLE | CBS_DROPDOWNLIST | WS_VSCROLL";
+    if (ctrlType == "GroupBox" || ctrlType == "分组框") 
+        return "WS_CHILD | WS_VISIBLE | BS_GROUPBOX";
+    return "WS_CHILD | WS_VISIBLE | SS_LEFT";
+}
+
 // 生成纯C代码 (用于TCC编译器)
-bool Compiler::GenerateCCode(const std::wstring& outputDir) {
+bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType outputType) {
     auto& pm = ProjectManager::GetInstance();
     if (!pm.HasOpenProject()) {
         SendMessage(CompileMessageType::Error, L"错误: 没有打开的项目");
@@ -260,25 +328,179 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir) {
     mainFile << "#include <windows.h>\n";
     mainFile << "#include <stdio.h>\n";
     mainFile << "\n";
-    mainFile << "/* 程序入口点 */\n";
-    mainFile << "int main(int argc, char* argv[]) {\n";
-    mainFile << "    /* 设置控制台编码为UTF-8 */\n";
-    mainFile << "    SetConsoleOutputCP(65001);\n";
-    mainFile << "    SetConsoleCP(65001);\n";
-    mainFile << "    \n";
-    mainFile << "    printf(\"程序开始运行...\\n\");\n";
-    mainFile << "    printf(\"项目: " << WideToUtf8(project->projectName) << "\\n\");\n";
-    mainFile << "    printf(\"\\n\");\n";
-    mainFile << "    \n";
-    mainFile << "    /* TODO: 在这里添加转换后的程序逻辑 */\n";
-    mainFile << "    \n";
-    mainFile << "    printf(\"\\n\");\n";
-    mainFile << "    printf(\"程序运行结束.\\n\");\n";
-    mainFile << "    printf(\"按回车键退出...\");\n";
-    mainFile << "    getchar();\n";
-    mainFile << "    \n";
-    mainFile << "    return 0;\n";
-    mainFile << "}\n";
+    
+    if (outputType == ProjectOutputType::WindowsApp) {
+        // 查找并解析窗口文件
+        std::wstring efwPath = FindStartupWindowFile(project);
+        WindowFileInfo winInfo;
+        winInfo.title = project->projectName;
+        
+        if (!efwPath.empty()) {
+            if (ParseWindowFile(efwPath, winInfo)) {
+                SendMessage(CompileMessageType::Info, L"使用窗口文件: " + efwPath);
+                SendMessage(CompileMessageType::Info, L"窗口尺寸: " + 
+                    std::to_wstring(winInfo.width) + L"x" + std::to_wstring(winInfo.height));
+                SendMessage(CompileMessageType::Info, L"控件数量: " + 
+                    std::to_wstring(winInfo.controls.size()));
+            }
+        }
+        
+        // 生成真正的窗口程序代码
+        mainFile << "/* 全局变量 */\n";
+        mainFile << "static const wchar_t* g_szClassName = L\"ycIDEWindowClass\";\n";
+        mainFile << "static const wchar_t* g_szTitle = L\"" << WideToUtf8(winInfo.title) << "\";\n";
+        mainFile << "static int g_nWidth = " << winInfo.width << ";\n";
+        mainFile << "static int g_nHeight = " << winInfo.height << ";\n";
+        mainFile << "static HINSTANCE g_hInstance;\n";
+        mainFile << "\n";
+        
+        // 生成控件ID定义
+        if (!winInfo.controls.empty()) {
+            mainFile << "/* 控件ID定义 */\n";
+            int ctrlId = 1001;
+            for (const auto& ctrl : winInfo.controls) {
+                std::string idName = "IDC_" + ctrl.name;
+                // 转为大写
+                for (auto& c : idName) {
+                    if (c >= 'a' && c <= 'z') c = c - 'a' + 'A';
+                }
+                mainFile << "#define " << idName << " " << ctrlId++ << "\n";
+            }
+            mainFile << "\n";
+        }
+        
+        // 生成创建控件的函数
+        mainFile << "/* 创建所有控件 */\n";
+        mainFile << "void CreateControls(HWND hWndParent) {\n";
+        mainFile << "    /* 获取默认GUI字体 */\n";
+        mainFile << "    HFONT hFont = (HFONT)GetStockObject(DEFAULT_GUI_FONT);\n";
+        mainFile << "    HWND hCtrl;\n";
+        mainFile << "    \n";
+        
+        int ctrlId = 1001;
+        for (const auto& ctrl : winInfo.controls) {
+            std::string className = GetWin32ClassName(ctrl.type);
+            std::string style = GetWin32Style(ctrl.type);
+            std::string text = ctrl.text.empty() ? ctrl.name : ctrl.text;
+            
+            mainFile << "    hCtrl = CreateWindowExW(0, L\"" << className << "\", L\"" << text << "\",\n";
+            mainFile << "        " << style << ",\n";
+            mainFile << "        " << ctrl.x << ", " << ctrl.y << ", " << ctrl.width << ", " << ctrl.height << ",\n";
+            mainFile << "        hWndParent, (HMENU)" << ctrlId++ << ", g_hInstance, NULL);\n";
+            mainFile << "    SendMessage(hCtrl, WM_SETFONT, (WPARAM)hFont, TRUE);\n";
+            mainFile << "    \n";
+        }
+        
+        mainFile << "}\n";
+        mainFile << "\n";
+        
+        mainFile << "/* 窗口过程函数 */\n";
+        mainFile << "LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {\n";
+        mainFile << "    switch (message) {\n";
+        mainFile << "    case WM_CREATE:\n";
+        mainFile << "        CreateControls(hWnd);\n";
+        mainFile << "        break;\n";
+        mainFile << "    case WM_COMMAND:\n";
+        mainFile << "        {\n";
+        mainFile << "            int wmId = LOWORD(wParam);\n";
+        mainFile << "            /* TODO: 处理控件命令 */\n";
+        mainFile << "            switch (wmId) {\n";
+        mainFile << "            default:\n";
+        mainFile << "                return DefWindowProcW(hWnd, message, wParam, lParam);\n";
+        mainFile << "            }\n";
+        mainFile << "        }\n";
+        mainFile << "        break;\n";
+        mainFile << "    case WM_PAINT:\n";
+        mainFile << "        {\n";
+        mainFile << "            PAINTSTRUCT ps;\n";
+        mainFile << "            HDC hdc = BeginPaint(hWnd, &ps);\n";
+        mainFile << "            /* TODO: 在此添加绘图代码 */\n";
+        mainFile << "            EndPaint(hWnd, &ps);\n";
+        mainFile << "        }\n";
+        mainFile << "        break;\n";
+        mainFile << "    case WM_DESTROY:\n";
+        mainFile << "        PostQuitMessage(0);\n";
+        mainFile << "        break;\n";
+        mainFile << "    default:\n";
+        mainFile << "        return DefWindowProcW(hWnd, message, wParam, lParam);\n";
+        mainFile << "    }\n";
+        mainFile << "    return 0;\n";
+        mainFile << "}\n";
+        mainFile << "\n";
+        mainFile << "/* 窗口程序入口点 */\n";
+        mainFile << "int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,\n";
+        mainFile << "                   LPSTR lpCmdLine, int nCmdShow) {\n";
+        mainFile << "    g_hInstance = hInstance;\n";
+        mainFile << "    \n";
+        mainFile << "    WNDCLASSEXW wcex;\n";
+        mainFile << "    wcex.cbSize = sizeof(WNDCLASSEXW);\n";
+        mainFile << "    wcex.style = CS_HREDRAW | CS_VREDRAW;\n";
+        mainFile << "    wcex.lpfnWndProc = WndProc;\n";
+        mainFile << "    wcex.cbClsExtra = 0;\n";
+        mainFile << "    wcex.cbWndExtra = 0;\n";
+        mainFile << "    wcex.hInstance = hInstance;\n";
+        mainFile << "    wcex.hIcon = LoadIcon(NULL, IDI_APPLICATION);\n";
+        mainFile << "    wcex.hCursor = LoadCursor(NULL, IDC_ARROW);\n";
+        mainFile << "    wcex.hbrBackground = (HBRUSH)(COLOR_BTNFACE + 1);\n";
+        mainFile << "    wcex.lpszMenuName = NULL;\n";
+        mainFile << "    wcex.lpszClassName = g_szClassName;\n";
+        mainFile << "    wcex.hIconSm = LoadIcon(NULL, IDI_APPLICATION);\n";
+        mainFile << "    \n";
+        mainFile << "    if (!RegisterClassExW(&wcex)) {\n";
+        mainFile << "        MessageBoxW(NULL, L\"窗口类注册失败!\", L\"错误\", MB_ICONERROR);\n";
+        mainFile << "        return 1;\n";
+        mainFile << "    }\n";
+        mainFile << "    \n";
+        mainFile << "    /* 计算窗口位置（居中显示）*/\n";
+        mainFile << "    int screenW = GetSystemMetrics(SM_CXSCREEN);\n";
+        mainFile << "    int screenH = GetSystemMetrics(SM_CYSCREEN);\n";
+        mainFile << "    int posX = (screenW - g_nWidth) / 2;\n";
+        mainFile << "    int posY = (screenH - g_nHeight) / 2;\n";
+        mainFile << "    \n";
+        mainFile << "    HWND hWnd = CreateWindowExW(0, g_szClassName, g_szTitle,\n";
+        mainFile << "        WS_OVERLAPPEDWINDOW,\n";
+        mainFile << "        posX, posY, g_nWidth, g_nHeight,\n";
+        mainFile << "        NULL, NULL, hInstance, NULL);\n";
+        mainFile << "    \n";
+        mainFile << "    if (!hWnd) {\n";
+        mainFile << "        MessageBoxW(NULL, L\"窗口创建失败!\", L\"错误\", MB_ICONERROR);\n";
+        mainFile << "        return 1;\n";
+        mainFile << "    }\n";
+        mainFile << "    \n";
+        mainFile << "    ShowWindow(hWnd, nCmdShow);\n";
+        mainFile << "    UpdateWindow(hWnd);\n";
+        mainFile << "    \n";
+        mainFile << "    /* 消息循环 */\n";
+        mainFile << "    MSG msg;\n";
+        mainFile << "    while (GetMessage(&msg, NULL, 0, 0)) {\n";
+        mainFile << "        TranslateMessage(&msg);\n";
+        mainFile << "        DispatchMessage(&msg);\n";
+        mainFile << "    }\n";
+        mainFile << "    \n";
+        mainFile << "    return (int)msg.wParam;\n";
+        mainFile << "}\n";
+    } else {
+        // 控制台程序使用 main 入口
+        mainFile << "/* 控制台程序入口点 */\n";
+        mainFile << "int main(int argc, char* argv[]) {\n";
+        mainFile << "    /* 设置控制台编码为UTF-8 */\n";
+        mainFile << "    SetConsoleOutputCP(65001);\n";
+        mainFile << "    SetConsoleCP(65001);\n";
+        mainFile << "    \n";
+        mainFile << "    printf(\"程序开始运行...\\n\");\n";
+        mainFile << "    printf(\"项目: " << WideToUtf8(project->projectName) << "\\n\");\n";
+        mainFile << "    printf(\"\\n\");\n";
+        mainFile << "    \n";
+        mainFile << "    /* TODO: 在这里添加转换后的程序逻辑 */\n";
+        mainFile << "    \n";
+        mainFile << "    printf(\"\\n\");\n";
+        mainFile << "    printf(\"程序运行结束.\\n\");\n";
+        mainFile << "    printf(\"按回车键退出...\");\n";
+        mainFile << "    getchar();\n";
+        mainFile << "    \n";
+        mainFile << "    return 0;\n";
+        mainFile << "}\n";
+    }
     
     mainFile.close();
     
@@ -287,7 +509,7 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir) {
 
 // 调用TCC编译器
 bool Compiler::InvokeTccCompiler(const std::wstring& cFile, const std::wstring& outputExe,
-                                const CompileOptions& options) {
+                                const CompileOptions& options, ProjectOutputType outputType) {
     // 默认编译64位，后续可以添加选项
     bool target32bit = false;
     std::wstring tccPath = FindTccCompiler(target32bit);
@@ -310,8 +532,22 @@ bool Compiler::InvokeTccCompiler(const std::wstring& cFile, const std::wstring& 
     // TCC 命令格式: tcc -o output.exe input.c -lkernel32 -luser32
     std::wstring cmdLine = L"\"" + tccPath + L"\" -o \"" + outputExe + L"\" \"" + cFile + L"\"";
     
+    // 根据项目类型添加子系统选项
+    if (outputType == ProjectOutputType::WindowsApp) {
+        // 窗口程序：使用 Windows 子系统
+        cmdLine += L" -mwindows";
+        SendMessage(CompileMessageType::Info, L"项目类型: Windows窗口程序");
+    } else if (outputType == ProjectOutputType::DynamicLibrary) {
+        // DLL：添加共享库选项
+        cmdLine += L" -shared";
+        SendMessage(CompileMessageType::Info, L"项目类型: 动态链接库(DLL)");
+    } else {
+        // 控制台程序：默认子系统
+        SendMessage(CompileMessageType::Info, L"项目类型: 控制台程序");
+    }
+    
     // 添加库
-    cmdLine += L" -lkernel32 -luser32";
+    cmdLine += L" -lkernel32 -luser32 -lgdi32";
     
     // 优化选项（TCC支持有限）
     if (options.optimizeSpeed) {
@@ -344,66 +580,6 @@ bool Compiler::InvokeTccCompiler(const std::wstring& cFile, const std::wstring& 
     }
     
     return success;
-}
-
-// 生成C++代码 (用于MinGW/MSVC)
-bool Compiler::GenerateCppCode(const std::wstring& outputDir) {
-    auto& pm = ProjectManager::GetInstance();
-    if (!pm.HasOpenProject()) {
-        SendMessage(CompileMessageType::Error, L"错误: 没有打开的项目");
-        return false;
-    }
-    
-    const ProjectInfo* project = pm.GetCurrentProject();
-    if (!project) {
-        SendMessage(CompileMessageType::Error, L"错误: 无法获取项目信息");
-        return false;
-    }
-    
-    // 确保输出目录存在
-    CreateDirectoryW(outputDir.c_str(), NULL);
-    
-    std::wstring mainCppPath = outputDir + L"\\main.cpp";
-    
-    // 直接以二进制模式创建文件，写入 UTF-8 内容（不带BOM，g++更兼容）
-    std::ofstream mainFileUtf8(mainCppPath.c_str(), std::ios::out | std::ios::binary);
-    if (!mainFileUtf8.is_open()) {
-        SendMessage(CompileMessageType::Error, L"错误: 无法创建main.cpp文件");
-        return false;
-    }
-    
-    // 生成C++代码框架
-    mainFileUtf8 << "// 由 ycIDE 自动生成\n";
-    mainFileUtf8 << "// 项目名称: " << WideToUtf8(project->projectName) << "\n";
-    mainFileUtf8 << "// 生成时间: " << __DATE__ << " " << __TIME__ << "\n";
-    mainFileUtf8 << "\n";
-    mainFileUtf8 << "#include <windows.h>\n";
-    mainFileUtf8 << "#include <iostream>\n";
-    mainFileUtf8 << "#include <string>\n";
-    mainFileUtf8 << "\n";
-    mainFileUtf8 << "// 程序入口点\n";
-    mainFileUtf8 << "int main(int argc, char* argv[]) {\n";
-    mainFileUtf8 << "    // 设置控制台编码为UTF-8\n";
-    mainFileUtf8 << "    SetConsoleOutputCP(65001);\n";
-    mainFileUtf8 << "    SetConsoleCP(65001);\n";
-    mainFileUtf8 << "    \n";
-    mainFileUtf8 << "    std::cout << \"程序开始运行...\" << std::endl;\n";
-    mainFileUtf8 << "    std::cout << \"项目: " << WideToUtf8(project->projectName) << "\" << std::endl;\n";
-    mainFileUtf8 << "    std::cout << std::endl;\n";
-    mainFileUtf8 << "    \n";
-    mainFileUtf8 << "    // TODO: 在这里添加转换后的程序逻辑\n";
-    mainFileUtf8 << "    \n";
-    mainFileUtf8 << "    std::cout << std::endl;\n";
-    mainFileUtf8 << "    std::cout << \"程序运行结束.\" << std::endl;\n";
-    mainFileUtf8 << "    std::cout << \"按回车键退出...\" << std::endl;\n";
-    mainFileUtf8 << "    std::cin.get();\n";
-    mainFileUtf8 << "    \n";
-    mainFileUtf8 << "    return 0;\n";
-    mainFileUtf8 << "}\n";
-    
-    mainFileUtf8.close();
-    
-    return true;
 }
 
 // 创建进程并捕获输出
@@ -475,113 +651,6 @@ bool Compiler::CreateCompilerProcess(const std::wstring& cmdLine, std::wstring& 
     return exitCode == 0;
 }
 
-// 调用C++编译器
-bool Compiler::InvokeCppCompiler(const std::wstring& cppFile, const std::wstring& outputExe,
-                                const CompileOptions& options) {
-    std::wstring compilerPath = FindCppCompiler();
-    
-    if (compilerPath.empty()) {
-        SendMessage(CompileMessageType::Error, 
-            L"错误: 找不到C++编译器\n"
-            L"请将MinGW-w64编译器放到程序目录的 compiler\\mingw64 文件夹中\n"
-            L"或安装以下编译器之一:\n"
-            L"  - Visual Studio 2019/2022\n"
-            L"  - MinGW-w64\n"
-            L"详细说明请参阅: 编译器配置说明.md");
-        return false;
-    }
-    
-    std::wstring cmdLine;
-    std::wstring workDir;
-    bool isMSVC = (compilerPath.find(L"cl.exe") != std::wstring::npos);
-    
-    // 获取编译器所在目录
-    std::wstring compilerDir = compilerPath;
-    size_t lastSlash = compilerDir.find_last_of(L"\\");
-    if (lastSlash != std::wstring::npos) {
-        compilerDir = compilerDir.substr(0, lastSlash);
-    }
-    
-    if (isMSVC) {
-        // Visual Studio 编译器
-        // 需要先设置环境变量
-        std::wstring vcvarsPath;
-        size_t pos = compilerPath.find(L"\\VC\\Tools\\MSVC");
-        if (pos != std::wstring::npos) {
-            vcvarsPath = compilerPath.substr(0, pos) + L"\\VC\\Auxiliary\\Build\\vcvars64.bat";
-        }
-        
-        cmdLine = L"cmd /c \"";
-        if (!vcvarsPath.empty() && GetFileAttributesW(vcvarsPath.c_str()) != INVALID_FILE_ATTRIBUTES) {
-            cmdLine += L"\"" + vcvarsPath + L"\" x64 && ";
-        }
-        cmdLine += L"cl.exe /nologo /EHsc /Fe:\"" + outputExe + L"\" \"" + cppFile + L"\"";
-        if (options.debug) {
-            cmdLine += L" /Zi";
-        }
-        cmdLine += L" /link user32.lib kernel32.lib";
-        cmdLine += L"\"";
-    } else {
-        // MinGW g++ 编译器
-        // 检查是否是附带的编译器（在程序目录下）
-        std::wstring appDir = GetAppDirectory();
-        bool isBundled = (compilerPath.find(appDir) == 0);
-        
-        if (isBundled) {
-            // 附带的编译器，使用cmd设置PATH环境变量
-            cmdLine = L"cmd /c \"set PATH=" + compilerDir + L";%PATH% && ";
-            cmdLine += L"\"" + compilerPath + L"\" -o \"" + outputExe + L"\" \"" + cppFile + L"\" -static";
-        } else {
-            // 系统安装的编译器
-            cmdLine = L"\"" + compilerPath + L"\" -o \"" + outputExe + L"\" \"" + cppFile + L"\" -static";
-        }
-        
-        if (options.debug) {
-            cmdLine += L" -g";
-        }
-        if (options.optimizeSpeed) {
-            cmdLine += L" -O2";
-        } else if (options.optimizeSize) {
-            cmdLine += L" -Os";
-        }
-        cmdLine += L" -luser32 -lkernel32";
-        
-        if (isBundled) {
-            cmdLine += L"\"";  // 关闭cmd /c的引号
-        }
-        
-        workDir = compilerDir;  // 设置工作目录为编译器目录
-    }
-    
-    std::wstring output;
-    bool success = CreateCompilerProcess(cmdLine, output, workDir);
-    
-    if (!output.empty()) {
-        // 解析编译器输出，提取错误和警告
-        std::wistringstream iss(output);
-        std::wstring line;
-        while (std::getline(iss, line)) {
-            if (!line.empty()) {
-                // 简单判断是否是错误或警告
-                std::wstring lowerLine = line;
-                std::transform(lowerLine.begin(), lowerLine.end(), lowerLine.begin(), ::tolower);
-                
-                if (lowerLine.find(L"error") != std::wstring::npos) {
-                    SendMessage(CompileMessageType::Error, line);
-                    m_lastResult.errorCount++;
-                } else if (lowerLine.find(L"warning") != std::wstring::npos) {
-                    SendMessage(CompileMessageType::Warning, line);
-                    m_lastResult.warningCount++;
-                } else {
-                    SendMessage(CompileMessageType::Info, line);
-                }
-            }
-        }
-    }
-    
-    return success;
-}
-
 // 编译项目
 CompileResult Compiler::CompileProject(const CompileOptions& options) {
     m_lastResult = CompileResult();
@@ -631,47 +700,34 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
         return m_lastResult;
     }
     
-    // 步骤2: 选择编译器并生成代码
-    // 优先使用 TCC（体积小、编译快），找不到再用 MinGW/MSVC
+    // 步骤2: 生成代码并调用TCC编译器
     std::wstring tccPath = FindTccCompiler(false);  // 64位
-    bool useTcc = !tccPath.empty();
     
-    if (useTcc) {
-        // 使用 TCC 编译器
-        SendMessage(CompileMessageType::Info, L"正在生成代码 (TCC)...");
-        if (!GenerateCCode(tempDir)) {
-            m_lastResult.errorCount++;
-            m_isCompiling = false;
-            return m_lastResult;
-        }
-        
-        // 调用 TCC 编译器
-        SendMessage(CompileMessageType::Info, L"正在编译 (TCC)...");
-        std::wstring mainC = tempDir + L"\\main.c";
-        if (!InvokeTccCompiler(mainC, outputExe, options)) {
-            SendMessage(CompileMessageType::Error, L"编译失败!");
-            m_lastResult.errorCount++;
-            m_isCompiling = false;
-            return m_lastResult;
-        }
-    } else {
-        // 使用 MinGW/MSVC 编译器
-        SendMessage(CompileMessageType::Info, L"正在生成代码 (C++)...");
-        if (!GenerateCppCode(tempDir)) {
-            m_lastResult.errorCount++;
-            m_isCompiling = false;
-            return m_lastResult;
-        }
-        
-        // 调用 C++ 编译器
-        SendMessage(CompileMessageType::Info, L"正在编译 (C++)...");
-        std::wstring mainCpp = tempDir + L"\\main.cpp";
-        if (!InvokeCppCompiler(mainCpp, outputExe, options)) {
-            SendMessage(CompileMessageType::Error, L"编译失败!");
-            m_lastResult.errorCount++;
-            m_isCompiling = false;
-            return m_lastResult;
-        }
+    if (tccPath.empty()) {
+        SendMessage(CompileMessageType::Error, 
+            L"错误: 找不到TCC编译器\n"
+            L"请确保 compiler\\tcc 目录下有 tcc.exe");
+        m_lastResult.errorCount++;
+        m_isCompiling = false;
+        return m_lastResult;
+    }
+    
+    // 生成C代码
+    SendMessage(CompileMessageType::Info, L"正在生成代码...");
+    if (!GenerateCCode(tempDir, project->outputType)) {
+        m_lastResult.errorCount++;
+        m_isCompiling = false;
+        return m_lastResult;
+    }
+    
+    // 调用 TCC 编译器
+    SendMessage(CompileMessageType::Info, L"正在编译...");
+    std::wstring mainC = tempDir + L"\\main.c";
+    if (!InvokeTccCompiler(mainC, outputExe, options, project->outputType)) {
+        SendMessage(CompileMessageType::Error, L"编译失败!");
+        m_lastResult.errorCount++;
+        m_isCompiling = false;
+        return m_lastResult;
     }
     
     // 检查输出文件是否存在

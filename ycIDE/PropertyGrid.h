@@ -147,7 +147,7 @@ private:
     ULONG_PTR m_gdiplusToken;
     
     // 布局常量
-    static const int NAME_COLUMN_WIDTH = 90;
+    static const int NAME_COLUMN_WIDTH = 105;
     static const int SPLITTER_WIDTH = 4;
     static const int ROW_HEIGHT = 24;
     static const int CATEGORY_ROW_HEIGHT = 28;

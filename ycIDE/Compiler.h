@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <functional>
+#include "ProjectManager.h"
 
 // 前向声明
 struct ProjectInfo;
@@ -115,22 +116,12 @@ private:
     // 读取源文件内容
     std::wstring ReadSourceFile(const std::wstring& filePath);
     
-    // 生成C++代码 (用于 MinGW/MSVC)
-    bool GenerateCppCode(const std::wstring& outputDir);
-    
     // 生成纯C代码 (用于 TCC)
-    bool GenerateCCode(const std::wstring& outputDir);
-    
-    // 调用C++编译器
-    bool InvokeCppCompiler(const std::wstring& cppFile, const std::wstring& outputExe,
-                          const CompileOptions& options);
+    bool GenerateCCode(const std::wstring& outputDir, ProjectOutputType outputType);
     
     // 调用TCC编译器
     bool InvokeTccCompiler(const std::wstring& cFile, const std::wstring& outputExe,
-                          const CompileOptions& options);
-    
-    // 查找C++编译器路径
-    std::wstring FindCppCompiler();
+                          const CompileOptions& options, ProjectOutputType outputType);
     
     // 查找TCC编译器路径 (返回空表示未找到)
     std::wstring FindTccCompiler(bool target32bit = false);
