@@ -2799,6 +2799,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                         g_pOutputPanel->SetActiveTab(OutputTabType::Output);
                     }
                     
+                    // 编译前自动保存可视化设计器（确保编译使用最新的窗口尺寸和布局）
+                    if (g_pVisualDesigner && g_pVisualDesigner->IsModified()) {
+                        std::wstring designPath = g_pVisualDesigner->GetFilePath();
+                        if (!designPath.empty()) {
+                            g_pVisualDesigner->SaveFile(designPath);
+                        }
+                    }
+                    
                     // 在后台线程中执行编译
                     HWND hMainWnd = hWnd;
                     std::thread compileThread([hMainWnd]() {
@@ -2858,6 +2866,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     if (g_pOutputPanel) {
                         g_pOutputPanel->ClearOutput();
                         g_pOutputPanel->SetActiveTab(OutputTabType::Output);
+                    }
+                    
+                    // 编译前自动保存可视化设计器（确保编译使用最新的窗口尺寸和布局）
+                    if (g_pVisualDesigner && g_pVisualDesigner->IsModified()) {
+                        std::wstring designPath = g_pVisualDesigner->GetFilePath();
+                        if (!designPath.empty()) {
+                            g_pVisualDesigner->SaveFile(designPath);
+                        }
                     }
                     
                     // 在后台线程中执行编译
@@ -4008,6 +4024,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 }
             }
             
+            // 检查可视化设计器是否有未保存的修改
+            if (g_pVisualDesigner && g_pVisualDesigner->IsModified()) {
+                hasUnsavedFiles = true;
+                std::wstring designFileName = g_pVisualDesigner->GetFileName();
+                if (designFileName.empty()) {
+                    designFileName = L"未命名窗口设计";
+                }
+                unsavedFileNames.push_back(designFileName);
+            }
+            
             if (hasUnsavedFiles) {
                 // 构建提示消息
                 std::wstring message = L"以下文件有未保存的更改：\n\n";
@@ -4059,6 +4085,35 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                                           L"错误", MB_OK | MB_ICONERROR);
                                 return 0;
                             }
+                        }
+                    }
+                    // 保存可视化设计器（如果有未保存的修改）
+                    if (g_pVisualDesigner && g_pVisualDesigner->IsModified()) {
+                        std::wstring designPath = g_pVisualDesigner->GetFilePath();
+                        if (designPath.empty()) {
+                            // 弹出另存为对话框
+                            OPENFILENAMEW ofnDesign = {0};
+                            WCHAR szDesignFile[MAX_PATH] = {0};
+                            ofnDesign.lStructSize = sizeof(ofnDesign);
+                            ofnDesign.hwndOwner = hWnd;
+                            ofnDesign.lpstrFile = szDesignFile;
+                            ofnDesign.nMaxFile = MAX_PATH;
+                            ofnDesign.lpstrFilter = L"窗口设计文件 (*.efw)\0*.efw\0所有文件 (*.*)\0*.*\0";
+                            ofnDesign.nFilterIndex = 1;
+                            ofnDesign.lpstrFileTitle = NULL;
+                            ofnDesign.nMaxFileTitle = 0;
+                            ofnDesign.lpstrInitialDir = NULL;
+                            ofnDesign.Flags = OFN_PATHMUSTEXIST | OFN_OVERWRITEPROMPT;
+                            if (GetSaveFileNameW(&ofnDesign)) {
+                                designPath = szDesignFile;
+                            } else {
+                                // 用户取消了保存，不退出程序
+                                return 0;
+                            }
+                        }
+                        if (!g_pVisualDesigner->SaveFile(designPath)) {
+                            MessageBoxW(hWnd, L"无法保存窗口设计文件", L"错误", MB_OK | MB_ICONERROR);
+                            return 0;
                         }
                     }
                     // 保存完成后继续关闭
