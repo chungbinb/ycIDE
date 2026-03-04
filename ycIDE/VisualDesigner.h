@@ -116,6 +116,7 @@ public:
     void OnSize(int width, int height);
     void OnLButtonDown(int x, int y, UINT flags);
     void OnLButtonUp(int x, int y, UINT flags);
+    void OnLButtonDblClk(int x, int y, UINT flags);  // 双击事件
     void OnMouseMove(int x, int y, UINT flags);
     void OnRButtonDown(int x, int y);
     void OnKeyDown(UINT vk, UINT flags);
@@ -221,6 +222,10 @@ public:
     using SelectionChangedCallback = std::function<void()>;
     void SetSelectionChangedCallback(SelectionChangedCallback callback) { m_selectionChangedCallback = callback; }
     
+    // 双击回调（双击窗口/控件跳转到关联源代码文件和事件处理子程序）
+    using DblClickCallback = std::function<void(const std::wstring& controlName, const std::wstring& controlType)>;
+    void SetDblClickCallback(DblClickCallback callback) { m_dblClickCallback = callback; }
+    
     // 光标
     HCURSOR GetResizeCursor();  // 根据鼠标位置获取调整大小光标
     
@@ -238,6 +243,7 @@ private:
     // 选择状态
     SelectionInfo m_selection;
     SelectionChangedCallback m_selectionChangedCallback;  // 选择变更回调
+    DblClickCallback m_dblClickCallback;                  // 双击回调
     
     // 拖动状态
     DragMode m_dragMode;
