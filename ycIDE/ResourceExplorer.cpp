@@ -22,7 +22,7 @@ ResourceExplorerData g_ExplorerData;
 ResourceExplorerData::ResourceExplorerData() : selectedNode(nullptr), itemHeight(30), isWorkspaceMode(false), isProjectMode(false), workspacePath(L""), 
     hDirChangeNotify(INVALID_HANDLE_VALUE), hMonitorThread(NULL), stopMonitoring(false),
     activeTab(TAB_PROJECT), tabBarHeight(28), hoverTab(-1),
-    isBorderHover(false), isDraggingBorder(false) {
+    isBorderHover(false), isDraggingBorder(false), isTrackingMouse(false) {
 }
 
 ResourceExplorerData::~ResourceExplorerData() {
@@ -775,6 +775,16 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             RECT rect;
             GetClientRect(hWnd, &rect);
             
+            // 注册鼠标离开追踪，确保鼠标移出窗口时能收到 WM_MOUSELEAVE
+            if (!g_ExplorerData.isTrackingMouse) {
+                TRACKMOUSEEVENT tme = {};
+                tme.cbSize = sizeof(TRACKMOUSEEVENT);
+                tme.dwFlags = TME_LEAVE;
+                tme.hwndTrack = hWnd;
+                TrackMouseEvent(&tme);
+                g_ExplorerData.isTrackingMouse = true;
+            }
+            
             extern bool g_PanelsSwapped;
             extern int g_LeftPanelWidth;
             extern int g_MinLeftPanelWidth;
@@ -856,6 +866,17 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
         }
         break;
         
+    case WM_MOUSELEAVE:
+        {
+            // 鼠标离开窗口，清除边框悬停状态
+            g_ExplorerData.isTrackingMouse = false;
+            if (g_ExplorerData.isBorderHover) {
+                g_ExplorerData.isBorderHover = false;
+                InvalidateRect(hWnd, NULL, FALSE);
+            }
+        }
+        break;
+    
     case WM_ERASEBKGND:
         return 1;
         

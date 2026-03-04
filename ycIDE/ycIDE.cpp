@@ -63,6 +63,7 @@ const wchar_t szAIChatClass[] = L"AIChatClass";      // AI聊天窗口类
 
 // 自定义消息：面板边框拖动时的布局更新（不触发标题栏/工具栏/活动栏重绘）
 #define WM_UPDATE_PANEL_LAYOUT (WM_USER + 300)
+#define WM_SET_EDITOR_FOCUS    (WM_USER + 301)
 
 // 支持库配置对话框控件ID
 #define IDC_LIBRARY_LIST    4001
@@ -1168,6 +1169,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     
+    // 双击设计器跳转后延迟设置焦点
+    case WM_SET_EDITOR_FOCUS:
+        SetFocus(hEditorWnd);
+        return 0;
+
     // 面板边框拖动时的布局更新（只更新面板相关窗口，不重绘标题栏/工具栏/活动栏）
     case WM_UPDATE_PANEL_LAYOUT:
         {
@@ -5083,6 +5089,12 @@ LRESULT CALLBACK VisualDesignerWndProc(HWND hWnd, UINT message, WPARAM wParam, L
         }
         return 0;
         
+    case WM_LBUTTONDBLCLK:
+        if (pDesigner) {
+            pDesigner->OnLButtonDblClk(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
+        }
+        return 0;
+        
     case WM_MOUSEMOVE:
         if (pDesigner) {
             pDesigner->OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
@@ -5715,6 +5727,125 @@ void SwitchToVisualDesignerMode(bool enable)
         // 设置设计器的选择变更回调
         if (g_pVisualDesigner) {
             g_pVisualDesigner->SetSelectionChangedCallback(UpdatePropertyGridForSelection);
+        }
+        
+        // 设置设计器的双击回调（双击窗口/控件跳转到对应的 .eyc 源代码文件）
+        if (g_pVisualDesigner) {
+            g_pVisualDesigner->SetDblClickCallback([](const std::wstring& controlName, const std::wstring& controlType) {
+                if (!g_pVisualDesigner) return;
+                
+                // 1. 由 .efw 路径派生对应的 .eyc 路径
+                std::wstring efwPath = g_pVisualDesigner->GetFilePath();
+                if (efwPath.empty()) return;
+                size_t dotPos = efwPath.find_last_of(L'.');
+                std::wstring eycPath = (dotPos != std::wstring::npos ? efwPath.substr(0, dotPos) : efwPath) + L".eyc";
+                
+                // 2. 确定目标事件处理子程序名
+                const std::wstring& windowName = g_pVisualDesigner->GetFormInfo().name;
+                std::wstring eventSuffix = L"_被单击";
+                if (controlType == L"输入框" || controlType == L"编辑框") eventSuffix = L"_内容改变";
+                else if (controlType == L"列表框" || controlType == L"组合框") eventSuffix = L"_被选中";
+                std::wstring subName = controlName.empty()
+                    ? (L"_" + windowName + L"_创建完毕")
+                    : (L"_" + controlName + eventSuffix);
+                std::wstring subDecl = L".子程序 " + subName;
+                
+                // 3. 若 .eyc 文件不存在，则创建并注册到项目
+                bool fileExists = (GetFileAttributesW(eycPath.c_str()) != INVALID_FILE_ATTRIBUTES);
+                if (!fileExists) {
+                    std::wstring initContent = L".版本 2\n\n.程序集 " + windowName + L"\n\n" + subDecl + L"\n\n";
+                    int utf8Len = WideCharToMultiByte(CP_UTF8, 0, initContent.c_str(), -1, NULL, 0, NULL, NULL);
+                    if (utf8Len > 0) {
+                        std::string utf8Str(utf8Len - 1, 0);
+                        WideCharToMultiByte(CP_UTF8, 0, initContent.c_str(), -1, &utf8Str[0], utf8Len, NULL, NULL);
+                        HANDLE hf = CreateFileW(eycPath.c_str(), GENERIC_WRITE, 0, NULL,
+                                               CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+                        if (hf == INVALID_HANDLE_VALUE) return;
+                        DWORD wrote;
+                        WriteFile(hf, utf8Str.c_str(), (DWORD)utf8Str.size(), &wrote, NULL);
+                        CloseHandle(hf);
+                        auto& pm = ProjectManager::GetInstance();
+                        if (pm.HasOpenProject()) {
+                            pm.AddFileToProject(eycPath);
+                            ExplorerLoadProject();
+                        }
+                    } else return;
+                }
+                
+                // 4. 确保文档已加载到 g_EditorData
+                extern EditorData* g_EditorData;
+                if (!g_EditorData) return;
+                int docIndex = g_EditorData->FindDocument(eycPath);
+                if (docIndex < 0) {
+                    g_EditorData->AddDocument(eycPath);
+                    EditorDocument* newDoc = g_EditorData->GetActiveDoc();
+                    if (newDoc && LoadFile(eycPath, newDoc)) {
+                        FormatAllCommandLines(newDoc);
+                        docIndex = g_EditorData->FindDocument(eycPath);
+                    } else {
+                        if (newDoc) g_EditorData->CloseDocument(g_EditorData->activeDocIndex);
+                        return;
+                    }
+                }
+                
+                // 5. 确保 .eyc 已在 TabBar 中有标签
+                TabBarData* tabData = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                if (!tabData) return;
+                int tabIndex = tabData->FindTab(eycPath);
+                if (tabIndex < 0) {
+                    size_t slashPos = eycPath.find_last_of(L"\\/");
+                    std::wstring eycFileName = (slashPos != std::wstring::npos) ? eycPath.substr(slashPos + 1) : eycPath;
+                    tabData->AddTab(eycPath, eycFileName, 0);
+                    tabIndex = tabData->FindTab(eycPath);
+                    InvalidateRect(hTabBarWnd, NULL, TRUE);
+                }
+                if (tabIndex < 0) return;
+                
+                // 6. 切换到 .eyc 标签（同时退出可视化设计模式，显示代码编辑器）
+                tabData->SetActiveTab(tabIndex);
+                
+                // 7. 在文档中定位或追加目标子程序，移动光标
+                EditorDocument* doc = g_EditorData->GetActiveDoc();
+                if (!doc) return;
+                
+                // LoadFile 会将 .子程序 名 转换为表格格式（子程序名\t...\n名\t\t\t），
+                // 因此搜索时同时匹配原始格式和表格行格式（名\t 开头的数据行）
+                std::wstring subTableRow = subName + L"\t";
+                int targetLine = -1;
+                for (int i = 0; i < (int)doc->lines.size(); i++) {
+                    const std::wstring& ln = doc->lines[i];
+                    if (ln.find(subDecl) != std::wstring::npos ||
+                        (ln.size() >= subTableRow.size() &&
+                         ln.substr(0, subTableRow.size()) == subTableRow)) {
+                        targetLine = i;
+                        break;
+                    }
+                }
+                if (targetLine < 0) {
+                    // 子程序不存在，以表格格式追加到文件末尾
+                    if (!doc->lines.empty() && !doc->lines.back().empty())
+                        doc->lines.push_back(L"");
+                    doc->lines.push_back(L"子程序名\t返回值类型\t公开\t备注");
+                    doc->lines.push_back(subName + L"\t\t\t");
+                    doc->lines.push_back(L"");
+                    doc->modified = true;
+                    targetLine = (int)doc->lines.size() - 2;
+                    int curTab = tabData->FindTab(eycPath);
+                    if (curTab >= 0) tabData->SetTabModified(curTab, true);
+                }
+                // 将光标定位到子程序数据行的下一行（代码书写区）
+                int codeLine = targetLine + 1;
+                if (codeLine >= (int)doc->lines.size()) {
+                    doc->lines.push_back(L"");
+                    doc->modified = true;
+                }
+                doc->cursorLine = codeLine;
+                doc->cursorCol = 0;
+                doc->scrollY = (codeLine - 5 > 0) ? (codeLine - 5) : 0;
+                InvalidateRect(hEditorWnd, NULL, TRUE);
+                // 用 PostMessage 延迟设置焦点，确保窗口切换/重绘全部完成后光标才开始闪烁
+                PostMessage(hMainWnd, WM_SET_EDITOR_FOCUS, 0, 0);
+            });
         }
         
         // 设置属性窗口的属性变更回调

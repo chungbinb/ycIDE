@@ -64,6 +64,7 @@ struct ResourceExplorerData {
     // 边框拖动相关
     bool isBorderHover;         // 鼠标是否在边框区域
     bool isDraggingBorder;      // 是否正在拖动边框
+    bool isTrackingMouse;       // 是否已注册鼠标离开追踪
     
     ResourceExplorerData();
     ~ResourceExplorerData();
