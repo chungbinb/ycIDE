@@ -166,6 +166,7 @@ void VisualDesigner::OnSize(int width, int height)
 
 void VisualDesigner::OnLButtonDown(int x, int y, UINT flags)
 {
+    SetFocus(m_hWnd);
     Point canvasPt = ScreenToCanvas(x, y);
     
     OutputDebugStringW((L"[VisualDesigner] OnLButtonDown: toolControlType=" + m_toolControlType + L"\n").c_str());
@@ -616,7 +617,8 @@ void VisualDesigner::OnKeyDown(UINT vk, UINT flags)
         }
     } else {
         switch (vk) {
-            case VK_DELETE: DeleteSelectedControls(); break;
+            case VK_DELETE:
+            case VK_BACK: DeleteSelectedControls(); break;
             case VK_ESCAPE: SetSelectMode(); ClearSelection(); break;
         }
     }
