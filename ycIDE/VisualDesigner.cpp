@@ -101,6 +101,10 @@ LRESULT VisualDesigner::HandleMessage(UINT msg, WPARAM wParam, LPARAM lParam)
             OnLButtonUp(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
             return 0;
         }
+        case WM_LBUTTONDBLCLK: {
+            OnLButtonDblClk(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
+            return 0;
+        }
         case WM_MOUSEMOVE: {
             OnMouseMove(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), (UINT)wParam);
             return 0;
@@ -166,6 +170,7 @@ void VisualDesigner::OnSize(int width, int height)
 
 void VisualDesigner::OnLButtonDown(int x, int y, UINT flags)
 {
+    SetFocus(m_hWnd);
     Point canvasPt = ScreenToCanvas(x, y);
     
     OutputDebugStringW((L"[VisualDesigner] OnLButtonDown: toolControlType=" + m_toolControlType + L"\n").c_str());
@@ -275,6 +280,28 @@ void VisualDesigner::OnLButtonDown(int x, int y, UINT flags)
                 ClearSelection();
             }
         }
+    }
+}
+
+void VisualDesigner::OnLButtonDblClk(int x, int y, UINT flags)
+{
+    // 仅在选择模式（无工具控件）且设置了回调时处理
+    if (!m_toolControlType.empty() || !m_dblClickCallback) return;
+    
+    Point canvasPt = ScreenToCanvas(x, y);
+    
+    // 命中测试：优先检查是否双击了某个控件
+    auto hitControl = HitTest(canvasPt.X, canvasPt.Y);
+    if (hitControl) {
+        m_dblClickCallback(hitControl->name, hitControl->type);
+        return;
+    }
+    
+    // 检查是否双击了窗口本身（包括标题栏区域）
+    const int titleBarHeight = 30;
+    if (canvasPt.X >= 0 && canvasPt.X < m_formInfo.width &&
+        canvasPt.Y >= -titleBarHeight && canvasPt.Y < m_formInfo.height) {
+        m_dblClickCallback(L"", L"");
     }
 }
 
@@ -616,7 +643,8 @@ void VisualDesigner::OnKeyDown(UINT vk, UINT flags)
         }
     } else {
         switch (vk) {
-            case VK_DELETE: DeleteSelectedControls(); break;
+            case VK_DELETE:
+            case VK_BACK: DeleteSelectedControls(); break;
             case VK_ESCAPE: SetSelectMode(); ClearSelection(); break;
         }
     }
