@@ -373,9 +373,9 @@ std::shared_ptr<ASTNode> Parser::ParseStatement() {
         return assign;
     }
     
-    // 普通表达式语句
-    auto exprStmt = std::make_shared<ASTNode>(ASTNodeType::EXPR_STMT);
-    return exprStmt;
+    // 普通表达式语句（函数调用等）
+    // 直接返回表达式节点，由代码生成器处理
+    return expr;
 }
 
 std::shared_ptr<IfStmtNode> Parser::ParseIfStatement() {
@@ -718,11 +718,15 @@ std::shared_ptr<ASTNode> Parser::ParseCallOrAccess() {
                 call->functionName = idExpr->name;
             }
             
-            // 解析参数列表
+            // 解析参数列表（支持空参数，如 信息框("内容", , "标题")）
             if (!Check(EYTokenType::RPAREN)) {
                 do {
-                    auto arg = ParseExpression();
-                    if (arg) {
+                    // 检查是否为空参数（逗号或右括号）
+                    if (Check(EYTokenType::COMMA) || Check(EYTokenType::RPAREN)) {
+                        // 空参数，添加 nullptr 表示使用默认值
+                        call->arguments.push_back(nullptr);
+                    } else {
+                        auto arg = ParseExpression();
                         call->arguments.push_back(arg);
                     }
                 } while (Match(EYTokenType::COMMA));

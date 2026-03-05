@@ -172,6 +172,7 @@ private:
     Token ScanNumber();                        // 扫描数字
     Token ScanString();                        // 扫描字符串
     Token ScanIdentifierOrKeyword();           // 扫描标识符或关键字
+    Token ScanDotKeyword();                    // 扫描 .关键字 格式（易语言语法）
     Token ScanComment();                       // 扫描注释
     Token ScanOperator();                      // 扫描运算符
     

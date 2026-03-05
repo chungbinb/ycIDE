@@ -27,8 +27,38 @@ PFN_INTERFACE WINAPI Button_GetInterface(INT nInterfaceNO);
 // 编辑框组件接口
 PFN_INTERFACE WINAPI EditBox_GetInterface(INT nInterfaceNO);
 
-// 标签组件接口 (暂未实现)
+// 标签组件接口
 PFN_INTERFACE WINAPI Label_GetInterface(INT nInterfaceNO);
+
+// 选择框组件接口
+PFN_INTERFACE WINAPI CheckBox_GetInterface(INT nInterfaceNO);
+
+// 单选框组件接口
+PFN_INTERFACE WINAPI RadioBox_GetInterface(INT nInterfaceNO);
+
+// 分组框组件接口
+PFN_INTERFACE WINAPI GroupBox_GetInterface(INT nInterfaceNO);
+
+// 列表框组件接口
+PFN_INTERFACE WINAPI ListBox_GetInterface(INT nInterfaceNO);
+
+// 组合框组件接口
+PFN_INTERFACE WINAPI ComboBox_GetInterface(INT nInterfaceNO);
+
+// 水平滚动条组件接口
+PFN_INTERFACE WINAPI HScrollBar_GetInterface(INT nInterfaceNO);
+
+// 垂直滚动条组件接口
+PFN_INTERFACE WINAPI VScrollBar_GetInterface(INT nInterfaceNO);
+
+// 进度条组件接口
+PFN_INTERFACE WINAPI ProgressBar_GetInterface(INT nInterfaceNO);
+
+// 滑块条组件接口
+PFN_INTERFACE WINAPI SliderBar_GetInterface(INT nInterfaceNO);
+
+// 定时器组件接口
+PFN_INTERFACE WINAPI Timer_GetInterface(INT nInterfaceNO);
 
 // 通用的空接口函数（用于尚未实现的组件）
 PFN_INTERFACE WINAPI NullUnit_GetInterface(INT nInterfaceNO);

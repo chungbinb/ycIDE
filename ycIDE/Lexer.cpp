@@ -311,6 +311,72 @@ Token Lexer::ScanIdentifierOrKeyword() {
     return MakeToken(type);
 }
 
+Token Lexer::ScanDotKeyword() {
+    // 消耗点号
+    Advance();
+    
+    // 扫描后面的标识符
+    while (IsIdentifierPart(Peek())) {
+        Advance();
+    }
+    
+    // 获取不带点的关键字部分
+    std::wstring fullText = source_.substr(tokenStart_, position_ - tokenStart_);
+    std::wstring keyword = fullText.substr(1); // 去掉点号
+    
+    // 处理易语言声明关键字
+    if (keyword == L"版本") {
+        // .版本 声明，跳过整行
+        while (!IsAtEnd() && Peek() != L'\n') {
+            Advance();
+        }
+        return MakeToken(EYTokenType::COMMENT); // 当作注释跳过
+    }
+    if (keyword == L"程序集") {
+        // .程序集 声明，跳过整行
+        while (!IsAtEnd() && Peek() != L'\n') {
+            Advance();
+        }
+        return MakeToken(EYTokenType::COMMENT); // 当作注释跳过
+    }
+    if (keyword == L"子程序") {
+        return MakeToken(EYTokenType::KEYWORD_SUB, keyword);
+    }
+    if (keyword == L"变量" || keyword == L"局部变量" || keyword == L"参数") {
+        return MakeToken(EYTokenType::KEYWORD_VAR, keyword);
+    }
+    if (keyword == L"常量") {
+        return MakeToken(EYTokenType::KEYWORD_CONST, keyword);
+    }
+    if (keyword == L"如果" || keyword == L"如果真") {
+        return MakeToken(EYTokenType::KEYWORD_IF, keyword);
+    }
+    if (keyword == L"否则") {
+        return MakeToken(EYTokenType::KEYWORD_ELSE, keyword);
+    }
+    if (keyword == L"判断循环首") {
+        return MakeToken(EYTokenType::KEYWORD_WHILE, keyword);
+    }
+    if (keyword == L"计次循环首") {
+        return MakeToken(EYTokenType::KEYWORD_FOR, keyword);
+    }
+    if (keyword == L"到循环尾") {
+        return MakeToken(EYTokenType::KEYWORD_DO, keyword);
+    }
+    if (keyword == L"跳出循环") {
+        return MakeToken(EYTokenType::KEYWORD_BREAK, keyword);
+    }
+    if (keyword == L"继续循环") {
+        return MakeToken(EYTokenType::KEYWORD_CONTINUE, keyword);
+    }
+    if (keyword == L"返回") {
+        return MakeToken(EYTokenType::KEYWORD_RETURN, keyword);
+    }
+    
+    // 其他 .xxx 格式作为标识符处理
+    return MakeToken(EYTokenType::IDENTIFIER, keyword);
+}
+
 Token Lexer::ScanComment() {
     // 易语言注释：'这是注释 或 //这是注释
     wchar_t first = Peek();
@@ -389,9 +455,7 @@ Token Lexer::ScanOperator() {
         case L'.': 
         case L'。':  // 中文句号作为成员访问符
             Advance(); return MakeToken(EYTokenType::DOT);
-        case L':': 
-        case L'：':  // 中文冒号
-            Advance(); return MakeToken(EYTokenType::COLON);
+        // 冒号在易语言中无语法意义，已在NextToken中被跳过
         case L';': 
         case L'；':  // 中文分号
             Advance(); return MakeToken(EYTokenType::SEMICOLON);
@@ -417,11 +481,37 @@ Token Lexer::ScanOperator() {
     }
 }
 
+// 判断是否为应该忽略的特殊字符
+// 包括零宽字符和易语言中无语法意义的字符
+static bool IsIgnorableChar(wchar_t c) {
+    // 零宽字符
+    if (c == 0x200B  // ZERO WIDTH SPACE
+        || c == 0x200C  // ZERO WIDTH NON-JOINER
+        || c == 0x200D  // ZERO WIDTH JOINER
+        || c == 0x2060  // WORD JOINER
+        || c == 0xFEFF  // ZERO WIDTH NO-BREAK SPACE (BOM)
+        || c == 0x00AD  // SOFT HYPHEN
+        || c == 0x180E  // MONGOLIAN VOWEL SEPARATOR
+        || c == 0x202A  // LEFT-TO-RIGHT EMBEDDING
+        || c == 0x202B  // RIGHT-TO-LEFT EMBEDDING
+        || c == 0x202C  // POP DIRECTIONAL FORMATTING
+        || c == 0x202D  // LEFT-TO-RIGHT OVERRIDE
+        || c == 0x202E) // RIGHT-TO-LEFT OVERRIDE
+    {
+        return true;
+    }
+    // 冒号在易语言中通常无语法意义，可能是用户从其他地方复制代码时带入的格式字符
+    if (c == L':' || c == L'：') {
+        return true;
+    }
+    return false;
+}
+
 Token Lexer::NextToken() {
-    // 跳过空白字符（但不跳过换行）
+    // 跳过空白字符和可忽略字符（但不跳过换行）
     while (!IsAtEnd()) {
         wchar_t c = Peek();
-        if (c == L' ' || c == L'\t' || c == L'\r') {
+        if (c == L' ' || c == L'\t' || c == L'\r' || IsIgnorableChar(c)) {
             Advance();
         } else {
             break;
@@ -458,6 +548,14 @@ Token Lexer::NextToken() {
     // 字符串
     if (c == L'"' || c == L'"' || c == L'"') {
         return ScanString();
+    }
+    
+    // 以 . 开头的关键字（易语言语法：.子程序, .变量, .版本 等）
+    if (c == L'.') {
+        // 检查是否是 .关键字 格式
+        if (position_ + 1 < (int)source_.length() && IsIdentifierStart(source_[position_ + 1])) {
+            return ScanDotKeyword();
+        }
     }
     
     // 标识符或关键字
