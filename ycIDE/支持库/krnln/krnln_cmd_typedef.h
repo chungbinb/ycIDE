@@ -7,7 +7,10 @@
 #define __KRNLN_NAME(_index, _name) __LIB2_FNE_NAME_LEFT(__E_FNENAME)##_##_name##_##_index##_
 
 // 根据函数索引和名称拼接完整函数名
-#define KRNLN_NAME(_index, _name) __LIB2_FNE_NAME_LEFT(__KRNLN_NAME(_index, _name))__LIB2_FNE_NAME_LEFT(__E_FNENAME)
+// 使用标准 ## 连接，兼容 IntelliSense/Clang 解析器
+#define _KRNLN_CONCAT4(a,b,c,d) a##_##b##_##c##_##d
+#define _KRNLN_NAME_IMPL(e, nm, idx) _KRNLN_CONCAT4(e, nm, idx, e)
+#define KRNLN_NAME(_index, _name) _KRNLN_NAME_IMPL(__E_FNENAME, _name, _index)
 
 // 生成函数名字符串
 #define KRNLN_NAME_STR(_index, _name) ______E_FNENAME(__KRNLN_NAME(_index, _name))

@@ -172,6 +172,16 @@
     <ClCompile Include="control\editbox.cpp" />
     <ClCompile Include="control\controls.cpp" />
     <ClCompile Include="control\unit_interface.cpp" />
+    <ClCompile Include="control\label.cpp" />
+    <ClCompile Include="control\checkbox.cpp" />
+    <ClCompile Include="control\radiobox.cpp" />
+    <ClCompile Include="control\groupbox.cpp" />
+    <ClCompile Include="control\listbox.cpp" />
+    <ClCompile Include="control\combobox.cpp" />
+    <ClCompile Include="control\scrollbar.cpp" />
+    <ClCompile Include="control\progressbar.cpp" />
+    <ClCompile Include="control\sliderbar.cpp" />
+    <ClCompile Include="control\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include_krnln_header.h" />
@@ -182,6 +192,16 @@
     <ClInclude Include="control\editbox.h" />
     <ClInclude Include="control\controls.h" />
     <ClInclude Include="control\unit_interface.h" />
+    <ClInclude Include="control\label.h" />
+    <ClInclude Include="control\checkbox.h" />
+    <ClInclude Include="control\radiobox.h" />
+    <ClInclude Include="control\groupbox.h" />
+    <ClInclude Include="control\listbox.h" />
+    <ClInclude Include="control\combobox.h" />
+    <ClInclude Include="control\scrollbar.h" />
+    <ClInclude Include="control\progressbar.h" />
+    <ClInclude Include="control\sliderbar.h" />
+    <ClInclude Include="control\timer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Source_krnln.def" />

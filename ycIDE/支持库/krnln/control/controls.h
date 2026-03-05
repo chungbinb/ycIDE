@@ -15,8 +15,41 @@
 // 窗口组件
 #include "win_unit.h"
 
+// 编辑框组件
+#include "editbox.h"
+
 // 按钮组件
 #include "button.h"
+
+// 标签组件
+#include "label.h"
+
+// 选择框组件
+#include "checkbox.h"
+
+// 单选框组件
+#include "radiobox.h"
+
+// 分组框组件
+#include "groupbox.h"
+
+// 列表框组件
+#include "listbox.h"
+
+// 组合框组件
+#include "combobox.h"
+
+// 滚动条组件
+#include "scrollbar.h"
+
+// 进度条组件
+#include "progressbar.h"
+
+// 滑块条组件
+#include "sliderbar.h"
+
+// 定时器组件
+#include "timer.h"
 
 // ========== 组件类型ID定义 ==========
 // 这些ID与krnln_dtType.cpp中的数据类型索引对应

@@ -2,6 +2,7 @@
 #include "ProjectManager.h"
 #include "SyntaxChecker.h"
 #include "Keyword.h"
+#include "Parser.h"
 #include "YiEditor.h"
 #include "json.hpp"
 #include <shlobj.h>
@@ -329,6 +330,24 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType ou
     mainFile << "#include <stdio.h>\n";
     mainFile << "\n";
     
+    // 生成易语言标准库命令的C实现
+    mainFile << "/* 易语言标准库命令实现 */\n";
+    mainFile << "int 信息框(const wchar_t* 内容, int 按钮类型, const wchar_t* 标题, int 图标类型) {\n";
+    mainFile << "    UINT type = MB_OK;\n";
+    mainFile << "    if (按钮类型 == 1) type = MB_OKCANCEL;\n";
+    mainFile << "    else if (按钮类型 == 2) type = MB_ABORTRETRYIGNORE;\n";
+    mainFile << "    else if (按钮类型 == 3) type = MB_YESNOCANCEL;\n";
+    mainFile << "    else if (按钮类型 == 4) type = MB_YESNO;\n";
+    mainFile << "    else if (按钮类型 == 5) type = MB_RETRYCANCEL;\n";
+    mainFile << "    if (图标类型 == 1) type |= MB_ICONERROR;\n";
+    mainFile << "    else if (图标类型 == 2) type |= MB_ICONQUESTION;\n";
+    mainFile << "    else if (图标类型 == 3) type |= MB_ICONWARNING;\n";
+    mainFile << "    else if (图标类型 == 4) type |= MB_ICONINFORMATION;\n";
+    mainFile << "    const wchar_t* title = 标题 ? 标题 : L\"提示\";\n";
+    mainFile << "    return MessageBoxW(NULL, 内容, title, type);\n";
+    mainFile << "}\n";
+    mainFile << "\n";
+    
     if (outputType == ProjectOutputType::WindowsApp) {
         // 查找并解析窗口文件
         std::wstring efwPath = FindStartupWindowFile(project);
@@ -394,17 +413,53 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType ou
         mainFile << "}\n";
         mainFile << "\n";
         
+        // 生成事件处理函数的默认实现 (弱链接，用户代码可覆盖)
+        mainFile << "/* 事件处理函数默认实现 (用户源代码中的同名函数会覆盖这些) */\n";
+        mainFile << "#ifdef __TINYC__\n";
+        mainFile << "#define WEAK_FUNC __attribute__((weak))\n";
+        mainFile << "#else\n";
+        mainFile << "#define WEAK_FUNC\n";
+        mainFile << "#endif\n";
+        for (const auto& ctrl : winInfo.controls) {
+            // 按钮类型的控件生成被单击事件
+            if (ctrl.type == "Button" || ctrl.type == "按钮") {
+                mainFile << "WEAK_FUNC void _" << ctrl.name << "_被单击(void) { }\n";
+            }
+        }
+        // 窗口创建完毕事件
+        mainFile << "WEAK_FUNC void __启动窗口_创建完毕(void) { }\n";
+        mainFile << "\n";
+        
         mainFile << "/* 窗口过程函数 */\n";
         mainFile << "LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {\n";
         mainFile << "    switch (message) {\n";
         mainFile << "    case WM_CREATE:\n";
         mainFile << "        CreateControls(hWnd);\n";
+        mainFile << "        __启动窗口_创建完毕();\n";
         mainFile << "        break;\n";
         mainFile << "    case WM_COMMAND:\n";
         mainFile << "        {\n";
         mainFile << "            int wmId = LOWORD(wParam);\n";
-        mainFile << "            /* TODO: 处理控件命令 */\n";
+        mainFile << "            int wmEvent = HIWORD(wParam);\n";
         mainFile << "            switch (wmId) {\n";
+        
+        // 为每个按钮生成点击事件处理
+        ctrlId = 1001;
+        for (const auto& ctrl : winInfo.controls) {
+            std::string idName = "IDC_" + ctrl.name;
+            for (auto& c : idName) {
+                if (c >= 'a' && c <= 'z') c = c - 'a' + 'A';
+            }
+            if (ctrl.type == "Button" || ctrl.type == "按钮") {
+                mainFile << "            case " << idName << ":\n";
+                mainFile << "                if (wmEvent == BN_CLICKED) {\n";
+                mainFile << "                    _" << ctrl.name << "_被单击();\n";
+                mainFile << "                }\n";
+                mainFile << "                break;\n";
+            }
+            ctrlId++;
+        }
+        
         mainFile << "            default:\n";
         mainFile << "                return DefWindowProcW(hWnd, message, wParam, lParam);\n";
         mainFile << "            }\n";
@@ -414,7 +469,6 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType ou
         mainFile << "        {\n";
         mainFile << "            PAINTSTRUCT ps;\n";
         mainFile << "            HDC hdc = BeginPaint(hWnd, &ps);\n";
-        mainFile << "            /* TODO: 在此添加绘图代码 */\n";
         mainFile << "            EndPaint(hWnd, &ps);\n";
         mainFile << "        }\n";
         mainFile << "        break;\n";
@@ -507,9 +561,287 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType ou
     return true;
 }
 
+// =========================================================
+// C 代码生成器 (AST → C)
+// =========================================================
+
+// 数据类型映射：易承语言 → C
+static std::string MapTypeToCType(const std::wstring& type) {
+    if (type == L"整数型")          return "int";
+    if (type == L"长整数型")         return "long long";
+    if (type == L"小数型")          return "float";
+    if (type == L"双精度小数型")     return "double";
+    if (type == L"文本型")          return "wchar_t*";
+    if (type == L"逻辑型")          return "int";
+    if (type == L"字节型")          return "unsigned char";
+    if (type == L"短整数型")         return "short";
+    if (type.empty())               return "int";
+    return "int";
+}
+
+static std::string CIndent(int depth) {
+    return std::string(depth * 4, ' ');
+}
+
+// 前向声明
+static std::string GenExprNode(std::shared_ptr<ASTNode> node);
+static std::string GenStmtNode(std::shared_ptr<ASTNode> node, int indent);
+
+static std::string GenExprNode(std::shared_ptr<ASTNode> node) {
+    if (!node) return "0";
+    switch (node->type) {
+        case ASTNodeType::LITERAL_EXPR: {
+            auto* lit = static_cast<LiteralExprNode*>(node.get());
+            if (lit->literalType == EYTokenType::KEYWORD_TRUE)  return "1";
+            if (lit->literalType == EYTokenType::KEYWORD_FALSE) return "0";
+            if (lit->literalType == EYTokenType::STRING)
+                return "L\"" + WideToUtf8(lit->value) + "\"";
+            return WideToUtf8(lit->value);
+        }
+        case ASTNodeType::IDENTIFIER_EXPR: {
+            auto* ident = static_cast<IdentifierExprNode*>(node.get());
+            return WideToUtf8(ident->name);
+        }
+        case ASTNodeType::BINARY_EXPR: {
+            auto* bin = static_cast<BinaryExprNode*>(node.get());
+            std::string left  = GenExprNode(bin->left);
+            std::string right = GenExprNode(bin->right);
+            std::string op;
+            switch (bin->op) {
+                case EYTokenType::OP_PLUS:     op = "+";  break;
+                case EYTokenType::OP_MINUS:    op = "-";  break;
+                case EYTokenType::OP_MULTIPLY: op = "*";  break;
+                case EYTokenType::OP_DIVIDE:   op = "/";  break;
+                case EYTokenType::OP_MOD:      op = "%";  break;
+                case EYTokenType::OP_EQ:       op = "=="; break;
+                case EYTokenType::OP_NEQ:      op = "!="; break;
+                case EYTokenType::OP_GT:       op = ">";  break;
+                case EYTokenType::OP_LT:       op = "<";  break;
+                case EYTokenType::OP_GTE:      op = ">="; break;
+                case EYTokenType::OP_LTE:      op = "<="; break;
+                case EYTokenType::OP_AND:      op = "&&"; break;
+                case EYTokenType::OP_OR:       op = "||"; break;
+                default: op = "?"; break;
+            }
+            return "(" + left + " " + op + " " + right + ")";
+        }
+        case ASTNodeType::UNARY_EXPR: {
+            auto* un = static_cast<UnaryExprNode*>(node.get());
+            std::string operand = GenExprNode(un->operand);
+            if (un->op == EYTokenType::OP_NOT)   return "!" + operand;
+            if (un->op == EYTokenType::OP_MINUS) return "-" + operand;
+            return operand;
+        }
+        case ASTNodeType::CALL_EXPR: {
+            auto* call = static_cast<CallExprNode*>(node.get());
+            std::string result = WideToUtf8(call->functionName) + "(";
+            for (size_t i = 0; i < call->arguments.size(); i++) {
+                if (i > 0) result += ", ";
+                result += GenExprNode(call->arguments[i]);
+            }
+            result += ")";
+            return result;
+        }
+        case ASTNodeType::ARRAY_ACCESS: {
+            auto* arr = static_cast<ArrayAccessNode*>(node.get());
+            std::string result = WideToUtf8(arr->arrayName);
+            for (auto& idx : arr->indices)
+                result += "[" + GenExprNode(idx) + "]";
+            return result;
+        }
+        default:
+            return "0";
+    }
+}
+
+static std::string GenVarDeclLine(VarDeclNode* var, int indent) {
+    std::string ind = CIndent(indent);
+    std::string ctype = MapTypeToCType(var->dataType);
+    std::string result = ind + ctype + " " + WideToUtf8(var->name);
+    if (var->isArray && !var->arrayDimensions.empty()) {
+        for (auto& dim : var->arrayDimensions)
+            result += "[" + GenExprNode(dim) + "]";
+    }
+    if (var->initialValue)
+        result += " = " + GenExprNode(var->initialValue);
+    result += ";\n";
+    return result;
+}
+
+static std::string GenStmtNode(std::shared_ptr<ASTNode> node, int indent) {
+    if (!node) return "";
+    std::string ind = CIndent(indent);
+    switch (node->type) {
+        case ASTNodeType::VAR_DECL:
+            return GenVarDeclLine(static_cast<VarDeclNode*>(node.get()), indent);
+        case ASTNodeType::ASSIGN_STMT: {
+            auto* assign = static_cast<AssignStmtNode*>(node.get());
+            return ind + GenExprNode(assign->target) + " = " + GenExprNode(assign->value) + ";\n";
+        }
+        case ASTNodeType::IF_STMT: {
+            auto* ifStmt = static_cast<IfStmtNode*>(node.get());
+            std::string result = ind + "if (" + GenExprNode(ifStmt->condition) + ") {\n";
+            for (auto& s : ifStmt->thenBlock) result += GenStmtNode(s, indent + 1);
+            result += ind + "}";
+            if (!ifStmt->elseBlock.empty()) {
+                result += " else {\n";
+                for (auto& s : ifStmt->elseBlock) result += GenStmtNode(s, indent + 1);
+                result += ind + "}";
+            }
+            result += "\n";
+            return result;
+        }
+        case ASTNodeType::WHILE_STMT: {
+            auto* w = static_cast<WhileStmtNode*>(node.get());
+            std::string result = ind + "while (" + GenExprNode(w->condition) + ") {\n";
+            for (auto& s : w->body) result += GenStmtNode(s, indent + 1);
+            result += ind + "}\n";
+            return result;
+        }
+        case ASTNodeType::FOR_STMT: {
+            auto* f = static_cast<ForStmtNode*>(node.get());
+            std::string varName = WideToUtf8(f->loopVar);
+            std::string start   = GenExprNode(f->startValue);
+            std::string end     = GenExprNode(f->endValue);
+            std::string step    = f->stepValue ? GenExprNode(f->stepValue) : "1";
+            std::string result  = ind + "for (int " + varName + " = " + start +
+                "; " + varName + " <= " + end + "; " + varName + " += " + step + ") {\n";
+            for (auto& s : f->body) result += GenStmtNode(s, indent + 1);
+            result += ind + "}\n";
+            return result;
+        }
+        case ASTNodeType::RETURN_STMT: {
+            auto* ret = static_cast<ReturnStmtNode*>(node.get());
+            if (ret->returnValue)
+                return ind + "return " + GenExprNode(ret->returnValue) + ";\n";
+            return ind + "return;\n";
+        }
+        case ASTNodeType::BREAK_STMT:    return ind + "break;\n";
+        case ASTNodeType::CONTINUE_STMT: return ind + "continue;\n";
+        case ASTNodeType::EXPR_STMT:     return ""; // 占位符
+        case ASTNodeType::CALL_EXPR:
+            // 函数调用作为语句
+            return ind + GenExprNode(node) + ";\n";
+        default:                         return "";
+    }
+}
+
+// 将 .eyc 文本内容转换为 C 代码字符串
+std::string Compiler::TranspileEycContent(const std::wstring& eycContent,
+                                           const std::wstring& fileName) {
+    Parser parser;
+    auto ast = parser.Parse(eycContent);
+
+    std::string result;
+    result += "/* 由 ycIDE 自动从 " + WideToUtf8(fileName) + " 生成 */\n\n";
+    result += "#include <windows.h>\n\n";
+    
+    // 声明外部库函数
+    result += "/* 外部库函数声明 */\n";
+    result += "extern int 信息框(const wchar_t* 内容, int 按钮类型, const wchar_t* 标题, int 图标类型);\n";
+    result += "\n";
+
+    // 全局变量 / 常量声明
+    for (auto& decl : ast->declarations) {
+        if (decl->type == ASTNodeType::VAR_DECL) {
+            result += GenVarDeclLine(static_cast<VarDeclNode*>(decl.get()), 0);
+        } else if (decl->type == ASTNodeType::CONST_DECL) {
+            auto* con = static_cast<ConstDeclNode*>(decl.get());
+            result += "#define " + WideToUtf8(con->name) + " " +
+                (con->value ? GenExprNode(con->value) : "0") + "\n";
+        }
+    }
+    result += "\n";
+
+    // 子程序前向声明
+    for (auto& sub : ast->subroutines) {
+        if (sub->type != ASTNodeType::SUBROUTINE) continue;
+        auto* s = static_cast<SubroutineNode*>(sub.get());
+        std::string retType = s->returnType.empty() ? "void" : MapTypeToCType(s->returnType);
+        result += retType + " " + WideToUtf8(s->name) + "(";
+        for (size_t i = 0; i < s->params.size(); i++) {
+            if (i > 0) result += ", ";
+            result += MapTypeToCType(s->params[i]->dataType) + " " + WideToUtf8(s->params[i]->name);
+        }
+        result += ");\n";
+    }
+    result += "\n";
+
+    // 子程序实现
+    for (auto& sub : ast->subroutines) {
+        if (sub->type != ASTNodeType::SUBROUTINE) continue;
+        auto* s = static_cast<SubroutineNode*>(sub.get());
+        std::string retType = s->returnType.empty() ? "void" : MapTypeToCType(s->returnType);
+        result += retType + " " + WideToUtf8(s->name) + "(";
+        for (size_t i = 0; i < s->params.size(); i++) {
+            if (i > 0) result += ", ";
+            result += MapTypeToCType(s->params[i]->dataType) + " " + WideToUtf8(s->params[i]->name);
+        }
+        result += ") {\n";
+        // 局部变量
+        for (auto& lv : s->localVars) {
+            if (lv->type == ASTNodeType::VAR_DECL)
+                result += GenVarDeclLine(static_cast<VarDeclNode*>(lv.get()), 1);
+        }
+        // 语句
+        for (auto& stmt : s->statements)
+            result += GenStmtNode(stmt, 1);
+        result += "}\n\n";
+    }
+
+    return result;
+}
+
+// 将项目中所有 .eyc 文件转换为 C 文件，返回生成的 C 文件路径列表
+bool Compiler::TranspileEycFiles(const std::wstring& tempDir, std::vector<std::wstring>& cFiles) {
+    auto& pm = ProjectManager::GetInstance();
+    const ProjectInfo* project = pm.GetCurrentProject();
+    if (!project) return true;  // 没有项目不算错误
+
+    for (const auto& file : project->files) {
+        if (file.fileType != PROJECT_FILE_EYC) continue;
+
+        // 转为绝对路径
+        std::wstring fullPath = file.filePath;
+        if (fullPath.length() < 2 || fullPath[1] != L':') {
+            fullPath = project->projectDirectory + L"\\" + fullPath;
+        }
+
+        // 读取 .eyc 内容
+        std::wstring content = ReadSourceFile(fullPath);
+        if (content.empty()) {
+            SendMessage(CompileMessageType::Warning, L"跳过空文件: " + file.fileName);
+            continue;
+        }
+
+        // 文件名（不含扩展名）
+        std::wstring baseName = file.fileName;
+        size_t dotPos = baseName.find_last_of(L'.');
+        if (dotPos != std::wstring::npos) baseName = baseName.substr(0, dotPos);
+
+        SendMessage(CompileMessageType::Info, L"正在转换源文件: " + file.fileName);
+        std::string cCode = TranspileEycContent(content, file.fileName);
+
+        // 写入临时 C 文件
+        std::wstring cFilePath = tempDir + L"\\" + baseName + L".c";
+        std::ofstream cFileOut(cFilePath.c_str(), std::ios::out | std::ios::binary);
+        if (!cFileOut.is_open()) {
+            SendMessage(CompileMessageType::Error, L"错误: 无法创建临时C文件: " + cFilePath);
+            return false;
+        }
+        cFileOut.write(cCode.c_str(), cCode.length());
+        cFileOut.close();
+
+        cFiles.push_back(cFilePath);
+        SendMessage(CompileMessageType::Info, L"已生成: " + cFilePath);
+    }
+    return true;
+}
+
 // 调用TCC编译器
 bool Compiler::InvokeTccCompiler(const std::wstring& cFile, const std::wstring& outputExe,
-                                const CompileOptions& options, ProjectOutputType outputType) {
+                                const CompileOptions& options, ProjectOutputType outputType,
+                                const std::vector<std::wstring>& additionalCFiles) {
     // 默认编译64位，后续可以添加选项
     bool target32bit = false;
     std::wstring tccPath = FindTccCompiler(target32bit);
@@ -529,8 +861,13 @@ bool Compiler::InvokeTccCompiler(const std::wstring& cFile, const std::wstring& 
     }
     
     // 构建命令行
-    // TCC 命令格式: tcc -o output.exe input.c -lkernel32 -luser32
+    // TCC 命令格式: tcc -o output.exe main.c file1.c file2.c -lkernel32 -luser32
     std::wstring cmdLine = L"\"" + tccPath + L"\" -o \"" + outputExe + L"\" \"" + cFile + L"\"";
+    
+    // 追加额外的 .eyc 转换后的 C 文件
+    for (const auto& extraFile : additionalCFiles) {
+        cmdLine += L" \"" + extraFile + L"\"";
+    }
     
     // 根据项目类型添加子系统选项
     if (outputType == ProjectOutputType::WindowsApp) {
@@ -700,7 +1037,20 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
         return m_lastResult;
     }
     
-    // 步骤2: 生成代码并调用TCC编译器
+    // 步骤2: 将 .eyc 源文件转换为 C 代码
+    std::vector<std::wstring> eycCFiles;
+    SendMessage(CompileMessageType::Info, L"正在转换 .eyc 源文件...");
+    if (!TranspileEycFiles(tempDir, eycCFiles)) {
+        m_lastResult.errorCount++;
+        m_isCompiling = false;
+        return m_lastResult;
+    }
+    if (!eycCFiles.empty()) {
+        SendMessage(CompileMessageType::Info,
+            L"已转换 " + std::to_wstring(eycCFiles.size()) + L" 个源文件");
+    }
+
+    // 步骤3: 生成代码并调用TCC编译器
     std::wstring tccPath = FindTccCompiler(false);  // 64位
     
     if (tccPath.empty()) {
@@ -712,18 +1062,18 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
         return m_lastResult;
     }
     
-    // 生成C代码
-    SendMessage(CompileMessageType::Info, L"正在生成代码...");
+    // 生成C代码框架 (入口点 WinMain/main)
+    SendMessage(CompileMessageType::Info, L"正在生成入口框架代码...");
     if (!GenerateCCode(tempDir, project->outputType)) {
         m_lastResult.errorCount++;
         m_isCompiling = false;
         return m_lastResult;
     }
     
-    // 调用 TCC 编译器
+    // 调用 TCC 编译器（含所有转换后的 .eyc C 文件）
     SendMessage(CompileMessageType::Info, L"正在编译...");
     std::wstring mainC = tempDir + L"\\main.c";
-    if (!InvokeTccCompiler(mainC, outputExe, options, project->outputType)) {
+    if (!InvokeTccCompiler(mainC, outputExe, options, project->outputType, eycCFiles)) {
         SendMessage(CompileMessageType::Error, L"编译失败!");
         m_lastResult.errorCount++;
         m_isCompiling = false;
@@ -848,44 +1198,63 @@ bool Compiler::StopExecutable() {
     return true;
 }
 
+// 规范化路径（统一分隔符并转小写）
+static std::wstring NormalizePath(const std::wstring& path) {
+    std::wstring normalized = path;
+    // 统一路径分隔符为反斜杠
+    for (auto& c : normalized) {
+        if (c == L'/') c = L'\\';
+    }
+    // 转小写
+    std::transform(normalized.begin(), normalized.end(), normalized.begin(), ::tolower);
+    return normalized;
+}
+
 // 读取源文件内容
 // 优先从编辑器内存中读取（可以编译未保存的修改），否则从磁盘读取
 std::wstring Compiler::ReadSourceFile(const std::wstring& filePath) {
     // 首先尝试从编辑器中获取内容（如果文件已在编辑器中打开）
     if (g_EditorData) {
+        std::wstring checkPath = NormalizePath(filePath);
+        
         for (int i = 0; i < (int)g_EditorData->documents.size(); i++) {
             EditorDocument* doc = g_EditorData->documents[i];
             if (doc && !doc->filePath.empty()) {
-                // 比较文件路径（不区分大小写）
-                std::wstring docPath = doc->filePath;
-                std::wstring checkPath = filePath;
-                std::transform(docPath.begin(), docPath.end(), docPath.begin(), ::tolower);
-                std::transform(checkPath.begin(), checkPath.end(), checkPath.begin(), ::tolower);
+                std::wstring docPath = NormalizePath(doc->filePath);
                 
                 if (docPath == checkPath) {
                     // 找到了，从编辑器中获取内容
-                    std::wstring content;
-                    for (size_t j = 0; j < doc->lines.size(); j++) {
-                        if (j > 0) content += L"\n";
-                        content += doc->lines[j];
-                    }
-                    return content;
+                    // 注意：编辑器内部存储的是内部格式，需要转换回EPL格式
+                    extern std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines);
+                    return ConvertInternalToEPL(doc->lines);
                 }
             }
         }
     }
     
-    // 文件未在编辑器中打开，从磁盘读取
-    // 以二进制模式读取文件
-    std::ifstream file(filePath.c_str(), std::ios::binary);
-    if (!file.is_open()) {
+    // 文件未在编辑器中打开，从磁盘读取（使用共享读取模式）
+    HANDLE hFile = CreateFileW(filePath.c_str(), GENERIC_READ, 
+                               FILE_SHARE_READ | FILE_SHARE_WRITE,  // 允许其他进程读写
+                               NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (hFile == INVALID_HANDLE_VALUE) {
         return L"";
     }
     
-    // 读取全部内容
-    std::string utf8Content((std::istreambuf_iterator<char>(file)),
-                             std::istreambuf_iterator<char>());
-    file.close();
+    DWORD fileSize = GetFileSize(hFile, NULL);
+    if (fileSize == 0 || fileSize == INVALID_FILE_SIZE) {
+        CloseHandle(hFile);
+        return L"";
+    }
+    
+    std::string utf8Content;
+    utf8Content.resize(fileSize);
+    DWORD bytesRead = 0;
+    if (!ReadFile(hFile, &utf8Content[0], fileSize, &bytesRead, NULL)) {
+        CloseHandle(hFile);
+        return L"";
+    }
+    CloseHandle(hFile);
+    utf8Content.resize(bytesRead);
     
     if (utf8Content.empty()) {
         return L"";

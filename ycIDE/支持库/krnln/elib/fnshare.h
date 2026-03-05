@@ -21,6 +21,16 @@ typedef INT_PTR(cdecl* PFN_ON_SYS_NOTIFY) (INT nMsg, DWORD_PTR dwParam1, DWORD_P
 #define NotifySys __LIB2_DEFFUNNAME(jy_NotifySys)
 INT_PTR WINAPI NotifySys(INT nMsg, DWORD_PTR dwParam1, DWORD_PTR dwParam2);
 
+// 辅助宏：将 NotifySys 返回值安全转换为指针类型
+// 用法: char* p = NOTIFY_PTR(char*, NRS_GET_CMD_LINE_STR, 0, 0);
+#define NOTIFY_PTR(type, msg, p1, p2) reinterpret_cast<type>(static_cast<void*>(reinterpret_cast<void*>(NotifySys(msg, p1, p2))))
+
+// 简化版：直接转换为通用指针
+template<typename T>
+inline T NotifySysPtr(INT nMsg, DWORD_PTR dwParam1 = 0, DWORD_PTR dwParam2 = 0) {
+    return reinterpret_cast<T>(NotifySys(nMsg, dwParam1, dwParam2));
+}
+
 
 // 从易语言里申请内存, 单位为字节
 #define ealloc __LIB2_DEFFUNNAME(jy_ealloc)

@@ -23,8 +23,8 @@ static UNIT_REGISTER_INFO g_UnitRegisterTable[] =
     // 2: 字体 (非窗口组件)
     { L"字体", L"font", 0, NULL },
     
-    // 3: 编辑框 (暂未实现)
-    { L"编辑框", L"EditBox", UNIT_FLAG_WIN_UNIT, NULL },
+    // 3: 编辑框
+    { L"编辑框", L"EditBox", UNIT_FLAG_WIN_UNIT, EditBox_GetInterface },
     
     // 4: 图片框 (暂未实现)
     { L"图片框", L"PicBox", UNIT_FLAG_WIN_UNIT, NULL },
@@ -35,41 +35,41 @@ static UNIT_REGISTER_INFO g_UnitRegisterTable[] =
     // 6: 画板 (暂未实现)
     { L"画板", L"DrawPanel", UNIT_FLAG_WIN_UNIT, NULL },
     
-    // 7: 分组框 (暂未实现)
-    { L"分组框", L"GroupBox", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_CONTAINER | UNIT_FLAG_NO_FOCUS, NULL },
+    // 7: 分组框
+    { L"分组框", L"GroupBox", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_CONTAINER | UNIT_FLAG_NO_FOCUS, GroupBox_GetInterface },
     
-    // 8: 标签 (暂未实现)
-    { L"标签", L"Label", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_NO_FOCUS, NULL },
+    // 8: 标签
+    { L"标签", L"Label", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_NO_FOCUS, Label_GetInterface },
     
     // 9: 按钮
     { L"按钮", L"Button", UNIT_FLAG_WIN_UNIT, Button_GetInterface },
     
-    // 10: 选择框 (暂未实现)
-    { L"选择框", L"CheckBox", UNIT_FLAG_WIN_UNIT, NULL },
+    // 10: 选择框
+    { L"选择框", L"CheckBox", UNIT_FLAG_WIN_UNIT, CheckBox_GetInterface },
     
-    // 11: 单选框 (暂未实现)
-    { L"单选框", L"RadioBox", UNIT_FLAG_WIN_UNIT, NULL },
+    // 11: 单选框
+    { L"单选框", L"RadioBox", UNIT_FLAG_WIN_UNIT, RadioBox_GetInterface },
     
-    // 12: 组合框 (暂未实现)
-    { L"组合框", L"ComboBox", UNIT_FLAG_WIN_UNIT, NULL },
+    // 12: 组合框
+    { L"组合框", L"ComboBox", UNIT_FLAG_WIN_UNIT, ComboBox_GetInterface },
     
-    // 13: 列表框 (暂未实现)
-    { L"列表框", L"ListBox", UNIT_FLAG_WIN_UNIT, NULL },
+    // 13: 列表框
+    { L"列表框", L"ListBox", UNIT_FLAG_WIN_UNIT, ListBox_GetInterface },
     
     // 14: 选择列表框 (暂未实现)
     { L"选择列表框", L"ChkListBox", UNIT_FLAG_WIN_UNIT, NULL },
     
-    // 15: 横向滚动条 (暂未实现)
-    { L"横向滚动条", L"HScrollBar", UNIT_FLAG_WIN_UNIT, NULL },
+    // 15: 横向滚动条
+    { L"横向滚动条", L"HScrollBar", UNIT_FLAG_WIN_UNIT, HScrollBar_GetInterface },
     
-    // 16: 纵向滚动条 (暂未实现)
-    { L"纵向滚动条", L"VScrollBar", UNIT_FLAG_WIN_UNIT, NULL },
+    // 16: 纵向滚动条
+    { L"纵向滚动条", L"VScrollBar", UNIT_FLAG_WIN_UNIT, VScrollBar_GetInterface },
     
-    // 17: 进度条 (暂未实现)
-    { L"进度条", L"ProcessBar", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_NO_FOCUS, NULL },
+    // 17: 进度条
+    { L"进度条", L"ProcessBar", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_NO_FOCUS, ProgressBar_GetInterface },
     
-    // 18: 滑块条 (暂未实现)
-    { L"滑块条", L"SliderBar", UNIT_FLAG_WIN_UNIT, NULL },
+    // 18: 滑块条
+    { L"滑块条", L"SliderBar", UNIT_FLAG_WIN_UNIT, SliderBar_GetInterface },
     
     // 19: 选择夹 (暂未实现)
     { L"选择夹", L"Tab", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_CONTAINER, NULL },
@@ -104,8 +104,8 @@ static UNIT_REGISTER_INFO g_UnitRegisterTable[] =
     // 29: 通用对话框 (暂未实现)
     { L"通用对话框", L"CommonDlg", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_FUNCTION_ONLY, NULL },
     
-    // 30: 时钟 (暂未实现)
-    { L"时钟", L"Timer", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_FUNCTION_ONLY, NULL },
+    // 30: 时钟
+    { L"时钟", L"Timer", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_FUNCTION_ONLY, Timer_GetInterface },
     
     // 31: 打印机 (暂未实现)
     { L"打印机", L"printer", UNIT_FLAG_WIN_UNIT | UNIT_FLAG_FUNCTION_ONLY, NULL },
@@ -198,12 +198,21 @@ BOOL Controls_DestroyUnit(INT nTypeIndex, HUNIT hUnit)
     // 对于窗口组件，直接调用对应的销毁函数
     switch (nTypeIndex)
     {
-    case UNIT_TYPE_WINDOW:
-        return Window_Destroy(hUnit);
-    case UNIT_TYPE_BUTTON:
-        return Button_Destroy(hUnit);
+    case UNIT_TYPE_WINDOW:     return Window_Destroy(hUnit);
+    case UNIT_TYPE_EDITBOX:    return EditBox_Destroy(hUnit);
+    case UNIT_TYPE_BUTTON:     return Button_Destroy(hUnit);
+    case UNIT_TYPE_LABEL:      return Label_Destroy(hUnit);
+    case UNIT_TYPE_CHECKBOX:   return CheckBox_Destroy(hUnit);
+    case UNIT_TYPE_RADIOBOX:   return RadioBox_Destroy(hUnit);
+    case UNIT_TYPE_GROUPBOX:   return GroupBox_Destroy(hUnit);
+    case UNIT_TYPE_LISTBOX:    return ListBox_Destroy(hUnit);
+    case UNIT_TYPE_COMBOBOX:   return ComboBox_Destroy(hUnit);
+    case UNIT_TYPE_HSCROLLBAR: return ScrollBar_Destroy(hUnit);
+    case UNIT_TYPE_VSCROLLBAR: return ScrollBar_Destroy(hUnit);
+    case UNIT_TYPE_PROCESSBAR: return ProgressBar_Destroy(hUnit);
+    case UNIT_TYPE_SLIDERBAR:  return SliderBar_Destroy(hUnit);
+    case UNIT_TYPE_TIMER:      return Timer_Destroy(hUnit);
     default:
-        // 其他暂未实现的组件
         return FALSE;
     }
 }

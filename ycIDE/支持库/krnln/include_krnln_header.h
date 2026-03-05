@@ -16,6 +16,7 @@
 #include "elib/lib2.h"
 #include "elib/lang.h"
 #include "elib/krnllib.h"
+#include "elib/fnshare.h"
 #include "krnln_cmd_typedef.h"
 
 #define KRNLN_EXTERN_C EXTERN_C
