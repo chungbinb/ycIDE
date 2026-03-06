@@ -5732,6 +5732,7 @@ void SwitchToVisualDesignerMode(bool enable)
         // 设置设计器的双击回调（双击窗口/控件跳转到对应的 .eyc 源代码文件）
         if (g_pVisualDesigner) {
             g_pVisualDesigner->SetDblClickCallback([](const std::wstring& controlName, const std::wstring& controlType) {
+              try {
                 if (!g_pVisualDesigner) return;
                 
                 // 1. 由 .efw 路径派生对应的 .eyc 路径
@@ -5741,7 +5742,7 @@ void SwitchToVisualDesignerMode(bool enable)
                 std::wstring eycPath = (dotPos != std::wstring::npos ? efwPath.substr(0, dotPos) : efwPath) + L".eyc";
                 
                 // 2. 确定目标事件处理子程序名
-                const std::wstring& windowName = g_pVisualDesigner->GetFormInfo().name;
+                std::wstring windowName = g_pVisualDesigner->GetFormInfo().name;
                 std::wstring eventSuffix = L"_被单击";
                 if (controlType == L"输入框" || controlType == L"编辑框") eventSuffix = L"_内容改变";
                 else if (controlType == L"列表框" || controlType == L"组合框") eventSuffix = L"_被选中";
@@ -5845,6 +5846,13 @@ void SwitchToVisualDesignerMode(bool enable)
                 InvalidateRect(hEditorWnd, NULL, TRUE);
                 // 用 PostMessage 延迟设置焦点，确保窗口切换/重绘全部完成后光标才开始闪烁
                 PostMessage(hMainWnd, WM_SET_EDITOR_FOCUS, 0, 0);
+              } catch (const std::exception& e) {
+                char msg[512];
+                sprintf_s(msg, "双击跳转源代码时发生异常: %s", e.what());
+                MessageBoxA(NULL, msg, "错误", MB_OK | MB_ICONERROR);
+              } catch (...) {
+                MessageBoxW(NULL, L"双击跳转源代码时发生未知异常", L"错误", MB_OK | MB_ICONERROR);
+              }
             });
         }
         

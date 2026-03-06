@@ -898,15 +898,8 @@ bool SaveFile(const std::wstring& path, EditorDocument* data) {
         outputCode = ConvertInternalToEPL(data->lines);
     }
     
-    // Convert path to ANSI string for ofstream (MinGW compatibility)
-    int pathLen = WideCharToMultiByte(CP_ACP, 0, path.c_str(), -1, NULL, 0, NULL, NULL);
-    std::string pathStr;
-    if (pathLen > 0) {
-        pathStr.resize(pathLen - 1);
-        WideCharToMultiByte(CP_ACP, 0, path.c_str(), -1, &pathStr[0], pathLen, NULL, NULL);
-    }
-    
-    std::ofstream file(pathStr, std::ios::binary);
+    // 直接使用宽字符路径打开文件，避免中文路径编码问题
+    std::ofstream file(path.c_str(), std::ios::binary);
     if (!file.is_open()) {
         // 保存失败，尝试重新锁定文件（允许共享读取）
         data->hFileLock = CreateFileW(
