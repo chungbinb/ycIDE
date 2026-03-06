@@ -22,7 +22,6 @@ public:
 
 private:
     static void Initialize();
-    static std::map<wchar_t, std::wstring> pinyinMap;
     static std::map<wchar_t, std::vector<std::wstring>> multiPinyinMap;
     static bool initialized;
 };

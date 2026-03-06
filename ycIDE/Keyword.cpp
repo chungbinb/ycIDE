@@ -13,7 +13,31 @@ void KeywordManager::Initialize() {
     keywords.clear();
     aliasMap.clear();
     
-    // 所有关键词现在都从支持库加载，不再使用内置关键词
+    // 添加内置常量关键词（真、假）
+    {
+        Keyword kw;
+        kw.chinese = L"真";
+        kw.type = KW_OTHER;
+        kw.template_ = L"真";
+        kw.description = L"逻辑常量 - 逻辑值为真";
+        kw.needsBrackets = false;
+        kw.needsFlowLine = false;
+        kw.pinyin = PinyinHelper::GetStringPinyins(L"真");
+        kw.initials = PinyinHelper::GetStringInitialsList(L"真");
+        keywords.push_back(kw);
+    }
+    {
+        Keyword kw;
+        kw.chinese = L"假";
+        kw.type = KW_OTHER;
+        kw.template_ = L"假";
+        kw.description = L"逻辑常量 - 逻辑值为假";
+        kw.needsBrackets = false;
+        kw.needsFlowLine = false;
+        kw.pinyin = PinyinHelper::GetStringPinyins(L"假");
+        kw.initials = PinyinHelper::GetStringInitialsList(L"假");
+        keywords.push_back(kw);
+    }
 }
 
 std::vector<CompletionItem> KeywordManager::GetCompletions(const std::wstring& input) {

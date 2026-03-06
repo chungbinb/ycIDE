@@ -99,25 +99,59 @@ std::wstring Compiler::GetAppDirectory() const {
     return exeDir;
 }
 
-// 查找TCC编译器路径
-// target32bit: true 表示查找32位交叉编译器，false 表示查找64位编译器
-std::wstring Compiler::FindTccCompiler(bool target32bit) {
+// 查找Clang编译器路径
+std::wstring Compiler::FindClangCompiler() {
     std::wstring appDir = GetAppDirectory();
     
-    // 查找程序目录下的 compiler/tcc/
-    std::wstring tccDir = appDir + L"\\compiler\\tcc";
+    // 查找顺序：
+    // 1. 程序目录\compiler\llvm\bin\clang.exe
+    // 2. 程序目录\compiler\bin\clang.exe
+    // 3. 程序目录\llvm\bin\clang.exe
     
-    if (target32bit) {
-        // 32位目标：使用 i386-win32-tcc.exe 交叉编译器
-        std::wstring tcc32 = tccDir + L"\\i386-win32-tcc.exe";
-        if (GetFileAttributesW(tcc32.c_str()) != INVALID_FILE_ATTRIBUTES) {
-            return tcc32;
+    std::vector<std::wstring> searchPaths = {
+        appDir + L"\\compiler\\llvm\\bin\\clang.exe",
+        appDir + L"\\compiler\\bin\\clang.exe",
+        appDir + L"\\llvm\\bin\\clang.exe",
+    };
+    
+    for (const auto& path : searchPaths) {
+        if (GetFileAttributesW(path.c_str()) != INVALID_FILE_ATTRIBUTES) {
+            return path;
         }
-    } else {
-        // 64位目标：使用 tcc.exe
-        std::wstring tcc64 = tccDir + L"\\tcc.exe";
-        if (GetFileAttributesW(tcc64.c_str()) != INVALID_FILE_ATTRIBUTES) {
-            return tcc64;
+    }
+    
+    // 尝试从系统 PATH 查找
+    wchar_t pathBuf[MAX_PATH];
+    DWORD result = SearchPathW(NULL, L"clang.exe", NULL, MAX_PATH, pathBuf, NULL);
+    if (result > 0 && result < MAX_PATH) {
+        return std::wstring(pathBuf);
+    }
+    
+    return L"";
+}
+
+// 查找附带的 MinGW 根目录（包含头文件和库）
+std::wstring Compiler::FindMinGWRoot() {
+    std::wstring appDir = GetAppDirectory();
+    
+    // 查找顺序：
+    // 1. 程序目录\compiler\mingw64
+    // 2. 程序目录\mingw64
+    std::vector<std::wstring> searchPaths = {
+        appDir + L"\\compiler\\mingw64",
+        appDir + L"\\mingw64",
+    };
+    
+    for (const auto& path : searchPaths) {
+        // 验证关键文件存在: x86_64-w64-mingw32\include\windows.h
+        std::wstring windowsH = path + L"\\x86_64-w64-mingw32\\include\\windows.h";
+        if (GetFileAttributesW(windowsH.c_str()) != INVALID_FILE_ATTRIBUTES) {
+            return path;
+        }
+        // 也检查 include\windows.h (某些精简包的结构)
+        windowsH = path + L"\\include\\windows.h";
+        if (GetFileAttributesW(windowsH.c_str()) != INVALID_FILE_ATTRIBUTES) {
+            return path;
         }
     }
     
@@ -296,7 +330,7 @@ static std::string GetWin32Style(const std::string& ctrlType) {
     return "WS_CHILD | WS_VISIBLE | SS_LEFT";
 }
 
-// 生成纯C代码 (用于TCC编译器)
+// 生成纯C代码 (用于Clang编译器)
 bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType outputType) {
     auto& pm = ProjectManager::GetInstance();
     if (!pm.HasOpenProject()) {
@@ -322,7 +356,7 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType ou
         return false;
     }
     
-    // 生成纯C代码框架 (TCC兼容)
+    // 生成纯C代码框架 (Clang兼容)
     mainFile << "/* 由 ycIDE 自动生成 */\n";
     mainFile << "/* 项目名称: " << WideToUtf8(project->projectName) << " */\n";
     mainFile << "\n";
@@ -415,11 +449,7 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType ou
         
         // 生成事件处理函数的默认实现 (弱链接，用户代码可覆盖)
         mainFile << "/* 事件处理函数默认实现 (用户源代码中的同名函数会覆盖这些) */\n";
-        mainFile << "#ifdef __TINYC__\n";
         mainFile << "#define WEAK_FUNC __attribute__((weak))\n";
-        mainFile << "#else\n";
-        mainFile << "#define WEAK_FUNC\n";
-        mainFile << "#endif\n";
         for (const auto& ctrl : winInfo.controls) {
             // 按钮类型的控件生成被单击事件
             if (ctrl.type == "Button" || ctrl.type == "按钮") {
@@ -838,31 +868,29 @@ bool Compiler::TranspileEycFiles(const std::wstring& tempDir, std::vector<std::w
     return true;
 }
 
-// 调用TCC编译器
-bool Compiler::InvokeTccCompiler(const std::wstring& cFile, const std::wstring& outputExe,
+// 调用Clang编译器
+bool Compiler::InvokeClangCompiler(const std::wstring& cFile, const std::wstring& outputExe,
                                 const CompileOptions& options, ProjectOutputType outputType,
                                 const std::vector<std::wstring>& additionalCFiles) {
-    // 默认编译64位，后续可以添加选项
-    bool target32bit = false;
-    std::wstring tccPath = FindTccCompiler(target32bit);
+    std::wstring clangPath = FindClangCompiler();
     
-    if (tccPath.empty()) {
+    if (clangPath.empty()) {
         SendMessage(CompileMessageType::Error, 
-            L"错误: 找不到TCC编译器\n"
-            L"请确保 compiler\\tcc 目录下有 tcc.exe");
+            L"错误: 找不到Clang编译器\n"
+            L"请确保 compiler\\llvm\\bin 目录下有 clang.exe");
         return false;
     }
     
-    // 获取TCC所在目录
-    std::wstring tccDir = tccPath;
-    size_t lastSlash = tccDir.find_last_of(L"\\");
+    // 获取Clang所在目录
+    std::wstring clangDir = clangPath;
+    size_t lastSlash = clangDir.find_last_of(L"\\");
     if (lastSlash != std::wstring::npos) {
-        tccDir = tccDir.substr(0, lastSlash);
+        clangDir = clangDir.substr(0, lastSlash);
     }
     
     // 构建命令行
-    // TCC 命令格式: tcc -o output.exe main.c file1.c file2.c -lkernel32 -luser32
-    std::wstring cmdLine = L"\"" + tccPath + L"\" -o \"" + outputExe + L"\" \"" + cFile + L"\"";
+    // Clang 命令格式: clang -o output.exe main.c file1.c file2.c -lkernel32 -luser32
+    std::wstring cmdLine = L"\"" + clangPath + L"\" -o \"" + outputExe + L"\" \"" + cFile + L"\"";
     
     // 追加额外的 .eyc 转换后的 C 文件
     for (const auto& extraFile : additionalCFiles) {
@@ -872,7 +900,7 @@ bool Compiler::InvokeTccCompiler(const std::wstring& cFile, const std::wstring& 
     // 根据项目类型添加子系统选项
     if (outputType == ProjectOutputType::WindowsApp) {
         // 窗口程序：使用 Windows 子系统
-        cmdLine += L" -mwindows";
+        cmdLine += L" -Wl,-subsystem,windows";
         SendMessage(CompileMessageType::Info, L"项目类型: Windows窗口程序");
     } else if (outputType == ProjectOutputType::DynamicLibrary) {
         // DLL：添加共享库选项
@@ -886,13 +914,60 @@ bool Compiler::InvokeTccCompiler(const std::wstring& cFile, const std::wstring& 
     // 添加库
     cmdLine += L" -lkernel32 -luser32 -lgdi32";
     
-    // 优化选项（TCC支持有限）
+    // 使用 MinGW 目标（不依赖 Visual Studio）
+    cmdLine += L" --target=x86_64-w64-mingw32";
+    
+    // 查找附带的 MinGW 头文件/库
+    std::wstring mingwRoot = FindMinGWRoot();
+    if (!mingwRoot.empty()) {
+        // 设置 sysroot 让 Clang 自动找到 MinGW 的头文件和库
+        cmdLine += L" --sysroot=\"" + mingwRoot + L"\"";
+        SendMessage(CompileMessageType::Info, L"MinGW: " + mingwRoot);
+    } else {
+        SendMessage(CompileMessageType::Error, 
+            L"错误: 找不到 MinGW 运行时\n"
+            L"请确保 compiler\\mingw64 目录下有头文件和库文件");
+        return false;
+    }
+    
+    // 优化选项
     if (options.optimizeSpeed) {
-        // TCC 没有太多优化选项，但可以添加
+        cmdLine += L" -O2";
+    } else if (options.optimizeSize) {
+        cmdLine += L" -Os";
+    }
+    
+    // 调试选项
+    if (options.debug) {
+        cmdLine += L" -g";
+    }
+    
+    // 减少杀毒软件误报：
+    // -fno-ident 不写入编译器标识
+    // -ffunction-sections -fdata-sections + -Wl,--gc-sections 移除未使用的节，减少PE节数量
+    // -Wl,--strip-all 链接时剥离所有符号
+    if (!options.debug) {
+        cmdLine += L" -fno-ident -ffunction-sections -fdata-sections";
+        cmdLine += L" -Wl,--gc-sections,--strip-all";
     }
     
     std::wstring output;
-    bool success = CreateCompilerProcess(cmdLine, output, tccDir);
+    bool success = CreateCompilerProcess(cmdLine, output, clangDir);
+    
+    // 编译成功后，使用 strip 移除 .comment 节（包含 Clang 嵌入的 llvm-project URL）
+    if (success && !options.debug) {
+        std::wstring mingwRoot = FindMinGWRoot();
+        std::wstring stripPath = mingwRoot + L"\\bin\\strip.exe";
+        if (GetFileAttributesW(stripPath.c_str()) != INVALID_FILE_ATTRIBUTES) {
+            std::wstring stripCmd = L"\"" + stripPath + L"\" --strip-all"
+                L" --remove-section=.comment"
+                L" --remove-section=.note"
+                L" --remove-section=.note.GNU-stack"
+                L" \"" + outputExe + L"\"";
+            std::wstring stripOutput;
+            CreateCompilerProcess(stripCmd, stripOutput, clangDir);
+        }
+    }
     
     if (!output.empty()) {
         // 解析编译器输出
@@ -1050,13 +1125,13 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
             L"已转换 " + std::to_wstring(eycCFiles.size()) + L" 个源文件");
     }
 
-    // 步骤3: 生成代码并调用TCC编译器
-    std::wstring tccPath = FindTccCompiler(false);  // 64位
+    // 步骤3: 生成代码并调用Clang编译器
+    std::wstring clangPath = FindClangCompiler();
     
-    if (tccPath.empty()) {
+    if (clangPath.empty()) {
         SendMessage(CompileMessageType::Error, 
-            L"错误: 找不到TCC编译器\n"
-            L"请确保 compiler\\tcc 目录下有 tcc.exe");
+            L"错误: 找不到Clang编译器\n"
+            L"请确保 compiler\\llvm\\bin 目录下有 clang.exe");
         m_lastResult.errorCount++;
         m_isCompiling = false;
         return m_lastResult;
@@ -1070,10 +1145,10 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
         return m_lastResult;
     }
     
-    // 调用 TCC 编译器（含所有转换后的 .eyc C 文件）
+    // 调用 Clang 编译器（含所有转换后的 .eyc C 文件）
     SendMessage(CompileMessageType::Info, L"正在编译...");
     std::wstring mainC = tempDir + L"\\main.c";
-    if (!InvokeTccCompiler(mainC, outputExe, options, project->outputType, eycCFiles)) {
+    if (!InvokeClangCompiler(mainC, outputExe, options, project->outputType, eycCFiles)) {
         SendMessage(CompileMessageType::Error, L"编译失败!");
         m_lastResult.errorCount++;
         m_isCompiling = false;

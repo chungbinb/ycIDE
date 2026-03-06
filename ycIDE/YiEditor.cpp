@@ -10,6 +10,10 @@
 #include "PinyinHelper.h"
 #include "OutputPanel.h"
 #include "SyntaxChecker.h"  // 添加语法检查器
+#include "VisualDesigner.h"  // 可视化设计器（用于获取控件名称和属性）
+
+// 外部变量声明 - 可视化设计器实例
+extern VisualDesigner* g_pVisualDesigner;
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -289,6 +293,288 @@ static std::wstring GetCurrentWord(const std::wstring& line, int cursorCol, int&
         return line.substr(wordStart, wordEnd - wordStart);
     }
     return L"";
+}
+
+// 获取点号前的单词（用于属性补全）
+static std::wstring GetWordBeforeDot(const std::wstring& line, int dotPos) {
+    if (dotPos <= 0) return L"";
+    
+    int wordEnd = dotPos;
+    int wordStart = dotPos;
+    
+    // 向前找单词开始
+    while (wordStart > 0 && (iswalnum(line[wordStart - 1]) || line[wordStart - 1] == L'_')) {
+        wordStart--;
+    }
+    
+    if (wordStart < wordEnd) {
+        return line.substr(wordStart, wordEnd - wordStart);
+    }
+    return L"";
+}
+
+// 获取可视化设计器中的控件补全项
+static std::vector<CompletionItem> GetDesignerControlCompletions(const std::wstring& input) {
+    std::vector<CompletionItem> completions;
+    
+    if (!g_pVisualDesigner || input.empty()) return completions;
+    
+    // 辅助函数：转小写（支持所有Unicode字符）
+    auto toLowerUnicode = [](const std::wstring& str) -> std::wstring {
+        std::wstring result = str;
+        if (!result.empty()) {
+            CharLowerBuffW(const_cast<wchar_t*>(result.c_str()), (DWORD)result.length());
+        }
+        return result;
+    };
+    
+    std::wstring lowerInput = toLowerUnicode(input);
+    
+    // 辅助函数：判断字符是否为ASCII字母
+    auto isAsciiAlpha = [](wchar_t ch) -> bool {
+        return (ch >= L'a' && ch <= L'z') || (ch >= L'A' && ch <= L'Z');
+    };
+    
+    // 辅助函数：中英混合智能匹配
+    auto mixedMatch = [&toLowerUnicode, &isAsciiAlpha](const std::wstring& inputStr, const std::wstring& target) -> bool {
+        std::wstring lowerInputStr = toLowerUnicode(inputStr);
+        std::wstring lowerTarget = toLowerUnicode(target);
+        
+        size_t inputPos = 0;
+        size_t targetPos = 0;
+        
+        while (inputPos < lowerInputStr.length() && targetPos < lowerTarget.length()) {
+            wchar_t inputChar = lowerInputStr[inputPos];
+            wchar_t targetChar = lowerTarget[targetPos];
+            
+            if (inputChar == targetChar) {
+                inputPos++;
+                targetPos++;
+            } else if (isAsciiAlpha(inputChar)) {
+                std::wstring targetCharStr(1, target[targetPos]);
+                std::wstring targetPinyin = PinyinHelper::GetStringPinyin(targetCharStr);
+                std::wstring targetInitial = PinyinHelper::GetStringInitials(targetCharStr);
+                std::wstring lowerPinyin = toLowerUnicode(targetPinyin);
+                std::wstring lowerInitial = toLowerUnicode(targetInitial);
+                
+                if (lowerPinyin.length() > 0 && inputPos + lowerPinyin.length() <= lowerInputStr.length()) {
+                    std::wstring inputSubstr = lowerInputStr.substr(inputPos, lowerPinyin.length());
+                    if (inputSubstr == lowerPinyin) {
+                        inputPos += lowerPinyin.length();
+                        targetPos++;
+                    }
+                    else if (!lowerInitial.empty() && lowerInitial[0] == inputChar) {
+                        inputPos++;
+                        targetPos++;
+                    } else {
+                        return false;
+                    }
+                }
+                else if (!lowerInitial.empty() && lowerInitial[0] == inputChar) {
+                    inputPos++;
+                    targetPos++;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        
+        return inputPos == lowerInputStr.length();
+    };
+    
+    // 遍历可视化设计器中的所有控件
+    const FormInfo& formInfo = g_pVisualDesigner->GetFormInfo();
+    for (const auto& ctrl : formInfo.controls) {
+        const std::wstring& ctrlName = ctrl->name;
+        if (ctrlName.empty()) continue;
+        
+        int score = 0;
+        std::wstring lowerCtrlName = toLowerUnicode(ctrlName);
+        
+        // 1. 中文匹配
+        size_t pos = lowerCtrlName.find(lowerInput);
+        if (pos != std::wstring::npos) {
+            if (pos == 0) {
+                if (ctrlName == input) score = 1000;  // 完全匹配
+                else score = 500;  // 前缀匹配
+            } else {
+                score = 100;  // 包含匹配
+            }
+            score -= (int)(ctrlName.length() - input.length());
+        }
+        
+        // 2. 拼音匹配
+        if (score == 0) {
+            std::wstring pinyin = PinyinHelper::GetStringPinyin(ctrlName);
+            std::wstring initials = PinyinHelper::GetStringInitials(ctrlName);
+            std::wstring lowerPinyin = toLowerUnicode(pinyin);
+            std::wstring lowerInitials = toLowerUnicode(initials);
+            
+            // 全拼匹配
+            if (!lowerPinyin.empty() && lowerPinyin.length() >= lowerInput.length() 
+                && lowerPinyin.substr(0, lowerInput.length()) == lowerInput) {
+                if (lowerPinyin == lowerInput) score = 800;
+                else score = 400;
+                score -= (int)(lowerPinyin.length() - lowerInput.length());
+            }
+            // 首字母匹配
+            else if (!lowerInitials.empty() && lowerInitials.length() >= lowerInput.length()
+                     && lowerInitials.substr(0, lowerInput.length()) == lowerInput) {
+                if (lowerInitials == lowerInput) score = 600;
+                else score = 300;
+                score -= (int)(lowerInitials.length() - lowerInput.length());
+            }
+        }
+        
+        // 3. 中英混合智能匹配
+        if (score == 0 && mixedMatch(input, ctrlName)) {
+            score = 550;
+        }
+        
+        if (score > 0) {
+            CompletionItem item;
+            item.displayText = ctrlName + L" (" + ctrl->type + L")";
+            item.insertText = ctrlName;
+            item.description = L"窗体控件 - " + ctrl->type;
+            item.type = KW_OTHER;
+            item.isLibraryCommand = false;
+            item.score = score;
+            completions.push_back(item);
+        }
+    }
+    
+    // 按分数排序
+    std::sort(completions.begin(), completions.end(), 
+        [](const CompletionItem& a, const CompletionItem& b) {
+            return a.score > b.score;
+        });
+    
+    return completions;
+}
+
+// 获取控件类型的属性补全项
+static std::vector<CompletionItem> GetControlPropertyCompletions(const std::wstring& controlName) {
+    std::vector<CompletionItem> completions;
+    
+    if (!g_pVisualDesigner || controlName.empty()) return completions;
+    
+    // 查找控件
+    const FormInfo& formInfo = g_pVisualDesigner->GetFormInfo();
+    std::wstring controlType;
+    for (const auto& ctrl : formInfo.controls) {
+        if (ctrl->name == controlName) {
+            controlType = ctrl->type;
+            break;
+        }
+    }
+    
+    if (controlType.empty()) return completions;
+    
+    // 从支持库获取该控件类型的属性列表
+    const WindowUnitInfo* unitInfo = LibraryParser::GetInstance().FindWindowUnit(controlType);
+    if (!unitInfo) return completions;
+    
+    // 添加属性到补全列表
+    for (const auto& prop : unitInfo->properties) {
+        if (prop.isHidden) continue;  // 跳过隐藏属性
+        
+        CompletionItem item;
+        item.displayText = prop.name;
+        if (!prop.englishName.empty()) {
+            item.displayText += L" (" + prop.englishName + L")";
+        }
+        item.insertText = prop.name;
+        item.description = prop.description;
+        item.type = KW_OTHER;
+        item.isLibraryCommand = false;
+        item.score = 1000;  // 属性优先显示
+        completions.push_back(item);
+    }
+    
+    return completions;
+}
+
+// 检查一行是否是赋值语句（包含 ＝ 或 = 但不在括号内）
+// 返回 true 时，通过 lhs 和 rhs 返回左值和右值
+static bool IsAssignmentLine(const std::wstring& line, std::wstring* lhs = nullptr, std::wstring* rhs = nullptr) {
+    if (line.empty()) return false;
+    // 跳过标记字符
+    size_t start = 0;
+    while (start < line.length() && (line[start] == L'\u200C' || line[start] == L'\u200D' || line[start] == L'\u200B')) {
+        start++;
+    }
+    // 跳过点号前缀（流程控制命令不算赋值）  
+    if (start < line.length() && line[start] == L'.') return false;
+    // 跳过参数行和表格行
+    if (start < line.length() && line[start] == L'\u2060') return false;
+    if (line.find(L'\t') != std::wstring::npos) return false;
+    
+    // 查找 ＝ 或 = （不在括号内）
+    int parenDepth = 0;
+    for (size_t i = start; i < line.length(); i++) {
+        if (line[i] == L'(' || line[i] == L'（') parenDepth++;
+        else if (line[i] == L')' || line[i] == L'）') parenDepth--;
+        else if (parenDepth == 0) {
+            bool isFullWidthEq = (line[i] == L'\uFF1D'); // ＝
+            bool isHalfWidthEq = (line[i] == L'=');
+            if (isFullWidthEq || isHalfWidthEq) {
+                if (lhs || rhs) {
+                    std::wstring left = line.substr(start, i - start);
+                    // 去除前后空格
+                    while (!left.empty() && (left.back() == L' ' || left.back() == L'\t')) left.pop_back();
+                    while (!left.empty() && (left.front() == L' ' || left.front() == L'\t')) left.erase(0, 1);
+                    
+                    std::wstring right = (i + 1 < line.length()) ? line.substr(i + 1) : L"";
+                    while (!right.empty() && (right.front() == L' ' || right.front() == L'\t')) right.erase(0, 1);
+                    while (!right.empty() && (right.back() == L' ' || right.back() == L'\t')) right.pop_back();
+                    
+                    if (lhs) *lhs = left;
+                    if (rhs) *rhs = right;
+                }
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// 检查赋值语句的左值是否引用了一个有效的可视化设计器组件属性（组件名.属性名）
+static bool IsValidAssignmentTarget(const std::wstring& line) {
+    std::wstring lhs;
+    if (!IsAssignmentLine(line, &lhs, nullptr)) return false;
+    
+    // lhs 必须是 组件名.属性名 的形式
+    size_t dotPos = lhs.find(L'.');
+    if (dotPos == std::wstring::npos || dotPos == 0) return false;
+    
+    std::wstring controlName = lhs.substr(0, dotPos);
+    
+    // 检查组件是否存在于可视化设计器中
+    if (!g_pVisualDesigner) return false;
+    const FormInfo& formInfo = g_pVisualDesigner->GetFormInfo();
+    for (const auto& ctrl : formInfo.controls) {
+        if (ctrl->name == controlName) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// 格式化赋值语句：var=value 或 var =value 等 → var ＝ value
+static void FormatAssignmentLine(std::wstring& line) {
+    // 跳过标记字符
+    size_t start = 0;
+    while (start < line.length() && (line[start] == L'\u200C' || line[start] == L'\u200D' || line[start] == L'\u200B')) {
+        start++;
+    }
+    std::wstring prefix = line.substr(0, start);
+    
+    std::wstring lhs, rhs;
+    if (IsAssignmentLine(line, &lhs, &rhs)) {
+        line = prefix + lhs + L" \uFF1D " + rhs;
+    }
 }
 
 // 检查命令是否有参数（从支持库命令或关键词中获取）
@@ -778,6 +1064,44 @@ static void SyncParamLineToCommandLine(EditorDocument* doc, int paramLineIndex) 
     cmdLine = cmdLine.substr(0, leftBracket + 1) + newBracketContent + cmdLine.substr(rightBracket);
 }
 
+// 同步赋值参数行的值到赋值命令行
+// 当赋值参数行（被赋值的变量 或 赋予的值）被修改时，更新赋值行
+static void SyncAssignParamLineToAssignLine(EditorDocument* doc, int paramLineIndex) {
+    if (paramLineIndex <= 0 || paramLineIndex >= (int)doc->lines.size()) return;
+    
+    const std::wstring& paramLine = doc->lines[paramLineIndex];
+    if (paramLine.empty() || paramLine[0] != L'\u2060') return;
+    
+    // 向上查找赋值命令行（跳过其他参数行）
+    int cmdLineIndex = paramLineIndex - 1;
+    while (cmdLineIndex >= 0 && !doc->lines[cmdLineIndex].empty() && doc->lines[cmdLineIndex][0] == L'\u2060') {
+        cmdLineIndex--;
+    }
+    if (cmdLineIndex < 0) return;
+    
+    std::wstring& cmdLine = doc->lines[cmdLineIndex];
+    if (!IsValidAssignmentTarget(cmdLine)) return;
+    
+    // 收集两行参数的值
+    std::wstring newLhs, newRhs;
+    for (int j = cmdLineIndex + 1; j < (int)doc->lines.size() && j <= cmdLineIndex + 2; j++) {
+        const std::wstring& pl = doc->lines[j];
+        if (pl.empty() || pl[0] != L'\u2060') break;
+        size_t colonPos = pl.find(L':');
+        std::wstring val = (colonPos != std::wstring::npos) ? pl.substr(colonPos + 1) : L"";
+        if (j == cmdLineIndex + 1) newLhs = val;
+        else newRhs = val;
+    }
+    
+    // 重建赋值行，保留标记前缀
+    size_t start = 0;
+    while (start < cmdLine.length() && (cmdLine[start] == L'\u200C' || cmdLine[start] == L'\u200D' || cmdLine[start] == L'\u200B')) {
+        start++;
+    }
+    std::wstring prefix = cmdLine.substr(0, start);
+    cmdLine = prefix + newLhs + L" \uFF1D " + newRhs;
+}
+
 // 执行语法检查（在文本变化后调用）
 static void PerformSyntaxCheck(EditorDocument* doc) {
     if (!doc || !doc->syntaxCheckEnabled) return;
@@ -1122,6 +1446,19 @@ static void CheckAndFormatKeywords(EditorDocument* doc, int lineIndex) {
                     }
                 }
             }
+            
+            // 检查是否是赋值语句，格式化为 var ＝ value（只对有效组件属性赋值进行格式化）
+            if (IsValidAssignmentTarget(line)) {
+                int oldLen = (int)line.length();
+                FormatAssignmentLine(line);
+                // 格式化后行长度变化，需要调整光标位置
+                if (lineIndex == doc->cursorLine) {
+                    int delta = (int)line.length() - oldLen;
+                    doc->cursorCol += delta;
+                    if (doc->cursorCol < 0) doc->cursorCol = 0;
+                    if (doc->cursorCol > (int)line.length()) doc->cursorCol = (int)line.length();
+                }
+            }
         }
     }
 }
@@ -1228,6 +1565,11 @@ void FormatAllCommandLines(EditorDocument* doc) {
                 }
             }
         }
+        
+        // 检查是否是赋值语句，格式化为 var ＝ value（只对有效组件属性赋值进行格式化）
+        if (IsValidAssignmentTarget(line)) {
+            FormatAssignmentLine(line);
+        }
     }
 }
 
@@ -1327,7 +1669,7 @@ EditorData::EditorData() : activeDocIndex(-1), fontSize(12), rowHeight(26), tabH
     isDraggingCompletionScroll(false), completionDragStartY(0), completionDragStartOffset(0),
     hRightArrowCursor(NULL), showWelcomePage(true),
     showTypeCompletion(false), typeCompletionSelectedIndex(0), typeCompletionScrollOffset(0),
-    currentCellIndex(-1), skipNextSpaceForType(false) {
+    currentCellIndex(-1), skipNextSpaceForType(false), skipNextChar(false) {
     // 启动时显示欢迎页，不创建默认文档
     
     // 初始化滚动条矩形
@@ -2808,6 +3150,39 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 InvalidateRect(hWnd, NULL, TRUE);
                                 return 0;
                             }
+                        }
+                        
+                        // 检查是否是赋值语句（只对有效组件属性赋值生效）
+                        if (!isCommandLine && IsValidAssignmentTarget(line)) {
+                            while (doc->parametersExpanded.size() <= i) {
+                                doc->parametersExpanded.push_back(false);
+                            }
+                            doc->parametersExpanded[i] = !doc->parametersExpanded[i];
+                            
+                            if (doc->parametersExpanded[i]) {
+                                // 展开：插入两行（被赋值的变量、用于赋予的值）
+                                std::wstring lhs, rhs;
+                                IsAssignmentLine(line, &lhs, &rhs);
+                                
+                                std::wstring line1 = L"\u2060\u88AB\u8D4B\u503C\u7684\u53D8\u91CF\u6216\u53D8\u91CF\u6570\u7EC4:" + lhs;
+                                std::wstring line2 = L"\u2060\u7528\u4F5C\u8D4B\u4E88\u7684\u503C\u6216\u8D44\u6E90:" + rhs;
+                                doc->lines.insert(doc->lines.begin() + i + 1, line1);
+                                doc->parametersExpanded.insert(doc->parametersExpanded.begin() + i + 1, false);
+                                doc->lines.insert(doc->lines.begin() + i + 2, line2);
+                                doc->parametersExpanded.insert(doc->parametersExpanded.begin() + i + 2, false);
+                            } else {
+                                // 折叠：删除两行参数行
+                                for (int p = 0; p < 2; p++) {
+                                    if (i + 1 < doc->lines.size() && !doc->lines[i + 1].empty() && doc->lines[i + 1][0] == L'\u2060') {
+                                        doc->lines.erase(doc->lines.begin() + i + 1);
+                                        doc->parametersExpanded.erase(doc->parametersExpanded.begin() + i + 1);
+                                    }
+                                }
+                            }
+                            
+                            doc->modified = true;
+                            InvalidateRect(hWnd, NULL, TRUE);
+                            return 0;
                         }
                         break;
                     }
@@ -4943,6 +5318,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             data->skipNextSpaceForType = false;
                             return 0;
                         }
+                        // 检查是否需要跳过字符（自动补全上屏后）
+                        if (ch == L' ' && data->skipNextChar) {
+                            data->skipNextChar = false;
+                            return 0;
+                        }
                         
                         line.insert(doc->cursorCol, 1, ch);
                         doc->cursorCol++;
@@ -4951,11 +5331,13 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         // 如果是参数行，同步更新命令行括号内的参数值
                         if (line.length() > 0 && line[0] == L'\u2060') {
                             SyncParamLineToCommandLine(doc, doc->cursorLine);
+                            SyncAssignParamLineToAssignLine(doc, doc->cursorLine);
                         }
                         
                         // 补全逻辑：
                         // 1. 表格行中只有类型列需要类型补全，其他列不需要任何补全
                         // 2. 只有普通代码行才需要命令补全
+                        // 3. 输入点号后显示控件属性补全
                         
                         if (IsInTableRow(doc)) {
                             // 在表格行中
@@ -4968,19 +5350,21 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 HideTypeCompletion(data);
                                 data->showCompletion = false;
                             }
-                        } else if (ch != L' ') {
-                            // 非表格行（普通代码行），触发命令补全
+                        } else if (ch == L'.') {
+                            // 输入点号，检查是否需要属性补全
                             HideTypeCompletion(data);
-                            int wordStart;
-                            std::wstring currentWord = GetCurrentWord(line, doc->cursorCol, wordStart);
-                            if (!currentWord.empty() && currentWord.length() >= 1) {
-                                std::vector<CompletionItem> completions = KeywordManager::GetInstance().GetCompletions(currentWord);
-                                if (!completions.empty()) {
+                            
+                            // 获取点号前的单词（控件名称）
+                            std::wstring controlName = GetWordBeforeDot(line, doc->cursorCol - 1);
+                            if (!controlName.empty()) {
+                                // 获取该控件的属性补全项
+                                std::vector<CompletionItem> propCompletions = GetControlPropertyCompletions(controlName);
+                                if (!propCompletions.empty()) {
                                     data->showCompletion = true;
-                                    data->completionItems = completions;
+                                    data->completionItems = propCompletions;
                                     data->selectedCompletionIndex = 0;
                                     data->completionScrollOffset = 0;
-                                    data->currentWord = currentWord;
+                                    data->currentWord = L"";  // 点号后还没有输入内容
                                     data->completionMaxVisible = 8;
                                     data->completionItemHeight = 24;
                                 } else {
@@ -4988,6 +5372,103 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 }
                             } else {
                                 data->showCompletion = false;
+                            }
+                        } else if (ch != L' ') {
+                            // 非表格行（普通代码行），触发命令补全
+                            HideTypeCompletion(data);
+                            int wordStart;
+                            std::wstring currentWord = GetCurrentWord(line, doc->cursorCol, wordStart);
+                            
+                            // 检查当前单词前是否有点号（正在输入属性名）
+                            bool isPropertyInput = false;
+                            if (wordStart > 0 && line[wordStart - 1] == L'.') {
+                                std::wstring controlName = GetWordBeforeDot(line, wordStart - 1);
+                                if (!controlName.empty()) {
+                                    // 获取该控件的属性补全项并筛选
+                                    std::vector<CompletionItem> propCompletions = GetControlPropertyCompletions(controlName);
+                                    if (!propCompletions.empty() && !currentWord.empty()) {
+                                        // 筛选匹配当前输入的属性
+                                        std::vector<CompletionItem> filteredProps;
+                                        std::wstring lowerWord = currentWord;
+                                        std::transform(lowerWord.begin(), lowerWord.end(), lowerWord.begin(), ::towlower);
+                                        
+                                        for (auto& prop : propCompletions) {
+                                            std::wstring lowerPropName = prop.insertText;
+                                            std::transform(lowerPropName.begin(), lowerPropName.end(), lowerPropName.begin(), ::towlower);
+                                            
+                                            // 中文匹配
+                                            if (lowerPropName.find(lowerWord) == 0) {
+                                                filteredProps.push_back(prop);
+                                            }
+                                            // 拼音匹配
+                                            else {
+                                                std::wstring pinyin = PinyinHelper::GetStringPinyin(prop.insertText);
+                                                std::wstring initials = PinyinHelper::GetStringInitials(prop.insertText);
+                                                std::transform(pinyin.begin(), pinyin.end(), pinyin.begin(), ::towlower);
+                                                std::transform(initials.begin(), initials.end(), initials.begin(), ::towlower);
+                                                
+                                                if ((!pinyin.empty() && pinyin.find(lowerWord) == 0) ||
+                                                    (!initials.empty() && initials.find(lowerWord) == 0)) {
+                                                    filteredProps.push_back(prop);
+                                                }
+                                            }
+                                        }
+                                        
+                                        if (!filteredProps.empty()) {
+                                            data->showCompletion = true;
+                                            data->completionItems = filteredProps;
+                                            data->selectedCompletionIndex = 0;
+                                            data->completionScrollOffset = 0;
+                                            data->currentWord = currentWord;
+                                            data->completionMaxVisible = 8;
+                                            data->completionItemHeight = 24;
+                                            isPropertyInput = true;
+                                        } else {
+                                            data->showCompletion = false;
+                                            isPropertyInput = true;  // 仍然标记为属性输入（虽然没有匹配）
+                                        }
+                                    } else if (!propCompletions.empty() && currentWord.empty()) {
+                                        // 点号后还没有输入，显示所有属性
+                                        data->showCompletion = true;
+                                        data->completionItems = propCompletions;
+                                        data->selectedCompletionIndex = 0;
+                                        data->completionScrollOffset = 0;
+                                        data->currentWord = L"";
+                                        data->completionMaxVisible = 8;
+                                        data->completionItemHeight = 24;
+                                        isPropertyInput = true;
+                                    }
+                                }
+                            }
+                            
+                            // 如果不是属性输入，则进行普通命令补全（包含控件名称）
+                            if (!isPropertyInput) {
+                                if (!currentWord.empty() && currentWord.length() >= 1) {
+                                    // 获取关键词补全
+                                    std::vector<CompletionItem> completions = KeywordManager::GetInstance().GetCompletions(currentWord);
+                                    
+                                    // 获取可视化设计器控件名称补全
+                                    std::vector<CompletionItem> ctrlCompletions = GetDesignerControlCompletions(currentWord);
+                                    
+                                    // 合并两个列表，控件名称在前
+                                    for (const auto& ctrl : ctrlCompletions) {
+                                        completions.insert(completions.begin(), ctrl);
+                                    }
+                                    
+                                    if (!completions.empty()) {
+                                        data->showCompletion = true;
+                                        data->completionItems = completions;
+                                        data->selectedCompletionIndex = 0;
+                                        data->completionScrollOffset = 0;
+                                        data->currentWord = currentWord;
+                                        data->completionMaxVisible = 8;
+                                        data->completionItemHeight = 24;
+                                    } else {
+                                        data->showCompletion = false;
+                                    }
+                                } else {
+                                    data->showCompletion = false;
+                                }
                             }
                         } else {
                             // 空格输入时，隐藏所有补全
@@ -4999,6 +5480,10 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     }
                 }
             } else if (ch == VK_RETURN) {  // 回车
+                if (data->skipNextChar) {
+                    data->skipNextChar = false;
+                    return 0;
+                }
                 bool handled = false;
 
                 // 检查是否是表头行，如果是则禁止回车
@@ -5639,6 +6124,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     // 如果是参数行，同步更新命令行括号内的参数值
                     if (line.length() > 0 && line[0] == L'\u2060') {
                         SyncParamLineToCommandLine(doc, doc->cursorLine);
+                        SyncAssignParamLineToAssignLine(doc, doc->cursorLine);
                     }
                     
                     // 删除后更新补全提示
@@ -5654,24 +6140,98 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             data->showCompletion = false;
                         }
                     } else if (data->showCompletion) {
-                        // 非表格行，更新命令补全
+                        // 非表格行，更新命令补全（包含控件名称和属性补全）
                         HideTypeCompletion(data);
                         int wordStart;
                         std::wstring currentWord = GetCurrentWord(line, doc->cursorCol, wordStart);
-                        if (!currentWord.empty() && currentWord.length() >= 1) {
-                            std::vector<CompletionItem> completions = KeywordManager::GetInstance().GetCompletions(currentWord);
-                            if (!completions.empty()) {
-                                data->completionItems = completions;
-                                data->selectedCompletionIndex = 0;
-                                data->completionScrollOffset = 0;
-                                data->currentWord = currentWord;
-                                data->completionMaxVisible = 8;
-                                data->completionItemHeight = 24;
+                        
+                        // 检查当前单词前是否有点号（正在输入属性名）
+                        bool isPropertyInput = false;
+                        if (wordStart > 0 && line[wordStart - 1] == L'.') {
+                            std::wstring controlName = GetWordBeforeDot(line, wordStart - 1);
+                            if (!controlName.empty()) {
+                                // 获取该控件的属性补全项并筛选
+                                std::vector<CompletionItem> propCompletions = GetControlPropertyCompletions(controlName);
+                                if (!propCompletions.empty() && !currentWord.empty()) {
+                                    // 筛选匹配当前输入的属性
+                                    std::vector<CompletionItem> filteredProps;
+                                    std::wstring lowerWord = currentWord;
+                                    std::transform(lowerWord.begin(), lowerWord.end(), lowerWord.begin(), ::towlower);
+                                    
+                                    for (auto& prop : propCompletions) {
+                                        std::wstring lowerPropName = prop.insertText;
+                                        std::transform(lowerPropName.begin(), lowerPropName.end(), lowerPropName.begin(), ::towlower);
+                                        
+                                        // 中文匹配
+                                        if (lowerPropName.find(lowerWord) == 0) {
+                                            filteredProps.push_back(prop);
+                                        }
+                                        // 拼音匹配
+                                        else {
+                                            std::wstring pinyin = PinyinHelper::GetStringPinyin(prop.insertText);
+                                            std::wstring initials = PinyinHelper::GetStringInitials(prop.insertText);
+                                            std::transform(pinyin.begin(), pinyin.end(), pinyin.begin(), ::towlower);
+                                            std::transform(initials.begin(), initials.end(), initials.begin(), ::towlower);
+                                            
+                                            if ((!pinyin.empty() && pinyin.find(lowerWord) == 0) ||
+                                                (!initials.empty() && initials.find(lowerWord) == 0)) {
+                                                filteredProps.push_back(prop);
+                                            }
+                                        }
+                                    }
+                                    
+                                    if (!filteredProps.empty()) {
+                                        data->completionItems = filteredProps;
+                                        data->selectedCompletionIndex = 0;
+                                        data->completionScrollOffset = 0;
+                                        data->currentWord = currentWord;
+                                        data->completionMaxVisible = 8;
+                                        data->completionItemHeight = 24;
+                                        isPropertyInput = true;
+                                    } else {
+                                        data->showCompletion = false;
+                                        isPropertyInput = true;
+                                    }
+                                } else if (!propCompletions.empty() && currentWord.empty()) {
+                                    // 点号后还没有输入，显示所有属性
+                                    data->completionItems = propCompletions;
+                                    data->selectedCompletionIndex = 0;
+                                    data->completionScrollOffset = 0;
+                                    data->currentWord = L"";
+                                    data->completionMaxVisible = 8;
+                                    data->completionItemHeight = 24;
+                                    isPropertyInput = true;
+                                }
+                            }
+                        }
+                        
+                        // 如果不是属性输入，则进行普通命令补全（包含控件名称）
+                        if (!isPropertyInput) {
+                            if (!currentWord.empty() && currentWord.length() >= 1) {
+                                // 获取关键词补全
+                                std::vector<CompletionItem> completions = KeywordManager::GetInstance().GetCompletions(currentWord);
+                                
+                                // 获取可视化设计器控件名称补全
+                                std::vector<CompletionItem> ctrlCompletions = GetDesignerControlCompletions(currentWord);
+                                
+                                // 合并两个列表，控件名称在前
+                                for (const auto& ctrl : ctrlCompletions) {
+                                    completions.insert(completions.begin(), ctrl);
+                                }
+                                
+                                if (!completions.empty()) {
+                                    data->completionItems = completions;
+                                    data->selectedCompletionIndex = 0;
+                                    data->completionScrollOffset = 0;
+                                    data->currentWord = currentWord;
+                                    data->completionMaxVisible = 8;
+                                    data->completionItemHeight = 24;
+                                } else {
+                                    data->showCompletion = false;
+                                }
                             } else {
                                 data->showCompletion = false;
                             }
-                        } else {
-                            data->showCompletion = false;
                         }
                     }
                     
@@ -5891,9 +6451,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 case VK_TAB:
                 case VK_RETURN:
                     ApplyCompletion(hWnd, data, doc);
+                    data->skipNextChar = true;
                     return 0;
                 case VK_SPACE:
                     ApplyCompletion(hWnd, data, doc);
+                    data->skipNextChar = true;
                     return 0;
                 case VK_ESCAPE:
                     data->showCompletion = false;
@@ -6183,6 +6745,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         // 如果是参数行，同步更新命令行括号内的参数值
                         if (line.length() > 0 && line[0] == L'\u2060') {
                             SyncParamLineToCommandLine(doc, doc->cursorLine);
+                            SyncAssignParamLineToAssignLine(doc, doc->cursorLine);
                         }
                         
                         // 删除后更新补全提示
@@ -6679,6 +7242,35 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             SelectObject(hdc, hOldFoldPen);
                             DeleteObject(hFoldPen);
                         }
+                    }
+                    
+                    // 赋值语句也绘制展开/折叠符号（只对有效组件属性赋值生效）
+                    if (!isCommandLine && IsValidAssignmentTarget(line)) {
+                        while (doc->parametersExpanded.size() <= (size_t)currentLineIndex) {
+                            doc->parametersExpanded.push_back(false);
+                        }
+                        bool isExpanded = doc->parametersExpanded[currentLineIndex];
+                        
+                        int foldBtnSize = 10;
+                        int foldBtnX = 58;
+                        int foldBtnY = y + (rowHeight - foldBtnSize) / 2;
+                        
+                        HPEN hFoldPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.textDim);
+                        HPEN hOldFoldPen = (HPEN)SelectObject(hdc, hFoldPen);
+                        HBRUSH hOldFoldBrush = (HBRUSH)SelectObject(hdc, GetStockObject(NULL_BRUSH));
+                        Rectangle(hdc, foldBtnX, foldBtnY, foldBtnX + foldBtnSize, foldBtnY + foldBtnSize);
+                        
+                        MoveToEx(hdc, foldBtnX + 2, foldBtnY + foldBtnSize / 2, NULL);
+                        LineTo(hdc, foldBtnX + foldBtnSize - 2, foldBtnY + foldBtnSize / 2);
+                        
+                        if (!isExpanded) {
+                            MoveToEx(hdc, foldBtnX + foldBtnSize / 2, foldBtnY + 2, NULL);
+                            LineTo(hdc, foldBtnX + foldBtnSize / 2, foldBtnY + foldBtnSize - 2);
+                        }
+                        
+                        SelectObject(hdc, hOldFoldBrush);
+                        SelectObject(hdc, hOldFoldPen);
+                        DeleteObject(hFoldPen);
                     }
                 }
             };
@@ -8016,7 +8608,8 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             const std::wstring& prevLine = doc->lines[cmdLineIndex];
                             // 找到括号位置
                             size_t leftBracket = prevLine.find(L'(');
-                            if (leftBracket != std::wstring::npos) {
+                            bool isAssignment = (leftBracket == std::wstring::npos) && IsValidAssignmentTarget(prevLine);
+                            if (leftBracket != std::wstring::npos || isAssignment) {
                                 int textCenterOffset = (rowHeight - fontSize) / 2 + fontSize / 2;
                                 int prevLineY = currentY - (int)(i - cmdLineIndex) * rowHeight;
                                 int prevLineBottom = prevLineY + rowHeight;  // 上一行的底部
@@ -8032,7 +8625,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 // 如果是流程控制内的行，去掉标记字符
                                 if (isIndentedCmd) {
                                     cmdText = cmdText.substr(1);
-                                    leftBracket = cmdText.find(L'(');
+                                    if (!isAssignment) leftBracket = cmdText.find(L'(');
                                 }
                                 
                                 // 计算命令行缩进
@@ -8048,7 +8641,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 size_t dotPos = cmdText.find(L'.');
                                 if (dotPos != std::wstring::npos) {
                                     cmdText.erase(dotPos, 1);
-                                    if (leftBracket > 0) leftBracket--;  // 调整括号位置
+                                    if (leftBracket != std::wstring::npos && leftBracket > 0) leftBracket--;  // 调整括号位置
                                 }
                                 
                                 // 计算两个中文字符的宽度（用于参数文本位置）

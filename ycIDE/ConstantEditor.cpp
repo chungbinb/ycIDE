@@ -419,11 +419,8 @@ bool ConstantEditor::LoadFile(const std::wstring& path) {
     std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
     
     if (ext == L".json") {
-        // 正确转换路径为 UTF-8
-        int pathLen = WideCharToMultiByte(CP_UTF8, 0, path.c_str(), -1, NULL, 0, NULL, NULL);
-        std::string pathA(pathLen - 1, '\0');
-        WideCharToMultiByte(CP_UTF8, 0, path.c_str(), -1, &pathA[0], pathLen, NULL, NULL);
-        std::ifstream file(pathA);
+        // 直接使用宽字符路径打开文件，避免中文路径编码问题
+        std::ifstream file(path.c_str());
         if (!file.is_open()) {
             return false;
         }
@@ -503,11 +500,8 @@ bool ConstantEditor::SaveFile(const std::wstring& path) {
     std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
     
     if (ext == L".json") {
-        // 正确转换路径为 UTF-8
-        int pathLen = WideCharToMultiByte(CP_UTF8, 0, path.c_str(), -1, NULL, 0, NULL, NULL);
-        std::string pathA(pathLen - 1, '\0');
-        WideCharToMultiByte(CP_UTF8, 0, path.c_str(), -1, &pathA[0], pathLen, NULL, NULL);
-        std::ofstream file(pathA);
+        // 直接使用宽字符路径打开文件，避免中文路径编码问题
+        std::ofstream file(path.c_str());
         if (!file.is_open()) {
             return false;
         }

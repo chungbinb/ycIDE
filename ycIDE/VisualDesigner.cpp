@@ -747,19 +747,10 @@ void VisualDesigner::OnVScroll(UINT nSBCode, UINT nPos)
 
 bool VisualDesigner::LoadFile(const std::wstring& path)
 {
-    // 将wstring转换为窄字符串用于文件操作
-    std::string narrowPath = WStringToUtf8(path);
-    std::ifstream file(narrowPath);
+    // 直接使用宽字符路径打开文件，避免中文路径编码问题
+    std::ifstream file(path.c_str());
     if (!file.is_open()) {
-        // 尝试直接用宽字符路径（MSVC支持）
-#ifdef _MSC_VER
-        file.open(path);
-        if (!file.is_open()) {
-            return false;
-        }
-#else
         return false;
-#endif
     }
     
     try {
@@ -790,21 +781,11 @@ bool VisualDesigner::SaveFile(const std::wstring& path)
     swprintf_s(debugMsg, L"[VisualDesigner::SaveFile] Saving to: %s\n", path.c_str());
     OutputDebugStringW(debugMsg);
     
-    // 将wstring转换为窄字符串用于文件操作
-    std::string narrowPath = WStringToUtf8(path);
-    std::ofstream file(narrowPath);
+    // 直接使用宽字符路径打开文件，避免中文路径编码问题
+    std::ofstream file(path.c_str());
     if (!file.is_open()) {
-        OutputDebugStringW(L"[VisualDesigner::SaveFile] Failed to open file with narrow path, trying wide path...\n");
-        // 尝试直接用宽字符路径（MSVC支持）
-#ifdef _MSC_VER
-        file.open(path);
-        if (!file.is_open()) {
-            OutputDebugStringW(L"[VisualDesigner::SaveFile] Failed to open file with wide path!\n");
-            return false;
-        }
-#else
+        OutputDebugStringW(L"[VisualDesigner::SaveFile] Failed to open file!\n");
         return false;
-#endif
     }
     
     try {

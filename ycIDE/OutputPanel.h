@@ -47,6 +47,10 @@ public:
     void SetHint(const CommandHint& hint);
     void ClearHint();
     
+    // === 编辑框访问 ===
+    HWND GetOutputEdit() const { return m_hOutputEdit; }
+    HWND GetHintEdit() const { return m_hHintEdit; }
+    
     // === 当前命令信息 ===
     void SetCurrentCommand(const std::wstring& commandName, int lineNumber);
     

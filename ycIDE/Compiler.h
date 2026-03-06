@@ -116,7 +116,7 @@ private:
     // 读取源文件内容
     std::wstring ReadSourceFile(const std::wstring& filePath);
     
-    // 生成纯C代码 (用于 TCC)
+    // 生成纯C代码 (用于 Clang)
     bool GenerateCCode(const std::wstring& outputDir, ProjectOutputType outputType);
     
     // 将项目中所有 .eyc 源文件转换为C代码，返回生成的C文件路径列表
@@ -125,13 +125,16 @@ private:
     // 将单个 .eyc 文件内容转换为C代码字符串
     std::string TranspileEycContent(const std::wstring& eycContent, const std::wstring& fileName);
     
-    // 调用TCC编译器（additionalCFiles: 除main.c外额外传入的C源文件）
-    bool InvokeTccCompiler(const std::wstring& cFile, const std::wstring& outputExe,
+    // 调用Clang编译器（additionalCFiles: 除main.c外额外传入的C源文件）
+    bool InvokeClangCompiler(const std::wstring& cFile, const std::wstring& outputExe,
                           const CompileOptions& options, ProjectOutputType outputType,
                           const std::vector<std::wstring>& additionalCFiles = {});
     
-    // 查找TCC编译器路径 (返回空表示未找到)
-    std::wstring FindTccCompiler(bool target32bit = false);
+    // 查找Clang编译器路径 (返回空表示未找到)
+    std::wstring FindClangCompiler();
+    
+    // 查找 MinGW 头文件/库路径（附带在程序目录中）
+    std::wstring FindMinGWRoot();
     
     // 创建进程并捕获输出
     bool CreateCompilerProcess(const std::wstring& cmdLine, std::wstring& output, 

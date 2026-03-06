@@ -136,6 +136,7 @@ struct EditorData {
     int currentCellIndex;        // 当前编辑的单元格列索引
     RECT currentCellRect;        // 当前编辑的单元格矩形
     bool skipNextSpaceForType;   // 跳过下一个空格（用于类型补全空格上屏）
+    bool skipNextChar;              // 跳过下一个字符（用于自动补全空格/回车上屏）
     
     EditorData();
     ~EditorData();
