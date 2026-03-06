@@ -173,6 +173,10 @@ RECT g_ToggleSidebarButtonRect = {0}; // 侧边栏显示/隐藏
 int g_HoverButton = 0;  // 0=无, 1=最小化, 2=最大化, 3=关闭, 4=AI, 5=切换, 6=输出, 7=侧边栏
 bool g_IsTrackingMouse = false;  // 是否正在追踪鼠标离开事件
 bool g_OutputPanelVisible = false;  // 输出面板是否可见
+int g_OutputPanelHeight = 150;  // 输出面板高度（支持拖动调整）
+bool g_IsDraggingOutputSplitter = false;  // 是否正在拖拽输出面板顶部分隔条
+int g_DragOutputStartY = 0;  // 拖拽起始Y坐标（屏幕坐标）
+int g_DragOutputStartHeight = 0;  // 拖拽起始时的面板高度
 bool g_PanelsSwapped = false;  // 资源管理器和AI面板是否已交换位置
 
 // 工具栏相关
@@ -352,6 +356,7 @@ void SavePanelLayoutState() {
     WritePrivateProfileStringW(L"PanelLayout", L"AIPanelVisible", g_AIPanelVisible ? L"1" : L"0", configPath.c_str());
     WritePrivateProfileStringW(L"PanelLayout", L"LeftPanelVisible", g_LeftPanelVisible ? L"1" : L"0", configPath.c_str());
     WritePrivateProfileStringW(L"PanelLayout", L"OutputPanelVisible", g_OutputPanelVisible ? L"1" : L"0", configPath.c_str());
+    WritePrivateProfileStringW(L"PanelLayout", L"OutputPanelHeight", std::to_wstring(g_OutputPanelHeight).c_str(), configPath.c_str());
 }
 
 // 加载面板布局状态
@@ -362,6 +367,9 @@ void LoadPanelLayoutState() {
     g_LeftPanelVisible = GetPrivateProfileIntW(L"PanelLayout", L"LeftPanelVisible", 1, configPath.c_str()) != 0;
     g_ExplorerPanelVisible = g_LeftPanelVisible;
     g_OutputPanelVisible = GetPrivateProfileIntW(L"PanelLayout", L"OutputPanelVisible", 0, configPath.c_str()) != 0;
+    g_OutputPanelHeight = GetPrivateProfileIntW(L"PanelLayout", L"OutputPanelHeight", 150, configPath.c_str());
+    if (g_OutputPanelHeight < 80) g_OutputPanelHeight = 80;
+    if (g_OutputPanelHeight > 600) g_OutputPanelHeight = 600;
 }
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -939,7 +947,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             int leftPanelW = g_LeftPanelVisible ? g_LeftPanelWidth : 0;  // 资源管理器宽度
             // 可视化设计器模式下隐藏AI面板
             int rightPanelW = (g_AIPanelVisible && !g_IsVisualDesignerActive) ? g_RightPanelWidth : 0;  // AI聊天框宽度
-            int outputH = g_OutputPanelVisible ? 150 : 0;  // 输出窗口高度（根据可见性）
+            int outputH = g_OutputPanelVisible ? g_OutputPanelHeight : 0;  // 输出窗口高度（根据可见性）
             int topH = g_TotalTopHeight;  // 标题栏+工具栏高度
             int statusH = g_StatusBarHeight;  // 状态栏高度
             
@@ -1192,7 +1200,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             int leftPanelW = g_LeftPanelVisible ? g_LeftPanelWidth : 0;
             // 可视化设计器模式下隐藏AI面板
             int rightPanelW = (g_AIPanelVisible && !g_IsVisualDesignerActive) ? g_RightPanelWidth : 0;
-            int outputH = g_OutputPanelVisible ? 150 : 0;
+            int outputH = g_OutputPanelVisible ? g_OutputPanelHeight : 0;
             int topH = g_TotalTopHeight;
             int statusH = g_StatusBarHeight;
             
@@ -1211,60 +1219,72 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             int editorTop = topH + g_TabBarHeight;
             int editorHeight = editorH - g_TabBarHeight;
             
-            // 锁定窗口更新，避免中间状态显示
-            LockWindowUpdate(hWnd);
-            
-            // 使用 SetWindowPos 直接更新各窗口，添加 SWP_NOCOPYBITS 避免闪烁
-            UINT swpFlags = SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOCOPYBITS;
-            
-            // 资源管理器
-            if (hRightPanelWnd) {
-                int panelLeft = g_PanelsSwapped ? (width - activityBarW - effectiveRightW) : activityBarW;
-                int panelWidth = g_PanelsSwapped ? effectiveRightW : effectiveLeftW;
-                SetWindowPos(hRightPanelWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
+            // 使用 DeferWindowPos 批量更新窗口位置，在所有计算完成后一次性提交
+            // 避免中间状态导致的闪烁
+            // 输出面板拖拽时不使用 NOCOPYBITS，让系统复用有效像素区域减少重绘
+            UINT swpFlags = SWP_NOZORDER | SWP_NOACTIVATE;
+            if (!g_IsDraggingOutputSplitter) {
+                swpFlags |= SWP_NOCOPYBITS;  // 左右面板拖拽时避免残影
             }
             
-            // AI聊天面板 - 可视化设计模式下隐藏
-            if (hAIChatWnd) {
-                if (g_IsVisualDesignerActive) {
-                    // 可视化设计模式下隐藏AI面板
-                    ShowWindow(hAIChatWnd, SW_HIDE);
-                } else {
-                    int panelLeft = g_PanelsSwapped ? 0 : (width - effectiveRightW);
-                    int panelWidth = g_PanelsSwapped ? effectiveLeftW : effectiveRightW;
-                    SetWindowPos(hAIChatWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
-                    if (g_AIPanelVisible) {
-                        ShowWindow(hAIChatWnd, SW_SHOW);
+            // 判断是否为输出面板高度拖拽（只需要更新编辑器和输出面板）
+            bool outputDrag = g_IsDraggingOutputSplitter;
+            
+            // 计算需要更新的窗口数量
+            int windowCount = 0;
+            if (!outputDrag) windowCount = 10;  // 全部窗口
+            else {
+                // 输出面板拖拽只需更新：编辑器、ELL编辑器、可视化设计器、欢迎页、输出窗口
+                windowCount = 5;
+            }
+            
+            HDWP hdwp = BeginDeferWindowPos(windowCount);
+            if (!hdwp) break;
+            
+            if (!outputDrag) {
+                // 非输出面板拖拽：更新所有面板
+                // 资源管理器
+                if (hRightPanelWnd) {
+                    int panelLeft = g_PanelsSwapped ? (width - activityBarW - effectiveRightW) : activityBarW;
+                    int panelWidth = g_PanelsSwapped ? effectiveRightW : effectiveLeftW;
+                    hdwp = DeferWindowPos(hdwp, hRightPanelWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
+                }
+                
+                // AI聊天面板
+                if (hAIChatWnd) {
+                    if (g_IsVisualDesignerActive) {
+                        ShowWindow(hAIChatWnd, SW_HIDE);
+                    } else {
+                        int panelLeft = g_PanelsSwapped ? 0 : (width - effectiveRightW);
+                        int panelWidth = g_PanelsSwapped ? effectiveLeftW : effectiveRightW;
+                        hdwp = DeferWindowPos(hdwp, hAIChatWnd, NULL, panelLeft, topH, panelWidth, centerTotalH, swpFlags);
+                        if (g_AIPanelVisible) {
+                            ShowWindow(hAIChatWnd, SW_SHOW);
+                        }
                     }
                 }
+                
+                // 标签栏
+                if (hTabBarWnd)
+                    hdwp = DeferWindowPos(hdwp, hTabBarWnd, NULL, editorLeft, topH, centerW, g_TabBarHeight, swpFlags);
             }
             
-            // 标签栏 - 位置和大小改变时不复制旧内容
-            if (hTabBarWnd)
-                SetWindowPos(hTabBarWnd, NULL, editorLeft, topH, centerW, g_TabBarHeight, swpFlags);
-            
-            // 编辑器
-            if (hEditorWnd)
-                SetWindowPos(hEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
-            
-            // ELL编辑器
-            if (hEllEditorWnd)
-                SetWindowPos(hEllEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
-            
-            // 可视化设计器
-            if (hVisualDesignerWnd)
-                SetWindowPos(hVisualDesignerWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
-            
-            // 欢迎页
-            if (hWelcomePageWnd)
-                SetWindowPos(hWelcomePageWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
+            // 编辑器区域（始终更新，但只更新可见的窗口以提高性能）
+            if (hdwp && hEditorWnd && IsWindowVisible(hEditorWnd))
+                hdwp = DeferWindowPos(hdwp, hEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
+            if (hdwp && hEllEditorWnd && IsWindowVisible(hEllEditorWnd))
+                hdwp = DeferWindowPos(hdwp, hEllEditorWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
+            if (hdwp && hVisualDesignerWnd && IsWindowVisible(hVisualDesignerWnd))
+                hdwp = DeferWindowPos(hdwp, hVisualDesignerWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
+            if (hdwp && hWelcomePageWnd && IsWindowVisible(hWelcomePageWnd))
+                hdwp = DeferWindowPos(hdwp, hWelcomePageWnd, NULL, editorLeft, editorTop, centerW, editorHeight, swpFlags);
             
             // 输出窗口
-            if (hOutputWnd)
-                SetWindowPos(hOutputWnd, NULL, editorLeft, topH + editorH, centerW, outputH, swpFlags);
+            if (hdwp && hOutputWnd)
+                hdwp = DeferWindowPos(hdwp, hOutputWnd, NULL, editorLeft, topH + editorH, centerW, outputH, swpFlags);
             
-            // 解锁窗口更新
-            LockWindowUpdate(NULL);
+            if (hdwp)
+                EndDeferWindowPos(hdwp);
         }
         break;
         
@@ -3292,11 +3312,37 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         return 0;
         
     case WM_LBUTTONUP:
-        return 0;
+        if (g_IsDraggingOutputSplitter) {
+            g_IsDraggingOutputSplitter = false;
+            ReleaseCapture();
+            SavePanelLayoutState();
+            return 0;
+        }
         return 0;
         
     case WM_MOUSEMOVE:
         {
+            // 输出面板高度拖拽（在主窗口处理，避免子窗口移动导致的跟踪不准）
+            if (g_IsDraggingOutputSplitter) {
+                POINT pt;
+                GetCursorPos(&pt);
+                int delta = g_DragOutputStartY - pt.y;
+                int newHeight = g_DragOutputStartHeight + delta;
+                if (newHeight < 80) newHeight = 80;
+                if (newHeight > 600) newHeight = 600;
+                if (newHeight != g_OutputPanelHeight) {
+                    // 节流：与AI面板一致，约120fps
+                    static DWORD lastOutputDragTime = 0;
+                    DWORD currentTime = GetTickCount();
+                    if (currentTime - lastOutputDragTime >= 8) {
+                        lastOutputDragTime = currentTime;
+                        g_OutputPanelHeight = newHeight;
+                        PostMessage(hWnd, WM_UPDATE_PANEL_LAYOUT, 0, 0);
+                    }
+                }
+                return 0;
+            }
+            
             int x = GET_X_LPARAM(lParam);
             int y = GET_Y_LPARAM(lParam);
             
@@ -5568,10 +5614,24 @@ LRESULT CALLBACK ToolboxWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
     return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
+// 输出面板编辑框子类化处理（支持Ctrl+A全选和Ctrl+C复制）
+static WNDPROC g_OriginalOutputEditProc = nullptr;
+LRESULT CALLBACK OutputEditSubclassProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+    if (message == WM_KEYDOWN) {
+        if (wParam == 'A' && (GetKeyState(VK_CONTROL) & 0x8000)) {
+            // Ctrl+A: 全选
+            SendMessage(hWnd, EM_SETSEL, 0, -1);
+            return 0;
+        }
+    }
+    return CallWindowProc(g_OriginalOutputEditProc, hWnd, message, wParam, lParam);
+}
+
 // 输出面板窗口过程
 LRESULT CALLBACK OutputPanelWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     OutputPanel* pPanel = (OutputPanel*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
+    const int splitterHeight = 5;  // 顶部拖拽区域高度
     
     switch (message)
     {
@@ -5580,6 +5640,14 @@ LRESULT CALLBACK OutputPanelWndProc(HWND hWnd, UINT message, WPARAM wParam, LPAR
             pPanel = new OutputPanel(hWnd);
             SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)pPanel);
             g_pOutputPanel = pPanel;
+            
+            // 子类化编辑框以支持Ctrl+A
+            if (pPanel->GetOutputEdit() && !g_OriginalOutputEditProc) {
+                g_OriginalOutputEditProc = (WNDPROC)SetWindowLongPtr(pPanel->GetOutputEdit(), GWLP_WNDPROC, (LONG_PTR)OutputEditSubclassProc);
+            }
+            if (pPanel->GetHintEdit()) {
+                SetWindowLongPtr(pPanel->GetHintEdit(), GWLP_WNDPROC, (LONG_PTR)OutputEditSubclassProc);
+            }
         }
         return 0;
         
@@ -5607,12 +5675,50 @@ LRESULT CALLBACK OutputPanelWndProc(HWND hWnd, UINT message, WPARAM wParam, LPAR
             pPanel->OnSize(LOWORD(lParam), HIWORD(lParam));
         }
         return 0;
+    
+    case WM_ERASEBKGND:
+        return 1;  // 阻止背景擦除，由 WM_PAINT 双缓冲绘制
+        
+    case WM_SETCURSOR:
+        {
+            // 检查鼠标是否在顶部拖拽区域
+            POINT pt;
+            GetCursorPos(&pt);
+            ScreenToClient(hWnd, &pt);
+            if (pt.y < splitterHeight) {
+                SetCursor(LoadCursor(NULL, IDC_SIZENS));
+                return TRUE;
+            }
+        }
+        break;
         
     case WM_LBUTTONDOWN:
-        if (pPanel) {
-            pPanel->OnLButtonDown(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+        {
+            int y = GET_Y_LPARAM(lParam);
+            if (y < splitterHeight) {
+                // 开始拖拽调整高度 — 在主窗口上捕获鼠标
+                // 因为拖拽过程中输出面板自身会移动，子窗口捕获会导致坐标跟踪不准
+                g_IsDraggingOutputSplitter = true;
+                POINT pt;
+                GetCursorPos(&pt);
+                g_DragOutputStartY = pt.y;
+                g_DragOutputStartHeight = g_OutputPanelHeight;
+                SetCapture(GetParent(hWnd));  // 在主窗口上捕获
+                return 0;
+            }
+            if (pPanel) {
+                pPanel->OnLButtonDown(GET_X_LPARAM(lParam), y);
+            }
         }
         return 0;
+        
+    case WM_MOUSEMOVE:
+        // 输出面板内的 WM_MOUSEMOVE 不再处理拖拽（已移至主窗口）
+        break;
+        
+    case WM_LBUTTONUP:
+        // 输出面板内的 WM_LBUTTONUP 不再处理拖拽（已移至主窗口）
+        break;
     
     case WM_CTLCOLOREDIT:
     case WM_CTLCOLORSTATIC:
@@ -5676,11 +5782,11 @@ ATOM RegisterOutputPanelClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex = {0};
     wcex.cbSize = sizeof(WNDCLASSEX);
-    wcex.style = CS_HREDRAW | CS_VREDRAW;
+    wcex.style = 0;  // 不使用 CS_HREDRAW|CS_VREDRAW，避免调整大小时整窗口重绘闪烁
     wcex.lpfnWndProc = OutputPanelWndProc;
     wcex.hInstance = hInstance;
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.hbrBackground = NULL;  // 不使用默认背景，由 WM_PAINT 自行绘制
     wcex.lpszClassName = szOutputPanelClass;
     return RegisterClassExW(&wcex);
 }
