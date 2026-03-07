@@ -86,21 +86,21 @@ void UpdateTimeline(EditorDocument* doc) {
     
     extern HWND hRightPanelWnd;
     if (hRightPanelWnd) {
-        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        InvalidateRect(hRightPanelWnd, NULL, FALSE);
     }
 }
 
 ATOM RegisterResourceExplorerClass(HINSTANCE hInstance) {
     WNDCLASSEXW wcex;
     wcex.cbSize = sizeof(WNDCLASSEX);
-    wcex.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
+    wcex.style = CS_DBLCLKS;
     wcex.lpfnWndProc = ResourceExplorerWndProc;
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
     wcex.hInstance = hInstance;
     wcex.hIcon = nullptr;
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.hbrBackground = NULL;
     wcex.lpszMenuName = nullptr;
     wcex.lpszClassName = L"ResourceExplorer";
     wcex.hIconSm = nullptr;
@@ -147,7 +147,7 @@ void ExplorerAddFile(const std::wstring& path) {
         
         extern HWND hRightPanelWnd;
         if (hRightPanelWnd) {
-            InvalidateRect(hRightPanelWnd, NULL, TRUE);
+            InvalidateRect(hRightPanelWnd, NULL, FALSE);
         }
         return;
     }
@@ -204,7 +204,7 @@ void ExplorerAddFile(const std::wstring& path) {
     
     extern HWND hRightPanelWnd;
     if (hRightPanelWnd) {
-        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        InvalidateRect(hRightPanelWnd, NULL, FALSE);
     }
 }
 
@@ -224,7 +224,7 @@ void ExplorerSetFileModified(const std::wstring& path, bool modified) {
     }
     extern HWND hRightPanelWnd;
     if (hRightPanelWnd) {
-        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        InvalidateRect(hRightPanelWnd, NULL, FALSE);
     }
 }
 
@@ -254,7 +254,7 @@ void ExplorerSelectFile(const std::wstring& path) {
             // 刷新资源管理器显示
             extern HWND hRightPanelWnd;
             if (hRightPanelWnd) {
-                InvalidateRect(hRightPanelWnd, NULL, TRUE);
+                InvalidateRect(hRightPanelWnd, NULL, FALSE);
             }
             break;
         }
@@ -321,6 +321,8 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                         rect.right - borderMargin, propHeight, SWP_NOZORDER | SWP_NOACTIVATE);
                 }
             }
+            // 去掉 CS_HREDRAW|CS_VREDRAW 后需手动触发重绘
+            InvalidateRect(hWnd, NULL, FALSE);
         }
         break;
     
@@ -368,7 +370,7 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                     ExplorerTabType newTab = (ExplorerTabType)clickedTab;
                     if (g_ExplorerData.activeTab != newTab) {
                         g_ExplorerData.activeTab = newTab;
-                        InvalidateRect(hWnd, NULL, TRUE);
+                        InvalidateRect(hWnd, NULL, FALSE);
                         
                         // 触发主窗口重新布局（以更新PropertyGrid的显示/隐藏状态）
                         extern HWND hMainWnd;
@@ -400,7 +402,7 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                     g_ExplorerData.UpdateVisibleNodes();
                 }
                 
-                InvalidateRect(hWnd, NULL, TRUE);
+                InvalidateRect(hWnd, NULL, FALSE);
             }
         }
         break;
@@ -668,7 +670,7 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                 }
                 node->isSelected = true;
                 g_ExplorerData.selectedNode = node;
-                InvalidateRect(hWnd, NULL, TRUE);
+                InvalidateRect(hWnd, NULL, FALSE);
                 
                 // 如果是.ec模块文件，显示模块操作菜单
                 if (node->IsModuleFile()) {
@@ -738,7 +740,7 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                 if (node->isFolder) {
                     node->isExpanded = !node->isExpanded;
                     g_ExplorerData.UpdateVisibleNodes();
-                    InvalidateRect(hWnd, NULL, TRUE);
+                    InvalidateRect(hWnd, NULL, FALSE);
                 } else if (node->IsModuleFile()) {
                     // 模块支持已移除
                     // ExplorerLoadModule(node);
@@ -843,7 +845,15 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             
             if (inBorder != g_ExplorerData.isBorderHover) {
                 g_ExplorerData.isBorderHover = inBorder;
-                InvalidateRect(hWnd, NULL, FALSE);  // 触发重绘以显示/隐藏边框高亮
+                // 只刷新边框条区域，避免全窗口重绘导致属性面板闪烁
+                RECT borderInvRect;
+                GetClientRect(hWnd, &borderInvRect);
+                if (g_PanelsSwapped) {
+                    borderInvRect.right = borderWidth;
+                } else {
+                    borderInvRect.left = rect.right - borderWidth;
+                }
+                InvalidateRect(hWnd, &borderInvRect, FALSE);
             }
             
             // 检查是否在标签栏区域内
@@ -853,14 +863,21 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                 if (hoverTab >= 0 && hoverTab < 3) {
                     if (g_ExplorerData.hoverTab != (ExplorerTabType)hoverTab) {
                         g_ExplorerData.hoverTab = (ExplorerTabType)hoverTab;
-                        InvalidateRect(hWnd, NULL, TRUE);
+                        // 只刷新标签栏区域，避免全窗口重绘导致闪烁
+                        RECT tabRect;
+                        GetClientRect(hWnd, &tabRect);
+                        tabRect.bottom = g_ExplorerData.tabBarHeight;
+                        InvalidateRect(hWnd, &tabRect, FALSE);
                     }
                 }
             } else {
                 // 不在标签区域，清除悬停状态
                 if (g_ExplorerData.hoverTab != (ExplorerTabType)-1) {
                     g_ExplorerData.hoverTab = (ExplorerTabType)-1;
-                    InvalidateRect(hWnd, NULL, TRUE);
+                    RECT tabRect;
+                    GetClientRect(hWnd, &tabRect);
+                    tabRect.bottom = g_ExplorerData.tabBarHeight;
+                    InvalidateRect(hWnd, &tabRect, FALSE);
                 }
             }
         }
@@ -872,7 +889,17 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             g_ExplorerData.isTrackingMouse = false;
             if (g_ExplorerData.isBorderHover) {
                 g_ExplorerData.isBorderHover = false;
-                InvalidateRect(hWnd, NULL, FALSE);
+                // 只刷新边框条区域，避免全窗口重绘导致属性面板闪烁
+                extern bool g_PanelsSwapped;
+                const int borderWidth = 8;
+                RECT borderInvRect;
+                GetClientRect(hWnd, &borderInvRect);
+                if (g_PanelsSwapped) {
+                    borderInvRect.right = borderWidth;
+                } else {
+                    borderInvRect.left = borderInvRect.right - borderWidth;
+                }
+                InvalidateRect(hWnd, &borderInvRect, FALSE);
             }
         }
         break;
@@ -992,7 +1019,7 @@ void ExplorerAddFolder(const std::wstring& folderPath) {
     
     extern HWND hRightPanelWnd;
     if (hRightPanelWnd) {
-        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        InvalidateRect(hRightPanelWnd, NULL, FALSE);
     }
 }
 
@@ -1023,7 +1050,7 @@ void ExplorerCloseFolder() {
     
     extern HWND hRightPanelWnd;
     if (hRightPanelWnd) {
-        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        InvalidateRect(hRightPanelWnd, NULL, FALSE);
     }
 }
 
@@ -1086,7 +1113,7 @@ void ExplorerRefreshFolder() {
     
     extern HWND hRightPanelWnd;
     if (hRightPanelWnd) {
-        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        InvalidateRect(hRightPanelWnd, NULL, FALSE);
     }
 }
 
@@ -1304,7 +1331,7 @@ void ExplorerLoadProject() {
     
     extern HWND hRightPanelWnd;
     if (hRightPanelWnd) {
-        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        InvalidateRect(hRightPanelWnd, NULL, FALSE);
     }
 }
 
@@ -1325,7 +1352,7 @@ void ExplorerCloseProject() {
     
     extern HWND hRightPanelWnd;
     if (hRightPanelWnd) {
-        InvalidateRect(hRightPanelWnd, NULL, TRUE);
+        InvalidateRect(hRightPanelWnd, NULL, FALSE);
     }
 }
 
@@ -1336,7 +1363,7 @@ void ExplorerSwitchToTab(ExplorerTabType tab) {
         
         extern HWND hRightPanelWnd;
         if (hRightPanelWnd) {
-            InvalidateRect(hRightPanelWnd, NULL, TRUE);
+            InvalidateRect(hRightPanelWnd, NULL, FALSE);
         }
     }
 }

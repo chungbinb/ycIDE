@@ -129,12 +129,20 @@ void OutputPanel::DrawTabs(Graphics& g, const RECT& rect)
 
 void OutputPanel::OnSize(int width, int height)
 {
+    // 拖拽输出面板时跳过子控件调整（EDIT的WM_SIZE重算代价大），松开鼠标时才做最终调整
+    extern bool g_IsDraggingOutputSplitter;
+    if (g_IsDraggingOutputSplitter) {
+        InvalidateRect(m_hWnd, NULL, FALSE);
+        return;
+    }
     // 调整编辑框大小
+    int editH = height - m_tabHeight;
+    if (editH < 0) editH = 0;
     if (m_hOutputEdit) {
-        MoveWindow(m_hOutputEdit, 0, m_tabHeight, width, height - m_tabHeight, TRUE);
+        MoveWindow(m_hOutputEdit, 0, m_tabHeight, width, editH, TRUE);
     }
     if (m_hHintEdit) {
-        MoveWindow(m_hHintEdit, 0, m_tabHeight, width, height - m_tabHeight, TRUE);
+        MoveWindow(m_hHintEdit, 0, m_tabHeight, width, editH, TRUE);
     }
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
@@ -263,4 +271,6 @@ void OutputPanel::UpdateHintDisplay()
     }
     
     SetWindowText(m_hHintEdit, hintText.c_str());
+    // 滚动到顶部显示，保留滚动条功能
+    SendMessage(m_hHintEdit, WM_VSCROLL, SB_TOP, 0);
 }

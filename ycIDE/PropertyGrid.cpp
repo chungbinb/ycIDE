@@ -1074,6 +1074,31 @@ void PropertyGrid::LoadPropertiesFromLibrary(const std::wstring& controlType,
         
         std::vector<PropertyDef> props;
         
+        // 检查 FNE 是否已包含"名称"属性
+        bool hasNamePropInFne = false;
+        for (const auto& fneProp : unitInfo->properties) {
+            if (fneProp.name == L"名称") {
+                hasNamePropInFne = true;
+                break;
+            }
+        }
+        
+        // 如果 FNE 没有"名称"属性，手动在最前面添加一个可编辑的名称属性
+        if (!hasNamePropInFne) {
+            auto itName = currentValues.find(L"名称");
+            if (itName != currentValues.end()) {
+                PropertyDef nameProp;
+                nameProp.name = L"名称";
+                nameProp.displayName = L"名称";
+                nameProp.description = L"组件的名称标识";
+                nameProp.category = L"基本";
+                nameProp.editorType = PropertyEditorType::Text;
+                nameProp.readOnly = false;
+                nameProp.value = itName->second;
+                props.push_back(nameProp);
+            }
+        }
+        
         // 检查控制按钮的值，用于决定子选项是否禁用
         bool controlBoxEnabled = true;
         auto itControlBox = currentValues.find(L"控制按钮");
@@ -1100,6 +1125,11 @@ void PropertyGrid::LoadPropertiesFromLibrary(const std::wstring& controlType,
             }
             
             PropertyDef prop = ConvertFneProperty(fneProp, currentValue);
+            // "名称"属性始终允许编辑（FNE可能标记为只读，但用户需要自定义名称）
+            if (fneProp.name == L"名称") {
+                prop.readOnly = false;
+                prop.editorType = PropertyEditorType::Text;
+            }
             props.push_back(prop);
             
             // 在"控制按钮"属性后添加"最大化按钮"和"最小化按钮"属性
