@@ -818,7 +818,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             // 1. 左侧: 资源管理器 (自定义类) - 现在在活动栏右边
             hRightPanelWnd = CreateWindowW(L"ResourceExplorer", nullptr,
-                WS_CHILD | WS_VISIBLE,
+                WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN,
                 0, 0, 0, 0, hWnd, (HMENU)1003, hInst, nullptr);
 
             // 2. 中间区域：标签栏 + 编辑器
@@ -1219,16 +1219,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             int editorTop = topH + g_TabBarHeight;
             int editorHeight = editorH - g_TabBarHeight;
             
-            // 使用 DeferWindowPos 批量更新窗口位置，在所有计算完成后一次性提交
-            // 避免中间状态导致的闪烁
-            // 输出面板拖拽时不使用 NOCOPYBITS，让系统复用有效像素区域减少重绘
-            UINT swpFlags = SWP_NOZORDER | SWP_NOACTIVATE;
-            if (!g_IsDraggingOutputSplitter) {
-                swpFlags |= SWP_NOCOPYBITS;  // 左右面板拖拽时避免残影
-            }
-            
             // 判断是否为输出面板高度拖拽（只需要更新编辑器和输出面板）
             bool outputDrag = g_IsDraggingOutputSplitter;
+            
+            // 输出面板拖拽时使用 SWP_NOREDRAW 避免同步重绘开销，之后手动刷新
+            UINT swpFlags = SWP_NOZORDER | SWP_NOACTIVATE;
+            if (outputDrag) {
+                swpFlags |= SWP_NOREDRAW;  // 拖拽时不触发同步重绘，加快窗口移动
+            } else {
+                swpFlags |= SWP_NOCOPYBITS;  // 左右面板拖拽时避免残影
+            }
             
             // 计算需要更新的窗口数量
             int windowCount = 0;
@@ -1285,6 +1285,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             
             if (hdwp)
                 EndDeferWindowPos(hdwp);
+            
+            // 拖拽时使用了 SWP_NOREDRAW，需要手动刷新受影响的窗口
+            if (outputDrag) {
+                if (hOutputWnd) {
+                    RedrawWindow(hOutputWnd, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW);
+                }
+                // 编辑器只刷新底部变化区域
+                HWND hVisibleEditor = NULL;
+                if (hEditorWnd && IsWindowVisible(hEditorWnd)) hVisibleEditor = hEditorWnd;
+                else if (hEllEditorWnd && IsWindowVisible(hEllEditorWnd)) hVisibleEditor = hEllEditorWnd;
+                else if (hVisualDesignerWnd && IsWindowVisible(hVisualDesignerWnd)) hVisibleEditor = hVisualDesignerWnd;
+                else if (hWelcomePageWnd && IsWindowVisible(hWelcomePageWnd)) hVisibleEditor = hWelcomePageWnd;
+                if (hVisibleEditor) {
+                    RedrawWindow(hVisibleEditor, NULL, NULL, RDW_INVALIDATE | RDW_UPDATENOW);
+                }
+            }
         }
         break;
         
@@ -3315,6 +3331,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         if (g_IsDraggingOutputSplitter) {
             g_IsDraggingOutputSplitter = false;
             ReleaseCapture();
+            // 拖拽期间跳过了子窗口 resize，现在做最终布局更新
+            SendMessage(hWnd, WM_UPDATE_PANEL_LAYOUT, 0, 0);
+            // 拖拽期间 OutputPanel::OnSize 跳过了编辑框调整，
+            // 但最终布局中输出窗口大小可能未变（与上次拖拽相同），不会触发 WM_SIZE，
+            // 需要手动发送一次 WM_SIZE 让编辑框同步到最终尺寸
+            if (hOutputWnd) {
+                RECT rc;
+                GetClientRect(hOutputWnd, &rc);
+                SendMessage(hOutputWnd, WM_SIZE, 0, MAKELPARAM(rc.right, rc.bottom));
+            }
             SavePanelLayoutState();
             return 0;
         }
@@ -3331,14 +3357,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 if (newHeight < 80) newHeight = 80;
                 if (newHeight > 600) newHeight = 600;
                 if (newHeight != g_OutputPanelHeight) {
-                    // 节流：与AI面板一致，约120fps
-                    static DWORD lastOutputDragTime = 0;
-                    DWORD currentTime = GetTickCount();
-                    if (currentTime - lastOutputDragTime >= 8) {
-                        lastOutputDragTime = currentTime;
-                        g_OutputPanelHeight = newHeight;
-                        PostMessage(hWnd, WM_UPDATE_PANEL_LAYOUT, 0, 0);
-                    }
+                    g_OutputPanelHeight = newHeight;
+                    SendMessage(hWnd, WM_UPDATE_PANEL_LAYOUT, 0, 0);
                 }
                 return 0;
             }
@@ -5755,11 +5775,11 @@ ATOM RegisterPropertyGridClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex = {0};
     wcex.cbSize = sizeof(WNDCLASSEX);
-    wcex.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS;
+    wcex.style = CS_DBLCLKS;
     wcex.lpfnWndProc = PropertyGridWndProc;
     wcex.hInstance = hInstance;
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wcex.hbrBackground = NULL;
     wcex.lpszClassName = szPropertyGridClass;
     return RegisterClassExW(&wcex);
 }
@@ -5860,7 +5880,7 @@ void SwitchToVisualDesignerMode(bool enable)
                 // 3. 若 .eyc 文件不存在，则创建并注册到项目
                 bool fileExists = (GetFileAttributesW(eycPath.c_str()) != INVALID_FILE_ATTRIBUTES);
                 if (!fileExists) {
-                    std::wstring initContent = L".版本 2\n\n.程序集 " + windowName + L"\n\n" + subDecl + L"\n\n";
+                    std::wstring initContent = L".版本 2\n.程序集 窗口程序集" + windowName + L"\n\n" + subDecl + L"\n\n";
                     int utf8Len = WideCharToMultiByte(CP_UTF8, 0, initContent.c_str(), -1, NULL, 0, NULL, NULL);
                     if (utf8Len > 0) {
                         std::string utf8Str(utf8Len - 1, 0);
@@ -5967,18 +5987,157 @@ void SwitchToVisualDesignerMode(bool enable)
             g_pPropertyGrid->SetPropertyChangedCallback([](const std::wstring& propName, const std::wstring& newValue) {
                 if (!g_pVisualDesigner) return;
                 
+                // 名称属性需要验证
+                if (propName == L"名称") {
+                    // 检查是否为空
+                    if (newValue.empty()) {
+                        MessageBoxW(NULL, L"名称不能为空", L"命名错误", MB_OK | MB_ICONWARNING);
+                        UpdatePropertyGridForSelection();  // 恢复原值
+                        return;
+                    }
+                    // 检查是否以数字开头
+                    if (newValue[0] >= L'0' && newValue[0] <= L'9') {
+                        MessageBoxW(NULL, L"名称不能以数字开头", L"命名错误", MB_OK | MB_ICONWARNING);
+                        UpdatePropertyGridForSelection();  // 恢复原值
+                        return;
+                    }
+                    // 检查名称是否与其他控件重复
+                    auto allControls = g_pVisualDesigner->GetFormInfo().controls;
+                    auto selectedControls = g_pVisualDesigner->GetSelectedControls();
+                    std::wstring currentId;
+                    if (!selectedControls.empty()) {
+                        currentId = selectedControls[0]->id;
+                    }
+                    for (const auto& ctrl : allControls) {
+                        if (ctrl->id != currentId && ctrl->name == newValue) {
+                            MessageBoxW(NULL, L"该名称已被其他组件使用，请使用不同的名称", L"命名冲突", MB_OK | MB_ICONWARNING);
+                            UpdatePropertyGridForSelection();  // 恢复原值
+                            return;
+                        }
+                    }
+                }
+                
                 auto selectedControls = g_pVisualDesigner->GetSelectedControls();
+                
+                // 辅助函数：在项目所有 .eyc 文件中替换名称引用
+                auto replaceInAllEycFiles = [](const std::vector<std::pair<std::wstring, std::wstring>>& patterns) {
+                    if (patterns.empty()) return;
+                    auto& pm = ProjectManager::GetInstance();
+                    if (!pm.HasOpenProject()) return;
+                    extern EditorData* g_EditorData;
+                    
+                    const auto& files = pm.GetProjectFiles();
+                    for (const auto& fileItem : files) {
+                        if (fileItem.fileType != PROJECT_FILE_EYC) continue;
+                        std::wstring filePath = pm.GetAbsolutePath(fileItem.filePath);
+                        
+                        // 检查文件是否已在编辑器中打开
+                        int docIdx = g_EditorData ? g_EditorData->FindDocument(filePath) : -1;
+                        if (docIdx >= 0 && docIdx < (int)g_EditorData->documents.size()) {
+                            EditorDocument* doc = g_EditorData->documents[docIdx];
+                            bool changed = false;
+                            for (auto& line : doc->lines) {
+                                for (const auto& [oldPat, newPat] : patterns) {
+                                    size_t pos = 0;
+                                    while ((pos = line.find(oldPat, pos)) != std::wstring::npos) {
+                                        line.replace(pos, oldPat.size(), newPat);
+                                        pos += newPat.size();
+                                        changed = true;
+                                    }
+                                }
+                            }
+                            if (changed) {
+                                doc->modified = true;
+                                TabBarData* td = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
+                                if (td) {
+                                    int ti = td->FindTab(filePath);
+                                    if (ti >= 0) td->SetTabModified(ti, true);
+                                }
+                            }
+                        } else if (GetFileAttributesW(filePath.c_str()) != INVALID_FILE_ATTRIBUTES) {
+                            // 文件未打开但存在于磁盘，读取→替换→写回
+                            HANDLE hf = CreateFileW(filePath.c_str(), GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL);
+                            if (hf != INVALID_HANDLE_VALUE) {
+                                DWORD fileSize = GetFileSize(hf, NULL);
+                                if (fileSize > 0 && fileSize != INVALID_FILE_SIZE) {
+                                    std::string utf8(fileSize, 0);
+                                    DWORD bytesRead;
+                                    ReadFile(hf, &utf8[0], fileSize, &bytesRead, NULL);
+                                    CloseHandle(hf);
+                                    int wLen = MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), (int)bytesRead, NULL, 0);
+                                    std::wstring content(wLen, 0);
+                                    MultiByteToWideChar(CP_UTF8, 0, utf8.c_str(), (int)bytesRead, &content[0], wLen);
+                                    bool changed = false;
+                                    for (const auto& [oldPat, newPat] : patterns) {
+                                        size_t pos = 0;
+                                        while ((pos = content.find(oldPat, pos)) != std::wstring::npos) {
+                                            content.replace(pos, oldPat.size(), newPat);
+                                            pos += newPat.size();
+                                            changed = true;
+                                        }
+                                    }
+                                    if (changed) {
+                                        int u8Len = WideCharToMultiByte(CP_UTF8, 0, content.c_str(), (int)content.size(), NULL, 0, NULL, NULL);
+                                        std::string u8Out(u8Len, 0);
+                                        WideCharToMultiByte(CP_UTF8, 0, content.c_str(), (int)content.size(), &u8Out[0], u8Len, NULL, NULL);
+                                        HANDLE hw = CreateFileW(filePath.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+                                        if (hw != INVALID_HANDLE_VALUE) {
+                                            DWORD written;
+                                            WriteFile(hw, u8Out.c_str(), (DWORD)u8Out.size(), &written, NULL);
+                                            CloseHandle(hw);
+                                        }
+                                    }
+                                } else {
+                                    CloseHandle(hf);
+                                }
+                            }
+                        }
+                    }
+                    // 刷新编辑器和标签栏显示
+                    InvalidateRect(hTabBarWnd, NULL, FALSE);
+                    InvalidateRect(hEditorWnd, NULL, FALSE);
+                };
+                
                 if (selectedControls.empty()) {
                     // 修改窗体属性
+                    std::wstring oldName;
+                    if (propName == L"名称") {
+                        oldName = g_pVisualDesigner->GetFormInfo().name;
+                    }
                     g_pVisualDesigner->SetFormProperty(propName, newValue);
                     
                     // 如果修改的是"控制按钮"，需要刷新属性面板以更新子选项的禁用状态
                     if (propName == L"控制按钮") {
                         UpdatePropertyGridForSelection();
                     }
+                    // 修改名称后更新属性面板顶部的对象信息，并同步源代码
+                    if (propName == L"名称") {
+                        g_pPropertyGrid->SetObjectInfo(L"窗体", newValue);
+                        InvalidateRect(hPropertyGridWnd, NULL, FALSE);
+                        if (!oldName.empty() && oldName != newValue) {
+                            std::vector<std::pair<std::wstring, std::wstring>> patterns;
+                            patterns.push_back({L"_" + oldName + L"_", L"_" + newValue + L"_"});
+                            patterns.push_back({L".程序集 窗口程序集" + oldName, L".程序集 窗口程序集" + newValue});
+                            replaceInAllEycFiles(patterns);
+                        }
+                    }
                 } else if (selectedControls.size() == 1) {
                     // 修改单个控件属性
+                    std::wstring oldName;
+                    if (propName == L"名称") {
+                        oldName = selectedControls[0]->name;
+                    }
                     g_pVisualDesigner->SetControlProperty(selectedControls[0]->id, propName, newValue);
+                    // 修改名称后更新属性面板顶部的对象信息，并同步源代码
+                    if (propName == L"名称") {
+                        g_pPropertyGrid->SetObjectInfo(selectedControls[0]->type, newValue);
+                        InvalidateRect(hPropertyGridWnd, NULL, FALSE);
+                        if (!oldName.empty() && oldName != newValue) {
+                            std::vector<std::pair<std::wstring, std::wstring>> patterns;
+                            patterns.push_back({L"_" + oldName + L"_", L"_" + newValue + L"_"});
+                            replaceInAllEycFiles(patterns);
+                        }
+                    }
                 }
             });
         }

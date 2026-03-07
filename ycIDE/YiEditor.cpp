@@ -1980,6 +1980,40 @@ static bool IsInAssemblyButNotInTable(EditorDocument* doc, int lineIndex) {
     return false;
 }
 
+// 检查 lineIndex 行是否是其所在子程序中唯一的普通代码行
+// 普通代码行 = 不含制表符且不以\u2060开头的行（可以为空行）
+static bool IsOnlyNormalLineInSubroutine(EditorDocument* doc, int lineIndex) {
+    if (!doc || lineIndex < 0 || lineIndex >= (int)doc->lines.size()) return false;
+    
+    const std::wstring& line = doc->lines[lineIndex];
+    // 当前行必须是普通行
+    if (line.find(L'\t') != std::wstring::npos) return false;
+    if (line.length() > 0 && line[0] == L'\u2060') return false;
+    
+    // 向上查找，确认在某个子程序内
+    bool foundSubHeader = false;
+    for (int i = lineIndex - 1; i >= 0; i--) {
+        const std::wstring& l = doc->lines[i];
+        if (l.find(L"子程序名") == 0) { foundSubHeader = true; break; }
+        if (l.find(L"程序集名") == 0) return false;
+        if (l.find(L'\t') != std::wstring::npos) continue;  // 表格行
+        if (l.length() > 0 && l[0] == L'\u2060') continue;  // 参数行
+        // 遇到另一个普通行，说明不是唯一的
+        return false;
+    }
+    if (!foundSubHeader) return false;
+    
+    // 向下查找同一子程序内是否还有其他普通代码行
+    for (int i = lineIndex + 1; i < (int)doc->lines.size(); i++) {
+        const std::wstring& l = doc->lines[i];
+        if (l.find(L"子程序名") == 0 || l.find(L"程序集名") == 0) break;
+        if (l.find(L'\t') != std::wstring::npos) continue;
+        if (l.length() > 0 && l[0] == L'\u2060') continue;
+        return false;  // 还有其他普通行
+    }
+    return true;
+}
+
 // 清理孤立的表头（表头后面没有数据行时删除表头）
 static void CleanupOrphanedHeaders(EditorDocument* doc) {
     bool changed = true;
@@ -2169,6 +2203,39 @@ void DeleteSelection(EditorDocument* doc) {
     
     // 清理孤立的表头
     CleanupOrphanedHeaders(doc);
+    
+    // 确保每个子程序至少有一个普通代码行
+    for (int i = 0; i < (int)doc->lines.size(); i++) {
+        if (doc->lines[i].find(L"子程序名") == 0 && i + 1 < (int)doc->lines.size()) {
+            // 找到子程序表格区域的结束位置
+            int tableEnd = i + 1;  // 至少跳过数据行
+            for (int j = i + 1; j < (int)doc->lines.size(); j++) {
+                const std::wstring& l = doc->lines[j];
+                if (l.find(L'\t') != std::wstring::npos) {
+                    tableEnd = j + 1;
+                    continue;
+                }
+                if (l.length() > 0 && l[0] == L'\u2060') {
+                    tableEnd = j + 1;
+                    continue;
+                }
+                break;
+            }
+            // 检查 tableEnd 后面是否有普通代码行（在下一个子程序之前）
+            bool hasNormal = false;
+            for (int j = tableEnd; j < (int)doc->lines.size(); j++) {
+                const std::wstring& l = doc->lines[j];
+                if (l.find(L"子程序名") == 0 || l.find(L"程序集名") == 0) break;
+                if (l.find(L'\t') == std::wstring::npos && !(l.length() > 0 && l[0] == L'\u2060')) {
+                    hasNormal = true;
+                    break;
+                }
+            }
+            if (!hasNormal) {
+                doc->lines.insert(doc->lines.begin() + tableEnd, L"");
+            }
+        }
+    }
 }
 
 void InsertText(EditorDocument* doc, const std::wstring& text) {
@@ -6081,6 +6148,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         }
                     }
                     
+                    // 表格行中不允许删除制表符（单元格分隔符）
+                    if (line.find(L'\t') != std::wstring::npos && line[doc->cursorCol - 1] == L'\t') {
+                        return 0;
+                    }
+                    
                     wchar_t deletedChar = line[doc->cursorCol - 1];
                     line.erase(doc->cursorCol - 1, 1);
                     doc->cursorCol--;
@@ -6304,6 +6376,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     }
                     
                     if (isTableLine && !doc->lines[doc->cursorLine - 1].empty()) {
+                        return 0;
+                    }
+
+                    // 保护子程序中最后一个普通代码行不被删除
+                    if (IsOnlyNormalLineInSubroutine(doc, doc->cursorLine)) {
                         return 0;
                     }
 
@@ -6703,6 +6780,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     }
                     
                     if (doc->cursorCol < (int)line.length()) {
+                        // 表格行中不允许删除制表符（单元格分隔符）
+                        if (line.find(L'\t') != std::wstring::npos && line[doc->cursorCol] == L'\t') {
+                            return 0;
+                        }
+                        
                         wchar_t deletedChar = line[doc->cursorCol];
                         line.erase(doc->cursorCol, 1);
                         
@@ -6825,6 +6907,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             return 0;
                         }
 
+                        // 保护子程序中最后一个普通代码行不被删除
+                        if (IsOnlyNormalLineInSubroutine(doc, doc->cursorLine + 1)) {
+                            return 0;
+                        }
+
                         // 合并下一行
                         doc->lines[doc->cursorLine] += doc->lines[doc->cursorLine + 1];
                         doc->lines.erase(doc->lines.begin() + doc->cursorLine + 1);
@@ -6891,7 +6978,13 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
         return 0;
         
     case WM_SIZE:
-        UpdateScrollBars(hWnd);
+        // 拖拽输出面板时跳过昂贵的滚动条重算（搜索最大行宽需遍历所有行）
+        {
+            extern bool g_IsDraggingOutputSplitter;
+            if (!g_IsDraggingOutputSplitter) {
+                UpdateScrollBars(hWnd);
+            }
+        }
         break;
 
     case WM_MOUSEWHEEL:

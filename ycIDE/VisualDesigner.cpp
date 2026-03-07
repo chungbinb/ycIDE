@@ -370,6 +370,9 @@ void VisualDesigner::OnMouseMove(int x, int y, UINT flags)
         int dx = canvasPt.X - m_dragStartPoint.X;
         int dy = canvasPt.Y - m_dragStartPoint.Y;
         
+        // 没有实际移动则跳过，避免仅选中就标记为已修改
+        if (dx == 0 && dy == 0) return;
+        
         // 移动所有选中的控件
         int index = 0;
         for (const auto& id : m_selection.selectedControlIds) {
