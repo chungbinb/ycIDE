@@ -19,74 +19,88 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="elib\fnshare.cpp" />
-    <ClCompile Include="spec_const.cpp" />
-    <ClCompile Include="spec_dllMain.cpp" />
-    <ClCompile Include="spec_dtType.cpp" />
-    <ClCompile Include="spec_cmdInfo.cpp" />
-    <ClCompile Include="cppCode\spec_0_MachineCode.cpp" />
-    <ClCompile Include="cppCode\spec_1_GetVarAddress.cpp" />
-    <ClCompile Include="cppCode\spec_2_GetSubAddress.cpp" />
-    <ClCompile Include="cppCode\spec_3_GetVarDataAddr.cpp" />
-    <ClCompile Include="cppCode\spec_4_Trace.cpp" />
-    <ClCompile Include="cppCode\spec_5_Verify.cpp" />
-    <ClCompile Include="cppCode\spec_6_CallFunction.cpp" />
-    <ClCompile Include="cppCode\spec_7_Delay.cpp" />
-    <ClCompile Include="cppCode\spec_8_DelayCallFunction.cpp" />
-    <ClCompile Include="cppCode\spec_9_AllocMem.cpp" />
-    <ClCompile Include="cppCode\spec_10_FreeMem.cpp" />
-    <ClCompile Include="cppCode\spec_11_ESysFunction.cpp" />
-    <ClCompile Include="cppCode\spec_12_GetText.cpp" />
-    <ClCompile Include="cppCode\spec_13_GetText_Set.cpp" />
-    <ClCompile Include="cppCode\spec_14_GetText_Get.cpp" />
-    <ClCompile Include="cppCode\spec_15_DelayCallFunction_precisely.cpp" />
+    <ClCompile Include="..\elib\fnshare.cpp" />
+    <ClCompile Include="..\krnln_const.cpp" />
+    <ClCompile Include="..\krnln_dllMain.cpp" />
+    <ClCompile Include="..\krnln_dtType.cpp" />
+    <ClCompile Include="..\krnln_cmdInfo.cpp" />
+    <ClCompile Include="..\cppCode\krnln_cmd_impl.cpp" />
+    <ClCompile Include="..\control\control_base.cpp" />
+    <ClCompile Include="..\control\win_unit.cpp" />
+    <ClCompile Include="..\control\button.cpp" />
+    <ClCompile Include="..\control\editbox.cpp" />
+    <ClCompile Include="..\control\controls.cpp" />
+    <ClCompile Include="..\control\unit_interface.cpp" />
+    <ClCompile Include="..\control\label.cpp" />
+    <ClCompile Include="..\control\checkbox.cpp" />
+    <ClCompile Include="..\control\radiobox.cpp" />
+    <ClCompile Include="..\control\groupbox.cpp" />
+    <ClCompile Include="..\control\listbox.cpp" />
+    <ClCompile Include="..\control\combobox.cpp" />
+    <ClCompile Include="..\control\scrollbar.cpp" />
+    <ClCompile Include="..\control\progressbar.cpp" />
+    <ClCompile Include="..\control\sliderbar.cpp" />
+    <ClCompile Include="..\control\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="elib\fnshare.h" />
-    <ClInclude Include="elib\krnllib.h" />
-    <ClInclude Include="elib\lang.h" />
-    <ClInclude Include="elib\lib2.h" />
-    <ClInclude Include="elib\mtypes.h" />
-    <ClInclude Include="elib\PublicIDEFunctions.h" />
-    <ClInclude Include="elib\untshare.h" />
-    <ClInclude Include="include_spec_header.h" />
-    <ClInclude Include="spec_cmd_typedef.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Source_spec.def" />
+    <ClInclude Include="..\elib\fnshare.h" />
+    <ClInclude Include="..\elib\krnllib.h" />
+    <ClInclude Include="..\elib\lang.h" />
+    <ClInclude Include="..\elib\lib2.h" />
+    <ClInclude Include="..\elib\mtypes.h" />
+    <ClInclude Include="..\elib\PublicIDEFunctions.h" />
+    <ClInclude Include="..\elib\untshare.h" />
+    <ClInclude Include="..\include_krnln_header.h" />
+    <ClInclude Include="..\krnln_cmd_typedef.h" />
+    <ClInclude Include="..\control\control_base.h" />
+    <ClInclude Include="..\control\win_unit.h" />
+    <ClInclude Include="..\control\button.h" />
+    <ClInclude Include="..\control\editbox.h" />
+    <ClInclude Include="..\control\controls.h" />
+    <ClInclude Include="..\control\unit_interface.h" />
+    <ClInclude Include="..\control\label.h" />
+    <ClInclude Include="..\control\checkbox.h" />
+    <ClInclude Include="..\control\radiobox.h" />
+    <ClInclude Include="..\control\groupbox.h" />
+    <ClInclude Include="..\control\listbox.h" />
+    <ClInclude Include="..\control\combobox.h" />
+    <ClInclude Include="..\control\scrollbar.h" />
+    <ClInclude Include="..\control\progressbar.h" />
+    <ClInclude Include="..\control\sliderbar.h" />
+    <ClInclude Include="..\control\timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ceadc3dd-024e-4173-9ccf-e60334b2944f}</ProjectGuid>
-    <RootNamespace>spec</RootNamespace>
+    <ProjectGuid>{A1B2C3D4-1234-5678-9ABC-DEF012345678}</ProjectGuid>
+    <RootNamespace>krnlnstatic</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -107,43 +121,24 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <TargetExt>.fne</TargetExt>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <TargetExt>.fne</TargetExt>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>__E_FNENAME=spec;WIN32;_DEBUG;SPEC_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=krnln;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
-      <ModuleDefinitionFile>Source_spec.def</ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -151,45 +146,40 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>__E_FNENAME=spec;WIN32;NDEBUG;SPEC_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=krnln;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
-      <ModuleDefinitionFile>Source_spec.def</ModuleDefinitionFile>
     </Link>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;SPEC_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=krnln;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -198,21 +188,21 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;SPEC_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__E_STATIC_LIB;__E_FNENAME=krnln;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>
+      </SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

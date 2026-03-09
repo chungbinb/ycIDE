@@ -20,7 +20,9 @@ struct LibraryCommand {
     std::wstring category;     // 命令类别
     std::wstring returnType;   // 返回值类型
     std::wstring description;  // 命令说明
-    std::wstring library;      // 所属支持库
+    std::wstring library;      // 所属支持库（中文名）
+    std::wstring libraryFileName; // 支持库文件名（不含扩展名，如 spec、krnln）
+    int commandIndex;          // 命令在支持库中的原始索引
     std::vector<LibraryParameter> parameters;  // 参数列表
     std::vector<std::wstring> pinyin;       // 全拼（支持多音字）
     std::vector<std::wstring> initials;     // 首字母（支持多音字）
@@ -91,6 +93,12 @@ public:
     // 获取最后的错误信息
     std::wstring GetLastError() const { return lastError_; }
     
+    // 获取所有已加载的库文件名列表（不含扩展名）
+    const std::vector<std::wstring>& GetLoadedLibraryFileNames() const { return loadedLibraryFileNames; }
+
+    // 获取库文件名对应的 .fne 完整路径
+    std::wstring GetLibraryFnePath(const std::wstring& libFileName) const;
+    
 private:
     LibraryParser() = default;
     
@@ -99,5 +107,7 @@ private:
     std::vector<WindowUnitInfo> windowUnits;    // 窗口组件列表
     std::map<std::wstring, size_t> nameIndex;   // 名称到命令索引的映射
     std::map<std::wstring, size_t> unitIndex;   // 名称到组件索引的映射
+    std::vector<std::wstring> loadedLibraryFileNames;  // 已加载的库文件名列表
+    std::map<std::wstring, std::wstring> libraryFilePathMap; // 库文件名 -> .fne完整路径
     std::wstring lastError_;  // 最后的错误信息
 };

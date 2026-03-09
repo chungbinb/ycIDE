@@ -4,12 +4,14 @@
 #include "Keyword.h"
 #include "Parser.h"
 #include "YiEditor.h"
+#include "LibraryParser.h"
 #include "json.hpp"
 #include <shlobj.h>
 #include <sstream>
 #include <fstream>
 #include <chrono>
 #include <algorithm>
+#include <set>
 
 using json = nlohmann::json;
 
@@ -31,6 +33,8 @@ Compiler& Compiler::GetInstance() {
 Compiler::Compiler() 
     : m_isCompiling(false)
     , m_hRunningProcess(NULL)
+    , m_hOutputReadPipe(NULL)
+    , m_hOutputThread(NULL)
     , m_callback(nullptr)
 {
 }
@@ -364,24 +368,6 @@ bool Compiler::GenerateCCode(const std::wstring& outputDir, ProjectOutputType ou
     mainFile << "#include <stdio.h>\n";
     mainFile << "\n";
     
-    // 生成易语言标准库命令的C实现
-    mainFile << "/* 易语言标准库命令实现 */\n";
-    mainFile << "int 信息框(const wchar_t* 内容, int 按钮类型, const wchar_t* 标题, int 图标类型) {\n";
-    mainFile << "    UINT type = MB_OK;\n";
-    mainFile << "    if (按钮类型 == 1) type = MB_OKCANCEL;\n";
-    mainFile << "    else if (按钮类型 == 2) type = MB_ABORTRETRYIGNORE;\n";
-    mainFile << "    else if (按钮类型 == 3) type = MB_YESNOCANCEL;\n";
-    mainFile << "    else if (按钮类型 == 4) type = MB_YESNO;\n";
-    mainFile << "    else if (按钮类型 == 5) type = MB_RETRYCANCEL;\n";
-    mainFile << "    if (图标类型 == 1) type |= MB_ICONERROR;\n";
-    mainFile << "    else if (图标类型 == 2) type |= MB_ICONQUESTION;\n";
-    mainFile << "    else if (图标类型 == 3) type |= MB_ICONWARNING;\n";
-    mainFile << "    else if (图标类型 == 4) type |= MB_ICONINFORMATION;\n";
-    mainFile << "    const wchar_t* title = 标题 ? 标题 : L\"提示\";\n";
-    mainFile << "    return MessageBoxW(NULL, 内容, title, type);\n";
-    mainFile << "}\n";
-    mainFile << "\n";
-    
     if (outputType == ProjectOutputType::WindowsApp) {
         // 查找并解析窗口文件
         std::wstring efwPath = FindStartupWindowFile(project);
@@ -613,9 +599,187 @@ static std::string CIndent(int depth) {
     return std::string(depth * 4, ' ');
 }
 
+// 支持库函数名解析：中文名+参数数量 → 唯一C函数名
+struct LibFuncEntry {
+    std::string uniqueName; // 唯一C函数名: _epl_{lib}_{index}
+    int paramCount;         // 参数数量
+};
+static std::map<std::string, std::vector<LibFuncEntry>> g_libFuncMap;
+
+// 记录源代码中实际使用的函数调用: {中文名, 参数数量}
+struct UsedFuncCall {
+    std::wstring name;
+    int argCount;
+    bool operator<(const UsedFuncCall& o) const {
+        if (name != o.name) return name < o.name;
+        return argCount < o.argCount;
+    }
+};
+static std::set<UsedFuncCall> g_usedFuncCalls;
+
+// 变量名 → 数据类型映射（用于推断通用型参数的 SDT 类型）
+static std::map<std::wstring, std::wstring> g_varTypeMap;
+
+// 递归收集 AST 中所有函数调用
+static void CollectFuncCalls(const std::shared_ptr<ASTNode>& node) {
+    if (!node) return;
+    switch (node->type) {
+        case ASTNodeType::CALL_EXPR: {
+            auto* call = static_cast<CallExprNode*>(node.get());
+            g_usedFuncCalls.insert({call->functionName, (int)call->arguments.size()});
+            for (auto& arg : call->arguments) CollectFuncCalls(arg);
+            break;
+        }
+        case ASTNodeType::BINARY_EXPR: {
+            auto* bin = static_cast<BinaryExprNode*>(node.get());
+            CollectFuncCalls(bin->left);
+            CollectFuncCalls(bin->right);
+            break;
+        }
+        case ASTNodeType::UNARY_EXPR: {
+            auto* un = static_cast<UnaryExprNode*>(node.get());
+            CollectFuncCalls(un->operand);
+            break;
+        }
+        case ASTNodeType::ASSIGN_STMT: {
+            auto* a = static_cast<AssignStmtNode*>(node.get());
+            CollectFuncCalls(a->target);
+            CollectFuncCalls(a->value);
+            break;
+        }
+        case ASTNodeType::IF_STMT: {
+            auto* s = static_cast<IfStmtNode*>(node.get());
+            CollectFuncCalls(s->condition);
+            for (auto& c : s->thenBlock) CollectFuncCalls(c);
+            for (auto& c : s->elseBlock) CollectFuncCalls(c);
+            break;
+        }
+        case ASTNodeType::WHILE_STMT: {
+            auto* s = static_cast<WhileStmtNode*>(node.get());
+            CollectFuncCalls(s->condition);
+            for (auto& c : s->body) CollectFuncCalls(c);
+            break;
+        }
+        case ASTNodeType::FOR_STMT: {
+            auto* s = static_cast<ForStmtNode*>(node.get());
+            CollectFuncCalls(s->startValue);
+            CollectFuncCalls(s->endValue);
+            CollectFuncCalls(s->stepValue);
+            for (auto& c : s->body) CollectFuncCalls(c);
+            break;
+        }
+        case ASTNodeType::RETURN_STMT: {
+            auto* s = static_cast<ReturnStmtNode*>(node.get());
+            CollectFuncCalls(s->returnValue);
+            break;
+        }
+        case ASTNodeType::VAR_DECL: {
+            auto* v = static_cast<VarDeclNode*>(node.get());
+            CollectFuncCalls(v->initialValue);
+            break;
+        }
+        default: break;
+    }
+}
+
+static void CollectFuncCallsFromAST(const std::shared_ptr<ProgramNode>& ast) {
+    // 收集变量类型信息
+    g_varTypeMap.clear();
+    for (auto& decl : ast->declarations) {
+        if (decl->type == ASTNodeType::VAR_DECL) {
+            auto* v = static_cast<VarDeclNode*>(decl.get());
+            if (!v->name.empty() && !v->dataType.empty())
+                g_varTypeMap[v->name] = v->dataType;
+        }
+    }
+    for (auto& sub : ast->subroutines) {
+        if (sub->type != ASTNodeType::SUBROUTINE) continue;
+        auto* s = static_cast<SubroutineNode*>(sub.get());
+        // 收集参数类型
+        for (auto& p : s->params) {
+            if (!p->name.empty() && !p->dataType.empty())
+                g_varTypeMap[p->name] = p->dataType;
+        }
+        // 收集局部变量类型
+        for (auto& lv : s->localVars) {
+            if (lv->type == ASTNodeType::VAR_DECL) {
+                auto* v = static_cast<VarDeclNode*>(lv.get());
+                if (!v->name.empty() && !v->dataType.empty())
+                    g_varTypeMap[v->name] = v->dataType;
+            }
+        }
+        for (auto& stmt : s->statements) CollectFuncCalls(stmt);
+    }
+    for (auto& decl : ast->declarations) CollectFuncCalls(decl);
+}
+
+// 检查某个库命令是否被源代码使用
+static bool IsLibCommandUsed(const std::wstring& chineseName, int paramCount) {
+    return g_usedFuncCalls.count({chineseName, paramCount}) > 0;
+}
+
+static std::string ResolveLibFuncName(const std::string& chineseName, int argCount) {
+    auto it = g_libFuncMap.find(chineseName);
+    if (it == g_libFuncMap.end()) return chineseName; // 非库函数，保持原名
+    // 优先按参数数量匹配
+    for (auto& entry : it->second) {
+        if (entry.paramCount == argCount) return entry.uniqueName;
+    }
+    // 无精确匹配，返回第一个
+    return it->second[0].uniqueName;
+}
+
 // 前向声明
 static std::string GenExprNode(std::shared_ptr<ASTNode> node);
 static std::string GenStmtNode(std::shared_ptr<ASTNode> node, int indent);
+
+// 根据 AST 节点推断 SDT 数据类型常量（用于通用型参数）
+static std::string InferSdtType(const std::shared_ptr<ASTNode>& node) {
+    if (!node) return "SDT_INT";
+    
+    if (node->type == ASTNodeType::LITERAL_EXPR) {
+        auto* lit = static_cast<LiteralExprNode*>(node.get());
+        if (lit->literalType == EYTokenType::STRING)
+            return "SDT_TEXT";
+        if (lit->literalType == EYTokenType::NUMBER) {
+            // 检查是否包含小数点
+            if (lit->value.find(L'.') != std::wstring::npos)
+                return "SDT_DOUBLE";
+            return "SDT_INT";
+        }
+        if (lit->literalType == EYTokenType::KEYWORD_TRUE || 
+            lit->literalType == EYTokenType::KEYWORD_FALSE)
+            return "SDT_BOOL";
+    }
+    
+    // 标识符（变量）：从变量声明中查找实际类型
+    if (node->type == ASTNodeType::IDENTIFIER_EXPR) {
+        auto* ident = static_cast<IdentifierExprNode*>(node.get());
+        auto it = g_varTypeMap.find(ident->name);
+        if (it != g_varTypeMap.end()) {
+            const std::wstring& t = it->second;
+            if (t == L"文本型")          return "SDT_TEXT";
+            if (t == L"整数型")          return "SDT_INT";
+            if (t == L"逻辑型")          return "SDT_BOOL";
+            if (t == L"小数型")          return "SDT_FLOAT";
+            if (t == L"双精度小数型")     return "SDT_DOUBLE";
+            if (t == L"长整数型")         return "SDT_INT64";
+            if (t == L"字节型")          return "SDT_BYTE";
+            if (t == L"短整数型")         return "SDT_SHORT";
+        }
+        return "SDT_INT";
+    }
+    
+    // 算术表达式结果：整数
+    if (node->type == ASTNodeType::BINARY_EXPR || node->type == ASTNodeType::UNARY_EXPR)
+        return "SDT_INT";
+    
+    // 函数调用结果：默认整数
+    if (node->type == ASTNodeType::CALL_EXPR)
+        return "SDT_INT";
+    
+    return "SDT_INT";
+}
 
 static std::string GenExprNode(std::shared_ptr<ASTNode> node) {
     if (!node) return "0";
@@ -664,10 +828,25 @@ static std::string GenExprNode(std::shared_ptr<ASTNode> node) {
         }
         case ASTNodeType::CALL_EXPR: {
             auto* call = static_cast<CallExprNode*>(node.get());
-            std::string result = WideToUtf8(call->functionName) + "(";
+            std::string funcName = WideToUtf8(call->functionName);
+            // 解析支持库函数名：通过参数数量匹配唯一的C函数名
+            funcName = ResolveLibFuncName(funcName, (int)call->arguments.size());
+            // 查找库命令以获取参数类型信息（用于通用型参数强制转换）
+            const LibraryCommand* libCmd = LibraryParser::GetInstance().FindCommand(call->functionName);
+            std::string result = funcName + "(";
+            bool firstArg = true;
             for (size_t i = 0; i < call->arguments.size(); i++) {
-                if (i > 0) result += ", ";
-                result += GenExprNode(call->arguments[i]);
+                if (!firstArg) result += ", ";
+                firstArg = false;
+                std::string argExpr = GenExprNode(call->arguments[i]);
+                if (libCmd && i < libCmd->parameters.size() &&
+                    (libCmd->parameters[i].type == L"通用型" || libCmd->parameters[i].type == L"未知类型")) {
+                    result += "(intptr_t)(" + argExpr + ")";
+                    // 根据实参 AST 类型推断 SDT 类型标记
+                    result += ", " + InferSdtType(call->arguments[i]);
+                } else {
+                    result += argExpr;
+                }
             }
             result += ")";
             return result;
@@ -756,6 +935,41 @@ static std::string GenStmtNode(std::shared_ptr<ASTNode> node, int indent) {
     }
 }
 
+// MDATA_INF 数据类型对应的联合体成员名
+static std::string GetMdataFieldForType(const std::wstring& type) {
+    if (type == L"字节型")          return "m_byte";
+    if (type == L"短整数型")         return "m_short";
+    if (type == L"整数型")          return "m_int";
+    if (type == L"长整数型")         return "m_int64";
+    if (type == L"小数型")          return "m_float";
+    if (type == L"双精度小数型")     return "m_double";
+    if (type == L"逻辑型")          return "m_bool";
+    if (type == L"文本型")          return "m_pText";
+    if (type == L"字节集")          return "m_pBin";
+    if (type == L"子程序指针")       return "m_dwSubCodeAdr";
+    if (type == L"通用型")          return "m_int64";
+    if (type == L"未知类型")        return "m_int64";
+    return "m_int"; // 默认按整数处理
+}
+
+// 易语言类型映射为C类型（用于桥接函数参数）
+static std::string MapEplTypeToCType(const std::wstring& type) {
+    if (type == L"字节型")          return "unsigned char";
+    if (type == L"短整数型")         return "short";
+    if (type == L"整数型")          return "int";
+    if (type == L"长整数型")         return "long long";
+    if (type == L"小数型")          return "float";
+    if (type == L"双精度小数型")     return "double";
+    if (type == L"逻辑型")          return "int";
+    if (type == L"文本型")          return "const wchar_t*";
+    if (type == L"字节集")          return "void*";
+    if (type == L"子程序指针")       return "void*";
+    if (type == L"通用型")          return "intptr_t";
+    if (type == L"未知类型")        return "intptr_t";
+    if (type.empty() || type == L"无返回值") return "void";
+    return "int"; // 默认
+}
+
 // 将 .eyc 文本内容转换为 C 代码字符串
 std::string Compiler::TranspileEycContent(const std::wstring& eycContent,
                                            const std::wstring& fileName) {
@@ -764,11 +978,72 @@ std::string Compiler::TranspileEycContent(const std::wstring& eycContent,
 
     std::string result;
     result += "/* 由 ycIDE 自动从 " + WideToUtf8(fileName) + " 生成 */\n\n";
-    result += "#include <windows.h>\n\n";
+    result += "#include <windows.h>\n";
+    result += "#include <stdint.h>\n\n";
     
-    // 声明外部库函数
-    result += "/* 外部库函数声明 */\n";
-    result += "extern int 信息框(const wchar_t* 内容, int 按钮类型, const wchar_t* 标题, int 图标类型);\n";
+    // SDT 数据类型常量（与支持库桥接代码一致）
+    result += "/* 数据类型常量 */\n";
+    result += "#define SDT_BYTE   0x80000101\n";
+    result += "#define SDT_SHORT  0x80000201\n";
+    result += "#define SDT_INT    0x80000301\n";
+    result += "#define SDT_INT64  0x80000401\n";
+    result += "#define SDT_FLOAT  0x80000501\n";
+    result += "#define SDT_DOUBLE 0x80000601\n";
+    result += "#define SDT_BOOL   0x80000002\n";
+    result += "#define SDT_TEXT   0x80000004\n";
+    result += "#define SDT_BIN    0x80000005\n";
+    result += "#define SDT_SUB_PTR 0x80000006\n\n";
+    
+    // 自动生成已加载支持库的外部函数声明（使用唯一C函数名避免冲突）
+    // 只为源代码中实际使用的命令生成声明
+    result += "/* 支持库函数声明（自动生成） */\n";
+    {
+        auto& libParser = LibraryParser::GetInstance();
+        const auto& commands = libParser.GetCommands();
+        
+        // 先收集源代码中使用的函数调用
+        CollectFuncCallsFromAST(ast);
+        
+        // 构建中文名→唯一名查找表（只包含被使用的命令）
+        g_libFuncMap.clear();
+        for (const auto& cmd : commands) {
+            if (!IsLibCommandUsed(cmd.chineseName, (int)cmd.parameters.size())) continue;
+            std::string chnName = WideToUtf8(cmd.chineseName);
+            std::string libName = WideToUtf8(cmd.libraryFileName);
+            std::string uniqueName = "_epl_" + libName + "_" + std::to_string(cmd.commandIndex);
+            LibFuncEntry entry;
+            entry.uniqueName = uniqueName;
+            entry.paramCount = (int)cmd.parameters.size();
+            g_libFuncMap[chnName].push_back(entry);
+        }
+        
+        // 生成 extern 声明（只为被使用的命令）
+        for (const auto& cmd : commands) {
+            if (!IsLibCommandUsed(cmd.chineseName, (int)cmd.parameters.size())) continue;
+            std::string retCType = MapEplTypeToCType(cmd.returnType);
+            std::string libName = WideToUtf8(cmd.libraryFileName);
+            std::string uniqueName = "_epl_" + libName + "_" + std::to_string(cmd.commandIndex);
+            result += "extern " + retCType + " " + uniqueName + "(";
+            if (cmd.parameters.empty()) {
+                result += "void";
+            } else {
+                bool first = true;
+                for (size_t i = 0; i < cmd.parameters.size(); i++) {
+                    if (!first) result += ", ";
+                    first = false;
+                    std::string paramType = MapEplTypeToCType(cmd.parameters[i].type);
+                    std::string paramName = WideToUtf8(cmd.parameters[i].name);
+                    if (paramName.empty()) paramName = "arg" + std::to_string(i + 1);
+                    result += paramType + " " + paramName;
+                    // 通用型参数：额外添加类型标记参数
+                    if (cmd.parameters[i].type == L"通用型" || cmd.parameters[i].type == L"未知类型") {
+                        result += ", int " + paramName + "_type";
+                    }
+                }
+            }
+            result += "); /* " + WideToUtf8(cmd.chineseName) + " */\n";
+        }
+    }
     result += "\n";
 
     // 全局变量 / 常量声明
@@ -914,8 +1189,65 @@ bool Compiler::InvokeClangCompiler(const std::wstring& cFile, const std::wstring
     // 添加库
     cmdLine += L" -lkernel32 -luser32 -lgdi32";
     
+    // 链接已加载支持库的静态库文件
+    {
+        auto& libParser = LibraryParser::GetInstance();
+        const auto& libFileNames = libParser.GetLoadedLibraryFileNames();
+        for (const auto& libName : libFileNames) {
+            std::wstring staticLib = FindStaticLibrary(libName);
+            if (!staticLib.empty()) {
+                cmdLine += L" \"" + staticLib + L"\"";
+                SendMessage(CompileMessageType::Info, L"链接静态库: " + staticLib);
+            }
+        }
+    }
+    
     // 使用 MinGW 目标（不依赖 Visual Studio）
     cmdLine += L" --target=x86_64-w64-mingw32";
+    
+    // MSVC 编译的 .lib 文件内嵌了 /DEFAULTLIB 指令（如 LIBCMTD、OLDNAMES），
+    // lld 在 MinGW 模式下会尝试查找对应的 libXXX.a 文件。
+    // 创建空的占位 .a 文件，避免链接器报错。
+    // 同时生成 MSVC 运行时桩函数，提供静态库依赖的符号。
+    {
+        std::wstring stubDir = GetTempDirectory() + L"\\stubs";
+        CreateDirectoryW(stubDir.c_str(), NULL);
+        const wchar_t* stubNames[] = {
+            L"libLIBCMTD.a", L"libLIBCMT.a", L"libOLDNAMES.a", L"libmsvcrtd.a"
+        };
+        for (const auto& name : stubNames) {
+            std::wstring stubPath = stubDir + L"\\" + name;
+            if (GetFileAttributesW(stubPath.c_str()) == INVALID_FILE_ATTRIBUTES) {
+                std::ofstream sf(stubPath.c_str(), std::ios::binary);
+                sf.write("!<arch>\n", 8);
+            }
+        }
+        cmdLine += L" -L\"" + stubDir + L"\"";
+        
+        // 生成 MSVC 运行时兼容桩函数 C 文件
+        std::wstring msvcStubC = stubDir + L"\\msvc_compat.c";
+        {
+            std::ofstream mf(msvcStubC.c_str(), std::ios::out | std::ios::binary);
+            mf << "/* MSVC CRT 兼容桩函数 - 自动生成 */\n"
+                  "#include <stdint.h>\n\n"
+                  "/* 安全 Cookie（/GS 缓冲区溢出检测） */\n"
+                  "uintptr_t __security_cookie = 0xBB40E64E;\n"
+                  "void __fastcall __security_check_cookie(uintptr_t cookie) { (void)cookie; }\n"
+                  "void __GSHandlerCheck(void) {}\n\n"
+                  "/* 运行时检查（/RTC） */\n"
+                  "void _RTC_InitBase(void) {}\n"
+                  "void _RTC_Shutdown(void) {}\n"
+                  "void _RTC_CheckStackVars(void *frame, void *v) { (void)frame; (void)v; }\n"
+                  "void _RTC_CheckStackVars2(void *frame, void *v, void *v2) { (void)frame; (void)v; (void)v2; }\n"
+                  "void _RTC_AllocaHelper(void *p, int s, void *d) { (void)p; (void)s; (void)d; }\n"
+                  "void __report_rangecheckfailure(void) {}\n\n"
+                  "/* 栈探测 */\n"
+                  "void __chkstk(void) {}\n\n"
+                  "/* 浮点使用标记 */\n"
+                  "int _fltused = 1;\n";
+        }
+        cmdLine += L" \"" + msvcStubC + L"\"";
+    }
     
     // 查找附带的 MinGW 头文件/库
     std::wstring mingwRoot = FindMinGWRoot();
@@ -1063,6 +1395,276 @@ bool Compiler::CreateCompilerProcess(const std::wstring& cmdLine, std::wstring& 
     return exitCode == 0;
 }
 
+// 查找支持库对应的静态库文件（.a）
+std::wstring Compiler::FindStaticLibrary(const std::wstring& libFileName) {
+    std::wstring appDir = GetAppDirectory();
+    
+    // 查找顺序：
+    // 1. <exe_dir>\static_lib\{libname}.lib
+    // 2. <exe_dir>\static_lib\{libname}_static.lib
+    // 3. <exe_dir>\static_lib\{libname}.a
+    // 4. <exe_dir>\static_lib\{libname}_static.a
+    std::vector<std::wstring> searchPaths = {
+        appDir + L"\\static_lib\\" + libFileName + L".lib",
+        appDir + L"\\static_lib\\" + libFileName + L"_static.lib",
+        appDir + L"\\static_lib\\" + libFileName + L".a",
+        appDir + L"\\static_lib\\" + libFileName + L"_static.a",
+    };
+    
+    for (const auto& path : searchPaths) {
+        if (GetFileAttributesW(path.c_str()) != INVALID_FILE_ATTRIBUTES) {
+            return path;
+        }
+    }
+    
+    return L"";
+}
+
+// 生成支持库桥接代码
+bool Compiler::GenerateLibraryBridgeCode(const std::wstring& tempDir,
+                                          std::vector<std::wstring>& bridgeFiles,
+                                          std::vector<std::wstring>& dynamicFneFiles) {
+    auto& libParser = LibraryParser::GetInstance();
+    const auto& commands = libParser.GetCommands();
+    const auto& libFileNames = libParser.GetLoadedLibraryFileNames();
+    
+    if (libFileNames.empty()) return true; // 没有加载任何支持库
+    
+    // 按库分组命令（只包含源代码中实际使用的命令）
+    std::map<std::wstring, std::vector<const LibraryCommand*>> libCommands;
+    for (const auto& cmd : commands) {
+        if (!cmd.libraryFileName.empty() && 
+            IsLibCommandUsed(cmd.chineseName, (int)cmd.parameters.size())) {
+            libCommands[cmd.libraryFileName].push_back(&cmd);
+        }
+    }
+    
+    // 为每个支持库生成桥接代码
+    for (const auto& [libFileName, cmds] : libCommands) {
+        std::wstring staticLib = FindStaticLibrary(libFileName);
+        bool useStatic = !staticLib.empty();
+        
+        // 没有静态库时，查找 .fne 动态库
+        std::wstring fnePath;
+        if (!useStatic) {
+            fnePath = libParser.GetLibraryFnePath(libFileName);
+            if (fnePath.empty()) {
+                SendMessage(CompileMessageType::Warning, 
+                    L"警告: 支持库 " + libFileName + L" 既没有静态库也没有动态库，跳过");
+                continue;
+            }
+            dynamicFneFiles.push_back(fnePath);
+            SendMessage(CompileMessageType::Info, 
+                L"支持库 " + libFileName + L" 将使用动态加载方式（.fne）");
+        }
+        
+        std::string libNameUtf8 = WideToUtf8(libFileName);
+        std::wstring bridgePath = tempDir + L"\\bridge_" + libFileName + L".c";
+        
+        std::ofstream f(bridgePath.c_str(), std::ios::out | std::ios::binary);
+        if (!f.is_open()) {
+            SendMessage(CompileMessageType::Error, L"错误: 无法创建桥接文件: " + bridgePath);
+            return false;
+        }
+        
+        // 头部
+        f << "/* 自动生成的支持库桥接代码 - " << libNameUtf8 << " */\n";
+        f << "#include <windows.h>\n";
+        f << "#include <stdint.h>\n";
+        f << "#include <string.h>\n\n";
+        
+        // 定义精简的 MDATA_INF 结构（与支持库的定义兼容）
+        f << "/* 支持库参数传递结构 */\n";
+        f << "#pragma pack(push, 1)\n";
+        f << "typedef struct {\n";
+        f << "    union {\n";
+        f << "        unsigned char m_byte;\n";
+        f << "        short         m_short;\n";
+        f << "        int           m_int;\n";
+        f << "        unsigned int  m_uint;\n";
+        f << "        long long     m_int64;\n";
+        f << "        float         m_float;\n";
+        f << "        double        m_double;\n";
+        f << "        double        m_date;\n";
+        f << "        int           m_bool;\n";
+        f << "        char*         m_pText;\n";
+        f << "        unsigned char* m_pBin;\n";
+        f << "        unsigned int  m_dwSubCodeAdr;\n";
+        f << "        void*         m_pCompoundData;\n";
+        f << "        void*         m_pAryData;\n";
+        f << "    };\n";
+        f << "    int m_dtDataType;\n";
+        f << "} BRIDGE_MDATA_INF;\n";
+        f << "#pragma pack(pop)\n\n";
+        
+        // SDT 数据类型常量（与易语言 lib2.h 一致）
+        f << "/* 数据类型常量 */\n";
+        f << "#define SDT_BYTE   0x80000101\n";
+        f << "#define SDT_SHORT  0x80000201\n";
+        f << "#define SDT_INT    0x80000301\n";
+        f << "#define SDT_INT64  0x80000401\n";
+        f << "#define SDT_FLOAT  0x80000501\n";
+        f << "#define SDT_DOUBLE 0x80000601\n";
+        f << "#define SDT_BOOL   0x80000002\n";
+        f << "#define SDT_TEXT   0x80000004\n";
+        f << "#define SDT_BIN    0x80000005\n";
+        f << "#define SDT_SUB_PTR 0x80000006\n\n";
+        
+        // 动态加载模式：生成库加载辅助函数和函数指针类型
+        if (!useStatic) {
+            f << "/* 动态加载支持 */\n";
+            f << "typedef void (*PFN_LIB_CMD)(BRIDGE_MDATA_INF*, int, BRIDGE_MDATA_INF*);\n\n";
+            f << "static HMODULE g_hLib_" << libNameUtf8 << " = NULL;\n";
+            f << "static int g_bLib_" << libNameUtf8 << "_loaded = 0;\n\n";
+            f << "static HMODULE GetLib_" << libNameUtf8 << "(void) {\n";
+            f << "    if (!g_bLib_" << libNameUtf8 << "_loaded) {\n";
+            f << "        g_bLib_" << libNameUtf8 << "_loaded = 1;\n";
+            f << "        g_hLib_" << libNameUtf8 << " = LoadLibraryW(L\"lib\\\\" << libNameUtf8 << ".fne\");\n";
+            f << "        if (!g_hLib_" << libNameUtf8 << ")\n";
+            f << "            g_hLib_" << libNameUtf8 << " = LoadLibraryW(L\"" << libNameUtf8 << ".fne\");\n";
+            f << "    }\n";
+            f << "    return g_hLib_" << libNameUtf8 << ";\n";
+            f << "}\n\n";
+        }
+        
+        // 为每个命令生成桥接函数（按 commandIndex 去重）
+        std::set<int> generatedIndices;
+        for (const auto* cmd : cmds) {
+            int idx = cmd->commandIndex;
+            if (!generatedIndices.insert(idx).second) continue; // 跳过重复的 commandIndex
+            
+            std::string engName = WideToUtf8(cmd->englishName);
+            std::string chnName = WideToUtf8(cmd->chineseName);
+            
+            // 支持库内部函数名: {lib}_{EnglishName}_{index}_{lib}
+            std::string internalName = libNameUtf8 + "_" + engName + "_" + 
+                                       std::to_string(idx) + "_" + libNameUtf8;
+            
+            // 返回值C类型
+            std::string retCType = MapEplTypeToCType(cmd->returnType);
+            bool hasReturn = (retCType != "void");
+            
+            if (useStatic) {
+                // 静态链接：extern 声明
+                f << "/* " << chnName << " (静态链接) */\n";
+                f << "extern void " << internalName 
+                  << "(BRIDGE_MDATA_INF* pRetData, int nArgCount, BRIDGE_MDATA_INF* pArgInf);\n";
+            } else {
+                f << "/* " << chnName << " (动态加载) */\n";
+            }
+            
+            // 桥接函数（使用唯一名称避免同名冲突）
+            std::string uniqueFuncName = "_epl_" + libNameUtf8 + "_" + std::to_string(idx);
+            f << retCType << " " << uniqueFuncName << "(";
+            
+            // 参数列表
+            if (cmd->parameters.empty()) {
+                f << "void";
+            } else {
+                bool first = true;
+                for (size_t i = 0; i < cmd->parameters.size(); i++) {
+                    if (!first) f << ", ";
+                    first = false;
+                    std::string paramType = MapEplTypeToCType(cmd->parameters[i].type);
+                    std::string paramName = WideToUtf8(cmd->parameters[i].name);
+                    if (paramName.empty()) paramName = "arg" + std::to_string(i + 1);
+                    f << paramType << " " << paramName;
+                    // 通用型参数：额外添加类型标记参数
+                    if (cmd->parameters[i].type == L"通用型" || cmd->parameters[i].type == L"未知类型") {
+                        f << ", int " << paramName << "_type";
+                    }
+                }
+            }
+            f << ") {\n";
+            
+            // 动态加载模式：获取函数指针
+            if (!useStatic) {
+                f << "    static PFN_LIB_CMD pfn = NULL;\n";
+                f << "    if (!pfn) {\n";
+                f << "        HMODULE h = GetLib_" << libNameUtf8 << "();\n";
+                f << "        if (h) pfn = (PFN_LIB_CMD)GetProcAddress(h, \"" << internalName << "\");\n";
+                f << "    }\n";
+                f << "    if (!pfn) {\n";
+                if (hasReturn)
+                    f << "        return (" << retCType << ")0;\n";
+                else
+                    f << "        return;\n";
+                f << "    }\n";
+            }
+            
+            // 局部变量
+            f << "    BRIDGE_MDATA_INF retData;\n";
+            f << "    memset(&retData, 0, sizeof(retData));\n";
+            
+            int argCount = (int)cmd->parameters.size();
+            if (argCount > 0) {
+                f << "    BRIDGE_MDATA_INF argInf[" << argCount << "];\n";
+                f << "    memset(argInf, 0, sizeof(argInf));\n";
+                
+                // 填充参数
+                for (size_t i = 0; i < cmd->parameters.size(); i++) {
+                    std::string paramName = WideToUtf8(cmd->parameters[i].name);
+                    if (paramName.empty()) paramName = "arg" + std::to_string(i + 1);
+                    std::string field = GetMdataFieldForType(cmd->parameters[i].type);
+                    
+                    if (cmd->parameters[i].type == L"文本型") {
+                        f << "    argInf[" << i << "]." << field << " = (char*)" << paramName << ";\n";
+                        f << "    argInf[" << i << "].m_dtDataType = SDT_TEXT;\n";
+                    } else if (cmd->parameters[i].type == L"通用型" || cmd->parameters[i].type == L"未知类型") {
+                        f << "    argInf[" << i << "]." << field << " = (long long)" << paramName << ";\n";
+                        f << "    argInf[" << i << "].m_dtDataType = " << paramName << "_type;\n";
+                    } else if (cmd->parameters[i].type == L"整数型") {
+                        f << "    argInf[" << i << "]." << field << " = " << paramName << ";\n";
+                        f << "    argInf[" << i << "].m_dtDataType = SDT_INT;\n";
+                    } else if (cmd->parameters[i].type == L"逻辑型") {
+                        f << "    argInf[" << i << "]." << field << " = " << paramName << ";\n";
+                        f << "    argInf[" << i << "].m_dtDataType = SDT_BOOL;\n";
+                    } else if (cmd->parameters[i].type == L"小数型") {
+                        f << "    argInf[" << i << "]." << field << " = " << paramName << ";\n";
+                        f << "    argInf[" << i << "].m_dtDataType = SDT_FLOAT;\n";
+                    } else if (cmd->parameters[i].type == L"双精度小数型") {
+                        f << "    argInf[" << i << "]." << field << " = " << paramName << ";\n";
+                        f << "    argInf[" << i << "].m_dtDataType = SDT_DOUBLE;\n";
+                    } else if (cmd->parameters[i].type == L"长整数型") {
+                        f << "    argInf[" << i << "]." << field << " = " << paramName << ";\n";
+                        f << "    argInf[" << i << "].m_dtDataType = SDT_INT64;\n";
+                    } else {
+                        f << "    argInf[" << i << "]." << field << " = " << paramName << ";\n";
+                    }
+                }
+            }
+            
+            // 调用函数
+            std::string callTarget = useStatic ? internalName : "pfn";
+            if (argCount > 0) {
+                f << "    " << callTarget << "(&retData, " << argCount << ", argInf);\n";
+            } else {
+                f << "    " << callTarget << "(&retData, 0, (BRIDGE_MDATA_INF*)0);\n";
+            }
+            
+            // 返回值
+            if (hasReturn) {
+                std::string retField = GetMdataFieldForType(cmd->returnType);
+                if (cmd->returnType == L"文本型") {
+                    f << "    return (const wchar_t*)retData." << retField << ";\n";
+                } else {
+                    f << "    return (" << retCType << ")retData." << retField << ";\n";
+                }
+            }
+            
+            f << "}\n\n";
+        }
+        
+        f.close();
+        bridgeFiles.push_back(bridgePath);
+        
+        SendMessage(CompileMessageType::Info, 
+            L"已生成支持库桥接代码: " + libFileName + (useStatic ? L" (静态链接)" : L" (动态加载)"));
+    }
+    
+    return true;
+}
+
 // 编译项目
 CompileResult Compiler::CompileProject(const CompileOptions& options) {
     m_lastResult = CompileResult();
@@ -1088,6 +1690,11 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
     }
     
     SendMessage(CompileMessageType::Info, L"正在编译项目: " + project->projectName);
+    
+    // 清除上次编译的状态
+    g_usedFuncCalls.clear();
+    g_libFuncMap.clear();
+    g_varTypeMap.clear();
     
     // 获取输出目录
     std::wstring tempDir = GetTempDirectory();
@@ -1145,10 +1752,24 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
         return m_lastResult;
     }
     
-    // 调用 Clang 编译器（含所有转换后的 .eyc C 文件）
+    // 步骤4: 生成支持库桥接代码
+    std::vector<std::wstring> bridgeFiles;
+    std::vector<std::wstring> dynamicFneFiles;
+    SendMessage(CompileMessageType::Info, L"正在生成支持库桥接代码...");
+    if (!GenerateLibraryBridgeCode(tempDir, bridgeFiles, dynamicFneFiles)) {
+        m_lastResult.errorCount++;
+        m_isCompiling = false;
+        return m_lastResult;
+    }
+    
+    // 合并所有额外的C文件（eyc转换 + 桥接）
+    std::vector<std::wstring> allCFiles = eycCFiles;
+    allCFiles.insert(allCFiles.end(), bridgeFiles.begin(), bridgeFiles.end());
+    
+    // 调用 Clang 编译器（含所有转换后的 .eyc C 文件和桥接文件）
     SendMessage(CompileMessageType::Info, L"正在编译...");
     std::wstring mainC = tempDir + L"\\main.c";
-    if (!InvokeClangCompiler(mainC, outputExe, options, project->outputType, eycCFiles)) {
+    if (!InvokeClangCompiler(mainC, outputExe, options, project->outputType, allCFiles)) {
         SendMessage(CompileMessageType::Error, L"编译失败!");
         m_lastResult.errorCount++;
         m_isCompiling = false;
@@ -1169,6 +1790,31 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
     
     m_lastResult.success = true;
     m_lastResult.outputFile = outputExe;
+    
+    // 步骤5: 复制动态加载的支持库（.fne）到输出目录
+    if (!dynamicFneFiles.empty()) {
+        // 获取输出目录下的 lib 子目录
+        std::wstring exeDir = outputExe;
+        size_t lastSlashPos = exeDir.find_last_of(L"\\");
+        if (lastSlashPos != std::wstring::npos)
+            exeDir = exeDir.substr(0, lastSlashPos);
+        std::wstring libOutputDir = exeDir + L"\\lib";
+        CreateDirectoryW(libOutputDir.c_str(), NULL);
+        
+        for (const auto& fneSrc : dynamicFneFiles) {
+            // 提取文件名
+            std::wstring fneFileName = fneSrc;
+            size_t slashPos = fneFileName.find_last_of(L"\\");
+            if (slashPos != std::wstring::npos)
+                fneFileName = fneFileName.substr(slashPos + 1);
+            std::wstring fneDst = libOutputDir + L"\\" + fneFileName;
+            if (CopyFileW(fneSrc.c_str(), fneDst.c_str(), FALSE)) {
+                SendMessage(CompileMessageType::Info, L"已复制动态支持库: " + fneFileName);
+            } else {
+                SendMessage(CompileMessageType::Warning, L"警告: 无法复制动态支持库: " + fneFileName);
+            }
+        }
+    }
     
     SendMessage(CompileMessageType::Success, 
         L"编译成功 (" + std::to_wstring(m_lastResult.elapsedMs) + L" 毫秒)");
@@ -1192,6 +1838,27 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
     
     m_isCompiling = false;
     return m_lastResult;
+}
+
+// 输出读取线程函数
+DWORD WINAPI OutputReaderThread(LPVOID param) {
+    Compiler* self = (Compiler*)param;
+    HANDLE hPipe = self->m_hOutputReadPipe;
+    char buffer[4096];
+    DWORD bytesRead;
+    
+    while (ReadFile(hPipe, buffer, sizeof(buffer) - 1, &bytesRead, NULL) && bytesRead > 0) {
+        buffer[bytesRead] = '\0';
+        // 转为宽字符
+        int wideLen = MultiByteToWideChar(CP_UTF8, 0, buffer, bytesRead, NULL, 0);
+        if (wideLen > 0 && self->m_callback) {
+            std::wstring wideStr(wideLen, 0);
+            MultiByteToWideChar(CP_UTF8, 0, buffer, bytesRead, &wideStr[0], wideLen);
+            CompileMessage msg(CompileMessageType::Info, wideStr);
+            self->m_callback(msg);
+        }
+    }
+    return 0;
 }
 
 // 运行已编译的程序
@@ -1223,24 +1890,49 @@ bool Compiler::RunExecutable(const std::wstring& exePath, HANDLE* hProcess) {
         workDir = workDir.substr(0, lastSlash);
     }
     
-    // 创建进程
+    // 创建管道捕获子进程输出
+    SECURITY_ATTRIBUTES sa;
+    sa.nLength = sizeof(sa);
+    sa.bInheritHandle = TRUE;
+    sa.lpSecurityDescriptor = NULL;
+    
+    HANDLE hReadPipe, hWritePipe;
+    if (!CreatePipe(&hReadPipe, &hWritePipe, &sa, 0)) {
+        SendMessage(CompileMessageType::Error, L"创建输出管道失败");
+        return false;
+    }
+    SetHandleInformation(hReadPipe, HANDLE_FLAG_INHERIT, 0);
+    
+    // 创建进程，重定向 stdout/stderr 到管道
     STARTUPINFOW si = { 0 };
     si.cb = sizeof(si);
+    si.hStdOutput = hWritePipe;
+    si.hStdError = hWritePipe;
+    si.hStdInput = GetStdHandle(STD_INPUT_HANDLE);
+    si.dwFlags = STARTF_USESTDHANDLES;
     
     PROCESS_INFORMATION pi = { 0 };
     
     std::wstring cmdLine = L"\"" + exePath + L"\"";
     
-    if (!CreateProcessW(NULL, &cmdLine[0], NULL, NULL, FALSE,
+    if (!CreateProcessW(NULL, &cmdLine[0], NULL, NULL, TRUE,
                        CREATE_NEW_CONSOLE, NULL, workDir.c_str(), &si, &pi)) {
         DWORD error = GetLastError();
+        CloseHandle(hReadPipe);
+        CloseHandle(hWritePipe);
         SendMessage(CompileMessageType::Error, 
             L"启动程序失败! 错误代码: " + std::to_wstring(error));
         return false;
     }
     
+    CloseHandle(hWritePipe);  // 关闭写入端，让读取能检测到EOF
+    
     m_hRunningProcess = pi.hProcess;
+    m_hOutputReadPipe = hReadPipe;
     CloseHandle(pi.hThread);
+    
+    // 启动后台线程读取管道输出
+    m_hOutputThread = CreateThread(NULL, 0, OutputReaderThread, this, 0, NULL);
     
     if (hProcess) {
         *hProcess = pi.hProcess;
@@ -1265,6 +1957,19 @@ bool Compiler::StopExecutable() {
         TerminateProcess(m_hRunningProcess, 1);
         WaitForSingleObject(m_hRunningProcess, 3000);  // 等待最多3秒
         SendMessage(CompileMessageType::Info, L"程序已停止");
+    }
+    
+    // 关闭管道（会触发读取线程退出）
+    if (m_hOutputReadPipe) {
+        CloseHandle(m_hOutputReadPipe);
+        m_hOutputReadPipe = NULL;
+    }
+    
+    // 等待输出读取线程结束
+    if (m_hOutputThread) {
+        WaitForSingleObject(m_hOutputThread, 2000);
+        CloseHandle(m_hOutputThread);
+        m_hOutputThread = NULL;
     }
     
     CloseHandle(m_hRunningProcess);

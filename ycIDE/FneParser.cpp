@@ -208,6 +208,9 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
 
             FneCommandInfo cmdInfo;
 
+            // 原始命令索引
+            cmdInfo.commandIndex = i;
+
             // 命令名称
             if (pCmdInfo->m_szName) {
                 cmdInfo.name = UTF8ToUTF16(pCmdInfo->m_szName);
@@ -269,6 +272,12 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
                     param.isVariable = (pArgInfo->m_dwState & AS_RECEIVE_VAR) != 0;
                     param.isArray = (pArgInfo->m_dwState & AS_RECEIVE_ARRAY_DATA) != 0 ||
                                     (pArgInfo->m_dwState & AS_RECEIVE_VAR_ARRAY) != 0;
+                    
+                    // 通用型：接收所有类型数据的参数
+                    if (pArgInfo->m_dwState & AS_RECEIVE_ALL_TYPE_DATA) {
+                        param.type = L"通用型";
+                        param.typeWithEnglish = L"通用型（all）";
+                    }
                     
                     cmdInfo.params.push_back(param);
 

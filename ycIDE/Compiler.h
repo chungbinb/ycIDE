@@ -94,6 +94,7 @@ public:
     std::wstring GetAppDirectory() const;
     
 private:
+    friend DWORD WINAPI OutputReaderThread(LPVOID param);
     Compiler();
     ~Compiler();
     Compiler(const Compiler&) = delete;
@@ -101,6 +102,8 @@ private:
     
     bool m_isCompiling;
     HANDLE m_hRunningProcess;
+    HANDLE m_hOutputReadPipe;    // 子进程 stdout 读取端
+    HANDLE m_hOutputThread;     // 输出读取线程
     CompileCallback m_callback;
     CompileResult m_lastResult;
     
@@ -118,6 +121,13 @@ private:
     
     // 生成纯C代码 (用于 Clang)
     bool GenerateCCode(const std::wstring& outputDir, ProjectOutputType outputType);
+    
+    // 生成支持库桥接代码，返回生成的桥接文件路径列表和需要复制的动态库路径
+    bool GenerateLibraryBridgeCode(const std::wstring& tempDir, std::vector<std::wstring>& bridgeFiles,
+                                    std::vector<std::wstring>& dynamicFneFiles);
+    
+    // 查找支持库静态库文件（.a）
+    std::wstring FindStaticLibrary(const std::wstring& libFileName);
     
     // 将项目中所有 .eyc 源文件转换为C代码，返回生成的C文件路径列表
     bool TranspileEycFiles(const std::wstring& tempDir, std::vector<std::wstring>& cFiles);

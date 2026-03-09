@@ -279,6 +279,7 @@ struct FneCommandInfo {
     std::wstring category;      // 命令类别（如：流程控制、算术运算等）
     std::vector<FneCommandParam> params;  // 参数列表（结构化）
     std::vector<std::wstring> parameters;  // 参数列表（兼容旧格式）
+    int commandIndex;           // 命令在支持库中的原始索引
     bool isHidden;              // 是否隐藏命令
 };
 

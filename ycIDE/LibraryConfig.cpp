@@ -1,6 +1,5 @@
 #include "LibraryConfig.h"
 #include "Keyword.h"
-#include "FneParser.h"
 #include "LibraryParser.h"
 #include <Windows.h>
 #include <fstream>
@@ -122,16 +121,7 @@ int LibraryConfigManager::LoadSelectedLibraries() {
             
             // 尝试加载 .fne 文件（动态库）
             if (lib.filePath.find(L".fne") != std::wstring::npos) {
-                FneParser parser;
-                if (parser.LoadFneFile(lib.filePath)) {
-                    // 将 FNE 命令添加到 LibraryParser
-                    std::wstring libName = parser.GetLibraryName();
-                    for (const auto& cmd : parser.GetCommands()) {
-                        // 直接使用 FNE 中的类别信息
-                        // 注意：AddCommandFromFne 需要更新以接受类别参数
-                        libParser.AddCommandFromFne(cmd.name, cmd.description, 
-                                                    cmd.returnType, cmd.parameters, libName);
-                    }
+                if (libParser.LoadFneLibrary(lib.filePath)) {
                     count++;
                     loadSuccess = true;
                 }

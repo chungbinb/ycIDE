@@ -195,6 +195,9 @@ std::shared_ptr<VarDeclNode> Parser::ParseVarDecl() {
     Token nameToken = Expect(EYTokenType::IDENTIFIER, L"期望变量名");
     varDecl->name = nameToken.value;
     
+    // 易语言格式：.局部变量 变量名, 类型 — 逗号分隔
+    Match(EYTokenType::COMMA);
+    
     // 类型（可选，易语言可以不指定类型）
     if (IsDataType(currentToken_)) {
         varDecl->dataType = currentToken_.value;
@@ -241,6 +244,9 @@ std::shared_ptr<ConstDeclNode> Parser::ParseConstDecl() {
     Token nameToken = Expect(EYTokenType::IDENTIFIER, L"期望常量名");
     constDecl->name = nameToken.value;
     
+    // 易语言格式：.常量 常量名, 类型 — 逗号分隔
+    Match(EYTokenType::COMMA);
+    
     // 类型（可选）
     if (IsDataType(currentToken_)) {
         constDecl->dataType = currentToken_.value;
@@ -269,6 +275,9 @@ std::shared_ptr<SubroutineNode> Parser::ParseSubroutine() {
     // 子程序名
     Token nameToken = Expect(EYTokenType::IDENTIFIER, L"期望子程序名");
     sub->name = nameToken.value;
+    
+    // 易语言格式：.子程序 名称, 返回类型 — 逗号分隔
+    Match(EYTokenType::COMMA);
     
     // 返回类型（可选）
     if (IsDataType(currentToken_)) {
@@ -359,18 +368,34 @@ std::shared_ptr<ASTNode> Parser::ParseStatement() {
     }
     
     // 否则当作表达式语句或赋值语句
+    // 先尝试解析赋值左侧（标识符或数组访问）
+    // 注意：不能直接调用 ParseExpression，因为 ParseEquality 会把 = 当作比较运算符消耗
+    if (Check(EYTokenType::IDENTIFIER)) {
+        auto lhs = ParseCallOrAccess(); // 解析标识符、数组访问、函数调用
+        if (!lhs) {
+            Synchronize();
+            return nullptr;
+        }
+        
+        // 检查是否是赋值（标识符或数组访问后跟 =）
+        if ((lhs->type == ASTNodeType::IDENTIFIER_EXPR || lhs->type == ASTNodeType::ARRAY_ACCESS) 
+            && Match(EYTokenType::OP_EQ)) {
+            auto assign = std::make_shared<AssignStmtNode>();
+            assign->target = lhs;
+            assign->value = ParseExpression();
+            return assign;
+        }
+        
+        // 不是赋值，可能是函数调用等表达式语句
+        // lhs 已经是完整的表达式（函数调用等），直接返回
+        return lhs;
+    }
+    
+    // 其他情况：非标识符开头的表达式语句
     auto expr = ParseExpression();
     if (!expr) {
         Synchronize();
         return nullptr;
-    }
-    
-    // 检查是否是赋值
-    if (Match(EYTokenType::OP_EQ)) {
-        auto assign = std::make_shared<AssignStmtNode>();
-        assign->target = expr;
-        assign->value = ParseExpression();
-        return assign;
     }
     
     // 普通表达式语句（函数调用等）
