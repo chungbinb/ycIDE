@@ -24,6 +24,17 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
     std::wstring libraryName = fneParser.GetLibraryName();
     const auto& fneCommands = fneParser.GetCommands();
     
+    // 从fnePath提取文件名（不含扩展名）
+    std::wstring libFileName;
+    size_t lastSlash = fnePath.find_last_of(L"\\");
+    std::wstring fneFile = (lastSlash != std::wstring::npos) ? fnePath.substr(lastSlash + 1) : fnePath;
+    size_t dotPos = fneFile.find_last_of(L".");
+    libFileName = (dotPos != std::wstring::npos) ? fneFile.substr(0, dotPos) : fneFile;
+    
+    // 记录已加载的库文件名和路径
+    loadedLibraryFileNames.push_back(libFileName);
+    libraryFilePathMap[libFileName] = fnePath;
+    
     // 调试输出到文件
     CreateDirectoryW(L"logs", NULL);
     std::wofstream debugFile(L"logs\\library_load_debug.txt", std::ios::app);
@@ -42,6 +53,8 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
         cmd.returnType = fneCmd.returnType;
         cmd.description = fneCmd.description;
         cmd.library = libraryName;
+        cmd.libraryFileName = libFileName;
+        cmd.commandIndex = fneCmd.commandIndex;
         cmd.category = fneCmd.category;  // 使用从 FNE 读取的真实类别
         
         // 生成拼音和首字母
@@ -285,6 +298,14 @@ std::vector<std::wstring> LibraryParser::GetAllDataTypeNames() const {
     }
     
     return types;
+}
+
+std::wstring LibraryParser::GetLibraryFnePath(const std::wstring& libFileName) const {
+    auto it = libraryFilePathMap.find(libFileName);
+    if (it != libraryFilePathMap.end()) {
+        return it->second;
+    }
+    return L"";
 }
 
 // 加载.ec模块文件

@@ -562,7 +562,161 @@ static bool IsValidAssignmentTarget(const std::wstring& line) {
     return false;
 }
 
-// 格式化赋值语句：var=value 或 var =value 等 → var ＝ value
+// 运算表达式信息
+struct ExprOperatorInfo {
+    wchar_t op;             // 半角运算符: + - * /
+    wchar_t fullWidthOp;    // 全角运算符: ＋ － × ÷
+    std::wstring param1Name; // 第一个参数名
+    std::wstring param2Name; // 第二个参数名
+    std::wstring leftOperand;  // 左操作数
+    std::wstring rightOperand; // 右操作数
+};
+
+// 获取运算符的参数名称
+static ExprOperatorInfo GetOperatorInfo(wchar_t op) {
+    ExprOperatorInfo info = {};
+    info.op = op;
+    switch (op) {
+        case L'+': case L'\uFF0B':
+            info.fullWidthOp = L'\uFF0B';
+            info.param1Name = L"被加数或文本或字节集";
+            info.param2Name = L"加数或文本或字节集";
+            break;
+        case L'-': case L'\uFF0D':
+            info.fullWidthOp = L'\uFF0D';
+            info.param1Name = L"被减数";
+            info.param2Name = L"减数";
+            break;
+        case L'*': case L'\u00D7':
+            info.fullWidthOp = L'\u00D7';
+            info.param1Name = L"被乘数";
+            info.param2Name = L"乘数";
+            break;
+        case L'/': case L'\u00F7':
+            info.fullWidthOp = L'\u00F7';
+            info.param1Name = L"被除数";
+            info.param2Name = L"除数";
+            break;
+        default:
+            info.fullWidthOp = op;
+            info.param1Name = L"参数1";
+            info.param2Name = L"参数2";
+            break;
+    }
+    return info;
+}
+
+// 解析表达式中最外层的运算符（不在括号内），返回是否找到
+// 按优先级从低到高查找：先找加减，再找乘除
+static bool ParseExpressionOperator(const std::wstring& expr, ExprOperatorInfo& info) {
+    int parenDepth = 0;
+    bool inString = false;
+    
+    // 先查找加减（低优先级，从右往左找确保左结合）
+    int lastAddSubPos = -1;
+    wchar_t lastAddSubOp = 0;
+    for (size_t i = 0; i < expr.length(); i++) {
+        if (expr[i] == L'"') { inString = !inString; continue; }
+        if (inString) continue;
+        if (expr[i] == L'(' || expr[i] == L'\uFF08') parenDepth++;
+        else if (expr[i] == L')' || expr[i] == L'\uFF09') parenDepth--;
+        else if (parenDepth == 0) {
+            // 跳过第一个字符位置（可能是负号）
+            if (i == 0) continue;
+            if (expr[i] == L'+' || expr[i] == L'\uFF0B' || expr[i] == L'-' || expr[i] == L'\uFF0D') {
+                // 检查前一个非空格字符是否也是运算符（排除负号情况，如 3 + -5）
+                int prevIdx = (int)i - 1;
+                while (prevIdx >= 0 && expr[prevIdx] == L' ') prevIdx--;
+                if (prevIdx >= 0) {
+                    wchar_t prev = expr[prevIdx];
+                    if (prev != L'+' && prev != L'-' && prev != L'*' && prev != L'/' &&
+                        prev != L'\uFF0B' && prev != L'\uFF0D' && prev != L'\u00D7' && prev != L'\u00F7') {
+                        lastAddSubPos = (int)i;
+                        lastAddSubOp = expr[i];
+                    }
+                }
+            }
+        }
+    }
+    
+    if (lastAddSubPos > 0) {
+        info = GetOperatorInfo(lastAddSubOp);
+        std::wstring left = expr.substr(0, lastAddSubPos);
+        std::wstring right = (lastAddSubPos + 1 < (int)expr.length()) ? expr.substr(lastAddSubPos + 1) : L"";
+        // 去除前后空格
+        while (!left.empty() && (left.back() == L' ' || left.back() == L'\t')) left.pop_back();
+        while (!left.empty() && (left.front() == L' ' || left.front() == L'\t')) left.erase(0, 1);
+        while (!right.empty() && (right.front() == L' ' || right.front() == L'\t')) right.erase(0, 1);
+        while (!right.empty() && (right.back() == L' ' || right.back() == L'\t')) right.pop_back();
+        info.leftOperand = left;
+        info.rightOperand = right;
+        return true;
+    }
+    
+    // 再查找乘除（高优先级）
+    parenDepth = 0;
+    inString = false;
+    int lastMulDivPos = -1;
+    wchar_t lastMulDivOp = 0;
+    for (size_t i = 0; i < expr.length(); i++) {
+        if (expr[i] == L'"') { inString = !inString; continue; }
+        if (inString) continue;
+        if (expr[i] == L'(' || expr[i] == L'\uFF08') parenDepth++;
+        else if (expr[i] == L')' || expr[i] == L'\uFF09') parenDepth--;
+        else if (parenDepth == 0) {
+            if (expr[i] == L'*' || expr[i] == L'\u00D7' || expr[i] == L'/' || expr[i] == L'\u00F7') {
+                lastMulDivPos = (int)i;
+                lastMulDivOp = expr[i];
+            }
+        }
+    }
+    
+    if (lastMulDivPos > 0) {
+        info = GetOperatorInfo(lastMulDivOp);
+        std::wstring left = expr.substr(0, lastMulDivPos);
+        std::wstring right = (lastMulDivPos + 1 < (int)expr.length()) ? expr.substr(lastMulDivPos + 1) : L"";
+        while (!left.empty() && (left.back() == L' ' || left.back() == L'\t')) left.pop_back();
+        while (!left.empty() && (left.front() == L' ' || left.front() == L'\t')) left.erase(0, 1);
+        while (!right.empty() && (right.front() == L' ' || right.front() == L'\t')) right.erase(0, 1);
+        while (!right.empty() && (right.back() == L' ' || right.back() == L'\t')) right.pop_back();
+        info.leftOperand = left;
+        info.rightOperand = right;
+        return true;
+    }
+    
+    return false;
+}
+
+// 格式化表达式中的运算符为全角（用于显示）
+static std::wstring FormatExprOperators(const std::wstring& expr) {
+    std::wstring result;
+    bool inString = false;
+    int parenDepth = 0;
+    for (size_t i = 0; i < expr.length(); i++) {
+        if (expr[i] == L'"') { inString = !inString; result += expr[i]; continue; }
+        if (inString) { result += expr[i]; continue; }
+        if (expr[i] == L'(' || expr[i] == L'\uFF08') { parenDepth++; result += expr[i]; continue; }
+        if (expr[i] == L')' || expr[i] == L'\uFF09') { parenDepth--; result += expr[i]; continue; }
+        if (parenDepth == 0) {
+            switch (expr[i]) {
+                case L'+': result += L" \uFF0B "; continue;
+                case L'-':
+                    // 如果是首字符或前面是运算符/空格/左括号，则是负号不格式化
+                    if (i == 0 || (i > 0 && (expr[i-1] == L'+' || expr[i-1] == L'-' || expr[i-1] == L'*' || expr[i-1] == L'/' || expr[i-1] == L'(' || expr[i-1] == L' '))) {
+                        result += expr[i]; continue;
+                    }
+                    result += L" \uFF0D "; continue;
+                case L'*': result += L" \u00D7 "; continue;
+                case L'/': result += L" \u00F7 "; continue;
+                default: break;
+            }
+        }
+        result += expr[i];
+    }
+    return result;
+}
+
+// 格式化赋值语句：var=value 或 var =value 等 → var ＝ value（运算符也全角化）
 static void FormatAssignmentLine(std::wstring& line) {
     // 跳过标记字符
     size_t start = 0;
@@ -573,6 +727,8 @@ static void FormatAssignmentLine(std::wstring& line) {
     
     std::wstring lhs, rhs;
     if (IsAssignmentLine(line, &lhs, &rhs)) {
+        // 格式化右值中的运算符为全角
+        rhs = FormatExprOperators(rhs);
         line = prefix + lhs + L" \uFF1D " + rhs;
     }
 }
@@ -1011,6 +1167,9 @@ static void SyncParamLineToCommandLine(EditorDocument* doc, int paramLineIndex) 
     const std::wstring& paramLine = doc->lines[paramLineIndex];
     if (paramLine.empty() || paramLine[0] != L'\u2060') return;
     
+    // 如果是嵌套参数行（\u2060\u2060前缀），不需要同步到命令行
+    if (paramLine.length() > 1 && paramLine[1] == L'\u2060') return;
+    
     // 向上查找命令行（跳过其他参数行）
     int cmdLineIndex = paramLineIndex - 1;
     int paramIndex = 0;  // 当前参数行是第几个参数（从0开始）
@@ -1018,8 +1177,10 @@ static void SyncParamLineToCommandLine(EditorDocument* doc, int paramLineIndex) 
     while (cmdLineIndex >= 0) {
         const std::wstring& checkLine = doc->lines[cmdLineIndex];
         if (checkLine.length() > 0 && checkLine[0] == L'\u2060') {
-            // 这是另一个参数行，继续向上查找
-            paramIndex++;
+            // 跳过嵌套参数行（\u2060\u2060），只计数一级参数行
+            if (!(checkLine.length() > 1 && checkLine[1] == L'\u2060')) {
+                paramIndex++;
+            }
             cmdLineIndex--;
         } else {
             // 找到了命令行
@@ -1036,11 +1197,13 @@ static void SyncParamLineToCommandLine(EditorDocument* doc, int paramLineIndex) 
     size_t rightBracket = cmdLine.find(L')');
     if (leftBracket == std::wstring::npos || rightBracket == std::wstring::npos || leftBracket >= rightBracket) return;
     
-    // 收集所有参数行的值
+    // 收集所有一级参数行的值（跳过嵌套参数行）
     std::vector<std::wstring> paramValues;
     for (int i = cmdLineIndex + 1; i < (int)doc->lines.size(); i++) {
         const std::wstring& line = doc->lines[i];
         if (line.length() > 0 && line[0] == L'\u2060') {
+            // 跳过嵌套参数行（\u2060\u2060前缀）
+            if (line.length() > 1 && line[1] == L'\u2060') continue;
             // 提取参数值（格式：\u2060参数名:参数值）
             size_t colonPos = line.find(L':');
             if (colonPos != std::wstring::npos) {
@@ -1072,6 +1235,9 @@ static void SyncAssignParamLineToAssignLine(EditorDocument* doc, int paramLineIn
     const std::wstring& paramLine = doc->lines[paramLineIndex];
     if (paramLine.empty() || paramLine[0] != L'\u2060') return;
     
+    // 如果是嵌套参数行（\u2060\u2060前缀），不需要同步到赋值行
+    if (paramLine.length() > 1 && paramLine[1] == L'\u2060') return;
+    
     // 向上查找赋值命令行（跳过其他参数行）
     int cmdLineIndex = paramLineIndex - 1;
     while (cmdLineIndex >= 0 && !doc->lines[cmdLineIndex].empty() && doc->lines[cmdLineIndex][0] == L'\u2060') {
@@ -1080,17 +1246,22 @@ static void SyncAssignParamLineToAssignLine(EditorDocument* doc, int paramLineIn
     if (cmdLineIndex < 0) return;
     
     std::wstring& cmdLine = doc->lines[cmdLineIndex];
-    if (!IsValidAssignmentTarget(cmdLine)) return;
+    if (!IsAssignmentLine(cmdLine)) return;
     
-    // 收集两行参数的值
+    // 收集两行一级参数的值（跳过嵌套参数行）
     std::wstring newLhs, newRhs;
-    for (int j = cmdLineIndex + 1; j < (int)doc->lines.size() && j <= cmdLineIndex + 2; j++) {
+    int paramCount = 0;
+    for (int j = cmdLineIndex + 1; j < (int)doc->lines.size(); j++) {
         const std::wstring& pl = doc->lines[j];
         if (pl.empty() || pl[0] != L'\u2060') break;
+        // 跳过嵌套参数行
+        if (pl.length() > 1 && pl[1] == L'\u2060') continue;
         size_t colonPos = pl.find(L':');
         std::wstring val = (colonPos != std::wstring::npos) ? pl.substr(colonPos + 1) : L"";
-        if (j == cmdLineIndex + 1) newLhs = val;
-        else newRhs = val;
+        if (paramCount == 0) newLhs = val;
+        else if (paramCount == 1) newRhs = val;
+        paramCount++;
+        if (paramCount >= 2) break;
     }
     
     // 重建赋值行，保留标记前缀
@@ -1447,8 +1618,8 @@ static void CheckAndFormatKeywords(EditorDocument* doc, int lineIndex) {
                 }
             }
             
-            // 检查是否是赋值语句，格式化为 var ＝ value（只对有效组件属性赋值进行格式化）
-            if (IsValidAssignmentTarget(line)) {
+            // 检查是否是赋值语句，格式化为 var ＝ value
+            if (IsAssignmentLine(line)) {
                 int oldLen = (int)line.length();
                 FormatAssignmentLine(line);
                 // 格式化后行长度变化，需要调整光标位置
@@ -1566,8 +1737,8 @@ void FormatAllCommandLines(EditorDocument* doc) {
             }
         }
         
-        // 检查是否是赋值语句，格式化为 var ＝ value（只对有效组件属性赋值进行格式化）
-        if (IsValidAssignmentTarget(line)) {
+        // 检查是否是赋值语句，格式化为 var ＝ value
+        if (IsAssignmentLine(line)) {
             FormatAssignmentLine(line);
         }
     }
@@ -3204,10 +3375,10 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                         doc->parametersExpanded.insert(doc->parametersExpanded.begin() + i + p + 1, false);
                                     }
                                 } else {
-                                    // 折叠：删除参数行
-                                    for (size_t p = 0; p < params.size(); p++) {
-                                        if (i + 1 < doc->lines.size() && doc->lines[i + 1].length() > 0 && doc->lines[i + 1][0] == L'\u2060') {
-                                            doc->lines.erase(doc->lines.begin() + i + 1);
+                                    // 折叠：删除所有后续参数行（包括嵌套的子参数行）
+                                    while (i + 1 < doc->lines.size() && doc->lines[i + 1].length() > 0 && doc->lines[i + 1][0] == L'\u2060') {
+                                        doc->lines.erase(doc->lines.begin() + i + 1);
+                                        if (i + 1 < doc->parametersExpanded.size()) {
                                             doc->parametersExpanded.erase(doc->parametersExpanded.begin() + i + 1);
                                         }
                                     }
@@ -3219,8 +3390,8 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             }
                         }
                         
-                        // 检查是否是赋值语句（只对有效组件属性赋值生效）
-                        if (!isCommandLine && IsValidAssignmentTarget(line)) {
+                        // 检查是否是赋值语句（对所有赋值语句生效）
+                        if (!isCommandLine && IsAssignmentLine(line)) {
                             while (doc->parametersExpanded.size() <= i) {
                                 doc->parametersExpanded.push_back(false);
                             }
@@ -3231,6 +3402,9 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 std::wstring lhs, rhs;
                                 IsAssignmentLine(line, &lhs, &rhs);
                                 
+                                // 右值格式化运算符为全角
+                                rhs = FormatExprOperators(rhs);
+                                
                                 std::wstring line1 = L"\u2060\u88AB\u8D4B\u503C\u7684\u53D8\u91CF\u6216\u53D8\u91CF\u6570\u7EC4:" + lhs;
                                 std::wstring line2 = L"\u2060\u7528\u4F5C\u8D4B\u4E88\u7684\u503C\u6216\u8D44\u6E90:" + rhs;
                                 doc->lines.insert(doc->lines.begin() + i + 1, line1);
@@ -3238,10 +3412,10 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 doc->lines.insert(doc->lines.begin() + i + 2, line2);
                                 doc->parametersExpanded.insert(doc->parametersExpanded.begin() + i + 2, false);
                             } else {
-                                // 折叠：删除两行参数行
-                                for (int p = 0; p < 2; p++) {
-                                    if (i + 1 < doc->lines.size() && !doc->lines[i + 1].empty() && doc->lines[i + 1][0] == L'\u2060') {
-                                        doc->lines.erase(doc->lines.begin() + i + 1);
+                                // 折叠：删除所有后续参数行（包括嵌套的子参数行）
+                                while (i + 1 < doc->lines.size() && !doc->lines[i + 1].empty() && doc->lines[i + 1][0] == L'\u2060') {
+                                    doc->lines.erase(doc->lines.begin() + i + 1);
+                                    if (i + 1 < doc->parametersExpanded.size()) {
                                         doc->parametersExpanded.erase(doc->parametersExpanded.begin() + i + 1);
                                     }
                                 }
@@ -3250,6 +3424,48 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             doc->modified = true;
                             InvalidateRect(hWnd, NULL, TRUE);
                             return 0;
+                        }
+                        
+                        // 检查是否是参数行且值包含运算表达式（支持嵌套展开）
+                        if (line.length() > 0 && line[0] == L'\u2060') {
+                            // 提取参数值
+                            size_t colonPos = line.find(L':');
+                            if (colonPos != std::wstring::npos) {
+                                std::wstring paramValue = line.substr(colonPos + 1);
+                                // 去除前后空格
+                                while (!paramValue.empty() && (paramValue.front() == L' ' || paramValue.front() == L'\t')) paramValue.erase(0, 1);
+                                while (!paramValue.empty() && (paramValue.back() == L' ' || paramValue.back() == L'\t')) paramValue.pop_back();
+                                
+                                ExprOperatorInfo opInfo;
+                                if (ParseExpressionOperator(paramValue, opInfo)) {
+                                    while (doc->parametersExpanded.size() <= i) {
+                                        doc->parametersExpanded.push_back(false);
+                                    }
+                                    doc->parametersExpanded[i] = !doc->parametersExpanded[i];
+                                    
+                                    if (doc->parametersExpanded[i]) {
+                                        // 展开：插入两行运算参数行（用双\u2060标记嵌套层级）
+                                        std::wstring subLine1 = L"\u2060\u2060" + opInfo.param1Name + L":" + opInfo.leftOperand;
+                                        std::wstring subLine2 = L"\u2060\u2060" + opInfo.param2Name + L":" + opInfo.rightOperand;
+                                        doc->lines.insert(doc->lines.begin() + i + 1, subLine1);
+                                        doc->parametersExpanded.insert(doc->parametersExpanded.begin() + i + 1, false);
+                                        doc->lines.insert(doc->lines.begin() + i + 2, subLine2);
+                                        doc->parametersExpanded.insert(doc->parametersExpanded.begin() + i + 2, false);
+                                    } else {
+                                        // 折叠：删除所有后续嵌套参数行
+                                        while (i + 1 < doc->lines.size() && !doc->lines[i + 1].empty() && doc->lines[i + 1][0] == L'\u2060') {
+                                            doc->lines.erase(doc->lines.begin() + i + 1);
+                                            if (i + 1 < doc->parametersExpanded.size()) {
+                                                doc->parametersExpanded.erase(doc->parametersExpanded.begin() + i + 1);
+                                            }
+                                        }
+                                    }
+                                    
+                                    doc->modified = true;
+                                    InvalidateRect(hWnd, NULL, TRUE);
+                                    return 0;
+                                }
+                            }
                         }
                         break;
                     }
@@ -4070,7 +4286,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     if (IsFlowControlLine(line)) {
                         textStartX = startX + 20;
                     } else if (isParamLine) {
-                        // 参数行：格式为 \u2060参数名:参数值
+                        // 参数行：格式为 \u2060参数名:参数值（嵌套行有多个\u2060前缀）
+                        // 计算嵌套层级
+                        int pNestLevel = 0;
+                        while (pNestLevel < (int)line.length() && line[pNestLevel] == L'\u2060') pNestLevel++;
+                        
                         // 查找冒号位置，确定参数名和参数值的分界
                         size_t colonPos = line.find(L':');
                         if (colonPos == std::wstring::npos) {
@@ -4110,10 +4330,17 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             }
                         }
                         
+                        // 嵌套参数行：增加额外偏移量（与渲染一致）
+                        if (pNestLevel >= 2) {
+                            SIZE nestOffset;
+                            GetTextExtentPoint32W(hdc, L"中文中文", 4, &nestOffset);
+                            paramTextX += (pNestLevel - 1) * nestOffset.cx;
+                        }
+                        
                         // 绘制时整个displayText从paramTextX开始，所以光标计算也要从这里开始
                         // 但光标逻辑上的位置应该是在 line 中的位置（colonPos + 1）
                         // 需要计算 "      ※参数名：" 的显示宽度来确定参数值的起始X坐标
-                        std::wstring paramName = line.substr(1, colonPos - 1);  // 跳过标记字符，到冒号之前
+                        std::wstring paramName = line.substr(pNestLevel, colonPos - pNestLevel);  // 跳过所有前导\u2060标记，到冒号之前
                         std::wstring displayPrefix = L"      ※" + paramName + L"：";
                         SIZE prefixDisplaySize;
                         GetTextExtentPoint32W(hdc, displayPrefix.c_str(), (int)displayPrefix.length(), &prefixDisplaySize);
@@ -7337,8 +7564,8 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         }
                     }
                     
-                    // 赋值语句也绘制展开/折叠符号（只对有效组件属性赋值生效）
-                    if (!isCommandLine && IsValidAssignmentTarget(line)) {
+                    // 赋值语句也绘制展开/折叠符号（对所有赋值语句生效）
+                    if (!isCommandLine && IsAssignmentLine(line)) {
                         while (doc->parametersExpanded.size() <= (size_t)currentLineIndex) {
                             doc->parametersExpanded.push_back(false);
                         }
@@ -8687,6 +8914,12 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 } else if (line.length() > 0 && line[0] == L'\u2060') {
                     // 参数行（命令展开的参数输入行）
                     
+                    // 计算嵌套层级（前导\u2060的数量，1=一级参数，2=二级嵌套参数）
+                    int nestingLevel = 0;
+                    while (nestingLevel < (int)line.length() && line[nestingLevel] == L'\u2060') {
+                        nestingLevel++;
+                    }
+                    
                     int paramTextX = startX + 20;  // 默认位置
                     
                     // 绘制从上一行命令括号到参数行的虚线
@@ -8697,11 +8930,25 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             cmdLineIndex--;
                         }
                         
+                        // 对于嵌套参数行，找到父参数行（嵌套层级少一的最近行）
+                        int parentParamIndex = -1;
+                        if (nestingLevel >= 2) {
+                            for (int k = (int)i - 1; k > cmdLineIndex; k--) {
+                                const std::wstring& kLine = doc->lines[k];
+                                int kLevel = 0;
+                                while (kLevel < (int)kLine.length() && kLine[kLevel] == L'\u2060') kLevel++;
+                                if (kLevel < nestingLevel) {
+                                    parentParamIndex = k;
+                                    break;
+                                }
+                            }
+                        }
+                        
                         if (cmdLineIndex >= 0) {
                             const std::wstring& prevLine = doc->lines[cmdLineIndex];
                             // 找到括号位置
                             size_t leftBracket = prevLine.find(L'(');
-                            bool isAssignment = (leftBracket == std::wstring::npos) && IsValidAssignmentTarget(prevLine);
+                            bool isAssignment = (leftBracket == std::wstring::npos) && IsAssignmentLine(prevLine);
                             if (leftBracket != std::wstring::npos || isAssignment) {
                                 int textCenterOffset = (rowHeight - fontSize) / 2 + fontSize / 2;
                                 int prevLineY = currentY - (int)(i - cmdLineIndex) * rowHeight;
@@ -8756,6 +9003,22 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 GetTextExtentPoint32W(hdc, L"      ", 6, &prefixSize);
                                 int arrowX = paramTextX + prefixSize.cx;
                                 
+                                // 嵌套参数行：增加额外右移偏移量
+                                if (nestingLevel >= 2) {
+                                    SIZE nestOffset;
+                                    GetTextExtentPoint32W(hdc, L"中文中文", 4, &nestOffset);
+                                    int extraOffset = (nestingLevel - 1) * nestOffset.cx;
+                                    paramTextX += extraOffset;
+                                    flowLineX += extraOffset;
+                                    arrowX = paramTextX + prefixSize.cx;
+                                    
+                                    // 流程线连接到父参数行而非命令行
+                                    if (parentParamIndex >= 0) {
+                                        prevLineY = currentY - (int)(i - parentParamIndex) * rowHeight;
+                                        prevLineBottom = prevLineY + rowHeight;
+                                    }
+                                }
+                                
                                 // 绘制虚线：从参数文本位置向下，然后向右到参数内容位置
                                 HPEN hDashPen = CreatePen(PS_DOT, 1, g_CurrentTheme.textDim);
                                 HPEN hOldPen = (HPEN)SelectObject(hdc, hDashPen);
@@ -8771,8 +9034,14 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 SelectObject(hdc, hOldPen);
                                 DeleteObject(hDashPen);
                                 
-                                // 在命令底部绘制向上的实心三角形箭头（只在第一个参数行绘制）
-                                if ((int)i == cmdLineIndex + 1) {
+                                // 绘制向上的实心三角形箭头（嵌套参数行：第一个子参数行绘制；一级参数行：第一个参数行绘制）
+                                bool drawArrow = false;
+                                if (nestingLevel >= 2 && parentParamIndex >= 0) {
+                                    drawArrow = ((int)i == parentParamIndex + 1);
+                                } else {
+                                    drawArrow = ((int)i == cmdLineIndex + 1);
+                                }
+                                if (drawArrow) {
                                     POINT upArrow[3];
                                     upArrow[0] = {flowLineX, prevLineBottom - 5};      // 顶点（向上）
                                     upArrow[1] = {flowLineX - 5, prevLineBottom};      // 左下角
@@ -8788,8 +9057,8 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     }
                     
                     SetTextColor(hdc, g_CurrentTheme.syntaxVariable);  // 浅蓝色
-                    // 提取参数名和参数值（格式：\u2060参数名:参数值）
-                    std::wstring lineContent = line.substr(1);  // 跳过标记字符
+                    // 提取参数名和参数值（格式：\u2060参数名:参数值，嵌套行有多个\u2060前缀）
+                    std::wstring lineContent = line.substr(nestingLevel);  // 跳过所有前导\u2060标记
                     size_t colonPos = lineContent.find(L':');
                     std::wstring paramName, paramValue;
                     if (colonPos != std::wstring::npos) {
@@ -8799,6 +9068,42 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         paramName = lineContent;
                         paramValue = L"";
                     }
+                    
+                    // 检查参数值是否包含运算表达式，如果是则绘制展开/折叠按钮
+                    {
+                        std::wstring trimmedValue = paramValue;
+                        while (!trimmedValue.empty() && (trimmedValue.front() == L' ' || trimmedValue.front() == L'\t')) trimmedValue.erase(0, 1);
+                        while (!trimmedValue.empty() && (trimmedValue.back() == L' ' || trimmedValue.back() == L'\t')) trimmedValue.pop_back();
+                        ExprOperatorInfo checkOpInfo;
+                        if (ParseExpressionOperator(trimmedValue, checkOpInfo)) {
+                            while (doc->parametersExpanded.size() <= i) {
+                                doc->parametersExpanded.push_back(false);
+                            }
+                            bool isExpanded = doc->parametersExpanded[i];
+                            
+                            int foldBtnSize = 10;
+                            int foldBtnX = 58;
+                            int foldBtnY = currentY + (rowHeight - foldBtnSize) / 2;
+                            
+                            HPEN hFoldPen = CreatePen(PS_SOLID, 1, g_CurrentTheme.textDim);
+                            HPEN hOldFoldPen = (HPEN)SelectObject(hdc, hFoldPen);
+                            HBRUSH hOldFoldBrush = (HBRUSH)SelectObject(hdc, GetStockObject(NULL_BRUSH));
+                            Rectangle(hdc, foldBtnX, foldBtnY, foldBtnX + foldBtnSize, foldBtnY + foldBtnSize);
+                            
+                            MoveToEx(hdc, foldBtnX + 2, foldBtnY + foldBtnSize / 2, NULL);
+                            LineTo(hdc, foldBtnX + foldBtnSize - 2, foldBtnY + foldBtnSize / 2);
+                            
+                            if (!isExpanded) {
+                                MoveToEx(hdc, foldBtnX + foldBtnSize / 2, foldBtnY + 2, NULL);
+                                LineTo(hdc, foldBtnX + foldBtnSize / 2, foldBtnY + foldBtnSize - 2);
+                            }
+                            
+                            SelectObject(hdc, hOldFoldBrush);
+                            SelectObject(hdc, hOldFoldPen);
+                            DeleteObject(hFoldPen);
+                        }
+                    }
+                    
                     std::wstring displayText = L"      ※" + paramName + L"：" + paramValue;
                     TextOutW(hdc, paramTextX, currentY + (rowHeight - fontSize) / 2, displayText.c_str(), (int)displayText.length());
                 } else if (line.length() > 0 && line[0] == L'\'') {

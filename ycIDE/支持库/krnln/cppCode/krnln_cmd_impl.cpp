@@ -3223,11 +3223,11 @@ EXTERN_C void KRNLN_NAME(216, InputBox)(PMDATA_INF pRetData, INT nArgCount, PMDA
 // 说明: 在对话框中显示信息，等待用户单击按钮，并返回一个整数告诉用户单击哪一个按钮。该整数为以下常量值之一： 0、#确认钮； 1、#取消钮； 2、#放弃钮； 3、#重试...
 EXTERN_C void KRNLN_NAME(217, MsgBox)(PMDATA_INF pRetData, INT nArgCount, PMDATA_INF pArgInf)
 {
-    const char* psMsg     = (nArgCount >= 1 && pArgInf[0].m_pText) ? pArgInf[0].m_pText : "";
+    const wchar_t* psMsg  = (nArgCount >= 1 && pArgInf[0].m_pText) ? (const wchar_t*)pArgInf[0].m_pText : L"";
     INT nBtnType = (nArgCount >= 2) ? pArgInf[1].m_int : MB_OK;
-    const char* psTitle   = (nArgCount >= 3 && pArgInf[2].m_pText) ? pArgInf[2].m_pText : "";
+    const wchar_t* psTitle = (nArgCount >= 3 && pArgInf[2].m_pText) ? (const wchar_t*)pArgInf[2].m_pText : L"";
     HWND hParent = (nArgCount >= 4) ? (HWND)(DWORD_PTR)pArgInf[3].m_int : NULL;
-    int r = MessageBoxA(hParent, psMsg, psTitle, (UINT)nBtnType);
+    int r = MessageBoxW(hParent, psMsg, psTitle, (UINT)nBtnType);
     // 易语言返回常量: 0=确认,1=取消,2=放弃,3=重试,4=忽略,5=是,6=否
     static const int map[] = {0,0,1,2,3,4,5,6};
     pRetData->m_int = (r >= 0 && r <= 7) ? map[r] : r;

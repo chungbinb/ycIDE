@@ -181,6 +181,17 @@ EYTokenType Lexer::GetKeywordType(const std::wstring& word) const {
         // 逻辑值
         {L"真", EYTokenType::KEYWORD_TRUE},
         {L"假", EYTokenType::KEYWORD_FALSE},
+        
+        // 基础数据类型（内置，不依赖支持库）
+        {L"字节型", EYTokenType::TYPE_BYTE},
+        {L"短整数型", EYTokenType::TYPE_SHORT},
+        {L"整数型", EYTokenType::TYPE_INT},
+        {L"长整数型", EYTokenType::TYPE_LONG},
+        {L"小数型", EYTokenType::TYPE_FLOAT},
+        {L"双精度小数型", EYTokenType::TYPE_DOUBLE},
+        {L"逻辑型", EYTokenType::TYPE_BOOL},
+        {L"文本型", EYTokenType::TYPE_TEXT},
+        {L"日期时间型", EYTokenType::TYPE_DATE},
     };
     
     // 先检查内置关键字

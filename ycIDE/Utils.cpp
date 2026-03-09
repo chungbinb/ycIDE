@@ -673,6 +673,34 @@ std::wstring ConvertEPLToInternal(const std::wstring& eplCode) {
     return result;
 }
 
+// 将全角运算符还原为半角（编辑器显示用全角，源码需要半角）
+static std::wstring RestoreHalfWidthOperators(const std::wstring& line) {
+    std::wstring restored;
+    bool inStr = false;
+    for (size_t i = 0; i < line.length(); i++) {
+        wchar_t ch = line[i];
+        if (ch == L'"') { inStr = !inStr; restored += ch; continue; }
+        if (inStr) { restored += ch; continue; }
+        wchar_t halfWidth = 0;
+        switch (ch) {
+            case L'\uFF1D': halfWidth = L'='; break;
+            case L'\uFF0B': halfWidth = L'+'; break;
+            case L'\uFF0D': halfWidth = L'-'; break;
+            case L'\u00D7': halfWidth = L'*'; break;
+            case L'\u00F7': halfWidth = L'/'; break;
+            default: break;
+        }
+        if (halfWidth) {
+            if (!restored.empty() && restored.back() == L' ') restored.pop_back();
+            restored += halfWidth;
+            if (i + 1 < line.length() && line[i + 1] == L' ') i++;
+        } else {
+            restored += ch;
+        }
+    }
+    return restored;
+}
+
 // 内部格式转EPL代码
 std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
     std::wstring result;
@@ -790,11 +818,11 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                     
                     if (isIndentedLine) {
                         // \u200C标记的缩进行，转换为4个空格缩进后输出
-                        result += L"    " + nextLine.substr(1) + L"\n";
+                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
                         j++;
                     } else if (isOldIndentedLine) {
                         // 旧格式的单空格缩进行
-                        result += L"    " + nextLine.substr(1) + L"\n";
+                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
                         j++;
                     } else {
                         // 非缩进行，流程控制结束
@@ -822,10 +850,10 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                     bool isOldIndentedLine = (nextLine.length() > 0 && nextLine[0] == L' ' && (nextLine.length() == 1 || nextLine[1] != L' '));
                     
                     if (isIndentedLine) {
-                        result += L"    " + nextLine.substr(1) + L"\n";
+                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
                         j++;
                     } else if (isOldIndentedLine) {
-                        result += L"    " + nextLine.substr(1) + L"\n";
+                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
                         j++;
                     } else {
                         break;
@@ -843,10 +871,10 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                     bool isOldElseLine = (nextLine.length() >= 2 && nextLine[0] == L' ' && nextLine[1] == L' ');
                     
                     if (isElseLine) {
-                        result += L"    " + nextLine.substr(1) + L"\n";
+                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
                         j++;
                     } else if (isOldElseLine) {
-                        result += L"    " + nextLine.substr(2) + L"\n";
+                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(2)) + L"\n";
                         j++;
                     } else {
                         break;
@@ -869,7 +897,8 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 while (!cleanLine.empty() && (cleanLine[0] == L'\u200C' || cleanLine[0] == L'\u200D' || cleanLine[0] == L'\u2060')) {
                     cleanLine = cleanLine.substr(1);
                 }
-                result += cleanLine + L"\n";
+                // 将全角运算符还原为半角（编辑器显示用全角，源码需要半角）
+                result += RestoreHalfWidthOperators(cleanLine) + L"\n";
             }
         }
     }
