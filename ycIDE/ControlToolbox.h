@@ -82,6 +82,8 @@ public:
     
     void SetSearchText(const std::wstring& text);
     std::wstring GetSearchText() const { return m_searchText; }
+    void CreateSearchBox();                // 创建搜索框控件
+    void OnSearchTextChanged();            // 搜索框文本变化处理
     
     // === 分类管理 ===
     
@@ -97,6 +99,7 @@ public:
     
 private:
     HWND m_hWnd;
+    HWND m_hSearchEdit;            // 搜索框控件句柄
     
     // 工具箱数据
     std::vector<ToolboxCategory> m_categories;
@@ -108,6 +111,7 @@ private:
     
     // 搜索
     std::wstring m_searchText;
+    bool m_isSearching;            // 是否正在搜索（搜索框有内容）
     
     // 滚动
     int m_scrollPos;
@@ -127,6 +131,8 @@ private:
     
     // 布局常量
     static const int TITLEBAR_HEIGHT = 28;  // 自定义标题栏高度
+    static const int SEARCHBOX_HEIGHT = 26; // 搜索框高度
+    static const int SEARCHBOX_MARGIN = 4;  // 搜索框边距
     static const int TITLEBAR_BUTTON_SIZE = 20;  // 标题栏按钮大小
     static const int ITEM_HEIGHT = 32;
     static const int CATEGORY_HEIGHT = 28;

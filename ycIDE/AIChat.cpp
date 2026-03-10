@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "AIChat.h"
 #include "AIModel.h"
 #include "Resource.h"
@@ -886,6 +886,7 @@ void ApplyAICodeChanges(const std::wstring& aiResponse, int msgIdx = -1) {
             doc->scrollX = 0;
             doc->scrollY = 0;
             doc->modified = true;
+                doc->MarkContentDirty();
             editInfo.applied = true;
             
             WriteDebugLog(L"[ApplyAICodeChanges] Code applied to document with diff view");
@@ -3310,7 +3311,8 @@ LRESULT CALLBACK AIChatWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
                             doc->lines = finalLines;
                             doc->diffTypes.clear();
                             doc->showDiff = false;
-                            doc->modified = true;  // 标记为已修改以便SaveFile保存
+                            doc->modified = true;
+                doc->MarkContentDirty();  // 标记为已修改以便SaveFile保存
                             
                             // 使用SaveFile函数保存
                             SaveFile(doc->filePath, doc);

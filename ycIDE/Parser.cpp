@@ -84,6 +84,8 @@ void Parser::Synchronize() {
             case EYTokenType::KEYWORD_IF:
             case EYTokenType::KEYWORD_WHILE:
             case EYTokenType::KEYWORD_FOR:
+            case EYTokenType::KEYWORD_FOR_END:
+            case EYTokenType::KEYWORD_WHILE_END:
             case EYTokenType::KEYWORD_VAR:
             case EYTokenType::KEYWORD_CONST:
             case EYTokenType::KEYWORD_RETURN:
@@ -474,9 +476,8 @@ std::shared_ptr<WhileStmtNode> Parser::ParseWhileStatement() {
     
     SkipNewlines();
     
-    // 循环体
-    // TODO: 解析到"到循环尾"
-    while (!IsAtEnd()) {
+    // 循环体：解析到"判断循环尾"
+    while (!IsAtEnd() && !Check(EYTokenType::KEYWORD_WHILE_END)) {
         if (Match(EYTokenType::NEWLINE)) {
             continue;
         }
@@ -485,9 +486,14 @@ std::shared_ptr<WhileStmtNode> Parser::ParseWhileStatement() {
         if (stmt) {
             whileStmt->body.push_back(stmt);
         }
-        
-        // 简化处理
-        break;
+    }
+    
+    // 消耗"判断循环尾"
+    if (Match(EYTokenType::KEYWORD_WHILE_END)) {
+        // 可选的括号
+        if (Match(EYTokenType::LPAREN)) {
+            Match(EYTokenType::RPAREN);
+        }
     }
     
     return whileStmt;
@@ -501,22 +507,18 @@ std::shared_ptr<ForStmtNode> Parser::ParseForStatement() {
     // "计次循环首"
     Expect(EYTokenType::KEYWORD_FOR, L"期望'计次循环首'关键字");
     
-    // 循环变量
+    // 语法: 计次循环首 (循环次数, [已循环次数记录变量])
     bool hasParens = Match(EYTokenType::LPAREN);
-    Token loopVarToken = Expect(EYTokenType::IDENTIFIER, L"期望循环变量名");
-    forStmt->loopVar = loopVarToken.value;
     
-    // 起始值
-    Expect(EYTokenType::COMMA, L"期望','");
-    forStmt->startValue = ParseExpression();
+    // 循环次数（表达式）
+    forStmt->loopCount = ParseExpression();
     
-    // 结束值
-    Expect(EYTokenType::COMMA, L"期望','");
-    forStmt->endValue = ParseExpression();
-    
-    // 步长（可选）
+    // 已循环次数记录变量（可选）
     if (Match(EYTokenType::COMMA)) {
-        forStmt->stepValue = ParseExpression();
+        if (Check(EYTokenType::IDENTIFIER)) {
+            forStmt->loopVar = currentToken_.value;
+            Advance();
+        }
     }
     
     if (hasParens) {
@@ -525,8 +527,8 @@ std::shared_ptr<ForStmtNode> Parser::ParseForStatement() {
     
     SkipNewlines();
     
-    // 循环体
-    while (!IsAtEnd()) {
+    // 循环体：解析到"计次循环尾"
+    while (!IsAtEnd() && !Check(EYTokenType::KEYWORD_FOR_END)) {
         if (Match(EYTokenType::NEWLINE)) {
             continue;
         }
@@ -535,9 +537,14 @@ std::shared_ptr<ForStmtNode> Parser::ParseForStatement() {
         if (stmt) {
             forStmt->body.push_back(stmt);
         }
-        
-        // 简化处理
-        break;
+    }
+    
+    // 消耗"计次循环尾"
+    if (Match(EYTokenType::KEYWORD_FOR_END)) {
+        // 可选的括号
+        if (Match(EYTokenType::LPAREN)) {
+            Match(EYTokenType::RPAREN);
+        }
     }
     
     return forStmt;

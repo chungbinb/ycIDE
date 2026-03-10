@@ -34,6 +34,7 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
     // 记录已加载的库文件名和路径
     loadedLibraryFileNames.push_back(libFileName);
     libraryFilePathMap[libFileName] = fnePath;
+    libraryChineseNameMap[libFileName] = libraryName;
     
     // 调试输出到文件
     CreateDirectoryW(L"logs", NULL);
@@ -308,6 +309,14 @@ std::vector<std::wstring> LibraryParser::GetAllDataTypeNames() const {
 std::wstring LibraryParser::GetLibraryFnePath(const std::wstring& libFileName) const {
     auto it = libraryFilePathMap.find(libFileName);
     if (it != libraryFilePathMap.end()) {
+        return it->second;
+    }
+    return L"";
+}
+
+std::wstring LibraryParser::GetLibraryChineseName(const std::wstring& libFileName) const {
+    auto it = libraryChineseNameMap.find(libFileName);
+    if (it != libraryChineseNameMap.end()) {
         return it->second;
     }
     return L"";

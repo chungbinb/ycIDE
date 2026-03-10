@@ -43,6 +43,29 @@ enum ExplorerTabType {
     TAB_PROPERTY = 2    // 属性
 };
 
+// 支持库树形节点类型
+enum LibTreeNodeType {
+    LIB_NODE_LIBRARY = 0,    // 支持库根节点
+    LIB_NODE_CATEGORY = 1,   // 命令类别
+    LIB_NODE_COMMAND = 2,    // 命令
+    LIB_NODE_DATATYPE = 3,   // 数据类型
+};
+
+// 支持库树形节点
+struct LibTreeNode {
+    std::wstring name;
+    LibTreeNodeType nodeType;
+    int level;
+    bool isExpanded;
+    std::vector<LibTreeNode*> children;
+    
+    LibTreeNode(const std::wstring& n, LibTreeNodeType t, int l)
+        : name(n), nodeType(t), level(l), isExpanded(false) {}
+    ~LibTreeNode() {
+        for (auto c : children) delete c;
+    }
+};
+
 // 资源管理器数据
 struct ResourceExplorerData {
     std::vector<FileNode*> rootNodes; // 根节点列表
@@ -66,10 +89,19 @@ struct ResourceExplorerData {
     bool isDraggingBorder;      // 是否正在拖动边框
     bool isTrackingMouse;       // 是否已注册鼠标离开追踪
     
+    // 支持库树形视图
+    std::vector<LibTreeNode*> libTreeRoots;        // 支持库树根节点
+    std::vector<LibTreeNode*> libTreeVisible;      // 扁平化可见节点
+    LibTreeNode* libTreeSelected;                  // 选中节点
+    bool libTreeBuilt;                             // 树是否已构建
+    int libTreeScrollY;                            // 滚动偏移
+    
     ResourceExplorerData();
     ~ResourceExplorerData();
     
     void UpdateVisibleNodes(); // 根据展开状态更新 visibleNodes
+    void BuildLibraryTree();   // 构建支持库树
+    void UpdateLibTreeVisible(); // 更新支持库可见节点
 };
 
 extern ResourceExplorerData g_ExplorerData;

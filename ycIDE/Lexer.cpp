@@ -166,6 +166,8 @@ EYTokenType Lexer::GetKeywordType(const std::wstring& word) const {
         {L"否则", EYTokenType::KEYWORD_ELSE},
         {L"判断循环首", EYTokenType::KEYWORD_WHILE},
         {L"计次循环首", EYTokenType::KEYWORD_FOR},
+        {L"计次循环尾", EYTokenType::KEYWORD_FOR_END},
+        {L"判断循环尾", EYTokenType::KEYWORD_WHILE_END},
         {L"到循环尾", EYTokenType::KEYWORD_DO},
         {L"跳出循环", EYTokenType::KEYWORD_BREAK},
         {L"继续循环", EYTokenType::KEYWORD_CONTINUE},
@@ -370,6 +372,12 @@ Token Lexer::ScanDotKeyword() {
     }
     if (keyword == L"计次循环首") {
         return MakeToken(EYTokenType::KEYWORD_FOR, keyword);
+    }
+    if (keyword == L"计次循环尾") {
+        return MakeToken(EYTokenType::KEYWORD_FOR_END, keyword);
+    }
+    if (keyword == L"判断循环尾") {
+        return MakeToken(EYTokenType::KEYWORD_WHILE_END, keyword);
     }
     if (keyword == L"到循环尾") {
         return MakeToken(EYTokenType::KEYWORD_DO, keyword);

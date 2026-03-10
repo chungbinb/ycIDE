@@ -2,8 +2,11 @@
 #include "EditorContext.h"
 #include "ControlRenderer.h"
 #include "LibraryParser.h"
+#include "PinyinHelper.h"
 #include "Theme.h"
 #include <cstdio>
+#include <algorithm>
+#include <commctrl.h>
 
 // 防止 Windows 头文件中的 min/max 宏与 std::min/std::max 冲突
 #ifndef NOMINMAX
@@ -44,12 +47,14 @@ static void ToolboxDebugLog(const std::wstring& msg) {
 // ControlToolbox 构造函数
 ControlToolbox::ControlToolbox(HWND hWnd)
     : m_hWnd(hWnd)
+    , m_hSearchEdit(NULL)
     , m_hoveredIndex(-1)
     , m_scrollPos(0)
     , m_isDocked(false)
     , m_displayMode(MODE_LIST)
     , m_hoveredButton(BTN_NONE)
     , m_buttonPressed(false)
+    , m_isSearching(false)
     , m_gdiplusToken(0)
 {
     // 初始化GDI+
@@ -63,6 +68,9 @@ ControlToolbox::ControlToolbox(HWND hWnd)
     if (m_categories.empty()) {
         AddDefaultControls();
     }
+    
+    // 创建搜索框
+    CreateSearchBox();
 }
 
 ControlToolbox::~ControlToolbox()
@@ -281,15 +289,57 @@ void ControlToolbox::OnPaint(HDC hdc)
     Pen sepPen(ColorRefToGdiplus(g_CurrentTheme.border), 1);
     graphics.DrawLine(&sepPen, 0, TITLEBAR_HEIGHT, rect.right, TITLEBAR_HEIGHT);
     
-    // 设置裁剪区域，确保控件列表不会绘制到标题栏上
-    graphics.SetClip(Rect(0, TITLEBAR_HEIGHT + 1, rect.right, rect.bottom - TITLEBAR_HEIGHT - 1));
+    // 搜索框区域背景（搜索框是子窗口，这里填充其周围区域）
+    int contentTop = TITLEBAR_HEIGHT + SEARCHBOX_HEIGHT + SEARCHBOX_MARGIN * 2;
+    SolidBrush searchAreaBrush(ColorRefToGdiplus(g_CurrentTheme.editorBg));
+    graphics.FillRectangle(&searchAreaBrush, 0, TITLEBAR_HEIGHT + 1, rect.right, contentTop - TITLEBAR_HEIGHT - 1);
+    
+    // 设置裁剪区域，确保控件列表不会绘制到搜索框上
+    graphics.SetClip(Rect(0, contentTop, rect.right, rect.bottom - contentTop));
     
     // 绘制控件列表
     Font itemFont(L"微软雅黑", 10);
-    int y = TITLEBAR_HEIGHT + 5 - m_scrollPos;
+    int y = contentTop + 2 - m_scrollPos;
     int itemIndex = 0;
     
-    if (m_displayMode == MODE_ICON) {
+    if (m_isSearching) {
+        // ===== 搜索模式：显示过滤后的平面列表 =====
+        auto filtered = GetFilteredItems();
+        
+        if (filtered.empty()) {
+            // 无匹配结果提示
+            SolidBrush hintBrush(Color(150, 150, 150));
+            Font hintFont(L"微软雅黑", 9);
+            StringFormat sf;
+            sf.SetAlignment(StringAlignmentCenter);
+            RectF hintRect(0, (float)contentTop + 20, (float)rect.right, 30);
+            graphics.DrawString(L"没有找到匹配的组件", -1, &hintFont, hintRect, &sf, &hintBrush);
+        } else {
+            for (auto item : filtered) {
+                if (y > rect.bottom) break;
+                
+                if (y + ITEM_HEIGHT > contentTop) {
+                    bool isSelected = (item->type == m_selectedType);
+                    bool isHovered = (itemIndex == m_hoveredIndex);
+                    
+                    if (isSelected) {
+                        SolidBrush selBrush(ColorRefToGdiplus(g_CurrentTheme.activityBarIndicator));
+                        graphics.FillRectangle(&selBrush, 0, y, rect.right, ITEM_HEIGHT);
+                    } else if (isHovered) {
+                        SolidBrush hoverBrush(ColorRefToGdiplus(g_CurrentTheme.explorerTabHover));
+                        graphics.FillRectangle(&hoverBrush, 0, y, rect.right, ITEM_HEIGHT);
+                    }
+                    
+                    // 绘制控件名
+                    graphics.DrawString(item->displayName.c_str(), -1, &itemFont, 
+                                      PointF(MARGIN + ICON_SIZE + 4, (float)y + 6), &textBrush);
+                }
+                
+                y += ITEM_HEIGHT;
+                itemIndex++;
+            }
+        }
+    } else if (m_displayMode == MODE_ICON) {
         // ===== 图标模式 =====
         const int ICON_ITEM_SIZE = 48;  // 每个图标项的大小
         const int ICON_PADDING = 4;     // 图标间距
@@ -424,6 +474,11 @@ void ControlToolbox::OnPaint(HDC hdc)
 
 void ControlToolbox::OnSize(int width, int height)
 {
+    // 调整搜索框大小
+    if (m_hSearchEdit) {
+        MoveWindow(m_hSearchEdit, SEARCHBOX_MARGIN, TITLEBAR_HEIGHT + SEARCHBOX_MARGIN,
+                   width - SEARCHBOX_MARGIN * 2, SEARCHBOX_HEIGHT, TRUE);
+    }
     UpdateScrollBar();
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
@@ -440,9 +495,36 @@ void ControlToolbox::OnLButtonDown(int x, int y)
     RECT rect;
     GetClientRect(m_hWnd, &rect);
     
+    int contentTop = TITLEBAR_HEIGHT + SEARCHBOX_HEIGHT + SEARCHBOX_MARGIN * 2;
+    
+    // 点击在搜索框区域，不处理
+    if (y < contentTop) return;
+    
     // 检查点击位置
-    int clickY = y + m_scrollPos - (TITLEBAR_HEIGHT + 5);
+    int clickY = y + m_scrollPos - (contentTop + 2);
     int itemY = 0;
+    
+    if (m_isSearching) {
+        // ===== 搜索模式：平面列表点击处理 =====
+        auto filtered = GetFilteredItems();
+        for (auto item : filtered) {
+            if (clickY >= itemY && clickY < itemY + ITEM_HEIGHT) {
+                m_selectedType = item->type;
+                InvalidateRect(m_hWnd, NULL, FALSE);
+                
+                OutputDebugStringW((L"[ControlToolbox] 选中组件: " + m_selectedType + L"\n").c_str());
+                
+                if (hMainWnd) {
+                    PostMessage(hMainWnd, WM_COMMAND, 
+                               MAKEWPARAM(0, WM_TOOLBOX_SELECTION_CHANGED), 
+                               (LPARAM)m_selectedType.c_str());
+                }
+                return;
+            }
+            itemY += ITEM_HEIGHT;
+        }
+        return;
+    }
     
     if (m_displayMode == MODE_ICON) {
         // ===== 图标模式点击处理 =====
@@ -629,6 +711,16 @@ void ControlToolbox::LoadFromRenderer(ControlRenderer* renderer)
         return;
     }
     
+    // 先检查 renderer 是否有控件，没有则保留现有内容
+    auto categories = renderer->GetControlCategories();
+    ToolboxDebugLog(L"从 renderer 获取到 " + std::to_wstring(categories.size()) + L" 个分类");
+    
+    if (categories.empty()) {
+        ToolboxDebugLog(L"renderer 没有控件数据，保留现有组件箱内容");
+        ToolboxDebugLog(L"========== LoadFromRenderer 结束（保留默认）==========");
+        return;
+    }
+    
     // 清空现有分类
     ToolboxDebugLog(L"清空现有分类，当前有 " + std::to_wstring(m_categories.size()) + L" 个分类");
     for (auto& cat : m_categories) {
@@ -638,10 +730,6 @@ void ControlToolbox::LoadFromRenderer(ControlRenderer* renderer)
         cat.items.clear();
     }
     m_categories.clear();
-    
-    // 获取所有分类
-    auto categories = renderer->GetControlCategories();
-    ToolboxDebugLog(L"从 renderer 获取到 " + std::to_wstring(categories.size()) + L" 个分类");
     
     for (const auto& catName : categories) {
         ToolboxDebugLog(L"\n处理分类: " + catName);
@@ -745,18 +833,125 @@ void ControlToolbox::CollapseAll()
     InvalidateRect(m_hWnd, NULL, FALSE);
 }
 
+// 搜索框控件ID
+#define IDC_TOOLBOX_SEARCH 1001
+
+void ControlToolbox::CreateSearchBox()
+{
+    RECT rect;
+    GetClientRect(m_hWnd, &rect);
+    
+    m_hSearchEdit = CreateWindowExW(
+        0,
+        L"EDIT",
+        L"",
+        WS_CHILD | WS_VISIBLE | ES_AUTOHSCROLL,
+        SEARCHBOX_MARGIN,
+        TITLEBAR_HEIGHT + SEARCHBOX_MARGIN,
+        rect.right - SEARCHBOX_MARGIN * 2,
+        SEARCHBOX_HEIGHT,
+        m_hWnd,
+        (HMENU)(INT_PTR)IDC_TOOLBOX_SEARCH,
+        NULL,
+        NULL
+    );
+    
+    if (m_hSearchEdit) {
+        // 设置提示文字
+        SendMessageW(m_hSearchEdit, EM_SETCUEBANNER, TRUE, (LPARAM)L"搜索组件...");
+        
+        // 设置字体
+        HFONT hFont = CreateFontW(-14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+            DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+            CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"微软雅黑");
+        SendMessageW(m_hSearchEdit, WM_SETFONT, (WPARAM)hFont, TRUE);
+    }
+}
+
+void ControlToolbox::OnSearchTextChanged()
+{
+    if (!m_hSearchEdit) return;
+    
+    wchar_t buf[256] = {};
+    GetWindowTextW(m_hSearchEdit, buf, 256);
+    m_searchText = buf;
+    m_isSearching = !m_searchText.empty();
+    m_scrollPos = 0;  // 搜索时重置滚动位置
+    UpdateScrollBar();
+    InvalidateRect(m_hWnd, NULL, FALSE);
+}
+
+bool ControlToolbox::MatchesSearch(const ToolboxItem& item) const
+{
+    if (m_searchText.empty()) return true;
+    
+    // 转小写比较
+    std::wstring searchLower = m_searchText;
+    std::wstring nameLower = item.displayName;
+    std::transform(searchLower.begin(), searchLower.end(), searchLower.begin(), ::towlower);
+    std::transform(nameLower.begin(), nameLower.end(), nameLower.begin(), ::towlower);
+    
+    // 1. 直接包含匹配
+    if (nameLower.find(searchLower) != std::wstring::npos) {
+        return true;
+    }
+    
+    // 2. 拼音首字母匹配
+    std::wstring initials = PinyinHelper::GetStringInitials(item.displayName);
+    std::wstring initialsLower = initials;
+    std::transform(initialsLower.begin(), initialsLower.end(), initialsLower.begin(), ::towlower);
+    if (initialsLower.find(searchLower) != std::wstring::npos) {
+        return true;
+    }
+    
+    // 3. 全拼匹配
+    std::wstring pinyin = PinyinHelper::GetStringPinyin(item.displayName);
+    std::wstring pinyinLower = pinyin;
+    std::transform(pinyinLower.begin(), pinyinLower.end(), pinyinLower.begin(), ::towlower);
+    if (pinyinLower.find(searchLower) != std::wstring::npos) {
+        return true;
+    }
+    
+    return false;
+}
+
+std::vector<ToolboxItem*> ControlToolbox::GetFilteredItems()
+{
+    std::vector<ToolboxItem*> result;
+    for (auto& cat : m_categories) {
+        for (auto item : cat.items) {
+            if (MatchesSearch(*item)) {
+                result.push_back(item);
+            }
+        }
+    }
+    return result;
+}
+
 int ControlToolbox::HitTestItem(int y)
 {
     // 图标模式需要同时检测 x 坐标，这里只返回基于 y 的大概索引
     // 具体的图标模式命中测试在 OnLButtonDown 中处理
-    if (m_displayMode == MODE_ICON) {
-        // 图标模式的命中测试在 OnLButtonDown 中用 x,y 一起处理
+    if (m_displayMode == MODE_ICON && !m_isSearching) {
         return -1;
     }
     
-    int clickY = y + m_scrollPos - (TITLEBAR_HEIGHT + 5);
+    int contentTop = TITLEBAR_HEIGHT + SEARCHBOX_HEIGHT + SEARCHBOX_MARGIN * 2;
+    int clickY = y + m_scrollPos - (contentTop + 2);
     int itemY = 0;
     int index = 0;
+    
+    if (m_isSearching) {
+        // 搜索模式：平面列表命中测试
+        auto filtered = GetFilteredItems();
+        for (size_t i = 0; i < filtered.size(); i++) {
+            if (clickY >= itemY && clickY < itemY + ITEM_HEIGHT) {
+                return (int)i;
+            }
+            itemY += ITEM_HEIGHT;
+        }
+        return -1;
+    }
     
     for (auto& cat : m_categories) {
         itemY += CATEGORY_HEIGHT;
@@ -782,7 +977,11 @@ int ControlToolbox::GetTotalHeight()
     
     int height = 0;
     
-    if (m_displayMode == MODE_ICON) {
+    if (m_isSearching) {
+        // 搜索模式：所有匹配项平面排列
+        auto filtered = GetFilteredItems();
+        height = (int)filtered.size() * ITEM_HEIGHT;
+    } else if (m_displayMode == MODE_ICON) {
         // 图标模式计算高度
         const int ICON_ITEM_SIZE = 48;
         const int ICON_PADDING = 4;
@@ -813,12 +1012,14 @@ void ControlToolbox::UpdateScrollBar()
     RECT rect;
     GetClientRect(m_hWnd, &rect);
     
+    int contentTop = TITLEBAR_HEIGHT + SEARCHBOX_HEIGHT + SEARCHBOX_MARGIN * 2;
+    
     SCROLLINFO si = {0};
     si.cbSize = sizeof(SCROLLINFO);
     si.fMask = SIF_RANGE | SIF_PAGE | SIF_POS;
     si.nMin = 0;
     si.nMax = GetTotalHeight();
-    si.nPage = rect.bottom - (TITLEBAR_HEIGHT + 5);
+    si.nPage = rect.bottom - contentTop;
     si.nPos = m_scrollPos;
     
     SetScrollInfo(m_hWnd, SB_VERT, &si, TRUE);

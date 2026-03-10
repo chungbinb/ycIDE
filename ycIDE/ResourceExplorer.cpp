@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "ResourceExplorer.h"
 #include "LibraryParser.h"
+#include "LibraryConfig.h"
 #include "Theme.h"
 #include "Utils.h"
 #include "YiEditor.h"
@@ -22,7 +23,8 @@ ResourceExplorerData g_ExplorerData;
 ResourceExplorerData::ResourceExplorerData() : selectedNode(nullptr), itemHeight(30), isWorkspaceMode(false), isProjectMode(false), workspacePath(L""), 
     hDirChangeNotify(INVALID_HANDLE_VALUE), hMonitorThread(NULL), stopMonitoring(false),
     activeTab(TAB_PROJECT), tabBarHeight(28), hoverTab(-1),
-    isBorderHover(false), isDraggingBorder(false), isTrackingMouse(false) {
+    isBorderHover(false), isDraggingBorder(false), isTrackingMouse(false),
+    libTreeSelected(nullptr), libTreeBuilt(false), libTreeScrollY(0) {
 }
 
 ResourceExplorerData::~ResourceExplorerData() {
@@ -41,6 +43,9 @@ ResourceExplorerData::~ResourceExplorerData() {
     for (auto node : rootNodes) {
         delete node;
     }
+    for (auto node : libTreeRoots) {
+        delete node;
+    }
 }
 
 void FlattenNodes(FileNode* node, std::vector<FileNode*>& list) {
@@ -57,6 +62,106 @@ void ResourceExplorerData::UpdateVisibleNodes() {
     for (auto node : rootNodes) {
         FlattenNodes(node, visibleNodes);
     }
+}
+
+static void FlattenLibTreeNodes(LibTreeNode* node, std::vector<LibTreeNode*>& list) {
+    list.push_back(node);
+    if (node->isExpanded) {
+        for (auto child : node->children) {
+            FlattenLibTreeNodes(child, list);
+        }
+    }
+}
+
+void ResourceExplorerData::UpdateLibTreeVisible() {
+    libTreeVisible.clear();
+    for (auto root : libTreeRoots) {
+        FlattenLibTreeNodes(root, libTreeVisible);
+    }
+}
+
+void ResourceExplorerData::BuildLibraryTree() {
+    // 清除旧树
+    for (auto node : libTreeRoots) {
+        delete node;
+    }
+    libTreeRoots.clear();
+    libTreeVisible.clear();
+    libTreeSelected = nullptr;
+    
+    auto& parser = LibraryParser::GetInstance();
+    const auto& commands = parser.GetCommands();
+    const auto& dataTypes = parser.GetDataTypes();
+    
+    // 按支持库名分组，每个库下按类别分组
+    // 用有序容器保持插入顺序
+    struct CategoryData {
+        std::vector<const LibraryCommand*> cmds;
+    };
+    struct LibData {
+        std::map<std::wstring, CategoryData> categories;
+        std::vector<std::wstring> categoryOrder;
+        std::vector<const LibraryDataType*> types;
+    };
+    
+    std::map<std::wstring, LibData> libMap;
+    std::vector<std::wstring> libOrder;
+    
+    for (const auto& cmd : commands) {
+        if (cmd.isHidden) continue;
+        auto& lib = libMap[cmd.library];
+        if (std::find(libOrder.begin(), libOrder.end(), cmd.library) == libOrder.end()) {
+            libOrder.push_back(cmd.library);
+        }
+        auto& cat = lib.categories[cmd.category];
+        if (std::find(lib.categoryOrder.begin(), lib.categoryOrder.end(), cmd.category) == lib.categoryOrder.end()) {
+            lib.categoryOrder.push_back(cmd.category);
+        }
+        cat.cmds.push_back(&cmd);
+    }
+    
+    for (const auto& dt : dataTypes) {
+        auto& lib = libMap[dt.library];
+        if (std::find(libOrder.begin(), libOrder.end(), dt.library) == libOrder.end()) {
+            libOrder.push_back(dt.library);
+        }
+        lib.types.push_back(&dt);
+    }
+    
+    // 构建树
+    for (const auto& libName : libOrder) {
+        auto& lib = libMap[libName];
+        auto* libNode = new LibTreeNode(libName, LIB_NODE_LIBRARY, 0);
+        
+        // 添加类别节点
+        for (const auto& catName : lib.categoryOrder) {
+            auto& cat = lib.categories[catName];
+            std::wstring displayCat = catName.empty() ? L"其他" : catName;
+            auto* catNode = new LibTreeNode(displayCat, LIB_NODE_CATEGORY, 1);
+            
+            for (const auto* cmd : cat.cmds) {
+                auto* cmdNode = new LibTreeNode(cmd->chineseName, LIB_NODE_COMMAND, 2);
+                catNode->children.push_back(cmdNode);
+            }
+            
+            libNode->children.push_back(catNode);
+        }
+        
+        // 添加数据类型节点
+        if (!lib.types.empty()) {
+            auto* dtCatNode = new LibTreeNode(L"数据类型", LIB_NODE_CATEGORY, 1);
+            for (const auto* dt : lib.types) {
+                auto* dtNode = new LibTreeNode(dt->name, LIB_NODE_DATATYPE, 2);
+                dtCatNode->children.push_back(dtNode);
+            }
+            libNode->children.push_back(dtCatNode);
+        }
+        
+        libTreeRoots.push_back(libNode);
+    }
+    
+    libTreeBuilt = true;
+    UpdateLibTreeVisible();
 }
 
 // 全局时间线根节点
@@ -386,6 +491,31 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             
             // 计算文件列表中的索引（需要减去标签栏高度）
             int listY = y - g_ExplorerData.tabBarHeight;
+            
+            if (g_ExplorerData.activeTab == TAB_LIBRARY) {
+                // 支持库树形视图点击
+                if (!g_ExplorerData.libTreeBuilt) {
+                    g_ExplorerData.BuildLibraryTree();
+                }
+                int adjustedY = listY + g_ExplorerData.libTreeScrollY;
+                size_t index = adjustedY / g_ExplorerData.itemHeight;
+                if (index < g_ExplorerData.libTreeVisible.size()) {
+                    LibTreeNode* node = g_ExplorerData.libTreeVisible[index];
+                    g_ExplorerData.libTreeSelected = node;
+                    
+                    // 有子节点的可以展开/折叠
+                    if (!node->children.empty()) {
+                        int indentSize = 20;
+                        int arrowX = 10 + node->level * indentSize - 12;
+                        if (x < arrowX + 20) {
+                            node->isExpanded = !node->isExpanded;
+                            g_ExplorerData.UpdateLibTreeVisible();
+                        }
+                    }
+                    
+                    InvalidateRect(hWnd, NULL, FALSE);
+                }
+            } else {
             size_t index = listY / g_ExplorerData.itemHeight;
             
             if (index < g_ExplorerData.visibleNodes.size()) {
@@ -404,6 +534,7 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                 
                 InvalidateRect(hWnd, NULL, FALSE);
             }
+            } // end else (not TAB_LIBRARY)
         }
         break;
     
@@ -523,6 +654,74 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             extern bool g_IsVisualDesignerActive;
             if (g_ExplorerData.activeTab == TAB_PROPERTY && g_IsVisualDesignerActive) {
                 // 属性标签页 - PropertyGrid 作为子窗口显示，不需要在这里绘制
+                // 清理GDI字体资源
+                SelectObject(hMemDC, oldFont);
+                DeleteObject(hGdiFont);
+            } else if (g_ExplorerData.activeTab == TAB_LIBRARY) {
+                // === 绘制支持库树形视图 ===
+                if (!g_ExplorerData.libTreeBuilt) {
+                    g_ExplorerData.BuildLibraryTree();
+                }
+                
+                int y = tabBarHeight - g_ExplorerData.libTreeScrollY;
+                int indentSize = 20;
+                int itemH = g_ExplorerData.itemHeight;
+                
+                for (size_t i = 0; i < g_ExplorerData.libTreeVisible.size(); ++i) {
+                    LibTreeNode* node = g_ExplorerData.libTreeVisible[i];
+                    
+                    // 跳过不在可见范围内的
+                    if (y + itemH < tabBarHeight) {
+                        y += itemH;
+                        continue;
+                    }
+                    if (y > rect.bottom) break;
+                    
+                    // 选中项背景
+                    if (node == g_ExplorerData.libTreeSelected) {
+                        COLORREF selCol = g_CurrentTheme.explorerSelection;
+                        Color selColor(180, GetRValue(selCol), GetGValue(selCol), GetBValue(selCol));
+                        SolidBrush selBrush(selColor);
+                        graphics.FillRectangle(&selBrush, 0, y, rect.right, itemH);
+                    }
+                    
+                    int xPos = 10 + node->level * indentSize;
+                    
+                    // 有子节点的绘制展开/折叠箭头
+                    if (!node->children.empty()) {
+                        DrawTriangle(graphics, &textBrush, (float)xPos - 12, (float)y + 10, 10, node->isExpanded);
+                    }
+                    
+                    // 绘制图标颜色
+                    Color iconColor;
+                    switch (node->nodeType) {
+                        case LIB_NODE_LIBRARY:
+                            iconColor = Color(255, 100, 160, 220); // 蓝色 - 支持库
+                            break;
+                        case LIB_NODE_CATEGORY:
+                            iconColor = Color(255, 220, 180, 80);  // 黄色 - 类别文件夹
+                            break;
+                        case LIB_NODE_COMMAND:
+                            iconColor = Color(255, 80, 200, 120);  // 绿色 - 命令
+                            break;
+                        case LIB_NODE_DATATYPE:
+                            iconColor = Color(255, 200, 100, 200); // 紫色 - 数据类型
+                            break;
+                    }
+                    SolidBrush iconBrush(iconColor);
+                    graphics.FillRectangle(&iconBrush, (REAL)xPos, (REAL)y + 8, 14.0f, 14.0f);
+                    
+                    // 节点名称
+                    RECT textRect;
+                    textRect.left = xPos + 18;
+                    textRect.top = y + 5;
+                    textRect.right = rect.right - 10;
+                    textRect.bottom = y + itemH;
+                    DrawTextW(hMemDC, node->name.c_str(), -1, &textRect, DT_LEFT | DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS);
+                    
+                    y += itemH;
+                }
+                
                 // 清理GDI字体资源
                 SelectObject(hMemDC, oldFont);
                 DeleteObject(hGdiFont);
@@ -732,6 +931,22 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
             }
             
             int listY = y - g_ExplorerData.tabBarHeight;
+            
+            if (g_ExplorerData.activeTab == TAB_LIBRARY) {
+                // 支持库树双击：展开/折叠
+                int adjustedY = listY + g_ExplorerData.libTreeScrollY;
+                size_t index = adjustedY / g_ExplorerData.itemHeight;
+                if (index < g_ExplorerData.libTreeVisible.size()) {
+                    LibTreeNode* node = g_ExplorerData.libTreeVisible[index];
+                    if (!node->children.empty()) {
+                        node->isExpanded = !node->isExpanded;
+                        g_ExplorerData.UpdateLibTreeVisible();
+                        InvalidateRect(hWnd, NULL, FALSE);
+                    }
+                }
+                return 0;
+            }
+            
             size_t index = listY / g_ExplorerData.itemHeight;
             
             if (index < g_ExplorerData.visibleNodes.size()) {
@@ -900,6 +1115,27 @@ LRESULT CALLBACK ResourceExplorerWndProc(HWND hWnd, UINT message, WPARAM wParam,
                     borderInvRect.left = borderInvRect.right - borderWidth;
                 }
                 InvalidateRect(hWnd, &borderInvRect, FALSE);
+            }
+        }
+        break;
+    
+    case WM_MOUSEWHEEL:
+        {
+            if (g_ExplorerData.activeTab == TAB_LIBRARY) {
+                int delta = GET_WHEEL_DELTA_WPARAM(wParam);
+                g_ExplorerData.libTreeScrollY -= delta / 2;
+                
+                // 限制滚动范围
+                int totalHeight = (int)g_ExplorerData.libTreeVisible.size() * g_ExplorerData.itemHeight;
+                RECT rc;
+                GetClientRect(hWnd, &rc);
+                int viewHeight = rc.bottom - g_ExplorerData.tabBarHeight;
+                int maxScroll = totalHeight - viewHeight;
+                if (maxScroll < 0) maxScroll = 0;
+                if (g_ExplorerData.libTreeScrollY < 0) g_ExplorerData.libTreeScrollY = 0;
+                if (g_ExplorerData.libTreeScrollY > maxScroll) g_ExplorerData.libTreeScrollY = maxScroll;
+                
+                InvalidateRect(hWnd, NULL, FALSE);
             }
         }
         break;
@@ -1360,6 +1596,10 @@ void ExplorerCloseProject() {
 void ExplorerSwitchToTab(ExplorerTabType tab) {
     if (g_ExplorerData.activeTab != tab) {
         g_ExplorerData.activeTab = tab;
+        
+        if (tab == TAB_LIBRARY && !g_ExplorerData.libTreeBuilt) {
+            g_ExplorerData.BuildLibraryTree();
+        }
         
         extern HWND hRightPanelWnd;
         if (hRightPanelWnd) {
