@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWMIConnection</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,14.5h-3v-2h3Z" />
+    <path class="light-defaultgrey" d="M9.5,15h-3L6,14.5v-2l.5-.5h3l.5.5v2ZM7,14H9V13H7Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,13H6v1H2Zm8,0v1h4V13ZM9,11H7v1H9Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14,2V4H13l-.5-.5L12,4h-.5V5l.5.5v5l-.5.5h-1l-.5-.5v-5l.5-.5V4h-1a.5.5,0,0,0-.5.5.5.5,0,0,1-1,0A2.5,2.5,0,0,1,10.5,2H12l.5.5L13,2Z" />
+    <path class="light-defaultgrey" d="M5.5,6.3v4.2L5,11H4l-.5-.5V6.3a2.317,2.317,0,0,1,.217-4.295v2.2H5.279V2l0,0A2.322,2.322,0,0,1,5.5,6.3Z" />
+  </g>
+</svg>

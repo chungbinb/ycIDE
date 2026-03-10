@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSLightswitch</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-green" d="M10,5.445A2.5,2.5,0,1,0,7,7.9V11H8V7.9A2.5,2.5,0,0,0,10,5.445Zm-2.5,1.5A1.5,1.5,0,1,1,9,5.445,1.5,1.5,0,0,1,7.5,6.945Z" />
+    </g>
+    <path class="light-green-10" d="M9.5,11.445v3h-4v-3Z" />
+    <path class="light-green" d="M9.5,11h-4l-.5.5v3l.5.5h4l.5-.5v-3ZM9,14H6V12H9Z" />
+    <path class="light-green-10" d="M12.5,5.5a4.984,4.984,0,0,1-2.1,4.067,2.056,2.056,0,0,0-.9,1.664V11.5h-4v-.336a1.94,1.94,0,0,0-.871-1.576A5,5,0,1,1,12.5,5.5Z" />
+    <path class="light-green" d="M9.5,12h-4L5,11.5v-.336A1.441,1.441,0,0,0,4.342,10a5.5,5.5,0,1,1,6.347-.022A1.549,1.549,0,0,0,10,11.231V11.5ZM5.994,11H9.011a2.563,2.563,0,0,1,1.1-1.84,4.5,4.5,0,1,0-5.192.019A2.445,2.445,0,0,1,5.994,11Z" />
+  </g>
+</svg>

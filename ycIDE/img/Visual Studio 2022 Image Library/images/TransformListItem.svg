@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTransformListItem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v6H10V8.086L8.914,7H6.5V2.5Z" />
+    <path class="light-defaultgrey-10" d="M8.5,8.5v6H.5v-6h.879l.353.354H3.268L3.621,8.5Z" />
+    <path class="light-defaultgrey" d="M15,2.5v6l-.5.5H10V8.086L9.914,8H14V3H7V7H6V2.5L6.5,2h8Z" />
+    <path class="light-defaultgrey" d="M8.5,8H4.121l-.853.854H1.732L.879,8H.5L0,8.5v6l.5.5h8l.5-.5v-6ZM8,14H1V9H8Z" />
+    <path class="light-blue" d="M3,4V6.293L4.146,5.146l.708.708-2,2H2.146l-2-2,.708-.708L2,6.293V4A2,2,0,0,1,4,2H5V3H4A1,1,0,0,0,3,4Z" />
+    <path class="light-defaultgrey" d="M9,5H8V4H9Zm4,0H10V4h3ZM9,7H8V6H9Zm4,0H10V6h3Z" />
+    <path class="light-defaultgrey" d="M3,11H2V10H3Zm4,0H4V10H7ZM3,13H2V12H3Zm4,0H4V12H7Z" />
+  </g>
+</svg>

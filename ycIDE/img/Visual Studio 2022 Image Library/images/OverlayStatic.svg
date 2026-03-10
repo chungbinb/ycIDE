@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>OverlayStatic</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M10,6.5v9l-.5.5H.5L0,15.5v-9L.5,6h9Z" />
+    <path class="light-defaultgrey-10" d="M8.5,14.5h-7v-7h7Z" />
+    <path class="light-defaultgrey" d="M8.5,15h-7L1,14.5v-7L1.5,7h7l.5.5v7ZM2,14H8V8H2Zm3.1-3.852a3.152,3.152,0,0,1-.532.243A1.688,1.688,0,0,1,4,10.5v-1a1.894,1.894,0,0,0,.836-.328A.673.673,0,0,0,5.008,9H6v4H5.1Z" />
+  </g>
+</svg>

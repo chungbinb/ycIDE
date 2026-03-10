@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightHubPageTemplate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15,1.5v12l-.5.5H.5L0,13.5V1.5L.5,1h14Z" />
+      <path class="light-defaultgrey" d="M10,2V1h1V2Zm3,0V1H12V2ZM9,2V1H8V2ZM7,2V1H6V2ZM5,2V1H4V2ZM3,2V1H2V2Zm8,12V13H10v1Zm2,0V13H12v1ZM9,14V13H8v1ZM7,14V13H6v1ZM5,14V13H4v1ZM3,14V13H2v1Zm11-1v1h.5l.5-.5V13ZM1,13H0v.5l.5.5H1ZM15,3H14V4h1Zm0,2H14V6h1Zm0,2H14V8h1Zm0,2H14v1h1Zm0,2H14v1h1ZM1,3H0V4H1ZM1,5H0V6H1ZM1,7H0V8H1ZM1,9H0v1H1Zm0,2H0v1H1ZM14,2h1V1.5L14.5,1H14ZM1,2V1H.5L0,1.5V2Z" />
+    </g>
+    <path class="light-defaultgrey" d="M13,5H9V4h4Zm0,1H9V7h4ZM10,9H2v1h8Z" />
+    <path class="light-defaultgrey-10" d="M7.5,7.5h-5v-3h5Z" />
+    <path class="light-defaultgrey" d="M7.5,4h-5L2,4.5v3l.5.5h5L8,7.5v-3ZM7,7H3V5H7Z" />
+  </g>
+</svg>

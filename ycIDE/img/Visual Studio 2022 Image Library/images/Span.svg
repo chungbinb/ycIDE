@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSpan</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,3.5v10l-.5.5H.5L0,13.5V3.5L.5,3h14Z" />
+    <path class="light-blue" d="M12.854,8.146v.708l-2,2-.708-.708L11.293,9H3.707l1.147,1.146-.708.708-2-2V8.146l2-2,.708.708L3.707,8h7.586L10.146,6.854l.708-.708Z" />
+    <path class="light-defaultgrey" d="M10,4V3h1V4ZM9,4V3H8V4ZM7,4V3H6V4ZM5,4V3H4V4ZM3,4V3H2V4Zm8,10V13H10v1ZM13,4V3H12V4Zm0,10V13H12v1ZM9,14V13H8v1ZM7,14V13H6v1ZM5,14V13H4v1ZM3,14V13H2v1Zm11-1v1h.5l.5-.5V13ZM1,13H0v.5l.5.5H1ZM15,5H14V6h1Zm0,2H14V8h1Zm0,2H14v1h1Zm0,2H14v1h1ZM1,5H0V6H1ZM1,7H0V8H1ZM1,9H0v1H1Zm0,2H0v1H1ZM14,4h1V3.5L14.5,3H14ZM1,4V3H.5L0,3.5V4Z" />
+    <path class="light-defaultgrey" d="M8,11H7V6H8Z" />
+  </g>
+</svg>

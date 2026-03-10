@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>KeyVertical</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,4.646a3,3,0,1,1,4,2.817v.183l1,1-1,1,1,1-1,1,1,1-2,2-1-1V7.463A2.992,2.992,0,0,1,4.5,4.646Z" />
+    <path class="light-defaultgrey" d="M8.25,3.646A.75.75,0,1,1,7.5,2.9.75.75,0,0,1,8.25,3.646ZM9.231,7.67l.623.623V9l-.647.646.647.647V11l-.647.646.647.647V13l-2,2H7.146l-1-1L6,13.646V7.8A3.5,3.5,0,1,1,9.231,7.67ZM10,4.646A2.5,2.5,0,1,0,7,7.1v6.343l.5.5,1.293-1.293L8.146,12v-.707l.647-.647L8.146,10V9.293l.647-.647-.575-.575V7.029A2.5,2.5,0,0,0,10,4.646Z" />
+  </g>
+</svg>

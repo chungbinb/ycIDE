@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>RunAll</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green-10" d="M1.5,1.47v12L5,11.14V3.8Z" />
+    <path class="light-green" d="M1.78,1.08,1,1.5v12l.78.42L5,11.77v-1.2l-3,2V2.43l3,2V3.23Z" />
+    <path class="light-green" d="M6.777,1.084,6,1.5v12l.777.416,9-6V7.084Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightScriptGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10,3.5h2.278A1.978,1.978,0,0,0,12,4.5v4a1,1,0,0,1-1,1h-.009V8A3.005,3.005,0,0,0,9,5.175V4.5A1,1,0,0,1,10,3.5Zm4,0a1,1,0,0,0-1,1h2A1,1,0,0,0,14,3.5Z" />
+      <path class="light-defaultgrey" d="M14,2.5H10a2,2,0,0,0-2,2V5a2.986,2.986,0,0,1,1,.175V4.5a1,1,0,0,1,1-1h2.278A1.978,1.978,0,0,0,12,4.5v4a1,1,0,0,1-1,1H7.991v1c.088,0,.492,0,3.009,0a2,2,0,0,0,2-2v-3h2.5L16,5V4.5A2,2,0,0,0,14,2.5Zm-1,2a1,1,0,0,1,2,0Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2.991,12a1.984,1.984,0,0,0,.269,1H2a1,1,0,0,1-1-1Zm0-4v3h.5l.5.5V12a1,1,0,0,0,2,0V8a1.978,1.978,0,0,1,.278-1H3.991A1,1,0,0,0,2.991,8Zm5-1a1,1,0,0,0-1,1h2A1,1,0,0,0,7.991,7Z" />
+    <path class="light-defaultgrey" d="M7.991,6h-4a2,2,0,0,0-2,2v3H.5l-.5.5V12a2.02,2.02,0,0,0,1.993,2h3a2,2,0,0,0,2-2V9h2.5l.5-.5V8A2,2,0,0,0,7.991,6ZM2,13a1,1,0,0,1-1-1H2.991a1.984,1.984,0,0,0,.269,1ZM5.991,8v4a1,1,0,0,1-2,0v-.5l-.5-.5h-.5V8a1,1,0,0,1,1-1H6.269A1.978,1.978,0,0,0,5.991,8Zm1,0a1,1,0,0,1,2,0Z" />
+  </g>
+</svg>

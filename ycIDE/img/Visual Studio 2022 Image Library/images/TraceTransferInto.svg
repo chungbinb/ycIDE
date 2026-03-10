@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>TraceTransferInto</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.85,3.5v.76l-3.5,3.5L3,6.41,2.5,5.9v7.6h12V3.5Z" />
+    <path class="light-green" d="M11.85,6.15h-.7L7.5,9.79,5.85,8.15h-.7L3,10.29v1.42l2.5-2.5,1.65,1.64h.7L11.5,7.21,14,9.71V8.29Z" />
+    <path class="light-defaultgrey" d="M14.5,3H7.85V4H14v9H3V6.41L2.5,5.9,2,5.4v8.1l.5.5h12l.5-.5V3.5Z" />
+    <path class="light-blue" d="M4.354.643l2.5,2.5V3.85l-2.5,2.5-.707-.707L5.293,4H0V3H5.293L3.647,1.35Z" />
+  </g>
+</svg>

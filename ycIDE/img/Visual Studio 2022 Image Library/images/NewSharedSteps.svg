@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightNewSharedSteps</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13,3V6H11.1L10.017,7.081l0,1.919H8.085L7,10.089,7,11H2V9H4.834l1.177-.865v-.9A4.528,4.528,0,0,0,7.24,6H8.919l1.1-.806V3Z" />
+      <path class="light-defaultgrey" d="M7,11l0,1H1.491L1,11.5v-3L1.5,8H5.011V7.72A4.464,4.464,0,0,0,6,7.238V8.5L5.511,9H2v2Zm6.5-9H9.516l-.5.5V5H7.724A4.508,4.508,0,0,1,7.24,6H9.516L10,5.5V3h3V6h1V2.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15,8v5H9.006L9,11h2.292L12,10.284,12.006,8Z" />
+    <path class="light-defaultgrey" d="M15.5,14H8.508l-.5-.5L8,10.5l.5-.5h2.51l.006-2.5.5-.5H15.5l.5.5v6ZM9,13h6V8H12v2.5l-.5.5H9Z" />
+    <path class="light-yellow" d="M3,2V0H4V2l-.5.5ZM4,5V7H3V5l.5-.5ZM5,3,7,3V4L5,4l-.5-.5ZM2,4,0,4V3L2,3l.5.5ZM4.207,2.086,5.619.672l.708.706L4.914,2.793H4.207ZM2.792,4.914,1.379,6.328.671,5.622,2.085,4.207h.707Zm2.121-.706L6.328,5.62l-.707.708L4.206,4.915V4.208ZM2.086,2.792.671,1.38,1.377.672,2.793,2.085v.707Z" />
+  </g>
+</svg>

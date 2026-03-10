@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>NewConsoleApplication</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,3V5h6V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H8V3h6V5H7.12l.62.62L7.36,6H14.5l.5-.5v-3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.12,5l.62.62L5.62,7.74,5,7.12V8H2V7.12l-.5.5V14h13V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H7.12l.62.62L7.36,6H14v8H2V7.12l-.62.62L1,7.36V14.5l.5.5h13l.5-.5v-9Z" />
+    </g>
+    <path class="light-defaultgrey" d="M6,11v1H9V11ZM4.7,8H3.3L4.79,9.5,3.15,11.15l.7.7,2-2v-.7Z" />
+    <path class="light-yellow" d="M4,2l-.5.5L3,2V0H4ZM1.379.672l-.707.707L2.086,2.793l.7,0,0-.711ZM0,3V4H2l.5-.5L2,3ZM.672,5.621l.707.707L2.793,4.914l0-.7-.711,0ZM3,7H4V5l-.5-.5L3,5Zm2.621-.672.707-.707L4.914,4.207l-.7,0,0,.711ZM7,4V3H5l-.5.5L5,4ZM6.328,1.379,5.621.672,4.207,2.086l0,.7.711,0Z" />
+  </g>
+</svg>

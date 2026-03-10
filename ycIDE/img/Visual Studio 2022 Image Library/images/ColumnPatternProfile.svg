@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightColumnPatternProfile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,12.5H.5V2.5h14Z" />
+    <path class="light-defaultgrey" d="M14.5,13H.5L0,12.5V2.5L.5,2h14l.5.5v10ZM1,12H14V3H1Z" />
+    <path class="light-defaultgrey" d="M10,8H8v2H7V8H5V7H7V5H8V7h2Z" />
+    <path class="light-defaultgrey" d="M5.146,10.854l-3-3V7.146l3-3,.708.708L3.207,7.5l2.647,2.646Zm7.708-3V7.146l-3-3-.708.708L11.793,7.5,9.146,10.146l.708.708Z" />
+  </g>
+</svg>

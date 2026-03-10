@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVBCodTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M1.66,13,2.6,11.5v-3h2v3L5.535,13Z" />
+      <path class="light-blue" d="M2.1,9h-1V8h5V9h-1v2.356l1.174,1.879L5.848,13h-.9l-.772-1.235L4.1,11.5V9h-1v2.5l-.076.265L2.25,13h-.9l-.424.235L2.1,11.356Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8,8h4V9H8ZM9,7h4V6H9ZM8,2H4V3H8ZM6,5h4V4H6Zm5,0h3V4H11ZM9,2V3h5V2Z" />
+    <path class="light-blue-10" d="M6.62,14.735A.5.5,0,0,1,6.2,15.5H1a.5.5,0,0,1-.424-.765L1.348,13.5h4.5Z" />
+    <path class="light-blue" d="M6.2,16H1a1,1,0,0,1-.848-1.53l.772-1.235L1.348,13h4.5l.424.235.772,1.235A1,1,0,0,1,6.2,16Zm-4.57-2L1,15H6.2L5.57,14Z" />
+  </g>
+</svg>

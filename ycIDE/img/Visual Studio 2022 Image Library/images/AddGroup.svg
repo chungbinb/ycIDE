@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14.5,15H3.5L3,14.5V9H4v5H14V9h1v5.5ZM7.547,8.068,8.992,10H7.812L7,8.845,6.188,10H5.008L6.453,8.068,5,6H6L7,7.337,8,6H9ZM12,8.134V10H11V8.134L9.5,6h1l1,1.337h0L12.5,6h1Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

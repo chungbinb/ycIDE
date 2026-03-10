@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightUnsubscribe</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M2.5,1.5v13H9.38l1.5-1.5L9.5,11.62l-.77-.77.24-.23L9,10.58l1-1,.85-.85L13,10.88l.5-.5V1.5Z" />
+      <path class="light-defaultgrey" d="M13.5,1H2.5L2,1.5v13l.5.5H8.88l1-1H3V2H13v8.88l1-1V1.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M8,3.5A2.493,2.493,0,0,0,6.5,7.99v3.87L8,10.36l1.5,1.5v-.24l-.77-.77.24-.23L9,10.58l.5-.5V7.99A2.493,2.493,0,0,0,8,3.5Z" />
+    <path class="light-defaultgrey" d="M8,3A2.989,2.989,0,0,0,6,8.22v3.64l.85.35L8,11.06l1.15,1.15.67-.27-.32-.32-.77-.77.24-.23L8.35,10h-.7L7,10.65V8.82a2.868,2.868,0,0,0,2,0v1.76l1-1V8.22A2.989,2.989,0,0,0,8,3ZM8,8a2,2,0,1,1,2-2A2.006,2.006,0,0,1,8,8Z" />
+    <path class="light-red" d="M15.85,10.85l-.7-.7L13,12.29l-2.15-2.14-.7.7L12.29,13l-2.14,2.15.7.7L13,13.71l2.15,2.14.7-.7L13.71,13Z" />
+  </g>
+</svg>

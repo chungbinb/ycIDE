@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMapItemPrivate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.042,9.588a3.9,3.9,0,0,1-1.061-.243l-1.025,1.2H6.481v2h-2v2h-3V12.238l5.2-5.193c-.006-.014-.007-.03-.013-.045h.357L8,6.025V2.379a4.023,4.023,0,0,1,6.379,4.047h0a4.023,4.023,0,0,1-.271.792,2.975,2.975,0,0,0-4.068,2.37Z" />
+      <path class="light-defaultgrey" d="M9.7,2.123A3.572,3.572,0,0,0,8,3.049V1.758a4.509,4.509,0,0,1,5.635.614,4.575,4.575,0,0,1,1.23,4.15,4.535,4.535,0,0,1-.32.92,2.955,2.955,0,0,0-.919-.374,3.549,3.549,0,0,0,.263-.741l0,0A3.543,3.543,0,0,0,9.7,2.123Z" />
+      <path class="light-defaultgrey" d="M9.135,9.933l-.8.937-.379.175H6.981v1.5l-.5.5h-1.5v1.5l-.5.5h-3l-.5-.5V12.238l.146-.353L6.013,7H7.025l.107-.107-.1.5-5.049,5.05v1.6h2v-1.5l.5-.5h1.5v-1.5l.5-.5H7.726L8.6,9.029l.561-.14a3.463,3.463,0,0,0,.99.213A2.937,2.937,0,0,0,10,10v.086l-.005,0A4.415,4.415,0,0,1,9.135,9.933Z" />
+      <path class="light-defaultgrey" d="M11.981,5.045a1,1,0,1,1-.293-.707A1,1,0,0,1,11.981,5.045Z" />
+    </g>
+    <path class="light-blue" d="M6.611,0H.389L0,.389V5.611L.389,6H6.611L7,5.611V.389Z" />
+    <path class="white" d="M6,3H1V2H6Z" />
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

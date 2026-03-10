@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTxLineage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,1.5v12H7.621l.147-.146L6.5,12.086V1.5Z" />
+    <path class="light-defaultgrey" d="M13,1.5v12l-.5.5H7.121l.647-.646L7.414,13H12V3H7v9.586l-1-1V1.5L6.5,1h6Z" />
+    <path class="light-blue" d="M6.354,13.354l-2.5,2.5H3.146l-2.5-2.5.708-.707L3,14.293V11.5A1.5,1.5,0,0,0,1.5,10H0V9H1.5A2.5,2.5,0,0,1,4,11.5v2.793l1.646-1.646Z" />
+    <path class="light-defaultgrey" d="M11,5H8V4h3Zm0,1H8V7h3Zm0,2H8V9h3Zm0,2H8v2h3Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGetExcelFormat</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5.5v5h-6V.5Z" />
+    <path class="light-defaultgrey" d="M15.5,0h-6L9,.5v5l.5.5h6l.5-.5V.5ZM11,5H10V4h1Zm0-2H10V2h1Zm2,2H12V4h1Zm0-2H12V2h1Zm2,2H14V4h1Zm0-2H14V2h1Z" />
+    <path class="light-defaultgrey-10" d="M8.5,15.5H.5v-6l2-2h6Z" />
+    <path class="light-defaultgrey" d="M8.5,16H.5L0,15.5v-6l.146-.354,2-2L2.5,7h6l.5.5v8ZM1,15H8V8H2.707L1,9.707Z" />
+    <path class="light-defaultgrey" d="M6.771,14H5.462l-.844-1.6a1.391,1.391,0,0,1-.1-.328H4.505a2.607,2.607,0,0,1-.113.342L3.545,14H2.229l1.562-2.451L2.362,9.1H3.705l.7,1.469a2.5,2.5,0,0,1,.147.414h.014c.027-.095.078-.238.153-.427L5.5,9.1H6.73l-1.47,2.43Z" />
+    <path class="light-blue" d="M10,11h2V8.707L10.854,9.854l-.708-.708,2-2h.708l2,2-.708.708L13,8.707V11.5l-.5.5H10Z" />
+  </g>
+</svg>

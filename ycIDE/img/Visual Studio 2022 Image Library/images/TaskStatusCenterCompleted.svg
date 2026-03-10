@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTaskStatusCenterCompleted</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5,13,13.5H1.5L3,2.5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H3l-.5.433-1.5,11L1.5,14H13l.495-.433,1.5-11ZM12.563,13H2.073L3.437,3h10.49Z" />
+    <path class="light-defaultgrey" d="M11.854,5.854l-4.5,4.5H6.646l-2-2,.708-.708L7,9.293l4.146-4.147Z" />
+  </g>
+</svg>

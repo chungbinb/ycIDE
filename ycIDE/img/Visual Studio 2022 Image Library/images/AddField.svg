@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddField</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.5,11h5v3.5h-5Zm0-8.5V6h5V2.5Z" />
+    <path class="light-defaultgrey" d="M13.5,11l.5-.5v4l-.5.5h-5L8,14.5v-4l.5.5H9v3h4V11Zm0-9h-5L8,2.5v4L8.5,6H9V3h4V6h.5l.5.5v-4Z" />
+    <path class="light-blue-10" d="M8.5,10.5v-4h5v4Z" />
+    <path class="light-blue" d="M13.5,11h-5L8,10.5v-4L8.5,6h5l.5.5v4ZM9,10h4V7H9Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRadioButtonList</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15,11v1H7V11ZM7,7V8h8V7ZM7,3V4h8V3ZM3.5,5A1.5,1.5,0,1,0,2,3.5,1.5,1.5,0,0,0,3.5,5Zm0,1A1.5,1.5,0,1,0,5,7.5,1.5,1.5,0,0,0,3.5,6Zm0,2A.5.5,0,1,1,4,7.5.5.5,0,0,1,3.5,8Zm0,2A1.5,1.5,0,1,0,5,11.5,1.5,1.5,0,0,0,3.5,10Zm0,2a.5.5,0,1,1,.5-.5A.5.5,0,0,1,3.5,12Z" />
+  </g>
+</svg>

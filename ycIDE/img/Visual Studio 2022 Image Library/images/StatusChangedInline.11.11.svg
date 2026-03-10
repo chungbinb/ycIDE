@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>StatusChangedInline.11.11</title>
+  <title>StatusChangedInline.11.11</title>
+  <g id="canvas">
+    <path class="canvas" d="M11,11H0V0H11Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6.907,5.5l3,1.359L8.881,8.647,6.2,6.719,6.529,10H4.471l.321-3.282L2.112,8.646,1.084,6.858,4.093,5.5,1.087,4.141,2.116,2.353,4.8,4.281,4.471,1H6.529L6.208,4.282l2.68-1.928L9.916,4.142Z" />
+  </g>
+</svg>

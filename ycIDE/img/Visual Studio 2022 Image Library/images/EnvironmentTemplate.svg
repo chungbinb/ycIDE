@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEnvironmentTemplate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M16,.5v14l-.5.5H1.5L1,14.5V.5L1.5,0h14Z" />
+      <path class="light-defaultgrey" d="M2,3H1V2H2ZM4,0H3V1H4Zm6,14H9v1h1Zm2,0H11v1h1Zm2,0H13v1h1ZM8,14H7v1H8ZM6,14H5v1H6ZM4,14H3v1H4ZM2,8H1V9H2Zm0,2H1v1H2Zm0,2H1v1H2ZM2,6H1V7H2ZM2,4H1V5H2Zm8-4H9V1h1Zm2,0H11V1h1Zm2,0H13V1h1ZM8,0H7V1H8ZM6,0H5V1H6ZM16,8H15V9h1Zm0,2H15v1h1Zm0,2H15v1h1ZM2,14H1v1H2Zm14,0H15v1h1Zm0-8H15V7h1Zm0-2H15V5h1Zm0-2H15V3h1ZM2,1H1V0H2ZM16,0H15V1h1Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M12.5,12.5h-9l1-3H5v1l.5.5h5l.5-.5v-1h.5Z" />
+    <path class="light-defaultgrey" d="M12.974,12.342,12.5,13h-9l-.474-.658,1-3L4.5,9H5v1H4.86l-.666,2h7.612l-.666-2H11V9h.5l.474.342Z" />
+    <path class="light-defaultgrey-10" d="M10.5,3.5v7h-5v-7a1,1,0,0,1,1-1h3A1,1,0,0,1,10.5,3.5Z" />
+    <path class="light-defaultgrey" d="M10.5,11h-5L5,10.5v-7A1.5,1.5,0,0,1,6.5,2h3A1.5,1.5,0,0,1,11,3.5v7ZM6,10h4V3.5A.5.5,0,0,0,9.5,3h-3a.5.5,0,0,0-.5.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9,4V5H7V4ZM7,9H9V8H7Z" />
+    </g>
+  </g>
+</svg>

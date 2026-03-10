@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExtend</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M1.854,9.854l-.708-.708,2-2,.708.708Zm3-3-.708-.708,2-2,.708.708ZM9.5,1H5V2H8.293L7.146,3.146l.708.708L9,2.707V6h1V1.5Z" />
+    <path class="light-defaultgrey" d="M13,9.729l2,2v.707l-2,2-.707-.707,1.646-1.646-1.646-1.647Zm-8.293.707L3.061,12.083l1.646,1.646L4,14.436l-2-2v-.707l2-2ZM7,13H6v1H7Zm2,0H8v1H9Zm2,0H10v1h1Z" />
+  </g>
+</svg>

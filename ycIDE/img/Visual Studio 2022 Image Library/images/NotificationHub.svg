@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNotificationHub</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v9h-7l-3,2.983V11.5h-3v-9Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v9l.5.5H4v2.483l.853.355L7.706,12H14.5l.5-.5v-9ZM14,11H7.5l-.353.146L5,13.281V11.5L4.5,11H2V3H14Z" />
+    <path class="light-blue" d="M5.646,7.354l-1.5-1.5V5.146l1.5-1.5.708.708L5.707,5H11V6H5.707l.647.646Zm4.708-.708-.708.708L10.293,8H5V9h5.293l-.647.646.708.708,1.5-1.5V8.146Z" />
+  </g>
+</svg>

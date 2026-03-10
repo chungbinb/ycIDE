@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDeleteTable</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v2H6.621L5.121,3l.5-.5H14.5Z" />
+    <path class="light-defaultgrey" d="M15,2.5v2l-.5.5H7.121l-1-1H14V3H5.121l1-1H14.5Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8.5H2.5V5.621l.5-.5L5.146,7.268,7.268,5.146,7.121,5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H14V7H11V5H10V7H7V5.414l-1,1V7H5.414l-.268.268L4.879,7H3V5.121l-1,1V13.5l.5.5h12l.5-.5v-9ZM6,13H3V11H6Zm0-3H3V8H6Zm4,3H7V11h3Zm0-3H7V8h3Zm4,3H11V11h3Zm0-3H11V8h3Z" />
+    </g>
+  </g>
+</svg>

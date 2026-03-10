@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVirtualMachineRefresh</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.26,14a4.16,4.16,0,0,1-.23-1H4.5L4,12.5v-2H3l-2,4H8.47A4.4,4.4,0,0,1,8.26,14Z" />
+    <path class="light-defaultgrey" d="M8.47,14.5a4.4,4.4,0,0,1-.21-.5H1.81l1.5-3H4V10H3l-.45.28-2,4L1,15H8.76A4.994,4.994,0,0,1,8.47,14.5Z" />
+    <path class="light-defaultgrey-10" d="M9.5,1.5h-4a1,1,0,0,0-1,1v10H8a4.07,4.07,0,0,1,.03-.5,4.16,4.16,0,0,1,.23-1,4.07,4.07,0,0,1,.5-1A4.573,4.573,0,0,1,10,8.76a4.994,4.994,0,0,1,.5-.29V2.5A1,1,0,0,0,9.5,1.5Z" />
+    <path class="light-defaultgrey" d="M9.5,1h-4A1.5,1.5,0,0,0,4,2.5v10l.5.5H8.03a4.182,4.182,0,0,1,0-1H5V2.5A.5.5,0,0,1,5.5,2h4a.5.5,0,0,1,.5.5V8.76a4.994,4.994,0,0,1,.5-.29,4.4,4.4,0,0,1,.5-.21V2.5A1.5,1.5,0,0,0,9.5,1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,10v1H8.26a4.07,4.07,0,0,1,.5-1ZM6,8V9H9V8ZM6,4V5H9V4Z" />
+    </g>
+    <path class="light-blue" d="M12.5,9A3.5,3.5,0,0,1,15,10.06V9h1v2.5l-.5.5H13V11h1.5a2.5,2.5,0,1,0,.167,2.75l.865.5A3.5,3.5,0,1,1,12.5,9Z" />
+  </g>
+</svg>

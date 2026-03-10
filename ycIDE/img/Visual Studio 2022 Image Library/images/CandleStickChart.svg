@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCandleStickChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue-10" d="M6.5,9.5h-2v-4h2Z" />
+    <path class="light-lightblue" d="M6.5,10h-2L4,9.5v-4L4.5,5h2l.5.5v4ZM5,9H6V6H5Z" />
+    <path class="light-lightblue-10" d="M12.5,10.5h-2v-5h2Z" />
+    <path class="light-lightblue" d="M12.5,11h-2l-.5-.5v-5l.5-.5h2l.5.5v5ZM11,10h1V6H11Z" />
+    <path class="light-defaultgrey" d="M5,10H6v3H5ZM5,2V5H6V2Z" />
+    <path class="light-defaultgrey" d="M11,11h1v2H11Zm0-9V5h1V2Z" />
+  </g>
+</svg>

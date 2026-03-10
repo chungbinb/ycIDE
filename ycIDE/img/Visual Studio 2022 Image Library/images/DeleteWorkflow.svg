@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDeleteWorkflow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="light-green" d="M13.854,7.854l-4.5,4.5H8.646l-2.5-2.5.708-.708L9,11.293l4.146-4.147Z" />
+    <path class="light-defaultgrey" d="M13.389,13.389l.707.707a6.493,6.493,0,0,1-10.122-8l.727.727a5.5,5.5,0,0,0,8.688,6.567ZM14.854,3.146v.708l-2,2-.708-.708L13.293,4H9.5a5.456,5.456,0,0,0-2.678.7L6.1,3.974A6.447,6.447,0,0,1,9.5,3h3.793L12.146,1.854l.708-.708Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+  </g>
+</svg>

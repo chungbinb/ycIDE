@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>Repeater</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,4.5h2v6h-2Zm5,0v6h2v-6Z" />
+    <path class="light-defaultgrey" d="M1.5,4,1,4.5v6l.5.5h2l.5-.5v-6L3.5,4ZM3,10H2V5H3ZM6.5,4,6,4.5v6l.5.5h2l.5-.5v-6L8.5,4ZM8,10H7V5H8Zm5-4h1V7H13Zm1-2V5H13V4Zm-3,6h1v1H11Zm0-2h1V9H11Zm0-4h1V5H11Zm2,4h1V9H13Zm0,2h1v1H13ZM11,6h1V7H11Z" />
+  </g>
+</svg>

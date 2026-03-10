@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCheckpoint</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,7.5v5h-3v-1h-4v-5h4v1Z" />
+    <path class="light-defaultgrey" d="M15.5,7H13V6.5L12.5,6h-4L8,6.5V16H9V12h3v.5l.5.5h3l.5-.5v-5ZM12,11H9V7h3Zm3,1H13V8h2Z" />
+    <path class="light-blue" d="M11.746,1.373,4.737,8.633,4,8.62,1.4,5.648l.753-.659L4.385,7.546,11.016.69Z" />
+    <path class="light-blue" d="M11.746,1.373,4.737,8.633,4,8.62,1.4,5.648l.753-.659L4.385,7.546,11.016.69Z" />
+  </g>
+</svg>

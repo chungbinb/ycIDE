@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGotoPreviousUncovered</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6.854,3.146v.708l-2,2-.708-.708L5.293,4H3v9H8v1H2.5L2,13.5V3.5L2.5,3H5.293L4.146,1.854l.708-.708Z" />
+    <path class="light-defaultgrey" d="M13,3H8V2h5Zm2,1H8V5h7ZM14,6H9V7h5ZM13,9H8v1h5Zm2,2H8v1h7Zm-1,2H9v1h5Z" />
+  </g>
+</svg>

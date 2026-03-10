@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPhoneNumberViewer</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M5,3H3V1H5ZM9,3H7V1H9Zm4,0H11V1h2ZM5,7H3V5H5ZM9,7H7V5H9Zm4,0H11V5h2ZM5,11H3V9H5Zm4,0H7V9H9Zm0,4H7V13H9Zm4-4H11V9h2Z" />
+  </g>
+</svg>

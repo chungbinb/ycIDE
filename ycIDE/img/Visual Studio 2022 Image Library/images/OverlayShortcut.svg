@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>OverlayShortcut</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M10,6.5v9l-.5.5H.5L0,15.5v-9L.5,6h9Z" />
+    <path class="light-defaultgrey-10" d="M8.5,7.5v7h-7v-7Z" />
+    <path class="light-defaultgrey" d="M8.5,7h-7L1,7.5v7l.5.5h7l.5-.5v-7ZM8,14H2V8H8ZM7,9.5v3H6V10.707L3.354,13.354l-.708-.708L5.293,10H3.53V9H6.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ShowHiddenElements</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,1V15H1V1Z" />
+    <path class="light-defaultgrey" d="M13.35,7.65v.71l-2.19,2.17-.7-.71L12.29,8,11.2,6.92l.71-.71Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M3,2H2V1H3ZM5,1H4V2H5ZM6,2H7V1H6ZM8,2H9V1H8Zm2-1V2h1V1ZM1,3H2V2H1ZM1,5H2V4H1ZM1,7H2V6H1ZM1,9H2V8H1Zm0,2H2V10H1ZM4.82,5.47,2.65,7.65v.7L4.09,9.79l.71-.7L3.71,8,5.53,6.17Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14,4.82V14H4.82l-1,1H14.5l.5-.5V3.82Z" />
+    <path class="light-defaultgrey" d="M15.854.854l-15,15-.708-.708,15-15Z" />
+  </g>
+</svg>

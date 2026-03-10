@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple{fill: #6936aa; opacity: 1;}.light-darkpurple-10{fill: #533182; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>MergeModuleReferenceExcluded</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple" d="M6,10v1H7.1a5.532,5.532,0,0,1,.31-1Z" />
+    </g>
+    <path class="light-darkpurple-10" d="M5.5,8.5v4h-4v-4Z" />
+    <path class="light-purple" d="M5.5,8h-4L1,8.5v4l.5.5h4l.5-.5v-4ZM5,12H2V9H5ZM15.5,7H12a4.985,4.985,0,0,1,2.18.5A4.853,4.853,0,0,1,15,8a4.113,4.113,0,0,1,.5.42A5.469,5.469,0,0,1,16,9V7.5ZM9,7.5V8a4.322,4.322,0,0,1,.5-.33,3.239,3.239,0,0,1,.32-.17A4.985,4.985,0,0,1,12,7H9.5Z" />
+    <path class="light-green" d="M4.85,5.15,3,3.29V1.71L4.09,2.8l.71-.71L2.85.15h-.7L.2,2.09l.71.71L2,1.71V7H3V4.71l1,1V7H5V5.5Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M14,12.5H10v-1h4Z" />
+  </g>
+</svg>

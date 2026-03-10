@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPopIn</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M3.146,11.146,9.293,5H5V4h5.5l.5.5V10H10V5.707L3.854,11.854Z" />
+    <path class="light-defaultgrey" d="M14,14H13V2H1V1H13.5l.5.5Z" />
+  </g>
+</svg>

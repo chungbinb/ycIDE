@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>AddEntity</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M15,8l-2,2L11.5,8.5l2-2Zm0,5-2,2-1.5-1.5,2-2ZM8,4V5H6L5,6V8H4L5.5,9.5l4-4Z" />
+    <path class="light-yellow" d="M11.146,8.854l1.5,1.5h.708l2-2V7.646l-1.5-1.5h-.708L12.293,7H8.707L9.854,5.854V5.146L8,3.293V4.707l.793.793L5.5,8.793,4.707,8H3.293L5.146,9.854h.708L7.707,8H9v4.5l.5.5h1.793l-.147.146v.708l1.5,1.5h.708l2-2v-.708l-1.5-1.5h-.708L12.293,12H10V8h1.293l-.147.146ZM13.5,12.207l.793.793L13,14.293l-.793-.793Zm0-5L14.293,8,13,9.293,12.207,8.5ZM6.707,5,5,6.707V5.293L5.293,5Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

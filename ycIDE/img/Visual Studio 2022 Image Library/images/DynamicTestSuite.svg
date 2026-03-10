@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{fill:none;}</style>
+  </defs>
+  <title>IconLightDynamicTestSuite</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="cls-1" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M9.25,13.5h4.5l.772,1.235a.5.5,0,0,1-.424.765H8.9a.5.5,0,0,1-.424-.765Z" />
+    <path class="light-teal" d="M8.027,15.485a1,1,0,0,1,.027-1.015l.772-1.235L9.25,13h4.5l.424.235.772,1.235A1,1,0,0,1,14.1,16H8.9A1,1,0,0,1,8.027,15.485ZM9.527,14,8.9,15h5.2l-.625-1Z" />
+    <path class="light-defaultgrey-10" d="M9.625,13l.937-1.5v-3h2v3L13.5,13Z" />
+    <path class="light-yellow" d="M8,8H2V4H5.475l.354-.146L6.682,3H10V7h1V2.5L10.5,2H6.707l-.853-.854L5.5,1h-4L1,1.5v7l.5.5H8ZM2,2H5.293l.488.488L5.268,3H2Z" />
+    <path class="light-yellow-10" d="M8,8.5H1.5v-7h4l1,1h4V7H8Z" />
+    <path class="light-defaultgrey" d="M13,11.356l1.174,1.879L13.75,13h-.9l-.772-1.235L12,11.5V9H11v2.5l-.076.265L10.152,13h-.9l-.424.235L10,11.356V9H9V8h5V9H13Z" />
+    <path class="light-blue" d="M7.854,13.146v.708l-2,2-.708-.708L6.293,14H1.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L1.707,13H6.293L5.146,11.854l.708-.708Z" />
+  </g>
+</svg>

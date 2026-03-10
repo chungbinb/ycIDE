@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.light-orange{fill: #b73d18; opacity: 1;}</style>
+  </defs>
+  <title>IconLightJSTablet</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-orange-10" d="M14.5,2.5v10H1.5V2.5Z" />
+    <path class="light-orange" d="M9,11H7V10H9Zm6-8.5v10l-.5.5H1.5L1,12.5V2.5L1.5,2h13ZM14,3H2v9H14Z" />
+  </g>
+</svg>

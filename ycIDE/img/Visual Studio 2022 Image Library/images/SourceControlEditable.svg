@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>SourceControlEditable</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M12.192,5.681,6.635,11.238,5.153,9.72l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,12.192,5.681Z" />
+    <path class="light-yellow" d="M12.543,3.83a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L3.511,12.326,4.186,13l3-1.629,5.365-5.336A1.562,1.562,0,0,0,12.543,3.83Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightInsertStep</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,4v9H1.993V9.979H5.114L6,9.264V6.979H8.831l1.174-.948V4Z" />
+    <path class="light-defaultgrey" d="M14.5,14H1.484L1,13.5v-4L1.493,9H5V6.5L5.5,6H9.005V3.518l.5-.5H14.5l.5.5V13.5ZM1.993,13H14V4H10V6.5L9.505,7H6V9.5l-.5.5H1.993Z" />
+    <path class="light-blue" d="M5.854,3.146v.708l-2.5,2.5-.707-.708L4.291,4H0V3H4.3L2.647,1.354,3.354.646Z" />
+  </g>
+</svg>

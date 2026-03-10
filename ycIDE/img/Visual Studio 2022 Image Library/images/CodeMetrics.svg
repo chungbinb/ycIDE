@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCodeMetrics</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8.5H1.5V5Z" />
+      <path class="light-defaultgrey" d="M15,4.5v9l-.5.5H1.5L1,13.5v-9l.5.5H2v8H14V5h.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,1.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v3l.5.5h13l.5-.5v-3ZM14,4H2V2H14Z" />
+    <path class="light-green" d="M13,10v1H10.5l-.471-.332-.786-2.2L7.969,11.923l-.936.007L6.256,9.908l-.288.768L5.5,11H3V10H5.153l.629-1.676.935,0,.773,2.011,1.291-3.5.94,0L10.853,10Z" />
+  </g>
+</svg>

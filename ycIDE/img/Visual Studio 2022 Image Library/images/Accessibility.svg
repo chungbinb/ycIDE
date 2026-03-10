@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAccessibility</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M.5,7.5a7,7,0,1,1,7,7A7,7,0,0,1,.5,7.5Z" />
+    <path class="light-blue" d="M7.5,15A7.5,7.5,0,1,1,15,7.5,7.508,7.508,0,0,1,7.5,15Zm0-14A6.5,6.5,0,1,0,14,7.5,6.508,6.508,0,0,0,7.5,1Z" />
+    <path class="light-blue" d="M8.5,9v.005l1.685,3.133-.881.474L7.63,9.5H7.37L5.7,12.612l-.881-.474L6.5,9.005V7H3.552V6h7.9V7H8.5Zm-1-4A1.5,1.5,0,1,0,6,3.5,1.5,1.5,0,0,0,7.5,5Z" />
+  </g>
+</svg>

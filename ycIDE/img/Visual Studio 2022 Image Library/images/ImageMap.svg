@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightImageMap</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,4H7V5H6ZM6,3H7V2H6ZM6,7H7V6H6ZM6,9H7V8H6Zm0,2H7V10H6Zm0,2H7V12H6ZM2,7H3V6H2ZM4,7H5V6H4ZM8,7H9V6H8Zm2,0h1V6H10Zm2-1V7h1V6Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M13.5,1.5v12H1.5V1.5Z" />
+    <path class="light-defaultgrey" d="M13.5,14H1.5L1,13.5V1.5L1.5,1h12l.5.5v12ZM2,13H13V2H2Z" />
+  </g>
+</svg>

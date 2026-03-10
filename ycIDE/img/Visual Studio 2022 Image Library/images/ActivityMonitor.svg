@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}</style>
+  </defs>
+  <title>IconLightActivityMonitor</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.981,12a3.5,3.5,0,1,1-3.5-3.5A3.5,3.5,0,0,1,7.981,12Z" />
+    <path class="light-defaultgrey" d="M4.981,8.051V7H5.993V6H3V7h.981V8.051a4,4,0,1,0,1,0ZM4.481,15a3,3,0,1,1,3-3A3,3,0,0,1,4.481,15Zm.5-2h-1V10h1Z" />
+    <path class="light-lightblue-10" d="M14.5,2.97V11c0,.829-1.791,1.5-4,1.5a10.353,10.353,0,0,1-1.064-.06c.014-.147.045-.289.045-.44A4.988,4.988,0,0,0,6.993,7.7V5H6.5V2.97c0-.828,1.791-1.5,4-1.5S14.5,2.142,14.5,2.97Z" />
+    <path class="light-lightblue" d="M6,2.97V5h.993L7,4.261a7.863,7.863,0,0,0,3.5.709A7.863,7.863,0,0,0,14,4.261V11c0,.29-1.227,1-3.5,1a9.734,9.734,0,0,1-1.023-.054c0,.018,0,.036,0,.054a4.965,4.965,0,0,1-.1.935A10.527,10.527,0,0,0,10.5,13c2.236,0,4.5-.686,4.5-2V2.97C15,.343,6,.343,6,2.97Zm4.5,1c-2.273,0-3.5-.71-3.5-1s1.227-1,3.5-1,3.5.71,3.5,1S12.773,3.97,10.5,3.97Z" />
+  </g>
+</svg>

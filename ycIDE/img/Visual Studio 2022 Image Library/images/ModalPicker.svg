@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightModalPicker</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M2.5,4V7H8.91l.4.4.69.69V12h5.5V4Z" />
+      <path class="light-defaultgrey" d="M15.5,4H2.5L2,4.5V7H3.71l2-2H7.29l-2,2H6.71l2-2h1.58l-2,2h.62l.4.4L11.71,5h1.58L10,8.29V9.71L14.71,5H15V6.29l-5,5V13h5.5l.5-.5v-8ZM3,6.29V5H4.29ZM10.71,12,15,7.71V9.04L12.04,12Zm2.75,0L15,10.46V12Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M3,2V4H15V2Z" />
+    <path class="light-defaultgrey" d="M15.5,1H2.5L2,1.5v3l.5.5h13l.5-.5v-3ZM3,4V2H15V4Z" />
+    <path class="light-defaultgrey-10" d="M.5,8.5h8v7H.5Z" />
+    <path class="light-defaultgrey" d="M8.5,8H.5L0,8.5v7l.5.5h8l.5-.5v-7ZM8,15H1V10H8Z" />
+  </g>
+</svg>

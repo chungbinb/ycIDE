@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDiagramError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5,9.5H7v2H5Z" />
+    <path class="light-defaultgrey-10" d="M.5,9.5h2v2H.5Z" />
+    <path class="light-defaultgrey-10" d="M8.489.5v3H3.5V.5Z" />
+    <path class="light-defaultgrey" d="M8.489,0H3.5L3,.5v3l.5.5H8.489l.5-.5V.5Zm-.5,3H4V1H7.989Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M10,7H6.5V9h-1V7H2V9H1V6.5L1.5,6h4V4h1V6h4l.5.5v.6a4.91,4.91,0,0,0-1,.323Z" />
+    </g>
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <path class="light-defaultgrey" d="M2.5,9H.5L0,9.5v2l.5.5h2l.5-.5v-2ZM2,11H1V10H2Z" />
+    <path class="light-defaultgrey" d="M7.5,9.5,7,9H5l-.5.5v2L5,12H7a4.944,4.944,0,0,1,.5-2.14ZM6.5,11h-1V10h1Z" />
+  </g>
+</svg>

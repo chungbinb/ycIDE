@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPhone</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,14.5h-8V1.5h8Z" />
+    <path class="light-defaultgrey" d="M12.5,1h-8L4,1.5v13l.5.5h8l.5-.5V1.5ZM12,14H5V2h7ZM9,4H8V3H9ZM7,12h3v1H7Z" />
+  </g>
+</svg>

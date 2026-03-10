@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-shadow{fill: #000000; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWorkItem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-2">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M12.5,3.5V7.341l.5-.5v3.866l-.5.5V14.5H2.5V3.5Z" />
+      <path class="light-blue" d="M13,10.707V14.5l-.5.5H2.5L2,14.5V3.5L2.5,3h10l.5.5V7.341l-1,1V4H3V14h9V11.707Z" />
+    </g>
+  </g>
+  <g id="level-1">
+    <path class="light-shadow" d="M14.854,8.854l-5,5H9.146l-3-3,.708-.708L9.5,12.793l4.646-4.647Z" />
+    <path class="light-blue" d="M14.854,7.854l-5,5H9.146l-3-3,.708-.708L9.5,11.793l4.646-4.647Z" />
+    <path class="light-shadow" d="M9.5,3a2,2,0,0,0-4,0H4V5h7V3Zm-2-1a1,1,0,1,1-1,1A1,1,0,0,1,7.5,2Z" />
+    <path class="light-blue" d="M9.5,2a2,2,0,0,0-4,0H4V4h7V2Zm-2-1a1,1,0,1,1-1,1A1,1,0,0,1,7.5,1Z" />
+  </g>
+</svg>

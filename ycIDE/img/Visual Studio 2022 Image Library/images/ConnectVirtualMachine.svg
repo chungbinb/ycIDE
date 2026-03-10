@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightConnectVirtualMachine</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,2.5v7H1.5v-7Z" />
+    <path class="light-defaultgrey" d="M13.5,2H1.5L1,2.5v7l.5.5H7v1H8V10h5.5l.5-.5v-7ZM13,9H2V3H13Z" />
+    <path class="light-defaultgrey" d="M14,13v1H11V13ZM1,14H4V13H1Z" />
+    <path class="light-green-10" d="M10.5,12.5v2h-6v-2h2v-1h2v1Z" />
+    <path class="light-green" d="M10.5,12H9v-.5L8.5,11h-2l-.5.5V12H4.5l-.5.5v2l.5.5h6l.5-.5v-2ZM10,14H5V13H6.5l.5-.5V12H8v.5l.5.5H10Z" />
+  </g>
+</svg>

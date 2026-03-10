@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ATL</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,3V13H2V3Z" />
+    <path class="light-defaultgrey" d="M4.6,5.74,3,10h.771l.371-1.085h1.68L6.206,10h.771L5.393,5.74Zm-.27,2.6.585-1.7a1.621,1.621,0,0,0,.059-.268h.012a2.241,2.241,0,0,0,.057.268l.591,1.7Zm2.568-2.6h3.149v.6H8.819V10H8.112V6.339H6.894ZM13,10H10.64V5.74h.707V9.4H13Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v11l.5.5h13l.5-.5V2.5ZM14,13H2V3H14Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>Yield</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.875,2.5,8,13.5,2.125,2.5Z" />
+    <path class="light-defaultgrey" d="M2.125,2h11.75l.441.735-5.875,11H7.559l-5.875-11ZM13.041,3H2.959L8,12.438Z" />
+  </g>
+</svg>

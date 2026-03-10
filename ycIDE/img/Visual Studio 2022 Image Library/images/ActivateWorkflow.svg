@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightActivateWorkflow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12.854,2.146v.708l-2,2-.708-.708L11.293,3H7.5a5.484,5.484,0,0,0-.618.037L6.944,3,5.706,2.257A6.482,6.482,0,0,1,7.5,2h3.793L10.146.854l.708-.708ZM7.5,14A5.494,5.494,0,0,1,2.975,5.382l-1.6.959A6.437,6.437,0,0,0,1,8.5a6.5,6.5,0,0,0,11.1,4.6l-.707-.707A5.464,5.464,0,0,1,7.5,14Z" />
+    <path class="light-green" d="M5,3,0,6V0Z" />
+    <path class="light-green" d="M12,6.6l-4.25,4.25H7.043L4.793,8.6,5.5,7.892l1.9,1.9,3.9-3.9Z" />
+  </g>
+</svg>

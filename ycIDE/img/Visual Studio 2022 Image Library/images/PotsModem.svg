@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPotsModem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H1.5V2.5Z" />
+    <path class="light-teal" d="M12,4V6H7V4Z" />
+    <path class="light-defaultgrey" d="M7,7H8V8H7ZM9,8h1V7H9Zm2-1V8h1V7ZM7,10H8V9H7Zm2,0h1V9H9Zm2,0h1V9H11ZM7,12H8V11H7Zm2,0h1V11H9Zm2,0h1V11H11Z" />
+    <path class="light-defaultgrey" d="M14.5,2H4V1H3V2H1.5L1,2.5v11l.5.5h13l.5-.5V2.5ZM2,3H4V13H2ZM14,13H5V3h9Z" />
+  </g>
+</svg>

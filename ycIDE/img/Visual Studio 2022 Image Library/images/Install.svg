@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>Install</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M11,14v1H4V14c2,0,2-.6,2-1H9C9,13.35,9,14,11,14Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M13.5,3.5v9H1.5v-9H6v.879l-.646-.647L3.23,5.854l3.5,3.5H8.266l3.5-3.5L9.645,3.732,9,4.379V3H9v.5Z" />
+    <path class="light-defaultgrey" d="M14,3.5v9l-.5.5H1.5L1,12.5v-9L1.5,3H6V4H2v8H13V4H9V3h4.5Z" />
+    <path class="light-blue" d="M10.352,5.854l-2.5,2.5H7.145l-2.5-2.5.707-.708L7,6.793V0H8V6.793L9.645,5.146Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCurrency</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,2.5v8H14v-6L13.5,4H2.5V2.5Z" />
+      <path class="light-defaultgrey" d="M16,2.5v8l-.5.5H14V10h1V3H3V4H2V2.5L2.5,2h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M13.5,12.5H.5v-8h13Z" />
+    <path class="light-defaultgrey" d="M13.5,4H.5L0,4.5v8l.5.5h13l.5-.5v-8ZM1,5H2.5A1.5,1.5,0,0,1,1,6.5Zm0,7V10.5A1.5,1.5,0,0,1,2.5,12Zm12,0H11.5A1.5,1.5,0,0,1,13,10.5Zm0-2.5A2.5,2.5,0,0,0,10.5,12h-7A2.5,2.5,0,0,0,1,9.5v-2A2.5,2.5,0,0,0,3.5,5h7A2.5,2.5,0,0,0,13,7.5Zm0-3A1.5,1.5,0,0,1,11.5,5H13Z" />
+    <path class="light-defaultgrey-10" d="M9,8.492a2,2,0,1,1-2-2A2,2,0,0,1,9,8.492Z" />
+    <path class="light-defaultgrey" d="M7,10.992a2.5,2.5,0,1,1,2.5-2.5A2.5,2.5,0,0,1,7,10.992Zm0-4a1.5,1.5,0,1,0,1.5,1.5A1.5,1.5,0,0,0,7,6.992Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDatabasePerformane</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M13.5,3.134v8.7c0,.83-1.531,1.506-3.5,1.605V8.086L8.914,7H5.521V3.134c0-.9,1.787-1.625,3.99-1.625S13.5,2.237,13.5,3.134Z" />
+    <path class="light-lightblue" d="M5.022,3.134V7h1V4.533A7.326,7.326,0,0,0,9.511,5.3,7.33,7.33,0,0,0,13,4.533v7.3c0,.291-1.056.961-3,1.063V13.98c2.06-.1,4-.828,4-2.147v-8.7C14,.288,5.022.288,5.022,3.134ZM9.511,4.217c-2.268,0-3.491-.769-3.491-1.083S7.243,2.051,9.511,2.051,13,2.82,13,3.134,11.779,4.217,9.511,4.217Z" />
+    <path class="light-defaultgrey-10" d="M.5,8.5h8v7H.5Z" />
+    <path class="light-green" d="M8.146,13.854,5.5,11.207,3.854,12.854H3.146L2.5,12.207.854,13.854l-.708-.708,2-2h.708l.646.647,1.646-1.647h.708l3,3Z" />
+    <path class="light-defaultgrey" d="M8.5,16H.5L0,15.5v-7L.5,8h8l.5.5v7ZM1,15H8V9H1Z" />
+  </g>
+</svg>

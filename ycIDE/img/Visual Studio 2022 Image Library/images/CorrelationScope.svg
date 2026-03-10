@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCorrelationScope</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2,14H5v1H1.5L1,14.5V11H2Zm9,0v1h3.5l.5-.5V11H14v3ZM14,4h1V.5L14.5,0H11V1h3ZM5,1V0H1.5L1,.5V4H2V1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M12,10.132V11.5H4V10.132L5.854,8.278V6.743L4,4.889V3.5h8V4.889L10.146,6.743V8.278Z" />
+      <path class="light-defaultgrey" d="M4,4.889V3.5L4.5,3h7l.5.5V4.889l-1,1V4H5V5.889Z" />
+      <path class="light-defaultgrey" d="M12,10.132V11.5l-.5.5h-7L4,11.5V10.132l1-1V11h6V9.132Z" />
+    </g>
+    <path class="light-blue" d="M16,8.011H12.707L13.8,9.1l-.707.707L11.146,7.864V7.157L13.09,5.213l.707.707-1.09,1.091H16ZM2.2,5.92l1.09,1.091H0v1H3.293L2.2,9.1l.707.707L4.854,7.864V7.157L2.91,5.213Z" />
+  </g>
+</svg>

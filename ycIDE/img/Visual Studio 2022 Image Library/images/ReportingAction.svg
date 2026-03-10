@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReportingAction</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,15.5H.5v-7H5L6.5,10Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2.953V7L11,9.015,7.5,7V2.953L11,.932Z" />
+    <path class="light-defaultgrey" d="M6.854,9.646l-1.5-1.5L5,8H.5L0,8.5v7l.5.5h6l.5-.5V10ZM1,15V9H4v2H6v4Z" />
+    <path class="light-defaultgrey" d="M14.75,2.521,11.25.5h-.5L7.25,2.521,7,2.953V6.994l.25.433,3.5,2.021h.5l3.5-2.021L15,6.994V2.953ZM10.5,8.15,8,6.705V3.86L10.5,5.3ZM11,4.438,8.465,2.974,11,1.51l2.535,1.464Zm3,2.267L11.5,8.15V5.3L14,3.86Z" />
+    <path class="light-blue" d="M5.854,3.146v.708l-2,2-.708-.708L4.293,4H2V6H1V3.5L1.5,3H4.293L3.146,1.854l.708-.708Z" />
+    <path class="light-blue" d="M14,10v2.5l-.5.5H10.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L10.707,12H13V10Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUserControl</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,10.048h8V15.5H.5Z" />
+    <path class="light-defaultgrey-10" d="M10,7.5a3,3,0,1,1,3-3A3,3,0,0,1,10,7.5ZM14.5,12A4.5,4.5,0,0,0,10,7.5,4.452,4.452,0,0,0,7.979,8h.935L10,9.086V12Z" />
+    <path class="light-defaultgrey" d="M11.957,7.4a3.5,3.5,0,1,0-3.914,0A5.045,5.045,0,0,0,7.025,8H8.914l.129.129A3.924,3.924,0,0,1,10,8a4,4,0,0,1,4,4h1A5.007,5.007,0,0,0,11.957,7.4ZM10,7a2.5,2.5,0,1,1,2.5-2.5A2.5,2.5,0,0,1,10,7Z" />
+    <path class="light-defaultgrey" d="M8.5,9H.5L0,9.5v6l.5.5h8l.5-.5v-6ZM8,15H1V11H8Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUndoCheckboxList</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M3.99,13H3V12h.99Z" />
+    <path class="light-blue" d="M6.621.879a3,3,0,0,0-4.242,0L1,2.257V0H0V3.5L.5,4H4V3H1.672L3.086,1.586h0A2,2,0,0,1,5.914,4.414L1.672,8.657l.707.707L6.621,5.121h0A3,3,0,0,0,6.621.879Z" />
+    <path class="light-defaultgrey" d="M15,4V5H7.947a3.936,3.936,0,0,0,.412-1ZM7,9h8V8H7Zm0,4h8V12H7Z" />
+    <path class="light-defaultgrey" d="M2,14H5V11H2Zm1-2H4v1H3ZM5,8.156V10H3.157Z" />
+  </g>
+</svg>

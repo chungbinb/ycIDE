@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>OpenVirtualMachine</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,1.5H6.76l.09.09V3.12L4.5,5.47V12.5h6V2.5A1,1,0,0,0,9.5,1.5Zm2.5,9H11v2l-.5.5h-6L4,12.5v-2H3l-2,4H14Z" />
+    <path class="light-defaultgrey" d="M12.45,10.28,12,10H11V2.5A1.5,1.5,0,0,0,9.5,1H6.26l.59.59V2H9.5a.5.5,0,0,1,.5.5V12H5V4.97l-1,1V10H3l-.45.28-2,4L1,15H14l.45-.72ZM4.5,13h6l.5-.5V11h.69l1.5,3H1.81l1.5-3H4v1.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9,4V5H6V4ZM6,9H9V8H6Zm0,2H9V10H6Z" />
+    </g>
+    <path class="light-blue" d="M5.854,2v.707l-2,2L3.147,4,4.293,2.854H3a2,2,0,0,0-2,2v1H0v-1a3,3,0,0,1,3-3H4.293L3.147.707,3.854,0Z" />
+  </g>
+</svg>

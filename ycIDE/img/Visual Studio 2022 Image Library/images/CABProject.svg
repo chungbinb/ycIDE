@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCABProject</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,15.5H.5V5.5h7Z" />
+    <path class="light-defaultgrey" d="M7.5,5H.5L0,5.5v10l.5.5h7l.5-.5V5.5ZM7,15H1V11H3v1H5V11H7Zm0-5H1V6H3V7H5V6H7Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,1.5v9H9V5.086L7.914,4H3.5V1.5Z" />
+      <path class="light-defaultgrey" d="M15,1.5v9l-.5.5H9V10h5V3H4V4H3V1.5L3.5,1h11Z" />
+    </g>
+  </g>
+</svg>

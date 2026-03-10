@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>TscFaultedStatus</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5.707V12.293l-.207.207h-4.5L8.146,15.146H7.854L5.207,12.5H.707L.5,12.293V.707L.707.5H15.293Z" />
+    <path class="light-defaultgrey" d="M9,9v2H7V9Z" />
+    <path class="light-defaultgrey" d="M9,2V8H7V2Z" />
+    <path class="light-defaultgrey" d="M8.354,15.646H7.646L5,13H.5L0,12.5V.5L.5,0h15l.5.5v12l-.5.5H11ZM1,12H5.207l.354.146L8,14.586l2.439-2.44L10.793,12H15V1H1Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDesignStorage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,1.5v10H9V9.185l-.518-.9L4.518,6H3.5V1.5Z" />
+    <path class="light-green" d="M15,6.293V7.707l-2.5-2.5L8.854,8.854H8.809l-.327-.566L5.643,6.65l.5-.5h.708L8.5,7.793l3.646-3.647h.708Z" />
+    <path class="light-defaultgrey" d="M16,1.5v10l-.5.5H9V11h6V2H4V6H3.482L3,6.278V1.5L3.5,1h12Z" />
+    <path class="light-defaultgrey-10" d="M7.5,9.453V13.5L4,15.515.5,13.5V9.453L4,7.432Z" />
+    <path class="light-defaultgrey" d="M7.75,9.021,4.25,7h-.5L.25,9.021,0,9.453v4.041l.25.433,3.5,2.021h.5l3.5-2.021L8,13.494V9.453ZM3.5,14.65,1,13.205V10.36L3.5,11.8ZM4,10.938,1.465,9.474,4,8.01,6.535,9.474Zm3,2.267L4.5,14.65V11.8L7,10.36Z" />
+  </g>
+</svg>

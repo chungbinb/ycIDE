@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSetWorkflowState</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.364,7.521.5,3.657V.5H3.657L7.521,4.364Z" />
+    <path class="light-defaultgrey" d="M2.091,3.152a.75.75,0,1,1,1.061,0A.749.749,0,0,1,2.091,3.152Z" />
+    <path class="light-defaultgrey" d="M4.01,7.875.146,4.011,0,3.657V.5L.5,0H3.657l.354.146L7.875,4.011v.707L4.717,7.875ZM3.45,1H1V3.45L4.364,6.814l2.45-2.45Z" />
+    <path class="light-defaultgrey" d="M11.39,12.39A5.5,5.5,0,0,1,2,8.5a4.945,4.945,0,0,1,.12-1.1L1.3,6.58A6.426,6.426,0,0,0,1,8.5a6.505,6.505,0,0,0,11.1,4.6ZM10.85.15l-.7.7L11.29,2H7.5a1.62,1.62,0,0,0-.22.01L8.27,3h3.02L10.15,4.15l.7.7,2-2v-.7Z" />
+    <path class="light-green" d="M12,6.6l-4.25,4.25H7.043L4.793,8.6,5.5,7.892l1.9,1.9,3.9-3.9Z" />
+  </g>
+</svg>

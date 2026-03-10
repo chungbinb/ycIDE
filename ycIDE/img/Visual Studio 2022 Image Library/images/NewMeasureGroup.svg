@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNewMeasureGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,12.5v-8h-2v8Z" />
+    <path class="light-defaultgrey-10" d="M8.5,12.5v-5h-2v5Z" />
+    <path class="light-defaultgrey-10" d="M4.5,12.5v-3h-2v3Z" />
+    <path class="light-defaultgrey" d="M10.5,4h2l.5.5v8l-.5.5h-2l-.5-.5v-8ZM12,12V5H11v7Z" />
+    <path class="light-defaultgrey" d="M6.5,7h2l.5.5v5l-.5.5h-2L6,12.5v-5ZM8,12V8H7v4Z" />
+    <path class="light-defaultgrey" d="M2.5,9h2l.5.5v3l-.5.5h-2L2,12.5v-3ZM4,12V10H3v2Z" />
+    <path class="light-yellow" d="M3,2,3,0H4L4,2l-.5.5ZM4,5,4,7H3L3,5l.5-.5ZM5,3,7,3V4L5,4l-.5-.5ZM2,4,0,4V3L2,3l.5.5ZM4.208,2.086,5.62.672l.708.706L4.915,2.793H4.208ZM2.792,4.914,1.38,6.328.672,5.622,2.085,4.207h.707Zm2.122-.706L6.328,5.62l-.706.708L4.207,4.915V4.208ZM2.086,2.792.672,1.38,1.378.672,2.793,2.085v.707Z" />
+    <path class="light-defaultgrey" d="M15,2.5v12l-.5.5H13V14h1V3H13V2h1.5ZM1,7.24A4.5,4.5,0,0,1,0,6.3v8.2l.5.5H2V14H1Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightScsiController</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,15,1.5,8.5,8,2l6.5,6.5Zm0,0L1.5,8.5,8,2l6.5,6.5Z" />
+    <path class="light-defaultgrey" d="M8.354,15.354H7.646l-6.5-6.5V8.146l6.5-6.5h.708l6.5,6.5v.708ZM2.207,8.5,8,14.293,13.793,8.5,8,2.707Z" />
+    <path class="light-defaultgrey" d="M10.879,10,8.354,12.525H7.646L3.975,8.854V8.146L7.646,4.475h.708L10.879,7H9.465L8,5.535,5.036,8.5,8,11.465,9.465,10Z" />
+    <path class="light-defaultgrey" d="M12,9H7V8h5Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightArrangeSelection</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,9.5h5v5h-5ZM2,5h.635L5.552,8.5H6.5v-5h-5v5H2ZM9.5,1.5v5h5v-5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9,6H7V5H9Z" />
+    </g>
+    <path class="light-blue" d="M5.278,11.7l.789,2.167-.94.342-.821-2.256L3,13V7l4,4.8Z" />
+    <path class="light-defaultgrey" d="M9.5,9,9,9.5v5l.5.5h5l.5-.5v-5L14.5,9ZM14,14H10V11h4ZM2,9H1.5L1,8.5v-5L1.5,3h5l.5.5v5L6.5,9H5.969L5.135,8H6V5H2V9ZM14.5,1h-5L9,1.5v5l.5.5h5l.5-.5v-5ZM14,6H10V3h4Z" />
+  </g>
+</svg>

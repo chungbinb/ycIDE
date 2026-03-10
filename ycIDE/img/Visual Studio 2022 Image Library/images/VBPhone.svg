@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightVBPhone</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M11.5,1.5v13h-8V1.5Z" />
+    <path class="light-blue" d="M9,13H6V12H9Z" />
+    <path class="light-blue" d="M8,4H7V3H8Z" />
+    <path class="light-blue" d="M11.5,1h-8L3,1.5v13l.5.5h8l.5-.5V1.5ZM11,14H4V2h7Z" />
+  </g>
+</svg>

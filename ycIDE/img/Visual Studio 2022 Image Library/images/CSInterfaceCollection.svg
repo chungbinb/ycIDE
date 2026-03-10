@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSInterfaceCollection</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13,12H12V4H4V2H14V12Z" />
+      <path class="light-defaultgrey" d="M15,1.5v11l-.5.5H13V12h1V2H4V3H3V1.5L3.5,1h11Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M12,14H2V4H12Z" />
+    <path class="light-defaultgrey" d="M12.5,3H1.5L1,3.5v11l.5.5h11l.5-.5V3.5ZM12,14H2V4H12Z" />
+    <path class="light-green-10" d="M10.5,9A1.5,1.5,0,1,1,9,7.5,1.5,1.5,0,0,1,10.5,9Z" />
+    <path class="light-green" d="M9,7A2,2,0,0,0,7.09,8.44H5.326A1.236,1.236,0,0,0,4.25,7.787,1.25,1.25,0,1,0,5.376,9.561H7.09A2,2,0,1,0,9,7Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,9,10Z" />
+  </g>
+</svg>

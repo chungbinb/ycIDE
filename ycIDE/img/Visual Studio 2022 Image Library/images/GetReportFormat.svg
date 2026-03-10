@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGetReportFormat</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,8.5v7H.5V5.5h6Z" />
+    <path class="light-defaultgrey-10" d="M15.5.5v5h-6V.5Z" />
+    <path class="light-defaultgrey" d="M11,5H10V4h1Zm4.5-5h-6L9,.5v5l.5.5h6l.5-.5V.5ZM11,3H10V2h1Zm2,2H12V4h1Zm0-2H12V2h1Zm2,2H14V4h1Zm0-2H14V2h1Z" />
+    <path class="light-defaultgrey" d="M9.854,8.142l-3-3L6.5,5H.5L0,5.5v10l.5.5h9l.5-.5v-7ZM9,15H1V6H6V9H9ZM4.5,11l.5.5v2l-.5.5h-1L3,13.5v-2l.5-.5ZM6,10.5l.5-.5h1l.5.5v3l-.5.5h-1L6,13.5ZM2,7H5V8H2Zm2,3H2V9H4Z" />
+    <path class="light-blue" d="M11,11h2V8.707L11.854,9.854l-.708-.708,2-2h.708l2,2-.708.708L14,8.707V11.5l-.5.5H11Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEditLabel</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8.136,10.616l.926-.926L6.1,2H4.886L1.051,12h1.3l1-2.8h4.24ZM3.743,8.144,5.3,3.883a3.644,3.644,0,0,0,.161-.67h.028a4.108,4.108,0,0,0,.153.67l1.57,4.261Z" />
+    <path class="light-blue-10" d="M15.192,8.681,9.635,14.238,8.153,12.72l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,8.681Z" />
+    <path class="light-blue" d="M15.543,6.83a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L6.511,15.326,7.186,16l2.995-1.629,5.365-5.336A1.562,1.562,0,0,0,15.543,6.83Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

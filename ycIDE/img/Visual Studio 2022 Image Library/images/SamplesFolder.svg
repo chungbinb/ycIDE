@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow-25{fill: #996f00; opacity: 0.25;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSamplesFolder</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M9.5,3.5V5H8.47l-.35.15L7.27,6H3.5V2.5H.5v10l2-6h5l1-1h5v-2Z" />
+    <path class="light-yellow-25" d="M8.5,5.5l-1,1h-5l-2,6h13l2-7Z" />
+    <path class="light-yellow" d="M15.41,5H14V3.5L13.5,3h-4V4H13V5H8.47l-.35.15L7.27,6H2.47L2,6.34,1,9.42V3H3.5V2H.5L0,2.5v10l.5.5H13.54l.48-.37,1.87-7ZM1.17,12,2.83,7H7.47l.36-.15L8.68,6h6.08L14,8.85,13.16,12Z" />
+    <path class="light-yellow-25" d="M13,6v6.5h1V6Z" />
+    <path class="light-defaultgrey-10" d="M8,.5H3.5V6H7.27l.85-.85L8.47,5H9.5V2Z" />
+    <path class="light-defaultgrey" d="M9.85,1.65,8.35.15,8,0H3.5L3,.5V6H4V1H7V3H9V5h1V2Z" />
+  </g>
+</svg>

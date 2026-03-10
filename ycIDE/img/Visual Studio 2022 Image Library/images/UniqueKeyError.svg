@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightUniqueKeyError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7.668,14.5c-.055,0-.111.005-.168.005a2.993,2.993,0,0,1-1-5.816V2.5l1-1,2,2-1,1,1,1-1,1,1,1-.511.511A4.994,4.994,0,0,0,7.668,14.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7.978,14.967A3.426,3.426,0,0,1,7.5,15,3.492,3.492,0,0,1,6,8.351V2.5l.146-.354,1-1h.708l2,2v.708L9.207,4.5l.647.646v.708L9.207,6.5l.647.646v.339A5.018,5.018,0,0,0,8.218,8.733V8.075L8.793,7.5l-.647-.646V6.146L8.793,5.5l-.647-.646V4.146L8.793,3.5,7.5,2.207l-.5.5V9.051A2.5,2.5,0,0,0,7.417,14,5.013,5.013,0,0,0,7.978,14.967Z" />
+    <path class="light-defaultgrey" d="M7,11.941V12a5,5,0,0,0,.135,1.155A.749.749,0,0,1,7,11.941Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.147-.708.707L12,12.707l-1.146,1.147-.708-.707L11.293,12l-1.147-1.146.708-.707L12,11.293l1.146-1.146.708.707Z" />
+  </g>
+</svg>

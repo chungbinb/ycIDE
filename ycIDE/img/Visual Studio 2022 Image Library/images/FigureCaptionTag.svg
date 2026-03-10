@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFigureCaptionTag</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5.5v14H2.5V.5Z" />
+    <path class="light-yellow" d="M12,3a1,1,0,1,1-1-1A1,1,0,0,1,12,3Z" />
+    <path class="light-blue" d="M13,7.293V8h-.707L10,5.707,8.707,7l1,1H8.293L5,4.707l-2,2V5.293L4.646,3.646h.708L8,6.293,9.646,4.646h.708Z" />
+    <path class="light-defaultgrey" d="M13.5,0H2.5L2,.5v14l.5.5h11l.5-.5V.5ZM3,1H13V8H3ZM13,14H3V9H13Z" />
+    <path class="light-defaultgrey" d="M4,10v1H9V10Zm0,3h8V12H4Z" />
+  </g>
+</svg>

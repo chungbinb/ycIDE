@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRunChecked</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.14,3.5l.88.5L4,6.87l-.5.28V14.5h11V3.5Z" />
+    <path class="light-defaultgrey" d="M14.5,3H7.27l.87.5.88.5H14V14H4V6.87l-.5.28L3,7.44V14.5l.5.5h11l.5-.5V3.5Z" />
+    <path class="light-defaultgrey" d="M13,6.6l-5.25,5.25H7.043L4.793,9.6,5.5,8.892l1.9,1.9,4.9-4.9Z" />
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+  </g>
+</svg>

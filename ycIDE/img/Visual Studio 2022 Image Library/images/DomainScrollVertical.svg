@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDomainScrollVertical</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M5.5,3.6H4.484L1.262,12h1.1L3.2,9.645H6.758L7.648,12h1.09ZM3.523,8.76,4.83,5.18a3.131,3.131,0,0,0,.135-.563h.023a3.425,3.425,0,0,0,.129.563L6.436,8.76Z" />
+    <path class="light-defaultgrey" d="M10,9h4l-2,3Z" />
+    <path class="light-defaultgrey" d="M14,6H10l2-3Z" />
+  </g>
+</svg>

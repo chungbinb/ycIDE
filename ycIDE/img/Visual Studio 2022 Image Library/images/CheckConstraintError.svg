@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCheckConstraintError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <path class="light-defaultgrey-10" d="M7.051,12.5H5.5v-9h5V7.255A4.991,4.991,0,0,0,7,12,4.865,4.865,0,0,0,7.051,12.5Z" />
+    <path class="light-defaultgrey" d="M7.1,13H5.5L5,12.5v-9L5.5,3h5l.5.5V7.1a4.91,4.91,0,0,0-1,.323V5H6V8H9.031A5.012,5.012,0,0,0,8.026,9H6v3H7A5,5,0,0,0,7.1,13Z" />
+    <path class="light-defaultgrey" d="M1.5,2H4V3H2V13H4v1H1.5L1,13.5V2.5ZM14,7.424a4.967,4.967,0,0,1,1,.6V2.5L14.5,2H12V3h2Z" />
+  </g>
+</svg>

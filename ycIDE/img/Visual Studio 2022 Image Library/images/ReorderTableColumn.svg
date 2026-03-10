@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReorderTableColumn</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,2.5h5v12h-5Z" />
+    <path class="light-defaultgrey" d="M10.5,1h-5L5,1.5v13l.5.5h5l.5-.5V1.5ZM10,14H6V11h4Zm0-4H6V7h4Zm0-4H6V3h4Z" />
+    <path class="light-blue" d="M15.854,8.854l-2,2-.708-.708L14.293,9H11V8h3.293L13.146,6.854l.708-.708,2,2Z" />
+    <path class="light-blue" d="M.146,8.854l2,2,.708-.708L1.707,9H5V8H1.707L2.854,6.854l-.708-.708-2,2Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSplitter</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8,1V14H7V1Z" />
+    <path class="light-blue" d="M14.854,7.146v.708l-2.5,2.5-.708-.708L13.293,8H9V7h4.293L11.646,5.354l.708-.708ZM3.354,5.354l-.708-.708-2.5,2.5v.708l2.5,2.5.708-.708L1.707,8H6V7H1.707Z" />
+  </g>
+</svg>

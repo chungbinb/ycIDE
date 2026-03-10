@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple{fill: #6936aa; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightProductionTracepointBound</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple" d="M8,15.071.929,8,8,.929,15.071,8Z" />
+    </g>
+    <path class="white" d="M2.7,9.061,9.061,2.7l.715.715-6.3,6.429Zm9.9-2.829L6.232,12.6l.707.707L13.3,6.939Z" />
+    <path class="light-purple" d="M8.354,15.425H7.646L.575,8.354V7.646L7.646.575h.708l7.071,7.071v.708ZM1.636,8,8,14.364,14.364,8,8,1.636Z" />
+  </g>
+</svg>

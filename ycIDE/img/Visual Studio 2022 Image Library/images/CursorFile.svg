@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCursorFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2,15H1V1.5L1.5,1H15V2H2Z" />
+    <path class="light-blue" d="M9.09,10.034l1.38,3.8-.94.342L8.123,10.3,6,12V3l6,7.2Z" />
+  </g>
+</svg>

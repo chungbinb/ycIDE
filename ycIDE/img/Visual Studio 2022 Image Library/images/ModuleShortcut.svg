@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightModuleShortcut</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M7,14.5H1.5v-5H7Z" />
+      <path class="light-purple" d="M7,15H1.5L1,14.5v-5L1.5,9H7v1H2v4H7Z" />
+    </g>
+    <path class="light-purple-10" d="M8.5,7V2.5h5V7Zm-7-4.5h5v5h-5Z" />
+    <path class="light-purple" d="M8,7.086V2.5L8.5,2h5l.5.5V7H13V3H9V7H8.086ZM7,2.5,6.5,2h-5L1,2.5v5l.5.5h5L7,7.5ZM6,7H2V3H6Z" />
+    <path class="light-defaultgrey-10" d="M15.5,8.5v7h-7v-7Z" />
+    <path class="light-defaultgrey" d="M15.5,8h-7L8,8.5v7l.5.5h7l.5-.5v-7ZM15,15H9V9h6Zm-1-4.5V14H13V11.707l-2.646,2.647-.708-.708L12.293,11H10V10h3.5Z" />
+  </g>
+</svg>

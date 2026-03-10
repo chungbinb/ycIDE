@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightChangeset</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M10.5,9a3.5,3.5,0,1,0-3-5.274A3.494,3.494,0,1,0,4.5,9H6.293L1.646,13.646l.708.708L7.5,9.207l5.146,5.147.708-.708L8.707,9Zm0-6a2.5,2.5,0,0,1,0,5H8V5.5A2.5,2.5,0,0,1,10.5,3ZM2,5.5a2.5,2.5,0,0,1,5,0V8H4.5A2.5,2.5,0,0,1,2,5.5Z" />
+  </g>
+</svg>

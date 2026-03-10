@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>OverlayProtected</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M0,10.508.517,8.913l2.334-.34L3.894,6.459H6.033L7.078,8.573l2.334.34.659,2.036L8.384,12.593l.4,2.323L7.292,16H6.72l-1.756-.923L3.208,16H2.637L1.146,14.916l.4-2.323L0,11.088Z" />
+    <path class="light-defaultgrey-10" d="M1.349,10.308l2.5-.363L4.964,7.681,6.082,9.945l2.5.363L6.772,12.07,7.2,14.558,4.964,13.383,2.73,14.558l.426-2.488Z" />
+    <path class="light-defaultgrey" d="M2.619,12.244l-.383,2.229L2.962,15l2-1.053,2,1.053.725-.527L7.31,12.244l1.619-1.578-.277-.853L6.414,9.487l-1-2.028h-.9l-1,2.028-2.239.326L1,10.666Zm1.03-.09-.144-.443L2.423,10.656l1.5-.217.376-.273L4.964,8.81l.67,1.356.376.273,1.5.217L6.424,11.711l-.145.443.256,1.49L5.2,12.94H4.731l-1.337.7Z" />
+  </g>
+</svg>

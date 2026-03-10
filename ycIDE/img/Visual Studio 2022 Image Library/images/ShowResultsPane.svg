@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightShowResultsPane</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,1.5v6h-4v6h-8v-6h4v-3h4v-3Z" />
+    <path class="light-defaultgrey" d="M13.5,1H1.5L1,1.5v12l.5.5h12l.5-.5V1.5ZM9,2V4H6V2ZM5,13H2V11H5Zm0-3H2V8H5ZM5,7H2V5H5ZM2,4V2H5V4Zm7,9H6V11H9Zm0-3H6V8H9ZM9,7H6V5H9Zm4,6H10V11h3Zm0-3H10V8h3Zm0-3H10V5h3Zm0-3H10V2h3Z" />
+    <path class="light-blue-10" d="M13.5,7.5h-4v6h4Z" />
+    <path class="light-blue-10" d="M9.5,1.5v3h-4v3h-4v-6Z" />
+    <path class="light-blue" d="M9.5,1h-8L1,1.5v6l.5.5h4L6,7.5V5H9.5l.5-.5v-3ZM5,2V4H2V2ZM2,7V5H5V7ZM9,4H6V2H9Z" />
+    <path class="light-blue" d="M13.5,7h-4L9,7.5v6l.5.5h4l.5-.5v-6ZM13,13H10V11h3Zm0-3H10V8h3Z" />
+  </g>
+</svg>

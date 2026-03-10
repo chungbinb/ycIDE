@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightConditionalRule</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14.008,1.5V4.848l-1-1V2h-10V5.871l-1,1V1.5l.5-.5h11Z" />
+      <path class="light-defaultgrey-10" d="M13.5,14.5H2.5v-.516L2.008,13.3V5.706L2.5,5.391V1.5h11V3.955l.508.893v5.3L13.5,11Z" />
+      <path class="light-defaultgrey" d="M2,14.5V12.152l1,1V14H13V11.129l1-1V14.5l-.5.5H2.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14.893,7.146v.708L12.949,9.8l-.707-.707L13.333,8H9V7h4.333L12.242,5.909l.707-.707Z" />
+    <path class="light-defaultgrey" d="M2.707,9H7v1H2.707L3.8,11.091,3.09,11.8,1.146,9.854V9.146L3.09,7.2l.707.707Z" />
+  </g>
+</svg>

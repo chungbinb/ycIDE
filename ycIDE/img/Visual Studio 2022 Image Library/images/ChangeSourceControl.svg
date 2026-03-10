@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightChangeSourceControl</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M13.241,6.513l-3.5,3.5H9.034L7.387,8.367,8.1,7.66,9.387,8.953l3.147-3.147Z" />
+    <path class="light-yellow-10" d="M14.5,3.47V12.5L8,12.477A4.468,4.468,0,0,0,1.5,8.488V2.47h5l1,1Z" />
+    <path class="light-yellow" d="M14.5,3H7.707l-.853-.854L6.5,2h-5L1,2.5V8.76a4.466,4.466,0,0,1,1-.484V5H6.475l.354-.146L7.682,4H14v8H7.95a4.576,4.576,0,0,1,.05.5,4.576,4.576,0,0,1-.05.5H14.5l.5-.5v-9ZM6.268,4H2V3H6.293l.488.488Z" />
+    <path class="light-defaultgrey" d="M7,13V12H5.949a2.473,2.473,0,0,0-.365-.876l.745-.745-.707-.707-.745.745A2.469,2.469,0,0,0,4,10.051V9H3v1.051a2.469,2.469,0,0,0-.877.366l-.745-.745-.707.707.745.745A2.473,2.473,0,0,0,1.051,12H0v1H1.051a2.473,2.473,0,0,0,.365.876l-.745.745.707.707.745-.745A2.469,2.469,0,0,0,3,14.949V16H4V14.949a2.469,2.469,0,0,0,.877-.366l.745.745.707-.707-.745-.745A2.473,2.473,0,0,0,5.949,13ZM3.5,14A1.5,1.5,0,1,1,5,12.5,1.5,1.5,0,0,1,3.5,14Z" />
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+      <SolidColorBrush x:Key="light-teal-10" Color="#006758" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-teal" Color="#006758" Opacity="1" />
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M6.649,10,7.5,8.667V4.5h3V8.667L11.351,10Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M7,5H6V4h6V5H11V8.521l1.091,1.709L11.67,10h-.913l-.679-1.063L10,8.667V5H8V8.667l-.078.27L7.243,10H6.33l-.421.23L7,8.521Z" />
+              <GeometryDrawing Brush="{DynamicResource light-teal-10}" Geometry="F1M12.6,11.962,11.67,10.5H6.33L5.4,11.962c-.008.012-.011.026-.018.038H6v1.467a1.03,1.03,0,0,0,.24.033h5.52A1,1,0,0,0,12.6,11.962Z" />
+              <GeometryDrawing Brush="{DynamicResource light-teal}" Geometry="F1M13.025,11.692l-.933-1.462L11.67,10H6.33l-.422.23-.933,1.463A1.5,1.5,0,0,0,4.832,12H5.966L6.6,11H11.4l.786,1.23a.5.5,0,0,1-.421.77H6.239A.468.468,0,0,1,6,12.935v1.033A1.462,1.462,0,0,0,6.239,14h5.522a1.5,1.5,0,0,0,1.264-2.308Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M5,14H3v2H2V14H0V13H2V11H3v2H5Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

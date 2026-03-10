@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDebugHistorySeekToFrame</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M5.5,12.5h9v2h-9Zm9-5v2H3.5v-2Zm0-5v2H7.767L8,4.268V2.732L7.767,2.5Z" />
+      <path class="light-defaultgrey" d="M14.5,15h-9L5,14.5v-2l.5-.5h9l.5.5v2ZM6,14h8V13H6Zm8.5-4H3.5L3,9.5v-2L3.5,7h11l.5.5v2ZM4,9H14V8H4ZM15,2.5v2l-.5.5H7.216L8,4.268V4h6V3H8V2.732L7.267,2H14.5Z" />
+    </g>
+    <path class="light-blue" d="M6.854,3.146v.708L4.378,6.329l-.707-.707L5.293,4H2v9H4v1H1.5L1,13.5V3.5L1.5,3H5.293L3.671,1.378,4.378.671Z" />
+  </g>
+</svg>

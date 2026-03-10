@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple{fill: #6936aa; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFSFileNode</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple" d="M13,6V8h1V9H13v1H12V9H10v1H9V9H8V8H9V6H8V5H9V4h1V5h2V4h1V5h1V6ZM12,6H10V8h2ZM6.318,5.127H3.328v2.4H6.084V8.653H3.328V12H2V4H6.318Z" />
+  </g>
+</svg>

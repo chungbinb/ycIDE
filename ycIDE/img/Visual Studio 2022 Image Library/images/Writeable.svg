@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWriteable</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7,3V4h6V3ZM1,3V4H6V3ZM9,6V7h2.75l.88-.88A1.538,1.538,0,0,1,12.76,6ZM3,6V7H8V6ZM3,9v1H8.75l1-1ZM1,12v1H6.53l.48-1Z" />
+    <path class="light-blue-10" d="M15.192,8.681,9.635,14.238,8.153,12.72l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,8.681Z" />
+    <path class="light-blue" d="M15.543,6.83a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L6.511,15.326,7.186,16l2.995-1.629,5.365-5.336A1.562,1.562,0,0,0,15.543,6.83Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFitSelection</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15,1.5v13l-.5.5H1.5L1,14.5V1.5L1.5,1h13Z" />
+      <path class="light-defaultgrey" d="M7,2H5V1H7Zm4,0H9V1h2ZM7,15H5V14H7Zm4,0H9V14h2Zm3-8V5h1V7Zm0,4V9h1v2ZM1,7V5H2V7Zm0,4V9H2v2ZM13,1V2h1V3h1V1.5L14.5,1ZM1,3H2V2H3V1H1.5L1,1.5ZM3,15V14H2V13H1v1.5l.5.5Zm12-2H14v1H13v1h1.5l.5-.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M13,6H12V4.707L10.354,6.354l-.708-.708L11.293,4H10V3h3ZM3,3H6V4H4.707L6.354,5.646l-.708.708L4,4.707V6H3ZM3,13V10H4v1.293L5.646,9.646l.708.708L4.707,12H6v1Zm10,0H10V12h1.293L9.646,10.354l.708-.708L12,11.293V10h1Z" />
+  </g>
+</svg>

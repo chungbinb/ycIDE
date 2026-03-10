@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>NextBookmarkInFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,7.5h6V15l-3-3-3,3Z" />
+    <path class="light-defaultgrey" d="M15.5,7h-6L9,7.5V15l.854.354L12.5,12.707l2.646,2.647L16,15V7.5ZM15,13.793l-2.146-2.147h-.708L10,13.793V8h5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M12.5,4.5V6H8.75L8,6.75v.125l-1.4-1.4L4.482,7.6l.4.4L2,8v3l2.876,0-.394.394L6.6,13.513l1.4-1.4V14.5H1.5V1.5h8v3Z" />
+      <path class="light-defaultgrey" d="M13,4.5V6H12V5H9V2H2V14H8v1H1.5L1,14.5V1.5L1.5,1h8l.354.146,3,3Z" />
+    </g>
+    <path class="light-blue" d="M3,9,7.293,9,5.9,7.6,6.6,6.892l2.25,2.25v.707L6.6,12.1,5.9,11.392l1.4-1.4L3,10Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>RestoreSnapshot</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,7.5l-1-1H7.61a.265.265,0,0,1-.05.06L3.5,10.62V15.5h12v-8Z" />
+    <path class="light-defaultgrey" d="M15.5,7H12.71l-.86-.85L11.5,6H8.02a2.723,2.723,0,0,1-.41.5.265.265,0,0,1-.05.06L6.12,8H6.5l.35-.15L7.71,7h3.58l.86.85L12.5,8H15v7H4V10.12l-1,1V15.5l.5.5h12l.5-.5v-8Z" />
+    <path class="light-teal-10" d="M9.5,13.5a2,2,0,1,1,2-2A2,2,0,0,1,9.5,13.5Z" />
+    <path class="light-teal" d="M9.5,9A2.5,2.5,0,1,0,12,11.5,2.5,2.5,0,0,0,9.5,9Zm0,4A1.5,1.5,0,1,1,11,11.5,1.5,1.5,0,0,1,9.5,13Z" />
+    <path class="light-blue" d="M6.854,5.854l-4,4-.708-.708,4-4A2.328,2.328,0,0,0,2.854,1.854L1.707,3H4V4H.5L0,3.5V0H1V2.293L2.146,1.146A3.329,3.329,0,0,1,6.854,5.854Z" />
+  </g>
+</svg>

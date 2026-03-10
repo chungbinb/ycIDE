@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAlignVerticalStretch</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,12.5h-2v-9h2Zm5,0h-2v-9h2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,14H14v1H2ZM2,2H14V1H2Z" />
+    </g>
+    <path class="light-defaultgrey" d="M11.5,13h-2L9,12.5v-9L9.5,3h2l.5.5v9ZM10,12h1V4H10ZM6.5,13h-2L4,12.5v-9L4.5,3h2l.5.5v9ZM5,12H6V4H5Z" />
+  </g>
+</svg>

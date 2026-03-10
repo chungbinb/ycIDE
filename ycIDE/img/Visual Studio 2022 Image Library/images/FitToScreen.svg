@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFitToScreen</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,11.5h-7v-7h7Z" />
+    <path class="light-defaultgrey" d="M15,5V1.5L14.5,1H11V2h2.293l-2,2H4.707l-2-2H5V1H1.5L1,1.5V5H2V2.707l2,2v6.586l-2,2V11H1v3.5l.5.5H5V14H2.707l2-2h6.586l2,2H11v1h3.5l.5-.5V11H14v2.293l-2-2V4.707l2-2V5Zm-4,6H5V5h6Z" />
+  </g>
+</svg>

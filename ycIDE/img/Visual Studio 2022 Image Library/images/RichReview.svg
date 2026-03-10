@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.light-orange{fill: #b73d18; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRichReview</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13,4.5V7H12V4.5A1.5,1.5,0,0,0,10.5,3H8.645L9.916,4.271l-.707.708L7.084,2.854V2.146L9.209.021l.707.708L8.645,2H10.5A2.5,2.5,0,0,1,13,4.5Z" />
+      <path class="light-defaultgrey" d="M4,4.5v6H3v-6Z" />
+    </g>
+    <path class="light-orange-10" d="M14.5,7.5v5h-3l-2,2.1V12.5h-2v-5Z" />
+    <path class="light-orange" d="M14.5,7h-7L7,7.5v5l.5.5H9v1.6l.862.344L11.714,13H14.5l.5-.5v-5ZM14,12H11.5l-.362.155L10,13.35V12.5L9.5,12H8V8h6Z" />
+    <path class="light-defaultgrey-10" d="M5.5,2.5a2,2,0,1,1-2-2A2,2,0,0,1,5.5,2.5Z" />
+    <path class="light-defaultgrey" d="M3.5,0A2.5,2.5,0,1,0,6,2.5,2.5,2.5,0,0,0,3.5,0Zm0,4A1.5,1.5,0,1,1,5,2.5,1.5,1.5,0,0,1,3.5,4Z" />
+    <path class="light-defaultgrey-10" d="M5.5,12.5a2,2,0,1,1-2-2A2,2,0,0,1,5.5,12.5Z" />
+    <path class="light-defaultgrey" d="M3.5,10A2.5,2.5,0,1,0,6,12.5,2.5,2.5,0,0,0,3.5,10Zm0,4A1.5,1.5,0,1,1,5,12.5,1.5,1.5,0,0,1,3.5,14Z" />
+  </g>
+</svg>

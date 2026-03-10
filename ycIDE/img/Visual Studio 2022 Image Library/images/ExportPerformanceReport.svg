@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExportPerformanceReport</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M13,8.707l-2.5-2.5L6.854,9.854H6.146L4.5,8.207,2,10.707V9.293L4.146,7.146h.708L6.5,8.793l3.646-3.647h.708L13,7.293Z" />
+    <path class="light-defaultgrey-10" d="M7,12.5H1.5V2.5h12V9.379L12.354,8.232l-2.122,2.122.647.646H7Z" />
+    <path class="light-defaultgrey" d="M7,13H1.5L1,12.5V2.5L1.5,2h12l.5.5V9.879l-1-1V3H2v9H7Z" />
+    <path class="light-blue" d="M12.354,9.646l2.5,2.5v.708l-2.5,2.5-.708-.708L13.293,13H8V12h5.293l-1.647-1.646ZM15,10v5h1V10Z" />
+  </g>
+</svg>

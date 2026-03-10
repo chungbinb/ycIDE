@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>VerticalSlicers</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5.5,1.5h9v12h-9Z" />
+    </g>
+    <path class="light-blue" d="M2.146,1.146h.708l1.5,1.5-.708.708L3,2.707v9.586l.646-.647.708.708-1.5,1.5H2.146l-1.5-1.5.708-.708L2,12.293V2.707l-.646.647L.646,2.646Z" />
+    <path class="light-defaultgrey" d="M15,1.5v12l-.5.5h-9L5,13.5V1.5L5.5,1h9ZM14,13V2H6V13Z" />
+    <path class="white" d="M8.5,5h1V6h-1Zm4,1h1V5h-1Zm-4-2h1V3h-1Zm4-1V4h1V3Zm-6,9h2V11h1V10h-3Zm0-3h2V8h1V7h-3Zm4,3h2V11h1V10h-3Zm0-3h2V8h1V7h-3Z" />
+  </g>
+</svg>

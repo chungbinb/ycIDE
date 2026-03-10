@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusBarSearch7</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="white" d="M3.7,14.857l3.456-3.385a3.075,3.075,0,1,0-.714-.7L3,14.143ZM8.85,11a2,2,0,1,1,2-2A2,2,0,0,1,8.85,11ZM5.439,6.939,5,6.5v-5L5.5,1h5l.5.5V5.638a3.924,3.924,0,0,0-1-.449V2H6V6h.232A4.016,4.016,0,0,0,5.439,6.939ZM16,1.5v7l-.5.5H12.85A3.959,3.959,0,0,0,12,6.564V1.5l.5-.5h3ZM15,2H13V8h2Z" />
+  </g>
+</svg>

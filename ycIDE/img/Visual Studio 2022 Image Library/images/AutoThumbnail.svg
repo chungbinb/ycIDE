@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAutoThumbnail</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M16,.5v8l-.5.5H10V8h5V1H7V6H6V.5L6.5,0h9Z" />
+    <path class="light-yellow" d="M14,3a1,1,0,1,1-1-1A1,1,0,0,1,14,3Z" />
+    <path class="light-defaultgrey-10" d="M9,7.5v8l-.5.5H.5L0,15.5v-8L.5,7h8Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8.5,16H8V15H9v.5ZM7,15H6v1H7ZM5,15H4v1H5ZM3,15H2v1H3ZM1,15H0v.5l.5.5H1Zm0-2H0v1H1Zm0-2H0v1H1ZM1,9H0v1H1ZM1,7H.5L0,7.5V8H1ZM7,7H6V8H7ZM5,7H4V8H5ZM3,7H2V8H3Zm6,.5L8.5,7H8V8H9ZM9,13H8v1H9Zm0-2H8v1H9ZM9,9H8v1H9Z" />
+    </g>
+    <path class="light-yellow" d="M7,10A1,1,0,1,1,6,9,1,1,0,0,1,7,10Z" />
+    <path class="light-blue" d="M7,13.232,5.707,14.525,6.183,15H4.768L2,12.232l-1,1V11.818l.646-.646h.708L5,13.818l1.646-1.646h.708L8,12.818v1.414Z" />
+    <path class="light-blue" d="M3,2.5V4.293L4.146,3.146l.708.708-2,2H2.146l-2-2,.708-.708L2,4.293V2.5A2.5,2.5,0,0,1,4.5,0H5V1H4.5A1.5,1.5,0,0,0,3,2.5Z" />
+    <path class="light-defaultgrey-10" d="M15.5.5v8H10V7.086L8.914,6H6.5V.5Z" />
+    <path class="light-blue" d="M15,6.818V8h-.232L13,6.232,12.232,7H9.768L8,5.232,7.232,6H7V4.818l.646-.646h.708L11,6.818l1.646-1.646h.708Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDistributeHorizontalCenter</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,10.5h-4v-6h4Z" />
+    <path class="light-defaultgrey-10" d="M7.5,11.5h-4v-8h4Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,1V3H5V1ZM6,12v2H5V12Z" />
+      <path class="light-defaultgrey" d="M12,1V4H11V1Zm0,10v3H11V11Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7.5,3h-4L3,3.5v8l.5.5h4l.5-.5v-8ZM7,11H4V4H7Z" />
+    <path class="light-defaultgrey" d="M13.5,4h-4L9,4.5v6l.5.5h4l.5-.5v-6ZM13,10H10V5h3Z" />
+  </g>
+</svg>

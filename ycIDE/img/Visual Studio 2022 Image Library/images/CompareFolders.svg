@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>CompareFolders</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M9.5,9.5v6H.5v-7h4l1,1Z" />
+    <path class="light-yellow" d="M9.5,9H5.707l-.853-.854L4.5,8H.5L0,8.5v7l.5.5h9l.5-.5v-6ZM4.293,9l.488.488L4.268,10H1V9ZM9,15H1V11H4.475l.354-.146L5.682,10H9Z" />
+    <path class="light-yellow-10" d="M15.5,1.5v6h-9V.5h4l1,1Z" />
+    <path class="light-yellow" d="M15.5,1H11.707L10.854.146,10.5,0h-4L6,.5v7l.5.5h9l.5-.5v-6ZM10.293,1l.488.488L10.268,2H7V1ZM15,7H7V3h3.475l.354-.146L11.682,2H15Z" />
+    <path class="light-blue" d="M16,9v2.5l-.5.5H12.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L12.707,11H15V9Z" />
+    <path class="light-blue" d="M0,7V4.5L.5,4H3.293L2.146,2.854l.708-.708,2,2v.708l-2,2-.708-.708L3.293,5H1V7Z" />
+  </g>
+</svg>

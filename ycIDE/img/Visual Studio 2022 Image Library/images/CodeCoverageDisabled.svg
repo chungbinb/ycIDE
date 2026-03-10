@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCodeCoverageDisabled</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.254,13.5H.5v-2H7.05c-.016.167-.05.329-.05.5A4.966,4.966,0,0,0,7.254,13.5Z" />
+    <path class="light-defaultgrey" d="M3,6H8V7H3ZM9,7h4V6H9ZM3,10H7.424a4.967,4.967,0,0,1,.6-1H3ZM7,3V4h6V3ZM1,13V12H7a5,5,0,0,1,.1-1H.5l-.5.5v2l.5.5H7.424A4.91,4.91,0,0,1,7.1,13ZM6,3H1V4H6Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,1-4,4A4,4,0,0,1,12,8Z" />
+    <path class="white" d="M14,12.5H10v-1h4Z" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightApplicationConnectionDiagram</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5,12H9.5v1h-5L4,12.5v-4H5ZM6.5,5V6h3V5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M6.5,3.5v5h-5v-5Z" />
+    <path class="light-defaultgrey" d="M6.5,3h-5L1,3.5v5l.5.5h5L7,8.5v-5ZM2,8V5H6V8Z" />
+    <path class="light-defaultgrey-10" d="M14.5,1.5v5h-5v-5Z" />
+    <path class="light-defaultgrey" d="M14.5,1h-5L9,1.5v5l.5.5h5l.5-.5v-5ZM10,6V3h4V6Z" />
+    <path class="light-defaultgrey-10" d="M14.5,9.5v5h-5v-5Z" />
+    <path class="light-defaultgrey" d="M14.5,9h-5L9,9.5v5l.5.5h5l.5-.5v-5ZM10,14V11h4v3Z" />
+  </g>
+</svg>

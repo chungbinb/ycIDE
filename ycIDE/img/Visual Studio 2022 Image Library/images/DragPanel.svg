@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDragPanel</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,1.5v12H9.371L11.6,11.268V9.732L6.268,4.4H4.732L1.5,7.629V1.5Z" />
+    <path class="light-defaultgrey" d="M14,1.5v12l-.5.5H8.871l1-1H13V2H2V7.129l-1,1V1.5L1.5,1h12Z" />
+    <path class="light-defaultgrey" d="M7,5.129V5H8V6H7.871ZM6,4H5V3H6ZM4,4H3V3H4ZM8,4H7V3H8Zm2,0H9V3h1Zm0,2H9V5h1ZM9,7.129V7h1V8H9.871ZM11,7h1V8H11Zm0-2h1V6H11Zm1-2V4H11V3ZM11,9h1v1h-.4V9.732l-.6-.6ZM3.129,6H3V5H4v.129ZM11.6,11H12v1H11v-.129l.6-.6Z" />
+    <path class="light-blue" d="M10.6,10.146v.708L8.659,12.8l-.707-.707L9.043,11H6v3.043l1.091-1.091.707.707L5.854,15.6H5.146L3.2,13.659l.707-.707L5,14.043V11H1.957l1.091,1.091-.707.707L.4,10.854v-.708L2.341,8.2l.707.707L1.957,10H5V6.957L3.909,8.048,3.2,7.341,5.146,5.4h.708L7.8,7.341l-.707.707L6,6.957V10H9.043L7.952,8.909,8.659,8.2Z" />
+  </g>
+</svg>

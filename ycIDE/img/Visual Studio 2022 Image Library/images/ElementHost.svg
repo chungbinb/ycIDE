@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightElementHost</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v3l.5.5h13l.5-.5v-3ZM14,5H2V3H14Z" />
+    <path class="light-defaultgrey-10" d="M6.5,15.5H.5v-5h6Z" />
+    <path class="light-defaultgrey" d="M4.293,9,6,7.293,6.707,8l-1,1ZM10,7.293,9.293,8l1.646,1.646L9.293,11.293,10,12l2-2V9.293Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,6v7.5H8V10.086L6.914,9H1.5V6Z" />
+      <path class="light-defaultgrey" d="M1,9V5.5l.5.5H2V9Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H8V13h6V6h.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M6.5,16H.5L0,15.5v-5L.5,10h6l.5.5v5ZM1,15H6V11H1Z" />
+  </g>
+</svg>

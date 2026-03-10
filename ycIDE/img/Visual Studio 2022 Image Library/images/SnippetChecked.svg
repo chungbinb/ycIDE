@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSnippetChecked</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.879,13H2.5V2.5h10v8.879L10.879,13h-.758L7.854,10.732,5.732,12.854Z" />
+    <path class="light-defaultgrey" d="M7,14.121V15H6V14h.879ZM2,15H3V14H2Zm2,0H5V14H4Zm8-3.121,1-1V2.5L12.5,2H2.5L2,2.5V13H3V3h9Z" />
+    <path class="light-green" d="M15.854,10.854l-5,5h-.708l-3-3,.708-.708L10.5,14.793l4.646-4.647Z" />
+  </g>
+</svg>

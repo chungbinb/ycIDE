@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddRemoteServer</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,2.5v12H3.5V8.005H5v-3H8V2.5Z" />
+    <path class="light-defaultgrey" d="M16,2.5,15.5,2l-7.5,0V3h7V6H5V7H15v3H4V8.005H3V10l.5.5L3,11v3.5l.5.5h12l.5-.5V11l-.5-.5L16,10V7l-.5-.5L16,6ZM15,14H4V11H15Z" />
+    <path class="light-green" d="M14,5H12V4h2Zm0,3H12V9h2Zm0,4H12v1h2Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

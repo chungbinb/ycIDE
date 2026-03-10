@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGenericTask</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,10.5h-4v-4h4Z" />
+    <path class="light-defaultgrey" d="M3.854,6.146l2,2v.708l-2,2-.708-.708L4.293,9H1V8H4.293L3.146,6.854Z" />
+    <path class="light-defaultgrey" d="M13.354,6.146l-.708.708L13.793,8H11V6.5L10.5,6h-4L6,6.5v4l.5.5h4l.5-.5V9h2.793l-1.147,1.146.708.708,2-2V8.146ZM10,10H7V7h3Z" />
+  </g>
+</svg>

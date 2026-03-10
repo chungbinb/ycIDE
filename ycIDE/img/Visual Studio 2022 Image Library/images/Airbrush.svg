@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAirbrush</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M8.5,6.5v8h-6v-8Z" />
+    <path class="light-defaultgrey-10" d="M8.5,6.5h-6l2-2v-2h2v2Z" />
+    <path class="light-lightblue" d="M8.5,15h-6L2,14.5v-8L2.5,6h6l.5.5v8ZM3,14H8V7H3Z" />
+    <path class="light-defaultgrey" d="M8.854,6.146,7,4.293V2.5L6.5,2h-2L4,2.5V4.293L2.146,6.146A.5.5,0,0,0,2.5,7h6a.5.5,0,0,0,.354-.854ZM5,3H6V4H5ZM3.707,6l1-1H6.293l1,1Z" />
+    <g class="cls-1">
+      <path class="light-lightblue" d="M14,6.5l-6-3,6-3Z" />
+    </g>
+    <path class="light-lightblue" d="M14,6.947l-6-3V3.053l6-3V1.171L9.342,3.5,14,5.829Z" />
+  </g>
+</svg>

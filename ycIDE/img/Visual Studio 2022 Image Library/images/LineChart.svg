@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightLineChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue" d="M15,4.765V6.18L12.917,4.1l-5.2,5.2H7.008L5.139,7.43,2,10.568V9.154L4.785,6.369h.707L7.361,8.237l5.2-5.2h.707Z" />
+  </g>
+</svg>

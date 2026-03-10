@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGoToRow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,12h12v2.5H2.5Z" />
+    <path class="light-defaultgrey" d="M14.5,10H2.5l-.5.5v4l.5.5h12l.5-.5v-4ZM6,14H3V12H6Zm4,0H7V12h3Zm4,0H11V12h3Z" />
+    <path class="light-defaultgrey-10" d="M14.5,6V8.5H2.5V6H3.586l.268.268L4.121,6Z" />
+    <path class="light-defaultgrey" d="M14.5,4H6.121l-2,2H6V8H3V6h.586L2.043,4.457,2,4.5v4l.5.5h12l.5-.5v-4ZM10,8H7V6h3Zm4,0H11V6h3Z" />
+    <path class="light-blue" d="M4.293,2,3.146.854,3.854.146l2,2v.708l-2,2-.708-.708L4.293,3H0V2Z" />
+  </g>
+</svg>

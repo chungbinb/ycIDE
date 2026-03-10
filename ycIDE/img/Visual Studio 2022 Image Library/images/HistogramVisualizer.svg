@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightHistogramVisualizer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,12v1H1.5L1,12.5V1H2V12Z" />
+    </g>
+    <path class="light-defaultgrey" d="M3,14H4v1H3Zm2,1H6V14H5Zm2,0H8V14H7Zm2,0h1V14H9Zm2,0h1V14H11Zm2-1v1h1V14Z" />
+    <path class="light-lightblue-10" d="M15,10.5H2c4.5,0,3-9,6.5-9S10.5,10.5,15,10.5Z" />
+    <path class="light-lightblue" d="M15,11H2V10c1.87,0,2.505-1.8,3.26-4.556C5.858,3.26,6.479,1,8.5,1s2.642,2.26,3.24,4.444C12.5,8.2,13.13,10,15,10ZM4.356,10h8.288a10.393,10.393,0,0,1-1.868-4.291C10.144,3.4,9.674,2,8.5,2S6.856,3.4,6.224,5.709A10.393,10.393,0,0,1,4.356,10Z" />
+  </g>
+</svg>

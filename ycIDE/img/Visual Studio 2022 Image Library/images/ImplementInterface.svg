@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightImplementInterface</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue" d="M8.5,8V9h-4V8Z" />
+    </g>
+    <path class="light-blue-10" d="M4.5,8.5a2,2,0,1,1-2-2A2,2,0,0,1,4.5,8.5Zm10,0a3,3,0,1,1-3-3A3,3,0,0,1,14.5,8.5Z" />
+    <path class="light-blue" d="M4.354,7.768,2.6,6.01c-.033,0-.063-.01-.1-.01A2.5,2.5,0,1,0,5,8.5a2.461,2.461,0,0,0-.271-1.108ZM2.5,10A1.5,1.5,0,1,1,4,8.5,1.5,1.5,0,0,1,2.5,10Z" />
+    <path class="light-blue" d="M11.5,5A3.5,3.5,0,1,0,15,8.5,3.5,3.5,0,0,0,11.5,5Zm0,6A2.5,2.5,0,1,1,14,8.5,2.5,2.5,0,0,1,11.5,11Z" />
+    <path class="light-blue" d="M6.854,3.146v.708l-2.5,2.5-.707-.708L5.293,4H0V3H5.293L3.647,1.354,4.354.646Z" />
+  </g>
+</svg>

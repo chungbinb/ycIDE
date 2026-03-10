@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>UnnestRelatedDocuments</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,6.5v8h-8V4.5h6v2Z" />
+    <path class="light-defaultgrey" d="M7.528,4.115,7.25,4H1.393L1,4.393V14.607L1.393,15H9.607L10,14.607V6.75l-.115-.278ZM9,14H2V5H7V7H9Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,3V7.5H11V6.55l-.27-.64L9.5,4.68V1.5H13Z" />
+      <path class="light-defaultgrey" d="M15,3V7.5l-.5.5H11V7h3V4H12V2H10V5.18l-1-1V1.5L9.5,1H13l.35.15,1.5,1.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M11,13h1v1H11Zm2,1h1V13H13Zm0-2h1V11H13Zm0-3v1h1V9Z" />
+  </g>
+</svg>

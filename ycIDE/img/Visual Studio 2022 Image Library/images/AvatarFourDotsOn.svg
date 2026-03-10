@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple{fill: #6936aa; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAvatarFourDotsOn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple" d="M11,1H5A4,4,0,0,0,1,5v6a4,4,0,0,0,4,4h6a4,4,0,0,0,4-4V5A4,4,0,0,0,11,1ZM7.155,4.85a1.2,1.2,0,1,1-.35.845A1.185,1.185,0,0,1,7.155,4.85ZM5.7,9.2a1.2,1.2,0,1,1,.845-.35A1.185,1.185,0,0,1,5.7,9.2Zm3.15,1.955a1.2,1.2,0,1,1,0-1.69A1.185,1.185,0,0,1,8.845,11.15Zm2.3-2.3a1.2,1.2,0,1,1,0-1.69A1.185,1.185,0,0,1,11.15,8.845Z" />
+  </g>
+</svg>

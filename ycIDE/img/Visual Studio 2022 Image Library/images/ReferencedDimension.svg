@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightReferencedDimension</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12.91,11.2l-.7.71L13.3,13H7.85v.27L7.12,14H13.3l-1.09,1.09.7.71,1.95-1.95v-.7ZM13,5.5h1v-3L13.5,2h-3V3h1.8L5.71,9.59l.71.71L13,3.71ZM2.15,1.15.21,3.09l.7.71L2,2.71v7.87l1-1V2.7L4.1,3.8l.7-.71L2.86,1.15Z" />
+    </g>
+    <path class="light-blue" d="M3.647,14.646,5.293,13H0V12H5.293L3.647,10.354l.707-.708,2.5,2.5v.708l-2.5,2.5Z" />
+  </g>
+</svg>

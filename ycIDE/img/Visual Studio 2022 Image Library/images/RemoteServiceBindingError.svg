@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRemoteServiceBindingError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <path class="light-defaultgrey" d="M5.5,12h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM5,14H4V13H5Z" />
+    <path class="light-defaultgrey-10" d="M5.5,14.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M6,3H1V2H6ZM6,8H1V9H6ZM5,5H1V6H5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M1,13H3v1H1Zm4-1H4V10H5Zm2.1,1H6v1H7.422A4.968,4.968,0,0,1,7.1,13Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8.416,6.876l-.745.745.707.707.745-.745a2.554,2.554,0,0,0,.292.157A4.954,4.954,0,0,1,12,7a4.985,4.985,0,0,1,.787.079l-.2-.2A2.473,2.473,0,0,0,12.949,6H14V5H12.949a2.473,2.473,0,0,0-.365-.876l.745-.745-.707-.707-.745.745A2.469,2.469,0,0,0,11,3.051V2H10V3.051a2.469,2.469,0,0,0-.877.366l-.745-.745-.707.707.745.745A2.473,2.473,0,0,0,8.051,5H7V6H8.051A2.473,2.473,0,0,0,8.416,6.876ZM10.5,4A1.5,1.5,0,1,1,9,5.5,1.5,1.5,0,0,1,10.5,4Z" />
+  </g>
+</svg>

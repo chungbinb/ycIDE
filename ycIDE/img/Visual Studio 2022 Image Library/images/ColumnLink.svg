@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightColumnLink</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,2.5v12H7.646A2.995,2.995,0,0,0,6,9H5.5V2.5Z" />
+    <path class="light-purple" d="M6,14H4V13H6a1,1,0,0,0,0-2H4V10H6a2,2,0,0,1,0,4Z" />
+    <path class="light-lightblue" d="M4,16H2a2,2,0,0,1,0-4H4a2,2,0,0,1,0,4ZM2,13a1,1,0,0,0,0,2H4a1,1,0,0,0,0-2Z" />
+    <path class="light-purple" d="M4,14a2,2,0,0,1,0-4v1a1,1,0,0,0,0,2Z" />
+    <path class="light-defaultgrey" d="M10.5,1h-5L5,1.5V9H6V7h4v3H8.22a2.989,2.989,0,0,1,.6,1H10v3H8.222a3,3,0,0,1-1.351.871c-.013.045-.035.085-.051.129H10.5l.5-.5V1.5ZM10,6H6V3h4Z" />
+  </g>
+</svg>

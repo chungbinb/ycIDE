@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLinkedFolderClosed</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M8.5,3.5l-1-1h-6V7H7.91L9,8.09V12.5h5.5v-9Z" />
+    <path class="light-yellow" d="M14.5,3H8.71l-.86-.85L7.5,2h-6L1,2.5V7H2V5H7.48l.35-.15L8.68,4H14v8H9v1h5.5l.5-.5v-9ZM7.27,4H2V3H7.29l.49.49Z" />
+    <path class="light-blue-10" d="M7.5,8.5v7H.5v-7Z" />
+    <path class="light-blue" d="M7.5,8H.5L0,8.5v7l.5.5h7l.5-.5v-7ZM7,15H1V9H7ZM6,10.5v3H5V11.707L2.354,14.354l-.708-.708L4.293,11H2.53V10H5.5Z" />
+  </g>
+</svg>

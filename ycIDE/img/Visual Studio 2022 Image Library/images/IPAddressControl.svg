@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIPAddressControl</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,11.5H.5v-6h14Z" />
+    <path class="light-defaultgrey" d="M14.5,12H.5L0,11.5v-6L.5,5h14l.5.5v6ZM1,11H14V6H1Z" />
+    <path class="light-defaultgrey" d="M4,10H3V9H4ZM8,9H7v1H8Zm4,0H11v1h1Z" />
+  </g>
+</svg>

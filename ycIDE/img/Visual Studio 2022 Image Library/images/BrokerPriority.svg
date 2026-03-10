@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBrokerPriority</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,3.5v10H1.5V8.621l.232.233H3.268l3-3L4.414,4l.5-.5Z" />
+    <path class="light-defaultgrey" d="M15,3.5v10l-.5.5H1.5L1,13.5V8.121l.732.733H2V13H14V4.651L8.32,9.384H7.68l-2.7-2.246.71-.711L8,8.349,13.219,4h-8.8l1-1H14.5Z" />
+    <path class="light-blue" d="M4.146,5.146l.708.708-2,2H2.146l-2-2,.708-.708L2,6.293V1.707L.854,2.854.146,2.146l2-2h.708l2,2-.708.708L3,1.707V6.293Z" />
+  </g>
+</svg>

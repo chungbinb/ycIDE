@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSFixedLayoutApplication</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green-10" d="M9,11.5v4l-.5.5H.5L0,15.5v-4L.5,11h8Z" />
+    <path class="light-green" d="M8.5,11H.5l-.5.5v4l.5.5h8l.5-.5v-4ZM8,12.5V15H7V14H6v1H5V14H4v1H3V14H2v1H1V12H8Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8H10V11.086L8.914,10H1.5V5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H10V13h4V6H2v4H1V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,3V5H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-darkblue{fill: #313c9e; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ChartWizard</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V7L2,8v6Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M3.5,8.5h2v4h-2Z" />
+    <path class="light-defaultgrey" d="M3,8.5v4l.5.5h2l.5-.5v-4L5.5,8h-2ZM5,9v3H4V9Z" />
+    <path class="light-lightblue-10" d="M7.5,9.5h2v3h-2Z" />
+    <path class="light-lightblue" d="M7,9.5v3l.5.5h2l.5-.5v-3L9.5,9h-2ZM9,10v2H8V10Z" />
+    <path class="light-defaultgrey-10" d="M11.5,2.5h2v10h-2Z" />
+    <path class="light-defaultgrey" d="M11,2.5v10l.5.5h2l.5-.5V2.5L13.5,2h-2ZM13,3v9H12V3Z" />
+    <path class="light-darkblue" d="M.4,2.51l1.313-.263a.678.678,0,0,0,.532-.532L2.51.4a.5.5,0,0,1,.98,0l.263,1.313a.678.678,0,0,0,.532.532L5.6,2.51a.5.5,0,0,1,0,.98l-1.313.263a.678.678,0,0,0-.532.532L3.49,5.6a.5.5,0,0,1-.98,0L2.247,4.285a.678.678,0,0,0-.532-.532L.4,3.49a.5.5,0,0,1,0-.98Z" />
+    <path class="light-blue" d="M5.4,5.51l.786-.157a.212.212,0,0,0,.165-.163L6.51,4.4a.5.5,0,0,1,.98,0l.157.786a.212.212,0,0,0,.163.165L8.6,5.51a.5.5,0,0,1,0,.98l-.786.157a.212.212,0,0,0-.165.163L7.49,7.6a.5.5,0,0,1-.98,0l-.157-.786a.212.212,0,0,0-.163-.165L5.4,6.49a.5.5,0,0,1,0-.98Z" />
+  </g>
+</svg>

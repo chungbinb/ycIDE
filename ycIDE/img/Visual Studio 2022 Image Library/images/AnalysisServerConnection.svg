@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAnalysisServerConnection</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,4.545v7l-5.5,2.5-3.657-1.87A4,4,0,0,0,7,9.974V6H6V5a1.5,1.5,0,0,0-.423-1.043L10,1.545Z" />
+    <path class="light-defaultgrey" d="M15.739,4.106l-5.5-3H9.761L5.123,3.636a1.507,1.507,0,0,1,.738.735h0L10,2.114,14.381,4.5,10,6.5,5.961,4.66A5.257,5.257,0,0,1,6,5.776L6.493,6H7v.23L9.495,7.365l0,5.9L6.514,11.891a4.022,4.022,0,0,1-.6.824L9.793,14.5h.414l5.5-2.5L16,11.545v-7ZM15,11.223l-4.5,2.046,0-5.9L15,5.321Z" />
+    <path class="light-teal-10" d="M3,12.474H3a2.5,2.5,0,0,1-2.5-2.5V7.5h5V9.974A2.5,2.5,0,0,1,3,12.474Z" />
+    <path class="light-teal" d="M5,7V5A.5.5,0,0,0,4,5V7H2V5A.5.5,0,0,0,1,5V7H0V9.974a3,3,0,0,0,2.5,2.957V16h1V12.931A3,3,0,0,0,6,9.974V7ZM5,9.974a2,2,0,0,1-4,0V8H5Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>RightBorder</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14,3V14l-1,1H2L1,14V3L2,2H13Z" />
+      <path class="light-defaultgrey" d="M12,15H11V14h1Zm-2-1H9v1h1ZM8,14H7v1H8Zm6,.5V14H13v1h.5ZM6,14H5v1H6Zm8-4H13v1h1Zm0,2H13v1h1ZM2,10H1v1H2Zm0,2H1v1H2Zm-.5,3H2V14H1v.5ZM4,14H3v1H4Zm8-5H11V8h1ZM10,8H9V9h1ZM6,8H5V9H6ZM4,8H3V9H4ZM2,8H1V9H2ZM14,8H13V9h1Zm0-5.5L13.5,2H13V3h1ZM14,4H13V5h1Zm0,2H13V7h1ZM10,2H9V3h1ZM8,2H7V3H8ZM2,2H1.5L1,2.5V3H2ZM6,2H5V3H6Zm6,0H11V3h1ZM2,6H1V7H2ZM4,2H3V3H4ZM2,4H1V5H2Zm6,6H7v1H8Zm0,2H7v1H8ZM8,8H7V9H8ZM8,6H7V7H8ZM8,4H7V5H8Z" />
+    </g>
+    <path class="light-defaultgrey" d="M13,15V2h1V15Z" />
+  </g>
+</svg>

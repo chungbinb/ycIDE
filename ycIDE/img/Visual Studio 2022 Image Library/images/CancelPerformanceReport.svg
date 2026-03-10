@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightCancelPerformanceReport</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M14,9.782,11.889,7.671,8.707,10.854H8L5.525,8.378,2,11.9V10.489L5.172,7.318h.707L8.354,9.793l3.181-3.182h.707L14,8.368Z" />
+    <path class="light-defaultgrey" d="M15,2.5v11l-.5.5H1.5L1,13.5V7.121l1-1V13H14V3H5.121l1-1H14.5Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H1.5V6.621L3,5.121,5.146,7.268,7.268,5.146,5.121,3l.5-.5Z" />
+  </g>
+</svg>

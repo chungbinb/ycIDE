@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightServiceBusTopicTridList</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M14.5,11.5h-6v-3h6Zm-1-5h-6v-3h6Z" />
+    <path class="light-blue" d="M14.5,12h-6L8,11.5v-3L8.5,8h6l.5.5v3ZM9,11h5V9H9Zm4.5-4h-6L7,6.5v-3L7.5,3h6l.5.5v3ZM8,6h5V4H8Z" />
+    <path class="light-defaultgrey-10" d="M14.5,0V1.5h-6V0Zm-6,15V13.5h6V15Z" />
+    <path class="light-defaultgrey" d="M15,0V1.5l-.5.5h-6L8,1.5V0H9V1h5V0ZM8,15V13.5l.5-.5h6l.5.5V15H14V14H9v1Z" />
+    <path class="light-blue" d="M4.293,7,3.146,5.854l.708-.708,2,2v.708l-2,2-.708-.708L4.293,8H0V7Z" />
+  </g>
+</svg>

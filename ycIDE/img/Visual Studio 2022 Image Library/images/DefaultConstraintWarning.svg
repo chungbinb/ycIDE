@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDefaultConstraintWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.915,13.5H6.5V1.5h5V6.363H10.459Z" />
+    <path class="light-defaultgrey" d="M6.667,14l.5-1H7V10H8.653l.5-1H7V6h4v.363h1V.5L11.5,0h-5L6,.5v13l.5.5ZM7,2h4V5H7Z" />
+    <path class="light-defaultgrey" d="M6.171,15H0V8H8v3.317Z" />
+    <path class="white" d="M2.89,14.051A1.369,1.369,0,0,1,1.7,13.426a3.2,3.2,0,0,1-.428-1.808,3.546,3.546,0,0,1,.447-1.966,1.462,1.462,0,0,1,1.292-.666q1.617,0,1.617,2.512a3.31,3.31,0,0,1-.456,1.9A1.47,1.47,0,0,1,2.89,14.051Zm.079-4.433q-.892,0-.892,1.965,0,1.841.875,1.839t.861-1.869Q3.813,9.618,2.969,9.618Zm3.238.311a2.535,2.535,0,0,1-.463.262,3.824,3.824,0,0,1-.566.189V9.7c.133-.044.26-.089.383-.137s.244-.1.364-.161.241-.125.363-.2.247-.156.377-.25H7V13.33l-.318.639H6.207Z" />
+    <path class="light-yellow" d="M16,15.364l-.447.724h-8l-.448-.723,3.974-8h.895Z" />
+    <path class="white" d="M12.053,12.088h-1v-3h1Zm.25,2.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.3,14.588Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPrivateMessageQueue</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12.5,4l.5.5V7a2.966,2.966,0,0,0-1,.184V5H3V4.5L3.5,4Zm2-2h-9L5,2.5V3h9V7.184a2.989,2.989,0,0,1,1,.6V2.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M9,12.5H1.5v-6h9V8.348A2.974,2.974,0,0,0,10,10v.086l-1,1Z" />
+    <path class="light-defaultgrey" d="M9,13H1.5L1,12.5v-6L1.5,6h9l.5.5V7.78A2.985,2.985,0,0,0,10,10V7H2v5H9Z" />
+    <path class="light-defaultgrey" d="M6.277,9.916H5.723l-4.5-3L1,6.5,1.5,6h9l.5.5-.223.416ZM3.151,7,6,8.9,8.849,7Z" />
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

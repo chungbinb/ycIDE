@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightParallelExecution</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12.854,10.146l2,2v.708l-2,2-.708-.708L13.293,13H3.914a1.5,1.5,0,1,1,0-1h9.379l-1.147-1.146Zm0-10-.708.708L13.293,2H3.914a1.5,1.5,0,1,0,0,1h9.379L12.146,4.146l.708.708,2-2V2.146Zm-.708,5.708L13.293,7H3.914a1.5,1.5,0,1,0,0,1h9.379L12.146,9.146l.708.708,2-2V7.146l-2-2Z" />
+  </g>
+</svg>

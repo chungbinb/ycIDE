@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.white{fill: #ffffff; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHorizontalScrollViewer</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-25" d="M11,16H5V11h6Z" />
+    <path class="light-defaultgrey" d="M1.5,11H6v5H1.5L1,15.5v-4Zm13.5.5v4l-.5.5H10V11h4.5Z" />
+    <path class="light-defaultgrey-10" d="M14.5,1.5V11H1.5V1.5Z" />
+    <path class="light-defaultgrey" d="M1,12V1.5L1.5,1h13l.5.5V12H14V2H2V12Z" />
+    <path class="white" d="M4,12v3L2,13.5Zm10,1.5L12,15V12Z" />
+    <path class="light-blue" d="M13.5,11,11.181,8.684,8.988,10.877H8.281L4.814,7.41,2,10.225V8.811L4.461,6.35h.707L8.634,9.816l2.193-2.193h.707L14,10.09V11Z" />
+    <path class="light-yellow" d="M12,4.5A1.5,1.5,0,1,1,10.5,3,1.5,1.5,0,0,1,12,4.5Z" />
+  </g>
+</svg>

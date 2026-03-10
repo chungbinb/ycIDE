@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightForeignKeyConstraintWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M6.025,13.5H.5V.5h12V6h.092L13,6.235V7.743L12.591,7H10.53L6.674,14H6.262l-.237-.41Z" />
+      <path class="light-defaultgrey" d="M7.225,13H5V10H8.878L9,9.778V6h3V7h.591L13,7.743V1.5l-.5.5H12V5H9V2H8V5H5V2H4V5H1V2H.5L0,1.5V14H6.674ZM5,6H8V9H5ZM4,13H1V10H4ZM4,9H1V6H4Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7.5,10H4V5H9V9.778L8.878,10ZM13,.5v1l-.5.5H.5L0,1.5V.5L.5,0h12Z" />
+    <path class="light-yellow" d="M15.561,16h-8l-.44-.739,4-7.261H12l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

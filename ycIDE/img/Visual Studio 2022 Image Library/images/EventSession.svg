@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEventSession</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5.5v6H9.4l-.2-.486H8.574L10.28,3.978,9.358,2H8.5V.5Z" />
+    <path class="light-defaultgrey" d="M16,.5v6l-.5.5H9.607L9.2,6.014,15,6V1H9V2H8V.5L8.5,0h7Z" />
+    <path class="light-defaultgrey" d="M10.261,4H11V5H10V4.311ZM10,2h1V3H10Zm4,0V3H12V2ZM12,4h2V5H12Z" />
+    <path class="light-yellow-10" d="M4.645,3.523H8.762L5.4,7.535h3.17L2.634,13.5H1.613L4.1,9.013H1.5Z" />
+    <path class="light-yellow" d="M2.593,13.979H1.572l-.437-.743L3.212,9.491H1.455l-.434-.749L4.17,3.253,4.6,3H8.721l.383.821L6.43,7.014h2.1l.354.852L2.948,13.831ZM2.318,8.491H4.061l.437.742L2.467,12.9,7.326,8.014H5.359l-.383-.822L7.65,4H4.893Z" />
+  </g>
+</svg>

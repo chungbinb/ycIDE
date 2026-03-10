@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBottomBorder</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,14v.5l-.5.5H1.5L1,14.5V14Z" />
+    <path class="light-defaultgrey-10" d="M14,2.5v12l-.5.5H1.5L1,14.5V2.5L1.5,2h12Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,13H1V12H2Zm0-2H1V10H2ZM2,9H1V8H2ZM2,7H1V6H2ZM2,5H1V4H2ZM2,2H1.5L1,2.5V3H2ZM12,3H11V2h1ZM10,3H9V2h1ZM8,3H7V2H8ZM6,3H5V2H6ZM4,3H3V2H4Zm10-.5L13.5,2H13V3h1ZM14,13H13V12h1Zm0-2H13V10h1Zm0-2H13V8h1Zm0-2H13V6h1Zm0-2H13V4h1ZM8,4H7V5H8ZM8,4H7V5H8ZM8,6H7V7H8ZM8,8H7V9H8Zm0,2H7v1H8Zm0,2H7v1H8ZM8,4H7V5H8ZM8,4H7V5H8ZM8,6H7V7H8ZM8,8H7V9H8Zm0,2H7v1H8Zm0,2H7v1H8ZM3,8V9H4V8ZM3,8V9H4V8ZM5,8V9H6V8ZM9,8V9h1V8Zm2,0V9h1V8Z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightProductionTracepointAlert</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple-10" d="M8.119,14.953,8,15.071.929,8,8,.929,15.071,8l-.618.619L13.133,7.3,12.412,7H10.588l-.721.3L6.8,10.367l-.3.721v1.824l.3.721Z" />
+    <path class="light-purple" d="M8.472,15.306l-.118.119H7.646L.575,8.354V7.646L7.646.575h.708l7.071,7.071v.708l-.619.618L14.1,8.265,14.364,8,8,1.636,1.636,8,6.5,12.864v.048l.3.721Z" />
+    <path class="light-blue" d="M12.213,16H10.787l-.353-.146L7.646,13.066,7.5,12.713V11.287l.146-.353,2.788-2.788L10.787,8h1.426l.353.146,2.788,2.788.146.353v1.426l-.146.353-2.788,2.788Z" />
+    <path class="white" d="M12,12H11V9h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,13.5Z" />
+  </g>
+</svg>

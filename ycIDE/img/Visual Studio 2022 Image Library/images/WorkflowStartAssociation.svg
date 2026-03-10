@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWorkflowStartAssociation</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M10.15,4.15,11.29,3H7.5a5.5,5.5,0,0,0,0,11h3.38l-.03.06A6.5,6.5,0,1,1,7.5,2h3.79L10.15.85l.7-.7,2,2v.7l-2,2Z" />
+    <path class="light-yellow" d="M15.5,12,12,16H11l1.5-3h-2l2-4h3l-2.137,3Z" />
+    <path class="light-green" d="M12,6.6l-4.25,4.25H7.043L4.793,8.6,5.5,7.892l1.9,1.9,3.9-3.9Z" />
+  </g>
+</svg>

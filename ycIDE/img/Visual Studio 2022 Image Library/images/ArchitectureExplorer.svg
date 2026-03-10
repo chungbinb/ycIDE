@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightArchitectureExplorer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,14H1.5L1,13.5V1.5L1.5,1h12l.5.5v12Z" />
+    <path class="light-defaultgrey" d="M13.5,1H1.5L1,1.5v12l.5.5H8V8H2V3H13V8H11v6h2.5l.5-.5V1.5ZM7,13H5V9H7ZM4,13H2V9H4Zm9,0H12V9h1Z" />
+    <path class="light-defaultgrey" d="M10,9H9V8h1Z" />
+    <path class="light-defaultgrey" d="M10,14H9V13h1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.5,6.5h-8v-2h8Z" />
+      <path class="light-defaultgrey" d="M11.5,7h-8L3,6.5v-2L3.5,4h8l.5.5v2ZM4,6h7V5H4Z" />
+    </g>
+  </g>
+</svg>

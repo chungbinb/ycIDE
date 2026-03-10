@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightOnlineStatusBusy</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M14,7.5A6.5,6.5,0,1,1,7.5,1,6.508,6.508,0,0,1,14,7.5Z" />
+    <g class="cls-1">
+      <path class="white" d="M12.69,3.6,3.6,12.69a6.5,6.5,0,0,0,.861.553l8.779-8.779A6.5,6.5,0,0,0,12.69,3.6ZM13.9,6.394l-7.5,7.5A6.5,6.5,0,0,0,7.5,14c.074,0,.145-.009.218-.011l6.271-6.271c0-.073.011-.144.011-.218A6.5,6.5,0,0,0,13.9,6.394ZM7.5,1c-.074,0-.145.009-.218.011L1.011,7.282c0,.073-.011.144-.011.218a6.5,6.5,0,0,0,.1,1.106L8.606,1.1A6.5,6.5,0,0,0,7.5,1Zm3.036.757L1.757,10.536a6.5,6.5,0,0,0,.553.861L11.4,2.31A6.5,6.5,0,0,0,10.536,1.757Z" />
+    </g>
+  </g>
+</svg>

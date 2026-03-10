@@ -1,0 +1,25 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+      <SolidColorBrush x:Key="light-blue" Color="#005dba" Opacity="1" />
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M9.442,13l-1-2.691h-3.9L3.558,13h-.94L6.084,3.9h.851L10.382,13ZM6.668,5.491c-.029-.081-.061-.174-.092-.28A2.682,2.682,0,0,1,6.5,4.85H6.472c-.026.135-.055.255-.086.361s-.063.2-.092.28L4.821,9.541H8.153Z" />
+              <GeometryDrawing Brush="{DynamicResource light-blue}" Geometry="F1M15,6,12.5,9,10,6Z" />
+              <GeometryDrawing Brush="{DynamicResource light-blue}" Geometry="F1M10,4l2.5-3L15,4Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

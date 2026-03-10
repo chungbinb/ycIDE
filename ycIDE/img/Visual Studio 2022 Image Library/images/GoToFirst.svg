@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGoToFirst</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7.9,10.354l-2.5-2.5V7.146l2.5-2.5.708.708L6.957,7H14V8H6.957L8.6,9.646Z" />
+    <path class="light-defaultgrey" d="M3,13V2H2V13Z" />
+  </g>
+</svg>

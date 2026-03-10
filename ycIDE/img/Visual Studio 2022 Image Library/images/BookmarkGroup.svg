@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0;}.cls-2{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBookmarkGroup</title>
+  <g id="canvas" class="cls-1">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,3.479V14.646l-4-3.982-4,3.982V3.479Z" />
+    <path class="light-defaultgrey" d="M10.5,3h-8L2,3.5V14.667l.853.354L6.5,11.39l3.647,3.631L11,14.667V3.5ZM10,13.464,6.853,10.331H6.147L3,13.464V4h7Z" />
+    <g class="cls-2">
+      <path class="light-defaultgrey" d="M13.5,1H8.858V1H5.5L5,1.5V3H6V2h7v9.464L11,9.477l-.013,1.4,2.16,2.151L14,12.671V1.5Z" />
+      <path class="light-defaultgrey-10" d="M13.5,1.5V12.667L11,10.178V3.5L10.5,3h-5V1.5Z" />
+    </g>
+  </g>
+</svg>

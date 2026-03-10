@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>VirtualMachineStopped</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.41,14c.08.17.17.34.26.5H1l2-4H4v2l.5.5H7.1A5.532,5.532,0,0,0,7.41,14ZM9.5,1.5h-4a1,1,0,0,0-1,1v10H7.03A4.07,4.07,0,0,1,7,12a4.712,4.712,0,0,1,.1-1,5.532,5.532,0,0,1,.31-1A5.116,5.116,0,0,1,10,7.41c.16-.07.33-.13.5-.19V2.5A1,1,0,0,0,9.5,1.5Z" />
+    <path class="light-defaultgrey" d="M11,2.5V7.1c-.17.03-.33.08-.5.12-.17.06-.34.12-.5.19V2.5A.5.5,0,0,0,9.5,2h-4a.5.5,0,0,0-.5.5V12H7a4.07,4.07,0,0,0,.03.5,4.293,4.293,0,0,0,.07.5H4.5L4,12.5V11H3.31l-1.5,3h5.6c.08.17.17.34.26.5A4.322,4.322,0,0,0,8,15H1l-.45-.72,2-4L3,10H4V2.5A1.5,1.5,0,0,1,5.5,1h4A1.5,1.5,0,0,1,11,2.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,10v1H7.1a5.532,5.532,0,0,1,.31-1ZM6,8V9H8A5.262,5.262,0,0,1,9,8ZM6,4V5H9V4Z" />
+    </g>
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

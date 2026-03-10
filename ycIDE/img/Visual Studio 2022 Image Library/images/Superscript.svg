@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSuperscript</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12.133,6H14V7H11V6.5a1.756,1.756,0,0,1,.148-.734c.409-.9,1.036-1.168,1.7-1.9A.484.484,0,0,0,13,3.5a.5.5,0,0,0-1,0H11a1.5,1.5,0,1,1,2.562,1.062h-.007C12.006,6.073,12.325,5.743,12.133,6Z" />
+    <path class="light-defaultgrey" d="M10.25,6l-3,4,3,4H9L6.625,10.836,4.25,14H3l3-4L3,6H4.25L6.625,9.164,9,6Z" />
+  </g>
+</svg>

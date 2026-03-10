@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDSlash</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M6.161,7.718,5.013,8.866V3.207H7.72a7.2,7.2,0,0,1,2.539.413l-.853.853a5.921,5.921,0,0,0-1.714-.227H6.161Zm5.348-1.106a5.111,5.111,0,0,1,.189,1.4,3.87,3.87,0,0,1-1.073,2.925,4.154,4.154,0,0,1-3,1.033H6.161V11.96l-1.05,1.05h2.5a5.334,5.334,0,0,0,3.852-1.378A4.811,4.811,0,0,0,12.9,7.985a5.756,5.756,0,0,0-.44-2.325Z" />
+    <path class="light-defaultgrey" d="M2.722,13.985l-.707-.707L13.278,2.015l.707.707Z" />
+  </g>
+</svg>

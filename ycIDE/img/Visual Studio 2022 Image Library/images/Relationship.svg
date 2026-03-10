@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRelationship</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M11.5,12H9V11h2V7h1v4.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M.5,8.5h8v6H.5Zm7-8h8v6h-8Z" />
+    <path class="light-defaultgrey" d="M8.5,8H.5L0,8.5v6l.5.5h8l.5-.5v-6ZM1,14V10H8v4ZM15.5,0h-8L7,.5v6l.5.5h8l.5-.5V.5ZM8,6V2h7V6Z" />
+  </g>
+</svg>

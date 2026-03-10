@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ATLDialog</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,4v9H10.812V10.1H1.5V4Z" />
+      <path class="light-defaultgrey" d="M3,8H7V9H3ZM7,6H3V7H7Zm6,5H10.812v1H13Zm1.5-7H1.5L1,4.5v6.549l.355-.949H2V5H14v8H10.812v1H14.5l.5-.5v-9Z" />
+    </g>
+    <path class="light-defaultgrey" d="M2.049,11.1.213,16H1.1l.426-1.248H3.459L3.9,16h.887L2.965,11.1Zm-.311,2.99.673-1.955a1.914,1.914,0,0,0,.068-.309h.014a2.533,2.533,0,0,0,.065.309l.68,1.955ZM4.692,11.1H8.313v.689H6.905V16H6.092V11.789h-1.4ZM11.714,16H9V11.1h.813v4.214h1.9Z" />
+    <path class="light-defaultgrey-10" d="M14,3V4H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,5H1.5L1,4.5v-2L1.5,2h13l.5.5v2ZM2,4H14V3H2Z" />
+    <path class="light-defaultgrey-10" d="M12,8H9V7h3Z" />
+    <path class="light-defaultgrey" d="M12.5,6h-4L8,6.5v2l.5.5h4l.5-.5v-2ZM12,8H9V7h3Z" />
+  </g>
+</svg>

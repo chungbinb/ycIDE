@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTogglePivot</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,4.5v7l-6,3-6-3v-7l6-3Z" />
+    <path class="light-defaultgrey" d="M13.724,4.053l-6-3a.5.5,0,0,0-.448,0l-6,3A.5.5,0,0,0,1,4.5v7l.276.447,6,3h.448l6-3L14,11.5v-7A.5.5,0,0,0,13.724,4.053ZM13,11.191l-5,2.5V12H7v1.691l-5-2.5V5.309L3.382,6H5.618l-3-1.5L7.5,2.059,12.382,4.5l-3,1.5h2.236L13,5.309Z" />
+    <path class="light-blue" d="M11,8H8v3H7V8H4V7H7V4H8V7h3Z" />
+  </g>
+</svg>

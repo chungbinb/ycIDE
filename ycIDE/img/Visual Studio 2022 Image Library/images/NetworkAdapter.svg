@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNetworkAdapter</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v6h-2v3h-4v-3h-7v-6Z" />
+    <path class="light-defaultgrey" d="M14.5,4H2V2H1V13H2V11H8v2.5l.5.5h4l.5-.5V11h1.5l.5-.5v-6ZM10,13H9V11h1Zm2,0H11V11h1Zm2-3H2V5H14Z" />
+    <path class="light-defaultgrey" d="M12,6h1V9H12ZM10,9h1V6H10ZM6,9H7V6H6ZM8,9H9V6H8ZM4,9H5V6H4Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIncreaseContrast</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,10A4.505,4.505,0,0,1,10,14.5H9.5v-9H10A4.505,4.505,0,0,1,14.5,10Z" />
+    <path class="light-blue" d="M5.854,3.146l-.708.708L4,2.707V7H3V2.707L1.854,3.854l-.708-.708,2-2h.708Z" />
+    <path class="light-defaultgrey" d="M10,5a5,5,0,1,0,5,5A5,5,0,0,0,10,5Zm0,9V6a4,4,0,0,1,0,8Z" />
+  </g>
+</svg>

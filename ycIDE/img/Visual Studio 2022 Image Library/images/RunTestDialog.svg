@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRunTestDialog</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,14.5H2.5V7.724L9.016,4H15.5Z" />
+      <path class="light-defaultgrey" d="M16,5.5v9l-.5.5H2.5L2,14.5V8.009l1-.571V14H15V6H5.516l1.75-1H15.5Z" />
+      <path class="light-defaultgrey" d="M10,11v1H7V11Zm4,0v1H11V11ZM8,8H4V7H8Zm0,2H4V9H8Zm5.5-3h-4L9,7.5v2l.5.5h4l.5-.5v-2ZM13,9H10V8h3Z" />
+    </g>
+    <path class="light-defaultgrey" d="M16,3.5v2l-.5.5H5.516l1.75-1H15V4H9.016L7.266,3H15.5Z" />
+    <path class="light-green" d="M7,4,0,8V0Z" />
+  </g>
+</svg>

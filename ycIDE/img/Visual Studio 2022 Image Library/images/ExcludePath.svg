@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExcludePath</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v10H4.5v-3h7v-7Z" />
+    <path class="light-defaultgrey-10" d="M1.5,11.5V1.5h10v3h-7v7Z" />
+    <path class="light-defaultgrey" d="M14.5,4H12V1.5L11.5,1H1.5L1,1.5v10l.5.5H4v2.5l.5.5h10l.5-.5V4.5ZM2,2h9V4H4.5L4,4.5V11H2Zm9,3v6H5V5Zm3,9H5V12h6.5l.5-.5V5h2Z" />
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>TestCoveredFailingException</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M13.25,11.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,13.25,11.5ZM13,4H12V9.5h1ZM9.4,3.9,6,7.293,2.6,3.9,1.9,4.6,5.293,8,1.9,11.4,2.6,12.1,6,8.707l3.4,3.4L10.1,11.4,6.707,8l3.4-3.4Z" />
+  </g>
+</svg>

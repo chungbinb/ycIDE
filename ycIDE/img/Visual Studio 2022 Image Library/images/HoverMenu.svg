@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHoverMenu</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,2.5h7v10h-7Z" />
+    <path class="light-defaultgrey" d="M14.5,2h-7L7,2.5v10l.5.5h7l.5-.5V2.5ZM14,12H8V3h6Z" />
+    <path class="light-defaultgrey" d="M12,5H9V4h3Zm1,2H9V6h4Zm0,4H9V10h4ZM12,9H9V8h3Z" />
+    <path class="light-defaultgrey-10" d="M1.5,4.238V2.5h6v2H1.718Z" />
+    <path class="light-defaultgrey" d="M2.135,5H7.5L8,4.5v-2L7.5,2h-6L1,2.5V3.638ZM2,3H7V4H2Z" />
+    <path class="light-blue" d="M3.09,11.034l1.38,3.8-.94.342L2.123,11.3,0,13V4l6,7.2Z" />
+  </g>
+</svg>

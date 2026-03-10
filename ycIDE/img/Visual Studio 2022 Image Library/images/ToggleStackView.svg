@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightToggleStackView</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,4.5h-6v-3h6Zm8,10h-6v-3h6Z" />
+    <path class="light-defaultgrey" d="M7.5,5h-6L1,4.5v-3L1.5,1h6l.5.5v3ZM2,4H7V2H2ZM15.5,15h-6L9,14.5v-3l.5-.5h6l.5.5v3ZM10,14h5V12H10Z" />
+    <path class="light-blue" d="M5,11.293l1.146-1.147.708.708-2,2H4.146l-2-2,.708-.708L4,11.293V7H5Zm7-6.586L10.854,5.854l-.708-.708,2-2h.708l2,2-.708.708L13,4.707V9H12Z" />
+  </g>
+</svg>

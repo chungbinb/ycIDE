@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>PreviousBookmark</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,1.5v13L9,9.5l-4.5,5V9.414L5.518,8.4l-.4-.4H10V5H5.121l.4-.4L4.5,3.586V1.5Z" />
+    <path class="light-defaultgrey" d="M14,1.5v13l-.872.335L9,10.247,4.872,14.835,4,14.5V9.914l1-1V13.2L8.628,9.165h.744L13,13.2V2H5V4.086l-1-1V1.5L4.5,1h9Z" />
+    <path class="light-blue" d="M9,7H2.707L4.1,8.4,3.4,9.1l-2.25-2.25V6.146L3.4,3.9,4.1,4.6,2.707,6H9Z" />
+  </g>
+</svg>

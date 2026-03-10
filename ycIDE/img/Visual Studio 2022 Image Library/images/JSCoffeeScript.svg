@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-orange{fill: #b73d18; opacity: 1;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightJSCoffeeScript</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-orange" d="M6,3.687V4H5V3.687a1.063,1.063,0,0,0-.617-.916l-1.237-.66A2.072,2.072,0,0,1,2,.313V0H3V.313a1.063,1.063,0,0,0,.617.916l1.237.66A2.072,2.072,0,0,1,6,3.687Zm2.333-1.8L7.1,1.229A1.065,1.065,0,0,1,6.479.313V0h-1V.313a2.072,2.072,0,0,0,1.146,1.8l1.238.66a1.063,1.063,0,0,1,.616.916V4h1V3.687A2.072,2.072,0,0,0,8.333,1.889Z" />
+    </g>
+    <path class="light-orange-10" d="M11.5,5h-9L2,5.5V8A5,5,0,0,0,12,8V5.5Z" />
+    <path class="light-orange" d="M11,14.011H3a1,1,0,0,1-1-1L3,13h8l1,.011A1,1,0,0,1,11,14.011Z" />
+    <path class="light-orange" d="M12.075,5H2.5L2,5.5V8a5,5,0,0,0,9.576,2h.5a2.5,2.5,0,0,0,0-5ZM7,12A4,4,0,0,1,3,8h8A4,4,0,0,1,7,12Zm4-5H3V6h8Zm1.075,2H11.9A5,5,0,0,0,12,8V6h.075a1.5,1.5,0,0,1,0,3Z" />
+  </g>
+</svg>

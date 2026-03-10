@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightStackedLineChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue" d="M15,12.707l-3.6-3.6L7.724,10.947,7.5,11H2V10H7.382l3.894-1.947.578.093L15,11.293Z" />
+    <path class="light-defaultgrey" d="M15,7.293V8.707l-4.5-4.5L8.354,6.354,7.8,6.46,4.478,5.034,2,5.861V4.806l2.342-.781L4.7,4.04,7.886,5.407l2.26-2.261h.708Z" />
+  </g>
+</svg>

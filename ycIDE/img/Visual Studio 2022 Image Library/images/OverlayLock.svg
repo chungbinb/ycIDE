@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>OverlayLock</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M8,10.086v4.828L6.914,16H1.086L0,14.914V10.086l1-1V9A3,3,0,0,1,7,9v.086Z" />
+    <path class="light-defaultgrey-10" d="M6.5,10.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M6.5,10H6V9A2,2,0,0,0,2,9v1H1.5l-.5.5v4l.5.5h5l.5-.5v-4ZM3,9A1,1,0,0,1,5,9v1H3Zm3,5H2V11H6Z" />
+  </g>
+</svg>

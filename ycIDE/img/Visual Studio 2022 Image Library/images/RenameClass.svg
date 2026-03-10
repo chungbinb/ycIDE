@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>RenameClass</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M5.5,1.5l2,2-4,4-2-2ZM13,6,11.5,4.5l-2,2L11,8ZM9.5,11.5,11,13l1-1V11H10Z" />
+    <path class="light-yellow" d="M9.146,11.854l1.5,1.5h.708L12,12.707V11.293l-1,1-.793-.793.5-.5H10V10H8V6H9.293l-.147.146v.708L10.293,8h1.414l1.647-1.646V5.646l-1.5-1.5h-.708L10.293,5H6.707L7.854,3.854V3.146l-2-2H5.146l-4,4v.708l2,2h.708L5.707,6H7v4.5l.5.5H9.293l-.147.146ZM11.5,5.207,12.293,6,11,7.293,10.207,6.5Zm-8,1.586L2.207,5.5,5.5,2.207,6.793,3.5Z" />
+    <path class="light-defaultgrey" d="M14,10v5h2v1H11V15h2V10H11V9h5v1Z" />
+  </g>
+</svg>

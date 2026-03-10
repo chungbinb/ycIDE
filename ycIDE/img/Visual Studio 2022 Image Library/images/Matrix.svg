@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMatrix</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,5.5v9H4.5v-9Z" />
+    <path class="light-defaultgrey" d="M14.5,5H4.5L4,5.5v9l.5.5h10l.5-.5v-9ZM14,6V8H10V6ZM5,6H9V8H5ZM5,9H9v2H5Zm0,5V12H9v2Zm9,0H10V12h4Zm-4-3V9h4v2Z" />
+    <path class="light-blue-10" d="M14.5,5.5H4.5v9h-3V2.5h13Z" />
+    <path class="light-blue" d="M14.5,2H1.5L1,2.5v12l.5.5h3l.5-.5V6h9.5l.5-.5v-3ZM14,5H4.5L4,5.5V14H2V3H14Z" />
+  </g>
+</svg>

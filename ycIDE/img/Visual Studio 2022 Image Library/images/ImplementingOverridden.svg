@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ImplementingOverridden</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M9,8v6H2V8ZM9,1H2V7H9Z" />
+    <path class="white" d="M7,6H4V5H5V3H4V2H7V3H6V5H7Zm.5,5a2,2,0,1,1-2-2A2,2,0,0,1,7.5,11Zm-1,0a1,1,0,1,0-1,1A1,1,0,0,0,6.5,11Z" />
+    <path class="light-defaultgrey" d="M14.146,11.146l.708.708-2,2h-.708l-2-2,.708-.708L12,12.293V2.707L10.854,3.854l-.708-.708,2-2h.708l2,2-.708.708L13,2.707v9.586Z" />
+  </g>
+</svg>

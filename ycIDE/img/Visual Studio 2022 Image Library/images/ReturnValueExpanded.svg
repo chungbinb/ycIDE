@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReturnValueExpanded</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M9,10H7V9H9V7h1V9h2v1H10v2H9Z" />
+    <path class="light-defaultgrey-10" d="M13.5,5.5v8h-8V5.837A3.5,3.5,0,0,0,6.274,5.5Z" />
+    <path class="light-blue" d="M7,2.5A2.5,2.5,0,0,1,4.5,5H1.678L3.356,6.678l-.707.707-2.5-2.5V4.178l2.5-2.5.707.707L1.742,4H4.5a1.5,1.5,0,0,0,0-3H4V0h.5A2.5,2.5,0,0,1,7,2.5Z" />
+    <path class="light-defaultgrey" d="M13.5,5H6.942A3.485,3.485,0,0,1,5,5.949V13.5l.5.5h8l.5-.5v-8ZM13,13H6V6h7Z" />
+  </g>
+</svg>

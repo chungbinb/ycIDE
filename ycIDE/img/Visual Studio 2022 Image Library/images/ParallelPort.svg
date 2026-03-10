@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightParallelPort</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,6.5V9L13,11.5H2L.5,9V6.5a1,1,0,0,1,1-1h12A1,1,0,0,1,14.5,6.5Z" />
+      <path class="light-defaultgrey" d="M13,12H2l-.429-.243-1.5-2.5L0,9V6.5A1.5,1.5,0,0,1,1.5,5h12A1.5,1.5,0,0,1,15,6.5V9l-.071.257-1.5,2.5ZM2.283,11H12.717L14,8.861V6.5a.5.5,0,0,0-.5-.5H1.5a.5.5,0,0,0-.5.5V8.861Z" />
+    </g>
+    <path class="light-defaultgrey" d="M3,8H2V7H3ZM5,7H4V8H5ZM7,7H6V8H7ZM9,7H8V8H9Zm2,0H10V8h1ZM4,9H3v1H4ZM6,9H5v1H6ZM8,9H7v1H8Zm2,0H9v1h1Zm3-2H12V8h1ZM12,9H11v1h1Z" />
+  </g>
+</svg>

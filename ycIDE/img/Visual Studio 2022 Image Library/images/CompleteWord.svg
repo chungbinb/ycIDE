@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCompleteWord</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M10,12H9V11h1Zm2-1H11v1h1Zm2,0H13v1h1Z" />
+    <path class="light-defaultgrey" d="M4.5,3.6H3.484L.262,12h1.1l.838-2.355H5.758L6.648,12h1.09ZM2.523,8.76,3.83,5.18a3.131,3.131,0,0,0,.135-.563h.023a3.425,3.425,0,0,0,.129.563L5.436,8.76Z" />
+    <path class="light-blue" d="M14.854,5.145v.707l-2.5,2.5-.708-.707L13.291,6H8V5h5.3L11.646,3.352l.708-.707Z" />
+  </g>
+</svg>

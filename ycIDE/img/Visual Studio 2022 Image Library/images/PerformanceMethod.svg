@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPerformanceMethod</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple-10" d="M4.5,6.457l4,2.332v4.739l-4,2-4-2V8.789Z" />
+    <path class="light-purple" d="M8.752,8.357l-4-2.332h-.5l-4,2.332L0,8.789v4.739l.276.447,4,2h.448l4-2L9,13.528V8.789ZM4.5,7.035,7.719,8.912,4.5,10.522,1.281,8.912ZM1,9.89l3,1.5v3.329l-3-1.5Zm7,3.329-3,1.5V11.39l3-1.5Z" />
+    <path class="light-defaultgrey-10" d="M15.5,1.5v8H10V8.522l-.514-.894L5.5,5.3V1.5Z" />
+    <path class="light-defaultgrey" d="M16,1.5v8l-.5.5H10V9h5V2H6V5.6l-.978-.571H5V1.5L5.5,1h10Z" />
+    <path class="light-green" d="M15,5.293V6.707l-2.5-2.5L9.854,6.854H9.146L7.5,5.207,6.7,6,6,5.6v-.3L7.146,4.146h.708L9.5,5.793l2.646-2.647h.708Z" />
+  </g>
+</svg>

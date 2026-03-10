@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>DetailView</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,6v8H5V11a6.006,6.006,0,0,0,5.91-5Z" />
+    <path class="light-defaultgrey" d="M15,5.5v9l-.5.5h-9L5,14.5V11a6,6,0,0,0,1-.09V14h8V6H10.91A6,6,0,0,0,11,5h3.5Z" />
+    <path class="light-defaultgrey-10" d="M9.5,5A4.5,4.5,0,1,1,5,.5,4.5,4.5,0,0,1,9.5,5Z" />
+    <path class="light-defaultgrey" d="M5,10a5,5,0,1,1,5-5A5.006,5.006,0,0,1,5,10ZM5,1A4,4,0,1,0,9,5,4,4,0,0,0,5,1Z" />
+    <path class="light-defaultgrey" d="M4.5,4H9.38A4.516,4.516,0,0,1,9.5,5a4.516,4.516,0,0,1-.12,1H6V9c-.323.073-.655.5-1,.5a4.516,4.516,0,0,1-1-.12V4.5Z" />
+  </g>
+</svg>

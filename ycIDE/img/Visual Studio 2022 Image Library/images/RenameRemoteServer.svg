@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRenameRemoteServer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10,14.5H1.5V2.5h12V8H10v6.5Z" />
+    <path class="light-defaultgrey" d="M10,14H2V11h8V10H2V7H13V8h1V7l-.5-.5L14,6V2.5L13.5,2H1.5L1,2.5V6l.5.5L1,7v3l.5.5L1,11v3.5l.5.5H10ZM2,3H13V6H2Z" />
+    <path class="light-defaultgrey" d="M14,10v5h2v1H11V15h2V10H11V9h5v1Z" />
+    <path class="light-green" d="M12,5H10V4h2Z" />
+  </g>
+</svg>

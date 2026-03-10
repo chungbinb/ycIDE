@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>EventLogSuccessAudit</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M7.145,10.855,3.5,14.5H2l3.5-6H2l4-7h5.387L7,6.5h4.5l-.645.645A5,5,0,0,0,7.145,10.855Z" />
+    <path class="light-yellow" d="M7.033,11.675,3.854,14.854,3.5,15H2l-.432-.752L4.63,9H2l-.434-.748,4-7L6,1h5.387l.372.83L8.1,6h3.4l.354.854-.179.179a4.934,4.934,0,0,0-1.962.547l.58-.58H7l-.376-.83L10.283,2H6.29L2.862,8H5.5l.432.752L2.871,14h.422L7.58,9.713A4.934,4.934,0,0,0,7.033,11.675Z" />
+    <path class="light-green" d="M16,12a4,4,0,1,1-4-4A4,4,0,0,1,16,12Z" />
+    <path class="white" d="M14.208,11.171l-2.365,2.365-.711,0L9.792,12.16l.715-.7.987,1.011L13.5,10.464Z" />
+  </g>
+</svg>

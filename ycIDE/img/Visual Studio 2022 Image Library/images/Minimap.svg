@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMinimap</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,1.5v13H1.5V1.5Z" />
+    <path class="light-defaultgrey" d="M13.5,1H1.5L1,1.5v13l.5.5h12l.5-.5V1.5ZM13,14H2V3H13Z" />
+    <path class="light-blue" d="M3.707,9l1.147,1.146-.708.708-2-2V8.146l2-2,.708.708L3.707,8H6V9ZM7,4.707V7H8V4.707L9.146,5.854l.708-.708-2-2H7.146l-2,2,.708.708Zm1,7.586V10H7v2.293L5.854,11.146l-.708.708,2,2h.708l2-2-.708-.708Zm2.854-6.147-.708.708L11.293,8H9V9h2.293l-1.147,1.146.708.708,2-2V8.146Z" />
+  </g>
+</svg>

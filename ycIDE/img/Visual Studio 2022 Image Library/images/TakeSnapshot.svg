@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTakeSnapshot</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,7.5l-1-1h-4l-1,1H5.55A4.51,4.51,0,0,1,4,7.97V8H3.5v7.5h12v-8Z" />
+    <path class="light-defaultgrey" d="M15.5,7H12.71l-.86-.85L11.5,6h-4l-.35.15L7.1,6.2A4.546,4.546,0,0,1,4,7.97V8H6.5l.35-.15L7.71,7h3.58l.86.85L12.5,8H15v7H4V8H3v7.5l.5.5h12l.5-.5v-8Z" />
+    <path class="light-teal" d="M5.5,9a.5.5,0,1,0,.5.5A.5.5,0,0,0,5.5,9Z" />
+    <path class="light-teal-10" d="M9.5,9.5a2,2,0,1,0,2,2A2.006,2.006,0,0,0,9.5,9.5Z" />
+    <path class="light-teal" d="M9.5,9A2.5,2.5,0,1,0,12,11.5,2.5,2.5,0,0,0,9.5,9Zm0,4A1.5,1.5,0,1,1,11,11.5,1.5,1.5,0,0,1,9.5,13Z" />
+    <path class="light-yellow" d="M3,2V0H4V2l-.5.5ZM4,5V7H3V5l.5-.5ZM5,3,7,3V4L5,4l-.5-.5ZM2,4,0,4V3L2,3l.5.5ZM4.207,2.086,5.619.672l.708.706L4.914,2.793H4.207ZM2.792,4.914,1.379,6.328.671,5.622,2.085,4.207h.707Zm2.121-.706L6.328,5.62l-.707.708L4.206,4.915V4.208ZM2.086,2.792.671,1.38,1.377.672,2.793,2.085v.707Z" />
+  </g>
+</svg>

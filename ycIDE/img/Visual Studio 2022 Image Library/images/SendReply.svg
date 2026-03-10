@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSendReply</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,5.553,10.89,8.5H5.111L3.274,7H4V4.122l.146.147L5.117,3.3,8,1.5Z" />
+    <path class="light-defaultgrey-10" d="M14.5,5.553,10.89,8.5H5.111L3.274,7H4V4.122l.146.147L5.117,3.3,8,1.5Z" />
+    <path class="light-defaultgrey" d="M14.816,5.94,11.207,8.888,10.891,9H5.11l-.316-.112L2.483,7H4V6.948L5.288,8h5.425l2.93-2.393L8,2.089,4,4.583V4.122l.146.147L6.268,2.147l-.1-.095,1.564-.976h.53l6.5,4.053Z" />
+    <path class="light-defaultgrey-10" d="M14.5,6v7.5H1.5V7H3.274L5.111,8.5H10.89L13.953,6Z" />
+    <path class="light-defaultgrey" d="M15,6v7.5l-.5.5H1.5L1,13.5V7H2v6H14V6.607L11.207,8.888,10.891,9H5.11l-.316-.112L2.483,7h.791L5.111,8.5H10.89L14.5,5.553,14.415,5.5H14.5Z" />
+    <path class="light-blue" d="M2,1.708.854,2.854.146,2.147l2-2h.708l2,2-.708.707L3,1.708V6H2Z" />
+  </g>
+</svg>

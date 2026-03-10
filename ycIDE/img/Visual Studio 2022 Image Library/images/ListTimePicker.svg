@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ListTimePicker</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,1.5v12H8.78c.04-.17.09-.33.12-.5a5.05,5.05,0,0,0,0-2,5.532,5.532,0,0,0-.31-1A5.116,5.116,0,0,0,7,8,4.941,4.941,0,0,0,4,7a4.712,4.712,0,0,0-1,.1c-.17.03-.33.08-.5.12V1.5ZM4,8.5A3.5,3.5,0,1,0,7.5,12,3.5,3.5,0,0,0,4,8.5Z" />
+    <path class="light-defaultgrey" d="M14,1.5v12l-.5.5H8.59c.07-.16.13-.33.19-.5.04-.17.09-.33.12-.5H13V2H3V7.1c-.17.03-.33.08-.5.12-.17.06-.34.12-.5.19V1.5L2.5,1h11ZM5,7h6V6H5Zm6-3H5V5h6Zm0,4H7A5.262,5.262,0,0,1,8,9h3Zm0,3V10H8.59a5.532,5.532,0,0,1,.31,1ZM4.5,10h-1v2.5L4,13H5.5V12h-1ZM8,12A4,4,0,1,1,4,8,4,4,0,0,1,8,12ZM7,12a3,3,0,1,0-3,3A3,3,0,0,0,7,12Z" />
+  </g>
+</svg>

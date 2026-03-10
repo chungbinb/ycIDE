@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDataMiningColumn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,2.5v12H8.943l1.206-1.206-.2-.591A9.355,9.355,0,0,0,8.56,10.06l.313-.313V8.315L7.685,7.127H7.5V2.5Z" />
+    <path class="light-defaultgrey" d="M12.5,1h-5L7,1.5V7.127h.685L8,7.442V7h4v3H8.62l-.06.06a9.634,9.634,0,0,1,.611.94H12v3H9.443l-1,1H12.5l.5-.5V1.5ZM12,6H8V3h4Z" />
+    <path class="light-yellow" d="M.6,16,0,15.4v-.6L5.426,9.368h.6l.6.6v.6L1.206,16Z" />
+    <path class="light-defaultgrey" d="M8.44,13.589,6.029,11.177l-.56.56L4.263,10.531l.56-.56L2.416,7.564l.56-.559a8.3,8.3,0,0,1,3.043,1.77l.649-.648h.6l.6.6v.6l-.656.656A8.64,8.64,0,0,1,9,13.029Z" />
+  </g>
+</svg>

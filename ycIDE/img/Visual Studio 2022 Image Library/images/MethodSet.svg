@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMethodSet</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M15,4V9.4L6,14.617,1.538,11.891v-5.3L10.5,1.4Z" />
+      <path class="light-purple" d="M6.255,9.823l-.519-.006-4.5-2.795.528-.849L6,8.808,10.216,6.3l.535.905Zm9-6.26L10.761.965H10.25L5.75,3.573,1.25,6.164,1,6.6v5.409l.25.432,4.5,2.6h.5l4.5-2.6.25-.432-.247.427,4.5-2.6L15.5,9.4V4ZM10,11.718,6.5,13.74V9.393h-1v4.348L1.984,11.718V6.9L6,4.585,10,6.92Zm.6-5.65L7.013,4,10.5,1.992l3.519,2.031Zm3.9,3.047L11,11.137V7.057l3.5-2.044Z" />
+    </g>
+    <path class="light-purple-10" d="M10.5,1.4l4.507,2.619L6,9.392,1.5,6.6Z" />
+    <path class="light-purple" d="M10.761.965H10.25l-9,5.2-.015.858,4.5,2.8.52,0,9-5.248V3.583ZM6,8.808,2.474,6.614,6.008,4.58,9.6,6.661Zm4.582-2.734L7.009,4,10.5,1.992l3.52,2.032Z" />
+  </g>
+</svg>

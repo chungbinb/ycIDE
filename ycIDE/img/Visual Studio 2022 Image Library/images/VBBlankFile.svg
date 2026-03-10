@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVBBlankFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13,5v9H10l1,1H4L2,13V6L3,7V2h7Z" />
+      <path class="light-defaultgrey" d="M14,4.5v10l-.5.5H10.414l-1-1H13V5H10V2H3V7.586l-1-1V1.5L2.5,1h8l.354.146,3,3ZM3,14v-.379l-1-1V14.5l.5.5H4.379l-1-1Z" />
+    </g>
+    <path class="light-blue" d="M6,15l-.354-.146-3.5-3.5L2,11V8l7,7Z" />
+  </g>
+</svg>

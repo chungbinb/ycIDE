@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>AutoFormatTable</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5.5v9H2.5V5.9l.333.179L3,5.969V6H9V5.5Z" />
+      <path class="light-defaultgrey" d="M14.5,6H14V8H11V6H10V8H7V6H6V8H3V5.969H2.7L2,5.634V14.5l.5.5h12l.5-.5v-9ZM6,14H3V12H6Zm0-3H3V9H6Zm4,3H7V12h3Zm0-3H7V9h3Zm4,3H11V12h3Zm0-3H11V9h3Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,3.5v2H9v-2Z" />
+    <path class="light-defaultgrey" d="M5.954,6,14.5,3H9V4h5V5H9V6h5.5l.5-.5v-2ZM5.954,3,6,3.031V3Z" />
+    <path class="light-blue-10" d="M5.5,2.5l-3,2V.5Z" />
+    <path class="light-blue" d="M8,0V5H7V0ZM0,5H1V0H0ZM2.777.084l3,2v.832l-3,2L2,4.5V.5ZM3,3.565,4.6,2.5,3,1.435Z" />
+  </g>
+</svg>

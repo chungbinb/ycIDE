@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEmptyContainer</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15,15H1V1H15Z" />
+      <path class="light-defaultgrey" d="M2,1V2H3V1ZM4,1V2H5V1ZM6,1V2H7V1ZM8,1V2H9V1Zm2,0V2h1V1Zm2,0V2h1V1Zm2,0V2h1V1ZM1,14v1H2V14Zm2,0v1H4V14Zm2,0v1H6V14Zm2,0v1H8V14Zm2,0v1h1V14Zm2,0v1h1V14Zm2,0v1h1V14ZM2,2H1V3H2ZM2,4H1V5H2ZM2,6H1V7H2ZM2,8H1V9H2Zm0,2H1v1H2Zm0,2H1v1H2ZM15,3H14V4h1Zm0,2H14V6h1Zm0,2H14V8h1Zm0,2H14v1h1Zm0,2H14v1h1Zm0,2H14v1h1Z" />
+    </g>
+    <path class="light-blue" d="M8.354,12.854H7.646L6.025,11.232l.707-.707L8,11.793l1.268-1.268.707.707Zm2.878-2.879-.707-.707L11.793,8,10.525,6.732l.707-.707,1.622,1.621v.708Zm-6.464,0L3.146,8.354V7.646L4.768,6.025l.707.707L4.207,8,5.475,9.268Zm4.5-4.5L8,4.207,6.732,5.475l-.707-.707L7.646,3.146h.708L9.975,4.768Z" />
+  </g>
+</svg>

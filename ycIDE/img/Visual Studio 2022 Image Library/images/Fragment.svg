@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFragment</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,14.5h2v-2H.5Zm4,0h2v-2h-2Zm-4-4h2v-2H.5Zm0-4h2v-2H.5Zm4,4h2v-2h-2Zm4,4h2v-2h-2Zm-4-11h2v-2h-2Zm4,4h2v-2h-2Zm4-4h2v-2h-2Zm0,8h2v-2h-2Z" />
+    <path class="light-defaultgrey" d="M2.5,12H.5l-.5.5v2l.5.5h2l.5-.5v-2ZM2,14H1V13H2Zm4.5-2h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM6,14H5V13H6ZM2.5,8H.5L0,8.5v2l.5.5h2l.5-.5v-2ZM2,10H1V9H2Zm.5-6H.5L0,4.5v2L.5,7h2L3,6.5v-2ZM2,6H1V5H2ZM6.5,8h-2L4,8.5v2l.5.5h2l.5-.5v-2ZM6,10H5V9H6Zm4.5,2h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM10,14H9V13h1ZM6.5,1h-2L4,1.5v2l.5.5h2L7,3.5v-2ZM6,3H5V2H6Zm4.5,2h-2L8,5.5v2l.5.5h2l.5-.5v-2ZM10,7H9V6h1Zm4.5-6h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM14,3H13V2h1Zm.5,6h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM14,11H13V10h1Z" />
+  </g>
+</svg>

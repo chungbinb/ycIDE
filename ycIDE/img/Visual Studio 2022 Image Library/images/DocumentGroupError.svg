@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>DocumentGroupError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.5,1.5h-5V5h2l.35.15,2,2,.12.28A4.925,4.925,0,0,1,12,7a4.07,4.07,0,0,1,.5.03V3.5Z" />
+      <path class="light-defaultgrey" d="M12.85,3.15l-2-2L10.5,1h-5L5,1.5V5H6V2H9.99V4H12V7a4.07,4.07,0,0,1,.5.03,4.293,4.293,0,0,1,.5.07V3.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.5,5.5h-5v9H7.67c-.09-.16-.18-.33-.26-.5A5.106,5.106,0,0,1,7,12a4.712,4.712,0,0,1,.1-1,5.532,5.532,0,0,1,.31-1A5.093,5.093,0,0,1,9,8a4.322,4.322,0,0,1,.5-.33V7.5Z" />
+    <path class="light-defaultgrey" d="M9.85,7.15l-2-2L7.5,5h-5L2,5.5v9l.5.5H8a4.322,4.322,0,0,1-.33-.5c-.09-.16-.18-.33-.26-.5H3V6H6.99V8H9a4.322,4.322,0,0,1,.5-.33,4.156,4.156,0,0,1,.47-.24Z" />
+    <path class="light-defaultgrey-25" d="M6,10V6H5v4.5l.5.5H7.1a5.532,5.532,0,0,1,.31-1Z" />
+  </g>
+</svg>

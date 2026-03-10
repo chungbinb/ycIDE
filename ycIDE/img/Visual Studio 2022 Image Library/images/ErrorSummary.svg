@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightErrorSummary</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,12.5H.5V.5h12V7.036L12.412,7H10.588l-.721.3L6.8,10.367l-.3.721Z" />
+    <path class="light-defaultgrey" d="M5,8V9H2V8ZM2,11H6V10H2ZM2,7H7V6H2ZM2,5H5V4H2ZM2,3H7V2H2ZM13,.5V7.244L12.412,7H12V1H1V12H6.5v.912L6.536,13H.5L0,12.5V.5L.5,0h12Z" />
+    <path class="light-blue" d="M12.213,16H10.787l-.353-.146L7.646,13.066,7.5,12.713V11.287l.146-.353,2.788-2.788L10.787,8h1.426l.353.146,2.788,2.788.146.353v1.426l-.146.353-2.788,2.788Z" />
+    <path class="white" d="M12,12H11V9h1Zm-.5.75a.75.75,0,1,0,.75.75A.75.75,0,0,0,11.5,12.75Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBinaryFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+      <path class="light-defaultgrey" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+    </g>
+    <path class="light-defaultgrey" d="M6.947,12a1.346,1.346,0,0,1-1.174-.614,3.131,3.131,0,0,1-.421-1.775,3.466,3.466,0,0,1,.44-1.929A1.431,1.431,0,0,1,7.06,7.027q1.587,0,1.588,2.467A3.254,3.254,0,0,1,8.2,11.358,1.442,1.442,0,0,1,6.947,12Zm.076-4.353q-.874,0-.876,1.93,0,1.8.859,1.806t.846-1.836Q7.852,7.648,7.023,7.647Z" />
+    <path class="light-defaultgrey" d="M11,7.081V12h-.779V8.034a2.521,2.521,0,0,1-.454.257,3.956,3.956,0,0,1-.555.186V7.812c.129-.042.255-.087.376-.134s.239-.1.357-.157.236-.124.356-.2.243-.152.371-.244Z" />
+  </g>
+</svg>

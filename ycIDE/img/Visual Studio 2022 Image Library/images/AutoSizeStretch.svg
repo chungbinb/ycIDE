@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAutoSizeStretch</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M13.854,8.146v.708l-2.5,2.5-.708-.708L12.293,9H3.707l1.647,1.646-.708.708-2.5-2.5V8.146l2.5-2.5.708.708L3.707,8h8.586L10.646,6.354l.708-.708Z" />
+    <path class="light-defaultgrey" d="M2,14H1V2H2ZM15,2H14V14h1Z" />
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVirtualMachineGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,8.5H13v1l-.5.5H10v.13l.82.59.09.28.17.5H14.5Z" />
+      <path class="light-defaultgrey" d="M13.97,8.34,13.5,8H13V9h.14l.67,2h-2.9l.17.5.17.5H14.5l.47-.66Z" />
+      <path class="light-defaultgrey-10" d="M11.5,1.5h-3a1,1,0,0,0-1,1V3a2.734,2.734,0,0,1,.5.05A2.527,2.527,0,0,1,9,3.5a2.37,2.37,0,0,1,.5.5A2.5,2.5,0,0,1,10,5.5v4h2.5v-7A1,1,0,0,0,11.5,1.5Z" />
+      <path class="light-defaultgrey" d="M11.5,1h-3A1.5,1.5,0,0,0,7,2.5V3h.5a2.734,2.734,0,0,1,.5.05V2.5A.5.5,0,0,1,8.5,2h3a.5.5,0,0,1,.5.5V9H10v1h2.5l.5-.5v-7A1.5,1.5,0,0,0,11.5,1Z" />
+      <g class="cls-1">
+        <path class="light-defaultgrey" d="M10,7V8h1V7ZM9,3v.5a2.37,2.37,0,0,1,.5.5H11V3Z" />
+      </g>
+    </g>
+    <path class="light-defaultgrey-10" d="M10.5,14.5h-9l1-3H3v1l.5.5h5l.5-.5v-1h.5Z" />
+    <path class="light-defaultgrey" d="M10.974,14.342,10.5,15h-9l-.474-.658,1-3L2.5,11H3v1H2.86l-.666,2H9.806L9.14,12H9V11h.5l.474.342Z" />
+    <path class="light-defaultgrey-10" d="M8.5,5.5v7h-5v-7a1,1,0,0,1,1-1h3A1,1,0,0,1,8.5,5.5Z" />
+    <path class="light-defaultgrey" d="M8.5,13h-5L3,12.5v-7A1.5,1.5,0,0,1,4.5,4h3A1.5,1.5,0,0,1,9,5.5v7ZM4,12H8V5.5A.5.5,0,0,0,7.5,5h-3a.5.5,0,0,0-.5.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7,6V7H5V6ZM5,11H7V10H5Z" />
+    </g>
+  </g>
+</svg>

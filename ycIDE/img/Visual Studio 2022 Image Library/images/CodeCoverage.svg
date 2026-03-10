@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCodeCoverage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,13.5v-2h8v2Z" />
+    <path class="light-defaultgrey" d="M12,10H4V9h8ZM9,6H4V7H9Zm5,0H10V7h4ZM7,3H2V4H7Zm7,0H8V4h6Z" />
+    <path class="light-defaultgrey" d="M9.5,14h-8L1,13.5v-2l.5-.5h8l.5.5v2ZM2,13H9V12H2Z" />
+  </g>
+</svg>

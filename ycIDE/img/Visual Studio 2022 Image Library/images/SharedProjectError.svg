@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSharedProjectError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7,12c0-.161.033-.314.048-.471L6,13.1,2.6,8,6,2.9,7.4,5,5.584,7.723v.554L7.2,10.693a4.928,4.928,0,0,1,.458-1.114L6.6,8,8,5.9,9.278,7.816a4.981,4.981,0,0,1,.893-.458L8.6,5,10,2.9l2.786,4.18a4.918,4.918,0,0,1,1.554.528L10.416,1.723H9.584L8,4.1,6.416,1.723H5.584l-4,6v.554l4,6h.832l.737-1.106A4.97,4.97,0,0,1,7,12Z" />
+    <path class="light-defaultgrey-10" d="M7,12a5.006,5.006,0,0,1,5-5,4.9,4.9,0,0,1,1.5.257L10,2,8,5,6,2,2,8l4,6,1.044-1.566C7.031,12.289,7,12.149,7,12Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

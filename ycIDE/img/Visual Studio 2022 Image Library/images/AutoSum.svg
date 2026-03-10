@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAutoSum</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M10.5,13H4.2l-.429-.757L6.317,8,3.771,3.757,4.2,3h6.3l.5.5V5H10V4H5.083L7.329,7.743v.514L5.083,12H10V11h1v1.5Z" />
+  </g>
+</svg>

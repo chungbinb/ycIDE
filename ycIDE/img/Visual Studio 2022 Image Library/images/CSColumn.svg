@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSColumn</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green-10" d="M5.5,2.5h5v12h-5Z" />
+    <path class="light-green" d="M10.5,1h-5L5,1.5v13l.5.5h5l.5-.5V1.5ZM10,6H6V3h4Zm0,4H6V7h4Zm0,4H6V11h4Z" />
+  </g>
+</svg>

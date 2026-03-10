@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRegistrationScript</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-4v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H14V9.908a1.5,1.5,0,1,0-1,0V11H11.5l-.5.5V13H9.908a1.5,1.5,0,1,0,0,1H11v1.5l.5.5h4l.5-.5v-4ZM15,15H12V12h3Z" />
+    <path class="light-defaultgrey-10" d="M12.5,2V3.293l-.207.207H9.5V9A1.5,1.5,0,0,1,8,10.5H2A1.487,1.487,0,0,1,.71,9.748,1.458,1.458,0,0,1,.5,9V8.707L.707,8.5H2.5V2A1.5,1.5,0,0,1,4,.5h7A1.5,1.5,0,0,1,12.5,2Z" />
+    <path class="light-defaultgrey" d="M11,0H4A2,2,0,0,0,2,2V8H.5L0,8.5V9a1.978,1.978,0,0,0,.278,1,1.992,1.992,0,0,0,1.715,1H8a2,2,0,0,0,2-2V4h2.5l.5-.5V2A2,2,0,0,0,11,0ZM2,10A1,1,0,0,1,1,9H6a1.984,1.984,0,0,0,.269,1ZM9,2V9A1,1,0,0,1,7,9V8.5L6.5,8H3V2A1,1,0,0,1,4,1H9.278A1.978,1.978,0,0,0,9,2Zm3,1H10V2a1,1,0,0,1,2,0Z" />
+  </g>
+</svg>

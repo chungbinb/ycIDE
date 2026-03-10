@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBulletPanel</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M4.9,10h8.6v3.5H2V10.989H3.914Zm.011-4H13.5V2.5H2V5H3.914Z" />
+      <path class="light-defaultgrey" d="M3,5H2V2.5L2.5,2h11l.5.5V6H13V3H3Zm10,5v3H3V11H2v2.5l.5.5h11l.5-.5V10Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14.5,9H5V7h9.5l.5.5v1Z" />
+    <path class="light-blue" d="M3.5,9.989H.5l-.5-.5V6.5L.5,6h3l.5.5V9.489Z" />
+  </g>
+</svg>

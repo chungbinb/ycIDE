@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLayerDiagram</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,7.5v7h-8v-7Z" />
+    <path class="light-defaultgrey-10" d="M14.5,1.5v8H11V7.086L9.914,6H6.5V1.5Z" />
+    <path class="light-defaultgrey" d="M9.5,7h-8L1,7.5v7l.5.5h8l.5-.5v-7ZM9,14H2V8H9Z" />
+    <path class="light-defaultgrey" d="M5,11H3V9H5Zm3,2H6V10H8Z" />
+    <path class="light-defaultgrey" d="M12.5,3h-4L8,3.5V6H9V4h1V6.086l1,1V8h1.5l.5-.5v-4ZM12,7H11V6h1Zm0-2H11V4h1Z" />
+    <path class="light-defaultgrey" d="M15,1.5v8l-.5.5H11V9h3V2H7V6H6V1.5L6.5,1h8Z" />
+    <path class="light-blue" d="M.146,3.854l.708-.708L2,4.293V1.5L2.5,1H5V2H3V4.293L4.146,3.146l.708.708-2,2H2.146Z" />
+  </g>
+</svg>

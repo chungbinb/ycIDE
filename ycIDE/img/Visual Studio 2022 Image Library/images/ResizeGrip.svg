@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightResizeGrip</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,13.5h-2v-2h2Zm-5,0h-2v-2h2Zm5-7h-2v2h2Zm-10,7h-2v-2h2Zm5-7h-2v2h2Zm5-5h-2v2h2Z" />
+    <path class="light-defaultgrey" d="M13.5,14h-2l-.5-.5v-2l.5-.5h2l.5.5v2ZM12,13h1V12H12ZM8.5,14h-2L6,13.5v-2l.5-.5h2l.5.5v2ZM7,13H8V12H7Zm6.5-4h-2L11,8.5v-2l.5-.5h2l.5.5v2ZM12,8h1V7H12ZM3.5,14h-2L1,13.5v-2l.5-.5h2l.5.5v2ZM2,13H3V12H2ZM8.5,9h-2L6,8.5v-2L6.5,6h2l.5.5v2ZM7,8H8V7H7Zm6.5-4h-2L11,3.5v-2l.5-.5h2l.5.5v2ZM12,3h1V2H12Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCPPFileNode</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M5,6V9H4V6H1V5H4V2H5V5H8V6Z" />
+    <path class="light-red" d="M15,10H12V7H11v3H8v1h3v3h1V11h3Z" />
+  </g>
+</svg>

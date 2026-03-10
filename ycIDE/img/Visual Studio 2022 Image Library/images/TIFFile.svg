@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>TIFFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+    <path class="light-defaultgrey" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.5,6.5v6h-7v-6Z" />
+      <path class="light-defaultgrey" d="M11.5,6h-7L4,6.5v6l.5.5h7l.5-.5v-6ZM11,12H5V7h6Z" />
+    </g>
+    <path class="light-blue" d="M11,11.85V12H9.51l-.53-.4-.76.34H7.75L5.99,10.52,5,11.24V10l.7-.51.61.01,1.75,1.4.72-.41H9.3Z" />
+    <path class="light-yellow" d="M10,9A1,1,0,1,1,9,8,1,1,0,0,1,10,9Z" />
+  </g>
+</svg>

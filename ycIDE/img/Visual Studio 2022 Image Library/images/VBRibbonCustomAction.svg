@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightVBRibbonCustomAction</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8.5,7l.5.5v1L8.5,9h-1L7,8.5v-1L7.5,7Zm-5,0L3,7.5v1l.5.5h1L5,8.5v-1L4.5,7ZM13,8.5v-1L12.5,7h-1l-.5.5v1l.5.5h1ZM14.5,5H8V3.5L7.5,3h-4L3,3.5V5H1.5L1,5.5V10H2V6H3.5L4,5.5V4H7V5.5l.5.5H14v4H9v1h5.5l.5-.5v-5Z" />
+    <path class="light-defaultgrey-10" d="M14.5,5.5v5H9V10H2V5.5H3.5v-2h4v2Z" />
+    <path class="light-blue-10" d="M5.5,13.5l-3,2v-4Z" />
+    <path class="light-blue" d="M2,11.5v4l.777.416,3-2v-.832l-3-2Zm1,.935L4.6,13.5,3,14.565ZM0,11H1v5H0Zm8,0v5H7V11Z" />
+  </g>
+</svg>

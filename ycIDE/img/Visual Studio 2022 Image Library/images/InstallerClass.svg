@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>InstallerClass</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M5.854,12.854l-2,2H3.146l-2-2,.708-.707L3,13.293V9H4v4.293l1.146-1.146Z" />
+    <path class="light-yellow-10" d="M11.882,8.544,10.549,7.211l2.667-2.667,1.333,1.334Zm1.334,1,1.333,1.333-2.667,2.667-1.333-1.333Zm-6.677-8,2,2-4,4-2-2Z" />
+    <path class="light-yellow" d="M11.617,8.81h.53l2.667-2.666V5.613L13.481,4.279H12.95L11.185,6.044H7.008v-.25H7l1.9-1.9V3.19l-2-2H6.186l-4,4V5.9l2,2h.707L6.008,6.782v4.762l.5.5h3.776v.433l1.333,1.333h.53l2.667-2.666v-.531L13.481,9.279H12.95l-1.765,1.766H7.008v-4h3.276v.433ZM4.539,6.837,3.246,5.544,6.539,2.251,7.832,3.544Zm8.677,3.237.8.8-2.137,2.136-.8-.8.167-.167h.012v-.012Zm0-5,.8.8L11.882,8.014l-.8-.8.167-.167h.012V7.032Z" />
+  </g>
+</svg>

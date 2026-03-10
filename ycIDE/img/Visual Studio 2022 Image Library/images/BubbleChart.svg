@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBubbleChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue-10" d="M13.5,10a1.5,1.5,0,1,1-.439-1.061A1.5,1.5,0,0,1,13.5,10Z" />
+    <path class="light-lightblue-10" d="M8.5,5.5a2,2,0,1,1-.586-1.414A2,2,0,0,1,8.5,5.5Z" />
+    <path class="light-lightblue-10" d="M5.5,11.5a1,1,0,1,1-.293-.707A1,1,0,0,1,5.5,11.5Z" />
+    <path class="light-lightblue-10" d="M14.5,2.5a1,1,0,1,1-1-1,1,1,0,0,1,1,1Z" />
+    <path class="light-lightblue" d="M12.006,9a1,1,0,1,1-.012,0Zm0-1h-.012A2,2,0,0,0,10,9.994v.012A2,2,0,0,0,11.994,12h.012A2,2,0,0,0,14,10.006V9.994A2,2,0,0,0,12.006,8Z" />
+    <path class="light-lightblue" d="M6.5,4a1.5,1.5,0,1,1-1.061.439A1.5,1.5,0,0,1,6.5,4Zm0-1a2.5,2.5,0,1,0,1.768.732A2.506,2.506,0,0,0,6.5,3Z" />
+    <path class="light-lightblue" d="M4.5,11a.5.5,0,0,1,.462.309.49.49,0,0,1,.028.288.507.507,0,0,1-.136.257A.5.5,0,0,1,4,11.5a.5.5,0,0,1,.5-.5Zm0-1a1.5,1.5,0,1,0,1.061.439A1.5,1.5,0,0,0,4.5,10Z" />
+    <path class="light-lightblue" d="M13.5,2a.5.5,0,0,1,.462.309.5.5,0,0,1-.108.545.507.507,0,0,1-.257.136.49.49,0,0,1-.288-.028A.5.5,0,0,1,13.5,2Zm0-1a1.5,1.5,0,1,0,1.061.439A1.5,1.5,0,0,0,13.5,1Z" />
+  </g>
+</svg>

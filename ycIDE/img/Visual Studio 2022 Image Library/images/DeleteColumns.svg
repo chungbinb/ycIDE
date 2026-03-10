@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDeleteColumns</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,5.5h4v9h-4Zm-3.586,0L5.146,7.268,4.5,6.621V14.5h4v-9Z" />
+    <path class="light-defaultgrey" d="M14.5,4h-4l-.5.5v10l.5.5h4l.5-.5V4.5ZM14,14H11V12h3Zm0-3H11V9h3Zm0-3H11V6h3ZM8.5,4H6.121L7.268,5.146,6.414,6H8V8H5V7.121l-1-1V14.5l.5.5h4l.5-.5V4.5ZM8,14H5V12H8Zm0-3H5V9H8Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+  </g>
+</svg>

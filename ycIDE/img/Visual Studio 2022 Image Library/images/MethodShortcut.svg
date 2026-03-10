@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMethodShortcut</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M7,12.461l-1,.577-4.5-2.6V5.031L6.019,2.549,10.5,5.031V7H8.086L7,8.086Z" />
+      <path class="light-purple" d="M11,5.031V7H10V5.32L6,3.01,2,5.32v4.831l3.5,2.021V7.825h1v4.347l.5-.288v1.154l-.75.433h-.5l-4.5-2.6L1,10.44V5.031L1.25,4.6,5.75,2h.5l4.5,2.6Z" />
+    </g>
+    <path class="light-purple-10" d="M6.008,2.471l4.508,2.583L6,7.687,1.484,5.031Z" />
+    <path class="light-purple" d="M6.252,8.119H5.746L1.23,5.462,1.238,4.6,5.762,2.035l.5,0L10.765,4.62l0,.865ZM2.484,5.04,6,7.108l3.516-2.05L6.006,3.046Z" />
+    <path class="light-defaultgrey-10" d="M15.5,8.5v7h-7v-7Z" />
+    <path class="light-defaultgrey" d="M15.5,8h-7L8,8.5v7l.5.5h7l.5-.5v-7ZM15,15H9V9h6Z" />
+    <path class="light-defaultgrey" d="M14,10.5V14H13V11.707l-2.646,2.647-.708-.708L12.293,11H10V10h3.5Z" />
+  </g>
+</svg>

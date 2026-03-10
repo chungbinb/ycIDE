@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow{fill: #996f00; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDataMiningStructure</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow" d="M15,3.5v9l-.5.5H10.048l-.1-.3c-.084-.244-.173-.477-.269-.7H14V4H8.5l-.354-.146L7.293,3H2V6.566l-1,1,1,1V11.38l-1,1V2.5L1.5,2h6l.354.146L8.707,3H14.5Z" />
+    <path class="light-yellow" d="M15,3.5v9l-.5.5H10.048l-.1-.3c-.084-.244-.173-.477-.269-.7H14V4H8.682l-.853.854L7.475,5H2V6.566l-1,1,1,1V11.38l-1,1V4.5L1.5,4H7.268l.854-.854L8.475,3H14.5Z" />
+    <path class="light-yellow-10" d="M14.5,3.5v9H9.867A9.3,9.3,0,0,0,8.56,10.06l.313-.313V8.315L7.685,7.127H6.254l-.3.3A9.468,9.468,0,0,0,3.312,6.063l-.6-.213L1.5,7.066V2.5h6l1,1ZM1.5,8.063V11.88l1.348-1.348h0l.56-.56Z" />
+    <path class="light-yellow" d="M.6,16,0,15.4v-.6L5.426,9.368h.6l.6.6v.6L1.206,16Z" />
+    <path class="light-defaultgrey" d="M8.44,13.589,6.029,11.177l-.56.56L4.263,10.531l.56-.56L2.416,7.564l.56-.559a8.3,8.3,0,0,1,3.043,1.77l.648-.648h.6l.6.6v.6l-.656.656A8.64,8.64,0,0,1,9,13.029Z" />
+  </g>
+</svg>

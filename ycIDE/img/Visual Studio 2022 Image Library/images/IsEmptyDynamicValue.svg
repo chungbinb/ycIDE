@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightIsEmptyDynamicValue</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M1.91,4.5l7,7H13.5v-7ZM1.5,10.12V11.5H2.88Z" />
+      <path class="light-defaultgrey" d="M13.5,4H1.5l-.04.05L2.41,5H13v6H8.41l1,1H13.5l.5-.5v-7ZM2.38,11H2v-.38l-1-1V11.5l.5.5H3.38Z" />
+    </g>
+    <path class="light-blue" d="M5,13v1H7v1H8V14h2V13ZM8,2V1H7V2H5V3h5V2Z" />
+    <path class="light-defaultgrey" d="M8,12H5l-.354-.146-3.5-3.5L1,8V5Z" />
+  </g>
+</svg>

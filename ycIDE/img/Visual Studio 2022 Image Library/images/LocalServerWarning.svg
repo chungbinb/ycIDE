@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>LocalServerWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,1.5h-6a1,1,0,0,0-1,1v12H6.34l.27-.5.56-1,.55-1,.55-1,2.2-4H11.5V2.5A1,1,0,0,0,10.5,1.5Z" />
+    <path class="light-defaultgrey" d="M10.5,1h-6A1.5,1.5,0,0,0,3,2.5v12l.5.5H6.06l.28-.5.27-.5H4V2.5A.5.5,0,0,1,4.5,2h6a.5.5,0,0,1,.5.5V7h1V2.5A1.5,1.5,0,0,0,10.5,1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5.5,12v1H7.17l.55-1Zm0-2v1H8.27l.55-1Zm0-6V5h4V4Z" />
+    </g>
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

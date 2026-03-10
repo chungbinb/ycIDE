@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSSElement</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,1.5v13h13V1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,15H1.5L1,14.5V1.5L1.5,1h13l.5.5v13ZM2,14H14V2H2Z" />
+    <path class="light-defaultgrey" d="M9.854,4.281,9,4.635v6.73l.854.354,3.365-3.365V7.646ZM10,10.158V5.842L12.158,8ZM2.781,7.646v.708l3.365,3.365L7,11.365V4.635l-.854-.354ZM6,10.158,3.842,8,6,5.842Z" />
+  </g>
+</svg>

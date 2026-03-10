@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMaterialSpecular</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M9,6.5A2.5,2.5,0,1,1,6.5,4,2.5,2.5,0,0,1,9,6.5Z" />
+      <path class="light-defaultgrey" d="M8,1a7,7,0,1,0,7,7A7,7,0,0,0,8,1ZM6.5,9A2.5,2.5,0,1,1,9,6.5,2.5,2.5,0,0,1,6.5,9Z" />
+    </g>
+  </g>
+</svg>

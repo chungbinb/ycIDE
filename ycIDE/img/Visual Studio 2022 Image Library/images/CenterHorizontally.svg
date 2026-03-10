@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>CenterHorizontally</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,6.5v-2h10v2Zm2,5v-2h6v2Z" />
+    <path class="light-defaultgrey" d="M11,11.5v-2L10.5,9h-6L4,9.5v2l.5.5h6ZM5,11V10h5v1Zm8-6.5L12.5,4H2.5L2,4.5v2l.5.5h10l.5-.5ZM3,6V5h9V6Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,2V4H7V2ZM8,7V9H7V7Zm0,5v2H7V12Z" />
+    </g>
+  </g>
+</svg>

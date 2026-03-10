@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightStorageContainerGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-25" d="M8.5,4.5h7l-3,3h-7Z" />
+    <path class="light-defaultgrey-10" d="M12.5,7.5l3-3v7l-3,3h-7v-7Z" />
+    <path class="light-defaultgrey" d="M10,10H7V9h3ZM9,11H7v1H9Z" />
+    <path class="light-defaultgrey" d="M15.5,4h-7l-.354.146-3,3L5,7.5v7l.5.5h7l.354-.146,3-3L16,11.5v-7ZM8,5.707V7H6.707ZM12,14H6V8h6Zm.293-7H9V5h5.293ZM15,11.293l-2,2V7.707l2-2Z" />
+    <path class="light-defaultgrey-10" d="M9,3l1.5-1.5V3ZM4,7.3l.3-.722L6.378,4.5H.5v7H4Z" />
+    <path class="light-defaultgrey" d="M4,9H2V8H4Zm.3-2.42L4.878,6H2V7H4.125Z" />
+    <path class="light-defaultgrey-25" d="M6.378,4.5H.5l3-3h7L9,3H8.3l-.722.3Z" />
+    <path class="light-defaultgrey" d="M4,11H1V5H5.878l1-1H4V2H9.293L8.287,3.006,8.3,3H9.707L10,2.707V3h1V1.5L10.5,1h-7l-.354.146-3,3L0,4.5v7l.5.5H4ZM3,2.707V4H1.707Z" />
+  </g>
+</svg>

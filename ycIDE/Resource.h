@@ -63,9 +63,17 @@
 #define ID_BUILD_DEBUG          160
 #define ID_BUILD_STOP           161
 #define ID_BUILD_COMPILE        162
+#define ID_BUILD_STATIC         163
+#define IDM_COMPILE             164
+#define IDM_RUN                 165
+#define ID_DEBUG_STEP           166
+#define ID_DEBUG_RUN_TO_CURSOR  167
+#define IDM_SEARCH              168
 
 // 自定义消息 - 用于线程安全的编译输出更新
 #define WM_COMPILE_OUTPUT       (WM_USER + 500)
+#define WM_PROCESS_EXITED       (WM_USER + 501)
+#define WM_RUNNING_STATE_CHANGED (WM_USER + 502)
 
 #define IDI_YCIDE			112
 #define IDI_SMALL				113

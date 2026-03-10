@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightImageCrop</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,4.5v7h-7v-7Z" />
+    <path class="light-defaultgrey" d="M15,11H12V4.707l2.854-2.853-.708-.708L11.293,4H5V1H4V4H1V5H4v6.5l.5.5H11v3h1V12h3ZM10.293,5,5,10.293V5ZM5.707,11,11,5.707V11Z" />
+  </g>
+</svg>

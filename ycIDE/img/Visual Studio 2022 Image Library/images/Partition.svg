@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPartition</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11,4.268V8.732L5.5,12.4l-4-2.667V5.268L7,1.6Z" />
+    <path class="light-defaultgrey" d="M14.777,6.185l-1.5-1h-.554L11.5,6V4.268l-.223-.416-4-2.667H6.723l-5.5,3.667L1,5.268V9.732l.223.416,4,2.667h.555L7,12v1.732l.223.416,1.5,1h.555l5.5-3.667L15,11.065V6.6ZM7,2.2l3.1,2.067L5.5,7.334,2.4,5.268Zm-5,4,3,2v3.263l-3-2Zm4,5.264V8.2l4.5-3V6.666L7.223,8.852,7,9.268V10.8Z" />
+  </g>
+</svg>

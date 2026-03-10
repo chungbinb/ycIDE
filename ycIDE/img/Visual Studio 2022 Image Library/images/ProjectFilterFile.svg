@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightProjectFilterFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M1.5,5V6H5.7l.72.3L8.7,8.58,9,9.3V13h5.5V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H1.5L1,5.5V6H14v7H9v1h5.5l.5-.5v-8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2,3V5H14V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v3l.5.5h13l.5-.5v-3ZM2,5V3H14V5Z" />
+    <path class="light-defaultgrey-10" d="M7.5,9.5v6H.5v-8h5Z" />
+    <path class="light-defaultgrey" d="M7.854,9.146l-2-2L5.5,7H.5L0,7.5v8l.5.5h7l.5-.5v-6ZM1,15V8H4.993v2H7v5Zm1-2H6v1H2Zm0-2v1H6V11ZM4,9H2v1H4Z" />
+  </g>
+</svg>

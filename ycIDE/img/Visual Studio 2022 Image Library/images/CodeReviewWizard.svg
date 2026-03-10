@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-darkblue{fill: #313c9e; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCodeReviewWizard</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-darkblue" d="M0,5a.5.5,0,0,1,.4-.49l1.313-.263a.678.678,0,0,0,.532-.532L2.51,2.4a.5.5,0,0,1,.98,0l.263,1.313a.678.678,0,0,0,.532.532L5.6,4.51a.5.5,0,0,1,0,.98l-1.313.263a.678.678,0,0,0-.532.532L3.49,7.6a.5.5,0,0,1-.98,0L2.247,6.285a.678.678,0,0,0-.532-.532L.4,5.49A.5.5,0,0,1,0,5Z" />
+    <path class="light-blue" d="M5,2a.5.5,0,0,1,.4-.49l.788-.157a.212.212,0,0,0,.163-.165L6.51.4a.5.5,0,0,1,.98,0l.157.788a.212.212,0,0,0,.165.163L8.6,1.51a.5.5,0,0,1,0,.98l-.788.157a.212.212,0,0,0-.163.165L7.49,3.6a.5.5,0,0,1-.98,0L6.353,2.81a.212.212,0,0,0-.165-.163L5.4,2.49A.5.5,0,0,1,5,2Z" />
+    <path class="light-defaultgrey" d="M8,11h4v1H8ZM9,8h3V7H9Zm1-3H7V6h3Zm1,0V6h4V5Zm2,3h2V7H13ZM9,10h5V9H9Z" />
+  </g>
+</svg>

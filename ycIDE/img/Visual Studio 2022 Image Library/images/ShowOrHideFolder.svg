@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightShowOrHideFolder</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-yellow-10" d="M9.5,2.5l-1-1h-4v4h1l1,1h5v3h3v-7Z" />
+      <path class="light-yellow" d="M14.5,2H9.71l-.86-.85L8.5,1h-4L4,1.5v4H5V4H8.48l.35-.15L9.68,3H14V9H11.5v1h3l.5-.5v-7ZM8.27,3H5V2H8.29l.49.49Z" />
+    </g>
+    <path class="light-yellow-10" d="M11.5,6.5v7H1.5v-8h4l1,1Z" />
+    <path class="light-yellow" d="M11.5,6H6.707l-.853-.854L5.5,5h-4L1,5.5v8l.5.5h10l.5-.5v-7ZM5.293,6l.488.488L5.268,7H2V6ZM11,13H2V8H5.475l.354-.146L6.682,7H11Z" />
+  </g>
+</svg>

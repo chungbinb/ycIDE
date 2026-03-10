@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0;fill:none;}</style>
+  </defs>
+  <title>IconLightPush</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="cls-1" d="M16,16H0V0H16Z" />
+    <path class="light-defaultgrey" d="M12,14v1H3V14ZM7,2.707V13H8V2.707l3.146,3.147.708-.708-4-4H7.146l-4,4,.708.708Z" />
+  </g>
+</svg>

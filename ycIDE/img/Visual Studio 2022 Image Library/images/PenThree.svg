@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPenThree</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,1V4L9,10l-.75-.75L4.5,13,3,11.5,6.75,7.75,6,7l6-6Z" />
+    <path class="light-defaultgrey" d="M9,9.29,6.71,7,12.7,1H11.3L5.65,6.65v.7l.39.4-3.39,3.4v.7l.39.4-1.89,1.9.7.7,1.9-1.89.4.39h.7l3.4-3.39.4.39h.7L15,4.7V3.3Zm-4.5,3-.79-.79L6.75,8.46l.79.79Z" />
+  </g>
+</svg>

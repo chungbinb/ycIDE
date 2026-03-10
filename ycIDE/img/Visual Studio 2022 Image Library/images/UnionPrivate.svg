@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightUnionPrivate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M9,12.5H1.5v-7h4v-3h8V7.051A2.942,2.942,0,0,0,13,7a3,3,0,0,0-2.816,2H9.5v1.586l-.5.5Z" />
+      <path class="light-defaultgrey" d="M13.5,2h-8L5,2.5V5H1.5L1,5.5v7l.5.5H9V12H2V6H5V9.5l.5.5H9v1.086l1-1V10h0a2.966,2.966,0,0,1,.184-1H10V5.5L9.5,5H6V3h7V7a2.966,2.966,0,0,1,1,.184V2.5ZM9,6V9H6V6Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+    <path class="light-blue" d="M10,5.5V10H5.5L5,9.5V5H9.5Z" />
+  </g>
+</svg>

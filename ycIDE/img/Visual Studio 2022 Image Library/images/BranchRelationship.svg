@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBranchRelationship</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M4,7H5v4H8v1H4.5L4,11.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,13.5h-6v-4h6Zm0-7H1.5v-4h13Z" />
+    <path class="light-defaultgrey" d="M8,13.5l.5.5h6l.5-.5v-4L14.5,9h-6L8,9.5ZM9,10h5v3H9Zm5.5-8H1.5L1,2.5v4l.5.5h13l.5-.5v-4ZM14,6H2V3H14Z" />
+  </g>
+</svg>

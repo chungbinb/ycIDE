@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>AutoFilter</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,3.5l-4,5v5h-3v-5L3.962,5.328,6,3.969V6H9V3.5Z" />
+    <path class="light-defaultgrey" d="M13.891,3.812,10,8.675V13.5l-.5.5h-3L6,13.5V8.676L3.544,5.606l.836-.557L6.891,8.188,7,8.5V13H9V8.5l.109-.312L12.46,4H9V3h4.5Z" />
+    <path class="light-blue-10" d="M5.5,2.5l-3,2V.5Z" />
+    <path class="light-blue" d="M0,0H1V5H0ZM7,0V5H8V0ZM2.777.084l3,2v.832l-3,2L2,4.5V.5ZM3,3.565,4.6,2.5,3,1.435Z" />
+  </g>
+</svg>

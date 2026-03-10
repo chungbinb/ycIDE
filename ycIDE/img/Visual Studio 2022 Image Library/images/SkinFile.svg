@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSkinFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.5,1.5h-8V6.381A5.494,5.494,0,0,1,9.106,14.5H13.5V4.5Z" />
+      <path class="light-defaultgrey" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5V6.605a5.484,5.484,0,0,1,1-.393V2h7V5h3v9H9.4a5.508,5.508,0,0,1-.652,1H13.5l.5-.5V4.5Z" />
+    </g>
+    <path class="light-red" d="M2.576,7.448A4.451,4.451,0,0,1,8.95,11H4.843Z" />
+    <path class="light-green" d="M0,11.5A4.472,4.472,0,0,1,1.729,7.979l2.255,3.535L1.74,15.031A4.475,4.475,0,0,1,0,11.5Z" />
+    <path class="light-blue" d="M8.95,12a4.454,4.454,0,0,1-6.361,3.56L4.861,12Z" />
+  </g>
+</svg>

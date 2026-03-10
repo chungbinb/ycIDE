@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightOverlayWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M16,14.435,15.068,16H5.932L4.908,14.281,9.47,6h2.06L16,14.115Z" />
+    <path class="light-yellow" d="M14.5,15h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M11,12H10V9h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,11.25,13.5Z" />
+  </g>
+</svg>

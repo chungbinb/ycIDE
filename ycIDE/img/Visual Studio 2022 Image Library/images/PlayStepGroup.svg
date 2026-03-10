@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPlayStepGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M16,1.518,15.994,10.5l-.547.5H14v-.982h1V2H12V4.5l-.484.5H8V7.5L7.5,8H4v2.018H5.011V11H3.444L3,10.5v-3L3.5,7H7.011V4.5l.481-.481,3.508,0v-2.5l.516-.5H15.5Z" />
+      <path class="light-defaultgrey-10" d="M15,2.019V10H13V7H10.016V9.173l-1.1.806H6.011V10H4V8H6.834l1.177-.865V5h2.908l1.1-.806V2.019Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2,14.981v-2H4.834l1.177-.864V9.979H8.919l1.1-.806V7H13v7.981Z" />
+    <path class="light-defaultgrey" d="M14,6.518l-.5-.5H9.516l-.5.5V9h-3.5L5,9.5V12H1.5l-.5.5v3l.444.5h12l.547-.5ZM13,15H2V13H5.5l.5-.5V10H9.516L10,9.5V7h3Z" />
+  </g>
+</svg>

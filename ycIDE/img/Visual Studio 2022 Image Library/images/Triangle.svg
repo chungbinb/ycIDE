@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTriangle</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.125,13.5,8,2.5l5.875,11Z" />
+    <path class="light-defaultgrey" d="M13.875,14H2.125l-.441-.735,5.875-11h.882l5.875,11ZM2.959,13H13.041L8,3.562Z" />
+  </g>
+</svg>

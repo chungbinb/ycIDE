@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>Overriding</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M10,12H1V3h9Z" />
+    <path class="light-defaultgrey" d="M15.146,5.854,14,4.707V12H13V4.707L11.854,5.854l-.708-.708,2-2h.708l2,2Z" />
+    <path class="white" d="M5.5,4A3.5,3.5,0,1,0,9,7.5,3.5,3.5,0,0,0,5.5,4Zm0,6A2.5,2.5,0,1,1,8,7.5,2.5,2.5,0,0,1,5.5,10Z" />
+  </g>
+</svg>

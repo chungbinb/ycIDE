@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>CheckBoxDisabled</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v13H1.5V1.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12.17,7.46l-.71.71L14,10.71V9.29ZM5.29,2,9.34,6.05l.71-.71L6.71,2Zm4.88,7.46-.71.71L13.29,14H14v-.71ZM2,2v.71L7.34,8.05l.71-.71L2.71,2Zm6.17,9.46-.71.71L9.29,14h1.42ZM2,6.71l.69.69.71-.71L2,5.29Zm11.46-.54.54.54V5.62ZM9.29,2l2.05,2.05.71-.71L10.71,2ZM2,9.29v1.42L5.29,14H6.71Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v13l.5.5h13l.5-.5V1.5ZM14,14H2V2H14Z" />
+    <path class="light-defaultgrey" d="M12.854,5.354l-6,6H6.146l-3-3,.708-.708L6.5,10.293l5.646-5.647Z" />
+  </g>
+</svg>

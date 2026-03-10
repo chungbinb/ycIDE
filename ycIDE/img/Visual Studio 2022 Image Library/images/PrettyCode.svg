@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPrettyCode</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M4.161,1.986V2.86q-1.084.029-1.086,1.352v2q0,1.433-1.023,1.761V8q1.023.308,1.023,1.747V11.72A1.846,1.846,0,0,0,3.318,12.8a1.02,1.02,0,0,0,.843.338V14a1.877,1.877,0,0,1-2.1-2.116V9.836Q2.065,8.458,1,8.389V7.6q1.065-.068,1.065-1.474V4.13A1.889,1.889,0,0,1,4.161,1.986Z" />
+    <path class="light-defaultgrey" d="M15,7.6v.792q-1.065.069-1.065,1.447v2.048A1.877,1.877,0,0,1,11.839,14v-.86a1.02,1.02,0,0,0,.843-.338,1.846,1.846,0,0,0,.243-1.082V9.747q0-1.44,1.023-1.747V7.973q-1.023-.329-1.023-1.761v-2q0-1.324-1.086-1.352V1.986a1.889,1.889,0,0,1,2.1,2.144V6.123Q13.935,7.528,15,7.6Z" />
+    <path class="light-yellow" d="M4,10h8v1H4ZM4,4V5h8V4ZM6,8h6V7H6Z" />
+  </g>
+</svg>

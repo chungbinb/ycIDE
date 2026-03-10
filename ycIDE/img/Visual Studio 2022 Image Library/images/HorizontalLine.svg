@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>HorizontalLine</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2.526,4.752H4.454L4.895,6h.892L3.965,1.1H3.049L1.213,6H2.1Zm.885-2.617a1.97,1.97,0,0,0,.068-.309h.014a2.492,2.492,0,0,0,.065.309l.68,1.955h-1.5ZM15,2V3H7V2ZM14,5H7V4h7ZM3.049,10.1,1.213,15H2.1l.424-1.248H4.454L4.895,15h.892L3.965,10.1ZM2.738,13.09l.673-1.955a1.97,1.97,0,0,0,.068-.309h.014a2.492,2.492,0,0,0,.065.309l.68,1.955ZM7,11h8v1H7Zm0,2h7v1H7ZM1,7H15V9H1Z" />
+  </g>
+</svg>

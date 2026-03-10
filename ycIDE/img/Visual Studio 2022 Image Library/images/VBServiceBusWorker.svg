@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightVBServiceBusWorker</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M5,4V5H1V4Z" />
+    <path class="light-defaultgrey" d="M3,6H5V7H3Z" />
+    <path class="light-defaultgrey" d="M15,4.5v8l-.5.5H11V12h3V5H11.993V3H7V8H6V2.5L6.5,2h6l.354.146,2,2Z" />
+    <path class="light-defaultgrey-10" d="M14.5,4.5v8H12V13H11V8H6.5V2.5h6Z" />
+    <path class="light-blue-10" d="M5.5,13.5h-2v-2h2Zm4-2h-2v2h2Z" />
+    <path class="light-blue" d="M0,9H10v1H0Zm0,7H10V15H0Z" />
+    <path class="light-blue" d="M5.5,14h-2L3,13.583V11.917l.5-.417h2l.5.417v1.666ZM4,13.167H5v-.834H4Z" />
+    <path class="light-blue" d="M9.5,14h-2L7,13.5v-2l.5-.5h2l.5.5v2ZM8,13H9V12H8Z" />
+  </g>
+</svg>

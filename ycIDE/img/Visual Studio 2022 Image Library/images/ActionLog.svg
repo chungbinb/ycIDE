@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightActionLog</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2.011,9H3V1H2.011Z" />
+      <path class="light-defaultgrey" d="M10.007,6V1H11V6Z" />
+    </g>
+    <path class="light-blue-10" d="M8.75,5.05,4.516,7.926V2.174Z" />
+    <path class="light-blue" d="M4.781,1.75l-.766.424V7.926l.766.424L9.015,5.474V4.626Zm.236,5.273V3.077L7.8,5.05Z" />
+    <path class="light-defaultgrey-10" d="M15.3,15.5h-6v-8h6Z" />
+    <path class="light-defaultgrey" d="M13.974,10H11V9h2.974ZM16,7.5v8l-.5.5H9.25l-.5-.5V15H8V14h.75V13H8V12h.75V11H8V10h.75V9H8V8h.75V7.5l.5-.5H15.5ZM15,8H9.75v7H15Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRecordingNotStarted</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-red-10" d="M9.577,14.3a6.53,6.53,0,1,1,4.736-4.736L13,10.879,10.854,8.732,8.732,10.854,10.879,13Z" />
+      <path class="light-red" d="M8.949,14.93A7,7,0,1,1,15.011,8a6.929,6.929,0,0,1-.071.939l-1.408,1.408a6,6,0,1,0-3.174,3.174Z" />
+    </g>
+    <path class="light-red" d="M9.565,11.686a4,4,0,1,1,2.124-2.118l-.835-.836L8.732,10.854Z" />
+    <path class="light-defaultgrey" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+  </g>
+</svg>

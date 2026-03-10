@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple{fill: #6936aa; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAvatarXOn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple" d="M11,1H5A4,4,0,0,0,1,5v6a4,4,0,0,0,4,4h6a4,4,0,0,0,4-4V5A4,4,0,0,0,11,1Zm-.25,8.735L9.735,10.75,8,9.015,6.265,10.75,5.25,9.735,6.985,8,5.25,6.265,6.265,5.25,8,6.985,9.735,5.25,10.75,6.265,9.015,8Z" />
+  </g>
+</svg>

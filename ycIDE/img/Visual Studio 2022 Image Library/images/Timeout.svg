@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTimeout</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,8a6.476,6.476,0,0,1-8.081,6.3L5.121,13l2.147-2.146L5.146,8.732,3,10.879l-1.3-1.3A6.5,6.5,0,1,1,14.5,8Z" />
+    <path class="light-defaultgrey" d="M11,8V9H7.5L7,8.5V4H8V8Z" />
+    <path class="light-defaultgrey" d="M15,8a7.008,7.008,0,0,1-7,7,7.107,7.107,0,0,1-.951-.072L5.632,13.511a6.006,6.006,0,1,0-3.143-3.143L1.072,8.951A7.107,7.107,0,0,1,1,8,7,7,0,0,1,15,8Z" />
+    <path class="light-red" d="M.146,10.854l.708-.708L3,12.293l2.146-2.147.708.708L3.707,13l2.147,2.146-.708.708L3,13.707.854,15.854l-.708-.708L2.293,13Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightXMLSchemaError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8.023,9H4v2H3V8.5L3.5,8H7V6H8V8H9.027A4.981,4.981,0,0,0,8.023,9Z" />
+    </g>
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <path class="light-defaultgrey" d="M5.5,11h-4l-.5.5v3l.5.5h4l.5-.5v-3ZM5,14H2V12H5Z" />
+    <path class="light-defaultgrey-10" d="M1.5,11.5h4v3h-4Z" />
+    <path class="light-defaultgrey" d="M3.212,3.5,5.028,5.32l-.707.707L2.152,3.854V3.148L4.32.969l.709.705ZM10.661.97l-.7.709L11.787,3.5,9.956,5.322l.705.709,2.188-2.173V3.149Z" />
+  </g>
+</svg>

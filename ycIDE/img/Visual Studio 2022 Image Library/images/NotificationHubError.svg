@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNotificationHubError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,2.5v9h3v2.98L7,12a3.94,3.94,0,0,1,.07-.77A4.875,4.875,0,0,1,8,9,5.262,5.262,0,0,1,9,8a4.16,4.16,0,0,1,.81-.49,4.512,4.512,0,0,1,1.03-.37A4.913,4.913,0,0,1,12,7a5.106,5.106,0,0,1,2,.41c.17.08.34.17.5.26V2.5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v9l.5.5H4v2.48l.85.36,2.2-2.18A3.6,3.6,0,0,1,7,12a3.94,3.94,0,0,1,.07-.77L5,13.28V11.5L4.5,11H2V3H14V7.41c.17.08.34.17.5.26A4.322,4.322,0,0,1,15,8V2.5Z" />
+    <path class="light-blue" d="M11,5V6H5.707l.647.646-.708.708-1.5-1.5V5.146l1.5-1.5.708.708L5.707,5ZM5,9H8A5.262,5.262,0,0,1,9,8H5ZM9.65,7.35l.16.16a4.512,4.512,0,0,1,1.03-.37l-.49-.49Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

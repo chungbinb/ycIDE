@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCompletionMode</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M5.854,3.146v.708l-2,2-.708-.708L4.293,4H2v8H5v1H1.5L1,12.5v-9L1.5,3H4.293L3.146,1.854l.708-.708Z" />
+    <path class="light-defaultgrey-10" d="M15,1.5V15H7.5V1.5Z" />
+    <path class="light-defaultgrey" d="M13,4H9V3h4Z" />
+    <path class="light-defaultgrey" d="M8,2V5h7V6H8v9H7V1.5L7.5,1H15V2Z" />
+    <path class="light-defaultgrey" d="M15,8H11V7h4Zm0,2H11V9h4Zm0,2H11V11h4Zm0,2H11V13h4Z" />
+  </g>
+</svg>

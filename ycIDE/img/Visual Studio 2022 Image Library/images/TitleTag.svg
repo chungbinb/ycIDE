@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightTitleTag</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.5,1.5h-8v8.87l.57-.57,1.81,1.8A2.485,2.485,0,0,1,6.5,11a2.532,2.532,0,0,1,1.63.6L9.91,9.8l2.94,2.93v1.54l-.23.23h.88V4.5Z" />
+      <path class="light-defaultgrey" d="M5,7h6V8H5Zm8.85-2.85-3-3L10.5,1h-8L2,1.5v9.38l.5-.51.5-.5V2h7V5h3v9h-.15v.27l-.73.73H13.5l.5-.5V4.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M5.5,13.5a1,1,0,1,1,1,1A1,1,0,0,1,5.5,13.5Z" />
+    <path class="light-defaultgrey" d="M6.5,14a.5.5,0,1,1,.5-.5A.5.5,0,0,1,6.5,14Zm-4.288-.5,1.566,1.57-.707.707L1.156,13.854v-.706l1.918-1.929.709.705Zm9.637-.351v.709L9.914,15.781l-.7-.709L10.79,13.5,9.209,11.929l.705-.709ZM6.5,12A1.5,1.5,0,1,0,8,13.5,1.5,1.5,0,0,0,6.5,12Z" />
+  </g>
+</svg>

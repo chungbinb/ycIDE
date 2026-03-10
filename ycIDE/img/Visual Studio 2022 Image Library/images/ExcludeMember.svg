@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExcludeMember</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,5A4.5,4.5,0,1,1,5,.5,4.5,4.5,0,0,1,9.5,5Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M14,12.5H10v-1h4Z" />
+    <path class="light-defaultgrey" d="M8.854,8.146A4.951,4.951,0,0,0,10,5a5,5,0,1,0-5,5A4.951,4.951,0,0,0,8.146,8.854,5.04,5.04,0,0,1,8.854,8.146ZM1,5A4,4,0,1,1,5,9,4,4,0,0,1,1,5Z" />
+    <path class="light-defaultgrey-10" d="M5.5,3.5a1,1,0,1,1-1-1A1,1,0,0,1,5.5,3.5Z" />
+    <path class="light-defaultgrey" d="M4.5,5A1.5,1.5,0,1,1,6,3.5,1.5,1.5,0,0,1,4.5,5Zm0-2a.5.5,0,1,0,.5.5A.5.5,0,0,0,4.5,3Z" />
+  </g>
+</svg>

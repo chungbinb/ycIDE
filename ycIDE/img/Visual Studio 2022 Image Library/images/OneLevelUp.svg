@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightOneLevelUp</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M8.5,3.5l-1-1h-6V9.38l.5-.5L3.73,7.15H5.27l3.5,3.5L6.92,12.5H14.5v-9ZM6,12.12v.38h.38Z" />
+    <path class="light-yellow" d="M14.5,3H8.71l-.86-.85L7.5,2h-6L1,2.5V9.88l1-1V5H7.48l.35-.15L8.68,4H14v8H7.42l-1,1H14.5l.5-.5v-9ZM7.27,4H2V3H7.29l.49.49Z" />
+    <path class="light-blue" d="M6.646,11.353,5,9.707V15H4V9.707L2.354,11.353l-.708-.707,2.5-2.5h.708l2.5,2.5Z" />
+  </g>
+</svg>

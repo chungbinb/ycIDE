@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ZoomControlLock</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M4.5,1.5a3,3,0,0,1,.15,5.99A3.042,3.042,0,0,0,3,7a.757.757,0,0,0-.15.01A3,3,0,0,1,4.5,1.5Z" />
+      <path class="light-defaultgrey-10" d="M8.5,1.5v.94A4.478,4.478,0,0,1,9,4.5V6.88l3,3,.27.27-2.12,2.12L9,11.12l-.5-.5V14.5h6V1.5Z" />
+      <path class="light-defaultgrey" d="M14.5,1h-6L8,1.5v.18a4.339,4.339,0,0,1,.5.76A4.478,4.478,0,0,1,9,4.5V2h5V14H9V11.12l-1-1V14.5l.5.5h6l.5-.5V1.5Z" />
+      <path class="light-defaultgrey" d="M12,6V3H11V6H10V7h1V8.88l1,1V7h1V6Zm-1,7h1V10.42l-1,1Z" />
+      <path class="light-defaultgrey" d="M7.3,6.59A3.458,3.458,0,0,0,8,4.5,3.5,3.5,0,1,0,2.19,7.12a2.4,2.4,0,0,1,.66-.11A.757.757,0,0,1,3,7a3.042,3.042,0,0,1,1.65.49,3.1,3.1,0,0,1,.51.44A3.428,3.428,0,0,0,6.59,7.3l3.56,3.55.7-.7ZM4.5,7A2.5,2.5,0,1,1,7,4.5,2.5,2.5,0,0,1,4.5,7Z" />
+      <path class="light-defaultgrey" d="M6,4V5H5V6H4V5H3V4H4V3H5V4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M5.5,11.5v4H.5v-4Z" />
+    <path class="light-defaultgrey" d="M5.5,11H5V10a2,2,0,0,0-4,0v1H.5l-.5.5v4l.5.5h5l.5-.5v-4ZM2,10a1,1,0,0,1,2,0v1H2Zm3,5H1V12H5Z" />
+  </g>
+</svg>

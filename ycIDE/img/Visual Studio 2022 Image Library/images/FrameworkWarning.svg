@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightFrameworkWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow" d="M15.592,16h-8l-.44-.739,4-7.261h.879l4,7.261Z" />
+    <path class="white" d="M12.092,13h-1V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.342,14.5Z" />
+    <path class="light-defaultgrey" d="M12.622,7H11V5h2V7ZM10,8.019V6H7V9H9.46Z" />
+    <path class="light-defaultgrey-10" d="M8.358,11H6V4h8V9.5L12.622,7H13V5H11V7h-.438L10,8.019V6H7V9H9.46Z" />
+    <path class="light-defaultgrey" d="M7.807,12H6L5,11V8H4V9H1V6H4V7H5V4L6,3h8l1,1v7l-.112.112L14,9.5V4H6v7H8.358Z" />
+  </g>
+</svg>

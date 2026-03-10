@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-darkblue{fill: #313c9e; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightATLComponentWizard</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5,15V2.5A1.5,1.5,0,0,1,6.5,1h6A1.5,1.5,0,0,1,14,2.5V15Z" />
+    <path class="light-defaultgrey" d="M14,2.5v12l-.5.5h-8L5,14.5V7.4a1.4,1.4,0,0,0,.207.071l.268.053.054.27A1.493,1.493,0,0,0,6,8.6V14h7V2.5a.5.5,0,0,0-.5-.5H6.6a1.493,1.493,0,0,0-.808-.471l-.367-.073A1.493,1.493,0,0,1,6.5,1h6A1.5,1.5,0,0,1,14,2.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7.5,12h4v1h-4Zm0-1h4V10h-4Zm.89-7a1.4,1.4,0,0,1,.081.206l.054.27.268.053A1.5,1.5,0,0,1,9.6,5h1.9V4Z" />
+    </g>
+    <path class="light-blue" d="M5.4,5.51l.786-.157a.212.212,0,0,0,.165-.163L6.51,4.4a.5.5,0,0,1,.98,0l.157.786a.212.212,0,0,0,.163.165L8.6,5.51a.5.5,0,0,1,0,.98l-.786.157a.212.212,0,0,0-.165.163L7.49,7.6a.5.5,0,0,1-.98,0l-.157-.786a.212.212,0,0,0-.163-.165L5.4,6.49a.5.5,0,0,1,0-.98Z" />
+    <path class="light-darkblue" d="M.4,2.51l1.313-.263a.678.678,0,0,0,.532-.532L2.51.4a.5.5,0,0,1,.98,0l.263,1.313a.678.678,0,0,0,.532.532L5.6,2.51a.5.5,0,0,1,0,.98l-1.313.263a.678.678,0,0,0-.532.532L3.49,5.6a.5.5,0,0,1-.98,0L2.247,4.285a.678.678,0,0,0-.532-.532L.4,3.49a.5.5,0,0,1,0-.98Z" />
+  </g>
+</svg>

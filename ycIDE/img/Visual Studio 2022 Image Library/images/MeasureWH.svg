@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>MeasureWH</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15,6v8.5l-.5.5H6V6.5L6.5,6Z" />
+      <path class="light-defaultgrey" d="M6.5,6H7V7H6V6.5ZM8,7H9V6H8Zm2,0h1V6H10Zm2,0h1V6H12ZM6,9H7V8H6Zm0,2H7V10H6Zm0,2H7V12H6Zm2,2H9V14H8Zm2,0h1V14H10Zm2,0h1V14H12Zm2,0h.5l.5-.5V14H14Zm0-2h1V12H14Zm0-2h1V10H14Zm0-3V9h1V8Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7,1V5H6V1Z" />
+    <path class="light-defaultgrey" d="M5,6V7H1V6Z" />
+    <path class="light-defaultgrey" d="M15,0V7H14V0Z" />
+    <path class="light-defaultgrey" d="M7,14v1H0V14Z" />
+    <path class="light-blue" d="M4.854,11.854l-2,2H2.146l-2-2,.708-.708L2,12.293V8H3v4.293l1.146-1.147Z" />
+    <path class="light-blue" d="M13.854,2.146v.708l-2,2-.708-.708L12.293,3H8V2h4.293L11.146.854l.708-.708Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusUpdateAvailable.10.10</title>
+  <title>StatusUpdateAvailable.10.10</title>
+  <g id="canvas">
+    <path class="canvas" d="M10,10H0V0H10Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M4.5,9a4,4,0,1,1,4-4A4,4,0,0,1,4.5,9Z" />
+    <path class="white" d="M5.646,5.354,5,4.707V7H4V4.707l-.646.647-.708-.708,1.5-1.5h.708l1.5,1.5Z" />
+  </g>
+</svg>

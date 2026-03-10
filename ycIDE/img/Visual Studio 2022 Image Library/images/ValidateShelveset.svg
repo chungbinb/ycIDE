@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightValidateShelveset</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,5.5A3.488,3.488,0,0,0,7.5,3.73,3.493,3.493,0,1,0,4.5,9H6.29L1.65,13.65l.7.7L7.5,9.21l3.59,3.58.71-.7L8.71,9H10.5A3.5,3.5,0,0,0,14,5.5ZM7,8H4.5A2.5,2.5,0,1,1,7,5.5ZM8,8V5.5A2.5,2.5,0,1,1,10.5,8Z" />
+    <path class="light-green" d="M15.854,10.854l-5,5h-.708l-3-3,.708-.708L10.5,14.793l4.646-4.647Z" />
+  </g>
+</svg>

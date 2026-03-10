@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightInsertOWSListField</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,6.5v8h-8v-8Z" />
+    <path class="light-defaultgrey-10" d="M13.5,1.5v8H11V5.086L9.914,4H5.5V1.5Z" />
+    <path class="light-defaultgrey" d="M14,1.5v8l-.5.5H11V9h2V2H6V4H5V1.5L5.5,1h8Z" />
+    <path class="light-defaultgrey-10" d="M9.5,5.5v1h-8v-1Z" />
+    <path class="light-defaultgrey" d="M9.5,5h-8L1,5.5v9l.5.5h8l.5-.5v-9ZM5,8H2V7H5ZM2,11H5v1H2Zm0-1V9H5v1Zm0,4V13H5v1Zm7,0H6V13H9Zm0-2H6V11H9Zm0-2H6V9H9ZM9,8H6V7H9Z" />
+  </g>
+</svg>

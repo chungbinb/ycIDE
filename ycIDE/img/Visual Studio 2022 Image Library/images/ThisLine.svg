@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightThisLine</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13,1V2H4V1ZM5,10h8V9H5ZM3,14H13V13H3Z" />
+    </g>
+    <path class="light-blue" d="M15,5V6H7V5ZM1.9,3.6l1.9,1.9L1.9,7.4,2.6,8.1l2.25-2.25V5.146L2.6,2.9Z" />
+  </g>
+</svg>

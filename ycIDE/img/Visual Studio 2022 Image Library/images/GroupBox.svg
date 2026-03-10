@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{fill:none;}</style>
+  </defs>
+  <title>IconLightGroupBox</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="cls-1" d="M16,16H0V0H16Z" />
+    <path class="light-defaultgrey" d="M6.547,3.068,7.992,5H6.812L6,3.845,5.188,5H4.008L5.453,3.068,4,1H5L6,2.337,7,1H8ZM11,3.134V5H10V3.134L8.5,1h1l1,1.337h0L11.5,1h1Z" />
+    <path class="light-defaultgrey" d="M14,3.5v10l-.5.5H2.5L2,13.5V3.5L2.5,3H4V4H3v9H13V4H12V3h1.5Z" />
+  </g>
+</svg>

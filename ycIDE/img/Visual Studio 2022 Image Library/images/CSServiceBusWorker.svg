@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSServiceBusWorker</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v8H11V8H6.5V2.5h6Z" />
+    <path class="light-defaultgrey" d="M5,4V5H1V4ZM3,6H5V7H3ZM15,4.5v8l-.5.5H11V12h3V5H11.993V3H7V8H6V2.5L6.5,2h6l.354.146,2,2Z" />
+    <path class="light-green-10" d="M3.5,13.5h-2v-2h2Zm4-2h-2v2h2Z" />
+    <path class="light-green" d="M0,9H10v1H0Zm0,7H10V15H0Zm3.5-2h-2L1,13.5v-2l.5-.5h2l.5.5v2ZM2,13H3V12H2Zm5.5,1h-2L5,13.5v-2l.5-.5h2l.5.5v2ZM6,13H7V12H6Z" />
+  </g>
+</svg>

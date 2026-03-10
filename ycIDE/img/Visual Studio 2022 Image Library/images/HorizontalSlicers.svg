@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>HorizontalSlicers</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14.5,5.5v9H2.5v-9Z" />
+    </g>
+    <path class="light-blue" d="M14.854,2.146v.708l-1.5,1.5-.708-.708L13.293,3H3.707l.647.646-.708.708-1.5-1.5V2.146l1.5-1.5.708.708L3.707,2h9.586l-.647-.646.708-.708Z" />
+    <path class="light-defaultgrey" d="M14.5,15H2.5L2,14.5v-9L2.5,5h12l.5.5v9ZM3,14H14V6H3Z" />
+    <path class="white" d="M7,7H8V8H7Zm0,4H8V10H7Zm0,3H8V13H7ZM4,14H5V13H4ZM4,8H5V7H4Zm0,3H5V10H4Zm8,3h1V13h1V12H12Zm0-3h1V10h1V9H12Zm0-5V8h1V7h1V6ZM9,8h1V7h1V6H9Zm0,6h1V13h1V12H9Zm0-3h1V10h1V9H9Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDynamicPhone</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5.5v14H8.621l.233-.232V12.732l-3-3L4,11.586l-.5-.5V.5Z" />
+    <path class="light-defaultgrey" d="M13,.5v14l-.5.5H8.121l.733-.732V14H12V1H10v.5L9.5,2h-3L6,1.5V1H4V11.586l-1-1V.5L3.5,0h9Z" />
+    <path class="light-blue" d="M7.854,13.146v.708l-2,2-.708-.708L6.293,14H1.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L1.707,13H6.293L5.146,11.854l.708-.708Z" />
+  </g>
+</svg>

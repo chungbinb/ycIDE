@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightModifyQueryUpdate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M13.25,13A1.25,1.25,0,1,1,12,11.75,1.25,1.25,0,0,1,13.25,13ZM13,2v8H11V2Z" />
+    <path class="light-defaultgrey" d="M4,12H6v2H4Zm.785-2.692L4,9.735V11H6V9H5.1ZM7,7.105V8H9V6H8.111ZM7,14H9V12H7Zm0-3H9V9H7Z" />
+    <path class="light-blue-10" d="M9.192,2.808,3.635,8.365,2.153,6.847,7.692,1.308a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,9.192,2.808Z" />
+    <path class="light-blue" d="M9.543.957a1.562,1.562,0,0,0-2.2,0l-5.25,5.25L.511,9.453l.675.674,3-1.629L9.546,3.162A1.562,1.562,0,0,0,9.543.957Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

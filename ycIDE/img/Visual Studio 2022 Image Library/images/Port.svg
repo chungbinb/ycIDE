@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>Port</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,9.5h-3v3H1.5v-9h10v3h3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H12V3.5L11.5,3H1.5L1,3.5v9l.5.5h10l.5-.5V10h2.5l.5-.5v-3ZM11,12H2V4h9V6H9.5L9,6.5v3l.5.5H11Zm3-3H10V7h4Z" />
+  </g>
+</svg>

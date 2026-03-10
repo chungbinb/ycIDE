@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSpinner</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,9.5v6h-7v-6Z" />
+    <path class="light-defaultgrey-10" d="M3.5,7.5v-6h7v6Z" />
+    <path class="light-defaultgrey" d="M3,7.5v-6L3.5,1h7l.5.5v6l-.5.5h-7ZM4,2V7h6V2Z" />
+    <path class="light-defaultgrey" d="M6.989,3,9,6H5Z" />
+    <path class="light-defaultgrey" d="M11,9.5v6l-.5.5h-7L3,15.5v-6L3.5,9h7ZM10,15V10H4v5Z" />
+    <path class="light-defaultgrey" d="M7.011,14,5,11H9Z" />
+  </g>
+</svg>

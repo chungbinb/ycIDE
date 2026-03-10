@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRectangularScreenshot</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,1.5v10l-.5.5H13V8.086L11.914,7H9.121l-.7-.7L7.7,6H4.3l-.721.3-.7.7H2V1.5L2.5,1h12Z" />
+    <path class="light-defaultgrey-10" d="M11.5,15.5H.5v-7H3.744l.756-1h3l1,1h3Z" />
+    <path class="light-teal" d="M3,11H2V10H3Z" />
+    <path class="light-teal-10" d="M8,12a2,2,0,1,1-2-2A2,2,0,0,1,8,12Z" />
+    <path class="light-teal" d="M6,14.5A2.5,2.5,0,1,1,8.5,12,2.5,2.5,0,0,1,6,14.5Zm0-4A1.5,1.5,0,1,0,7.5,12,1.5,1.5,0,0,0,6,10.5Z" />
+    <path class="light-defaultgrey" d="M11.5,16H.5L0,15.5v-7L.5,8H3.293l.853-.854L4.5,7h3l.354.146L8.707,8H11.5l.5.5v7ZM1,15H11V9H8.5l-.354-.146L7.293,8H4.707l-.853.854L3.5,9H1Z" />
+    <path class="light-defaultgrey" d="M12,2V1h1V2ZM11,2V1H10V2ZM9,2V1H8V2ZM7,2V1H6V2ZM5,2V1H4V2Zm9,9v1h.5l.5-.5V11Zm1-8H14V4h1Zm0,2H14V6h1Zm0,2H14V8h1Zm0,2H14v1h1ZM3,3H2V4H3ZM3,5H2V6H3ZM14,2h1V1.5L14.5,1H14ZM3,2V1H2.5L2,1.5V2Z" />
+  </g>
+</svg>

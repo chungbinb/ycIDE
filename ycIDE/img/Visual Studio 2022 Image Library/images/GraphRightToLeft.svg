@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}.cls-2{opacity:0.1;}</style>
+  </defs>
+  <title>IconLightGraphRightToLeft</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.474,9.5v-4h4v4Z" />
+    <path class="light-defaultgrey" d="M14.474,10h-4l-.5-.5v-4l.5-.5h4l.5.5v4Zm-3.5-4V9h3V6Z" />
+    <path class="light-defaultgrey-10" d="M1.474,13.5V1.587h4V13.5Z" />
+    <path class="light-defaultgrey" d="M1.474,14h4l.5-.5V1.5l-.5-.5h-4l-.5.5v12Zm3.5-12V5h-3V2Zm0,4V9h-3V6Zm-3,7V10h3v3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5.974,11.783V10.617l4-2.4V9.383Z" />
+      <path class="light-defaultgrey" d="M5.974,8V7h4V8Z" />
+      <path class="light-defaultgrey" d="M9.974,5.617V6.783l-4-2.4V3.217Z" />
+    </g>
+    <g class="cls-2">
+      <path class="light-defaultgrey" d="M.5,4l.5.5H.5Z" />
+      <path class="light-defaultgrey" d="M.5,5,0,4.5V4H.5l.5.5V5Z" />
+    </g>
+  </g>
+</svg>

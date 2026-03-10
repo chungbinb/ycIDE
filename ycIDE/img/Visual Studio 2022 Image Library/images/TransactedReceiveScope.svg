@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightTransactedReceiveScope</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,10h1v4.5l-.5.5H10V14h4Zm.5-8H10V3h4V7h1V2.5ZM4,14V12.417l-1-1V14.5l.5.5H8V14ZM3.5,2,3,2.5V5.59l1-1V3H8V2Z" />
+    <path class="light-blue" d="M3.647,10.65,5.293,9H0V8H5.293L3.647,6.357l.707-.707,2.5,2.5v.707l-2.5,2.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M12.5,4.5v8h-7v-.875L7.854,9.271V7.736L5.5,5.382V4.5Z" />
+      <path class="light-defaultgrey" d="M13,4.5v8l-.5.5h-7L5,12.5v-.375l1-1V12h6V5H6v.882l-1-1V4.5L5.5,4h7Z" />
+    </g>
+  </g>
+</svg>

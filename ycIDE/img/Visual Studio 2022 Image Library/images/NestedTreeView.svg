@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>NestedTreeView</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M3,6H5.5V7h-3L2,6.5v-3H3Zm5,6V8.5H7v4l.5.5H10V12Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,10.5v4h-4v-4Zm-9-2h3v-3h-3Zm-4-5h2v-2h-2Z" />
+    <path class="light-defaultgrey" d="M14.5,10h-4l-.5.5v4l.5.5h4l.5-.5v-4ZM14,14H11V11h3ZM5.5,5,5,5.5v3l.5.5h3L9,8.5v-3L8.5,5ZM8,8H6V6H8ZM1.5,1,1,1.5v2l.5.5h2L4,3.5v-2L3.5,1ZM3,3H2V2H3Z" />
+  </g>
+</svg>

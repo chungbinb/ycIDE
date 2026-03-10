@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAlignBottom</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,12.5h-2V1.5h2Zm5,0h-2v-7h2Z" />
+    <path class="light-defaultgrey" d="M6.5,13h-2L4,12.5V1.5L4.5,1h2l.5.5v11ZM5,12H6V2H5Zm6.5,1h-2L9,12.5v-7L9.5,5h2l.5.5v7ZM10,12h1V6H10Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,14H14v1H2Z" />
+    </g>
+  </g>
+</svg>

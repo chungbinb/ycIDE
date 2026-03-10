@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>SourceControlOrphaned</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green-10" d="M11.5,5.5v4h-3v-1h-3v-4h3v1Z" />
+    <path class="light-green" d="M11.5,5H9V4.5L8.5,4h-3L5,4.5V13H6V9H8v.5l.5.5h3l.5-.5v-4ZM8,8H6V5H8Zm3,1H9V6h2Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHexagon</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.548,8,11.8,14.5H4.29L.537,8,4.29,1.5H11.8Z" />
+    <path class="light-defaultgrey" d="M11.8,15H4.29l-.433-.25L.1,8.25v-.5l3.753-6.5L4.29,1H11.8l.433.25,3.753,6.5v.5l-3.753,6.5ZM4.579,14h6.927l3.465-6L11.506,2H4.579L1.114,8Z" />
+  </g>
+</svg>

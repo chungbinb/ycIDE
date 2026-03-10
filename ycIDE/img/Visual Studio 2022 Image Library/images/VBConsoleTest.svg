@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVBConsoleTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M10,9v1h2V9Zm0-.646L8.409,9.945,7.7,9.237,8.939,8,7.7,6.763l.707-.708L10,7.646Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2.5V12l-7.933-.022L6,11.07V10H7V7H4.5V2.5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H4.5L4,2.5V7H5V5h9v6H6v.356L6.4,12h8.1l.5-.5v-9ZM5,4V3h9V4Z" />
+    <g class="cls-1">
+      <path class="light-blue-10" d="M1.563,13,2.5,11.5v-3h2v3L5.438,13Z" />
+      <path class="light-blue" d="M2,9H1V8H6V9H5v2.356l1.174,1.879L5.75,13h-.9l-.772-1.235L4,11.5V9H3v2.5l-.076.265L2.152,13h-.9l-.424.235L2,11.356Z" />
+    </g>
+    <path class="light-blue-10" d="M6.522,14.735A.5.5,0,0,1,6.1,15.5H.9a.5.5,0,0,1-.424-.765L1.25,13.5h4.5Z" />
+    <path class="light-blue" d="M6.1,16H.9a1,1,0,0,1-.848-1.53l.772-1.235L1.25,13h4.5l.424.235.772,1.235A1,1,0,0,1,6.1,16ZM1.527,14,.9,15H6.1l-.625-1Z" />
+  </g>
+</svg>

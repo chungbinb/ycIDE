@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPendingMerge</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,12A3.5,3.5,0,1,1,4,8.5,3.5,3.5,0,0,1,7.5,12Z" />
+    <path class="light-defaultgrey" d="M4,16a4,4,0,1,1,4-4A4,4,0,0,1,4,16ZM4,9a3,3,0,1,0,3,3A3,3,0,0,0,4,9Zm1.5,4H4l-.5-.5V10h1v2h1Z" />
+    <path class="light-green" d="M13,10V8.707l-2-2V10H10V2.707L8.909,3.8,8.2,3.091l1.944-1.945h.707L12.8,3.091l-.707.707L11,2.707V5.293l2.853,2.853L14,8.5V10Z" />
+  </g>
+</svg>

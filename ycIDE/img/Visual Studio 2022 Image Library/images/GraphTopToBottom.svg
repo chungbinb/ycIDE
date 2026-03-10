@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGraphTopToBottom</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,1.5h4v4h-4Z" />
+    <path class="light-defaultgrey" d="M5.5,1h4l.5.5v4L9.5,6h-4L5,5.5v-4ZM9,2H6V5H9Z" />
+    <path class="light-defaultgrey-10" d="M1.5,10.5H13.413v4H1.5Z" />
+    <path class="light-defaultgrey" d="M1.5,15h12l.5-.5v-4l-.5-.5H1.5l-.5.5v4ZM13,14H10V11h3ZM9,14H6V11H9ZM2,11H5v3H2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5.617,6H6.783l-2.4,4H3.217Z" />
+      <path class="light-defaultgrey" d="M7,6H8v4H7Z" />
+      <path class="light-defaultgrey" d="M11.783,10H10.617l-2.4-4H9.383Z" />
+    </g>
+  </g>
+</svg>

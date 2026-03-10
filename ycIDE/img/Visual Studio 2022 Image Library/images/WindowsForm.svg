@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWindowsForm</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8.5H1.5V5Z" />
+      <path class="light-defaultgrey" d="M15,4.5v9l-.5.5H1.5L1,13.5v-9l.5.5H2v8H14V5h.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,1.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v3l.5.5h13l.5-.5v-3ZM14,4H2V2H14Z" />
+    <path class="light-purple-10" d="M12.5,6.5v3h-3v-3Zm-5,2v3h-4v-3Z" />
+    <path class="light-purple" d="M12.5,10h-3L9,9.5v-3L9.5,6h3l.5.5v3ZM10,9h2V7H10ZM7.5,8h-4L3,8.5v3l.5.5h4l.5-.5v-3ZM7,11H4V9H7Z" />
+  </g>
+</svg>

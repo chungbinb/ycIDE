@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDependencyMatrix</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M0,6H14V8H0ZM0,9H14v2H0Zm0,3H14v2H0Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,0H8V5H6ZM9,0h2V5H9Zm3,0h2V5H12Z" />
+    </g>
+    <path class="light-defaultgrey-25" d="M0,6H5V8H0ZM0,9H5v2H0Zm0,3H5v2H0Z" />
+    <path class="light-defaultgrey" d="M8,7A1,1,0,1,1,7,6,1,1,0,0,1,8,7Z" />
+    <path class="light-defaultgrey" d="M11,7a1,1,0,1,1-1-1A1,1,0,0,1,11,7Z" />
+    <path class="light-defaultgrey" d="M8,10A1,1,0,1,1,7,9,1,1,0,0,1,8,10Z" />
+    <path class="light-defaultgrey" d="M11,13a1,1,0,1,1-1-1A1,1,0,0,1,11,13Z" />
+    <path class="light-defaultgrey" d="M14,10a1,1,0,1,1-1-1A1,1,0,0,1,14,10Z" />
+  </g>
+</svg>

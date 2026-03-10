@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>CompareTargetDatabase</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,16V0H16V16Zm0,0H16V0H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M14.5,4.97V13c0,.829-1.791,1.5-4,1.5s-4-.671-4-1.5V5H8V3.808a8.788,8.788,0,0,1,2.5-.338C12.709,3.47,14.5,4.142,14.5,4.97Z" />
+    <path class="light-lightblue" d="M8,3.305V4.33a7.876,7.876,0,0,1,2.5-.36c2.273,0,3.5.71,3.5,1s-1.227,1-3.5,1c-2.206,0-3.416-.665-3.487-.97H6v8c0,1.314,2.264,2,4.5,2s4.5-.686,4.5-2V4.97C15,3.143,10.651,2.59,8,3.305ZM10.5,14C8.227,14,7,13.29,7,13V6.261a7.863,7.863,0,0,0,3.5.709A7.863,7.863,0,0,0,14,6.261V13C14,13.29,12.773,14,10.5,14Z" />
+    <path class="light-blue" d="M2.646,6.354l-2.5-2.5V3.146l2.5-2.5.707.708L1.707,3H7V4H1.707L3.353,5.646Z" />
+  </g>
+</svg>

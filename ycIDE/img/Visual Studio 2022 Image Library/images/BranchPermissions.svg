@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBranchPermissions</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,11.5v4H.5v-4Z" />
+    <path class="light-defaultgrey" d="M5.5,11H5V10a2,2,0,0,0-4,0v1H.5l-.5.5v4l.5.5h5l.5-.5v-4ZM2,10a1,1,0,0,1,2,0v1H2Zm3,5H1V12H5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5,7.78V7H6v3A2.985,2.985,0,0,0,5,7.78Z" />
+      <path class="light-defaultgrey" d="M9,11v1H7v-.914L6.914,11Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15.5,13.5h-6v-4h6Zm0-7H2.5v-4h13Z" />
+    <path class="light-defaultgrey" d="M9,13.5l.5.5h6l.5-.5v-4L15.5,9h-6L9,9.5ZM10,10h5v3H10Zm5.5-8H2.5L2,2.5v4l.5.5h13l.5-.5v-4ZM15,6H3V3H15Z" />
+  </g>
+</svg>

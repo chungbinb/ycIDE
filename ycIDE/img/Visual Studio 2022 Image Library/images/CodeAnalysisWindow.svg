@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCodeAnalysisWindow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M12.213,16H10.787l-.353-.146L7.646,13.066,7.5,12.713V11.287l.146-.353,2.788-2.788L10.787,8h1.426l.353.146,2.788,2.788.146.353v1.426l-.146.353-2.788,2.788Z" />
+    <path class="white" d="M12,12H11V9h1Zm-.5.75a.75.75,0,1,0,.75.75A.75.75,0,0,0,11.5,12.75Z" />
+    <path class="light-defaultgrey" d="M9,5V6H4V5Zm5,0H10V6h4ZM4,8V9H8.166l1-1ZM7,2H2V3H7Zm-.5,9.088L6.537,11H2v1H6.5ZM14,2H8V3h6Z" />
+  </g>
+</svg>

@@ -33,6 +33,7 @@ struct CompileMessage {
 // 编译选项
 struct CompileOptions {
     bool debug;                     // 是否调试模式
+    bool staticLink;                // 静态编译（所有依赖编入单个exe）
     bool optimizeSize;              // 优化大小
     bool optimizeSpeed;             // 优化速度
     std::wstring outputPath;        // 输出路径
@@ -40,7 +41,7 @@ struct CompileOptions {
     std::vector<std::wstring> includePaths;  // 包含路径
     std::vector<std::wstring> libraryPaths;  // 库路径
     
-    CompileOptions() : debug(true), optimizeSize(false), optimizeSpeed(false) {}
+    CompileOptions() : debug(true), staticLink(false), optimizeSize(false), optimizeSpeed(false) {}
 };
 
 // 编译结果
@@ -124,9 +125,9 @@ private:
     
     // 生成支持库桥接代码，返回生成的桥接文件路径列表和需要复制的动态库路径
     bool GenerateLibraryBridgeCode(const std::wstring& tempDir, std::vector<std::wstring>& bridgeFiles,
-                                    std::vector<std::wstring>& dynamicFneFiles);
+                                    std::vector<std::wstring>& dynamicFneFiles, bool staticLink = false, bool debug = false);
     
-    // 查找支持库静态库文件（.a）
+    // 查找支持库静态库文件（.lib）
     std::wstring FindStaticLibrary(const std::wstring& libFileName);
     
     // 将项目中所有 .eyc 源文件转换为C代码，返回生成的C文件路径列表
@@ -143,8 +144,17 @@ private:
     // 查找Clang编译器路径 (返回空表示未找到)
     std::wstring FindClangCompiler();
     
-    // 查找 MinGW 头文件/库路径（附带在程序目录中）
-    std::wstring FindMinGWRoot();
+    // 查找 MSVC SDK 路径（附带在程序目录中）
+    struct MSVCSDKPaths {
+        std::wstring msvcInclude;   // MSVC C++ 标准库头文件
+        std::wstring msvcLib;       // MSVC 运行时库 (libcmt.lib 等)
+        std::wstring ucrtInclude;   // Universal CRT 头文件
+        std::wstring ucrtLib;       // UCRT 库
+        std::wstring umInclude;     // Win32 API 头文件 (windows.h)
+        std::wstring sharedInclude; // 共享头文件
+        std::wstring umLib;         // Win32 导入库 (kernel32.lib 等)
+    };
+    bool FindMSVCSDK(MSVCSDKPaths& paths);
     
     // 创建进程并捕获输出
     bool CreateCompilerProcess(const std::wstring& cmdLine, std::wstring& output, 

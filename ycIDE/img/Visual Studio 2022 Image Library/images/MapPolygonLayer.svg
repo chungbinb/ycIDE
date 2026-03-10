@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMapPolygonLayer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M12.262,12.5H5.339L3.572,8.085,7.138,3.628l5.018,2.509L10.413,7.879Z" />
+    <path class="light-defaultgrey-10" d="M1.5,1.5v13h13V1.5Zm3.839,11L3.572,8.085,7.138,3.628l5.018,2.509L10.413,7.879,12.262,12.5Z" />
+    <path class="light-blue" d="M13,13,11,8l2-2L7,3,3,8l2,5ZM7.276,4.256l4.036,2.018L10.294,7.293l-.468.466.245.612L11.523,12H5.677L4.145,8.169Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v13l.5.5h13l.5-.5V1.5ZM14,14H2V2H14Z" />
+  </g>
+</svg>

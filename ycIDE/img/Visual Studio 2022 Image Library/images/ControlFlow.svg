@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightControlFlow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,4.5h-4V.5h4Z" />
+    <path class="light-defaultgrey-10" d="M5.5,14.5h-4v-4h4Z" />
+    <path class="light-defaultgrey-10" d="M15.5,14.5h-4v-4h4Z" />
+    <path class="light-defaultgrey" d="M15.5,15h-4l-.5-.5v-4l.5-.5h4l.5.5v4ZM12,14h3V11H12Z" />
+    <path class="light-defaultgrey" d="M3,5V7.293L1.909,6.2,1.2,6.91,3.146,8.854h.708L5.8,6.91,5.091,6.2,4,7.293V5H5.5L6,4.5V.5L5.5,0h-4L1,.5v4l.5.5ZM2,1H5V4H2Z" />
+    <path class="light-defaultgrey" d="M7.91,10.2l-.707.707L8.293,12H6V10.5L5.5,10h-4l-.5.5v4l.5.5h4l.5-.5V13H8.293L7.2,14.091l.707.707,1.944-1.944v-.708ZM5,14H2V11H5Z" />
+  </g>
+</svg>

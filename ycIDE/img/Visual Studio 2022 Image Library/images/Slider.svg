@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSlider</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,16V0H16V16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,11.5v-9h6v9l-3,3Z" />
+    <path class="light-defaultgrey" d="M8,6V2.5L7.5,2h-6L1,2.5v9l.146.354,3,3h.708l3-3L8,11.5V7h7V6ZM7,11.293l-2.5,2.5L2,11.293V5H7ZM7,4H2V3H7Z" />
+  </g>
+</svg>

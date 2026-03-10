@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSSStyleError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M11,3H9V1h2Zm3,3H12V4h2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,8H1V7H2ZM2,6H1V5H2ZM2,4H1V3H2ZM2,2H1V1H2Zm0,8H1V9H2Zm0,2H1V11H2Zm0,2H1V13H2Zm2,0H3V13H4Zm2,0H5V13H6Zm1.418,0H7V13h.1A4.915,4.915,0,0,0,7.418,14Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7.427,9.979H5.7L4.578,12H3L7.717,3.948H9.294l.56,3.536a5.047,5.047,0,0,0-1.22.822L8.312,5.823a1.315,1.315,0,0,1-.023-.275v-.2l.012-.2H8.272a3.867,3.867,0,0,1-.263.617L6.279,8.855H8.116A5.024,5.024,0,0,0,7.427,9.979Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

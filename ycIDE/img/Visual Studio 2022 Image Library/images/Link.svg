@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-purple{fill: #6936aa; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLink</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M16,9.5A3.5,3.5,0,0,1,12.5,13h-4a3.5,3.5,0,0,1,0-7H9.949A2.5,2.5,0,0,1,10,6.5a2.424,2.424,0,0,1-.058.5H8.5a2.5,2.5,0,0,0,0,5h4a2.5,2.5,0,0,0,0-5H10.96A3.173,3.173,0,0,0,11,6.5a3.441,3.441,0,0,0-.04-.5H12.5A3.5,3.5,0,0,1,16,9.5Z" />
+    <path class="light-purple" d="M11,6.5A3.5,3.5,0,0,1,7.5,10H6.051a2.476,2.476,0,0,1,0-1H7.5a2.5,2.5,0,0,0,0-5h-4a2.5,2.5,0,0,0,0,5H5.051A3.443,3.443,0,0,0,5,9.5a3.443,3.443,0,0,0,.051.5H3.5a3.5,3.5,0,0,1,0-7h4A3.5,3.5,0,0,1,11,6.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPerspectiveTableGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,3.5v11H8.621l.08-.08L9,13.7V8.086L7.914,7H2.3l-.721.3-.08.08V3.5Z" />
+    <path class="light-defaultgrey-10" d="M7.5,8.5v5l-2,2H.5v-5l2-2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M16,1.5v11l-.5.5H15V2H3V1.5L3.5,1h12Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7.5,8h-5l-.354.146-2,2L0,10.5v5l.5.5h5l.354-.146,2-2L8,13.5v-5ZM6,13V10.707l1-1V13Zm.293,1L6,14.293V14ZM2,13.293l-1,1V11H2ZM1.707,10,2,9.707V10ZM3,11H5v2H3ZM6.293,9l-1,1H3V9ZM1.707,15l1-1H5v1Z" />
+    <path class="light-defaultgrey" d="M13.5,3H1.5L1,3.5V7.879l.58-.58L2,7.125V6H5V7H6V6H9V8H8.914L9,8.086V14H8.875l-.174.42-.58.58H13.5l.5-.5V3.5ZM13,14H10V12h3Zm0-3H10V9h3Zm0-3H10V6h3Zm0-3H2V4H13Z" />
+  </g>
+</svg>

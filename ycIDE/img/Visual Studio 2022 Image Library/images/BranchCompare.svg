@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBranchCompare</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13,5.5v6H12v-6A1.5,1.5,0,0,0,10.5,4H8.645L9.916,5.271l-.707.708L7.084,3.854V3.146L9.209,1.021l.707.708L8.645,3H10.5A2.5,2.5,0,0,1,13,5.5Z" />
+      <path class="light-defaultgrey" d="M8.916,13.146v.708L6.791,15.979l-.707-.708L7.355,14H5.5A2.5,2.5,0,0,1,3,11.5v-6H4v6A1.5,1.5,0,0,0,5.5,13H7.355L6.084,11.729l.707-.708Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M5.5,3.5a2,2,0,1,1-2-2A2,2,0,0,1,5.5,3.5Zm9,10a2,2,0,1,1-2-2A2,2,0,0,1,14.5,13.5Z" />
+    <path class="light-defaultgrey" d="M3.5,1A2.5,2.5,0,1,0,6,3.5,2.5,2.5,0,0,0,3.5,1Zm0,4A1.5,1.5,0,1,1,5,3.5,1.5,1.5,0,0,1,3.5,5Zm9,6A2.5,2.5,0,1,0,15,13.5,2.5,2.5,0,0,0,12.5,11Zm0,4A1.5,1.5,0,1,1,14,13.5,1.5,1.5,0,0,1,12.5,15Z" />
+  </g>
+</svg>

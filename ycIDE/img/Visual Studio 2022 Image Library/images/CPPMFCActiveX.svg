@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCPPMFCActiveX</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M16,1,12,5l4,4v1H14V9H13L10.5,6.5,8,9H7V7L9,5,7,3V2H6L5,1H3V0H8V1l2.5,2.5L13,1H11V0h5Z" />
+    <path class="light-defaultgrey" d="M6,9H0V3H6Zm7,7H7V10h6ZM6,16H0V10H6Z" />
+    <path class="white" d="M5.394,8.2H4.459V5.688q0-.408.035-.9H4.471a4.5,4.5,0,0,1-.132.557L3.354,8.2H2.581l-1-2.827a5.659,5.659,0,0,1-.132-.586H1.421q.037.621.038,1.09V8.2H.606V4H1.992l.859,2.49a3.518,3.518,0,0,1,.149.6h.018a5.739,5.739,0,0,1,.167-.607L4.043,4H5.394Z" />
+    <path class="white" d="M4.429,11.771H2.946V12.8H4.309v.767H2.946V15.2H2V11H4.429Z" />
+    <path class="white" d="M11.275,14.95a2.775,2.775,0,0,1-1.2.222,2.024,2.024,0,0,1-1.52-.568A2.079,2.079,0,0,1,8,13.089a2.218,2.218,0,0,1,.623-1.634,2.176,2.176,0,0,1,1.615-.627,3.009,3.009,0,0,1,1.037.155v.911a1.835,1.835,0,0,0-.961-.252,1.277,1.277,0,0,0-.955.372A1.381,1.381,0,0,0,9,13.022a1.356,1.356,0,0,0,.343.972,1.21,1.21,0,0,0,.923.361,1.962,1.962,0,0,0,1.013-.27Z" />
+  </g>
+</svg>

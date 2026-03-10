@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightInteractiveMode</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7,0H8V3.57a1.821,1.821,0,0,0-1,0ZM3.26,1.96,5.78,4.48a1.957,1.957,0,0,1,.7-.7L3.96,1.26ZM5.5,5.5A1.679,1.679,0,0,1,5.57,5H2V6H5.57A1.679,1.679,0,0,1,5.5,5.5Zm.28,1.02L3.26,9.04l.7.7L6.48,7.22A1.957,1.957,0,0,1,5.78,6.52ZM9.43,5a1.821,1.821,0,0,1,0,1H13V5Zm1.61-3.74L8.52,3.78a1.957,1.957,0,0,1,.7.7l2.52-2.52Z" />
+    <path class="light-blue" d="M10.575,12.361l1.15,3.163-.783.285L9.769,12.585,8,14V6.5l5,6Z" />
+  </g>
+</svg>

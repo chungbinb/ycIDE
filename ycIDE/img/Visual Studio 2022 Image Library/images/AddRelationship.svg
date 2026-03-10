@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAddRelationship</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M11.5,12H9V11h2V7h1v4.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M.5,9.5h8v5H.5Z" />
+    <path class="light-defaultgrey" d="M8.5,8H.5L0,8.5v6l.5.5h8l.5-.5v-6ZM1,14V10H8v4Z" />
+    <path class="light-defaultgrey-10" d="M15.5.5v6H8V.5Z" />
+    <path class="light-defaultgrey" d="M16,.5v6l-.5.5h-8L7,6.5V5H8V6h7V2H7V.5L7.5,0h8Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSFTPDestination</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.5,2.5H6.97A4.07,4.07,0,0,1,7,3,4.014,4.014,0,0,1,5.45,6.15l.07.23-.23.87.2.39-.1.63,3.46,3.46v1.54L7.12,15l-.5.5H13.5V5.5Z" />
+      <path class="light-defaultgrey" d="M13.85,5.15l-3-3L10.5,2H6.87a4.021,4.021,0,0,1,.1.5A4.07,4.07,0,0,1,7,3h3V6h3v9H7.12l-1,1H13.5l.5-.5V5.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M5.5,3A2.492,2.492,0,0,1,3.684,5.393L4,6.525l-.5.5.5,1-1.5,1.5-1-1V4.989A2.5,2.5,0,1,1,5.5,3Z" />
+    <path class="light-defaultgrey" d="M3,2a.5.5,0,1,1-.5.5A.5.5,0,0,1,3,2ZM3,0A2.992,2.992,0,0,1,4.288,5.7l.193.693-.127.488-.246.245.339.678-.093.577-1.5,1.5H2.146l-1-1L1,8.524v-3.3A2.962,2.962,0,0,1,0,3,3,3,0,0,1,3,0ZM2.5,8.817l.892-.891-.339-.678.093-.577.294-.293L3.2,5.528l.343-.615A2,2,0,1,0,1,3a1.979,1.979,0,0,0,.8,1.589l.2.4V8.317Z" />
+    <path class="light-blue" d="M6.293,12,4.646,10.354l.708-.708,2.5,2.5v.708l-2.5,2.5-.708-.708L6.293,13H1V12Z" />
+  </g>
+</svg>

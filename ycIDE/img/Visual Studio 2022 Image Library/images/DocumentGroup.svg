@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDocumentGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M12.5,3.5v7H10v-3l-.146-.354-2-2L7.5,5h-2V1.5h5Z" />
+      <path class="light-defaultgrey" d="M13,3.5v7l-.5.5H10V10h2V4H9.993V2H6V5H5V1.5L5.5,1h5l.354.146,2,2Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M9.5,7.5v7h-7v-9h5Z" />
+    <path class="light-defaultgrey" d="M9.854,7.146l-2-2L7.5,5h-5L2,5.5v9l.5.5h7l.5-.5v-7ZM3,14V6H6.993V8H9v6Z" />
+    <path class="light-defaultgrey-25" d="M9,10v1H5.5L5,10.5V6H6v4Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>WPFLibrary</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M3,11.732,1.232,13.5,3,15.268l-.707.707L.172,13.854v-.708l2.121-2.121Zm5.707-.707L8,11.732,9.768,13.5,8,15.268l.707.707,2.121-2.121v-.708Z" />
+    <path class="light-blue" d="M4,12H7v3H4Z" />
+    <path class="light-defaultgrey-10" d="M15.389,13.054l-1.931.517L10.611,2.946l1.931-.518ZM7.318,11,8.5,9.818V2.5h-2V11ZM3.682,11H4.5V2.5h-2V9.818Z" />
+    <path class="light-defaultgrey" d="M13.025,2.3l-.613-.354-1.932.518-.353.613L12.975,13.7l.613.354,1.932-.518.353-.613Zm.787,10.66L11.223,3.3l.965-.259L14.777,12.7ZM6,11V2.5L6.5,2h2l.5.5V9.9l-.293-.293L8,10.318V3H7v8ZM2,9.9V2.5L2.5,2h2l.5.5V11H4V3H3v7.318l-.707-.707Z" />
+  </g>
+</svg>

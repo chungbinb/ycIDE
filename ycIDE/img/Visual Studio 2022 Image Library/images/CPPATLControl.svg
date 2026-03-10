@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>CPPATLControl</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M6.5,1.5l2,2-4,4-2-2ZM14,6,12.5,4.5l-2,2L12,8Zm-3.5,5.5L12,13l2-2L12.5,9.5Z" />
+    <path class="light-defaultgrey" d="M2.049,11.1.213,16H1.1l.424-1.248H3.454L3.9,16h.892L2.965,11.1ZM1.738,14.09l.673-1.955a1.97,1.97,0,0,0,.068-.309h.014a2.492,2.492,0,0,0,.065.309l.68,1.955ZM4.687,11.1H8.313v.69H6.905V16H6.092V11.789h-1.4Zm7.027,4.213V16H9V11.1h.813v4.213Z" />
+    <path class="light-red" d="M12.854,4.146h-.708L11.293,5H7.707L8.854,3.854V3.146l-2-2H6.146l-4,4v.708l2,2h.708L6.707,6H8v4H9V6h1.293l-.147.146v.708l1.5,1.5h.708l2-2V5.646ZM4.5,6.793,3.207,5.5,6.5,2.207,7.793,3.5Zm7.5.5L11.207,6.5,12.5,5.207,13.293,6Zm.146,1.853L11.293,10h-.48v2.521l.833.833h.708l2-2v-.708l-1.5-1.5ZM12,12.293l-.793-.793L12.5,10.207l.793.793Z" />
+  </g>
+</svg>

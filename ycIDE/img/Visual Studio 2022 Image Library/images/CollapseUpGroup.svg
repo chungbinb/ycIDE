@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCollapseUpGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,16V0H16V16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2,14l-.707-.707L7.646,6.939h.708l6.353,6.354L14,14,8,8ZM2,9.061l-.707-.707L7.646,2h.708l6.353,6.354L14,9.061l-6-6Z" />
+  </g>
+</svg>

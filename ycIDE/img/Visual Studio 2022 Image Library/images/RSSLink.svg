@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRSSLink</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M10,14a2,2,0,0,1,2-2h2a2,2,0,0,1,0,4H12A2,2,0,0,1,10,14Zm2-1a1,1,0,0,0,0,2h2a1,1,0,0,0,0-2Z" />
+    <path class="light-purple" d="M14,12a2,2,0,0,1-2,2H11a1,1,0,0,1,1-1,1,1,0,0,0,0-2H10a1,1,0,0,0,0,2h.269A1.984,1.984,0,0,0,10,14a2,2,0,0,1,0-4h2A2,2,0,0,1,14,12Z" />
+    <path class="light-defaultgrey-10" d="M7.416,13.5H1.5V1.5h12V9.416A2.93,2.93,0,0,0,12,9H10a3,3,0,0,0-3,3A2.93,2.93,0,0,0,7.416,13.5Z" />
+    <path class="light-defaultgrey" d="M7.789,14H1.5L1,13.5V1.5L1.5,1h12l.5.5V9.789a2.963,2.963,0,0,0-1-.613V2H2V13H7.176A2.963,2.963,0,0,0,7.789,14Z" />
+    <path class="light-defaultgrey" d="M4.5,9A1.5,1.5,0,1,0,6,10.5,1.5,1.5,0,0,0,4.5,9Zm0,2a.5.5,0,1,1,.5-.5A.5.5,0,0,1,4.5,11Zm3.141-.832A5,5,0,0,0,3,7V6A6,6,0,0,1,8.427,9.457,3.013,3.013,0,0,0,7.641,10.168ZM3,4V3a9.008,9.008,0,0,1,8.475,6H10.411A8.009,8.009,0,0,0,3,4Z" />
+  </g>
+</svg>

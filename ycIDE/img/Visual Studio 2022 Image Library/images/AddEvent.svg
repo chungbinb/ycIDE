@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddEvent</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M15.5,6.5l-8,8H6l3.5-6H6l4-7h5.387L11,6.5Z" />
+    <path class="light-yellow" d="M15.5,6H12.1l3.659-4.17L15.387,1H10l-.434.252-4,7L6,9H8.629L5.568,14.248,6,15H7.5l.354-.146,8-8ZM7.293,14H6.871L9.932,8.752,9.5,8H6.862L10.29,2h3.993L10.624,6.17,11,7h3.293Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCPPProjectFilterFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M7.5,15.5H.5v-8h7Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,4.5v8H9V7.086L7.914,6H2.5V4.5Z" />
+      <path class="light-defaultgrey" d="M16,4.5v8l-.5.5H9V12h6V5H3V6H2V4.5L2.5,4h13Z" />
+    </g>
+    <path class="light-red" d="M6,10H2V9H6ZM5,12H2V11H5Zm1,2H2V13H6Zm1.5,2H.5L0,15.5v-8L.5,7h7l.5.5v8ZM1,15H7V8H1Z" />
+    <path class="light-defaultgrey" d="M15.5,5H2.5L2,4.5v-3L2.5,1h13l.5.5v3ZM3,4H15V2H3Z" />
+    <path class="light-defaultgrey-10" d="M15.5,1.5v3H2.5v-3Z" />
+  </g>
+</svg>

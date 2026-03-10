@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightScrollBox</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,13.5H1.5V1.5H15Z" />
+    <path class="light-defaultgrey" d="M15,14H1.5L1,13.5V1.5L1.5,1H15V2H2V13H15Z" />
+    <path class="light-defaultgrey" d="M10,7h5V8H10Z" />
+    <path class="light-blue" d="M15,13H10V9h5ZM15,2H10V6h5Z" />
+    <path class="white" d="M14,10H11l1.5,2ZM12.5,3.031,14,5H11.017Z" />
+  </g>
+</svg>

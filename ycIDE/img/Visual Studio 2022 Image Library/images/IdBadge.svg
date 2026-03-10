@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IdBadge</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,3.5v12h-9V3.5Z" />
+    <path class="light-defaultgrey" d="M9.44,10.38a2,2,0,1,0-2.88,0A3.017,3.017,0,0,0,5,13H6a2,2,0,0,1,4,0h1A3.005,3.005,0,0,0,9.44,10.38ZM8,10A1,1,0,1,1,9,9,1,1,0,0,1,8,10Zm1.44.38a2,2,0,1,0-2.88,0A3.017,3.017,0,0,0,5,13H6a2,2,0,0,1,4,0h1A3.005,3.005,0,0,0,9.44,10.38ZM8,10A1,1,0,1,1,9,9,1,1,0,0,1,8,10Zm4.5-7H9.81l1.5-3H10.19L8.69,3H7.31L5.81,0H4.69l1.5,3H3.5L3,3.5v12l.5.5h9l.5-.5V3.5ZM12,15H4V4H6.69l.86,1.72.9-.44L7.81,4H12ZM6,9a2,2,0,0,0,.56,1.38A3.017,3.017,0,0,0,5,13H6a2,2,0,0,1,4,0h1a3.005,3.005,0,0,0-1.56-2.62A2,2,0,1,0,6,9ZM9,9A1,1,0,1,1,8,8,1,1,0,0,1,9,9Z" />
+  </g>
+</svg>

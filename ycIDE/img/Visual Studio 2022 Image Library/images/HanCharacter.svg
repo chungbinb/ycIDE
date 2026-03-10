@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHanCharacter</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12.98,9V8H9.48V6.98h3.49V4.02H5V6.98H8.48V8H4.98V9h3.5v1H4.98v1H8.49c0,.1-.04,2.51-3.51,2.51v.98c2.35,0,3.47-.97,4-1.88.53.91,1.65,1.88,4,1.88v-.98c-3.38,0-3.5-2.26-3.51-2.51h3.51V10H9.48V9Zm-7-3V5h6V6Zm7-5V2h-2V3h-1V2h-2V3h-1V2h-2V1h2V0h1V1h2V0h1V1ZM4.93,3.13l-.66.74-2.24-2,.67-.74Zm-1,4-.66.74-2.24-2,.67-.74Zm.06,2.44L1.86,12.96l-.84-.53L3.15,9.04Z" />
+  </g>
+</svg>

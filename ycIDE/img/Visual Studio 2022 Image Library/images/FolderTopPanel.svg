@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFolderTopPanel</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-yellow" d="M14.5,9l.5-.5v5l-.5.5H1.5L1,13.5v-5l.5.5H2v4H14V9Z" />
+    </g>
+    <g class="cls-1">
+      <path class="light-yellow" d="M14.5,3.5v5H1.5v-6h5l1,1Z" />
+    </g>
+    <path class="light-yellow" d="M14.5,3H7.707l-.853-.854L6.5,2h-5L1,2.5v6l.5.5h13l.5-.5v-5ZM14,8H2V3H6.293l.853.854L7.5,4H14Z" />
+  </g>
+</svg>

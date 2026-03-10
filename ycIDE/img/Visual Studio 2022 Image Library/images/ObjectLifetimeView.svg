@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>ObjectLifetimeView</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,9.5a5,5,0,1,1-5-5A5,5,0,0,1,10.5,9.5Z" />
+    <path class="light-defaultgrey" d="M9.387,5.613A5.49,5.49,0,1,0,11,9.5,5.483,5.483,0,0,0,9.387,5.613Zm-.706,7.068A4.5,4.5,0,1,1,10,9.5,4.49,4.49,0,0,1,8.681,12.681ZM6,9H8v1H5.5L5,9.5V6H6Z" />
+    <path class="light-yellow" d="M13.023,3.307V3H12V6h1.976l.672-.672H15l.625.625v.354L14,7.932h-.354l-.625-.625V7H11.5a6.369,6.369,0,0,0-.5-.953V3h-.771l-.615.614H9.261l-1-1V2.261l2.25-2.25h.353l1,1v.353L11.229,2h2.747l.672-.672H15l.625.625v.354L14,3.932h-.354Z" />
+  </g>
+</svg>

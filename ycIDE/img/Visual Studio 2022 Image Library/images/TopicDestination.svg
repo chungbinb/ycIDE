@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTopicDestination</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M3.647,14.643l1.646-1.65H0v-1H5.293L3.647,10.35l.707-.707,2.5,2.5v.707l-2.5,2.5Z" />
+    <path class="light-defaultgrey-10" d="M8.5,12V10.5h6V12Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2V3.5h-6V2Z" />
+    <path class="light-blue-10" d="M7.5,8.5v-3h6v3Z" />
+    <path class="light-blue" d="M7.5,9h6l.5-.5v-3L13.5,5h-6L7,5.5v3ZM8,6h5V8H8Z" />
+    <path class="light-defaultgrey" d="M8,12V10.5l.5-.5h6l.5.5V12H14V11H9v1Z" />
+    <path class="light-defaultgrey" d="M15,2V3.5l-.5.5h-6L8,3.5V2H9V3h5V2Z" />
+  </g>
+</svg>

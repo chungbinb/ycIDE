@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightThirdOfFourColumns</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,14.5H1.5V2.5h12Z" />
+    <path class="light-defaultgrey" d="M13.5,2H1.5L1,2.5v12l.5.5h12l.5-.5V2.5ZM8,3h2V14H8ZM7,14H5V3H7ZM2,3H4V14H2ZM13,14H11V3h2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M10.5,14.5h-3V2.5h3Z" />
+    </g>
+  </g>
+</svg>

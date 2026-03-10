@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightChildWindowTemplate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,9.5h8v6H.5Z" />
+    <path class="light-defaultgrey" d="M8.5,9H.5L0,9.5v6l.5.5h8l.5-.5v-6ZM8,15H1V11H8Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,1H7V2H6ZM4,2H5V1H4ZM6,4H7V3H6ZM2,6H3V5H2ZM8,4H9V3H8ZM8,2H9V1H8ZM2,4H3V3H2ZM2,1.5V2H3V1H2.5ZM4,4H5V3H4Zm6,8h1V11H10Zm4-2h1V9H14Zm0-2h1V7H14ZM10,4h1V3H10Zm4,0h1V3H14Zm.5-3H14V2h1V1.5ZM14,12h.5l.5-.5V11H14Zm0-6h1V5H14ZM10,2h1V1H10Zm2,10h1V11H12ZM12,2h1V1H12Zm0,2h1V3H12ZM2,8H3V7H2Z" />
+      <path class="light-defaultgrey-10" d="M15,1.5v10l-.5.5H10V9.086L8.914,8H2V1.5L2.5,1h12Z" />
+    </g>
+  </g>
+</svg>

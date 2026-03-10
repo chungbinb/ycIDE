@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightReorderList</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.5.5v3h-8v1H.5V.5Z" />
+      <path class="light-defaultgrey-10" d="M8,9.5v4H.5v-4Z" />
+      <path class="light-defaultgrey" d="M12,.5v3H11V1H1V4H3.5V5H.5L0,4.5V.5L.5,0h11Z" />
+      <path class="light-defaultgrey" d="M1,10v3H8v1H.5L0,13.5v-4L.5,9H8v1Z" />
+    </g>
+    <path class="light-blue-10" d="M14.5,3.5v4H11.13L10.72,7,8.22,4,8,3.74V7.5H3.5v-4Z" />
+    <path class="light-blue" d="M15,3.5v4l-.5.5H11.55l-.42-.5L10.72,7H14V4H8.22L8,3.74V4H4V7H8V8H3.5L3,7.5v-4L3.5,3h11Z" />
+    <path class="light-blue" d="M11.575,12.361l1.15,3.163-.783.285-1.173-3.224L9,14V6.5l5,6Z" />
+  </g>
+</svg>

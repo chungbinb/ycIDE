@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>Statistics</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,14V2H1V14.5l.5.5H15V14Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M13.5,5.5v7h-2v-7Zm-10,7h2v-4h-2Zm4,0h2V2.5h-2Z" />
+    <path class="light-defaultgrey" d="M13.5,5h-2l-.5.5v7l.5.5h2l.5-.5v-7ZM13,12H12V6h1ZM3.5,8,3,8.5v4l.5.5h2l.5-.5v-4L5.5,8ZM5,12H4V9H5ZM7.5,2,7,2.5v10l.5.5h2l.5-.5V2.5L9.5,2ZM9,12H8V3H9Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>TransitioningContent</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M5.5,1h-4V2H4.44A7.021,7.021,0,0,0,1,8a5.546,5.546,0,0,0,.08,1H2.09A5.47,5.47,0,0,1,2,8,6.028,6.028,0,0,1,5,2.83V5.5H6v-4Zm5.5.68-.43.9A6.051,6.051,0,0,1,14,8a5.982,5.982,0,0,1-3.07,5.23l-.42,1.3A6.993,6.993,0,0,0,11,1.68Z" />
+    <path class="light-defaultgrey-10" d="M4.923,11.671,4.55,9.5,6.5,10.525,8.449,9.5l-.372,2.171,1.577,1.537-2.179.317L6.5,15.5l-.975-1.975-2.179-.317Z" />
+    <path class="light-defaultgrey" d="M8.614,11.5l.328-1.912-.725-.526L6.5,9.96l-1.717-.9-.725.526L4.386,11.5,3,12.85l.276.853,1.92.279.859,1.74h.9l.859-1.74,1.92-.279L10,12.85ZM7.4,13.03l-.376.274L6.5,14.37,5.974,13.3,5.6,13.03,4.42,12.859l.851-.83.145-.442-.2-1.173,1.053.554h.464l1.053-.554-.2,1.173.145.442.851.83ZM3,11H1V10H3ZM2,13H0V12H2ZM1,14H3v1H1Z" />
+  </g>
+</svg>

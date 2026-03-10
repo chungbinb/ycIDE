@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightToolstripAlignment</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.5H.5v-5h14Z" />
+    <path class="light-defaultgrey" d="M0,1.5v5L.5,7h14l.5-.5v-5L14.5,1H.5ZM6,6V2h8V6Z" />
+    <path class="light-defaultgrey-10" d="M.5,8.5h14v5H.5Z" />
+    <path class="light-defaultgrey" d="M14.5,8H.5L0,8.5v5l.5.5h14l.5-.5v-5ZM1,13V9H9v4Z" />
+    <path class="white" d="M2,3H4V5H2Zm11,9H11V10h2Z" />
+    <path class="light-defaultgrey" d="M11,3h2V5H11ZM7,3H9V5H7Z" />
+    <path class="light-defaultgrey" d="M4,12H2V10H4Zm4,0H6V10H8Z" />
+  </g>
+</svg>

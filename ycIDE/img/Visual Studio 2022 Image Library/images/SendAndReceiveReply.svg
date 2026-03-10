@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>SendAndReceiveReply</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.42,5.5h-.01L8,1.5,5.13,3.29,4,4.42V7H3.27L5.11,8.5h5.78L13.95,6l.55-.45Z" />
+    <path class="light-defaultgrey-10" d="M13.95,6h.55v5.37L12.86,9.73,10.58,12H8v1.5H1.5V7H4V4.42L5.13,3.29,8,1.5l6.41,4h.01l.08.05Z" />
+    <path class="light-defaultgrey" d="M15,6v5.87l-1-1V6.61L11.21,8.89,10.89,9H5.11l-.32-.11L2.48,7H4V6.95L5.29,8h5.42l2.93-2.39L8,2.09,4,4.59V4.42L6.27,2.15l-.09-.09,1.56-.98h.53l6.49,4.05.05.68ZM2,7H1v6.5l.5.5H8V13H2Z" />
+    <path class="light-blue" d="M13.3,13,12.15,11.851l.707-.707,2,2v.707l-2,2-.707-.707L13.3,14H9V13Z" />
+    <path class="light-blue" d="M3,6H2V1.707L.854,2.854.146,2.146l2-2h.708l2,2-.708.708L3,1.707Z" />
+  </g>
+</svg>

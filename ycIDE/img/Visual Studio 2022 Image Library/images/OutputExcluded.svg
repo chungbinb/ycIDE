@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>OutputExcluded</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9,5V2H2v9H7.1A5.008,5.008,0,0,1,9,8H4V5Z" />
+    <path class="light-defaultgrey" d="M9.5,1h-8L1,1.5v10l.5.5H7a4.712,4.712,0,0,1,.1-1H2V2H9V5h1V1.5Z" />
+    <path class="light-blue" d="M11.85,3.15l-.7.7L13.29,6H5V7h8.29l-.14.14a4.3,4.3,0,0,1,1.04.37l.66-.66v-.7Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M14,12.5H10v-1h4Z" />
+  </g>
+</svg>

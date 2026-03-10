@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTakeSourceVersion</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,7v6.5l-.5.5H8.854V12.732L8,11.879V5.5L8.5,5H13l.354.146,1.5,1.5Z" />
+    <path class="light-defaultgrey" d="M4,9H7v1H6.121l-.267-.268L5.586,10H4ZM8.854,2.646l-1.5-1.5L7,1H2.5L2,1.5V9H3V2H6V4H8v.086L8.086,4H9V3Z" />
+    <path class="light-defaultgrey" d="M12,13h1v1H12Zm-2,1h1V13H10Zm1-9H10V6h1ZM9,9H8v1H9ZM9,7H8V8H9Zm6,0H14V8h1Zm0,2H14v1h1Zm0,2H14v1h1ZM13,5H12V6h1ZM8.5,5,8,5.5V6H9V5Zm6,9,.5-.5V13H14v1ZM12,7.5l.5.5H13V7H12ZM8.854,13v1H9V13ZM8,11v.879L8.121,12H9V11Z" />
+    <path class="light-blue" d="M7.854,13.146v.708l-2,2-.708-.708L6.293,14H2.5L2,13.5V10H3v3H6.293L5.146,11.854l.708-.708Z" />
+    <path class="light-defaultgrey-10" d="M2.5,9V1.5H7L8.5,3V4H8.086L7,5.086V9.5H4V9Z" />
+  </g>
+</svg>

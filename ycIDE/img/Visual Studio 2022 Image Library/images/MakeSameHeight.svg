@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMakeSameHeight</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,3H1V2H14Zm0,12H1V14H14Z" />
+    <path class="light-blue" d="M10.355,11.354l-2.5,2.5H7.148l-2.5-2.5.707-.708L7,12.291V4.705L5.352,6.354l-.707-.708,2.5-2.5h.707l2.5,2.5-.707.708L8,4.709V12.3l1.648-1.649Z" />
+  </g>
+</svg>

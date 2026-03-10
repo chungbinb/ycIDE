@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>ClassMissing</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+    <path class="light-yellow-10" d="M5.5,1.5l2,2-4,4-2-2Zm6,3-2,2L11,8l2-2Z" />
+    <path class="light-yellow" d="M8.732,10.854,9.586,10H8V6H9.293l-.147.146v.708l1.5,1.5h.708l2-2V5.646l-1.5-1.5h-.708L10.293,5H6.707L7.854,3.854V3.146l-2-2H5.146l-4,4v.708l2,2h.708L5.707,6H7v4.5l.5.5H8.879ZM11.5,5.207,12.293,6,11,7.293,10.207,6.5Zm-8,1.586L2.207,5.5,5.5,2.207,6.793,3.5Z" />
+  </g>
+</svg>

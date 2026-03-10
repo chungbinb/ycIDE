@@ -1,0 +1,34 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+      <SolidColorBrush x:Key="light-yellow" Color="#996f00" Opacity="1" />
+      <SolidColorBrush x:Key="white" Color="#ffffff" Opacity="1" />
+      <System:Double x:Key="cls-1">0.75</System:Double>
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <DrawingGroup Opacity="{DynamicResource cls-1}">
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M6.614,14H1.5V5.5H15v5.984L12.53,7H10.47Z" />
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M2,13H3.382l-.5,1H1.5L1,13.5v-8L1.5,5h13l.5.5v5.984L14,9.668V6H2Z" />
+              </DrawingGroup>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M14,3V5H2V3Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+              <GeometryDrawing Brush="{DynamicResource light-yellow}" Geometry="F1M8.5,10,5,14H4l1.5-3h-2l2-4h3L6.363,10Z" />
+              <GeometryDrawing Brush="{DynamicResource light-yellow}" Geometry="F1M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+              <GeometryDrawing Brush="{DynamicResource white}" Geometry="F1M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

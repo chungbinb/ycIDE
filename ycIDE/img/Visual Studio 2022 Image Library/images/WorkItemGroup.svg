@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWorkItemGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.5,10.808V14.5H.5v-9h8V6.565L5.54,9.525l-1.9-1.9L1.522,9.75,4.772,13H6.308Z" />
+      <path class="light-defaultgrey-10" d="M14.5,3.5v9H10V9.308L11.558,7.75,10,6.192V5.086l-1-1V3.5Z" />
+      <path class="light-defaultgrey" d="M15,3.5v9l-.5.5H10V12h4V4H9V3h5.5Z" />
+      <path class="light-defaultgrey" d="M9,10.308V14.5l-.5.5H.5L0,14.5v-9L.5,5h8l.5.5v.565l-1,1V6H1v8H8V11.308Z" />
+    </g>
+    <path class="light-defaultgrey" d="M6.5,4a2,2,0,0,0-4,0H1V6H8V4Zm-2-1a1,1,0,1,1-1,1A1,1,0,0,1,4.5,3Z" />
+    <path class="light-defaultgrey" d="M12.5,2a2,2,0,0,0-4,0H7v.359A3.008,3.008,0,0,1,7.329,3H9V4h5V2Zm-2,1a1,1,0,1,1,1-1A1,1,0,0,1,10.5,3Z" />
+    <path class="light-green" d="M10.144,7.75,5.894,12H5.187L2.937,9.75l.707-.707,1.9,1.9,3.9-3.9Z" />
+  </g>
+</svg>

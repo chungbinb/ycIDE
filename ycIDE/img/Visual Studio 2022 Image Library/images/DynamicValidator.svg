@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDynamicValidator</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M14.354,6.152v.707L11.7,9.511,11,8.8l1.8-1.8H3.207l1.8,1.8L4.3,9.511,1.646,6.859V6.152L4.3,3.5l.707.707-1.8,1.8h9.586L11,4.207,11.7,3.5Z" />
+    <path class="light-green" d="M7.354,10.734,3.1,14.984H2.4l-2.25-2.25.708-.707,1.9,1.9,3.9-3.9Z" />
+  </g>
+</svg>

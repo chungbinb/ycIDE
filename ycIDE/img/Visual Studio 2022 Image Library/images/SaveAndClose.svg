@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>SaveAndClose</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M12.51,1.5H8V6.91L6.91,8H1.51v6.5h13V3.5Z" />
+    <path class="light-blue" d="M14.85,3.15l-2-2L12.5,1H8V2h3V6H8v.91L7.91,7H11.5l.5-.5V2h.29L14,3.71V14H2V8H1v6.5l.5.5h13l.5-.5V3.5Z" />
+    <g class="cls-1">
+      <path class="light-blue" d="M12.5,8h-9L3,8.5v6H4V9h8v5.5h1v-6Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7,.5v6L6.5,7H.5L0,6.5V.5L.5,0h6Z" />
+    <path class="white" d="M5.146,5.854,3.5,4.207,2,5.707,1.293,5l1.5-1.5L1.293,2,2,1.293l1.5,1.5L5,1.293,5.707,2l-1.5,1.5L5.854,5.146Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRectangularSelection</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6,13H1.5L1,12.5V2.5L1.5,2h12l.5.5v10l-.5.5h-.2L6,4.238Z" />
+    <path class="light-defaultgrey" d="M14,11H13V10h1Zm-.7,2h.2l.5-.5V12H13v.638ZM12,2H11V3h1ZM10,2H9V3h1Zm4,4H13V7h1Zm0-3.5L13.5,2H13V3h1ZM14,4H13V5h1Zm0,4H13V9h1ZM8,2H7V3H8ZM1,7H2V6H1ZM1,2.5V3H2V2H1.5ZM3,3H4V2H3ZM3,13H4V12H3Zm3-1H5v1H6ZM1,11H2V10H1Zm0,1.5.5.5H2V12H1ZM6,2H5V3H6ZM1,9H2V8H1ZM1,5H2V4H1Z" />
+    <path class="light-blue" d="M9.575,12.861l1.032,2.84-.783.285-1.055-2.9L7,14.5V7l5,6Z" />
+  </g>
+</svg>

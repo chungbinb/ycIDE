@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRotateRight</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.25,8.077l.25.145v4.071l-.207.207H.885l-.051-.19Z" />
+    <path class="light-defaultgrey" d="M.252,12.066l8-4.566L9,7.934V12.5l-.5.5H.5ZM8,8.8,2.385,12H8Z" />
+    <path class="light-defaultgrey" d="M10.916,4.723l5,7.5L15.5,13h-5l-.5-.5V5Z" />
+    <path class="light-blue" d="M8.854,3.146v.708l-2,2-.708-.708L7.293,4H6A2,2,0,0,0,4,6V7H3V6A3,3,0,0,1,6,3H7.293L6.146,1.854l.708-.708Z" />
+  </g>
+</svg>

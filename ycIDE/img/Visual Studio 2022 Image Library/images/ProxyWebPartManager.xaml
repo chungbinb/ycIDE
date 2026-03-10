@@ -1,0 +1,26 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M14,2.5v10l-.5.5H12v1.5l-.5.5H1.5L1,14.5V4.5L1.5,4H3V2.5L3.5,2h10Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M6.3,8.286A2.969,2.969,0,0,1,6,7,3,3,0,0,1,9,4a2.969,2.969,0,0,1,1.286.3L8.293,6.293,9.707,7.707,11.7,5.714A2.969,2.969,0,0,1,12,7a3,3,0,0,1-3,3,2.965,2.965,0,0,1-1.286-.3L4.414,13H3.707L3,12.293v-.707Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M13.5,5h-2L11,4.5v-2l.5-.5h2l.5.5v2ZM12,4h1V3H12Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M2,7H1V6H2ZM2,8H1V9H2Zm0,2H1v1H2ZM1,14v.5l.5.5H2V14Zm9,1V14H9v1ZM8,15V14H7v1ZM6,15V14H5v1ZM4,15V14H3v1ZM2,12H1v1H2Zm5,0v1H8V12Zm2,0v1h1V12Zm4,1h.5l.5-.5V12H13Zm-2,2h.5l.5-.5V14H11Zm3-9H13V7h1Zm0,2H13V9h1Zm0,2H13v1h1Zm-3,2v1h1V12ZM10,3V2H9V3ZM8,3V2H7V3ZM4,2H3.5L3,2.5V3H4ZM2,4H1.5L1,4.5V5H2ZM3,9H4V8H3ZM3,7H4V6H3ZM3,5H4V4H3ZM6,3V2H5V3Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

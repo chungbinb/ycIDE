@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIntellitraceCurrentStack</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,14.5h8v-3h-8Z" />
+    <path class="light-blue-10" d="M.5,9.5h8v-3H.5Z" />
+    <path class="light-defaultgrey-10" d="M6.5,4.5h8v-3h-8Z" />
+    <path class="light-defaultgrey" d="M14.5,5h-8L6,4.5v-3L6.5,1h8l.5.5v3ZM7,4h7V2H7Z" />
+    <path class="light-blue" d="M8.5,10H.5L0,9.5v-3L.5,6h8l.5.5v3ZM1,9H8V7H1Z" />
+    <path class="light-blue" d="M4.854,2.854l-2,2H2.146l-2-2,.708-.708L2,3.293V0H3V3.293L4.146,2.146Z" />
+    <path class="light-defaultgrey" d="M14.5,15h-8L6,14.5v-3l.5-.5h8l.5.5v3ZM7,14h7V12H7Z" />
+  </g>
+</svg>

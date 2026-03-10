@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLayer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.208,13.5,2.5,11.79V4.209L4.235,2.5h7.558L13.5,4.207v7.586L11.793,13.5Z" />
+    <path class="light-defaultgrey" d="M12,2H4.031L2,4v8l2,2h8l2-2V4Zm1,9.586L11.586,13H4.415L3,11.583V4.418L4.44,3h7.146L13,4.414Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMutuallyExclusiveCheckbox</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M.5,8.5h6v6H.5Z" />
+      <path class="light-defaultgrey-10" d="M8.5.5v6h6V.5Z" />
+      <path class="light-defaultgrey" d="M.5,8,0,8.5v6l.5.5h6l.5-.5v-6L6.5,8ZM6,14H1V9H6ZM14.5,0h-6L8,.5v6l.5.5h6l.5-.5V.5ZM14,6H9V1h5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15,14.5H8.5v-6H15Z" />
+    <path class="light-defaultgrey" d="M6,3.967,7,2.948V6.5L6.5,7H.5L0,6.5V.5L.5,0h6L7,.5,6.988,1.859,3.846,5,3.135,5,1.8,3.624l.714-.7L3.5,3.936,6,1.432V1H1V6H6Zm8,8,1-1.019V14.5l-.5.5h-6L8,14.5v-6L8.5,8h6l.5.5-.012,1.359L11.846,13l-.711,0L9.8,11.624l.714-.7.987,1.011,2.5-2.5V9H9v5h5Z" />
+    <path class="light-defaultgrey-10" d="M7,6.5H.5V.5H7Z" />
+  </g>
+</svg>

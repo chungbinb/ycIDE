@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddDictionaryItem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,14.5H.5v-5h6Z" />
+    <path class="light-defaultgrey" d="M6.5,9H.5L0,9.5v5l.5.5h6l.5-.5v-5ZM6,14H1V10H6Z" />
+    <path class="light-defaultgrey-10" d="M15.293,3.5H12.5a1.982,1.982,0,0,0-1.6.814l-.4.539-.4-.539A1.982,1.982,0,0,0,8.5,3.5H8V4.987L5.5,5V7.987H6.914L8,9.073V11.5h.5a2,2,0,0,1,.4.04l.081.017.071.041a2.889,2.889,0,0,0,2.9,0l.071-.041.081-.017a2,2,0,0,1,.4-.04h2.793l.207-.207V3.707Z" />
+    <path class="light-defaultgrey" d="M5,7.987V5H6V7.987ZM16,3.5v8l-.5.5h-3s-.2.011-.3.03a3.381,3.381,0,0,1-3.4,0A1.547,1.547,0,0,0,8.5,12H8V11h.5a2.482,2.482,0,0,1,1.5.5h0v-6A1.5,1.5,0,0,0,8.5,4H8V3h.5a2.491,2.491,0,0,1,2,1.015A2.491,2.491,0,0,1,12.5,3h3ZM15,4H12.5A1.5,1.5,0,0,0,11,5.5v6h0a2.482,2.482,0,0,1,1.5-.5H15Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

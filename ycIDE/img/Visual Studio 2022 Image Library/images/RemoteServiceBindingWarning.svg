@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRemoteServiceBindingWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M5.5,12h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM5,14H4V13H5Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+    <path class="light-defaultgrey-10" d="M5.5,14.5h-2v-2h2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5,12H4V10H5Zm2.164,1H6v1h.613ZM1,14H3V13H1Z" />
+    </g>
+    <path class="light-defaultgrey" d="M6,3H1V2H6ZM6,8H1V9H6ZM5,5H1V6H5Z" />
+    <path class="light-defaultgrey" d="M8.051,6H7V5H8.051a2.473,2.473,0,0,1,.365-.876l-.745-.745.707-.707.745.745A2.469,2.469,0,0,1,10,3.051V2h1V3.051a2.469,2.469,0,0,1,.877.366l.745-.745.707.707-.745.745A2.473,2.473,0,0,1,12.949,5H14V6H12.949a2.473,2.473,0,0,1-.365.876l.745.745-.295.294L12.53,7H10.5A1.5,1.5,0,1,0,9,5.5,1.5,1.5,0,0,0,10.5,7h-.03l-.516.935a2.474,2.474,0,0,1-.831-.352l-.745.745-.707-.707.745-.745A2.473,2.473,0,0,1,8.051,6Z" />
+  </g>
+</svg>

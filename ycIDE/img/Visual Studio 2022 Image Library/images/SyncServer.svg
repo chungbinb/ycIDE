@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSyncServer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,3.5v10h-6V9.621L8.854,7.268V5.732L7.121,4H8V2.5h3.5A1,1,0,0,1,12.5,3.5Z" />
+    <path class="light-defaultgrey" d="M13,3.5v10l-.5.5h-6L6,13.5V10.121l1-1V13h5V3.5a.5.5,0,0,0-.5-.5H8V2h3.5A1.5,1.5,0,0,1,13,3.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,9h3v1H8Zm0,2h3v1H8Zm3-6V6H8.854V5.732L8.121,5Z" />
+    </g>
+    <path class="light-blue" d="M7.854,6.146v.708l-2,2-.708-.708L6.293,7H1V6H6.293L5.146,4.854l.708-.708ZM7,3H1.707L2.854,4.146l-.708.708-2-2V2.146l2-2,.708.708L1.707,2H7Z" />
+  </g>
+</svg>

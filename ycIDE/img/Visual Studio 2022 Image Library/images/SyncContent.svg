@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>SyncContent</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v9.5H3.5V8.91l.766-.765L4.119,8H8V5H6.126L7.855,3.269V1.733L7.622,1.5H11Z" />
+      <path class="light-defaultgrey" d="M15,4.5v10l-.5.5H3.5L3,14.5V9.41l1-1V14H14V5H11V2H7.855V1.733L7.122,1H11.5l.354.146,3,3Z" />
+      <path class="light-defaultgrey" d="M6,8H7V9H6Zm4,0V9h1V8Zm-5.734.145L4,8.41V9H5V8H4.121ZM8,9H9V8H8Zm2,2h1V10H10Zm0,2h1V12H10Z" />
+    </g>
+    <path class="light-blue" d="M5.3,2,4.149.854,4.856.147l2,2v.707l-2,2-.707-.707L5.3,3H0V2ZM7,6V7H1.705L2.851,8.144l-.707.707-2-2V6.144l2-2,.707.707L1.705,6Z" />
+  </g>
+</svg>

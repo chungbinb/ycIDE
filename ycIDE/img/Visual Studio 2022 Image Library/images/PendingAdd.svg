@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPendingAdd</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,12A3.5,3.5,0,1,1,4,8.5,3.5,3.5,0,0,1,7.5,12Z" />
+    <path class="light-defaultgrey" d="M4,16a4,4,0,1,1,4-4A4,4,0,0,1,4,16ZM4,9a3,3,0,1,0,3,3A3,3,0,0,0,4,9Zm1.5,4H4l-.5-.5V10h1v2h1Z" />
+    <path class="light-green" d="M15,6H11v4H10V6H6V5h4V1h1V5h4Z" />
+  </g>
+</svg>

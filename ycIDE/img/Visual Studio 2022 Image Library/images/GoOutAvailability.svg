@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGoOutAvailability</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,8.5h2v5h-2Z" />
+    <path class="light-defaultgrey" d="M4,8.5v5l.5.5h2l.5-.5v-5L6.5,8h-2ZM6,9v4H5V9Z" />
+    <path class="light-defaultgrey-10" d="M.5,10.5h2v3H.5Z" />
+    <path class="light-defaultgrey" d="M0,10.5v3l.5.5h2l.5-.5v-3L2.5,10H.5ZM2,11v2H1V11Z" />
+    <path class="light-defaultgrey-10" d="M12.5,3.5h2v10h-2Z" />
+    <path class="light-defaultgrey" d="M12,3.5v10l.5.5h2l.5-.5V3.5L14.5,3h-2ZM14,4v9H13V4Z" />
+    <path class="light-defaultgrey-10" d="M8.5,6.5h2v7h-2Z" />
+    <path class="light-defaultgrey" d="M8,6.5v7l.5.5h2l.5-.5v-7L10.5,6h-2ZM10,7v6H9V7Z" />
+    <path class="light-blue" d="M6,.5V4H5V1.707L2.354,4.354l-.708-.708L4.293,1H2V0H5.5ZM6,5H1V0H0V5.5L.5,6H6Z" />
+  </g>
+</svg>

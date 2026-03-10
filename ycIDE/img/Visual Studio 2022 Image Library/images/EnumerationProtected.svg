@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEnumerationProtected</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M8.373,13.357H1.5V7.643h8V9.635l-1.912.278-.659,2.036Z" />
+    <path class="light-yellow" d="M3.5,9h4v1h-4Zm0,3H6.981l-.052-.051L7.236,11H3.5Zm5.116,1.593L8.007,13H2V8H9V9.707l.922-.134L10,9.416V7.5L9.5,7h-8L1,7.5v6l.5.5H8.546Z" />
+    <g class="cls-1">
+      <path class="light-yellow-10" d="M9.5,7h-3V2.643h8V8.357h-.951l-.443-.9H10.967l-.444.9H10V7.5Z" />
+      <path class="light-yellow" d="M8.5,4h4V5h-4ZM7,7H6V2.5L6.5,2h8l.5.5v6l-.505.505h-.626L13.373,8H14V3H7ZM8.5,6h4V7h-4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M13.844,13.07l.426,2.488-2.234-1.175L9.8,15.558l.427-2.488L8.42,11.308l2.5-.363,1.118-2.264,1.117,2.264,2.5.363Z" />
+    <path class="light-defaultgrey" d="M16,11.666l-.276-.853-2.239-.326-1-2.028h-.9l-1,2.028-2.238.326-.277.853L9.69,13.244l-.382,2.229.725.527,2-1.053,2,1.053.726-.527-.383-2.229Zm-2.394,2.978-1.337-.7H11.8l-1.339.7.256-1.49-.145-.443L9.494,11.656l1.5-.217.376-.273.67-1.356.669,1.356.376.273,1.5.217L13.5,12.711l-.144.443Z" />
+  </g>
+</svg>

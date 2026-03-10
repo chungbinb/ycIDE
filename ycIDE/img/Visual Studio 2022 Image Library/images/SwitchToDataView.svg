@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSwitchToDataView</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M14.5,3.086V8.914C14.5,10,12.686,10.5,11,10.5V8.3l-.3-.727-3.2-3.2V3.086C7.5,2,9.314,1.5,11,1.5S14.5,2,14.5,3.086Z" />
+    <path class="light-lightblue" d="M11,1C9.073,1,7,1.567,7,2.813v1.31l.416.166L8,4.873V4.051a7.2,7.2,0,0,0,3,.574,7.2,7.2,0,0,0,3-.574V9.188C14,9.4,12.969,10,11,10v1c1.927,0,4-.567,4-1.812V2.813C15,1.567,12.927,1,11,1Zm0,2.625c-1.969,0-3-.6-3-.812S9.031,2,11,2s3,.6,3,.813S12.969,3.625,11,3.625Z" />
+    <path class="light-defaultgrey" d="M9.854,8.142l-3-3L6.5,5h-5L1,5.5v9l.5.5h8l.5-.5v-6ZM9,14H2V6H6V9H9ZM4.5,11l.5.5v1l-.5.5h-1L3,12.5v-1l.5-.5ZM6,10.5l.5-.5h1l.5.5v2l-.5.5h-1L6,12.5ZM3,7H5V8H3Zm1,3H3V9H4Z" />
+  </g>
+</svg>

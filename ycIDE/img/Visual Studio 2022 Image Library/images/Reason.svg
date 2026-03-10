@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>Reason</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14,5V7.424A4.91,4.91,0,0,0,13,7.1V5ZM1,14V5H0v9.5l.5.5H8.026a4.967,4.967,0,0,1-.6-1Z" />
+      <path class="light-defaultgrey-10" d="M7.7,14.5H.5V5H2.878L5.732,7.854H7.268L10.122,5H13V7.1A5,5,0,0,0,7,12,4.937,4.937,0,0,0,7.7,14.5Z" />
+    </g>
+    <path class="light-blue" d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Z" />
+    <path class="white" d="M11.5,12h1v2h-1Zm0-1h1V10h-1Z" />
+    <path class="light-blue" d="M9.354,4.354l-2.5,2.5H6.146l-2.5-2.5.708-.707L6,5.293,5.99,0h.92L7,5.293,8.646,3.647Z" />
+    <path class="light-defaultgrey" d="M4,11H6v2H4ZM4,8H2v2H4ZM8,9.031V8H6v2H7.424A5,5,0,0,1,8,9.031Z" />
+  </g>
+</svg>

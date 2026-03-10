@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFSConsole</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M14.5,5v8.5H1.5V5Z" />
+      <path class="light-purple" d="M15,4.5v9l-.5.5H1.5L1,13.5v-9l.5.5H2v8H14V5h.5Z" />
+    </g>
+    <path class="light-purple-10" d="M14.5,1.5v3H1.5v-3Z" />
+    <path class="light-purple" d="M14.5,1H1.5L1,1.5v3l.5.5h13l.5-.5v-3ZM14,4H2V2H14Z" />
+    <path class="light-purple" d="M3.854,6.146l2,2v.708l-2,2-.708-.708L4.793,8.5,3.146,6.854ZM6,10v1H9V10Z" />
+  </g>
+</svg>

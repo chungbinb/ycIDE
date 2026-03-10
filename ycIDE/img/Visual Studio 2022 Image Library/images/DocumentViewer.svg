@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDocumentViewer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,11A4.5,4.5,0,1,1,5,6.5,4.5,4.5,0,0,1,9.5,11Z" />
+    <path class="light-defaultgrey" d="M5,16a5,5,0,1,1,5-5A5.006,5.006,0,0,1,5,16ZM5,7a4,4,0,1,0,4,4A4,4,0,0,0,5,7Z" />
+    <path class="light-defaultgrey" d="M9,12v2H4L3,13V6.5H5V12Z" />
+    <path class="light-defaultgrey-10" d="M13.5,4.5v9H10.447A5.943,5.943,0,0,0,11,11,5.978,5.978,0,0,0,3.5,5.2V1.5h7Z" />
+    <path class="light-defaultgrey" d="M14,4.5v9l-.5.5H10.188a5.934,5.934,0,0,0,.462-1H13V5H10V2H4V5.09a5.969,5.969,0,0,0-1,.26V1.5L3.5,1h7l.354.146,3,3Z" />
+  </g>
+</svg>

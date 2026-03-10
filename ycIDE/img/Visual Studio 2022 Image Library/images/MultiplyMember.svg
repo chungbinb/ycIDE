@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>MultiplyMember</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6.93,2.45,6.14,1.06,4.05,2.56,4.3,0H2.7l.25,2.56L.87,1.06.07,2.45,2.41,3.5.07,4.56.86,5.95l2.09-1.5L2.7,7H4.3L4.05,4.45l2.08,1.5.8-1.39L4.59,3.5Z" />
+    <path class="light-defaultgrey-10" d="M9,3.5a4.714,4.714,0,0,0-1,.11,4.534,4.534,0,0,1-.05.53,4.368,4.368,0,0,1-.31,1.14,4.152,4.152,0,0,1-.62,1.01A4.394,4.394,0,0,1,5.01,7.74a4.913,4.913,0,0,1-.51.15V8A4.5,4.5,0,1,0,9,3.5Z" />
+    <path class="light-defaultgrey" d="M9,3a5.689,5.689,0,0,0-1.02.1c.01.13.02.27.02.4v.11a4.534,4.534,0,0,1-.05.53A4,4,0,1,1,5,8a2.26,2.26,0,0,1,.01-.26,4.913,4.913,0,0,1-.51.15,4.331,4.331,0,0,1-.5.08V8A5,5,0,1,0,9,3Z" />
+    <path class="light-defaultgrey" d="M8.5,5a1.428,1.428,0,0,0-.86.28,4.152,4.152,0,0,1-.62,1.01A1.5,1.5,0,1,0,8.5,5Zm0,2A.5.5,0,1,1,9,6.5.5.5,0,0,1,8.5,7Z" />
+  </g>
+</svg>

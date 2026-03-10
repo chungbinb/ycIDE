@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightReparentBranch</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.5,9.5v5h-6v-5Z" />
+      <path class="light-defaultgrey" d="M7.5,9h-6L1,9.5v5l.5.5h6l.5-.5v-5ZM7,14H2V10H7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,1.5v5h-6v-5Z" />
+    <path class="light-defaultgrey" d="M8,1.5v5l.5.5h6l.5-.5v-5L14.5,1h-6ZM9,2h5V6H9Z" />
+    <path class="light-blue" d="M9,12v-.707l2-2,.707.707-1.146,1.146H13v-2h1v2.5l-.5.5H10.561l1.146,1.147L11,14ZM2,7V4.5L2.5,4H5.439L4.293,2.854,5,2.146l2,2v.708l-2,2-.707-.708L5.439,5H3V7Z" />
+  </g>
+</svg>

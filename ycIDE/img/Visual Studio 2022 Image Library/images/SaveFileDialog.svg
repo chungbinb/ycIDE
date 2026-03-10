@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>SaveFileDialog</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9,3V5h5V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H8.88L9,2.3V3h5V5H9V6h5.5l.5-.5v-3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M9,5V7.91L7.91,9H1.5v4h13V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H9V6h5v7H2V9H1v4.5l.5.5h13l.5-.5v-8Z" />
+    </g>
+    <path class="light-blue-10" d="M.5.5h5l2,2v5H.5Z" />
+    <path class="light-blue" d="M7.854,2.146l-2-2L5.5,0H.5L0,.5v7L.5,8h7L8,7.5v-5ZM4,1V3H3V1ZM7,7H1V1H2V3.5l.5.5h2L5,3.5V1h.293L7,2.707Z" />
+  </g>
+</svg>

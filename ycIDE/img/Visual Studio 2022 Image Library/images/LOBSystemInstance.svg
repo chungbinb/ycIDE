@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLOBSystemInstance</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M14.5,1.5v8H11V6.8l-.3-.721L8.92,4.3,8.5,4.125V1.5Z" />
+    <path class="light-defaultgrey-10" d="M9.5,12.5h-6v-7H8L9.5,7Z" />
+    <path class="light-defaultgrey" d="M2,6H1V7H2ZM2,8H1V9H2Zm0,2H1v1H2Zm0,4H1v1H2Zm8,1V14H9v1ZM8,15V14H7v1ZM6,15V14H5v1ZM4,15V14H3v1ZM2,12H1v1H2Z" />
+    <path class="light-defaultgrey" d="M9.854,6.646l-1.5-1.5L8,5H3.5L3,5.5v7l.5.5h6l.5-.5V7ZM4,12V6H7V8H9v4Z" />
+    <path class="light-blue" d="M11,4H10V3h1ZM10,5.379,10.621,6H11V5H10ZM12,6h1V5H12Zm2.5-5h-6L8,1.5V4h.2l.721.3.08.08V2h5V9H12V7H11v3h4V1.5ZM13,3H12V4h1Z" />
+  </g>
+</svg>

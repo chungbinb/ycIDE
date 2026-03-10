@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>DebugTemplate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14,5V15.5l-.5.5H3.5L3,15.5V7.438L9.016,4,5,1.705V1h5l4,4Z" />
+      <path class="light-defaultgrey" d="M5,15H6v1H5ZM3,11H4v1H3ZM3,9H4v1H3Zm.766-2H4V8H3V7.438ZM3,13H4v1H3ZM8,2H7V1H8ZM5,1.705V1H6V2H5.516ZM3,15H4v1H3.5L3,15.5Zm10-2h1v1H13Zm0-2h1v1H13Zm0-2h1v1H13Zm0-2h1V8H13Zm1-2V6H13V5H10V2H9V1h1ZM7,15H8v1H7Zm2,0h1v1H9Zm2,0h1v1H11Zm2,0h1v.5l-.5.5H13Z" />
+    </g>
+    <path class="light-green" d="M7,4,0,8V0Z" />
+  </g>
+</svg>

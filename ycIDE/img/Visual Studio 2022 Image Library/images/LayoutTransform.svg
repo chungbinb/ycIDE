@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>LayoutTransform</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.01,6.5l-2.71,6H9.5v.23l-6-2.7V8.5H2.99l2.71-6h.8V2.27l6,2.7V6.5Z" />
+    <path class="light-defaultgrey" d="M12.5,6.5V6.42L9.83,12.34,3.5,9.48V10.5H3.33L9.5,13.29V12.5h1.35l2.72-6Zm-9,2.08L6.17,2.66,12.5,5.52V4.5h.17L6.5,1.71V2.5H5.15l-2.72,6H3.5Z" />
+    <path class="light-blue-10" d="M4.5.5h2v2h-2Zm-3,10h2v-2h-2Zm11-6v2h2v-2Zm-3,10h2v-2h-2Z" />
+    <path class="light-blue" d="M4.5,0,4,.5v2l.5.5h2L7,2.5V.5L6.5,0ZM6,2H5V1H6ZM1.5,8,1,8.5v2l.5.5h2l.5-.5v-2L3.5,8ZM3,10H2V9H3ZM14.5,4h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM14,6H13V5h1ZM9.5,12l-.5.5v2l.5.5h2l.5-.5v-2l-.5-.5ZM11,14H10V13h1Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddButton</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11,13v-.5H2.5a1,1,0,0,1-1-1V8H5V5H8V3.5h6.5a1,1,0,0,1,1,1V9.638l.5.6Z" />
+    <path class="light-defaultgrey" d="M2.5,12H11v1H2.5A1.5,1.5,0,0,1,1,11.5V8H2v3.5A.5.5,0,0,0,2.5,12ZM16,4.5v5.738l-1-1.2V4.5a.5.5,0,0,0-.5-.5H8V3h6.5A1.5,1.5,0,0,1,16,4.5Z" />
+    <path class="light-blue" d="M14.278,11.7l.789,2.167-.94.342-.821-2.256L12,13V7l4,4.8Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

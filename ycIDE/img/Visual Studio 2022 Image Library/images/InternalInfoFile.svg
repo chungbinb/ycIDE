@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>InternalInfoFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+    <path class="light-defaultgrey" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+    <path class="light-defaultgrey" d="M7,6H5V5H7ZM5,13H7V11H5ZM9,6V7h3V6Zm0,4h3V9H9Zm0,3h3V12H9ZM5.5,8.793,4.354,7.646l-.708.708,1.5,1.5h.708l2.5-2.5-.708-.708Z" />
+  </g>
+</svg>

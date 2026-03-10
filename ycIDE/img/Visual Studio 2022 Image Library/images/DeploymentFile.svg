@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDeploymentFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,13.5H1.5V1.5h7l3,3V8H8Z" />
+    <path class="light-defaultgrey" d="M8,14H1.5L1,13.5V1.5L1.5,1h7l.354.146,3,3L12,4.5V8H11V5H8V2H2V13H8Z" />
+    <path class="light-defaultgrey" d="M5,8H3V6H5Zm0,3H3V9H5ZM8,8H6V6H8Z" />
+    <path class="light-defaultgrey" d="M12,12H9V9h3Zm0,4H9V13h3Zm4-4H13V9h3Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSearchGo</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,3.5h13v8H1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,3H1.5L1,3.5v8l.5.5h13l.5-.5v-8ZM14,11H2V4H14Z" />
+    <path class="light-blue" d="M11.854,7.145v.707l-2.5,2.5-.708-.707L10.291,8H4V7h6.3L8.646,5.352l.708-.707Z" />
+  </g>
+</svg>

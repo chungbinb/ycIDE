@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCustomErrorMessage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M.5,2.5h15v11H.5Z" />
+      <path class="light-defaultgrey" d="M15.5,14H.5L0,13.5V2.5L.5,2h15l.5.5v11ZM1,13H15V3H1Z" />
+    </g>
+    <path class="light-defaultgrey" d="M11,6h3V7H11Zm0,4h3V9H11Z" />
+    <path class="light-defaultgrey-10" d="M2.5,8A3.5,3.5,0,1,1,6,11.5,3.5,3.5,0,0,1,2.5,8Z" />
+    <path class="light-defaultgrey" d="M6,4a4,4,0,1,0,4,4A4,4,0,0,0,6,4Zm0,7A3,3,0,1,1,9,8,3,3,0,0,1,6,11Z" />
+    <path class="light-defaultgrey" d="M6.707,8,7.854,9.146l-.708.708L6,8.707,4.854,9.854l-.708-.708L5.293,8,4.146,6.854l.708-.708L6,7.293,7.146,6.146l.708.708Z" />
+  </g>
+</svg>

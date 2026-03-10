@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightTemplateShortcut</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M1.207,5.5,2.853,7.146l-.707.708-2-2V5.146l2-2,.707.708Z" />
+      <path class="light-defaultgrey" d="M11.793,5.5,10.147,3.854l.707-.708,2,2v.708L11.708,7H10.293Z" />
+    </g>
+    <path class="light-defaultgrey" d="M10,1V2H7V9H6V2H3V1Z" />
+    <path class="light-defaultgrey-10" d="M15.5,8.5v7h-7v-7Z" />
+    <path class="light-defaultgrey" d="M15.5,8h-7L8,8.5v7l.5.5h7l.5-.5v-7ZM15,15H9V9h6Zm-1-4.5V14H13V11.707l-2.646,2.647-.708-.708L12.293,11H10V10h3.5Z" />
+  </g>
+</svg>

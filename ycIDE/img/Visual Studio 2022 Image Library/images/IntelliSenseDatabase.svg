@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IntelliSenseDatabase</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11,2H6V6.047c2.459.219,4,1.253,4,2.765V11h4V5Z" />
+      <path class="light-defaultgrey" d="M15,4.5v7l-.5.5H10V11h4V5H11V2H6V6.047C5.68,6.018,5.349,6,5,6V1.5L5.5,1h6l.354.142,3,3Z" />
+      <path class="light-defaultgrey" d="M10,6H7V5h3Zm0-3H7V4h3ZM8.974,7a2.455,2.455,0,0,1,.839,1H13V7ZM10,10h3V9H10Z" />
+    </g>
+    <path class="light-lightblue-10" d="M5,7.5c-1.686,0-3.5.5-3.5,1.586v3.828C1.5,14,3.314,14.5,5,14.5s3.5-.5,3.5-1.586V9.086C8.5,8,6.686,7.5,5,7.5Z" />
+    <path class="light-lightblue" d="M5,7C3.073,7,1,7.567,1,8.812v4.376C1,14.433,3.073,15,5,15s4-.567,4-1.812V8.812C9,7.567,6.927,7,5,7ZM5,8c1.969,0,3,.6,3,.812s-1.031.813-3,.813-3-.6-3-.813S3.031,8,5,8Zm0,6c-1.969,0-3-.6-3-.812V10.051a7.2,7.2,0,0,0,3,.574,7.2,7.2,0,0,0,3-.574v3.137C8,13.4,6.969,14,5,14Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCheckerboardSquare</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="white" d="M14,14H2V2H14Z" />
+    <path class="light-defaultgrey" d="M4,4H2V2H4ZM8,4H6V2H8Zm4,0H10V2h2ZM6,6H4V4H6Zm4,0H8V4h2Zm4,0H12V4h2ZM4,8H2V6H4ZM8,8H6V6H8Zm4,0H10V6h2ZM6,10H4V8H6Zm4,0H8V8h2Zm4,0H12V8h2ZM4,12H2V10H4Zm4,0H6V10H8Zm4,0H10V10h2ZM6,14H4V12H6Zm4,0H8V12h2Zm4,0H12V12h2Z" />
+  </g>
+</svg>

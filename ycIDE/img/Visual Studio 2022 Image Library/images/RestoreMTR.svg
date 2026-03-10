@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRestoreMTR</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4,11.5H.5v-9h5V6H5.086L4,7.086Z" />
+    <path class="light-defaultgrey-10" d="M12.65,8.5H14.5v6h-9v-6h4.914l.35.351H12.3Z" />
+    <path class="light-defaultgrey" d="M4,12H.5L0,11.5V1.5L.5,1h5l.5.5V6H5.086L5,6.086V3H1v8H4Z" />
+    <path class="light-defaultgrey" d="M14.15,7,12.3,8.851H10.764L8.914,7H5.5L5,7.5v7l.5.5h9l.5-.5v-7L14.5,7ZM14,14H6V9h8Z" />
+    <path class="light-blue" d="M9.5,1A2.5,2.5,0,0,1,12,3.5V6.322l1.678-1.678.707.707-2.5,2.5h-.707l-2.5-2.5.707-.707L11,6.258V3.5a1.5,1.5,0,0,0-3,0V4H7V3.5A2.5,2.5,0,0,1,9.5,1Z" />
+  </g>
+</svg>

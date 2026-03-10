@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>Union</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,2.5v8h-9v-8Zm-4,3v8h-9v-8Z" />
+      <path class="light-defaultgrey" d="M14.5,2h-9L5,2.5V5H1.5L1,5.5v8l.5.5h9l.5-.5V11h3.5l.5-.5v-8ZM10,13H2V6H5v4.5l.5.5H10Zm0-3H6V6h4Zm4,0H11V5.5L10.5,5H6V3h8Z" />
+    </g>
+    <path class="light-blue" d="M11,5.5V11H5.5L5,10.5V5h5.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>HiddenFolderOpened</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M0,2H6L8,4V3h6V6h2l-3,6-1,1H0Z" />
+      <path class="light-defaultgrey" d="M8,4H7V3H8Zm2,0H9V3h1Zm2,0H11V3h1Zm2,0H13V3h1Zm0,3H13V6h1ZM12,7H11V6h1ZM10,7H9V6h1ZM8,7H7V6H8ZM6,7H5V6H6ZM5,9H4V8H5ZM4,11H3V10H4ZM1,5H0V4H1ZM1,3H0V2H1ZM3,3H2V2H3ZM5,3H4V2H5ZM7,3H6V2H7ZM1,7H0V6H1ZM1,9H0V8H1Zm0,2H0V10H1Zm0,2H0V12H1Zm2,0H2V12H3Zm2,0H4V12H5Zm2,0H6V12H7Zm2,0H8V12H9Zm2,0H10V12h1Zm2,0H12V12h1Zm1-2H13V10h1Zm1-2H14V8h1Zm1-2H15V6h1Z" />
+    </g>
+  </g>
+</svg>

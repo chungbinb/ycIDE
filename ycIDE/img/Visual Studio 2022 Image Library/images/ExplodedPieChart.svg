@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExplodedPieChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M15.5,6.5h-6V.5A6,6,0,0,1,15.5,6.5Z" />
+    <path class="light-lightblue" d="M9.5,0,9,.5v6l.5.5h6l.5-.5A6.508,6.508,0,0,0,9.5,0ZM10,6V1.022A5.511,5.511,0,0,1,14.978,6Z" />
+    <path class="light-defaultgrey-10" d="M13.5,8.5a6,6,0,1,1-6-6v6Z" />
+    <path class="light-defaultgrey" d="M13.5,8H8V2.5L7.5,2A6.5,6.5,0,1,0,14,8.5Zm-6,6A5.5,5.5,0,0,1,7,3.022V8.5l.5.5h5.478A5.508,5.508,0,0,1,7.5,14Z" />
+  </g>
+</svg>

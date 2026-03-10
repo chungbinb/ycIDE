@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAcceptEventAction</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M15,12.5v-9L14.5,3H1.5l-.335.872L5.753,8,1.165,12.128,1.5,13h13Z" />
+    <path class="light-yellow" d="M15,12.5v-9L14.5,3H1.5l-.335.872L5.753,8,1.165,12.128,1.5,13h13ZM2.8,12,6.835,8.372V7.628L2.8,4H14v8Z" />
+  </g>
+</svg>

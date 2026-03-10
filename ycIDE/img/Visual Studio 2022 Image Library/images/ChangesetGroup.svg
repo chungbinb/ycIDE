@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightChangesetGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,2H6V1h8V8H13V2.5Z" />
+    <path class="light-defaultgrey-10" d="M12,8v3h.5v4.5h-9v-.939l.5-.44V4.051a3.448,3.448,0,0,0-.5.11V2.5h9V8Z" />
+    <path class="light-defaultgrey" d="M14,1H6V2H5V.5L5.5,0h9l.5.5V8H14Zm1,10v2.5l-.5.5H13V13h1V11ZM4,4.051a3.44,3.44,0,0,0-1,.3V2.5L3.5,2h9l.5.5V8H12V3H4ZM12,11h1v4.5l-.5.5h-9L3,15.5V15l1-.879V15h8Z" />
+    <path class="light-defaultgrey" d="M15,10V9H10.488A2.476,2.476,0,0,0,11,7.5,2.493,2.493,0,0,0,6.5,6.015,2.5,2.5,0,1,0,4.5,10h.793L2.646,12.646l.708.708L6.5,10.207l3.146,3.147.708-.708L7.707,10H15ZM6,9H4.5A1.5,1.5,0,1,1,6,7.5ZM7,9V7.5A1.5,1.5,0,1,1,8.5,9Z" />
+  </g>
+</svg>

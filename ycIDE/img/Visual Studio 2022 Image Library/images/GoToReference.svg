@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGoToReference</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,6.5v4H.5v-4Zm11-1v6h-6v-6Z" />
+    <path class="light-defaultgrey" d="M15.5,5h-6L9,5.5V8H5V6.5L4.5,6H.5L0,6.5v4l.5.5h4l.5-.5V9H9v2.5l.5.5h6l.5-.5v-6ZM4,10H1V7H4Zm11,1H10V6h5Z" />
+    <path class="light-blue" d="M4.293,2,3.146.854,3.854.146l2,2v.708l-2,2-.708-.708L4.293,3H0V2Z" />
+  </g>
+</svg>

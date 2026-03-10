@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDirectionLight</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.657,8,11,10.157,9.476,8.646l-.348.347L7.008,6.871l.353-.353L5.843,5,8,1.343Z" />
+    <path class="light-blue" d="M3.707,13H7v1H2.5L2,13.5V9H3v3.293l6.179-6.18.707.707Z" />
+    <path class="light-defaultgrey" d="M15.01,7.646l-.1.785-3.657,2.157-.608-.077L9.128,8.993l.708-.708L11.08,9.529,13.847,7.9,8.1,2.152,6.471,4.92,7.715,6.164l-.707.707L5.49,5.354l-.077-.608L7.569,1.089l.785-.1Z" />
+  </g>
+</svg>

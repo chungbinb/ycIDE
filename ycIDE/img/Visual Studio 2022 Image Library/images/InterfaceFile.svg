@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightInterfaceFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H8.949A2.942,2.942,0,0,0,9,14a2.993,2.993,0,0,0-5.551-1.561H2.811a2.292,2.292,0,0,0-.311-.255V1.5h8Z" />
+      <path class="light-defaultgrey" d="M14,4.5v10l-.5.5H8.816A2.966,2.966,0,0,0,9,14h4V5H10V2H3V12.439H2.811A2.256,2.256,0,0,0,2,11.929V1.5L2.5,1h8l.354.146,3,3Z" />
+    </g>
+    <path class="light-blue-10" d="M7.5,14A1.5,1.5,0,1,1,6,12.5,1.5,1.5,0,0,1,7.5,14Z" />
+    <path class="light-blue" d="M6,12a2,2,0,0,0-1.91,1.44H2.326a1.236,1.236,0,0,0-1.076-.652,1.25,1.25,0,1,0,1.126,1.774H4.09A2,2,0,1,0,6,12Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,6,15Z" />
+  </g>
+</svg>

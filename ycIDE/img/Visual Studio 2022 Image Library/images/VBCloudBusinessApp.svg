@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVBCloudBusinessApp</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue" d="M12,7.429l-3.295,3.3H8L4.629,7.356,1,10.985V9.571L4.275,6.3h.707L8.351,9.664,12,6.015ZM15,2V3.414l-2,2V4Z" />
+    </g>
+    <g class="cls-1">
+      <path class="light-blue-10" d="M15.5,1.5v7H13v-5L12.5,3h-4V1.5Z" />
+      <path class="light-blue" d="M16,1.5v7l-.5.5H13V8h2V2H9V3H8V1.5L8.5,1h7Z" />
+    </g>
+    <path class="light-blue-10" d="M12.5,13.5H.5V3.5h12Z" />
+    <path class="light-blue" d="M12.5,14H.5L0,13.5V3.5L.5,3h12l.5.5v10ZM1,13H12V4H1Z" />
+  </g>
+</svg>

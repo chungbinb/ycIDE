@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightServiceQueueSource</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M10.647,14.646,12.293,13H7V12h5.293l-1.646-1.646.707-.708,2.5,2.5v.708l-2.5,2.5Z" />
+    <path class="light-defaultgrey-10" d="M8.5,10.5h-3v-5h3Zm2.854-2.268L13.5,10.379V5.5h-3V9.086Z" />
+    <path class="light-defaultgrey" d="M8.5,11h-3L5,10.5v-5L5.5,5h3l.5.5v5ZM6,10H8V6H6Zm5-1.414V6h2V9.879l.811.81L14,10.5v-5L13.5,5h-3l-.5.5V9.586ZM14,4H1V3H14ZM6,12H1v1H6Z" />
+  </g>
+</svg>

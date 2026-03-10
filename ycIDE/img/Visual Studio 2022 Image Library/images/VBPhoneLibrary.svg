@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightVBPhoneLibrary</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12.025,1.354,11.412,1,9.48,1.518l-.353.613,2.848,10.625.613.353,1.931-.517.354-.613Zm.786,10.66-2.588-9.66.965-.258,2.589,9.659ZM3.5,1.1l.5.5V6H3V2.1H2V6H1V1.6l.5-.5Zm4,0,.5.5v11l-.5.5H7V2.1H6V6H5V1.6l.5-.5Z" />
+    <path class="light-blue-10" d="M5.5,15.5H.5v-8h5Z" />
+    <path class="light-defaultgrey-10" d="M14.389,12.108l-1.931.518L9.611,2l1.931-.518ZM4,6V5.109H3.5V1.6h-2V5.109H1V6Zm1.5-.891H5V6h.914L7,7.086v5.023h.5V1.6h-2Z" />
+    <path class="light-blue" d="M5.5,16H.5L0,15.5v-8L.5,7h5l.5.5v8ZM1,15H5V8H1Z" />
+    <path class="light-blue" d="M4,14H2V13H4Z" />
+  </g>
+</svg>

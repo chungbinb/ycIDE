@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPendingUndelete</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,12A3.5,3.5,0,1,1,4,8.5,3.5,3.5,0,0,1,7.5,12Z" />
+    <path class="light-red" d="M12.98,4.98a3.023,3.023,0,0,1-.77,2.14L8.79,10.55a5.453,5.453,0,0,0-.42-.99l3.14-3.14a2.153,2.153,0,0,0,.47-1.43,2.161,2.161,0,0,0-.6-1.55,2.263,2.263,0,0,0-2.97-.13L6.72,5H9V6H5.5L5,5.5V2H6V4.31L7.7,2.6a3.275,3.275,0,0,1,4.36.1A3.138,3.138,0,0,1,12.98,4.98Z" />
+    <path class="light-defaultgrey" d="M4,16a4,4,0,1,1,4-4A4,4,0,0,1,4,16ZM4,9a3,3,0,1,0,3,3A3,3,0,0,0,4,9Zm1.5,4H4l-.5-.5V10h1v2h1Z" />
+  </g>
+</svg>

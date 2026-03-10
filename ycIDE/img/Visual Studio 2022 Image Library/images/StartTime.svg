@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightStartTime</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,10.5a4,4,0,1,1-4-4A4,4,0,0,1,15.5,10.5Z" />
+    <path class="light-defaultgrey" d="M12,6.051V5h1V4H10.019V5H11V6.051a4.5,4.5,0,1,0,1,0ZM11.5,14A3.5,3.5,0,1,1,15,10.5,3.5,3.5,0,0,1,11.5,14Z" />
+    <path class="light-defaultgrey" d="M12,11H11V8h1Z" />
+    <path class="light-green" d="M4,0A4,4,0,1,0,8,4,4,4,0,0,0,4,0Z" />
+    <path class="white" d="M3,6V2L6,3.987Z" />
+  </g>
+</svg>

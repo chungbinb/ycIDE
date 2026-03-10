@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightStackPanel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,1.5h13v13H1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v13l.5.5h13l.5-.5V1.5ZM14,14H2V2H14Z" />
+    <path class="light-defaultgrey" d="M11.5,3h-7L4,3.5v6l.5.5h7l.5-.5v-6ZM5,4h6V5H5Zm6,3H5V6h6Zm0,2H5V8h6Z" />
+    <path class="light-defaultgrey" d="M13,10v3H12V12H4v1H3V10H4v1h8V10Z" />
+  </g>
+</svg>

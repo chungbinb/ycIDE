@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-darkpurple{fill: #533182; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightFlagDarkPurple</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-darkpurple" d="M7.5,1.5v7h-6v-7Z" />
+      <path class="light-darkpurple" d="M12.5,3.5v7h-5v-7Z" />
+    </g>
+    <path class="light-darkpurple" d="M2,2V15H1V2Z" />
+    <path class="light-darkpurple" d="M7.5,1h-6L1,1.5v7l.5.5h6L8,8.5v-7ZM7,8H2V2H7Z" />
+    <path class="light-darkpurple" d="M12.5,3h-5L7,3.5v7l.5.5h5l.5-.5v-7ZM12,10H8V4h4Z" />
+  </g>
+</svg>

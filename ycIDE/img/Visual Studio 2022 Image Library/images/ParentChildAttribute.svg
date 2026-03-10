@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>ParentChildAttribute</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,8.5h3v3H.5Zm6-6h-4v4h4Zm-1,6v3h3v-3Z" />
+    <path class="light-defaultgrey" d="M.5,8,0,8.5v3l.5.5h3l.5-.5v-3L3.5,8ZM3,11H1V9H3ZM6.5,7,7,6.5v-4L6.5,2h-4L2,2.5v4l.5.5ZM3,3H6V6H3ZM8.5,8h-3L5,8.5v3l.5.5h3l.5-.5v-3ZM8,11H6V9H8Z" />
+    <path class="light-blue" d="M12.146,8.147l.708.707L11.707,10H14V5H9V4h5.5l.5.5v6l-.5.5H11.707l1.147,1.147-.708.707-2-2v-.707Z" />
+  </g>
+</svg>

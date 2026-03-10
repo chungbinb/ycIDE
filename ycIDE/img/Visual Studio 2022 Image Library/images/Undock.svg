@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUndock</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H1.5V5H11V2.5Z" />
+    <path class="light-blue-10" d="M9.5,3.5H.5V.5h9Z" />
+    <path class="light-blue" d="M0,4V0H10V4ZM1,3H9V1H1Z" />
+    <path class="light-defaultgrey" d="M15,2.5v11l-.5.5H1.5L1,13.5V5H2v8H14V3H11V2h3.5Z" />
+  </g>
+</svg>

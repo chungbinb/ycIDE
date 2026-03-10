@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSBlankPhone</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.414,15H5.379l-1-1H4v-.379l-1-1V6.586l1,1V2h7V14h-.586Z" />
+      <path class="light-defaultgrey" d="M7,3H8V4H7Z" />
+      <path class="light-defaultgrey" d="M12,1.5v13l-.5.5h-.086l-1-1H11V2H4V7.586l-1-1V1.5L3.5,1h8ZM4,14v-.586l-1-1V14.5l.5.5H5.586l-1-1Z" />
+    </g>
+    <path class="light-green" d="M7,15,3,11V8l7,7Z" />
+  </g>
+</svg>

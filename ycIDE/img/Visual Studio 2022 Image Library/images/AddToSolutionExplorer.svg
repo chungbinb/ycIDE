@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddToSolutionExplorer</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M15.5,4.5v9H2.5V8H5V5H8V3.5h.5l1,1Z" />
+    <path class="light-yellow" d="M16,4.5v9l-.5.5H2.5L2,13.5V8H3v5H15V5H9.682l-.853.854L8.475,6H5V5H8.268l.513-.512L8.293,4H8V3h.5l.354.146L9.707,4H15.5Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+    <path class="light-green" d="M13.241,7.513l-3.5,3.5H9.034L7.387,9.367,8.1,8.66,9.387,9.953l3.147-3.147Z" />
+  </g>
+</svg>

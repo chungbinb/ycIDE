@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPowershellFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H10.029l1.034-5.171L9.973,8H2.5V1.5h8Z" />
+      <path class="light-defaultgrey" d="M14,4.5v10l-.5.5H9.929l.2-1H13V5H10V2H3V8H2.143L2,8.117V1.5L2.5,1h8l.354.146,3,3Z" />
+    </g>
+    <path class="light-lightblue" d="M9.99,9.6l-1,5L8.5,15h-7l-.49-.6,1-5L2.5,9h7Z" />
+    <path class="white" d="M3.5,10.021l1.3,1.3v.707l-1.95,1.951-.708-.708,1.6-1.6L2.8,10.729ZM5,13v1H7V13Z" />
+  </g>
+</svg>

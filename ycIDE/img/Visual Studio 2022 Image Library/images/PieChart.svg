@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPieChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,8A6.5,6.5,0,1,1,7,1.576,6.594,6.594,0,0,1,8,1.5c.169,0,.334.013.5.025V7.5h5.975C14.487,7.666,14.5,7.831,14.5,8Z" />
+    <path class="light-defaultgrey" d="M14.973,7.462,14.475,7H9V1.525l-.462-.5a7.108,7.108,0,0,0-1.614.055A7,7,0,1,0,15,8C15,7.818,14.987,7.64,14.973,7.462ZM8,14A6,6,0,0,1,7.076,2.07,6.228,6.228,0,0,1,8,2V7.5l.5.5H14A6.006,6.006,0,0,1,8,14Z" />
+    <path class="light-lightblue-10" d="M14.475,7.5H8.5V1.525A6.494,6.494,0,0,1,14.475,7.5Z" />
+    <path class="light-lightblue" d="M8.538,1.027,8,1.525V7.5l.5.5h5.975l.5-.538A7.036,7.036,0,0,0,8.538,1.027ZM9,7V2.09A6.044,6.044,0,0,1,13.91,7Z" />
+  </g>
+</svg>

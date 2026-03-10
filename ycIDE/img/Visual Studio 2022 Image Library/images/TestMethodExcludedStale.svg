@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>TestMethodExcludedStale</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.98,7.42a4.729,4.729,0,0,0-.45.23A5.019,5.019,0,0,0,7,12a5.106,5.106,0,0,0,.41,2c.08.17.17.34.26.5H3.32a1,1,0,0,1-.83-1.55L6.46,6.73,6.5,6.6V1.5h3V6.6l.04.13Z" />
+    <path class="light-defaultgrey" d="M11,2V1H5V2H6V6.52L3.58,10.23l-.01.01L2.06,12.69A1.5,1.5,0,0,0,3.32,15H8a4.322,4.322,0,0,1-.33-.5c-.09-.16-.18-.33-.26-.5H3.32a.5.5,0,0,1-.41-.78L6.92,6.94,7,6.67V2H9V6.67l.08.27.45.71a4.729,4.729,0,0,1,.45-.23,4.092,4.092,0,0,1,.49-.18L10,6.52V2Z" />
+    <path class="light-defaultgrey-10" d="M15.5,12A3.5,3.5,0,1,1,12,8.5,3.5,3.5,0,0,1,15.5,12Z" />
+    <path class="light-defaultgrey" d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-7a3,3,0,1,0,3,3A3,3,0,0,0,12,9Zm1.5,4H12l-.5-.5V10h1v2h1Z" />
+  </g>
+</svg>

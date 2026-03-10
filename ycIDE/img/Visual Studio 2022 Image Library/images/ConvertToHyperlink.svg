@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-purple{fill: #6936aa; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightConvertToHyperlink</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M5,9H6a2.966,2.966,0,0,0,.184,1H5a2,2,0,0,0,0,4H9a2,2,0,0,0,0-4H7.278A1.978,1.978,0,0,1,7,9H9a3,3,0,0,1,0,6H5A3,3,0,0,1,5,9Z" />
+    <path class="light-purple" d="M9,6h4a3,3,0,0,1,0,6H12a2.966,2.966,0,0,0-.184-1H13a2,2,0,0,0,0-4H9a2,2,0,0,0,0,4h1.722A1.978,1.978,0,0,1,11,12H9A3,3,0,0,1,9,6Z" />
+    <path class="light-blue" d="M6.854,4.854l-2,2H4.146l-2-2,.708-.708L4,5.293V3.5A1.5,1.5,0,0,0,2.5,2H0V1H2.5A2.5,2.5,0,0,1,5,3.5V5.293L6.146,4.146Z" />
+  </g>
+</svg>

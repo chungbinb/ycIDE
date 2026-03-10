@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightImageLoader</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.62,2.5l.15.15L7.42,3,5.64,4.77,5,4.12V9H2.5v5.5h13V2.5Z" />
+    <path class="light-defaultgrey" d="M15.5,2H7.12l.5.5.15.15L7.42,3H15V14H3V9H2v5.5l.5.5h13l.5-.5V2.5Z" />
+    <path class="light-blue" d="M12.53,8.62h-.7l-2.2,2.2L6.17,7.35H5.46L5,7.81V9H3.81L3,9.81v1.41L5.81,8.41l3.47,3.47h.71l2.19-2.2L15,12.5V11.09Z" />
+    <path class="light-blue" d="M3.145.146h.707l2.5,2.5-.707.708L4,1.709V8H3V1.705L1.352,3.354.645,2.646Z" />
+    <path class="light-yellow" d="M11.5,4A1.5,1.5,0,1,0,13,5.5,1.5,1.5,0,0,0,11.5,4Z" />
+  </g>
+</svg>

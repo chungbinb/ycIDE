@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAttachStyleSheet</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,4.5v10H7.51a4.447,4.447,0,0,0,.49-2V10H6V9.5A3.5,3.5,0,0,0,4.5,6.635V1.5h8Z" />
+      <path class="light-defaultgrey" d="M16,4.5v10l-.5.5H7.238a4.493,4.493,0,0,0,.486-1H15V5H12V2H5V7.058H5a3.535,3.535,0,0,0-.443-.376c-.01-.006-.017-.015-.027-.021A3.417,3.417,0,0,0,4,6.351H4V1.5L4.5,1h8l.354.146,3,3Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7,11v1.5a3.5,3.5,0,0,1-7,0v-3a2.5,2.5,0,0,1,5,0v3a1.5,1.5,0,0,1-3,0V10H3v2.5a.5.5,0,0,0,1,0v-3a1.5,1.5,0,0,0-3,0v3a2.5,2.5,0,0,0,5,0V11Z" />
+    <path class="light-defaultgrey" d="M12.5,7.4,8.473,13H9.84l.838-1.246H12.67L12.625,13H14V7.4Zm.289,1.5-.068,1.883H11.292l1.284-1.9a2.9,2.9,0,0,0,.271-.489h.032A2.412,2.412,0,0,0,12.793,8.9Z" />
+  </g>
+</svg>

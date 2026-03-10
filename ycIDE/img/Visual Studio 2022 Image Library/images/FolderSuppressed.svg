@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFolderSuppressed</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M6.551,12.5H1.5V2.5h6l1,1h6V8.026A4.948,4.948,0,0,0,11.5,7a5.006,5.006,0,0,0-5,5A4.865,4.865,0,0,0,6.551,12.5Z" />
+    <path class="light-yellow" d="M6.5,12H2V5H7.475l.354-.146L8.682,4H14V7.7a5,5,0,0,1,1,.742V3.5L14.5,3H8.707l-.853-.854L7.5,2h-6L1,2.5v10l.5.5H6.6A5,5,0,0,1,6.5,12ZM2,3H7.293l.488.488L7.268,4H2Z" />
+    <path class="light-defaultgrey" d="M11.5,16a4,4,0,1,1,4-4A4,4,0,0,1,11.5,16Z" />
+    <path class="white" d="M13.354,12.354l-1.5,1.5h-.708l-1.5-1.5.708-.708.646.647V10h1v2.293l.646-.647Z" />
+  </g>
+</svg>

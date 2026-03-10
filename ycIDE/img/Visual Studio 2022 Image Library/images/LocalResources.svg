@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>LocalResources</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,8.5v7H.5v-7Z" />
+    <path class="light-defaultgrey" d="M7.5,8H.5L0,8.5v7l.5.5h7l.5-.5v-7ZM7,15H1V9H7Z" />
+    <path class="light-blue" d="M7,14.36V15H6.164l-1.189-.887-.751.334-.478,0L1.986,13.03,1,13.754V12.513L1.7,12l.608.012,1.75,1.4L4.776,13H5.3Z" />
+    <path class="light-yellow" d="M6.648,11a1,1,0,1,1-1-1A1,1,0,0,1,6.648,11Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.5,1.5V5h4l.5.5v5h2.5v-9Z" />
+      <path class="light-defaultgrey-10" d="M2.5,3.5V7H5V5.5L5.5,5H8V3.5Z" />
+      <path class="light-defaultgrey" d="M15.5,1h-7L8,1.5V3H2.5L2,3.5V7H3V4H8V5H9V2h6v8H13v1h2.5l.5-.5v-9Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M5.5,5.5V7H7.91L8,7.09l.41.41H8.5v.09l.5.5V14.5h3.5v-9Z" />
+    <path class="light-defaultgrey" d="M12.5,5h-7L5,5.5V7H6V6h6v8H9v1h3.5l.5-.5v-9Z" />
+    <path class="light-defaultgrey-25" d="M9,10v1h3V10ZM9,8.09V6H8V7.09l.41.41H8.5v.09Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNewLoadTestPlugin</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M13.6,10.96,12.67,9.5H7.33L6.4,10.96a1,1,0,0,0,.84,1.54h5.52A1,1,0,0,0,13.6,10.96Z" />
+    <path class="light-defaultgrey-10" d="M11.5,7.67V3.5h-3V7.67L7.65,9h4.7Z" />
+    <path class="light-defaultgrey" d="M12,7.52V4h1V3H8V7.52L6.91,9.23,7.33,9h.91l.68-1.06L9,7.67V4h2V7.67l.08.27L11.76,9h.91l.42.23Z" />
+    <path class="light-teal" d="M14.03,10.69l-.94-1.46L12.67,9H7.33l-.42.23-.94,1.46a1.481,1.481,0,0,0-.18,1.19l1.08,1.08a2.206,2.206,0,0,0,.37.04h5.52a1.483,1.483,0,0,0,1.32-.78A1.523,1.523,0,0,0,14.03,10.69Zm-.83,1.05a.482.482,0,0,1-.44.26H7.24a.5.5,0,0,1-.42-.77L7.6,10h4.8l.78,1.23A.485.485,0,0,1,13.2,11.74Z" />
+    <path class="light-yellow" d="M4,2l-.5.5L3,2V0H4ZM1.379.672l-.707.707L2.086,2.793l.7,0,0-.711ZM0,3V4H2l.5-.5L2,3ZM.672,5.622l.707.707L2.793,4.915l0-.7-.711,0ZM3,7H4V5l-.5-.5L3,5Zm2.621-.672.707-.707L4.914,4.208l-.7,0,0,.711ZM7,4V3H5L4.5,3.5,5,4ZM6.328,1.379,5.621.672,4.207,2.086l0,.7.711,0Z" />
+    <path class="light-defaultgrey" d="M5.4,12.9,4,14.291V9H3v5.29L1.6,12.9l-.7.7,2.25,2.25h.7L6.1,13.6Z" />
+  </g>
+</svg>

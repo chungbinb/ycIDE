@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSelectAllRowsFromLeftTable</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M12.328,8.5,9.5,11.328,6.672,8.5,9.5,5.672Z" />
+    <path class="light-defaultgrey-10" d="M5.5,10.5H.5v-5h5Z" />
+    <path class="light-defaultgrey" d="M0,5.5v5l.5.5h5l.5-.5v-5L5.5,5H.5ZM1,7H5v3H1Z" />
+    <path class="light-defaultgrey" d="M2,8H4V9H2Z" />
+    <path class="light-blue" d="M9.146,5.318,6.318,8.146v.708l2.828,2.828h.708l2.828-2.828V8.146L9.854,5.318ZM9.5,6.379,11.621,8.5,9.5,10.621,7.379,8.5Z" />
+    <path class="light-defaultgrey" d="M14,12V5H9V4.5L9.5,4h5l.5.5v8l-.5.5h-5L9,12.5V12Z" />
+  </g>
+</svg>

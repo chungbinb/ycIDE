@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightProcedureMissing</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M1.5,5v8h9.38L8.73,10.85,9.58,10l1-1,.27-.27L13,10.88l1.5-1.5V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H1.5L1,5.5v8l.5.5H9.88l1-1H2V6H14V9.88l1-1V5.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2,3V5H14V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v3l.5.5h13l.5-.5v-3ZM2,5V3H14V5Z" />
+    <path class="light-defaultgrey" d="M8.88,11H6v1H9.88Zm2.24-2,.88.88V9ZM9,10h.58l1-1H9ZM9,7V8h2V7ZM3,11v1H5V11ZM3,9v1H8V9ZM3,7V8H8V7Z" />
+    <path class="light-defaultgrey" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+  </g>
+</svg>

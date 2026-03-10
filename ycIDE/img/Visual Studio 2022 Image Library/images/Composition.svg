@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightComposition</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,12.426,1.574,8.5,5.5,4.574,9.426,8.5Z" />
+    <path class="light-defaultgrey" d="M15,8.145,12.33,5.473l-.707.707L13.441,8H9.633L5.854,4.221H5.146L1.22,8.146v.708l3.926,3.925h.708L9.633,9h3.809l-1.82,1.826.709.705L15,8.852ZM5.5,11.719,2.281,8.5,5.5,5.281,8.719,8.5Z" />
+  </g>
+</svg>

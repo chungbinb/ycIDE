@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPyramidChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.452,9.5l2.083,5H2.465l2.079-5Z" />
+    <path class="light-defaultgrey" d="M14,14.308,13.535,15H2.465L2,14.308l2.079-5,0,0v0L4.546,10h.331L3.214,14h9.571l-1.666-4h.335l.46-.691Z" />
+    <path class="light-lightblue-10" d="M9.786,5.5l1.666,4H4.544l1.663-4Z" />
+    <path class="light-lightblue" d="M11.452,10H4.544l-.462-.692,1.663-4L6.207,5H9.786l.462.308,1.666,4ZM5.293,9H10.7L9.453,6H6.541Z" />
+    <path class="light-lightblue-10" d="M9.786,5.5H6.207L8,1.2Z" />
+    <path class="light-lightblue" d="M9.786,6H6.207l-.461-.692,1.787-4.3h.924l1.791,4.3ZM6.957,5H9.036L8,2.5Z" />
+  </g>
+</svg>

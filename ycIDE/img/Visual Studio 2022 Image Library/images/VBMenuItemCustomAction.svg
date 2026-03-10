@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightVBMenuItemCustomAction</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,3.5V13H9V10H4V9h.5V.5h6v3Z" />
+    <path class="light-defaultgrey" d="M15.5,3H11V.5L10.5,0h-6L4,.5V10H5V4H15v9H9v1h6.5l.5-.5V3.5ZM10,3H5V1h5Z" />
+    <path class="light-defaultgrey" d="M14,6H6V5h8Z" />
+    <path class="light-blue" d="M5,7v3H15V7Zm9,2H6V8h8Z" />
+    <path class="light-blue-10" d="M5.5,13.5l-3,2v-4Z" />
+    <path class="light-blue" d="M2,11.5v4l.777.416,3-2v-.832l-3-2Zm1,.935L4.6,13.5,3,14.565ZM0,11H1v5H0Zm7,0v5H8V11Z" />
+  </g>
+</svg>

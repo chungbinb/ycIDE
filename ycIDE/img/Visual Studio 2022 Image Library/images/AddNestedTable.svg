@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>AddNestedTable</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M15.508,15.5H7.492v-6h8.016Z" />
+    <path class="light-blue" d="M15.5,9h-8L7,9.5v6l.5.5h8l.5-.5v-6ZM15,12H12V10h3ZM8,10h3v2H8Zm0,3h3v2H8Zm7,2H12V13h3Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M16,4.5V8H15V7H12V8H11V7H8V8H7V7H5V6H15V5H8V4h7.5ZM4,8H3v7.5l.5.5H6V15H4V13H6V12H4V10H6V9H4Z" />
+      <path class="light-defaultgrey-10" d="M15.5,4.5V8h-9L6,8.5v7H3.5V8H5V6.5H8v-2Z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAlphaChannel</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8.1,5.809l1.1,3H6.765L7.858,5.809a2.684,2.684,0,0,0,.113-.47H7.99A2.871,2.871,0,0,0,8.1,5.809ZM14,8A6,6,0,1,1,8,2,6,6,0,0,1,14,8Zm-2.873,3.514-2.7-7.028H7.569l-2.7,7.028h.916l.7-1.97H9.471l.745,1.97Z" />
+  </g>
+</svg>

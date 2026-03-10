@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPointAndFigureChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue" d="M11.007,2.989a2,2,0,1,0,2,2A2,2,0,0,0,11.007,2.989Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,11.007,5.989ZM8,8.755,6.755,10,8,11.245,7.245,12,6,10.755,4.755,12,4,11.245,5.245,10,4,8.755,4.755,8,6,9.245,7.245,8Z" />
+    <path class="light-defaultgrey" d="M8,3.744,6.755,4.989,8,6.233l-.755.756L6,5.744,4.755,6.989,4,6.233,5.245,4.989,4,3.744l.755-.755L6,4.233,7.245,2.989ZM13.007,10a2,2,0,1,1-2-2A2,2,0,0,1,13.007,10Zm-1,0a1,1,0,1,0-1,1A1,1,0,0,0,12.007,10Z" />
+  </g>
+</svg>

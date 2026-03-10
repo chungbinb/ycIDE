@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightProgressiveSort</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M0,16V0H16V16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12.027,13H8.5v-.886l2.3-3.29H8.378V8h3.507v.818l-2.311,3.3h2.453Z" />
+    <path class="light-defaultgrey" d="M7.572,13H6.681L6.24,11.727H4.312L3.889,13H3L4.835,8h.916ZM6.024,11.051l-.68-2a2.511,2.511,0,0,1-.065-.313H5.266a1.993,1.993,0,0,1-.069.313l-.674,2Z" />
+    <path class="light-blue" d="M10.1,1.646l2.5,2.5v.707l-2.5,2.5L9.4,6.646,11.043,5H4V4h7.043L9.4,2.353Z" />
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAttach</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7.75,15h-.5A3.386,3.386,0,0,1,4,11.5V3.682A2.6,2.6,0,0,1,6.5,1,2.6,2.6,0,0,1,9,3.682v7.167A1.55,1.55,0,0,1,7.5,12.44,1.548,1.548,0,0,1,6,10.872V7H7v3.849a.552.552,0,0,0,.5.591.552.552,0,0,0,.5-.591V3.682A1.6,1.6,0,0,0,6.5,2,1.6,1.6,0,0,0,5,3.682V11.5A2.388,2.388,0,0,0,7.25,14h.5A2.388,2.388,0,0,0,10,11.5V5h1v6.5A3.386,3.386,0,0,1,7.75,15Z" />
+  </g>
+</svg>

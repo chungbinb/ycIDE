@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow-25{fill: #996f00; opacity: 0.25;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>SearchFolderOpened</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M6.5,3.5l-1-1H.5v10l2-6h5l1-1h5v-2Z" />
+    <path class="light-yellow-25" d="M8.5,5.5l-1,1h-5l-2,6H8.42l.51-.5.41-.4A3.989,3.989,0,0,1,13,6a3.657,3.657,0,0,1,1,.13,3.709,3.709,0,0,1,.66.24,2.533,2.533,0,0,1,.51.28L15.5,5.5Z" />
+    <path class="light-yellow" d="M15.41,5H14V3.5L13.5,3H6.71l-.86-.85L5.5,2H.5L0,2.5v10l.5.5H7.91l.51-.5.51-.5H1.17L2.83,7H7.47l.36-.15L8.68,6h6.08l-.1.37a2.533,2.533,0,0,1,.51.28,3.282,3.282,0,0,1,.38.27l.34-1.29ZM8.47,5l-.35.15L7.27,6H2.47L2,6.34,1,9.42V3H5.29l.86.85L6.5,4H13V5Z" />
+    <path class="light-blue-10" d="M13,12.5A2.5,2.5,0,1,1,15.5,10,2.5,2.5,0,0,1,13,12.5Z" />
+    <path class="light-blue" d="M7.85,15.857l3.455-3.385a3.078,3.078,0,1,0-.713-.7L7.15,15.143ZM13,12a2,2,0,1,1,2-2A2,2,0,0,1,13,12Z" />
+  </g>
+</svg>

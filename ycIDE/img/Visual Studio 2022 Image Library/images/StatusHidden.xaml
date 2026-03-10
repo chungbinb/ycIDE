@@ -1,0 +1,25 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M14,7.5A6.5,6.5,0,1,1,7.5,1,6.5,6.5,0,0,1,14,7.5Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M8,11V6H7v5Zm.25-6.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,8.25,4.5Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M1.085,8.5a6.456,6.456,0,0,0,1.173,2.827l.714-.713A5.447,5.447,0,0,1,2.1,8.5Zm3.3-5.529A5.461,5.461,0,0,1,6.5,2.1V1.085A6.456,6.456,0,0,0,3.673,2.258ZM8.5,2.1a5.461,5.461,0,0,1,2.114.875l.713-.713A6.456,6.456,0,0,0,8.5,1.085ZM1.085,6.5H2.1a5.447,5.447,0,0,1,.876-2.114l-.714-.714A6.472,6.472,0,0,0,1.085,6.5Zm10.943,4.114.714.713A6.456,6.456,0,0,0,13.915,8.5H12.9A5.447,5.447,0,0,1,12.028,10.614ZM13.915,6.5a6.472,6.472,0,0,0-1.173-2.828l-.714.714A5.447,5.447,0,0,1,12.9,6.5ZM3.673,12.742A6.456,6.456,0,0,0,6.5,13.915V12.9a5.461,5.461,0,0,1-2.114-.875ZM8.5,12.9v1.011a6.456,6.456,0,0,0,2.827-1.173l-.713-.713A5.461,5.461,0,0,1,8.5,12.9Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

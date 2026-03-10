@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>Exit</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.23,9.64l1.23,1.23a6,6,0,1,1,0-6.75L11.23,5.35l.65.65H8V9h3.88Z" />
+    <path class="light-defaultgrey" d="M12.968,11a6.5,6.5,0,1,1,0-7H11.739a5.5,5.5,0,1,0,0,7Z" />
+    <path class="light-blue" d="M15.854,7.145v.707l-2.5,2.5-.708-.707L14.291,8H9V7h5.3L12.646,5.352l.708-.707Z" />
+  </g>
+</svg>

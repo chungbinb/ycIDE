@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightJoin</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,9.914V14.5h-5v-5H6.379l-.147.146Zm-.268-4.56L6.5,5.086V.5h-5v5H6.379ZM9.621,4.5l2.233,2.232V8.268L9.621,10.5H15.5v-6Z" />
+    <path class="light-defaultgrey" d="M6.232,9.646l.457-.457L6.5,9h-5L1,9.5v5l.5.5h5l.5-.5V10.414ZM6,14H2V10H6Zm.5-8,.189-.189-.457-.457L7,4.586V.5L6.5,0h-5L1,.5v5l.5.5h5ZM2,1H6V5H2ZM16,4.5v6l-.5.5h-6l-.189-.189.81-.811H15V5H10.121l-.81-.811L9.5,4h6Z" />
+    <path class="light-blue" d="M8.354,4.646l2.5,2.5v.708l-2.5,2.5-.707-.708L9.293,8H4V7H9.293L7.647,5.354Z" />
+  </g>
+</svg>

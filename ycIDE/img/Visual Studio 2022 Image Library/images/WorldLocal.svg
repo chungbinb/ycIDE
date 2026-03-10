@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWorldLocal</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M.4,12.51l1.313-.263a.678.678,0,0,0,.532-.532L2.51,10.4a.5.5,0,0,1,.98,0l.263,1.313a.678.678,0,0,0,.532.532L5.6,12.51a.5.5,0,0,1,0,.98l-1.313.263a.678.678,0,0,0-.532.532L3.49,15.6a.5.5,0,0,1-.98,0l-.263-1.313a.678.678,0,0,0-.532-.532L.4,13.49a.5.5,0,0,1,0-.98Z" />
+    <g class="cls-1">
+      <path class="light-purple-10" d="M10.019,2.549,14.5,5.031V10.44l-4.5,2.6-4.5-2.6V5.031Z" />
+      <path class="light-purple" d="M14.75,4.6,10.25,2h-.5L5.25,4.6,5,5.031V10.44l.25.433,4.5,2.6h.5l4.5-2.6L15,10.44V5.031ZM14,10.151l-3.5,2.021V7.825h-1v4.347L6,10.151V5.32l4-2.31,4,2.31Z" />
+    </g>
+    <path class="light-purple" d="M10.263,8.119H9.757L5.241,5.462,5.249,4.6,9.75,2h.5l4.5,2.6.028.886ZM6.5,5.04l3.517,2.068,3.515-2.05-3.51-2.012Z" />
+  </g>
+</svg>

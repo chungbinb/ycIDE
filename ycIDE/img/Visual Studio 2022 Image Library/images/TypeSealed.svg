@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightTypeSealed</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M9.7,9,9.5,5.5H6V3h7V8.05A4.576,4.576,0,0,0,12.5,8,4.46,4.46,0,0,0,9.7,9Z" />
+      <path class="light-blue" d="M13,3H6V6H5V2.5L5.5,2h8l.5.5V8.276a4.431,4.431,0,0,0-1-.226Z" />
+    </g>
+    <path class="light-blue-10" d="M8,12.5H1.5v-7h8V9.17A4.474,4.474,0,0,0,8,12.5Z" />
+    <path class="light-blue" d="M8,12.5a4.576,4.576,0,0,0,.05.5H1.5L1,12.5v-7L1.5,5h8l.5.5V8.76a4.445,4.445,0,0,0-.42.342c-.039.035-.084.064-.122.1A4.518,4.518,0,0,0,9,9.7V6H2v6H8.05A4.576,4.576,0,0,0,8,12.5Z" />
+    <path class="light-defaultgrey-10" d="M12.5,9.5a3,3,0,1,1-3,3A3,3,0,0,1,12.5,9.5Z" />
+    <path class="light-defaultgrey" d="M9,12.5A3.5,3.5,0,1,0,12.5,9,3.5,3.5,0,0,0,9,12.5Zm6,0a2.486,2.486,0,0,1-.416,1.377l-3.461-3.461A2.5,2.5,0,0,1,15,12.5Zm-5,0a2.486,2.486,0,0,1,.416-1.377l3.461,3.461A2.5,2.5,0,0,1,10,12.5Z" />
+  </g>
+</svg>

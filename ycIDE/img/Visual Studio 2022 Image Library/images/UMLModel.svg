@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUMLModel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,13.5h5v-3h-5Z" />
+    <path class="light-defaultgrey-10" d="M10.5,7.5h5v-3h-5Z" />
+    <path class="light-defaultgrey-10" d="M1.5,5.5h5v-3h-5Z" />
+    <path class="light-defaultgrey" d="M10.5,8h5l.5-.5v-3L15.5,4h-5l-.5.5V6H9V4.5L8.5,4H7V2.5L6.5,2h-5L1,2.5v3l.5.5h5L7,5.5V5H8v7.5l.5.5H10v.5l.5.5h5l.5-.5v-3l-.5-.5h-5l-.5.5V12H9V7h1v.5ZM11,5h4V7H11ZM6,5H2V3H6Zm5,6h4v2H11Z" />
+  </g>
+</svg>

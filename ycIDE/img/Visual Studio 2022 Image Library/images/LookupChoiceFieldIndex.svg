@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLookupChoiceFieldIndex</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,4.5v8h-6V6.951A3.974,3.974,0,0,0,6,7,4,4,0,0,0,9.7,4.5Z" />
+    <path class="light-blue-10" d="M6,5.5A2.5,2.5,0,1,1,8.5,3,2.5,2.5,0,0,1,6,5.5Z" />
+    <path class="light-defaultgrey" d="M10,2h3.5l.5.5v12l-.5.5H10V14h3V3H10Z" />
+    <path class="light-blue" d="M.85,8.857,4.305,5.472a3.078,3.078,0,1,0-.713-.7L.15,8.143ZM6,5A2,2,0,1,1,8,3,2,2,0,0,1,6,5Z" />
+    <path class="light-defaultgrey" d="M12,4.5v8l-.5.5h-6L5,12.5V6.856A3.954,3.954,0,0,0,6,7v5h5V5H9.444a3.966,3.966,0,0,0,.414-1H11.5Z" />
+    <path class="light-defaultgrey" d="M4,14H7v1H3.5L3,14.5V8.15l1-.979Z" />
+  </g>
+</svg>

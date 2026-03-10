@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>PackageLayout</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,6.5h2v2H.5Zm5,3v2h2v-2Zm0,6h2v-2h-2Z" />
+    <path class="light-defaultgrey" d="M.5,6,0,6.5v2L.5,9h2L3,8.5v-2L2.5,6ZM2,8H1V7H2ZM7.5,9h-2L5,9.5v2l.5.5h2l.5-.5v-2ZM7,11H6V10H7ZM5.5,13l-.5.5v2l.5.5h2l.5-.5v-2L7.5,13ZM7,15H6V14H7Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,11v3H5.5v1h-4L1,14.5v-6H2V10H5.5v1Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M13.5,4.5v6H9V9.09L7.91,8H6.5V4.5Z" />
+    <path class="light-defaultgrey" d="M14,3a2.006,2.006,0,0,0-.59-1.42,2.091,2.091,0,0,0-.66-.43,1.768,1.768,0,0,0-1.39.03,2.107,2.107,0,0,0-1.11,1.18L10,3.05l-.25-.69A2.107,2.107,0,0,0,8.64,1.18a1.768,1.768,0,0,0-1.39-.03A2.017,2.017,0,0,0,6,3a2,2,0,0,0,.36,1.14L6,4.5V8H7V5H9.5v5H9v1h4.5l.5-.5v-6l-.36-.36A2,2,0,0,0,14,3ZM13,5v5H10.5V5ZM11.19,2.71a1.119,1.119,0,0,1,.57-.62.807.807,0,0,1,.62-.02,1.19,1.19,0,0,1,.33.22,1.014,1.014,0,0,1,0,1.42,1.19,1.19,0,0,1-.33.22A.986.986,0,0,1,12,4H10.72Zm-3.9-.42a1.19,1.19,0,0,1,.33-.22.722.722,0,0,1,.28-.05,1.074,1.074,0,0,1,.34.07,1.119,1.119,0,0,1,.57.62L9.28,4H8a.986.986,0,0,1-.38-.07,1.19,1.19,0,0,1-.33-.22,1.014,1.014,0,0,1,0-1.42Z" />
+  </g>
+</svg>

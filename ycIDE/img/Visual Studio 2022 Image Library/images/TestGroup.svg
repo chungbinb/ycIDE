@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightTestGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.5,4V1.5h3V5.667L12.351,7H11V4Z" />
+      <path class="light-defaultgrey" d="M13.091,7.23,12.67,7h-.913l-.679-1.063L11,5.667V2H9V4H8V2H7V1h6V2H12V5.521Z" />
+    </g>
+    <path class="light-teal-10" d="M12.76,10.5H10.812l-.016-.024h0L10,9.229V7.5h2.67L13.6,8.962A1,1,0,0,1,12.76,10.5Z" />
+    <path class="light-teal" d="M14.076,10.221A1.48,1.48,0,0,1,12.761,11h-1.63l-.335-.524h0l-.3-.475h2.269a.5.5,0,0,0,.421-.77L12.4,8H10V7h2.67l.422.23.933,1.462A1.484,1.484,0,0,1,14.076,10.221Z" />
+    <path class="light-teal-10" d="M10.6,12.962A1,1,0,0,1,9.76,14.5H4.24A1,1,0,0,1,3.4,12.962L4.33,11.5H9.67Z" />
+    <path class="light-teal" d="M9.761,15H4.239a1.5,1.5,0,0,1-1.264-2.307l.933-1.463L4.33,11H9.67l.422.23.933,1.462A1.5,1.5,0,0,1,9.761,15ZM4.6,12l-.786,1.231A.5.5,0,0,0,4.239,14H9.761a.5.5,0,0,0,.421-.77L9.4,12Z" />
+    <path class="light-defaultgrey-10" d="M4.649,11,5.5,9.667V5.5h3V9.667L9.351,11Z" />
+    <path class="light-defaultgrey" d="M5,6H4V5h6V6H9V9.521l1.091,1.709L9.67,11H8.757L8.078,9.937,8,9.667V6H6V9.667l-.078.27L5.243,11H4.33l-.421.23L5,9.521Z" />
+  </g>
+</svg>

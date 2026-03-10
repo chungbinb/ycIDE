@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGoToProperty</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M9,8.461c-.509.511-4.875,4.844-5.927,5.823-.861.75-2.077-.65-1.418-1.4C2.346,12.163,6.61,7.912,7.542,7A3.893,3.893,0,0,0,9,8.461Z" />
+      <path class="light-defaultgrey" d="M9.469,8.7c-.424.426-4.887,4.864-6.051,5.948A1.347,1.347,0,0,1,2.526,15a1.5,1.5,0,0,1-1.056-.47,1.444,1.444,0,0,1-.187-1.973C1.907,11.9,6.252,7.561,7.3,6.539a3.911,3.911,0,0,0,.52.887c-.811.793-5.039,5.007-5.8,5.8-.134.154.009.442.158.591a.4.4,0,0,0,.57.087c.987-.919,5.24-5.135,5.828-5.725A3.914,3.914,0,0,0,9.469,8.7Z" />
+    </g>
+    <path class="light-defaultgrey" d="M15,5A4,4,0,0,1,7,5a3.961,3.961,0,0,1,4-4,4.19,4.19,0,0,1,1.441.241L9.559,4.2,11.8,6.441l2.959-2.882A4.19,4.19,0,0,1,15,5Z" />
+    <path class="light-blue" d="M4.293,2,3.146.854,3.854.146l2,2v.708l-2,2-.708-.708L4.293,3H0V2Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMedia</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M3,6H2V5H3ZM3,4H2V3H3ZM3,8H2V7H3Zm0,2H2V9H3Zm0,2H2V11H3Z" />
+    <path class="light-defaultgrey-10" d="M15.5,13.5H.5V1.5h15Z" />
+    <path class="light-defaultgrey" d="M15.5,1H.5L0,1.5v12l.5.5h15l.5-.5V1.5ZM15,13H1V2H15Z" />
+    <path class="light-defaultgrey" d="M14,6H13V5h1Zm0-2H13V3h1Zm0,4H13V7h1Zm0,2H13V9h1Zm0,2H13V11h1Z" />
+    <path class="light-green" d="M11,7.5l-5,3v-6Z" />
+  </g>
+</svg>

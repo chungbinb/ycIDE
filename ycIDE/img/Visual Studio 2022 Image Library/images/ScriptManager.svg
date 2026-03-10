@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ScriptManager</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6,14a1.984,1.984,0,0,0,.269,1H2a1,1,0,0,1-1-1ZM3,7v6H6.5l.5.5V14a1,1,0,0,0,2,0V7a1.978,1.978,0,0,1,.278-1H4A1,1,0,0,0,3,7Zm8-1a1,1,0,0,0-1,1V8h2V7A1,1,0,0,0,11,6Z" />
+    <path class="light-defaultgrey" d="M11,5H4A2,2,0,0,0,2,7v6H.5l-.5.5V14a1.978,1.978,0,0,0,.278,1,1.992,1.992,0,0,0,1.715,1H8a2,2,0,0,0,2-2V9h2.5l.5-.5V7A2,2,0,0,0,11,5ZM2,15a1,1,0,0,1-1-1H6a1.984,1.984,0,0,0,.269,1ZM9,7v7a1,1,0,0,1-2,0v-.5L6.5,13H3V7A1,1,0,0,1,4,6H9.278A1.978,1.978,0,0,0,9,7Zm3,1H10V7a1,1,0,0,1,2,0Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M16,1.5v8l-.5.5H14V9h1V3H6V4H5V1.5L5.5,1h10Z" />
+      <path class="light-defaultgrey-10" d="M15.5,2.5V10H14V6a2,2,0,0,0-2-2H5.5V2.5Z" />
+    </g>
+  </g>
+</svg>

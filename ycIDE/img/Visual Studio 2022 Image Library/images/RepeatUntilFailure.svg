@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>RepeatUntilFailure</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8,15A7,7,0,1,1,14,4.44V1.5h1v4l-.5.5H12.408l-1-1h1.763a5.983,5.983,0,1,0,.244,5.57l.9.43A7.031,7.031,0,0,1,8,15Z" />
+    <path class="light-red" d="M8.707,8l2.147,2.146-.708.708L8,8.707,5.854,10.854l-.708-.708L7.293,8,5.146,5.854l.708-.708L8,7.293l2.146-2.147.708.708Z" />
+  </g>
+</svg>

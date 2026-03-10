@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>PerformanceLog</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,1.5V6H7.91L9,7.09V9.5h6.5v-8Z" />
+    <path class="light-defaultgrey" d="M15.5,1H5.5L5,1.5V6H6V2h9V9H9v1h6.5l.5-.5v-8Z" />
+    <path class="light-green" d="M12.85,3.15h-.7L9.5,5.79,7.85,4.15h-.7L6,5.29V6h.71l.79-.79L9.15,6.85h.7L12.5,4.21,15,6.71V5.29Z" />
+    <path class="light-defaultgrey-10" d="M7.3,15.5h-6v-8h6Z" />
+    <path class="light-defaultgrey" d="M5.974,10H3V9H5.974ZM8,7.5v8l-.5.5H1.25l-.5-.5V15H0V14H.75V13H0V12H.75V11H0V10H.75V9H0V8H.75V7.5l.5-.5H7.5ZM7,8H1.75v7H7Z" />
+  </g>
+</svg>

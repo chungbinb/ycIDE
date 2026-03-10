@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAnalyzeTrace</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H8.6L6.66,11.6A3.916,3.916,0,0,0,7,10,3.987,3.987,0,0,0,1.5,6.3V2.5Z" />
+    <path class="light-blue-10" d="M.5,10A2.5,2.5,0,1,1,3,12.5,2.5,2.5,0,0,1,.5,10Z" />
+    <path class="light-defaultgrey" d="M15,2.5v11l-.5.5H9.112L8.091,13H14V3H2V6.142a3.966,3.966,0,0,0-1,.414V2.5L1.5,2h13Z" />
+    <path class="light-green" d="M14,7.368V8.782L11.889,6.671,8.707,9.854H8L6.728,8.581A4,4,0,0,0,4.957,6.533l.215-.215h.707L8.354,8.793l3.181-3.182h.707Z" />
+    <path class="light-blue" d="M8.85,15.143,5.408,11.771A2.964,2.964,0,0,0,6,10a3.007,3.007,0,1,0-1.3,2.472L8.15,15.857ZM1,10a2,2,0,1,1,2,2A2,2,0,0,1,1,10Z" />
+  </g>
+</svg>

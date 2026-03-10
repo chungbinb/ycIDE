@@ -5,6 +5,7 @@
 #include "Parser.h"
 #include "YiEditor.h"
 #include "LibraryParser.h"
+#include "Resource.h"
 #include "json.hpp"
 #include <shlobj.h>
 #include <sstream>
@@ -12,6 +13,10 @@
 #include <chrono>
 #include <algorithm>
 #include <set>
+
+// 编译平台架构（定义在 ycIDE.cpp）
+enum class PlatformArch { X86, X64 };
+extern PlatformArch g_CurrentPlatform;
 
 using json = nlohmann::json;
 
@@ -134,32 +139,77 @@ std::wstring Compiler::FindClangCompiler() {
     return L"";
 }
 
-// 查找附带的 MinGW 根目录（包含头文件和库）
-std::wstring Compiler::FindMinGWRoot() {
+// 查找 MSVC SDK 路径（附带在程序目录中，或从系统 VS 安装获取）
+bool Compiler::FindMSVCSDK(MSVCSDKPaths& paths) {
     std::wstring appDir = GetAppDirectory();
+    const wchar_t* archDir = (g_CurrentPlatform == PlatformArch::X86) ? L"x86" : L"x64";
     
     // 查找顺序：
-    // 1. 程序目录\compiler\mingw64
-    // 2. 程序目录\mingw64
-    std::vector<std::wstring> searchPaths = {
-        appDir + L"\\compiler\\mingw64",
-        appDir + L"\\mingw64",
+    // 1. 程序目录\compiler\MSVCSDK
+    // 2. 程序目录\MSVCSDK
+    std::vector<std::wstring> searchRoots = {
+        appDir + L"\\compiler\\MSVCSDK",
+        appDir + L"\\MSVCSDK",
     };
     
-    for (const auto& path : searchPaths) {
-        // 验证关键文件存在: x86_64-w64-mingw32\include\windows.h
-        std::wstring windowsH = path + L"\\x86_64-w64-mingw32\\include\\windows.h";
-        if (GetFileAttributesW(windowsH.c_str()) != INVALID_FILE_ATTRIBUTES) {
-            return path;
+    for (const auto& root : searchRoots) {
+        if (GetFileAttributesW(root.c_str()) == INVALID_FILE_ATTRIBUTES)
+            continue;
+        
+        // 自动检测 MSVC 版本号子目录
+        std::wstring msvcBase = root + L"\\MSVC";
+        WIN32_FIND_DATAW fd;
+        HANDLE hFind = FindFirstFileW((msvcBase + L"\\*").c_str(), &fd);
+        std::wstring msvcVer;
+        if (hFind != INVALID_HANDLE_VALUE) {
+            do {
+                if ((fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) &&
+                    fd.cFileName[0] != L'.') {
+                    msvcVer = fd.cFileName; // 取最后一个版本号目录
+                }
+            } while (FindNextFileW(hFind, &fd));
+            FindClose(hFind);
         }
-        // 也检查 include\windows.h (某些精简包的结构)
-        windowsH = path + L"\\include\\windows.h";
-        if (GetFileAttributesW(windowsH.c_str()) != INVALID_FILE_ATTRIBUTES) {
-            return path;
+        if (msvcVer.empty()) continue;
+        
+        std::wstring msvcRoot = msvcBase + L"\\" + msvcVer;
+        
+        // 自动检测 SDK 版本号
+        std::wstring sdkBase = root + L"\\WindowsKits\\10";
+        std::wstring sdkVer;
+        // 检查 Include 子目录
+        hFind = FindFirstFileW((sdkBase + L"\\Include\\*").c_str(), &fd);
+        if (hFind != INVALID_HANDLE_VALUE) {
+            do {
+                if ((fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) &&
+                    fd.cFileName[0] == L'1') { // 10.0.xxxxx.0
+                    sdkVer = fd.cFileName;
+                }
+            } while (FindNextFileW(hFind, &fd));
+            FindClose(hFind);
         }
+        if (sdkVer.empty()) continue;
+        
+        std::wstring sdkIncBase = sdkBase + L"\\Include\\" + sdkVer;
+        std::wstring sdkLibBase = sdkBase + L"\\Lib\\" + sdkVer;
+        
+        // 验证关键文件
+        if (GetFileAttributesW((msvcRoot + L"\\include\\vcruntime.h").c_str()) == INVALID_FILE_ATTRIBUTES)
+            continue;
+        if (GetFileAttributesW((sdkIncBase + L"\\um\\windows.h").c_str()) == INVALID_FILE_ATTRIBUTES)
+            continue;
+        
+        paths.msvcInclude   = msvcRoot + L"\\include";
+        paths.msvcLib       = msvcRoot + L"\\lib\\" + archDir;
+        paths.ucrtInclude   = sdkIncBase + L"\\ucrt";
+        paths.ucrtLib       = sdkLibBase + L"\\ucrt\\" + archDir;
+        paths.umInclude     = sdkIncBase + L"\\um";
+        paths.sharedInclude = sdkIncBase + L"\\shared";
+        paths.umLib         = sdkLibBase + L"\\um\\" + archDir;
+        return true;
     }
     
-    return L"";
+    return false;
 }
 
 // 从项目中查找启动窗口文件
@@ -1172,22 +1222,22 @@ bool Compiler::InvokeClangCompiler(const std::wstring& cFile, const std::wstring
         cmdLine += L" \"" + extraFile + L"\"";
     }
     
-    // 根据项目类型添加子系统选项
+    // 根据项目类型添加子系统选项（lld-link 使用 /SUBSYSTEM）
     if (outputType == ProjectOutputType::WindowsApp) {
-        // 窗口程序：使用 Windows 子系统
-        cmdLine += L" -Wl,-subsystem,windows";
+        cmdLine += L" -Wl,/SUBSYSTEM:WINDOWS";
         SendMessage(CompileMessageType::Info, L"项目类型: Windows窗口程序");
     } else if (outputType == ProjectOutputType::DynamicLibrary) {
-        // DLL：添加共享库选项
         cmdLine += L" -shared";
         SendMessage(CompileMessageType::Info, L"项目类型: 动态链接库(DLL)");
     } else {
-        // 控制台程序：默认子系统
+        cmdLine += L" -Wl,/SUBSYSTEM:CONSOLE";
         SendMessage(CompileMessageType::Info, L"项目类型: 控制台程序");
     }
     
-    // 添加库
+    // 添加 Windows API 导入库
     cmdLine += L" -lkernel32 -luser32 -lgdi32";
+    // 添加 MSVC 运行时库
+    cmdLine += L" -lmsvcrt -lucrt -lvcruntime";
     
     // 链接已加载支持库的静态库文件
     {
@@ -1202,63 +1252,32 @@ bool Compiler::InvokeClangCompiler(const std::wstring& cFile, const std::wstring
         }
     }
     
-    // 使用 MinGW 目标（不依赖 Visual Studio）
-    cmdLine += L" --target=x86_64-w64-mingw32";
+    // 使用 MSVC 目标（根据选择的平台架构）
+    if (g_CurrentPlatform == PlatformArch::X86)
+        cmdLine += L" --target=i686-pc-windows-msvc";
+    else
+        cmdLine += L" --target=x86_64-pc-windows-msvc";
     
-    // MSVC 编译的 .lib 文件内嵌了 /DEFAULTLIB 指令（如 LIBCMTD、OLDNAMES），
-    // lld 在 MinGW 模式下会尝试查找对应的 libXXX.a 文件。
-    // 创建空的占位 .a 文件，避免链接器报错。
-    // 同时生成 MSVC 运行时桩函数，提供静态库依赖的符号。
-    {
-        std::wstring stubDir = GetTempDirectory() + L"\\stubs";
-        CreateDirectoryW(stubDir.c_str(), NULL);
-        const wchar_t* stubNames[] = {
-            L"libLIBCMTD.a", L"libLIBCMT.a", L"libOLDNAMES.a", L"libmsvcrtd.a"
-        };
-        for (const auto& name : stubNames) {
-            std::wstring stubPath = stubDir + L"\\" + name;
-            if (GetFileAttributesW(stubPath.c_str()) == INVALID_FILE_ATTRIBUTES) {
-                std::ofstream sf(stubPath.c_str(), std::ios::binary);
-                sf.write("!<arch>\n", 8);
-            }
-        }
-        cmdLine += L" -L\"" + stubDir + L"\"";
-        
-        // 生成 MSVC 运行时兼容桩函数 C 文件
-        std::wstring msvcStubC = stubDir + L"\\msvc_compat.c";
-        {
-            std::ofstream mf(msvcStubC.c_str(), std::ios::out | std::ios::binary);
-            mf << "/* MSVC CRT 兼容桩函数 - 自动生成 */\n"
-                  "#include <stdint.h>\n\n"
-                  "/* 安全 Cookie（/GS 缓冲区溢出检测） */\n"
-                  "uintptr_t __security_cookie = 0xBB40E64E;\n"
-                  "void __fastcall __security_check_cookie(uintptr_t cookie) { (void)cookie; }\n"
-                  "void __GSHandlerCheck(void) {}\n\n"
-                  "/* 运行时检查（/RTC） */\n"
-                  "void _RTC_InitBase(void) {}\n"
-                  "void _RTC_Shutdown(void) {}\n"
-                  "void _RTC_CheckStackVars(void *frame, void *v) { (void)frame; (void)v; }\n"
-                  "void _RTC_CheckStackVars2(void *frame, void *v, void *v2) { (void)frame; (void)v; (void)v2; }\n"
-                  "void _RTC_AllocaHelper(void *p, int s, void *d) { (void)p; (void)s; (void)d; }\n"
-                  "void __report_rangecheckfailure(void) {}\n\n"
-                  "/* 栈探测 */\n"
-                  "void __chkstk(void) {}\n\n"
-                  "/* 浮点使用标记 */\n"
-                  "int _fltused = 1;\n";
-        }
-        cmdLine += L" \"" + msvcStubC + L"\"";
-    }
+    // 使用 lld-link 作为链接器（MSVC 兼容模式）
+    cmdLine += L" -fuse-ld=lld-link";
     
-    // 查找附带的 MinGW 头文件/库
-    std::wstring mingwRoot = FindMinGWRoot();
-    if (!mingwRoot.empty()) {
-        // 设置 sysroot 让 Clang 自动找到 MinGW 的头文件和库
-        cmdLine += L" --sysroot=\"" + mingwRoot + L"\"";
-        SendMessage(CompileMessageType::Info, L"MinGW: " + mingwRoot);
+    // 查找 MSVC SDK
+    MSVCSDKPaths sdkPaths;
+    if (FindMSVCSDK(sdkPaths)) {
+        // 头文件搜索路径
+        cmdLine += L" -isystem \"" + sdkPaths.msvcInclude + L"\"";
+        cmdLine += L" -isystem \"" + sdkPaths.ucrtInclude + L"\"";
+        cmdLine += L" -isystem \"" + sdkPaths.umInclude + L"\"";
+        cmdLine += L" -isystem \"" + sdkPaths.sharedInclude + L"\"";
+        // 库搜索路径（通过 /LIBPATH 传给 lld-link）
+        cmdLine += L" -Wl,/LIBPATH:\"" + sdkPaths.msvcLib + L"\"";
+        cmdLine += L" -Wl,/LIBPATH:\"" + sdkPaths.ucrtLib + L"\"";
+        cmdLine += L" -Wl,/LIBPATH:\"" + sdkPaths.umLib + L"\"";
+        SendMessage(CompileMessageType::Info, L"MSVC SDK: " + sdkPaths.msvcInclude);
     } else {
         SendMessage(CompileMessageType::Error, 
-            L"错误: 找不到 MinGW 运行时\n"
-            L"请确保 compiler\\mingw64 目录下有头文件和库文件");
+            L"错误: 找不到 MSVC SDK\n"
+            L"请确保 compiler\\MSVCSDK 目录下有 MSVC 和 WindowsKits 文件");
         return false;
     }
     
@@ -1274,27 +1293,28 @@ bool Compiler::InvokeClangCompiler(const std::wstring& cFile, const std::wstring
         cmdLine += L" -g";
     }
     
-    // 减少杀毒软件误报：
-    // -fno-ident 不写入编译器标识
-    // -ffunction-sections -fdata-sections + -Wl,--gc-sections 移除未使用的节，减少PE节数量
-    // -Wl,--strip-all 链接时剥离所有符号
+    // 减少杀毒软件误报 & 优化体积
     if (!options.debug) {
         cmdLine += L" -fno-ident -ffunction-sections -fdata-sections";
-        cmdLine += L" -Wl,--gc-sections,--strip-all";
+        // lld-link 使用 /OPT:REF,ICF 移除未使用符号，合并相同函数
+        cmdLine += L" -Wl,/OPT:REF,/OPT:ICF";
     }
     
     std::wstring output;
     bool success = CreateCompilerProcess(cmdLine, output, clangDir);
     
-    // 编译成功后，使用 strip 移除 .comment 节（包含 Clang 嵌入的 llvm-project URL）
+    // 编译成功后，使用 llvm-strip 移除调试节（如有）
     if (success && !options.debug) {
-        std::wstring mingwRoot = FindMinGWRoot();
-        std::wstring stripPath = mingwRoot + L"\\bin\\strip.exe";
+        // 查找 llvm-strip（在 llvm\bin 下）
+        std::wstring stripPath = clangDir + L"\\llvm-strip.exe";
+        if (GetFileAttributesW(stripPath.c_str()) == INVALID_FILE_ATTRIBUTES) {
+            // 回退查找 llvm-objcopy（可兼用）
+            stripPath = clangDir + L"\\llvm-objcopy.exe";
+        }
         if (GetFileAttributesW(stripPath.c_str()) != INVALID_FILE_ATTRIBUTES) {
             std::wstring stripCmd = L"\"" + stripPath + L"\" --strip-all"
                 L" --remove-section=.comment"
                 L" --remove-section=.note"
-                L" --remove-section=.note.GNU-stack"
                 L" \"" + outputExe + L"\"";
             std::wstring stripOutput;
             CreateCompilerProcess(stripCmd, stripOutput, clangDir);
@@ -1399,12 +1419,19 @@ bool Compiler::CreateCompilerProcess(const std::wstring& cmdLine, std::wstring& 
 std::wstring Compiler::FindStaticLibrary(const std::wstring& libFileName) {
     std::wstring appDir = GetAppDirectory();
     
-    // 查找顺序：
-    // 1. <exe_dir>\static_lib\{libname}.lib
-    // 2. <exe_dir>\static_lib\{libname}_static.lib
-    // 3. <exe_dir>\static_lib\{libname}.a
-    // 4. <exe_dir>\static_lib\{libname}_static.a
+    // 根据目标平台选择子目录
+    const wchar_t* archDir = (g_CurrentPlatform == PlatformArch::X86) ? L"x86" : L"x64";
+    
+    // 查找顺序（优先平台子目录，回退扁平目录）：
+    // 1. <exe_dir>\static_lib\{arch}\{libname}[_static].lib/.a
+    // 2. <exe_dir>\static_lib\{libname}[_static].lib/.a
     std::vector<std::wstring> searchPaths = {
+        // 平台子目录优先
+        appDir + L"\\static_lib\\" + archDir + L"\\" + libFileName + L".lib",
+        appDir + L"\\static_lib\\" + archDir + L"\\" + libFileName + L"_static.lib",
+        appDir + L"\\static_lib\\" + archDir + L"\\" + libFileName + L".a",
+        appDir + L"\\static_lib\\" + archDir + L"\\" + libFileName + L"_static.a",
+        // 回退到扁平目录（向后兼容）
         appDir + L"\\static_lib\\" + libFileName + L".lib",
         appDir + L"\\static_lib\\" + libFileName + L"_static.lib",
         appDir + L"\\static_lib\\" + libFileName + L".a",
@@ -1423,7 +1450,9 @@ std::wstring Compiler::FindStaticLibrary(const std::wstring& libFileName) {
 // 生成支持库桥接代码
 bool Compiler::GenerateLibraryBridgeCode(const std::wstring& tempDir,
                                           std::vector<std::wstring>& bridgeFiles,
-                                          std::vector<std::wstring>& dynamicFneFiles) {
+                                          std::vector<std::wstring>& dynamicFneFiles,
+                                          bool staticLink,
+                                          bool debug) {
     auto& libParser = LibraryParser::GetInstance();
     const auto& commands = libParser.GetCommands();
     const auto& libFileNames = libParser.GetLoadedLibraryFileNames();
@@ -1447,12 +1476,38 @@ bool Compiler::GenerateLibraryBridgeCode(const std::wstring& tempDir,
         // 没有静态库时，查找 .fne 动态库
         std::wstring fnePath;
         if (!useStatic) {
+            if (staticLink) {
+                // 静态编译模式：必须有静态库，否则报错
+                SendMessage(CompileMessageType::Error, 
+                    L"错误: 静态编译模式下找不到支持库 " + libFileName + L" 的静态库文件(.a/.lib)");
+                return false;
+            }
             fnePath = libParser.GetLibraryFnePath(libFileName);
             if (fnePath.empty()) {
                 SendMessage(CompileMessageType::Warning, 
                     L"警告: 支持库 " + libFileName + L" 既没有静态库也没有动态库，跳过");
                 continue;
             }
+            
+            // 根据目标平台选择对应架构的 .fne 文件
+            // IDE 加载的 .fne 路径可能在 lib\x64\ 或 lib\ 下（64位IDE用64位fne解析元信息）
+            // 编译 x86 目标时需要切换到 lib\x86\ 下的 .fne
+            {
+                const wchar_t* targetArch = (g_CurrentPlatform == PlatformArch::X86) ? L"x86" : L"x64";
+                std::wstring fneFileName = fnePath;
+                size_t slashPos = fneFileName.find_last_of(L"\\");
+                if (slashPos != std::wstring::npos)
+                    fneFileName = fneFileName.substr(slashPos + 1);
+                
+                // 构建目标架构的 .fne 路径: lib\{arch}\{name}.fne
+                std::wstring appDir = GetAppDirectory();
+                std::wstring archFnePath = appDir + L"\\lib\\" + targetArch + L"\\" + fneFileName;
+                if (GetFileAttributesW(archFnePath.c_str()) != INVALID_FILE_ATTRIBUTES) {
+                    fnePath = archFnePath;
+                }
+                // 若目标架构目录下没有，保持原路径（回退兼容）
+            }
+            
             dynamicFneFiles.push_back(fnePath);
             SendMessage(CompileMessageType::Info, 
                 L"支持库 " + libFileName + L" 将使用动态加载方式（.fne）");
@@ -1519,9 +1574,23 @@ bool Compiler::GenerateLibraryBridgeCode(const std::wstring& tempDir,
             f << "static HMODULE GetLib_" << libNameUtf8 << "(void) {\n";
             f << "    if (!g_bLib_" << libNameUtf8 << "_loaded) {\n";
             f << "        g_bLib_" << libNameUtf8 << "_loaded = 1;\n";
-            f << "        g_hLib_" << libNameUtf8 << " = LoadLibraryW(L\"lib\\\\" << libNameUtf8 << ".fne\");\n";
-            f << "        if (!g_hLib_" << libNameUtf8 << ")\n";
-            f << "            g_hLib_" << libNameUtf8 << " = LoadLibraryW(L\"" << libNameUtf8 << ".fne\");\n";
+            if (debug) {
+                // DEBUG模式：直接使用fne的绝对路径，不需要复制到exe旁的lib目录
+                // 将反斜杠转义为双反斜杠用于C字符串
+                std::wstring escapedPath = fnePath;
+                size_t pos = 0;
+                while ((pos = escapedPath.find(L'\\', pos)) != std::wstring::npos) {
+                    escapedPath.replace(pos, 1, L"\\\\");
+                    pos += 2;
+                }
+                std::string escapedPathUtf8 = WideToUtf8(escapedPath);
+                f << "        g_hLib_" << libNameUtf8 << " = LoadLibraryW(L\"" << escapedPathUtf8 << "\");\n";
+            } else {
+                // 发布模式：从exe旁的lib目录加载
+                f << "        g_hLib_" << libNameUtf8 << " = LoadLibraryW(L\"lib\\\\" << libNameUtf8 << ".fne\");\n";
+                f << "        if (!g_hLib_" << libNameUtf8 << ")\n";
+                f << "            g_hLib_" << libNameUtf8 << " = LoadLibraryW(L\"" << libNameUtf8 << ".fne\");\n";
+            }
             f << "    }\n";
             f << "    return g_hLib_" << libNameUtf8 << ";\n";
             f << "}\n\n";
@@ -1690,6 +1759,9 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
     }
     
     SendMessage(CompileMessageType::Info, L"正在编译项目: " + project->projectName);
+    if (options.staticLink) {
+        SendMessage(CompileMessageType::Info, L"编译模式: 静态编译（所有依赖编入单个exe）");
+    }
     
     // 清除上次编译的状态
     g_usedFuncCalls.clear();
@@ -1756,7 +1828,7 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
     std::vector<std::wstring> bridgeFiles;
     std::vector<std::wstring> dynamicFneFiles;
     SendMessage(CompileMessageType::Info, L"正在生成支持库桥接代码...");
-    if (!GenerateLibraryBridgeCode(tempDir, bridgeFiles, dynamicFneFiles)) {
+    if (!GenerateLibraryBridgeCode(tempDir, bridgeFiles, dynamicFneFiles, options.staticLink, options.debug)) {
         m_lastResult.errorCount++;
         m_isCompiling = false;
         return m_lastResult;
@@ -1791,8 +1863,8 @@ CompileResult Compiler::CompileProject(const CompileOptions& options) {
     m_lastResult.success = true;
     m_lastResult.outputFile = outputExe;
     
-    // 步骤5: 复制动态加载的支持库（.fne）到输出目录
-    if (!dynamicFneFiles.empty()) {
+    // 步骤5: 复制动态加载的支持库（.fne）到输出目录（仅非DEBUG模式）
+    if (!dynamicFneFiles.empty() && !options.debug) {
         // 获取输出目录下的 lib 子目录
         std::wstring exeDir = outputExe;
         size_t lastSlashPos = exeDir.find_last_of(L"\\");
@@ -1858,6 +1930,24 @@ DWORD WINAPI OutputReaderThread(LPVOID param) {
             self->m_callback(msg);
         }
     }
+    
+    // 管道关闭，进程可能已退出，等待进程结束
+    if (self->m_hRunningProcess) {
+        WaitForSingleObject(self->m_hRunningProcess, INFINITE);
+        
+        DWORD exitCode = 0;
+        GetExitCodeProcess(self->m_hRunningProcess, &exitCode);
+        
+        CloseHandle(self->m_hRunningProcess);
+        self->m_hRunningProcess = NULL;
+        
+        // 通知主窗口进程已退出（携带退出码）
+        extern HWND hMainWnd;
+        if (hMainWnd) {
+            PostMessage(hMainWnd, WM_PROCESS_EXITED, (WPARAM)exitCode, 0);
+        }
+    }
+    
     return 0;
 }
 
@@ -1950,12 +2040,16 @@ bool Compiler::StopExecutable() {
         return true;
     }
     
+    // 保存句柄并提前置空，防止 OutputReaderThread 重复关闭
+    HANDLE hProcess = m_hRunningProcess;
+    m_hRunningProcess = NULL;
+    
     // 首先尝试优雅地关闭
     DWORD exitCode;
-    if (GetExitCodeProcess(m_hRunningProcess, &exitCode) && exitCode == STILL_ACTIVE) {
+    if (GetExitCodeProcess(hProcess, &exitCode) && exitCode == STILL_ACTIVE) {
         // 强制终止进程
-        TerminateProcess(m_hRunningProcess, 1);
-        WaitForSingleObject(m_hRunningProcess, 3000);  // 等待最多3秒
+        TerminateProcess(hProcess, 1);
+        WaitForSingleObject(hProcess, 3000);  // 等待最多3秒
         SendMessage(CompileMessageType::Info, L"程序已停止");
     }
     
@@ -1972,8 +2066,7 @@ bool Compiler::StopExecutable() {
         m_hOutputThread = NULL;
     }
     
-    CloseHandle(m_hRunningProcess);
-    m_hRunningProcess = NULL;
+    CloseHandle(hProcess);
     
     return true;
 }

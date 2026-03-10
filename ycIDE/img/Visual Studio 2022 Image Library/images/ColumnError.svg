@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightColumnError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <path class="light-defaultgrey-10" d="M7.694,14.5H5.5V2.5h5V7.254A4.936,4.936,0,0,0,7.694,14.5Z" />
+    <path class="light-defaultgrey" d="M7.422,14H6V11H7.1a4.968,4.968,0,0,1,.321-1H6V7h4v.422A4.968,4.968,0,0,1,11,7.1V1.5L10.5,1h-5L5,1.5v13l.5.5H8.023A4.935,4.935,0,0,1,7.422,14ZM6,3h4V6H6Z" />
+  </g>
+</svg>

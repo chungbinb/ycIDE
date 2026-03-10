@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSubstitution</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,4V14H1.5V4Z" />
+      <path class="light-defaultgrey" d="M14.5,4H1.5L1,4.5v10l.5.5h13l.5-.5V4.5ZM14,14H2V5H14Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,2V4H2V2Z" />
+    <path class="light-defaultgrey" d="M14.5,5H1.5L1,4.5v-3L1.5,1h13l.5.5v3ZM2,4H14V2H2Z" />
+    <path class="light-defaultgrey" d="M3,12H4v1H3Zm0-1H4V10H3ZM3,9H4V8H3ZM3,6V7H4V6Z" />
+    <path class="light-blue" d="M11.965,9.917l.987.166A3.5,3.5,0,0,1,7,11.949V13H6V10.5l.5-.5H9v1H7.5a2.5,2.5,0,0,0,4.466-1.083ZM12,6V7.051A3.5,3.5,0,0,0,6.048,8.917l.987.166A2.5,2.5,0,0,1,11.5,8H10V9h2.5l.5-.5V6Z" />
+  </g>
+</svg>

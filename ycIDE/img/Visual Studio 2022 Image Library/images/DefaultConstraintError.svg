@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDefaultConstraintError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.228,13.5H6.5V1.5h5V7.138A4.989,4.989,0,0,0,7,12.088,4.926,4.926,0,0,0,7.228,13.5Z" />
+    <path class="light-defaultgrey" d="M7.092,13H7V6h4V7.189a5,5,0,0,1,1-.1V.5L11.5,0h-5L6,.5v13l.5.5h.884A4.942,4.942,0,0,1,7.092,13ZM7,2h4V5H7Z" />
+    <path class="light-defaultgrey" d="M7.911,14.949H0v-7H8V9.12a4.928,4.928,0,0,0-.088,5.829Z" />
+    <path class="white" d="M2.89,14A1.369,1.369,0,0,1,1.7,13.375a3.2,3.2,0,0,1-.428-1.809A3.542,3.542,0,0,1,1.714,9.6a1.462,1.462,0,0,1,1.292-.666q1.617,0,1.617,2.512a3.312,3.312,0,0,1-.456,1.9A1.47,1.47,0,0,1,2.89,14Zm.079-4.433q-.892,0-.892,1.965,0,1.839.875,1.839t.861-1.87Q3.813,9.567,2.969,9.567ZM7,8.907v5.011H6.207V9.878a2.658,2.658,0,0,1-.463.262,3.944,3.944,0,0,1-.566.189V9.652c.133-.043.26-.089.383-.136s.244-.1.364-.161.241-.126.363-.2.247-.157.377-.25Z" />
+    <path class="light-red" d="M12,8.088a4,4,0,1,0,4,4A4,4,0,0,0,12,8.088Z" />
+    <path class="white" d="M12.707,12.088l1.147,1.147-.708.707L12,12.8l-1.146,1.147-.708-.707,1.147-1.147-1.147-1.146.708-.707L12,11.381l1.146-1.146.708.707Z" />
+  </g>
+</svg>

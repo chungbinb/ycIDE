@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEventSnippet</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M4.6,4.5H8.721L5.359,8.514h3.17L2.593,14.478H1.572L4.061,9.991H1.455Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,11H9v1H8Zm2,1h1V11H10Zm2,0h1V11H12Zm2-1v1h1V11Zm1-9.5V10H14V2H7V3H6V1.5L6.5,1h8Z" />
+      <path class="light-defaultgrey-10" d="M14.5,1.5V10H9.167l.9-.9L9.2,7.014H8.574L10.28,4.978,9.358,3H6V1.5Z" />
+    </g>
+    <path class="light-yellow" d="M2.593,14.979H1.572l-.437-.743,2.077-3.745H1.455l-.434-.749L4.17,4.253,4.6,4H8.721l.383.821L6.43,8.014h2.1l.354.852L2.948,14.831ZM2.318,9.491H4.061l.437.742L2.467,13.9,7.326,9.014H5.359l-.383-.822L7.65,5H4.893Z" />
+  </g>
+</svg>

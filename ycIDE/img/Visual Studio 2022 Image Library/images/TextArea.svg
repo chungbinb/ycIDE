@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTextArea</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5.5h13v14H1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,0H1.5L1,.5v14l.5.5h13l.5-.5V.5ZM14,14H2V1H14Z" />
+    <path class="light-defaultgrey" d="M10,4.008a1.978,1.978,0,0,0-1,.278V2H8V8H9V7.729a1.969,1.969,0,0,0,1,.279,2,2,0,1,0,0-4Zm.013,3.026a1,1,0,1,1,1-1A1,1,0,0,1,10.013,7.034ZM6,4.286a1.978,1.978,0,0,0-1-.278,2,2,0,0,0,0,4,1.969,1.969,0,0,0,1-.279V8H7V4H6ZM4.993,7.034a1,1,0,1,1,1-1A1,1,0,0,1,4.993,7.034Zm.711,4.7.719.7A2,2,0,1,1,6.393,9.6l-.7.714a1,1,0,1,0-.7,1.716A.992.992,0,0,0,5.7,11.734Z" />
+  </g>
+</svg>

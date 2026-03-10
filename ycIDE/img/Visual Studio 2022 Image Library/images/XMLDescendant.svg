@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightXMLDescendant</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.511,10.5H7.5v-2h4.011ZM9.5,13.5v2h4.011v-2Z" />
+      <path class="light-defaultgrey" d="M12,10.5v-2L11.5,8h-4L7,8.5v2l.5.5h4ZM11,10H8V9h3Zm2.5,3h-4l-.5.5v2l.5.5h4l.5-.5v-2ZM13,15H10V14h3Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M9.5,5.5H5.468v-2H9.5Z" />
+    <path class="light-defaultgrey" d="M9.5,6h-4L5,5.5v-2L5.5,3h4l.5.5v2ZM6,5H9V4H6ZM3.848,6.284l-1.787-1.8L3.814,2.729l-.707-.707L1,4.129v.706L3.138,6.989Zm7.3-3.556,1.787,1.8L11.186,6.282l.707.707L14,4.883V4.177L11.862,2.022Z" />
+  </g>
+</svg>

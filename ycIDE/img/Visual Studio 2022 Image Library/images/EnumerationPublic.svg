@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>EnumerationPublic</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-yellow-10" d="M9.5,7h-3V2.643h8V8.357H10V7.5Z" />
+      <path class="light-yellow" d="M8.5,4h4V5h-4ZM7,7H6V2.5L6.5,2h8l.5.5v6l-.505.505H10V8h4V3H7ZM8.5,6h4V7h-4Z" />
+    </g>
+    <path class="light-yellow-10" d="M9.5,13.357h-8V7.643h8Z" />
+    <path class="light-yellow" d="M7.5,11.949,3.5,12V11h4ZM7.5,9h-4v1h4ZM10,7.5v5.994L9.495,14H1.5L1,13.5v-6L1.5,7h8ZM9,8H2v5l7-.006Z" />
+  </g>
+</svg>

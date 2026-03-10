@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightUnfreezeColumn</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v9.5H2.5V5.621l.5-.5L5.146,7.268,7.268,5.146,7.121,5Z" />
+      <path class="light-defaultgrey" d="M14,5H7.121l.147.146L6,6.414V8H3V6h.879L3,5.121l-1,1V14.5l.5.5h12l.5-.5V5ZM6,14H3V12H6Zm0-3H3V9H6Zm4,3H7V12h3Zm0-3H7V9h3Zm0-3H7V6h3Zm4,6H11V12h3Zm0-3H11V9h3Zm0-3H11V6h3Z" />
+    </g>
+    <path class="light-blue-10" d="M14.5,2.5v3H6.914l.354-.354L5.121,3l.5-.5Z" />
+    <path class="light-blue" d="M3.879,6H2.5l-.189-.189L3,5.121ZM14.5,2H6.121l-1,1H6v.879l1,1V3h3V5H7.121l.147.146L6.414,6H14.5l.5-.5v-3ZM14,5H11V3h3Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+  </g>
+</svg>

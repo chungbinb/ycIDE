@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGenerateResource</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M4.293,2,3.146.854,3.854.146l2,2v.708l-2,2-.708-.708L4.293,3H0V2Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H1.5V4h.086L3.854,6.268l3-3V2.5Z" />
+    <path class="light-defaultgrey" d="M15,2.5v11l-.5.5H1.5L1,13.5V4h.586L2,4.414V13H14V3H6.854V2H14.5Z" />
+    <path class="light-yellow" d="M12,5.5A1.5,1.5,0,1,1,10.5,4,1.5,1.5,0,0,1,12,5.5Z" />
+    <path class="light-blue" d="M14,10.59V12l-2.819-2.82L8.988,11.377H8.281L4.814,7.91,2,10.725V9.311L4.461,6.85h.707l3.466,3.466,2.193-2.193h.707Z" />
+  </g>
+</svg>

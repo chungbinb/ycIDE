@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPolicy</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,8.667v6.76L8,13,5.5,15.427V8.667a4.5,4.5,0,1,1,5,0Z" />
+    <path class="light-defaultgrey" d="M13,5A5,5,0,1,0,5,8.974V15.5l.854.354L8,13.707l2.146,2.147L11,15.5V8.974A4.977,4.977,0,0,0,13,5ZM4,5A4,4,0,1,1,8,9,4,4,0,0,1,4,5Zm6,9.293L8.354,12.5H7.646L6,14.293V9.576a4.929,4.929,0,0,0,4,0Z" />
+  </g>
+</svg>

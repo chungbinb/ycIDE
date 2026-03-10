@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGetTextFormat</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.562,15.5h-7v-9h5.5L7.562,8Z" />
+    <path class="light-defaultgrey" d="M7.854,7.646l-1.5-1.5L6,6H.5L0,6.5v9l.5.5h7l.5-.5V8ZM1,15V7H5V9H7v6Zm5-3H2V11H6ZM4,10H2V9H4Zm2,4H2V13H6Z" />
+    <path class="light-defaultgrey-10" d="M15.5,5.5h-6V.5h6Z" />
+    <path class="light-defaultgrey" d="M15.5,0h-6L9,.5v5l.5.5h6l.5-.5V.5ZM13,2V3H12V2ZM10,2h1V3H10Zm0,3V4h1V5Zm2,0V4h1V5Zm3,0H14V4h1Zm0-2H14V2h1Z" />
+    <path class="light-blue" d="M10,11h2V8.707L10.854,9.854l-.708-.708,2-2h.708l2,2-.708.708L13,8.707V11.5l-.5.5H10Z" />
+  </g>
+</svg>

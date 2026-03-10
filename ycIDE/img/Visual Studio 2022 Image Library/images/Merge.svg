@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMerge</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9.5,10v1A5.5,5.5,0,0,1,5,8.652V11.5H4v-6H5A4.505,4.505,0,0,0,9.5,10Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M6.5,3.5a2,2,0,1,1-2-2A2,2,0,0,1,6.5,3.5Zm0,10a2,2,0,1,1-2-2A2,2,0,0,1,6.5,13.5Zm7-3a2,2,0,1,1-2-2A2,2,0,0,1,13.5,10.5Z" />
+    <path class="light-defaultgrey" d="M4.5,1A2.5,2.5,0,1,0,7,3.5,2.5,2.5,0,0,0,4.5,1Zm0,4A1.5,1.5,0,1,1,6,3.5,1.5,1.5,0,0,1,4.5,5Zm0,6A2.5,2.5,0,1,0,7,13.5,2.5,2.5,0,0,0,4.5,11Zm0,4A1.5,1.5,0,1,1,6,13.5,1.5,1.5,0,0,1,4.5,15Zm7-7A2.5,2.5,0,1,0,14,10.5,2.5,2.5,0,0,0,11.5,8Zm0,4A1.5,1.5,0,1,1,13,10.5,1.5,1.5,0,0,1,11.5,12Z" />
+  </g>
+</svg>

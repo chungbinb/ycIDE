@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAddLocalServer</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,14.5V5H8V1.5h6.5v13Z" />
+    <path class="light-defaultgrey" d="M15,2.5v12l-.5.5h-8L6,14.5V5H7v9h7V2.5a.5.5,0,0,0-.5-.5H8V1h5.5A1.5,1.5,0,0,1,15,2.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12,4V5H9V4ZM9,11h3V10H9Zm0,2h3V12H9Z" />
+    </g>
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

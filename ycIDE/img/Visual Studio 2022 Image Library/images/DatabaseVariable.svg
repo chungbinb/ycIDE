@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDatabaseVariable</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M12.494,5.169,15.5,8.176v3.5l-7,3.889L5.494,12.556v-3.5Z" />
+      <path class="light-blue" d="M16,8.176v3.5l-.257.437L8.743,16l-.6-.084L5.14,12.91,5,12.556v-3.5l.25-.437-.11.791.854.853v2.084L8,14.355V12.271l.146.147.6.084L9,12.359v2.354l6-3.333V9.026l.743-.413.111-.791Z" />
+    </g>
+    <path class="light-blue-10" d="M15.5,8.176l-7,3.889L5.494,9.058l7-3.889Z" />
+    <path class="light-blue" d="M8.743,12.5l-.6-.084L5.14,9.412l.11-.791,7-3.889.6.084,3.007,3.006-.111.791ZM6.316,9.173l2.271,2.271,6.091-3.383L12.407,5.789Z" />
+    <path class="light-lightblue-10" d="M4,11.481C2.03,11.388.5,10.764.5,10V1.97c0-.828,1.791-1.5,4-1.5s4,.672,4,1.5v3.7L4.328,7.988l-.042.3L4,8.792Z" />
+    <path class="light-lightblue" d="M4,10.981c-1.945-.1-3-.713-3-.981V3.261a7.863,7.863,0,0,0,3.5.709A7.863,7.863,0,0,0,8,3.261V5.948l1-.555V1.97c0-2.627-9-2.627-9,0V10c0,1.215,1.939,1.886,4,1.981ZM4.5.97c2.273,0,3.5.71,3.5,1s-1.227,1-3.5,1S1,2.26,1,1.97,2.227.97,4.5.97Z" />
+  </g>
+</svg>

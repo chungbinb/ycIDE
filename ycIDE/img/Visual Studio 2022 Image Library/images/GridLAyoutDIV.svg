@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGridLAyoutDIV</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M11.5,6h-4L7,5.5v-2L7.5,3h4l.5.5v2ZM8,5h3V4H8Z" />
+    <path class="light-defaultgrey" d="M11.5,10h-4L7,9.5v-2L7.5,7h4l.5.5v2ZM8,9h3V8H8Z" />
+    <path class="light-defaultgrey" d="M6,5H3V4H6Z" />
+    <path class="light-defaultgrey" d="M6,8H3V9H6Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,14H1.5L1,13.5V1.5L1.5,1h12l.5.5v12Z" />
+      <path class="light-defaultgrey" d="M13.5,14H13V13h1v.5ZM12,13H11v1h1Zm-2,0H9v1h1ZM8,13H7v1H8ZM6,13H5v1H6ZM4,13H3v1H4ZM2,13H1v.5l.5.5H2Zm0-2H1v1H2ZM2,9H1v1H2ZM2,7H1V8H2ZM2,5H1V6H2ZM2,3H1V4H2ZM2,1H1.5L1,1.5V2H2ZM12,1H11V2h1ZM10,1H9V2h1ZM8,1H7V2H8ZM6,1H5V2H6ZM4,1H3V2H4Zm10,.5L13.5,1H13V2h1ZM14,11H13v1h1Zm0-2H13v1h1Zm0-2H13V8h1Zm0-2H13V6h1Zm0-2H13V4h1Z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGenerateCodeFromRecording</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12,15H7V14h5Zm2-3H9v1h5Zm-2-2H9v1h3Zm3,0H13v1h2ZM10,8H7V9h3Zm5,0H11V9h4Z" />
+    <path class="light-blue" d="M5.293,11,4.146,9.854l.708-.708,2,2v.708l-2,2-.708-.708L5.293,12H1V11Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.5,6.5H.5V.5h7Z" />
+      <path class="light-defaultgrey" d="M7.5,0H.5L0,.5v6L.5,7h7L8,6.5V.5ZM1,1H2V2H1ZM1,3H2V4H1ZM1,5H2V6H1ZM3,1H5V6H3ZM7,6H6V5H7ZM7,4H6V3H7ZM7,2H6V1H7Z" />
+    </g>
+  </g>
+</svg>

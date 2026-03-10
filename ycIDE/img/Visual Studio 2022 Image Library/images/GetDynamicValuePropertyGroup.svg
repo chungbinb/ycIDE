@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGetDynamicValuePropertyGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6,14V13H9v1H8v1H7V14ZM9,5V6H6V5H7V4H8V5Z" />
+    <path class="light-defaultgrey-10" d="M10.5,11.5h-6v-4h6Z" />
+    <path class="light-defaultgrey" d="M10.5,12h-6L4,11.5v-4L4.5,7h6l.5.5v4ZM5,11h5V8H5Z" />
+    <path class="light-blue" d="M3.011,4.293,4.157,3.146l.707.708-2,2H2.157l-2-2,.707-.708L2.011,4.293V0h1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,4.5v4H12V7.086L10.914,6H10V4.5Z" />
+      <path class="light-defaultgrey" d="M16,4.5v4l-.5.5H12V8h3V5H10V4h5.5Z" />
+      <path class="light-blue" d="M12,10h2v1H13v1H12Z" />
+      <path class="light-blue" d="M14,2V3H11V2h1V1h1V2Z" />
+    </g>
+  </g>
+</svg>

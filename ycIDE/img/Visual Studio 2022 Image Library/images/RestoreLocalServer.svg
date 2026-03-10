@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRestoreLocalServer</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,1.5H8.34a3.165,3.165,0,0,1,.22.5,4.2,4.2,0,0,1,.27,1.5A4.07,4.07,0,0,1,8.8,4a4.173,4.173,0,0,1-.24,1,4.255,4.255,0,0,1-1,1.56L5.5,8.62V14.5h8V2.5A1,1,0,0,0,12.5,1.5Z" />
+    <path class="light-defaultgrey" d="M12.5,1H8.03a3.755,3.755,0,0,1,.31.5,3.165,3.165,0,0,1,.22.5H12.5a.5.5,0,0,1,.5.5V14H6V8.12l-1,1V14.5l.5.5h8l.5-.5V2.5A1.5,1.5,0,0,0,12.5,1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7.5,12v1h4V12Zm0-2v1h4V10ZM8.8,4a4.173,4.173,0,0,1-.24,1H11.5V4Z" />
+    </g>
+    <path class="light-blue" d="M6.854,5.854l-4,4-.708-.708,4-4A2.328,2.328,0,0,0,2.854,1.854L1.707,3H4V4H.5L0,3.5V0H1V2.293L2.146,1.146A3.329,3.329,0,0,1,6.854,5.854Z" />
+  </g>
+</svg>

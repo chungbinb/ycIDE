@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-orange{fill: #b73d18; opacity: 1;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.cls-1{opacity:0.5;}.cls-2{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAnalysis</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-orange" d="M15,8H14a6,6,0,1,0-6,6v1a7,7,0,1,1,7-7Z" />
+    </g>
+    <g class="cls-2">
+      <path class="light-orange" d="M12.5,8h-1a3.5,3.5,0,1,0-6.148,2.288l-.757.654A4.5,4.5,0,1,1,12.5,8Z" />
+    </g>
+    <path class="light-orange-10" d="M9.5,8A1.5,1.5,0,1,1,8,6.5,1.5,1.5,0,0,1,9.5,8Z" />
+    <path class="light-orange" d="M8,6a2,2,0,1,0,2,2A2,2,0,0,0,8,6ZM8,9A1,1,0,1,1,9,8,1,1,0,0,1,8,9Z" />
+  </g>
+</svg>

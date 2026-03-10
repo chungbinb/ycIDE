@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}</style>
+  </defs>
+  <title>IconLightColorPicker</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M10.048,8.073l-5.3,5.3-1.061.353-.56.561L1.709,12.877l.561-.561.354-1.061,5.3-5.3Z" />
+    <path class="light-defaultgrey-10" d="M11.816,6.306l1.061,1.06L11.462,8.78,7.22,4.538,8.634,3.124,9.7,4.184l2.828-2.828,2.121,2.121Z" />
+    <path class="light-defaultgrey" d="M15,3.124,12.877,1H12.17L9.694,3.477,8.987,2.77H8.28L6.866,4.184v.707l4.243,4.243h.707L13.23,7.72V7.013l-.707-.707L15,3.831ZM11.463,8.073,7.927,4.538l.707-.707L12.17,7.366ZM11.816,5.6,10.4,4.184l2.122-2.121,1.414,1.414Z" />
+    <path class="light-lightblue" d="M3.477,14.644H2.77L1.356,13.23v-.707l.476-.477.317-.949.121-.2,5.3-5.3.707.707-5.219,5.22-.317.948-.121.2-.207.207.707.707.208-.207.195-.121.949-.316L9.694,7.72l.707.707-5.3,5.3-.2.121-.949.316Z" />
+  </g>
+</svg>

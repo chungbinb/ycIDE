@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>VBClassFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v9H8.588L7.416,12.328H7.052l0-.035,1.572-1.572V9.539L7.416,8.328H6.234L5.562,9h-.7V8.6L3.5,7.232V1.5h7Z" />
+      <path class="light-defaultgrey" d="M14,4.5v9l-.5.5-4.873-.011v-.45L8.088,13H13V5H10V2H4V7.732l-.722-.721H3V1.5L3.5,1h7l.354.146,3,3Z" />
+    </g>
+    <path class="light-blue" d="M5.023,11.307V11H4v3H5.976l.672-.672H7l.625.625v.354L6,15.932H5.648l-.625-.625V15H3.5L3,14.5V11H2.229l-.615.614H1.261l-1-1v-.353l2.25-2.25h.353l1,1v.353L3.229,10H5.976l.672-.672H7l.625.625v.354L6,11.932H5.648Z" />
+  </g>
+</svg>

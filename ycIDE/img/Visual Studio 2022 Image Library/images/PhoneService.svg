@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>PhoneService</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,1.5v13h-8V1.5Z" />
+    <path class="light-defaultgrey" d="M14,14.5V1.5L13.5,1h-8L5,1.5v13l.5.5h8ZM13,14H6V2h7Zm-2-1H8V12h3ZM9,3h1V4H9Z" />
+    <path class="light-defaultgrey" d="M4,5V6H1V5ZM3,8H0V9H3ZM1,12H4V11H1Z" />
+  </g>
+</svg>

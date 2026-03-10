@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>Asterisk</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12.416,6.142,9.407,7.5l3,1.359-1.029,1.788L8.7,8.719,9.029,12H6.971l.321-3.282-2.68,1.928L3.584,8.858,6.593,7.5,3.587,6.141,4.616,4.353,7.3,6.281,6.971,3H9.029L8.708,6.282l2.68-1.928Z" />
+  </g>
+</svg>

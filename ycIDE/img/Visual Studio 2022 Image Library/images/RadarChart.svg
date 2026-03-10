@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRadarChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M14.5,6.5l-2,8L13,7,8,4,4,8l1,5,7.5,1.5h-9l-2-8L8,1.25Z" />
+    <path class="light-lightblue" d="M13.371,8.959l.566-2.271L8,1.893l-5.938,4.8,1.829,7.324H7.51l4.992,1,0,0h-9l-.485-.379-2-8.012.171-.51,6.5-5.25h.628l6.5,5.25.171.51L13,14.594Z" />
+    <path class="light-lightblue-10" d="M8,4,4,8l1,5,7.5,1.5L13,7Zm3,8L7,11V9L8,7l3,2Z" />
+    <path class="light-lightblue" d="M13.257,6.571l-5-3-.611.075-4,4L3.51,8.1l1,5,.392.392,7.605,1.521.486-.393L13.5,7.033ZM12.039,13.9,5.425,12.575l-.882-4.41L8.077,4.629l4.4,2.642Z" />
+    <path class="light-defaultgrey-10" d="M11,9v3L7,11V9L8,7Z" />
+    <path class="light-defaultgrey" d="M11.277,8.584l-3-2-.724.192-1,2L6.5,9v2l.379.485,4,1L11.5,12V9ZM10.5,11.359l-3-.75V9.118L8.194,7.73,10.5,9.268Z" />
+  </g>
+</svg>

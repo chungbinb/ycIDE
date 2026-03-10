@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDialogGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14,9.5H12.5V3H5V2h9Z" />
+      <path class="light-defaultgrey" d="M15,1.5v8l-.5.5H14V2H5V1.5L5.5,1h9Z" />
+      <path class="light-defaultgrey-10" d="M12,11.5H10.5V5H3V4h9Z" />
+      <path class="light-defaultgrey" d="M13,3.5v8l-.5.5H12V4H3V3.5L3.5,3h9Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M10.5,5.5v8h-9v-8Z" />
+    <path class="light-defaultgrey" d="M9,11H3v1H9Zm2-5.5v8l-.5.5h-9L1,13.5v-8L1.5,5h9ZM10,8H2v5h8Zm0-2H2V7h8ZM9,10H3V9H9Z" />
+  </g>
+</svg>

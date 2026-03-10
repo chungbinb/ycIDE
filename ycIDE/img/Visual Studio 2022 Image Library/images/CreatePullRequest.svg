@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>CreatePullRequest</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M4,8v4H5V8Z" />
+      <path class="light-defaultgrey" d="M11.5,3H9.64l1.28-1.27-.71-.71L8.08,3.15v.7l2.13,2.13.71-.71L9.64,4H11.5A1.5,1.5,0,0,1,13,5.5v6h1v-6A2.5,2.5,0,0,0,11.5,3Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M5,11.57a1.821,1.821,0,0,0-1,0,2,2,0,1,0,1,0Zm8.5-.07a2,2,0,1,0,2,2A2.006,2.006,0,0,0,13.5,11.5Z" />
+    <path class="light-defaultgrey" d="M5,11.05a2.525,2.525,0,0,0-1,0,2.5,2.5,0,1,0,1,0ZM4.5,15A1.5,1.5,0,1,1,6,13.5,1.5,1.5,0,0,1,4.5,15ZM14,11.05a2.525,2.525,0,0,0-1,0,2.5,2.5,0,1,0,1,0ZM13.5,15A1.5,1.5,0,1,1,15,13.5,1.5,1.5,0,0,1,13.5,15Z" />
+    <path class="light-yellow" d="M4,2l-.5.5L3,2V0H4ZM1.379.672l-.707.707L2.086,2.793l.7,0,0-.711ZM0,3V4H2l.5-.5L2,3ZM.672,5.621l.707.707L2.793,4.914l0-.7-.711,0ZM3,7H4V5l-.5-.5L3,5Zm2.621-.672.707-.707L4.914,4.207l-.7,0,0,.711ZM7,4V3H5l-.5.5L5,4ZM6.328,1.379,5.621.672,4.207,2.086l0,.7.711,0Z" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightQueryViewError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M2.5,1.5v3H.5v8H7.03A4.07,4.07,0,0,1,7,12a5.106,5.106,0,0,1,.41-2c.08-.17.17-.34.26-.5H2.5v-4h7V7.67c.16-.09.33-.18.5-.26a5.532,5.532,0,0,1,1-.31,4.293,4.293,0,0,1,.5-.07V1.5Z" />
+      <path class="light-defaultgrey" d="M11.5,1h-9L2,1.5V4H.5L0,4.5v8l.5.5H7.1a4.293,4.293,0,0,1-.07-.5A4.07,4.07,0,0,1,7,12H1V6H9V8a4.322,4.322,0,0,1,.5-.33c.16-.09.33-.18.5-.26V4.5L9.5,4H3V3h8V7.1a4.293,4.293,0,0,1,.5-.07A4.07,4.07,0,0,1,12,7V1.5Z" />
+    </g>
+    <path class="light-yellow-10" d="M2.5,5.5v4H7.67A4.322,4.322,0,0,1,8,9,5.262,5.262,0,0,1,9,8a4.322,4.322,0,0,1,.5-.33V5.5Z" />
+    <path class="light-yellow" d="M9.5,5h-7L2,5.5v4l.5.5H7.41c.08-.17.17-.34.26-.5A4.322,4.322,0,0,1,8,9H3V6H9V8a4.322,4.322,0,0,1,.5-.33c.16-.09.33-.18.5-.26V5.5Z" />
+    <path class="light-yellow" d="M4,7V8H8V7Z" />
+  </g>
+</svg>

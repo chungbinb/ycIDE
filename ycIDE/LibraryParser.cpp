@@ -56,6 +56,7 @@ bool LibraryParser::LoadFneLibrary(const std::wstring& fnePath) {
         cmd.libraryFileName = libFileName;
         cmd.commandIndex = fneCmd.commandIndex;
         cmd.category = fneCmd.category;  // 使用从 FNE 读取的真实类别
+        cmd.isHidden = fneCmd.isHidden;  // 保留隐藏标志
         
         // 生成拼音和首字母
         cmd.pinyin = PinyinHelper::GetStringPinyins(cmd.chineseName);
@@ -188,6 +189,9 @@ std::vector<std::wstring> LibraryParser::GetCompletions(const std::wstring& inpu
     std::transform(lowerInput.begin(), lowerInput.end(), lowerInput.begin(), ::towlower);
     
     for (const auto& cmd : commands) {
+        // 跳过隐藏命令
+        if (cmd.isHidden) continue;
+        
         bool matched = false;
         
         // 匹配中文名
@@ -231,6 +235,7 @@ void LibraryParser::AddCommandFromFne(const std::wstring& cmdName, const std::ws
     // 默认不是流程控制命令（如果需要，应该从 FNE 文件中读取类别信息）
     cmd.needsFlowLine = false;
     cmd.needsBrackets = false;
+    cmd.isHidden = false;
     
     // 解析参数
     for (const auto& paramStr : params) {

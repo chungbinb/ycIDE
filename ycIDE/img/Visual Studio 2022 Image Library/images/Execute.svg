@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>Execute</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M16,6v9.5l-.5.5H2.5L2,15.5V8.009l1-.571V15H15V6Z" />
+      <path class="light-defaultgrey-10" d="M15,6v9H3V7.438L5.516,6H6.878L9.732,8.854h1.536L14.122,6Z" />
+    </g>
+    <path class="light-blue" d="M13.354,5.354l-2.5,2.5h-.708l-2.5-2.5.708-.707L10,6.293V1h1V6.293l1.646-1.646Z" />
+    <path class="light-green" d="M7,4,0,8V0Z" />
+    <path class="light-defaultgrey" d="M12,11.927v2H10v-2Zm-4,0v2H6v-2Zm-2-3v2H4v-2Zm4,0v2H8v-2Zm4,0v2H12v-2Z" />
+  </g>
+</svg>

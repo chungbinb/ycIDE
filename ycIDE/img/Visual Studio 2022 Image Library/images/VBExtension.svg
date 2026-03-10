@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVBExtension</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M12.5,10.5v4H1.5V3.5h4v7Z" />
+      <path class="light-blue" d="M12.5,10H6V3.5L5.5,3h-4L1,3.5v11l.5.5h11l.5-.5v-4ZM12,14H2V4H5v6.5l.5.5H12Z" />
+    </g>
+    <path class="light-blue-10" d="M13.5,2.5v5h-5v-5Z" />
+    <path class="light-blue" d="M13.5,2h-5L8,2.5v5l.5.5h5l.5-.5v-5ZM13,7H9V3h4Z" />
+  </g>
+</svg>

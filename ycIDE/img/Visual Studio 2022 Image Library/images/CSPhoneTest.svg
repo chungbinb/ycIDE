@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSPhoneTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.528,1.5V15H8.015a2.157,2.157,0,0,0-.2-1H7.86l-.15-.24v0l-.73-1.169L6.03,11.069V10h1V7h-1.5V1.5Z" />
+    <path class="light-defaultgrey" d="M14.028,1.5v13l-.5.5H8.012a2.088,2.088,0,0,0-.193-1h5.209V2h-7V7h-1V1.5l.5-.5h8Zm-3,11.5h-3V12h3Zm-1-9h-1V3h1Z" />
+    <g class="cls-1">
+      <path class="light-green-10" d="M2.528,8.5h2v3l1.25,2h-4.5l1.25-2Z" />
+      <path class="light-green" d="M2.03,9h-1V8h5V9h-1v2.356L6.056,13H4.878L4.03,11.644V9h-1v2.644L2.182,13H1L2.03,11.356Z" />
+    </g>
+    <path class="light-green-10" d="M1.528,13.5h4l1,1.5-.5.5h-5l-.5-.5Z" />
+    <path class="light-green" d="M5.911,16H1.148A1.12,1.12,0,0,1,.2,14.286L1,13H6.056l.8,1.287A1.12,1.12,0,0,1,5.911,16ZM1.557,14l-.511.816a.118.118,0,0,0,0,.122.116.116,0,0,0,.1.062H5.911a.116.116,0,0,0,.105-.062.112.112,0,0,0,0-.121L5.5,14Z" />
+  </g>
+</svg>

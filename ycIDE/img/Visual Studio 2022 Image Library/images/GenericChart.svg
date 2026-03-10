@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGenericChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M11.5,3.684V1.5h2V3.035H12.148ZM4.371,6.369H5.5V3.5h-2V7.24ZM9.5,5.684V5.5h-2V7.685Zm3.416.826L11.5,7.926V12.5h2V7.094ZM8.129,11.3H7.5v1.2h2V9.926ZM5.139,9.844,3.5,11.482V12.5h2V10.205Z" />
+    <path class="light-defaultgrey" d="M7,7.462V5.5L7.5,5h2l.342.342L9,6.184V6H8V7.184l-.639.639ZM4,6.74V4H5V6.369h.906L6,6.463V3.5L5.5,3h-2L3,3.5V7.74Zm8-3.556V2h1V3.035h.684L14,3.352V1.5L13.5,1h-2l-.5.5V4.184ZM5.139,9.844,5,9.982V12H4V10.982l-1,1V12.5l.5.5h2l.5-.5V10.705ZM13,6.594V12H12V7.426l-1,1V12.5l.5.5h2l.5-.5V7.594ZM9,10.427V12H8v-.7H7v1.2l.5.5h2l.5-.5V9.426Z" />
+    <path class="light-lightblue" d="M15,5.765V7.18L12.917,5.1l-5.2,5.2H7.008L5.139,8.43,2,11.568V10.154L4.785,7.369h.707L7.361,9.237l5.2-5.2h.707Z" />
+  </g>
+</svg>

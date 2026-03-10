@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightInsertPanel</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,3.5v10H3.5V6.914l.854.854,3.5-3.5V3.5Z" />
+    <path class="light-blue" d="M3.647,5.646,5.293,4H0V3H5.293L3.647,1.354,4.354.646l2.5,2.5v.708l-2.5,2.5Z" />
+    <path class="light-defaultgrey" d="M14,3.5v10l-.5.5H3.5L3,13.5V6.414l1,1V13h9V4H7.854V3H13.5Z" />
+    <path class="light-defaultgrey" d="M9,11h1v1H9ZM7,5.121V6H8V5H7.121ZM7,12H8V11H7Zm0-2H8V9H7ZM5,7.121V8H6V7H5.121ZM5,12H6V11H5Zm0-2H6V9H5ZM7,8H8V7H7Zm4,0h1V7H11ZM9,10h1V9H9Zm2,0h1V9H11Zm0-5V6h1V5ZM9,8h1V7H9Zm2,4h1V11H11ZM9,6h1V5H9Z" />
+  </g>
+</svg>

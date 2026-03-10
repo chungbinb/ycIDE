@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCameraOrbit</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,6.5h3v3h-3Z" />
+    <path class="light-defaultgrey" d="M9.5,10h-3L6,9.5v-3L6.5,6h3l.5.5v3ZM7,9H9V7H7Z" />
+    <path class="light-defaultgrey" d="M1,8a7,7,0,1,1,10.56,6H14.5v1h-4l-.5-.5v-4h1v2.671a5.983,5.983,0,1,0-5.57.244l-.43.9A7.031,7.031,0,0,1,1,8Z" />
+  </g>
+</svg>

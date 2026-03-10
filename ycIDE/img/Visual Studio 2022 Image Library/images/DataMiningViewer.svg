@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>DataMiningViewer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.5.5v3h4V.5Z" />
+      <path class="light-defaultgrey" d="M11.5,0h-4L7,.5v3l.5.5h4l.5-.5V.5ZM11,3H8V1h3Z" />
+      <path class="light-defaultgrey-10" d="M11.5,9.5v3h4v-3Z" />
+      <path class="light-defaultgrey" d="M15.5,9h-4l-.5.5v3l.5.5h4l.5-.5v-3ZM15,12H12V10h3Z" />
+      <path class="light-defaultgrey" d="M13.5,6H10V4H9V6H8.91l1,1H13V9h1V6.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M8.5,15.5H.5v-8h8Z" />
+    <path class="light-defaultgrey" d="M8.5,7H.5L0,7.5v8l.5.5h8l.5-.5v-8ZM6.645,12.938l-.707.707L7.293,15H1.707l1.355-1.355-.707-.707L1,14.293V8.707l1.355,1.355.707-.707L1.707,8H7.293L5.938,9.355l.707.707L8,8.707v5.586Z" />
+  </g>
+</svg>

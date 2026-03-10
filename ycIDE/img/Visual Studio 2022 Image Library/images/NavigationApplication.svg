@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>NavigationApplication</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8H12V10.086L10.914,9H1.5V5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H12V13h2V6H2V9H1V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,3V5H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <path class="light-defaultgrey-10" d="M10.5,10.5v5H.5v-5Z" />
+    <path class="light-defaultgrey" d="M3.75,14l-1.5-1,1.5-1Zm3.5-2v2l1.5-1ZM11,10.5v5l-.5.5H.5L0,15.5v-5L.5,10h10ZM5,11H1v4H5Zm5,0H6v4h4Z" />
+  </g>
+</svg>

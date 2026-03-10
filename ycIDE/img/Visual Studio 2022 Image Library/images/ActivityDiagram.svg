@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightActivityDiagram</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,6.4,9.621,8.525,7.5,10.646,5.379,8.525Zm0-1.9A1.5,1.5,0,1,0,6,3,1.5,1.5,0,0,0,7.5,4.5Zm-6.994,9h4v-2h-4Zm9.994-2v2h4v-2Z" />
+    <path class="light-defaultgrey" d="M7.5,5a2,2,0,1,0-2-2A2,2,0,0,0,7.5,5Zm0-3a1,1,0,1,1-1,1A1,1,0,0,1,7.5,2Zm-7,9-.5.5v2l.5.5h4l.5-.5v-2L4.5,11ZM4,13H1V12H4Zm10.5-2h-4l-.5.5v2l.5.5h4l.5-.5v-2ZM14,13H11V12h3ZM7.146,6.05,5.025,8.171v.707L7.146,11h.708L9.975,8.878V8.171L7.854,6.05ZM7.5,9.939,6.086,8.524,7.5,7.11,8.914,8.524Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13,8.5V11H12V9H9V8h3.5ZM6,8H2.5L2,8.5V11H3V9H6ZM8.006,4h-1V7h1Z" />
+    </g>
+  </g>
+</svg>

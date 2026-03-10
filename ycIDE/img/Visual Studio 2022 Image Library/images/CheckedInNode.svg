@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCheckedInNode</title>
+  <g id="canvas">
+    <path class="canvas" d="M7,16H0V0H7Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M5.5,7.5v4H.5v-4Z" />
+    <path class="light-blue" d="M5.5,7H5V6A2,2,0,0,0,1,6V7H.5L0,7.5v4l.5.5h5l.5-.5v-4ZM2,6A1,1,0,0,1,4,6V7H2Zm3,5H1V8H5Z" />
+  </g>
+</svg>

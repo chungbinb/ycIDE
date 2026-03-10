@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>ModifyClassTrivial</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,8.5v5H13l-2.5,2v-2h-1v-5Z" />
+    <path class="light-defaultgrey" d="M15.5,8h-6L9,8.5v5l.5.5H10v1.5l.812.391L13.176,14H15.5l.5-.5v-5ZM15,13H13l-.313.109L11,14.46V13.5l-.5-.5H10V9h5Z" />
+    <path class="light-yellow-10" d="M5.5,1.5l2,2-4,4-2-2Zm6,3-2,2L10,7h2l1-1Z" />
+    <path class="light-yellow" d="M8,6H9.293l-.147.146v.708L9.293,7h1.414l-.5-.5L11.5,5.207,12.293,6l-1,1h1.414l.647-.646V5.646l-1.5-1.5h-.708L10.293,5H6.707L7.854,3.854V3.146l-2-2H5.146l-4,4v.708l2,2h.708L5.707,6H7v4.5l.5.5H8Zm-4.5.793L2.207,5.5,5.5,2.207,6.793,3.5Z" />
+  </g>
+</svg>

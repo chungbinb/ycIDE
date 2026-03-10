@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPostDeploymentScriptWarning</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,1.5h-6a1,1,0,0,0-1,1V7H7.99a3.006,3.006,0,0,1,2.04.8l.44-.8h2.06l.47.85.5.91V2.5A1,1,0,0,0,12.5,1.5Z" />
+    <path class="light-defaultgrey" d="M12.5,1h-6A1.5,1.5,0,0,0,5,2.5V7H6V2.5A.5.5,0,0,1,6.5,2h6a.5.5,0,0,1,.5.5V7.85l.5.91.5.91V2.5A1.5,1.5,0,0,0,12.5,1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7.5,4V5h4V4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.99,9a1,1,0,0,0-1,1H8.82l.13-.25A.988.988,0,0,0,7.99,9Zm-4,0a1,1,0,0,0-1,1v3h.5l.5.5V14a1,1,0,0,0,2,0V10a2,2,0,0,1,.28-1Zm-1,5H1a1,1,0,0,0,1,1H3.26A2,2,0,0,1,2.99,14Z" />
+    <path class="light-defaultgrey" d="M7.99,9a.988.988,0,0,1,.96.75l.57-1.03A1.983,1.983,0,0,0,7.99,8h-4a2.006,2.006,0,0,0-2,2v3H.5l-.5.5V14a2.029,2.029,0,0,0,1.99,2h3a2.046,2.046,0,0,0,1.14-.35l-.22-.37,1.08-1.96V11H8.27l.55-1H6.99A1,1,0,0,1,7.99,9ZM2,15a1,1,0,0,1-1-1H2.99a2,2,0,0,0,.27,1Zm3.99-5v4a1,1,0,0,1-2,0v-.5l-.5-.5h-.5V10a1,1,0,0,1,1-1H6.27A2,2,0,0,0,5.99,10Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

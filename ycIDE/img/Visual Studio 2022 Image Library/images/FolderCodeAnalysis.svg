@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFolderCodeAnalysis</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M8.5,3.5l-1-1h-6v10H6.38l-.65-.65L6.58,11l1-1,.27-.27,2.65,2.65,4-4V3.5Z" />
+    <path class="light-yellow" d="M14.5,3H8.71l-.86-.85L7.5,2h-6L1,2.5v10l.5.5H6.88l-1-1H2V5H7.48l.35-.15L8.68,4H14V8.88l1-1V3.5ZM7.27,4H2V3H7.29l.49.49Z" />
+    <path class="light-defaultgrey" d="M8.12,10l1,1H10V10ZM5,11H6.58l1-1H5ZM9,8V9h2V8ZM8,6V7h3V6ZM4,6V7H7V6ZM5,8V9H8V8Z" />
+    <path class="light-green" d="M15.854,9.854l-5,5h-.708l-3-3,.708-.708L10.5,13.793l4.646-4.647Z" />
+  </g>
+</svg>

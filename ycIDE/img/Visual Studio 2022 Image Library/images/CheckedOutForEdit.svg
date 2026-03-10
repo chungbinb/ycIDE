@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCheckedOutForEdit</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M6.271,11.828l-2.2-2.2.707-.707,1.846,1.846,4.6-4.6.707.707L6.979,11.828Z" />
+  </g>
+</svg>

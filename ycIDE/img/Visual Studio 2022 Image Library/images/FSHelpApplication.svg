@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-purple{fill: #6936aa; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFSHelpApplication</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.1,13H1.5V5h13V7.7A4.937,4.937,0,0,0,12,7a5,5,0,0,0-4.9,6Z" />
+      <path class="light-defaultgrey" d="M7.424,14H1.5L1,13.5v-8L1.5,5h13l.5.5V8.026a4.949,4.949,0,0,0-1-.6V6H2v7H7.1A4.949,4.949,0,0,0,7.424,14Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,2.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <path class="light-purple" d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Z" />
+    <path class="white" d="M12.625,14.5A.625.625,0,1,1,12,13.875.625.625,0,0,1,12.625,14.5Zm.587-4.842a1.533,1.533,0,0,1,.5,1.137c0,.775-.546,1.116-1.085,1.638a.552.552,0,0,0-.167.264,1.549,1.549,0,0,0-.033.508h-.858v-.3a1.3,1.3,0,0,1,.094-.508A1.663,1.663,0,0,1,11.9,12c.3-.373.426-.315.863-.879a.456.456,0,0,0,.094-.326.859.859,0,0,0-1.714,0h-.857a1.731,1.731,0,0,1,2.926-1.137Z" />
+  </g>
+</svg>

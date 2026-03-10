@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightFilledRectangle</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14.5,12.5H1.5v-9h13Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14.5,13H1.5L1,12.5v-9L1.5,3h13l.5.5v9ZM2,12H14V4H2Z" />
+  </g>
+</svg>

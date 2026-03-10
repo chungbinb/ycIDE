@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMemberData</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M8.5,6v8c0,.828-1.791,1.5-4,1.5s-4-.672-4-1.5V6c0-.828,1.791-1.5,4-1.5S8.5,5.172,8.5,6Z" />
+    <path class="light-lightblue" d="M0,5.969V14c0,1.313,2.264,2,4.5,2S9,15.313,9,14V5.969C9,3.344,0,3.344,0,5.969Zm1,.016C1,5.7,2.227,5,4.5,5S8,5.7,8,5.985v.03C8,6.3,6.773,7,4.5,7S1,6.3,1,6.015ZM4.5,15C2.227,15,1,14.29,1,14V7.3A7.9,7.9,0,0,0,4.5,8,7.913,7.913,0,0,0,8,7.3V14C8,14.29,6.773,15,4.5,15Z" />
+    <path class="light-defaultgrey-10" d="M15.5,5A4.471,4.471,0,0,1,10,9.38V5.97c0-1.519-1.423-2.358-3.141-2.731A4.5,4.5,0,0,1,15.5,5Z" />
+    <path class="light-defaultgrey" d="M16,5a5,5,0,0,1-6,4.9V8.858A3.939,3.939,0,0,0,11,9,4,4,0,1,0,7.359,3.363a9.108,9.108,0,0,0-.994-.217A4.995,4.995,0,0,1,16,5Z" />
+    <path class="light-defaultgrey" d="M10.5,2A1.5,1.5,0,0,0,9.249,4.324a2.6,2.6,0,0,1,.293.321A1.5,1.5,0,1,0,10.5,2Zm0,2a.5.5,0,1,1,.5-.5A.5.5,0,0,1,10.5,4Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.light-orange{fill: #b73d18; opacity: 1;}</style>
+  </defs>
+  <title>IconLightJSSharedProject</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-orange-10" d="M10,14,8,11,6,14,2,8,6,2,8,5l2-3,4,6Z" />
+    <path class="light-orange" d="M10.416,1.723H9.584L8,4.1,6.416,1.723H5.584l-4,6v.554l4,6h.832L8,11.9l1.584,2.376h.832l4-6V7.723ZM6,13.1,2.6,8,6,2.9,7.4,5,5.584,7.723v.554L7.4,11ZM8,5.9,9.4,8,8,10.1,6.6,8Zm2,7.2L8.6,11l1.815-2.723V7.723L8.6,5,10,2.9,13.4,8Z" />
+  </g>
+</svg>

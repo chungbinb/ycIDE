@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightPartiallyComplete</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,8.5h-4v-4h4Z" />
+    <path class="light-green" d="M15.854,10.854l-5,5h-.708l-3-3,.708-.708L10.5,14.793l4.646-4.647Z" />
+    <path class="light-defaultgrey" d="M14.5,9h-4L10,8.5v-4l.5-.5h4l.5.5v4ZM11,8h3V5H11Z" />
+    <path class="light-green-10" d="M10.5,8.5h-9v-4h9Z" />
+    <path class="light-green" d="M10.5,9h-9L1,8.5v-4L1.5,4h9l.5.5v4ZM2,8h8V5H2Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>RegularExpression</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M5,12a1,1,0,1,1-1-1A1,1,0,0,1,5,12Zm6.935-7.556-.8-1.391-2.084,1.5L9.3,2H7.7l.252,2.552-2.084-1.5-.8,1.391L7.406,5.5,5.065,6.556l.8,1.391,2.084-1.5L7.7,9H9.3L9.046,6.448l2.084,1.5.8-1.391L9.594,5.5Z" />
+  </g>
+</svg>

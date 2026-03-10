@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightOverlayStopped</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M11,16a5,5,0,1,1,5-5A5.006,5.006,0,0,1,11,16Z" />
+    <path class="light-red" d="M11,7a4,4,0,1,0,4,4A4,4,0,0,0,11,7Z" />
+    <path class="white" d="M13,13H9V9h4Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReplaceInFolder</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M7.5,10.5v4h-6v-5H3.75l1,1Z" />
+    <path class="light-yellow" d="M7.5,10H4.957L4.1,9.146,3.75,9H1.5L1,9.5v5l.5.5h6l.5-.5v-4ZM7,14H2V10H3.543l.853.854L4.75,11H7Z" />
+    <path class="light-yellow-10" d="M14.5,2.5v4h-6v-5h2.25l1,1Z" />
+    <path class="light-yellow" d="M14.5,2H11.957L11.1,1.146,10.75,1H8.5L8,1.5v5l.5.5h6l.5-.5v-4ZM14,6H9V2h1.543l.853.854L11.75,3H14Z" />
+    <path class="light-blue" d="M6.854,4.146v.708l-2,2-.707-.708L5.293,5H2V8H1V4.5L1.5,4H5.293L4.147,2.854l.707-.708Z" />
+  </g>
+</svg>

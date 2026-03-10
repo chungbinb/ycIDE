@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNewDeploymentManifest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5V8H8v6.5H3A1.5,1.5,0,0,1,1.5,13V7.53a4.4,4.4,0,0,0,.5.21A4.379,4.379,0,0,0,3.5,8,4.07,4.07,0,0,0,4,7.97a4.16,4.16,0,0,0,1-.23A4.359,4.359,0,0,0,7,6.32,2.428,2.428,0,0,0,7.24,6a4.07,4.07,0,0,0,.5-1,4.127,4.127,0,0,0,.15-.5Z" />
+    <path class="light-defaultgrey" d="M9,6V7h4V6ZM7,12v1H8V12ZM7,9v1H8V9Zm.24-3A2.428,2.428,0,0,1,7,6.32V7H8V6Z" />
+    <path class="light-defaultgrey" d="M3,14a1,1,0,1,1,1-1H5V7.74a4.16,4.16,0,0,1-1,.23v3.3a1.987,1.987,0,0,0-2,0V7.74a4.4,4.4,0,0,1-.5-.21A3.6,3.6,0,0,1,1,7.24V13a2.006,2.006,0,0,0,2,2H8V14ZM14.5,4H7.97a4.331,4.331,0,0,1-.08.5,4.127,4.127,0,0,1-.15.5H14V8h1V4.5Z" />
+    <path class="light-defaultgrey" d="M13,9v3h3V9ZM9,13v3h3V13ZM9,9v3h3V9Z" />
+    <path class="light-yellow" d="M1.38.67l-.71.71L2.09,2.79h.7V2.08ZM4.91,4.21h-.7v.71L5.62,6.33l.71-.71Zm-2.83,0L.67,5.62l.71.71L2.79,4.91v-.7ZM5.62.67,4.21,2.09v.7h.71L6.33,1.38ZM2,3H0V4H2l.5-.5ZM5,3l-.5.5L5,4H7V3ZM3.5,4.5,3,5V7H4V5ZM3,0V2l.5.5L4,2V0Z" />
+  </g>
+</svg>

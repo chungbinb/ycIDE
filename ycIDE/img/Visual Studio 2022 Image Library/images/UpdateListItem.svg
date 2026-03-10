@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>UpdateListItem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,4.5V8H1.5v4.5h13v-8Z" />
+    <path class="light-defaultgrey" d="M4,8V9h8V8ZM14.5,4H8V5h6v7H2V8H1v4.5l.5.5h13l.5-.5v-8ZM4,8V9h8V8ZM4,8V9h8V8Z" />
+    <path class="light-blue" d="M3.917,1.035,4.083.048A3.494,3.494,0,0,1,5.941,6H7V7H4V4H5V5.5A2.5,2.5,0,0,0,3.917,1.035ZM0,1H1.059A3.494,3.494,0,0,0,2.917,6.952l.166-.987A2.5,2.5,0,0,1,2,1.5V3H3V0H0Z" />
+  </g>
+</svg>

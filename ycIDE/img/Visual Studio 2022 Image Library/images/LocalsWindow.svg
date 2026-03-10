@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>LocalsWindow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M5,14H2.5L2,13.5V2.5L2.5,2H5V3H3V13H5ZM13.5,2H11V3h2V13H11v1h2.5l.5-.5V2.5Z" />
+    <path class="light-yellow" d="M9.023,7.307V7H8v3H9.976l.672-.672H11l.625.625v.354L10,11.932H9.648l-.625-.625V11H7.5L7,10.5V7H6.229l-.615.614H5.261l-1-1V6.261l2.25-2.25h.353l1,1v.353L7.229,6H9.976l.672-.672H11l.625.625v.354L10,7.932H9.648Z" />
+  </g>
+</svg>

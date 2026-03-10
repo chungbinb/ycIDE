@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPopupControl</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v9H12V7.086L10.914,6H3.5V1.5Z" />
+    <path class="light-defaultgrey" d="M12,10h2V3H4V6H3V1.5L3.5,1h11l.5.5v9l-.5.5H12Z" />
+    <path class="light-defaultgrey-10" d="M.5,14.5v-7h10v7Z" />
+    <path class="light-defaultgrey" d="M0,14.5v-7L.5,7h10l.5.5v7l-.5.5H.5ZM10,8H1v6h9Z" />
+  </g>
+</svg>

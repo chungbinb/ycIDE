@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>NewDataMiningDimension</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M15.5,3.42l-1.5-2H8l-.32.42a3.048,3.048,0,0,1,.2.65A4.543,4.543,0,0,1,7.97,3a4.182,4.182,0,0,1,0,1c-.01.11-.03.23-.05.34a3.3,3.3,0,0,1-.13.52L8.82,6h2.09L12,7.09v.22Z" />
+    <path class="light-blue" d="M14.4,1.2,14,1H8l-.4.2-.13.18a3.818,3.818,0,0,1,.21.46,3.048,3.048,0,0,1,.2.65L8.25,2H9.53L9.15,3H7.97a4.182,4.182,0,0,1,0,1H9.13l.6,2h1.04l-.6-2h1.66l-.68,2.24.85.85V8.13l3.87-4.3.03-.63ZM12.85,3l-.38-1h1.28l.75,1Zm1.53,1L12.12,6.51,12.87,4ZM10.22,3l.38-1h.8l.38,1ZM7.79,4.86a4,4,0,0,1-.23.57L8.08,6H9.42L7.92,4.34A3.3,3.3,0,0,1,7.79,4.86Z" />
+    <path class="light-defaultgrey-10" d="M1.5,11.5v4h5v-4Z" />
+    <path class="light-defaultgrey-10" d="M5.5,8.5V10h1l.5.5v2h3.5v-4Z" />
+    <path class="light-defaultgrey" d="M10.5,7H6.32A4.28,4.28,0,0,1,5,7.74V10H1.5l-.5.5v5l.5.5h5l.5-.5V13h3.5l.5-.5v-5ZM6,15H2V12H6Zm.5-5H6V9h4v3H7V10.5Z" />
+    <path class="light-yellow" d="M4,2l-.5.5L3,2V0H4ZM1.379.672l-.707.707L2.086,2.793l.7,0,0-.711ZM0,3V4H2l.5-.5L2,3ZM.672,5.621l.707.707L2.793,4.914l0-.7-.711,0ZM3,7H4V5l-.5-.5L3,5Zm2.621-.672.707-.707L4.914,4.207l-.7,0,0,.711ZM7,4V3H5l-.5.5L5,4ZM6.328,1.379,5.621.672,4.207,2.086l0,.7.711,0Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightThreeRows</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,2.5v12H1.5V2.5Z" />
+    <path class="light-defaultgrey" d="M1,2.5v12l.5.5h12l.5-.5V2.5L13.5,2H1.5ZM2,7H13v3H2Zm0,7V11H13v3ZM13,3V6H2V3Z" />
+  </g>
+</svg>

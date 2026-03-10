@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightLevelTwo</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M5.5,6,5,6.5v2l.5.5h2L8,8.5v-2L7.5,6ZM7,8H6V7H7Zm4.5-2h-2L9,6.5v2l.5.5h2l.5-.5v-2ZM11,8H10V7h1Z" />
+    <path class="light-defaultgrey-10" d="M5.5,6.5h2v2h-2Zm4,0v2h2v-2Z" />
+  </g>
+</svg>

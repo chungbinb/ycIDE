@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ChartFilter</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V6H2v8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M3.5,8.5h2v4h-2Z" />
+    <path class="light-defaultgrey" d="M3,8.5v4l.5.5h2l.5-.5v-4L5.5,8h-2ZM5,9v3H4V9Z" />
+    <path class="light-lightblue-10" d="M7.5,5.5h2v7h-2Z" />
+    <path class="light-lightblue" d="M7,5.5v7l.5.5h2l.5-.5v-7L9.5,5h-2ZM9,6v6H8V6Z" />
+    <path class="light-defaultgrey-10" d="M11.5,2.5h2v10h-2Z" />
+    <path class="light-defaultgrey" d="M11,2.5v10l.5.5h2l.5-.5V2.5L13.5,2h-2ZM13,3v9H12V3Z" />
+    <path class="light-blue" d="M5,.5,3,2.5V5H2V2.5L0,.5V0H5Z" />
+  </g>
+</svg>

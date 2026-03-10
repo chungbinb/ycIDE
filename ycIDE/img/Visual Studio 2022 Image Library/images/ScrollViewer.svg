@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>ScrollViewer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,1.5v12H10V1.5Z" />
+    <path class="light-yellow" d="M7.5,3A1.5,1.5,0,1,0,9,4.5,1.5,1.5,0,0,0,7.5,3Z" />
+    <path class="light-blue" d="M8.63,9.82,5.17,6.35H4.46L2,8.81v1.41L4.81,7.41l3.47,3.47h.71L10,9.87V8.45Z" />
+    <path class="light-defaultgrey-25" d="M15,5v5H10V5Z" />
+    <path class="light-defaultgrey" d="M10,6V2H2V13h8V9h5v4.5l-.5.5H1.5L1,13.5V1.5L1.5,1h13l.5.5V6Z" />
+    <path class="white" d="M11,11h3l-1.5,2Zm1.5-9L14,4H11Z" />
+  </g>
+</svg>

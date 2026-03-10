@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightScatterLineChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue-10" d="M6.5,5.5h2v2h-2Zm5-3v2h2v-2Zm-1,9h2v-2h-2Zm-7,1h2v-2h-2Z" />
+    <path class="light-lightblue" d="M13.5,2h-2l-.5.5v2l.5.5h.184l-.125,1-.375,3h-.477L9,7.293V5.5L8.5,5h-2L6,5.5v2l.2.2L6,8.029,4.817,10H3.5l-.5.5v1.793l-1,1V14h.707l.4-.4.6-.6H5.5l.5-.5v-2L5.8,10.3,6.577,9l.6-1H8.293l.6.6,1.1,1.1V11.5l.5.5h2l.5-.5v-2L12.5,9h-.309l.375-3,.125-1H13.5l.5-.5v-2ZM5,12H4V11H5ZM8,7H7V6H8Zm4,4H11V10h1Zm1-7H12V3h1Z" />
+  </g>
+</svg>

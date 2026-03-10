@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>RGSRegistrationScript</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M1,10H2v1H1Zm0,3H2V12H1Zm0,2H2V14H1Zm2-2H4V12H3Zm0,2H4V14H3Zm2-1v1H6V14Z" />
+    <path class="light-defaultgrey-10" d="M13,4a1,1,0,0,0-1,1V6h2V5A1,1,0,0,0,13,4ZM6,4A1,1,0,0,0,5,5v6H8.5l.5.5V12a1,1,0,0,0,2,0V5a2,2,0,0,1,.28-1Zm2,8H5v1H8.27A2,2,0,0,1,8,12Z" />
+    <path class="light-defaultgrey" d="M13,3H6A2.006,2.006,0,0,0,4,5v6H5V5A1,1,0,0,1,6,4h5.28A2,2,0,0,0,11,5v7a1,1,0,0,1-2,0v-.5L8.5,11H5v1H8a2,2,0,0,0,.27,1H7v1h3a2.006,2.006,0,0,0,2-2V7h2.5l.5-.5V5A2.006,2.006,0,0,0,13,3Zm1,3H12V5a1,1,0,0,1,2,0Z" />
+  </g>
+</svg>

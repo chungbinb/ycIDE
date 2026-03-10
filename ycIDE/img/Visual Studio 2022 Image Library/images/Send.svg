@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSend</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,1.5,15,7.5l-13.5,6,3-6Z" />
+    <path class="light-defaultgrey" d="M1.7,1.043l-.65.681L3.941,7.5,1.053,13.276l.65.681,13.5-6V7.043Zm.867,1.48L12.644,7H4.809ZM4.809,8h7.835L2.57,12.477Z" />
+  </g>
+</svg>

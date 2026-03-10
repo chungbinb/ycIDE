@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.light-orange{fill: #b73d18; opacity: 1;}</style>
+  </defs>
+  <title>IconLightJSPhone</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-orange-10" d="M11.5,1.5v13h-8V1.5Z" />
+    <path class="light-orange" d="M8,4H7V3H8Zm1,8H6v1H9ZM12,1.5v13l-.5.5h-8L3,14.5V1.5L3.5,1h8ZM11,2H4V14h7Z" />
+  </g>
+</svg>

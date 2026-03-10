@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEllipse</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,8c0,2.485-2.91,4.5-6.5,4.5S1.5,10.485,1.5,8,4.41,3.5,8,3.5,14.5,5.515,14.5,8Z" />
+    <path class="light-defaultgrey" d="M8,13c-3.859,0-7-2.243-7-5S4.141,3,8,3s7,2.243,7,5S11.859,13,8,13ZM8,4C4.691,4,2,5.794,2,8s2.691,4,6,4,6-1.794,6-4S11.309,4,8,4Z" />
+  </g>
+</svg>

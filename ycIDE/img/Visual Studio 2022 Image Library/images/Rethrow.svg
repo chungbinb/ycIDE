@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRethrow</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,14.5h-7v-8h7Z" />
+    <path class="light-defaultgrey" d="M14,9H10V8h4Zm0,2H10V10h4Zm0,2H10V12h4Zm1.5,2h-7L8,14.5v-8L8.5,6h7l.5.5v8ZM9,14h6V7H9Z" />
+    <path class="light-blue" d="M1.379,5.121h0L5.621,9.364l.707-.707L2.086,4.414A2,2,0,0,1,4.914,1.586h0L6.328,3H4V4H7.5L8,3.5V0H7V2.257L5.621.879A3,3,0,0,0,1.379,5.121Z" />
+    <path class="light-defaultgrey" d="M3.84,9H2V8h.84ZM6.4,10l-.778.778L5,10.157v0L4.84,10H4v1H7V10ZM2,13H7V12H2Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightShowGrid</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5.5v14H.5V.5Z" />
+    <path class="light-defaultgrey" d="M14.5,15H.5L0,14.5V.5L.5,0h14l.5.5v14ZM1,14H14V1H1Z" />
+    <path class="light-defaultgrey" d="M2.5,2,2,2.5v2l.5.5h2L5,4.5v-2L4.5,2ZM4,4H3V3H4ZM6.5,2,6,2.5v2l.5.5h2L9,4.5v-2L8.5,2ZM8,4H7V3H8Zm4.5-2h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM12,4H11V3h1ZM2.5,6,2,6.5v2l.5.5h2L5,8.5v-2L4.5,6ZM4,8H3V7H4ZM6.5,6,6,6.5v2l.5.5h2L9,8.5v-2L8.5,6ZM8,8H7V7H8Zm2.5-2-.5.5v2l.5.5h2l.5-.5v-2L12.5,6ZM12,8H11V7h1ZM2.5,10l-.5.5v2l.5.5h2l.5-.5v-2L4.5,10ZM4,12H3V11H4Zm2.5-2-.5.5v2l.5.5h2l.5-.5v-2L8.5,10ZM8,12H7V11H8Zm2.5-2-.5.5v2l.5.5h2l.5-.5v-2l-.5-.5ZM12,12H11V11h1Z" />
+  </g>
+</svg>

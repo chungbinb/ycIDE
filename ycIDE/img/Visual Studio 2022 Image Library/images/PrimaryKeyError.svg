@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPrimaryKeyError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.229,10.5H6.52v2h-2v2h-3V12.2L6.72,7a4.034,4.034,0,1,1,7.7-.619h0a4.091,4.091,0,0,1-.384,1.049A5,5,0,0,0,7.229,10.5Z" />
+    <path class="light-defaultgrey" d="M7.02,12.449V12.5l-.5.5H5.02v1.5l-.5.5h-3l-.5-.5V12.2l.146-.353L6.14,6.871a4.49,4.49,0,0,1-.2-1.405,4.534,4.534,0,1,1,8.531,2.189,4.936,4.936,0,0,0-.908-.405,3.521,3.521,0,0,0,.365-.964l0,.005A3.535,3.535,0,1,0,6.94,5.482a3.4,3.4,0,0,0,.239,1.33l-.11.542L2.02,12.4V14h2V12.5l.5-.5h1.5V10.5l.5-.5h.9A4.893,4.893,0,0,0,7.1,11H7.02v.547c-.013.148-.02.3-.02.449S7.007,12.3,7.02,12.449ZM11,6a1,1,0,1,1,1-1A1,1,0,0,1,11,6Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.147-.708.707L12,12.707l-1.146,1.147-.708-.707L11.293,12l-1.147-1.146.708-.707L12,11.293l1.146-1.146.708.707Z" />
+  </g>
+</svg>

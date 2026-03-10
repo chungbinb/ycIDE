@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDragDropGroupControl</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13,4.5,12.5,4h-9V2.5h11v6H13Z" />
+      <path class="light-defaultgrey" d="M14,3H4V4H3V2.5L3.5,2h11l.5.5v6l-.5.5H13.135L13,8.838V8h1Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M10,11H1.5L1,10.5v-6L1.5,4h11l.5.5V11Z" />
+    <path class="light-defaultgrey" d="M10,11H1.5L1,10.5v-6L1.5,4h11l.5.5V8.838l-1-1.2V5H2v5h8Z" />
+    <path class="light-blue" d="M13.278,12.7l.789,2.167-.94.342-.821-2.255L11,14V8l4,4.8Z" />
+  </g>
+</svg>

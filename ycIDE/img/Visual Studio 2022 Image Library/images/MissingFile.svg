@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMissingFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M10,6H9V5h1ZM3,13H4v1H3Zm7-9H9V3h1ZM3,9H4v1H3Zm0,2H4v1H3Zm9-5H11V5h1Zm2,2H13V7h1Zm0-2H13V5h1ZM3,7H4V8H3Zm9-3H11V3h1ZM10,2H9V1h1Zm0,11.879L9.879,14H9V13h1Zm4-4L13.879,10H13V9h1ZM7,1H8V2H7ZM5,13H6v1H5Zm2,0H8v1H7ZM3,1H4V2H3ZM3,3H4V4H3ZM5,1H6V2H5ZM3,5H4V6H3Z" />
+    </g>
+    <path class="light-red" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+  </g>
+</svg>

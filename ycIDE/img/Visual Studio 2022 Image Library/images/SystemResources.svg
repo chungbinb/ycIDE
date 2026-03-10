@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSystemResources</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,1.5h-6a1,1,0,0,0-1,1V7H7.91L9,8.09V14.5h4.5V2.5A1,1,0,0,0,12.5,1.5Z" />
+    <path class="light-defaultgrey" d="M12.5,1h-6A1.5,1.5,0,0,0,5,2.5V7H6V2.5A.5.5,0,0,1,6.5,2h6a.5.5,0,0,1,.5.5V14H9v1h4.5l.5-.5V2.5A1.5,1.5,0,0,0,12.5,1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9,12v1h2.5V12Zm0-2v1h2.5V10ZM7.5,4V5h4V4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.5,8.5v7H.5v-7Z" />
+    <path class="light-defaultgrey" d="M7.5,8H.5L0,8.5v7l.5.5h7l.5-.5v-7ZM7,15H1V9H7Z" />
+    <path class="light-blue" d="M7,14.36V15H6.164l-1.189-.887-.751.334-.478,0L1.986,13.03,1,13.754V12.513L1.7,12l.608.012,1.75,1.4L4.776,13H5.3Z" />
+    <path class="light-yellow" d="M6.648,11a1,1,0,1,1-1-1A1,1,0,0,1,6.648,11Z" />
+  </g>
+</svg>

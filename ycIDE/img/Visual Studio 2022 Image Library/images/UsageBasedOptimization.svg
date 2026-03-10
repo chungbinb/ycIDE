@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUsageBasedOptimization</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v8H7.733c.005-.083.017-.166.017-.25a3.742,3.742,0,0,0-3.25-3.7V2.5Z" />
+    <path class="light-defaultgrey-10" d="M6.25,10.25A2.25,2.25,0,1,1,4,8,2.25,2.25,0,0,1,6.25,10.25ZM7.5,16a3.5,3.5,0,0,0-7,0Z" />
+    <path class="light-green" d="M14,6.293V7.707l-2.5-2.5L8.854,7.854H8.146L6.5,6.207l-.748.748A3.649,3.649,0,0,0,5,6.653v-.36L6.146,5.146h.708L8.5,6.793l2.646-2.647h.708Z" />
+    <path class="light-defaultgrey" d="M15,2.5v8l-.5.5H7.665a3.747,3.747,0,0,0,.085-.75c0-.086-.02-.166-.025-.25H14V3H5V6.653A3.671,3.671,0,0,0,4,6.5v-4L4.5,2h10Z" />
+    <path class="light-defaultgrey" d="M2.25,10.25A1.75,1.75,0,1,1,4,12,1.752,1.752,0,0,1,2.25,10.25ZM5.7,12.394a2.75,2.75,0,1,0-3.4,0A4,4,0,0,0,0,16H1a3,3,0,0,1,6,0H8A4,4,0,0,0,5.7,12.394Z" />
+  </g>
+</svg>

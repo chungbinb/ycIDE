@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDecreaseFontSize</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M15,2,12.5,5,10,2Z" />
+    <path class="light-defaultgrey" d="M10.927,13h-1l-.817-2.159H5.846L5.078,13h-1L7.027,5.3h.935ZM8.816,10.03,7.607,6.748a3.125,3.125,0,0,1-.118-.516H7.468a2.835,2.835,0,0,1-.124.516l-1.2,3.282Z" />
+  </g>
+</svg>

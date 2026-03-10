@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>OverlayInfo</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M11.5,15.5a4,4,0,1,1,4-4A4,4,0,0,1,11.5,15.5Z" />
+    <path class="white" d="M11,11.5h1v2H11Z" />
+    <path class="white" d="M12.125,10a.625.625,0,1,1-.625-.625A.625.625,0,0,1,12.125,10Z" />
+  </g>
+</svg>

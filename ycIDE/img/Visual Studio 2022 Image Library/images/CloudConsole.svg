@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCloudConsole</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,3V9.5H10.529c-.049-.018-.1-.043-.145-.058a4.438,4.438,0,0,0-4.161-3.03,4.346,4.346,0,0,0-.723.077V3Z" />
+      <path class="light-defaultgrey" d="M16,2.5v7l-.5.5H11.433a3.31,3.31,0,0,0-1.049-.558A4.31,4.31,0,0,0,10.2,9H15V3H6V6.436a4.3,4.3,0,0,0-1,.176V2.5L5.5,2h10Z" />
+    </g>
+    <path class="light-defaultgrey" d="M12.5,8h-2V7h2ZM9.293,6,8.056,4.763l.707-.708,1.591,1.591v.708L9.142,7.566a4.462,4.462,0,0,0-.82-.594Z" />
+    <path class="light-defaultgrey-10" d="M15.5.5v2H5.5V.5Z" />
+    <path class="light-defaultgrey" d="M15.5,0H5.5L5,.5v2l.5.5h10l.5-.5V.5ZM15,2H6V1h9Z" />
+    <path class="light-lightblue-10" d="M11.236,12.647A1.843,1.843,0,0,1,9.408,14.5H3.037a2.574,2.574,0,0,1,0-5.147,2.426,2.426,0,0,1,.656.09,2.876,2.876,0,0,1,5.418,1.351h.3A1.843,1.843,0,0,1,11.236,12.647Z" />
+    <path class="light-lightblue" d="M9.408,15H3.037a3.074,3.074,0,0,1,0-6.147,3.011,3.011,0,0,1,.414.029,3.371,3.371,0,0,1,2.772-1.47A3.422,3.422,0,0,1,9.569,10.3,2.354,2.354,0,0,1,9.408,15ZM3.037,9.853a2.074,2.074,0,0,0,0,4.147H9.408a1.353,1.353,0,0,0,0-2.706H8.62L8.611,10.8A2.42,2.42,0,0,0,6.223,8.412a2.381,2.381,0,0,0-2.09,1.269l-.19.352-.385-.108A1.9,1.9,0,0,0,3.037,9.853Z" />
+  </g>
+</svg>

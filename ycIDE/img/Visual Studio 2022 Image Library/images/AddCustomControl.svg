@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddCustomControl</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.286,13.5H4.5V8H5V5H8V2.477l6.5.023V5.378c-.021,0-.04,0-.061,0a2.536,2.536,0,0,0-1.807.748L7.263,11.489ZM14.5,11.486V13.5H12.475Z" />
+    <path class="light-blue-10" d="M15.192,8.681,9.635,14.238,8.153,12.72l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,8.681Z" />
+    <path class="light-defaultgrey" d="M6.043,14H4.5L4,13.5V8H5v5H6.529ZM14,3H8V2h6.5l.5.5V5.439a2.547,2.547,0,0,0-.561-.066A2.665,2.665,0,0,0,14,5.415Zm1,7.988V13.5l-.5.5H11.972l1.006-1H14V11.983Z" />
+    <path class="light-blue" d="M15.543,6.83a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L6.511,15.326,7.186,16l2.995-1.629,5.365-5.336A1.562,1.562,0,0,0,15.543,6.83Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

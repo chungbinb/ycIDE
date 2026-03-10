@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightResize</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v13H1.5V1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,15H1.5L1,14.5V1.5L1.5,1h13l.5.5v13ZM2,14H14V2H2Z" />
+    <path class="light-defaultgrey-10" d="M7.5,8.5v6h-6v-6Z" />
+    <path class="light-defaultgrey" d="M12.5,3H9V4h2.293l-4,4H1.5L1,8.5v6l.5.5h6l.5-.5V8.707l4-4V7h1V3.5ZM7,14H2V9H7Z" />
+  </g>
+</svg>

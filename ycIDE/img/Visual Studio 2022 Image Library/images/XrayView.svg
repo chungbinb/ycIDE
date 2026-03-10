@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightXrayView</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.05,5.5A2.071,2.071,0,0,0,7,6a3.009,3.009,0,0,0,3,3,2.071,2.071,0,0,0,.5-.05V5.5ZM10,1.5A4.489,4.489,0,0,0,5.97,4H11l1,1v5.03A4.5,4.5,0,0,0,10,1.5ZM10,12A6,6,0,0,1,4,6c0-.17.01-.34.02-.5H1.5v9h9V11.98C10.34,11.99,10.17,12,10,12Z" />
+    <path class="light-defaultgrey" d="M10,11A5,5,0,1,0,5,6,5.006,5.006,0,0,0,10,11Zm0-1a4,4,0,1,1,4-4A4,4,0,0,1,10,10Zm0-4H7a2.772,2.772,0,0,1,.18-1H10.5l.5.5V8.82A2.772,2.772,0,0,1,10,9ZM1.5,5H4.09A5.47,5.47,0,0,0,4,6H2v8h8V12a5.47,5.47,0,0,0,1-.09V14.5l-.5.5h-9L1,14.5v-9Z" />
+  </g>
+</svg>

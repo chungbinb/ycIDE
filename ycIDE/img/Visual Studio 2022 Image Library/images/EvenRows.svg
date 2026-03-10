@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>EvenRows</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,2h12L14,3V14l-.5,1H1.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7.5,9h-6v5.5h6Zm-6-6.5V8h6V2.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M11,8h1V9H11ZM9,9h1V8H9ZM9,3h1V2H9Zm2,12h1V14H11ZM13.5,2H13V3h1V2.5ZM9,15h1V14H9ZM7,14H2V9H1v5.5l.5.5H8V9H7ZM1,2.5V8H2V3H7V8H8V2H1.5ZM11,3h1V2H11Zm2,6h1V8H13Zm0-2h1V6H13Zm0,4h1V10H13Zm0-6h1V4H13Zm0,10h.5l.5-.5V14H13Zm0-2h1V12H13Z" />
+  </g>
+</svg>

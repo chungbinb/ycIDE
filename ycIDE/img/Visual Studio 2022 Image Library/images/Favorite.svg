@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFavorite</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M11.154,9.158,11.9,13.5,8,11.45,4.1,13.5l.745-4.342L1.691,6.084,6.05,5.45,8,1.5,9.95,5.45l4.359.634Z" />
+    <path class="light-yellow" d="M11.666,13.942,8,12.015,4.334,13.942l-.726-.526.7-4.083L1.342,6.441l.278-.852,4.1-.6L7.552,1.279h.9l1.834,3.714,4.1.6.278.852L11.691,9.333l.7,4.083Zm-3.9-2.934h.466l3,1.578-.573-3.343.143-.443,2.429-2.367L9.878,5.945,9.5,5.671,8,2.63,6.5,5.671l-.377.274-3.356.488L5.2,8.8l.143.443-.573,3.343Z" />
+  </g>
+</svg>

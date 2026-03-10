@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCompensate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12,14v1H3.5L3,14.5V8H4v6ZM13,4h1V1.5L13.5,1H5V2h8Z" />
+      <path class="light-defaultgrey-10" d="M13.5,1.5V4H12V5H11V7.086l-1,1v2.828l1,1V14h1v.5H3.5V8h.769L7.442,4.831,5.321,2.709,5,3.03V1.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15.5,10.5h-4v-2h4Z" />
+    <path class="light-defaultgrey" d="M15,6V7H12V6h1V5h1V6Zm-3,6h3v1H14v1H13V13H12Zm3.5-1h-4l-.5-.5v-2l.5-.5h4l.5.5v2ZM12,10h3V9H12Z" />
+    <path class="light-blue" d="M4,5.3,5.32,3.977l.707.707L3.854,6.853H3.148L.969,4.685l.705-.709L3,5.3V1H4Z" />
+  </g>
+</svg>

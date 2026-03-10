@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPageTransition</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.5,1.5h-8V9h.66L4.7,7.88l1.8.95,1.8-.95,1.73,1.26-.34,2.01,1.46,1.42L10.69,14l-.17.5H13.5V4.5Z" />
+      <path class="light-defaultgrey" d="M13.85,4.15l-3-3L10.5,1h-8L2,1.5V9H3V2h7V5h3v9H10.69l-.17.5-.03.1-2.02.3-.05.1H13.5l.5-.5V4.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M4.923,11.671,4.55,9.5,6.5,10.525,8.449,9.5l-.372,2.171,1.577,1.537-2.179.317L6.5,15.5l-.975-1.975-2.179-.317Z" />
+    <path class="light-defaultgrey" d="M6.948,15.722h-.9l-.859-1.74L3.273,13.7,3,12.85,4.386,11.5,4.058,9.584l.725-.526,1.717.9,1.717-.9.725.526L8.614,11.5,10,12.85l-.276.853-1.92.279ZM4.42,12.859,5.6,13.03l.376.274L6.5,14.37,7.026,13.3,7.4,13.03l1.178-.171-.851-.83-.145-.442.2-1.173-1.053.554H6.268l-1.053-.554.2,1.173-.145.442Z" />
+    <path class="light-defaultgrey" d="M3,10v1H1V10ZM2,12H0v1H2ZM1,15H3V14H1Z" />
+  </g>
+</svg>

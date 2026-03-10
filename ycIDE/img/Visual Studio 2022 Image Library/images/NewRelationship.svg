@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightNewRelationship</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M11,7v4H9v1h2.5l.5-.5V7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M.5,9.5v5h8v-5Z" />
+    <path class="light-defaultgrey" d="M8.5,8H.5L0,8.5v6l.5.5h8l.5-.5v-6ZM8,14H1V10H8Z" />
+    <path class="light-defaultgrey-10" d="M7.5.5v.94a4.494,4.494,0,0,1,0,4.12V6.5h8V.5Z" />
+    <path class="light-defaultgrey" d="M15.5,0h-8L7,.5V.68a3.839,3.839,0,0,1,.5.76A4.478,4.478,0,0,1,8,3.5V2h7V6H8V3.5a4.478,4.478,0,0,1-.5,2.06,3.839,3.839,0,0,1-.5.76V6.5l.5.5h8l.5-.5V.5Z" />
+    <path class="light-yellow" d="M3,2,3,0H4L4,2l-.5.5Zm.5,2.5L3,5V7H4V5Zm1-1L5,4,7,4V3L5,3Zm-2,0L2,3,0,3V4L2,4Zm1.708-.7h.708L6.328,1.378,5.62.671,4.208,2.088ZM2.792,4.206H2.085L.673,5.623l.707.706L2.793,4.913Zm1.414,0v.708L5.623,6.328l.706-.708L4.913,4.208ZM2.794,2.792V2.085L1.378.673.671,1.38,2.088,2.793Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPivotProject</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,6H1V5H15Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8,9a1.987,1.987,0,0,0-1,.277V7H6v6H7v-.277A2,2,0,1,0,8,9Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,8,12ZM4,9.277a2,2,0,1,0,0,3.446V13H5V9H4ZM3,12a1,1,0,1,1,1-1A1,1,0,0,1,3,12Zm10.287-.293.707.707a2,2,0,1,1,0-2.828l-.707.707a1,1,0,1,0,0,1.414Z" />
+  </g>
+</svg>

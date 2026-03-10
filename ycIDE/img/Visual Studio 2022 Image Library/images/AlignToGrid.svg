@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAlignToGrid</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,10.5h-3v-3h3Z" />
+    <path class="light-defaultgrey" d="M10.5,11h-3L7,10.5v-3L7.5,7h3l.5.5v3ZM8,10h2V8H8Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14,6H6v8H5V6H2V5H5V2H6V5h8Z" />
+    </g>
+  </g>
+</svg>

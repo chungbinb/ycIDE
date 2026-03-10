@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>PropertBrushGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,5.5v7H1.5v-7Z" />
+    <path class="light-defaultgrey" d="M1.5,5,1,5.5v7l.5.5h11l.5-.5v-7L12.5,5ZM12,12H2V6H12Zm3-8.5V11H14V4H3V3H14.5Z" />
+  </g>
+</svg>

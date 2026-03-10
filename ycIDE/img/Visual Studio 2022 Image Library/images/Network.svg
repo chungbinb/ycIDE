@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightNetwork</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,11.5h-4v-4h4Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.5,7h-2V3.5h2Zm-8,3.5v-2H5v2Zm9.5,0v-2h4.5v2Z" />
+      <path class="light-defaultgrey" d="M15,8.5v2l-.5.5H10V10h4V9H10V8h4.5ZM6,7V3.5L6.5,3h2l.5.5V7H8V4H7V7ZM5,11H.5L0,10.5v-2L.5,8H5V9H1v1H5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M9.5,12h-4L5,11.5v-4L5.5,7h4l.5.5v4ZM6,11H9V8H6Z" />
+  </g>
+</svg>

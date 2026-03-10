@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVBBlankPhone</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.414,15H5.379l-1-1H4v-.379l-1-1V6.586l1,1V2h7V14h-.586Z" />
+      <path class="light-defaultgrey" d="M8,4H7V3H8Z" />
+      <path class="light-defaultgrey" d="M5.379,15H3.5L3,14.5V12.621l1,1V14h.379Z" />
+      <path class="light-defaultgrey" d="M3,6.586V1.5L3.5,1h8l.5.5v13l-.5.5h-.086l-1-1H11V2H4V7.586Z" />
+    </g>
+    <path class="light-blue" d="M7,15l-.354-.146-3.5-3.5L3,11V8l7,7Z" />
+  </g>
+</svg>

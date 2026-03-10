@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDataPager</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,4.5l2-2h10l2,2v7.992H.5Z" />
+    <path class="light-defaultgrey" d="M14.854,4.155l-2-2L12.5,2.008H2.5l-.354.147-2,2L0,4.508V12.5l.5.5h14l.5-.5V4.508ZM7,12H1V5.008H3v-2H7Zm1,0V3.008h4v2h2V12Z" />
+    <path class="light-blue" d="M10.854,10.854l-.708-.708L11.793,8.5,10.146,6.854l.708-.708,2,2v.708Z" />
+    <path class="light-blue" d="M2.146,8.854V8.146l2-2,.708.708L3.207,8.5l1.647,1.646-.708.708Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightExpandableContentControl</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,8A4.5,4.5,0,1,1,10,3.5,4.5,4.5,0,0,1,14.5,8Z" />
+    <path class="light-defaultgrey" d="M10,13a5,5,0,1,1,5-5A5.006,5.006,0,0,1,10,13Zm0-9a4,4,0,1,0,4,4A4,4,0,0,0,10,4Z" />
+    <path class="light-defaultgrey" d="M10.354,9.591H9.646L7.172,7.116l.707-.707L10,8.53l2.121-2.121.707.707Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.5,12.745V14.5H2V1.5H8.5V3.255a4.966,4.966,0,0,0,0,9.49Z" />
+      <path class="light-defaultgrey" d="M8,2H2V1H8.5l.5.5V3.1a4.91,4.91,0,0,0-1,.323ZM8,12.576V14H2v1H8.5l.5-.5V12.9A4.91,4.91,0,0,1,8,12.576Z" />
+    </g>
+  </g>
+</svg>

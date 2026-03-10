@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEncapsulateField</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,14.5H1.5V1.5h13Z" />
+    <path class="light-defaultgrey" d="M14.5,15H1.5L1,14.5V1.5L1.5,1h13l.5.5v13ZM2,14H14V2H2Z" />
+    <path class="light-blue-10" d="M6.743,9.521,11.5,6.878V8.917L6.5,11.7l-2-2V7.79L6.146,9.437ZM11.5,6.306l-2-2-5,2.777,2,2Z" />
+    <path class="light-blue" d="M11.854,5.952l-2-2-.6-.084-5,2.778L4,7.083V9.694l.146.354,2,2,.6.084,5-2.778L12,8.917V6.306ZM9.413,4.926,10.678,6.19,6.587,8.463,5.322,7.2ZM6,10.487l-1-1V8.29l1,1Zm5-3.331V8.623L7,10.845V9.378l4.743-2.635Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightModifyEvent</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.135,9.928l-4.714,4.714-2.652.884.884-2.652L13.367,8.16a1.25,1.25,0,1,1,1.768,1.768Z" />
+    <path class="light-defaultgrey" d="M15.488,7.806a1.753,1.753,0,0,0-2.475,0L8.3,12.52l-.121.2L7.3,15.367,7.927,16l2.652-.884L10.774,15l4.714-4.714A1.751,1.751,0,0,0,15.488,7.806Zm-5.337,6.4-.125.041-.978-.977.042-.125,4.631-4.63a.75.75,0,0,1,1.06,1.06Z" />
+    <path class="light-yellow-10" d="M11.5,6.5l-8,8H2l3.5-6H2l4-7h5.387L7,6.5Z" />
+    <path class="light-yellow" d="M11.5,6H8.1l3.659-4.17L11.387,1H6l-.434.252-4,7L2,9H4.63L1.568,14.248,2,15H3.5l.354-.146,8-8ZM3.293,14H2.871L5.932,8.752,5.5,8H2.862L6.29,2h3.993L6.624,6.17,7,7h3.293Z" />
+  </g>
+</svg>

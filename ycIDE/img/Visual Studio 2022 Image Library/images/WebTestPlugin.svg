@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWebTestPlugin</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.649,10,7.5,8.667V4.5h3V8.667L11.351,10Z" />
+    <path class="light-defaultgrey" d="M7,5H6V4h6V5H11V8.521l1.091,1.709L11.67,10h-.913l-.679-1.063L10,8.667V5H8V8.667l-.078.27L7.243,10H6.33l-.421.23L7,8.521Z" />
+    <path class="light-teal-10" d="M12.6,11.962,11.67,10.5H6.33L5.4,11.962c-.008.012-.011.026-.018.038H6v1.467a1.03,1.03,0,0,0,.24.033h5.52A1,1,0,0,0,12.6,11.962Z" />
+    <path class="light-teal" d="M13.025,11.692l-.933-1.462L11.67,10H6.33l-.422.23-.933,1.463A1.5,1.5,0,0,0,4.832,12H5.966L6.6,11H11.4l.786,1.23a.5.5,0,0,1-.421.77H6.239A.468.468,0,0,1,6,12.935v1.033A1.462,1.462,0,0,0,6.239,14h5.522a1.5,1.5,0,0,0,1.264-2.308Z" />
+    <path class="light-defaultgrey" d="M5,14H3v2H2V14H0V13H2V11H3v2H5Z" />
+  </g>
+</svg>

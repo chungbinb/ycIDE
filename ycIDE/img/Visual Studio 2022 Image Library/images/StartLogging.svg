@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>StartLogging</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.64,1.5l.88.5,3.5,2H12V5H7.27l-1.13.64L5,6.29V7H3.76l-.26.15V9H5v1H3.5v2H5v1H3.5v1.5h11V1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,1H3.76L5.52,2H14V14H4V13H3v1.5l.5.5h11l.5-.5V1.5ZM3.76,7l-.26.15L3,7.44V9H4V7ZM3,10v2H4V10Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,12v1H5V12ZM2,9v1H5V9ZM3.76,7H5V6.29Z" />
+    </g>
+    <path class="light-teal-10" d="M9.02,4,7.27,5H12V4Z" />
+    <path class="light-teal" d="M12.5,3H7.27L9.02,4H12V5H7.27l-1.13.64L6.5,6h6l.5-.5v-2Z" />
+    <path class="light-green" d="M7,4,0,8V0Z" />
+  </g>
+</svg>

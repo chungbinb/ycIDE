@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSAssembyInfoFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+    <path class="light-green" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+    <path class="light-green" d="M7.375,8H8.609v4H7.375ZM8,6.75A.75.75,0,1,0,7.25,6,.75.75,0,0,0,8,6.75Z" />
+  </g>
+</svg>

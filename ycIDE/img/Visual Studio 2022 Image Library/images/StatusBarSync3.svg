@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusBarSync3</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="white" d="M6.837,10.146v.708l-2.5,2.5-.707-.708L5.274,11H0V10H5.278L3.63,8.354l.707-.708ZM16,5V4H10.726L12.37,2.354l-.707-.708-2.5,2.5v.708l2.5,2.5.707-.708L10.722,5Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVersion</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,1.5v9H14V5.086L12.914,4H4.5V1.5Z" />
+      <path class="light-defaultgrey" d="M15.5,1H4.5L4,1.5V4H15v6H14v1h1.5l.5-.5v-9ZM15,3H5V2H15Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M12.5,14.5H1.5v-9h11Z" />
+    <path class="light-defaultgrey" d="M12.5,5H1.5L1,5.5v9l.5.5h11l.5-.5v-9ZM12,14H2V8H12Zm0-7H2V6H12Z" />
+  </g>
+</svg>

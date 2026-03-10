@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>KeyColumn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,2.5V9.03A4.007,4.007,0,0,1,11,13a3.756,3.756,0,0,1-.3,1.5h1.8V2.5Z" />
+    <path class="light-defaultgrey" d="M12.5,1h-5L7,1.5V9a3.657,3.657,0,0,1,1,.13V7h4v3H9.64a3.783,3.783,0,0,1,.82,1H12v3H10.87a3.827,3.827,0,0,1-.41,1H12.5l.5-.5V1.5ZM12,6H8V3h4Z" />
+    <path class="light-defaultgrey-10" d="M7,15.5a2.492,2.492,0,0,1-2.393-1.816L3.475,14l-.5-.5-1,.5-1.5-1.5,1-1H5.011A2.5,2.5,0,1,1,7,15.5Z" />
+    <path class="light-defaultgrey" d="M8,13a.5.5,0,1,1-.5-.5A.5.5,0,0,1,8,13Zm2,0a2.992,2.992,0,0,1-5.7,1.288l-.693.193-.488-.127-.245-.246-.678.339-.577-.093-1.5-1.5v-.708l1-1L1.476,11h3.3A2.962,2.962,0,0,1,7,10,3,3,0,0,1,10,13Zm-8.817-.5.891.892.678-.339.577.093.293.294.85-.237.615.343A2,2,0,1,0,7,11a1.979,1.979,0,0,0-1.589.8l-.4.2H1.683Z" />
+  </g>
+</svg>

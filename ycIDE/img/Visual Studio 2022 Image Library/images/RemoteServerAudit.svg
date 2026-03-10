@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRemoteServerAudit</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v12H7.37A3.5,3.5,0,0,0,2.5,8.632c0-.81,0-1.471,0-1.471V1.5Z" />
+    <path class="light-green" d="M13,4H11V3h2Zm0,3H11V8h2Zm0,4H11v1h2Z" />
+    <path class="light-defaultgrey" d="M15,1.5,14.5,1H2.5L2,1.5V5l.5.5L2,6V9.053a3.527,3.527,0,0,1,1-.715V6H14V9H6.947a3.527,3.527,0,0,1,.715,1H14v3H7.662a3.527,3.527,0,0,1-.715,1H14.5l.5-.5V10l-.5-.5L15,9V6l-.5-.5L15,5ZM14,5H3V2H14Z" />
+    <path class="light-blue-10" d="M6.5,11.5a2,2,0,1,1-2-2A2,2,0,0,1,6.5,11.5Z" />
+    <path class="light-blue" d="M4.5,9A2.5,2.5,0,0,0,2,11.5a2.473,2.473,0,0,0,.417,1.376L.146,15.146l.708.708,2.27-2.271A2.473,2.473,0,0,0,4.5,14a2.5,2.5,0,0,0,0-5Zm0,4A1.5,1.5,0,1,1,6,11.5,1.5,1.5,0,0,1,4.5,13Z" />
+  </g>
+</svg>

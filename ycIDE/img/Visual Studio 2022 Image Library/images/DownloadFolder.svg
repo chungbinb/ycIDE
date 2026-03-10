@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDownloadFolder</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M10.086,12.5H1.5V2.5h6l1,1h6V7H15V8H12v2.879l-.146-.147Z" />
+    <path class="light-yellow" d="M9.732,12.854,10.586,12H2V5H7.475l.354-.146L8.682,4H14V8h1V3.5L14.5,3H8.707l-.853-.854L7.5,2h-6L1,2.5v10l.5.5H9.879ZM2,3H7.293l.488.488L7.268,4H2Z" />
+    <path class="light-blue" d="M13.146,15.854l-2-2,.708-.708L13,14.293V10h1v4.293l1.146-1.147.708.708-2,2Z" />
+  </g>
+</svg>

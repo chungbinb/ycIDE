@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>ReportDesign</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,1.5h-8V10H8.91L10,11.09V14.5h3.5V4.5Z" />
+    <path class="light-defaultgrey" d="M14,4.5v10l-.5.5H10V14h3V5H10V2H3v8H2V1.5L2.5,1h8l.35.15,3,3Zm-2,8v-4L11.5,8h-1l-.5.5v4l.5.5h1ZM4,7H7V6H4ZM4,9H6V8H4ZM4,5H9V4H4Z" />
+    <path class="light-yellow-10" d="M.5,11.5h8v4H.5Z" />
+    <path class="light-yellow" d="M8.5,11H.5l-.5.5v4l.5.5h8l.5-.5v-4ZM8,12.5V15H7V14H6v1H5V14H4v1H3V14H2v1H1V12H8Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRenkoChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,15H1.5L1,14.5V1H2V14H15Z" />
+    </g>
+    <path class="light-defaultgrey" d="M5,9H6v2H5Zm6,0v2h1V9ZM8,11H9V7H8Z" />
+    <path class="light-lightblue" d="M4,6H5V9H4ZM3,11H4V9H3ZM6,9H7V7H6ZM7,7H8V4H7Zm3,2h1V6H10Zm2,0h1V7H12Zm1-5V7h1V4Z" />
+  </g>
+</svg>

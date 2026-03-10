@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightProductionBreakpointDashed</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.944,7.75v.5l-3.753,6.5-.433.25h-7.5l-.433-.25L.067,8.25v-.5L3.82,1.25,4.253,1h7.5l.433.25Z" />
+      <path class="light-defaultgrey" d="M15.933,7.75v.5l-.5.866-.866-.5L14.923,8l-.356-.616.866-.5Zm-3.566,4.677.866.5.55-.953-.866-.5Zm1.1-1.906.866.5.55-.953-.866-.5ZM11.461,14H10.75v1h1l.433-.25.5-.866-.866-.5ZM6.35,15h1.1V14H6.35Zm2.2,0h1.1V14H8.55ZM4.183,13.379l-.866.5.5.866L4.25,15h1V14H4.539Zm-2.2-3.811-.866.5.55.953.866-.5Zm1.1,1.906-.866.5.55.953.866-.5ZM1.077,8l.356-.616-.866-.5-.5.866v.5l.5.866.866-.5ZM3.633,3.573l-.866-.5-.55.953.866.5Zm-1.1,1.906-.866-.5-.55.952.866.5ZM3.817,1.255l-.5.866.866.5.356-.616H5.25V1h-1ZM9.649,1H8.55v1h1.1Zm-3.3,1h1.1V1H6.35Zm5.467.616.866-.5-.5-.866L11.75,1h-1v1h.711Zm2.2,3.81.866-.5-.55-.952-.867.5Zm-1.1-1.905.866-.5-.55-.953-.866.5Z" />
+    </g>
+  </g>
+</svg>

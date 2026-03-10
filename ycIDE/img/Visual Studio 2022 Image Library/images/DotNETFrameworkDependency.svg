@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDotNETFrameworkDependency</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7,8.5H4v-1H7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15.5,12.5h-9v-9h9Z" />
+    <path class="light-defaultgrey" d="M15.5,3h-9L6,3.5v9l.5.5h9l.5-.5v-9ZM15,12H7V4h8Z" />
+    <path class="light-defaultgrey-10" d="M3.5,9.5H.5v-3h3Z" />
+    <path class="light-defaultgrey" d="M4,6.5,3.5,6H.5L0,6.5v3l.5.5h3L4,9.5ZM3,9H1V7H3Z" />
+    <path class="light-defaultgrey-10" d="M11.5,9.5h-3v-3h3Z" />
+    <path class="light-defaultgrey" d="M11.5,10h-3L8,9.5v-3L8.5,6h3l.5.5v3ZM9,9h2V7H9Z" />
+    <path class="light-defaultgrey" d="M14,7.031H13v-2h1Z" />
+    <path class="light-defaultgrey" d="M14,11H13V9h1Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPYProjectNode</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,2.5v11H.5V2.5Z" />
+      <path class="light-defaultgrey" d="M15.5,2H.5L0,2.5v11l.5.5h15l.5-.5V2.5ZM15,13H1V3H15Z" />
+    </g>
+    <path class="light-yellow" d="M4.458,8.933V11H3.107V5H5.224Q7.492,5,7.492,6.912a1.832,1.832,0,0,1-.651,1.462A2.574,2.574,0,0,1,5.1,8.933Zm0-2.895v1.87H4.99q1.078,0,1.079-.946,0-.924-1.079-.924ZM13.143,5,11.189,8.866V11H9.838V8.891L7.934,5H9.478l.967,2.238c.016.042.062.206.138.49H10.6a2.244,2.244,0,0,1,.13-.473L11.712,5Z" />
+  </g>
+</svg>

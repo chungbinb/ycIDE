@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <fstream>
 #include <sstream>
+#include <set>
 
 LibraryConfigManager& LibraryConfigManager::GetInstance() {
     static LibraryConfigManager instance;
@@ -50,42 +51,61 @@ void LibraryConfigManager::ScanLibraryFolders() {
     }
     
     // 扫描lib文件夹（只支持.fne动态库）
+    // 扫描顺序：先扫描 lib\x64\ 子目录（IDE是64位，优先加载同架构的fne解析元信息），
+    // 再扫描 lib\ 根目录（向后兼容旧的扁平结构），跳过已找到的同名库
     WIN32_FIND_DATAW findData;
     HANDLE hFind;
     std::wstring libFolder = exeDir + L"\\lib";
-    std::wstring searchPath = libFolder + L"\\*.fne";
     
-    if (hDebug != INVALID_HANDLE_VALUE) {
-        std::wstring msg = L"扫描路径: " + searchPath + L"\r\n";
-        DWORD written;
-        WriteFile(hDebug, msg.c_str(), static_cast<DWORD>(msg.length() * sizeof(wchar_t)), &written, NULL);
+    // 要扫描的目录列表
+    std::vector<std::wstring> scanFolders = {
+        libFolder + L"\\x64",   // 优先：64位 .fne
+        libFolder,              // 回退：扁平目录
+    };
+    
+    std::set<std::wstring> foundLibNames;  // 记录已找到的库名，避免重复
+    
+    for (const auto& folder : scanFolders) {
+        std::wstring searchPath = folder + L"\\*.fne";
+    
+        if (hDebug != INVALID_HANDLE_VALUE) {
+            std::wstring msg = L"扫描路径: " + searchPath + L"\r\n";
+            DWORD written;
+            WriteFile(hDebug, msg.c_str(), static_cast<DWORD>(msg.length() * sizeof(wchar_t)), &written, NULL);
+        }
+    
+        hFind = FindFirstFileW(searchPath.c_str(), &findData);
+        if (hFind != INVALID_HANDLE_VALUE) {
+            do {
+                if (!(findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+                    std::wstring fileName = findData.cFileName;
+                    // 去掉扩展名
+                    size_t dotPos = fileName.find_last_of(L".");
+                    std::wstring libName = (dotPos != std::wstring::npos) ? 
+                        fileName.substr(0, dotPos) : fileName;
+                    
+                    // 跳过已找到的同名库（优先子目录版本）
+                    if (foundLibNames.count(libName)) continue;
+                    foundLibNames.insert(libName);
+                
+                    LibraryConfigItem item;
+                    item.name = libName;
+                    item.filePath = folder + L"\\" + fileName;
+                    item.loaded = false;
+                    libraries.push_back(item);
+                
+                    if (hDebug != INVALID_HANDLE_VALUE) {
+                        std::wstring msg = L"找到 .fne: " + fileName + L" (" + folder + L")\r\n";
+                        DWORD written;
+                        WriteFile(hDebug, msg.c_str(), static_cast<DWORD>(msg.length() * sizeof(wchar_t)), &written, NULL);
+                    }
+                }
+            } while (FindNextFileW(hFind, &findData));
+            FindClose(hFind);
+        }
     }
     
-    hFind = FindFirstFileW(searchPath.c_str(), &findData);
-    if (hFind != INVALID_HANDLE_VALUE) {
-        do {
-            if (!(findData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-                std::wstring fileName = findData.cFileName;
-                // 去掉扩展名
-                size_t dotPos = fileName.find_last_of(L".");
-                std::wstring libName = (dotPos != std::wstring::npos) ? 
-                    fileName.substr(0, dotPos) : fileName;
-                
-                LibraryConfigItem item;
-                item.name = libName;
-                item.filePath = libFolder + L"\\" + fileName;
-                item.loaded = false;
-                libraries.push_back(item);
-                
-                if (hDebug != INVALID_HANDLE_VALUE) {
-                    std::wstring msg = L"找到 .fne: " + fileName + L"\r\n";
-                    DWORD written;
-                    WriteFile(hDebug, msg.c_str(), static_cast<DWORD>(msg.length() * sizeof(wchar_t)), &written, NULL);
-                }
-            }
-        } while (FindNextFileW(hFind, &findData));
-        FindClose(hFind);
-    } else {
+    if (foundLibNames.empty()) {
         if (hDebug != INVALID_HANDLE_VALUE) {
             std::wstring msg = L"未找到 lib 文件夹或没有 .fne 文件\r\n";
             DWORD written;

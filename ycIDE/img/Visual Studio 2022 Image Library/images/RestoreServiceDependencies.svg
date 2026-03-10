@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRestoreServiceDependencies</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M7.979,3.981a3.057,3.057,0,0,1-.764,2.14L3.41,9.935,2.7,9.228,6.5,5.415a2.106,2.106,0,0,0,.472-1.429,2.19,2.19,0,0,0-.6-1.549A2.27,2.27,0,0,0,3.4,2.308L1.723,4H4V5H.5L0,4.5V1H1V3.309L2.7,1.6a3.263,3.263,0,0,1,4.356.1A3.161,3.161,0,0,1,7.979,3.981Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,2.5v7H11V7.129L9.914,6.043H8.474A3.922,3.922,0,0,0,8.979,4a4.115,4.115,0,0,0-.27-1.5Z" />
+      <path class="light-defaultgrey" d="M16,2.5v7l-.5.5H11V9h4V3H8.857a4.144,4.144,0,0,0-.382-1H15.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M9.5,7.5v7H.5v-7H2.968L1.286,9.188l2.126,2.117,3.8-3.8Z" />
+    <path class="light-defaultgrey" d="M10,7.5v7l-.5.5H.5L0,14.5v-7L.5,7H3.466l-1,1H1v6H9V8H6.708l1-1H9.5Z" />
+  </g>
+</svg>

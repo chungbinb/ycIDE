@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>UnitOfMeasure</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M1.5,5.5V8H5.91l1,1L7,9.09V9.5h8.5v-4Z" />
+    <path class="light-yellow" d="M15.5,5H1.5L1,5.5V8H2V6H4V8H5V6H6V7H7V6H8V8H9V6h1V7h1V6h1V8h1V6h2V9H6.91L7,9.09V10h8.5l.5-.5v-4Z" />
+    <path class="light-defaultgrey" d="M.5,9H2v1H1v4H2v1H.5L0,14.5v-5Zm5,0H4v1H5v4H4v1H5.5l.5-.5v-5Z" />
+  </g>
+</svg>

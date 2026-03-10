@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightTab</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,7.5V9h-5V7.5Z" />
+      <path class="light-defaultgrey" d="M14,7.5V9H13V8H9V9H8V7.5L8.5,7h5Z" />
+    </g>
+    <path class="light-blue-10" d="M8.5,6.5V9h-7V6.5Z" />
+    <path class="light-blue" d="M9,9V6.5L8.5,6h-7L1,6.5V10H15V9ZM2,9V7H8V9Z" />
+  </g>
+</svg>

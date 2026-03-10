@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>TextSpaceAfter</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14,2V3H3V2ZM3,5H14V6H3ZM3,8h9V9H3Z" />
+    </g>
+    <path class="light-defaultgrey" d="M1.6,9.9l2.25,2.25v.708L1.6,15.1.9,14.4l1.9-1.9L.9,10.6Z" />
+  </g>
+</svg>

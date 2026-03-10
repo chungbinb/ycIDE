@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>NewType</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M8,2.5V5H7.12l.62.62L7.36,6H10v4.5h4.5v-8Z" />
+      <path class="light-blue" d="M14.5,2H8V3h6v7H11v1h3.5l.5-.5v-8Z" />
+    </g>
+    <path class="light-blue-10" d="M7.62,5.5l.12.12L5.62,7.74,5,7.12V8H2V7.12l-.5.5V13.5h9v-8Z" />
+    <path class="light-blue" d="M10.5,5H7.12l.62.62L7.36,6H10v7H2V7.12l-.62.62L1,7.36V13.5l.5.5h9l.5-.5v-8Z" />
+    <path class="light-yellow" d="M4,2l-.5.5L3,2V0H4ZM1.379.672l-.707.707L2.086,2.793l.7,0,0-.711ZM0,3V4H2l.5-.5L2,3ZM.672,5.621l.707.707L2.793,4.914l0-.7-.711,0ZM3,7H4V5l-.5-.5L3,5Zm2.621-.672.707-.707L4.914,4.207l-.7,0,0,.711ZM7,4V3H5l-.5.5L5,4ZM6.328,1.379,5.621.672,4.207,2.086l0,.7.711,0Z" />
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUnderline</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M13,15H4V14h9Zm-.851-6.874q0,4.128-3.726,4.129-3.568,0-3.568-3.972L4.852,3H6V8.208q0,3.015,2.545,3.015Q11,11.223,11,8.311V3h1.148Z" />
+  </g>
+</svg>

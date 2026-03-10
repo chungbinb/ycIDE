@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIntelliSenseKeyword</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M10.5,2.5v3h-9v-3Z" />
+    <path class="light-blue" d="M10.5,2h-9L1,2.5v3l.5.5h9l.5-.5v-3ZM10,5H2V3h8Z" />
+    <path class="light-defaultgrey" d="M8,11v1H1V11Zm1,0v1h6V11ZM1,9H9V8H1Zm0,6H11V14H1Zm9-6h5V8H10Zm2-4h3V4H12Z" />
+  </g>
+</svg>

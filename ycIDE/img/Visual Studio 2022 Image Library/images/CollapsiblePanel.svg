@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCollapsiblePanel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v4H1.5v-4Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v4l.5.5h13l.5-.5v-4ZM2,2h8V5H2ZM14,5H11V2h3Z" />
+    <path class="light-defaultgrey" d="M12.5,4.125,11.75,3h1.5Z" />
+    <path class="light-defaultgrey" d="M15,8H7V7h8ZM7,9v1h8V9Zm0,3h8V11H7Z" />
+    <path class="light-blue" d="M5.32,12.873l.707.707L3.854,15.749H3.148L.969,13.581l.705-.709L3,14.192V8.816L1.679,10.143l-.709-.7L3.149,7.25h.709L6.031,9.438l-.709.705L4,8.812v5.379Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNavigateExternalInlineNoHalo</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12,11v4H3V6H7V7H8.879L5.232,10.646l2.122,2.122L11,9.121V11Z" />
+    <path class="light-defaultgrey" d="M13,5.5V10H12V6.707L7.354,11.354l-.708-.708L11.293,6H8V5h4.5ZM12,15H3V6H7V5H2.5L2,5.5v10l.5.5h10l.5-.5V11H12Z" />
+  </g>
+</svg>

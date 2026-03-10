@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>PreviewCode</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M6.1,10H8v1H6.1a3.466,3.466,0,0,0,.043-.5A3.443,3.443,0,0,0,6.1,10ZM7,7H4v.273A3.5,3.5,0,0,1,5.088,8H7Zm6-6H9V2h4ZM8,1H2V2H8ZM8,4H3V5H8ZM8,8h6V7H8ZM9,4V5h6V4Z" />
+    <path class="light-blue-10" d="M2.646,8.5a2,2,0,1,1-2,2A2,2,0,0,1,2.646,8.5Z" />
+    <path class="light-blue" d="M.146,10.5a2.5,2.5,0,0,0,2.5,2.5,2.476,2.476,0,0,0,1.377-.417l3.27,3.271L8,15.146l-3.27-3.27A2.5,2.5,0,1,0,.146,10.5Zm1,0a1.5,1.5,0,1,1,1.5,1.5A1.5,1.5,0,0,1,1.146,10.5Z" />
+  </g>
+</svg>

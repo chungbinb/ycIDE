@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>FuzzyLookup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,1H9.46a3.827,3.827,0,0,1,.41,1A3.657,3.657,0,0,1,10,3a3.657,3.657,0,0,1-.13,1A3.968,3.968,0,0,1,8.64,6h3.27L13,7.09V12h2.5l.5-.5V1.5Z" />
+      <path class="light-defaultgrey" d="M9.46,1a3.827,3.827,0,0,1,.41,1H10V1ZM11,3V4h1V3Zm0-2V2h1V1Zm4.5,0H15V2h1V1.5ZM15,7V8h1V7Zm0-2V6h1V5ZM13,3V4h1V3Zm2,0V4h1V3ZM13,1V2h1V1Zm2,8v1h1V9Zm0,2v1h.5l.5-.5V11Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M11.5,7H4.17L4,7.17,3.15,8,2,9.13,1.12,10,1,10.11V15.5l.5.5h10l.5-.5v-8Z" />
+    <path class="light-defaultgrey" d="M7,7V8H8V7Zm0,8v1H8V15Zm2,0v1h1V15Zm2-2v1h1V13ZM9,9v1h1V9ZM1,15v.5l.5.5H2V15Zm10,0v1h.5l.5-.5V15Zm0-6v1h1V9ZM9,7V8h1V7ZM1,13v1H2V13ZM11.5,7H11V8h1V7.5ZM11,11v1h1V11ZM7,9v1H8V9ZM5,9v1H6V9Zm0,6v1H6V15ZM5,7V8H6V7ZM3.15,8H4V7.17ZM3,9v1H4V9ZM1.12,10H2V9.13ZM1,11v1H2V11Zm2,4v1H4V15Z" />
+    <path class="light-blue-10" d="M6,5.5A2.5,2.5,0,1,1,8.5,3,2.5,2.5,0,0,1,6,5.5Z" />
+    <path class="light-blue" d="M.85,8.857,4.305,5.472a3.078,3.078,0,1,0-.713-.7L.15,8.143ZM6,5A2,2,0,1,1,8,3,2,2,0,0,1,6,5Z" />
+  </g>
+</svg>

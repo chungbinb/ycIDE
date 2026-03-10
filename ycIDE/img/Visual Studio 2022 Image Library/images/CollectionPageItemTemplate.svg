@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCollectionPageItemTemplate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M11,7H9V5h2Zm4-2H12V6h3ZM11,8H9v2h2Zm4,0H12V9h3Zm-4,3H9v2h2Zm4,0H12v1h3ZM3,5H1V7H3ZM7,5H4V6H7ZM3,8H1v2H3ZM7,8H4V9H7ZM3,11H1v2H3Zm4,0H4v1H7ZM7,2H1V3H7Zm8,0H9V3h6Z" />
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-darkblue{fill: #313c9e; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAvatarAsteriskOn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-darkblue" d="M11,1H5A4,4,0,0,0,1,5v6a4,4,0,0,0,4,4h6a4,4,0,0,0,4-4V5A4,4,0,0,0,11,1Zm.5,8.076-.818,1.417L8.558,8.966l.259,2.6H7.183l.259-2.6L5.318,10.493,4.5,9.076,6.885,8,4.5,6.924l.818-1.417L7.442,7.034l-.259-2.6H8.817l-.259,2.6,2.124-1.527L11.5,6.924,9.115,8Z" />
+  </g>
+</svg>

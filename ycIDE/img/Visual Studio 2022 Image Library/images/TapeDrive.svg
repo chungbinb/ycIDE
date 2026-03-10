@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightTapeDrive</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M14.5,1.5v9H12v-.41L11.91,10l-1-1H2.5V1.5Z" />
+    <path class="light-blue" d="M14.5,1H2.5L2,1.5V9H3V2H14v8H11.91l.09.09V11h2.5l.5-.5v-9Z" />
+    <g class="cls-1">
+      <path class="light-blue" d="M14,8V9H3V8Z" />
+    </g>
+    <path class="light-blue" d="M6,3A2,2,0,1,0,8,5,2,2,0,0,0,6,3ZM6,6A1,1,0,1,1,7,5,1,1,0,0,1,6,6Zm5-3a2,2,0,1,0,2,2A2,2,0,0,0,11,3Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,11,6Z" />
+    <path class="light-defaultgrey-10" d="M.5,10.5h10v4H.5Z" />
+    <path class="light-defaultgrey" d="M10.5,10H.5l-.5.5v4l.5.5H2v1H3V15H8v1H9V15h1.5l.5-.5v-4ZM10,14H1V11h9Z" />
+    <path class="light-green" d="M3,13H2V12H3Z" />
+  </g>
+</svg>

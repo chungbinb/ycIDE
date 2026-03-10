@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>WPFToolBox</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M1.5,4.5v5.88l.65-.65L3.41,11H7.59L8.85,9.73l2.77,2.77H14.5v-8Z" />
+    <path class="light-red" d="M5,7V8h6V7Zm9.5-3H1.5L1,4.5v6.38l1-1V8H14v4H11.12l.73.73V13H14.5l.5-.5v-8ZM2,7V5H14V7Z" />
+    <path class="light-defaultgrey" d="M10.5,2h-5L5,2.5V4H6V3h4V4h1V2.5ZM11,6V9h1V6ZM4,6V9H5V6Z" />
+    <path class="light-blue" d="M7,12v3H4V12Z" />
+    <path class="light-defaultgrey" d="M10.854,13.146v.708l-2,2-.708-.708L9.793,13.5,8.146,11.854l.708-.708Zm-8.708-2-2,2v.708l2,2,.708-.708L1.207,13.5l1.647-1.646Z" />
+  </g>
+</svg>

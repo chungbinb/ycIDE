@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusError.18.18</title>
+  <title>StatusError.18.18</title>
+  <g id="canvas">
+    <path class="canvas" d="M18,18H0V0H18Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M9,1a8,8,0,1,0,8,8A8.008,8.008,0,0,0,9,1Z" />
+    <path class="white" d="M9.884,9l3.558,3.558-.884.884L9,9.884,5.442,13.442l-.884-.884L8.116,9,4.558,5.442l.884-.884L9,8.116l3.558-3.558.884.884Z" />
+  </g>
+</svg>

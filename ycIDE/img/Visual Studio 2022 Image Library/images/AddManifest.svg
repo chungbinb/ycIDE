@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddManifest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,7.5v8h-9a1,1,0,0,1-1-1H6a.5.5,0,0,1,1,0H8v-7Z" />
+    <path class="light-defaultgrey-10" d="M7.5,14.5a1,1,0,0,0-2,0v-8a1,1,0,0,1,2,0Z" />
+    <path class="light-defaultgrey" d="M9,9h1v1H9Zm0,5h1V13H9Zm2-4h3V9H11Zm0,4h3V13H11ZM9,12h1V11H9Zm2,0h3V11H11Z" />
+    <path class="light-defaultgrey" d="M15.5,7H8V6.5a1.5,1.5,0,0,0-3,0v8A1.5,1.5,0,0,0,6.5,16h9l.5-.5v-8ZM6,6.5a.5.5,0,0,1,1,0v6.586a1.5,1.5,0,0,0-1,0ZM15,15H6.5a.5.5,0,1,1,.5-.5H8V8h7Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

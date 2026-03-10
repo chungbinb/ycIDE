@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFlipZOrder</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="white" d="M13.881,9.5l-3,5-3-5Z" />
+    <path class="light-defaultgrey" d="M14.31,1.757l-3,5h-.858l-3-5L7.881,1h6Z" />
+    <path class="light-defaultgrey" d="M13.881,9h-6l-.429.757,3,5h.858l3-5Zm-3,4.528L8.764,10H13Z" />
+    <path class="light-blue" d="M4.146,6.146,5.293,5H2v7H6v1H1.5L1,12.5v-8L1.5,4H5.293L4.146,2.854l.708-.708,2,2v.708l-2,2Z" />
+  </g>
+</svg>

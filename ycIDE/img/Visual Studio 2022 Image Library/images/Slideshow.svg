@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>Slideshow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,4.5v8h-9v-8Z" />
+    <path class="light-defaultgrey" d="M12.5,4h-9L3,4.5v8l.5.5h9l.5-.5v-8ZM12,12H4V5h8Z" />
+    <path class="light-yellow" d="M11,7a1,1,0,1,1-1-1A1,1,0,0,1,11,7Z" />
+    <path class="light-blue" d="M12,10.79V12h-.21L9.98,10.19,8.34,11.83H7.63L4.99,9.18,4,10.17V8.75l.63-.63h.71l2.65,2.65L9.63,9.13h.7Z" />
+    <path class="light-defaultgrey" d="M0,8.5l2-2v4Zm14-2v4l2-2Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>PhoneClass</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,1.5V8.24l.36.36V9h.7l.67-.67H7.42L8.63,9.54v1.18L7.02,12.33h.4l1.21,1.21v.96H12.5V1.5Z" />
+    <path class="light-defaultgrey" d="M8,3V4H9V3Zm-.65,9-.33.33h.4l.67.67H10V12Zm0,0-.33.33h.4l.67.67H10V12ZM9,3H8V4H9Zm3.5-2h-8L4,1.5V7.73l.5.51.36.36V9H5V2h7V14H8.63v.72L8.35,15H12.5l.5-.5V1.5ZM10,12H7.35l-.33.33h.4l.67.67H10ZM8,3V4H9V3Z" />
+    <path class="light-yellow" d="M5.023,11.307V11H4v3H5.976l.672-.672H7l.625.625v.354L6,15.932H5.648l-.625-.625V15H3.5L3,14.5V11H2.229l-.615.614H1.261l-1-1v-.353l2.25-2.25h.353l1,1v.353L3.229,10H5.976l.672-.672H7l.625.625v.354L6,11.932H5.648Z" />
+  </g>
+</svg>

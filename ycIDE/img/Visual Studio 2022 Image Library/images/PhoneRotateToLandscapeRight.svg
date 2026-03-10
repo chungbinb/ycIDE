@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>PhoneRotateToLandscapeRight</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.62,6.5l-.5.5-.27.27L6.08,6.5H5V8H2V6.5H1.5v8h13v-8Z" />
+    <path class="light-defaultgrey" d="M12,10v1h1V10ZM3,9v3H4V9Zm9,1v1h1V10ZM3,12H4V9H3ZM14.5,6H8.12l-1,1H14v7H2V6H1.5L1,6.5v8l.5.5h13l.5-.5v-8ZM12,10v1h1V10ZM6.08,6.5,5.59,6H5V7H6.58ZM4,9H3v3H4Z" />
+    <path class="light-blue" d="M8.854,3.146v.708l-2,2-.708-.708L7.293,4H6A2,2,0,0,0,4,6V7H3V6A3,3,0,0,1,6,3H7.293L6.146,1.854l.708-.708Z" />
+  </g>
+</svg>

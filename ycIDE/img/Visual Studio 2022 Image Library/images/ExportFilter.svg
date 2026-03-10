@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExportFilter</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,13.5v-5l-4-5h11l-4,5V11H7v2.5Z" />
+    <path class="light-defaultgrey" d="M7,14H6.5L6,13.5V8.676L2.109,3.813,2.5,3h11l.391.813L10,8.675V11H9V8.5l.109-.312L12.46,4H3.54L6.891,8.188,7,8.5V14Z" />
+    <path class="light-blue" d="M12.354,9.646l2.5,2.5v.708l-2.5,2.5-.708-.708L13.293,13H8V12h5.293l-1.647-1.646ZM15,10v5h1V10Z" />
+  </g>
+</svg>

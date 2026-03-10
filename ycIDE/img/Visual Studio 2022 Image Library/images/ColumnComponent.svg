@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightColumnComponent</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,2.5v12h-5V10.622l1.354-1.354V7.732L10.5,6.378V2.5Z" />
+    <path class="light-defaultgrey-10" d="M5.5,10v4.5H.5V2.5h5V7L3,7v3Z" />
+    <path class="light-blue" d="M10.854,8.146v.708l-2.5,2.5-.707-.708L9.292,9H4V8L9.3,8,7.647,6.354l.707-.708Z" />
+    <path class="light-defaultgrey" d="M1,10V7H6V1.5L5.5,1H.5L0,1.5v13l.5.5h5l.5-.5V10ZM1,3H5V6H1ZM5,14H1V11H5Z" />
+    <path class="light-defaultgrey" d="M15.5,1h-5l-.5.5V5.878L11.122,7H15v3H11.122L10,11.122V14.5l.5.5h5l.5-.5V1.5ZM15,14H11V11h4Zm0-8H11V3h4Z" />
+  </g>
+</svg>

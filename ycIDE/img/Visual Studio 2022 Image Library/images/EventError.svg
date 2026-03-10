@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEventError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M7.145,10.856,3.5,14.5H2l3.5-6H2l4-7h5.387L7,6.5h4.5l-.644.645A5,5,0,0,0,7.145,10.856Z" />
+    <path class="light-yellow" d="M7.033,11.674l-3.179,3.18L3.5,15H2l-.432-.752L4.63,9H2l-.434-.748,4-7L6,1h5.388l.375.83L8.1,6h3.4l.354.854-.18.179a4.94,4.94,0,0,0-1.96.546L10.293,7H7l-.376-.83L10.284,2H6.29L2.862,8H5.5l.432.752L2.871,14h.422L7.579,9.714A4.94,4.94,0,0,0,7.033,11.674Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

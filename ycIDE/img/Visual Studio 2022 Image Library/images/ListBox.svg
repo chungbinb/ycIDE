@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightListBox</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-25" d="M16,11H11V4h5Z" />
+    <path class="light-defaultgrey-10" d="M11,14.5H.5V.5H11Z" />
+    <path class="light-defaultgrey" d="M15,15H.5L0,14.5V.5L.5,0H15l1,1H1V14H16Z" />
+    <path class="light-defaultgrey" d="M8,4H3V3H8ZM8,8H3V7H8Zm0,4H3V11H8ZM8,6H3V5H8Zm0,4H3V9H8Z" />
+    <path class="light-blue" d="M16,.5v4l-.5.5H11V0h4.5Zm0,10v4l-.5.5H11V10h4.5Z" />
+    <path class="white" d="M13.5,1,15,3H12ZM12,12h3l-1.5,2Z" />
+  </g>
+</svg>

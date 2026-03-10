@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRerun</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M1.379,5.121h0L5.621,9.364l.707-.707L2.086,4.414A2,2,0,0,1,4.914,1.586h0L6.328,3H4V4H7.5L8,3.5V0H7V2.257L5.621.879A3,3,0,0,0,1.379,5.121Z" />
+    <path class="light-green" d="M15.765,9.576v.848l-7,4.375L8,14.375V5.625L8.765,5.2Z" />
+  </g>
+</svg>

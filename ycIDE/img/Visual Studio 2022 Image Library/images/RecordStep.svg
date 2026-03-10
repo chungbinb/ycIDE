@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>RecordStep</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,4v9H1.993V9.979H5.114L6,9.264V6.979H8.831l1.174-.948V4Z" />
+    <path class="light-defaultgrey" d="M14.5,3.018H9.505l-.5.5V6H6.914l-1,1H5V9H1.493L1,9.5v4l.484.5H14.5l.5-.5V3.518ZM14,13H1.993V10H5.5L6,9.5V7H9.505L10,6.5V4h4Z" />
+    <path class="light-red-10" d="M5.5,5.5H.5V.5h5Z" />
+    <path class="light-red" d="M4,3A1,1,0,1,1,3,2,1,1,0,0,1,4,3ZM6,.5v5L5.5,6H.5L0,5.5V.5L.5,0h5ZM5,3A2,2,0,1,0,3,5,2,2,0,0,0,5,3Z" />
+  </g>
+</svg>

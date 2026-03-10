@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple{fill: #6936aa; opacity: 1;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightModuleError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple" d="M8.026,15H1.5L1,14.5v-5L1.5,9H8.026a4.967,4.967,0,0,0-.6,1H2v4H7.424A4.967,4.967,0,0,0,8.026,15Z" />
+      <path class="light-purple-10" d="M7.7,14.5H1.5v-5H7.7a4.838,4.838,0,0,0,0,5Z" />
+    </g>
+    <path class="light-purple-10" d="M9.86,7.5H8.5v-5h5V7.255A4.707,4.707,0,0,0,9.86,7.5Z" />
+    <path class="light-purple-10" d="M1.5,2.5h5v5h-5Z" />
+    <path class="light-purple" d="M8.5,8,8,7.5v-5L8.5,2h5l.5.5V7.424A4.95,4.95,0,0,0,12,7h1V3H9V7h3A4.952,4.952,0,0,0,9.031,8Z" />
+    <path class="light-purple" d="M7,2.5,6.5,2h-5L1,2.5v5l.5.5h5L7,7.5ZM6,7H2V3H6Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

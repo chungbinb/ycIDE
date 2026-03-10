@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ApplicationFlyout</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v9H11V8.086L9.914,7H3.5V1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,1H3.5L3,1.5V7H4V4H14v6H11v1h3.5l.5-.5v-9ZM14,3H4V2H14Z" />
+    <path class="light-defaultgrey-10" d="M.5,14.5v-6h9v6Z" />
+    <path class="light-defaultgrey" d="M0,14.5v-6L.5,8h9l.5.5v6l-.5.5H.5ZM9,9H1v5H9Z" />
+  </g>
+</svg>

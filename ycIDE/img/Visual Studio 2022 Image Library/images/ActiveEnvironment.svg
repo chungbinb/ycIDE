@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightActiveEnvironment</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,14.5H2l2-4H5v2l.5.5h6l.5-.5v-2h1Z" />
+    <path class="light-defaultgrey-10" d="M11.5,2.5v10h-6V6.009L9.016,4l-3.4-1.943A.991.991,0,0,1,6.5,1.5h4A1,1,0,0,1,11.5,2.5Z" />
+    <path class="light-defaultgrey" d="M13.447,10.276,13,10H12V2.5A1.5,1.5,0,0,0,10.5,1h-4a1.5,1.5,0,0,0-1.322.807l.864.494A.5.5,0,0,1,6.5,2h4a.5.5,0,0,1,.5.5V12H6V5.723L5,6.3V10H4l-.447.276-2,4L2,15H15l.447-.724ZM2.809,14l1.5-3H5v1.5l.5.5h6l.5-.5V11h.691l1.5,3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7,10h3v1H7ZM7,9h3V8H7ZM9.016,4,7.266,5H10V4Z" />
+    </g>
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+  </g>
+</svg>

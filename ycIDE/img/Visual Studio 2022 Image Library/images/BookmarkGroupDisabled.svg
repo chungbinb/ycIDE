@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0;}.cls-2{opacity:0.5;}.cls-3{opacity:0.75;}</style>
+  </defs>
+  <title>BookmarkGroupDisabled</title>
+  <g id="canvas" class="cls-1">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.647,10.647H6.353L2.5,14.5V3.5h8v11Z" />
+    <path class="light-defaultgrey" d="M10.5,3h-8L2,3.5v11l.854.354L6.5,11.208l3.646,3.646L11,14.5V3.5ZM10,13.293,6.853,10.15H6.147L3,13.293V4h7Z" />
+    <g class="cls-2">
+      <path class="light-defaultgrey" d="M3,6.293l3.854,3.853h0l-.706,0-.354.35L3,7.707Zm7,4.414V9.293L4.707,4H3.293ZM8.707,4H7.293L10,6.707V5.293ZM4.5,11.793,3,10.293v1.414l.793.793Z" />
+    </g>
+    <g class="cls-3">
+      <path class="light-defaultgrey" d="M13.5,1H8.858V1H5.5L5,1.5V3H6V2h7v9.464L11,9.477l-.013,1.4,2.16,2.151L14,12.671V1.5Z" />
+      <g class="cls-2">
+        <path class="light-defaultgrey-10" d="M13.5,1.5V12.667L11,10.178V3.5L10.5,3h-5V1.5Z" />
+      </g>
+    </g>
+  </g>
+</svg>

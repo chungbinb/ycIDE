@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>PhoneDirectThreeD</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,1.5V7.57l.5.27L7.46,9.18l.54.91v4.39l-.01.02H12.5V1.5Z" />
+    <path class="light-defaultgrey" d="M8,3V4H9V3Zm0,9v1h2V12Zm0,0v1h2V12ZM9,3H8V4H9Zm3.5-2h-8L4,1.5V7.3l.5.27.5.27V2h7V14H8v.48l-.01.02-.32.5H12.5l.5-.5V1.5ZM8,13h2V12H8ZM8,3V4H9V3Z" />
+    <path class="light-defaultgrey-10" d="M6.5,10.314v3.818L3.5,15.5l-3-1.364V10.314l3-1.636Z" />
+    <path class="light-defaultgrey" d="M6.739,9.928l-3-1.636H3.261l-3,1.636L0,10.367v3.819l.293.455,3,1.363h.414l3-1.363L7,14.186V10.367ZM3,14.772l-2-.908v-2.72l2,.909Zm.5-3.59-1.881-.855L3.5,9.3l1.881,1.027ZM6,13.864l-2,.908V12.053l2-.909Z" />
+  </g>
+</svg>

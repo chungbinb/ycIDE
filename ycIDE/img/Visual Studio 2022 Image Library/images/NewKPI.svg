@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNewKPI</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,14.5h6v-3h-6Z" />
+    <path class="light-defaultgrey-10" d="M10.5,6.5v3h-9V7.512A4.458,4.458,0,0,0,3.5,8,4.472,4.472,0,0,0,6.832,6.5Z" />
+    <path class="light-defaultgrey-10" d="M14.5,1.5v3H7.88A4.516,4.516,0,0,0,8,3.5a4.458,4.458,0,0,0-.488-2Z" />
+    <path class="light-defaultgrey" d="M7.5,15h-6L1,14.5v-3l.5-.5h6l.5.5v3ZM2,14H7V12H2Z" />
+    <path class="light-yellow" d="M3,2,3,0H4L4,2l-.5.5ZM4,5,4,7H3L3,5l.5-.5ZM5,3,7,3V4L5,4l-.5-.5ZM2,4,0,4V3L2,3l.5.5ZM4.208,2.086,5.62.672l.708.706L4.915,2.793H4.208ZM2.792,4.914,1.38,6.328.672,5.622,2.085,4.207h.707Zm2.122-.706L6.328,5.62l-.706.708L4.207,4.915V4.208ZM2.086,2.792.672,1.38,1.378.672,2.793,2.085v.707Z" />
+    <path class="light-defaultgrey" d="M11,6.5v3l-.5.5h-9L1,9.5V7.24a4.466,4.466,0,0,0,1,.484V9h8V7H6.3A4.5,4.5,0,0,0,7.24,6H10.5Z" />
+    <path class="light-defaultgrey" d="M15,1.5v3l-.5.5H7.724A4.431,4.431,0,0,0,7.95,4H14V2H7.724A4.466,4.466,0,0,0,7.24,1H14.5Z" />
+  </g>
+</svg>

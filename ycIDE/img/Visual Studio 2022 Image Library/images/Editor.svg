@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEditor</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,14.5H2.5V1.5h11Z" />
+    <path class="light-defaultgrey" d="M13.5,15H2.5L2,14.5V1.5L2.5,1h11l.5.5v13ZM3,14H13V2H3Z" />
+    <path class="light-defaultgrey" d="M12,4H4V3h8ZM4,7h6V6H4m7,1h1V6H11M4,10h6V9H4m0,4H9V12H4" />
+  </g>
+</svg>

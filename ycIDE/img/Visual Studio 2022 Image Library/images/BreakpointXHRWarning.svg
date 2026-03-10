@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBreakpointXHRWarning</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-red-10" d="M6.025,14.193A6.5,6.5,0,1,1,14.5,8a6.6,6.6,0,0,1-.1,1.1l-.5.386L12.53,7H10.47L6.535,14.143Z" />
+      <path class="light-red" d="M6.2,14.756A7.007,7.007,0,1,1,14.5,10.578L13.836,9.37A6,6,0,1,0,6.7,13.853Z" />
+    </g>
+    <path class="light-red" d="M8.49,7.637l-.723-.692L9.631,5h.722l1.863,1.945L12.159,7H10.884l-.392-.41V7H10.47L9.5,8.762,9.492,6.59ZM8.223,9.042,7.5,8.351,6.5,9.4V5h-1V9.4l-1-1.046-.723.691,1.864,1.945h.722Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSourceControlExcludedNode</title>
+  <g id="canvas">
+    <path class="canvas" d="M7,16H0V0H7Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M3.5,5.5a3,3,0,1,0,3,3A3,3,0,0,0,3.5,5.5Z" />
+    <path class="white" d="M5,9H2V8H5Z" />
+  </g>
+</svg>

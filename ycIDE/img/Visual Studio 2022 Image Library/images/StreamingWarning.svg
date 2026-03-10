@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StreamingWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,8A1.5,1.5,0,1,1,8,6.5,1.5,1.5,0,0,1,9.5,8Z" />
+    <path class="light-defaultgrey" d="M11.857,7a3.958,3.958,0,0,0-1.026-1.829l.707-.707a4.971,4.971,0,0,1,1.444,3.357L12.53,7Zm2.648,3.585.6,1.09a8,8,0,0,0-1.449-9.332h0l-.707.707A7,7,0,0,1,14.505,10.585ZM5.967,8A2,2,0,0,1,9.96,7.926L8.971,9.72a1.972,1.972,0,0,1-1,.28A2,2,0,0,1,5.967,8Zm1,0a1,1,0,1,0,1-1A1,1,0,0,0,6.967,8Zm-2.5-3.536a5.008,5.008,0,0,0,0,7.072l.707-.707a4.007,4.007,0,0,1,0-5.658ZM3.05,3.05l-.707-.707h0a8,8,0,0,0,0,11.314l.707-.707h0A7,7,0,0,1,3.05,3.05Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

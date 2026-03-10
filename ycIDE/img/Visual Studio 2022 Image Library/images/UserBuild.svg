@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>UserBuild</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15,7.023V8A3.749,3.749,0,0,0,8.25,10.25a3.7,3.7,0,0,0,.544,1.932A5.026,5.026,0,0,0,7.1,15H7a4.612,4.612,0,0,1,.028-.5H1.5V5H4.129l2.6,2.6H8.268l2.6-2.6H14V6.09A3.765,3.765,0,0,1,15,7.023Z" />
+      <path class="light-defaultgrey" d="M7.1,15H1.5L1,14.5V5H2v9H7.426A4.966,4.966,0,0,0,7.1,15ZM14,7.079V5h1V8A3.78,3.78,0,0,0,14,7.079Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15.5,16h-7a3.5,3.5,0,0,1,7,0Zm-1.25-5.75A2.25,2.25,0,1,0,12,12.5,2.25,2.25,0,0,0,14.25,10.25Z" />
+    <path class="light-defaultgrey" d="M7,10V8H9l-.084.125-.043.064L8.8,8.3c-.032.052-.048.113-.077.167a3.764,3.764,0,0,0-.235.512c-.034.093-.061.186-.088.282a3.858,3.858,0,0,0-.1.553c-.007.064-.031.122-.035.187Zm0,1H5v2H7ZM5,8H3v2H5Z" />
+    <path class="light-defaultgrey" d="M13.7,12.394a2.75,2.75,0,1,0-3.4,0A4,4,0,0,0,8,16H9a3,3,0,0,1,6,0h1A4,4,0,0,0,13.7,12.394ZM10.25,10.25A1.75,1.75,0,1,1,12,12,1.752,1.752,0,0,1,10.25,10.25Z" />
+    <path class="light-blue" d="M10.354,4.1l-2.5,2.5H7.146l-2.5-2.5L5.354,3.4,7,5.043V0H8V5.043L9.646,3.4Z" />
+  </g>
+</svg>

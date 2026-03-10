@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightStored</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.011,1.5a6.5,6.5,0,1,0,6.5,6.5A6.5,6.5,0,0,0,8.011,1.5ZM12,11.5l-.5.5h-7L4,11.5v-7L4.5,4h5l.354.146,2,2L12,6.5Z" />
+      <path class="light-defaultgrey" d="M8.011,1a7,7,0,1,0,7,7A7.008,7.008,0,0,0,8.011,1Zm0,13a6,6,0,1,1,6-6A6.006,6.006,0,0,1,8.011,14Z" />
+    </g>
+    <path class="light-blue-10" d="M4.5,4.5h5l2,2v5h-7Z" />
+    <path class="light-blue" d="M11.854,6.146l-2-2L9.5,4h-5L4,4.5v7l.5.5h7l.5-.5v-5ZM8,5V7H7V5Zm3,6H5V5H6V7.5l.5.5h2L9,7.5V5h.293L11,6.707Z" />
+  </g>
+</svg>

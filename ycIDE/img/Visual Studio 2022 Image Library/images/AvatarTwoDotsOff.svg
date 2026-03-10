@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.light-orange{fill: #b73d18; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAvatarTwoDotsOff</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-orange-10" d="M14.5,5.5v5a4,4,0,0,1-4,4h-5a4,4,0,0,1-4-4v-5a4,4,0,0,1,4-4h5A4,4,0,0,1,14.5,5.5Z" />
+    <path class="light-orange" d="M10.5,1h-5A4.505,4.505,0,0,0,1,5.5v5A4.505,4.505,0,0,0,5.5,15h5A4.505,4.505,0,0,0,15,10.5v-5A4.505,4.505,0,0,0,10.5,1ZM14,10.5A3.5,3.5,0,0,1,10.5,14h-5A3.5,3.5,0,0,1,2,10.5v-5A3.5,3.5,0,0,1,5.5,2h5A3.5,3.5,0,0,1,14,5.5Z" />
+    <path class="light-orange" d="M11.25,6A1.25,1.25,0,1,1,10,4.75,1.25,1.25,0,0,1,11.25,6ZM6,8.75A1.25,1.25,0,1,0,7.25,10,1.25,1.25,0,0,0,6,8.75Z" />
+  </g>
+</svg>

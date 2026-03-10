@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSQLServerObjectExplorer</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M4,1.5v13l-.5.5h-2L1,14.5V1.5L1.5,1h2Z" />
+    </g>
+    <path class="light-purple-10" d="M9.5,2.5v3h-4v-3Z" />
+    <path class="light-purple" d="M9.5,2h-4L5,2.5v3l.5.5h4l.5-.5v-3ZM9,5H6V3H9Z" />
+    <path class="light-purple-10" d="M9.5,10.5v3h-4v-3Z" />
+    <path class="light-purple" d="M9.5,10h-4l-.5.5v3l.5.5h4l.5-.5v-3ZM9,13H6V11H9Z" />
+    <path class="light-purple-10" d="M14.5,6.5v3h-4v-3Z" />
+    <path class="light-purple" d="M14.5,6h-4l-.5.5v3l.5.5h4l.5-.5v-3ZM14,9H11V7h3Z" />
+  </g>
+</svg>

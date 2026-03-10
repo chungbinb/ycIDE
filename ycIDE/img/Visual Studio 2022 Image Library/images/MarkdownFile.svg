@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMarkdownFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H12L11,15l.914-1,1-1H10V10H2.5V1.5h8Z" />
+      <path class="light-defaultgrey" d="M14,4.5v10l-.5.5H11v-.086L11.914,14H13V5H10V2H3v8H2V1.5L2.5,1h8l.354.146,3,3Z" />
+    </g>
+    <path class="light-defaultgrey" d="M4.172,11H5.779v5H4.667l.042-4.062L3.352,16h-.92L1.051,11.938C1.081,12.43,1.1,16,1.1,16H.082V11H1.731S2.9,14.439,2.938,14.679Z" />
+    <path class="light-defaultgrey" d="M9,14V11H8v3H6.5l2,2,2-2Z" />
+  </g>
+</svg>

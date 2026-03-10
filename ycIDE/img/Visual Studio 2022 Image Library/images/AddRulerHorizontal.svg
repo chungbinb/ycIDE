@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>AddRulerHorizontal</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M5,5.5V8H2V5.5H1.5v5h14v-5Z" />
+    <path class="light-yellow" d="M15.5,5H5V6H6V7H7V6H8V8H9V6h1V7h1V6h1V8h1V6h2v4H2V5H1.5L1,5.5v5l.5.5h14l.5-.5v-5Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

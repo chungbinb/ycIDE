@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDisassemblyWindow</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12,3H5V2h7Zm2-1H13V3h1Zm0,3H13V6h1Zm0,3H13V9h1Zm0,3H13v1h1Zm0,3H13v1h1ZM12,5H5V6h7Zm0,3H5V9h7Zm0,3H8v1h4Zm0,3H8v1h4Z" />
+    <path class="light-blue" d="M6.854,12.146v.708L4.878,14.829l-.707-.707L5.293,13H1.5L1,12.5V2.5L1.5,2H4V3H2v9H5.293L4.171,10.878l.707-.707Z" />
+  </g>
+</svg>

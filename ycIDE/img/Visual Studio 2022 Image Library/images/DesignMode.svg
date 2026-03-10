@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDesignMode</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M14.5,15.5H.5v-4h14Z" />
+    <path class="light-defaultgrey-10" d="M11.5,9.5h-9V.5Z" />
+    <path class="light-yellow" d="M14.5,11H.5l-.5.5v4l.5.5h14l.5-.5v-4ZM14,15H1V12H3v2H4V12H5v1H6V12H7v2H8V12H9v1h1V12h1v2h1V12h2Z" />
+    <path class="light-defaultgrey" d="M11.5,10h-9L2,9.5V.5L2.854.146l9,9ZM3,9h7.293L3,1.707Z" />
+  </g>
+</svg>

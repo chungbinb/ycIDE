@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDeclarativeCatalogPart</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M5,12.5l.5.5H.5L0,12.5v-8L.5,4h5L5,4.5ZM15.5,4h-5l.5.5v8l-.5.5h5l.5-.5v-8Z" />
+      <path class="light-defaultgrey" d="M15.5,13H15V12h1v.5ZM14,12H13v1h1Zm-2,0H11v1h1ZM5,12H4v1H5ZM3,12H2v1H3ZM1,12H0v.5l.5.5H1Zm0-2H0v1H1ZM1,8H0V9H1ZM1,6H0V7H1ZM1,4H.5L0,4.5V5H1ZM14,4H13V5h1ZM12,4H11V5h1ZM5,4H4V5H5ZM3,4H2V5H3Zm13,.5L15.5,4H15V5h1ZM16,10H15v1h1Zm0-2H15V9h1Zm0-2H15V7h1Z" />
+    </g>
+    <path class="light-blue-10" d="M11,4.5v8l-.5.5h-5L5,12.5v-8L5.5,4h5Z" />
+    <path class="light-blue" d="M10.5,13h-5L5,12.5v-8L5.5,4h5l.5.5v8ZM6,12h4V5H6Z" />
+  </g>
+</svg>

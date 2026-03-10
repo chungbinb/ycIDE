@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCallOperationAction</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,12.5H1.5V2.5h12Z" />
+      <path class="light-defaultgrey" d="M13.5,2H1.5L1,2.5v10l.5.5h12l.5-.5V2.5ZM13,12H2V3H13Z" />
+    </g>
+    <path class="light-defaultgrey" d="M9,5.146l2,2v.708l-2,2-.707-.708L9.939,7.5,8.293,5.854Zm-2.293.708L5.061,7.5,6.707,9.146,6,9.854l-2-2V7.146l2-2Z" />
+  </g>
+</svg>

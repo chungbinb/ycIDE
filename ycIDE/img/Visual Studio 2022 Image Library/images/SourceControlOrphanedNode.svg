@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSourceControlOrphanedNode</title>
+  <g id="canvas">
+    <path class="canvas" d="M7,16H0V0H7Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M1,6v5H0V6Z" />
+    <path class="light-defaultgrey" d="M4.5,7.5H.5v-3h4Z" />
+    <path class="light-defaultgrey" d="M4.5,4H.5L0,4.5v3L.5,8h4L5,7.5v-3ZM4,7H1V5H4Z" />
+  </g>
+</svg>

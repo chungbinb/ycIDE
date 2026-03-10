@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExlcudeScript</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M14,12.5H10v-1h4Z" />
+    <path class="light-defaultgrey-10" d="M7.05,12.5H2A1.5,1.5,0,0,1,.5,11v-.5h2V4A1.5,1.5,0,0,1,4,2.5h7A1.5,1.5,0,0,1,12.5,4V5.5h-3V7.694A4.978,4.978,0,0,0,7,12C7,12.171,7.034,12.333,7.05,12.5Z" />
+    <path class="light-defaultgrey" d="M7,12a5.072,5.072,0,0,1,.067-.668A.992.992,0,0,1,7,11v-.5L6.5,10H3V4A1,1,0,0,1,4,3H9.278A1.978,1.978,0,0,0,9,4V8.023a4.935,4.935,0,0,1,1-.6V6h2.5l.5-.5V4a2,2,0,0,0-2-2H4A2,2,0,0,0,2,4v6H.5l-.5.5V11a1.978,1.978,0,0,0,.278,1,1.992,1.992,0,0,0,1.715,1H7.1A5,5,0,0,1,7,12Zm3-8a1,1,0,0,1,2,0V5H10ZM2,12a1,1,0,0,1-1-1H6a1.984,1.984,0,0,0,.269,1Z" />
+  </g>
+</svg>

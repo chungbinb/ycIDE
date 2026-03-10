@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFreezeRow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,14.5H1.5v-9h12Z" />
+      <path class="light-defaultgrey" d="M13.5,5H1.5L1,4.5v10l.5.5h12l.5-.5V4.5ZM13,8H10V6h3Zm0,3H10V9h3ZM2,9H5v2H2ZM6,9H9v2H6ZM9,8H6V6H9ZM2,6H5V8H2Zm0,6H5v2H2Zm4,0H9v2H6Zm7,2H10V12h3Z" />
+    </g>
+    <path class="light-blue-10" d="M13.5,5.5H1.5v-3h12Z" />
+    <path class="light-blue" d="M13.5,2H1.5L1,2.5v3l.5.5h12l.5-.5v-3ZM2,3H5V5H2ZM6,3H9V5H6Zm7,2H10V3h3Z" />
+  </g>
+</svg>

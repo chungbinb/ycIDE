@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>QueryViewWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.44,12.5H.5v-7h2V9H9.368ZM9.5,8.76,10.47,7H11.5V2h-9V4.5h7Z" />
+      <path class="light-defaultgrey" d="M7.165,13H.5L0,12.5v-8L.5,4H2V1.5L2.5,1h9l.5.5V7H11V3H3V4H9.5l.5.5V7.853L9,9.668V6H1v6H7.716Z" />
+    </g>
+    <path class="light-yellow-10" d="M2.5,5.5v4h7v-4Z" />
+    <path class="light-yellow" d="M10,7.853V5.5L9.5,5h-7L2,5.5v4l.5.5H8.817ZM3,6H9V9H3Z" />
+    <path class="light-yellow" d="M4,7V8H8V7Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

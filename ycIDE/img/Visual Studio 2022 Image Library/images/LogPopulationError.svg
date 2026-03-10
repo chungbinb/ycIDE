@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightLogPopulationError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,8V9.027a4.859,4.859,0,0,1,5.5-1.773V1.5H2.5V3H4V4H2.5V6H4V7H3.414l.854.854L4.121,8ZM6,4h5V5H6Z" />
+    <path class="light-teal-10" d="M11.5,5.5h-6v-2h6Z" />
+    <path class="light-teal" d="M11.5,3h-6L5,3.5v2l.5.5h6l.5-.5v-2ZM11,5H6V4h5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2.414,6H4V7H3.414ZM4,3H1V4H4ZM1.879,6H1v.879Z" />
+    </g>
+    <path class="light-blue" d="M7.522,14.185,5.854,15.854l-.708-.708L6.293,14H1V13H6.293L5.146,11.854l.708-.708,1.179,1.18A4.945,4.945,0,0,0,7.522,14.185ZM2.854,11.146,1.707,10H7V9H1.707L2.854,7.854l-.708-.708-2,2v.708l2,2Z" />
+    <path class="light-defaultgrey" d="M13,2H3V3H2V1.5L2.5,1h11l.5.5V7.422A4.968,4.968,0,0,0,13,7.1ZM2,5.879l.146-.147L2.414,6H3V4H2Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

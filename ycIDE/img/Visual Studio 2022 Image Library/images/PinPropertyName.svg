@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPinPropertyName</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,5.5h-4V.5h4Z" />
+    <path class="light-defaultgrey" d="M4,10H3V6H4ZM6,5V.5L5.5,0h-4L1,.5V5H0V6H7V5ZM2,5V1H5V5Z" />
+    <path class="light-defaultgrey" d="M12,10a1.987,1.987,0,0,0-1,.277V8H10v6h1v-.277A2,2,0,1,0,12,10Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,12,13ZM8,10v.277a2,2,0,1,0,0,3.446V14H9V10ZM7,13a1,1,0,1,1,1-1A1,1,0,0,1,7,13Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,6.5v9H3.5V11H5V7H8V6.5Z" />
+      <path class="light-defaultgrey" d="M16,6.5v9l-.5.5H3.5L3,15.5V11H4v4H15V7H8V6h7.5Z" />
+    </g>
+  </g>
+</svg>

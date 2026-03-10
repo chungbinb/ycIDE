@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ConnectToEnvironment</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M10,4V5H7V4ZM7,9h3V8H7Zm0,2h3V10H7Z" />
+    </g>
+    <path class="light-teal-10" d="M3,8.474H3a2.5,2.5,0,0,1-2.5-2.5V3.5h5V5.974A2.5,2.5,0,0,1,3,8.474Z" />
+    <path class="light-teal" d="M5,3V1A.5.5,0,0,0,4,1V3H2V1A.5.5,0,0,0,1,1V3H0V5.974A3,3,0,0,0,2.5,8.931V12h1V8.931A3,3,0,0,0,6,5.974V3ZM5,5.974a2,2,0,0,1-4,0V4H5Z" />
+    <path class="light-defaultgrey-10" d="M15,14.5H2L2.75,13H5v-.5l.5.5h6l.5-.5v-2h1Z" />
+    <path class="light-defaultgrey" d="M15.447,14.276,15,15H2l-.447-.724L2.191,13H3.309l-.5,1H14.191l-1.5-3H12V10h1l.447.276Z" />
+    <path class="light-defaultgrey-10" d="M11.5,2.5v10h-6V9.1A3.989,3.989,0,0,0,7,5.974V2H6V1.653A.977.977,0,0,1,6.5,1.5h4A1,1,0,0,1,11.5,2.5Z" />
+    <path class="light-defaultgrey" d="M12,2.5v10l-.5.5h-6L5,12.5V9.437a3.968,3.968,0,0,0,1-.821V12h5V2.5a.5.5,0,0,0-.5-.5H6V1.092A1.483,1.483,0,0,1,6.5,1h4A1.5,1.5,0,0,1,12,2.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSequenceCluster</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M3.5,4.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M3.5,5h-2L1,4.5v-2L1.5,2h2l.5.5v2ZM2,4H3V3H2Z" />
+    <path class="light-defaultgrey" d="M8.5,4.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M8.5,5h-2L6,4.5v-2L6.5,2h2l.5.5v2ZM7,4H8V3H7Z" />
+    <path class="light-defaultgrey" d="M13.5,4.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M13.5,5h-2L11,4.5v-2l.5-.5h2l.5.5v2ZM12,4h1V3H12Z" />
+    <path class="light-defaultgrey" d="M3.5,9.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M3.5,10h-2L1,9.5v-2L1.5,7h2l.5.5v2ZM2,9H3V8H2Z" />
+    <path class="light-defaultgrey" d="M3.5,14.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M3.5,15h-2L1,14.5v-2l.5-.5h2l.5.5v2ZM2,14H3V13H2Z" />
+    <path class="light-defaultgrey" d="M8.5,9.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M8.5,10h-2L6,9.5v-2L6.5,7h2l.5.5v2ZM7,9H8V8H7Z" />
+    <path class="light-defaultgrey" d="M13.5,9.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M13.5,10h-2L11,9.5v-2l.5-.5h2l.5.5v2ZM12,9h1V8H12Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,4H4V3H6Zm5,0H9V3h2Zm2,3H12V5h1ZM11,9H9V8h2ZM6,9H4V8H6ZM3,12H2V10H3Z" />
+    </g>
+  </g>
+</svg>

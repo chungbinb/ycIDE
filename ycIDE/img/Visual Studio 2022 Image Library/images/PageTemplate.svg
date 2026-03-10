@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPageTemplate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2H2.5L2,2.5V7.41A5.106,5.106,0,0,1,4,7a5,5,0,0,1,5,5,4.712,4.712,0,0,1-.1,1h5.6l.5-.5V2.5Z" />
+    <path class="light-defaultgrey" d="M10,12v1h1V12Zm2,0v1h1V12Zm2-8V5h1V4Zm.5-2H14V3h1V2.5ZM14,12v1h.5l.5-.5V12Zm0-2v1h1V10Zm0-2V9h1V8Zm0-2V7h1V6ZM8,4V5H9V4Zm4,0V5h1V4ZM10,2V3h1V2Zm2,0V3h1V2ZM10,4V5h1V4ZM6,4V5H7V4ZM4,4V5H5V4ZM2,6V7H3V6ZM6,2V3H7V2ZM4,2V3H5V2ZM8,2V3H9V2ZM2,4V5H3V4Zm.5-2L2,2.5V3H3V2Z" />
+    <path class="light-defaultgrey" d="M4,8a4,4,0,1,0,4,4A4,4,0,0,0,4,8Z" />
+  </g>
+</svg>

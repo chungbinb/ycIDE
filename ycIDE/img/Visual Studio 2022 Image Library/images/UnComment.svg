@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUnComment</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.62,4.5l.5.5.15.15L5.15,7.27,3,5.12l-.5.5V11.5h2v3l3-3h6v-7Z" />
+    <path class="light-defaultgrey" d="M13.5,4H6.12l1,1H13v6H7.5l-.35.15L5,13.29V11.5L4.5,11H3V5.12l-1,1V11.5l.5.5H4v2.5l.85.35L7.71,12H13.5l.5-.5v-7Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+  </g>
+</svg>

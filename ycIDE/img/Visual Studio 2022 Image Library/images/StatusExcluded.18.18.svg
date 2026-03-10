@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusExcluded.18.18</title>
+  <title>IconLightStatusExcluded.18.18</title>
+  <g id="canvas">
+    <path class="canvas" d="M18,18H0V0H18Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M9,1a8,8,0,1,0,8,8A8.009,8.009,0,0,0,9,1Z" />
+    <path class="white" d="M14,10H4V8H14Z" />
+  </g>
+</svg>

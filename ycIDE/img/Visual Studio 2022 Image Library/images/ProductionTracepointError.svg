@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightProductionTracepointError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple-10" d="M8.046,15.025,8,15.071.929,8,8,.929,15.071,8l-.046.046A4.953,4.953,0,0,0,12,7a5.006,5.006,0,0,0-5,5A4.953,4.953,0,0,0,8.046,15.025Z" />
+    <path class="light-purple" d="M8.366,15.412l-.012.013H7.646L.575,8.354V7.646L7.646.575h.708l7.071,7.071v.708l-.013.012a4.982,4.982,0,0,0-1.738-1.057L8,1.636,1.636,8l5.673,5.674A4.982,4.982,0,0,0,8.366,15.412Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

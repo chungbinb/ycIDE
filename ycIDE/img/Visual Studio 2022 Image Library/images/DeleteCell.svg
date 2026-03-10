@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDeleteCell</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v3h-4v-3Zm-4,12h4v-6h-4Z" />
+    <path class="light-defaultgrey-10" d="M9.5,5.5v3h-4V6.914L6.914,5.5Z" />
+    <path class="light-defaultgrey" d="M10,5.5v3L9.5,9h-4L5,8.5V7.414l.146-.146L6,6.414V8H9V6H6.414l.854-.854L7.414,5H9.5Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+    <path class="light-defaultgrey" d="M10.5,15h4l.5-.5v-6L14.5,8h-4l-.5.5v6ZM11,9h3v2H11Zm0,3h3v2H11Zm3.5-6,.5-.5v-3L14.5,2h-4l-.5.5v3l.5.5ZM11,3h3V5H11Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-orange{fill: #b73d18; opacity: 1;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightJSPhoneError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Zm0,0H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-orange" d="M8,4H7V3H8Z" />
+    <path class="light-orange-10" d="M7.7,14.5H3.5V1.5h8V7.051A4.988,4.988,0,0,0,7,12,4.937,4.937,0,0,0,7.7,14.5Z" />
+    <path class="light-orange" d="M8.026,15H3.5L3,14.5V1.5L3.5,1h8l.5.5V7a5,5,0,0,0-1,.1V2H4V14H7.424A4.967,4.967,0,0,0,8.026,15Z" />
+    <path class="light-orange" d="M7.1,13H6V12H7A5,5,0,0,0,7.1,13Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

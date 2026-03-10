@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>UploadDocument</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M5.646,3.353,4,1.707V7H3V1.707L1.354,3.353.646,2.646l2.5-2.5h.708l2.5,2.5Z" />
+    <path class="light-defaultgrey-10" d="M11.5,1.5H6.62l.5.5.65.65L5.65,4.77,5,4.12V8H3.5v6.5h11V4.5Z" />
+    <path class="light-defaultgrey" d="M14.85,4.15l-3-3L11.5,1H6.12l1,1H11V5h3v9H4V8H3v6.5l.5.5h11l.5-.5V4.5Z" />
+  </g>
+</svg>

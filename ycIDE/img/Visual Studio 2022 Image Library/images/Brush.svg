@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBrush</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M8.925,11.318,5.743,14.5,1.5,10.257,4.682,7.075Z" />
+    <path class="light-defaultgrey-10" d="M13.521,3.893,9.278,8.136,11.046,9.9,9.632,11.318l-4.95-4.95L6.1,4.954,7.864,6.722l4.243-4.243a1,1,0,1,1,1.414,1.414Z" />
+    <path class="light-defaultgrey" d="M13.875,2.125a1.5,1.5,0,0,0-2.122,0L7.864,6.015,6.45,4.6H5.743L4.329,6.015v.707l4.949,4.949h.707L11.4,10.257V9.55L9.985,8.136l3.89-3.889A1.5,1.5,0,0,0,13.875,2.125ZM9.632,10.611,5.389,6.368,6.1,5.661,10.339,9.9ZM13.167,3.54,9.278,7.429l-.707-.707L12.46,2.833a.5.5,0,1,1,.707.707Z" />
+    <path class="light-lightblue" d="M9.278,11.671,6.1,14.854H5.389L1.146,10.611V9.9L4.329,6.722l.707.707L2.207,10.257l2.122,2.122L6.45,10.257l.707.707L5.036,13.086l.707.707,2.828-2.829Z" />
+  </g>
+</svg>

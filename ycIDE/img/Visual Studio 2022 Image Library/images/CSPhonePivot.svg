@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSPhonePivot</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,1.5V14H11v1H9.816A2.966,2.966,0,0,0,10,14a3,3,0,0,0-3-3V10h3V7H7.5V1.5Z" />
+    <path class="light-defaultgrey" d="M16,1.5v13l-.5.5H9.816A2.966,2.966,0,0,0,10,14h5V2H8V7H7V1.5L7.5,1h8ZM12,4H11V3h1Zm1,9H10V12h3Z" />
+    <path class="light-green" d="M7,12a1.987,1.987,0,0,0-1,.277V10H5v6H6v-.277A2,2,0,1,0,7,12Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,7,15ZM3,12v.277a2,2,0,1,0,0,3.446V16H4V12ZM2,15a1,1,0,1,1,1-1A1,1,0,0,1,2,15ZM9,9H0V8H9Z" />
+  </g>
+</svg>

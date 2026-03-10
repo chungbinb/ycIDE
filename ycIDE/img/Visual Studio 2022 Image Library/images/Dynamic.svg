@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDynamic</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M14.354,8.146v.708L11.7,11.505,11,10.8l1.8-1.8H3.207l1.8,1.8-.707.707L1.646,8.854V8.146L4.3,5.5l.707.707L3.207,8h9.586L11,6.2,11.7,5.5Z" />
+  </g>
+</svg>

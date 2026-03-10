@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPixelRunFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,1.5V3H4V4H2.5V6H4V7H2.5V9H4v1H2.5v2H4v1H2.5v1.5h11V1.5Z" />
+    <path class="light-defaultgrey" d="M2,10H3v2H2ZM2,9H3V7H2ZM13.5,1H2.5L2,1.5V3H3V2H13V14H3V13H2v1.5l.5.5h11l.5-.5V1.5ZM2,6H3V4H2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M4,3V4H1V3ZM1,7H4V6H1Zm0,3H4V9H1Zm0,3H4V12H1Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7.849,5.5,11,9.893,5.673,8.972Z" />
+  </g>
+</svg>

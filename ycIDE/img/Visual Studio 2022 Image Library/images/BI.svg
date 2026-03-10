@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBI</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,8.5h8v7H.5Z" />
+    <path class="light-green" d="M8.146,13.854,5.5,11.207,3.854,12.854H3.146L2.5,12.207.854,13.854l-.708-.708,2-2h.708l.646.647,1.646-1.647h.708l3,3Z" />
+    <path class="light-defaultgrey" d="M8.5,16H.5L0,15.5v-7L.5,8h8l.5.5v7ZM1,15H8V9H1Z" />
+    <path class="light-defaultgrey-10" d="M15.5,4.227V9.955L11,12l-1-.455V8.086L8.914,7H6.5V4.227L11,1.773Z" />
+    <path class="light-defaultgrey" d="M15.739,3.789l-4.5-2.455h-.478l-4.5,2.455L6,4.228V7H7V5l3.5,1.59v4.63L10,11v1.1l.793.36h.414l4.5-2.046L16,9.954V4.228ZM11,5.724,7.619,4.187,11,2.342l3.381,1.845Zm4,3.908-3.5,1.592V6.594L15,5Z" />
+  </g>
+</svg>

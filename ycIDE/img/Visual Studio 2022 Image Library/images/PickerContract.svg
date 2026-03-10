@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPickerContract</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.5,1.5h-8V9H8.91L10,10.09V14.5h4.5V4.5Z" />
+      <path class="light-defaultgrey" d="M14.85,4.15l-3-3L11.5,1h-8L3,1.5V9H4V2h7V5h3v9H10v1h4.5l.5-.5V4.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8.45,7.73,7.19,9H8.54l.59-.59Zm-3.58.68L5.46,9H6.81L5.55,7.73ZM10,11v1h4V11Z" />
+    <path class="light-defaultgrey-10" d="M8.5,10.5v5H.5v-5Z" />
+    <path class="light-defaultgrey" d="M8.5,10H.5l-.5.5v5l.5.5h8l.5-.5v-5ZM8,15H1V11H8ZM3,14H2V13H3Zm2,0H4V13H5Zm2,0H6V13H7Z" />
+  </g>
+</svg>

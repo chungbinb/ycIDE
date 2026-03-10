@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightKPIBrowserView</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,4.5h13v-3H1.5Z" />
+    <path class="light-defaultgrey-10" d="M1.5,6.5v.65A2.784,2.784,0,0,1,2,7.04,2.737,2.737,0,0,1,2.5,7,3.479,3.479,0,0,1,5.65,9a2.374,2.374,0,0,1,.2.5H10.5v-3Z" />
+    <path class="light-defaultgrey-10" d="M5.85,11.5a1.093,1.093,0,0,1-.05.17l1.7,1.7V11.5ZM3.67,13.8A3.551,3.551,0,0,1,2.5,14a2.737,2.737,0,0,1-.5-.04,2.784,2.784,0,0,1-.5-.11v.65H4.37Z" />
+    <path class="light-blue-10" d="M2.5,8.5a2,2,0,1,1-2,2A2,2,0,0,1,2.5,8.5Z" />
+    <path class="light-blue" d="M0,10.5A2.5,2.5,0,0,0,2.5,13a2.473,2.473,0,0,0,1.376-.417l3.27,3.271.708-.708-3.271-3.27A2.473,2.473,0,0,0,5,10.5a2.5,2.5,0,0,0-5,0Zm1,0A1.5,1.5,0,1,1,2.5,12,1.5,1.5,0,0,1,1,10.5Z" />
+    <path class="light-defaultgrey" d="M14.5,5H1.5L1,4.5v-3L1.5,1h13l.5.5v3ZM2,4H14V2H2Z" />
+    <path class="light-defaultgrey" d="M10.5,6h-9L1,6.5v.85a2.374,2.374,0,0,1,.5-.2A2.784,2.784,0,0,1,2,7.04V7h8V9H5.65a2.374,2.374,0,0,1,.2.5,2.784,2.784,0,0,1,.11.5H10.5l.5-.5v-3Z" />
+    <path class="light-defaultgrey" d="M7.5,11H5.96a2.784,2.784,0,0,1-.11.5,1.093,1.093,0,0,1-.05.17l.33.33H7v.87l.5.5.5.51V11.5ZM3.87,14H2v-.04a2.784,2.784,0,0,1-.5-.11,2.374,2.374,0,0,1-.5-.2v.85l.5.5H4.87Z" />
+  </g>
+</svg>

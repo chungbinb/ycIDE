@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightNewTestGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M11.6,12.962A1,1,0,0,1,10.76,14.5H5.24A1,1,0,0,1,4.4,12.962L5.33,11.5h5.34Z" />
+    <path class="light-teal" d="M10.761,15H5.239a1.5,1.5,0,0,1-1.264-2.307l.933-1.463L5.33,11h5.34l.422.23.933,1.462A1.5,1.5,0,0,1,10.761,15ZM5.6,12l-.786,1.231A.5.5,0,0,0,5.239,14h5.522a.5.5,0,0,0,.421-.77L10.4,12Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M9.5,4V1.5h3V5.667L13.351,7H12V4Z" />
+      <path class="light-defaultgrey" d="M14.091,7.23,13.67,7h-.913l-.679-1.063L12,5.667V2H10V4H9V2H8V1h6V2H13V5.521Z" />
+    </g>
+    <path class="light-teal-10" d="M13.76,10.5H11.812L11,9.229V7.5h2.67L14.6,8.962A1,1,0,0,1,13.76,10.5Z" />
+    <path class="light-teal" d="M15.076,10.221A1.48,1.48,0,0,1,13.761,11h-1.63l-.638-1h2.268a.5.5,0,0,0,.421-.77L13.4,8H11V7h2.67l.422.23.933,1.462A1.484,1.484,0,0,1,15.076,10.221Z" />
+    <path class="light-defaultgrey-10" d="M10.351,11h-4.7L6.5,9.667V6.832A4.489,4.489,0,0,0,7.512,5.5H9.5V9.667Z" />
+    <path class="light-defaultgrey" d="M7,6.3v3.37l-.078.27L6.243,11H5.33l-.421.23L6,9.521V7.24A4.5,4.5,0,0,0,7,6.3Zm4.091,4.933L10.67,11H9.757L9.078,9.937,9,9.667V6H7.24a4.466,4.466,0,0,0,.484-1H11V6H10V9.521Z" />
+    <path class="light-yellow" d="M4,2l-.5.5L3,2V0H4ZM1.379.672l-.707.707L2.086,2.793l.7,0,0-.711ZM0,3V4H2l.5-.5L2,3ZM.672,5.621l.707.707L2.793,4.914l0-.7-.711,0ZM3,7H4V5l-.5-.5L3,5Zm2.621-.672.707-.707L4.914,4.207l-.7,0,0,.711ZM7,4V3H5l-.5.5L5,4ZM6.328,1.379,5.621.672,4.207,2.086l0,.7.711,0Z" />
+  </g>
+</svg>

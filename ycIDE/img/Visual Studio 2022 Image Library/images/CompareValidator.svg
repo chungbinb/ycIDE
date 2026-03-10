@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>CompareValidator</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.5H4.5v-4h10Z" />
+    <path class="light-defaultgrey" d="M14.5,7H4.5L4,6.5v-4L4.5,2h10l.5.5v4ZM5,6h9V3H5Z" />
+    <path class="light-defaultgrey-10" d="M10.5,13.5H.5v-4h10Z" />
+    <path class="light-defaultgrey" d="M10.5,14H.5L0,13.5v-4L.5,9h10l.5.5v4ZM1,13h9V10H1Z" />
+  </g>
+</svg>

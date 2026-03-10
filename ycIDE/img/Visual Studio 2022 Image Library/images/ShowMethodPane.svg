@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightShowMethodPane</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8H8V10.1l-.542-.911L3.994,7.3H3.006L1.5,8.119V5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H8V13h6V6H2V7.846L1,8.392V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,3V5H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <path class="light-purple-10" d="M6.5,10.32v3.818L3.5,15.5l-3-1.364V10.32l3-1.636Z" />
+    <path class="light-purple" d="M6.739,9.934l-3-1.636H3.261l-3,1.636L0,10.373v3.819l.293.455,3,1.355h.414l3-1.355L7,14.192V10.373ZM3,14.778,1,13.87V11.15l2,.909Zm.5-3.59-1.881-.856L3.5,9.306l1.881,1.026ZM6,13.87l-2,.908V12.059l2-.909Z" />
+  </g>
+</svg>

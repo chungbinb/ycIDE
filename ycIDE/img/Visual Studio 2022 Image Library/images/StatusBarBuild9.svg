@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusBarBuild9</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="white" d="M15,7v7.5l-.5.5H1.5L1,14.5V7H2v7H14V7ZM7.29,13,5.646,11.357l.708-.707L8,12.3V8H9V12.3l1.646-1.646.708.707L9.71,13ZM3,11H4v1H3ZM5,9H6V8H5ZM6,7H7V6H6ZM3,7H4V6H3Zm9,6h1V12H12ZM10,7h1V6H10Zm2,1V9h1V8Zm0-5H11V4h1ZM7,4H8V3H7Z" />
+  </g>
+</svg>

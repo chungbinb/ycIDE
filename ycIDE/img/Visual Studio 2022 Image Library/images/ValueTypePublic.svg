@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightValueTypePublic</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue" d="M15,2.5v7l-.5.5h-8L6,9.5v-7L6.5,2h8Z" />
+    </g>
+    <path class="light-blue" d="M10,6.5v7l-.5.5h-8L1,13.5v-7L1.5,6h8Z" />
+  </g>
+</svg>

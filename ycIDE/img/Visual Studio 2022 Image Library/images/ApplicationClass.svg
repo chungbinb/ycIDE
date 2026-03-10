@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ApplicationClass</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,2.5v11H8.588L7.416,12.328h-.4l1.607-1.607V9.539L7.416,8.328H6.234L5.562,9h-.7V8.6L3.278,7.011H2.1l-.6.6V2.5Z" />
+      <path class="light-defaultgrey" d="M15,2.5v11l-.5.5H8.627v-.461L8.088,13H14V3H2V7.107l-1,1V2.5L1.5,2h13Z" />
+    </g>
+    <path class="light-yellow" d="M5.023,11.307V11H4v3H5.976l.672-.672H7l.625.625v.354L6,15.932H5.648l-.625-.625V15H3.5L3,14.5V11H2.229l-.615.614H1.261l-1-1v-.353l2.25-2.25h.353l1,1v.353L3.229,10H5.976l.672-.672H7l.625.625v.354L6,11.932H5.648Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+  </g>
+</svg>

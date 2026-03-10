@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGenerateThumbnail</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,8.5v7H.5v-7Z" />
+    <path class="light-defaultgrey" d="M7.5,16H.5L0,15.5v-7L.5,8h7l.5.5v7ZM1,15H7V9H1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5.5v8H9V8.159L7.914,7.073H5.5V.5Z" />
+      <path class="light-defaultgrey" d="M16,.5v8l-.5.5H9V8.159L8.841,8H15V1H6V7.073H5V.5L5.5,0h10Z" />
+      <path class="light-yellow" d="M14,3a1,1,0,1,1-1-1A1,1,0,0,1,14,3Z" />
+      <path class="light-blue" d="M15,8H13.768L12,6.232,10.707,7.525,11.183,8H9.768L7,5.232l-1,1V4.818l.646-.646h.708L10,6.818l1.646-1.646h.708L15,7.818Z" />
+    </g>
+    <path class="light-blue" d="M.146,4.854l.708-.708L2,5.293V2.5L2.5,2H4V3H3V5.293L4.146,4.146l.708.708-2,2H2.146Z" />
+    <path class="light-yellow" d="M5.5,10a1,1,0,1,1-1,1A1,1,0,0,1,5.5,10Z" />
+    <path class="light-blue" d="M1,13.724V12.483l.7-.516.609.012,1.75,1.4.713-.41H5.3L7,14.33V15H6.2l-1.229-.916-.751.333-.479,0L1.986,13Z" />
+  </g>
+</svg>

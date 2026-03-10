@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAnimation</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.371,7.118,6.751,3.5,10,5.208,13.249,3.5l-.62,3.618L15.257,9.68l-3.632.528L10,13.5,8.375,10.208,4.743,9.68Z" />
+    <path class="light-defaultgrey" d="M10.448,13.721h-.9L8.043,10.666l-3.372-.491-.276-.853L6.834,6.944l-.576-3.36.725-.526L10,4.643l3.017-1.585.725.526-.576,3.36,2.439,2.378-.276.853-3.372.491ZM5.817,9.331l2.63.383.376.273L10,12.371l1.177-2.384.376-.273,2.63-.383-1.9-1.855-.144-.442.449-2.62L10.232,5.65H9.768L7.415,4.414l.449,2.62-.144.442Z" />
+    <path class="light-defaultgrey" d="M5,5V6H2V5ZM4,8H0V9H4ZM2,12H5V11H2Z" />
+  </g>
+</svg>

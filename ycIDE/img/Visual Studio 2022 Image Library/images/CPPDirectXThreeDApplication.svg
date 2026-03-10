@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCPPDirectXThreeDApplication</title>
+  <g id="level-1">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5.5v8H8V10.1l-.541-.911L3.994,7.3H3.006L1.5,8.117V5.5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H8V13h6V6H2V7.844L1,8.39V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,2.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <path class="light-red-10" d="M6.5,10.31v3.819l-3,1.363-3-1.363V10.31l3-1.636Z" />
+    <path class="light-red" d="M6.739,9.924l-3-1.636H3.261l-3,1.636L0,10.363v3.819l.293.455,3,1.363h.414l3-1.363L7,14.182V10.363ZM3,14.768,1,13.86V11.14l2,.909Zm.5-3.59-1.881-.855L3.5,9.3l1.881,1.027ZM6,13.86l-2,.908V12.049l2-.909Z" />
+  </g>
+</svg>

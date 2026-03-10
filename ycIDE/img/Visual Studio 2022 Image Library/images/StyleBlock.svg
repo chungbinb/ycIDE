@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightStyleBlock</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,3H1V2H2ZM2,4H1V5H2ZM2,6H1V7H2ZM2,8H1V9H2Zm0,2H1v1H2Zm0,4H1v1H2Zm10,1V14H11v1Zm2,0V14H13v1Zm-4,0V14H9v1ZM8,15V14H7v1ZM6,15V14H5v1ZM4,15V14H3v1ZM2,12H1v1H2Z" />
+    </g>
+    <path class="light-blue" d="M12,4H10V2h2Zm2,0H12V6h2Z" />
+    <path class="light-defaultgrey" d="M9.364,13.026l-.3-2.021H5.916L4.793,13.026H3.215L7.932,4.974H9.51l1.275,8.052ZM8.5,6.574v-.2l.012-.2H8.488a3.88,3.88,0,0,1-.264.618L6.5,9.882H8.92L8.527,6.849A1.315,1.315,0,0,1,8.5,6.574Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightStockChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue" d="M15,5.69,14.6,5.6l-.575-.746L12.416,7.277l-.891-.119L11,5.581l-.525,1.577-.922.066-.349-.7L8.49,10.1l-.965.06L7.068,8.787l-.583,2.334-.965.016L4.086,6.121,3.49,9.1l-.844.256L2,8.707V7.293l.693.693L3.51,3.9l.97-.039,1.488,5.2.547-2.188.96-.037.4,1.214L8.51,4.9l.937-.126.46.921.618-1.855h.95l.676,2.03,1.433-2.149L14.4,3.7l.6.784Z" />
+  </g>
+</svg>

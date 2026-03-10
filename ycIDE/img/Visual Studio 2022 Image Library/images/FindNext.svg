@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFindNext</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M6.564,9.15l-4.71,4.7-.708-.708,4.71-4.7A4.015,4.015,0,0,0,6.564,9.15Z" />
+    <path class="light-defaultgrey-10" d="M12.5,6A3.5,3.5,0,1,1,9,2.5,3.5,3.5,0,0,1,12.5,6Z" />
+    <path class="light-defaultgrey" d="M9,10a4,4,0,1,1,4-4A4,4,0,0,1,9,10ZM9,3a3,3,0,1,0,3,3A3,3,0,0,0,9,3Z" />
+    <path class="light-blue" d="M10,12h4.294l-1.148-1.147.708-.708,2,2v.708l-2,2-.708-.708L14.292,13H10Z" />
+  </g>
+</svg>

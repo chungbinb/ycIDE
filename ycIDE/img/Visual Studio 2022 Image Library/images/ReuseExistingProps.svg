@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReuseExistingProps</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12,15H10.833l-.954-2.523H6.063L5.166,15H3.992L7.444,6H8.536ZM9.534,11.53,8.121,7.7a3.7,3.7,0,0,1-.138-.6H7.958a3.34,3.34,0,0,1-.145.6l-1.4,3.835Z" />
+    <path class="light-blue" d="M9,1.7v3H6v-1H7.211A2.96,2.96,0,0,0,5,2.7a3,3,0,0,0,0,6v1a4,4,0,0,1,0-8A3.952,3.952,0,0,1,8.053,3.151V1.7Z" />
+    <path class="light-defaultgrey" d="M13,6a1,1,0,1,1,1,1A1,1,0,0,1,13,6Zm1,3a1,1,0,1,0,1,1A1,1,0,0,0,14,9Zm0,4a1,1,0,1,0,1,1A1,1,0,0,0,14,13Z" />
+  </g>
+</svg>

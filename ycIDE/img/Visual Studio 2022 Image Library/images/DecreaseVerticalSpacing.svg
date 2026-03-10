@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDecreaseVerticalSpacing</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,1.5h8v2h-8Zm0,7h8v-2h-8Zm0,5h8v-2h-8Z" />
+    <path class="light-defaultgrey" d="M15,3.5v-2L14.5,1h-8L6,1.5v2l.5.5h8ZM7,3V2h7V3Zm8,5.5v-2L14.5,6h-8L6,6.5v2l.5.5h8ZM7,8V7h7V8Zm8,5.5v-2l-.5-.5h-8l-.5.5v2l.5.5h8ZM7,13V12h7v1Z" />
+    <path class="light-blue" d="M3.146,5.854l-2-2,.708-.708L3,4.293V1H4V4.293L5.146,3.146l.708.708-2,2Zm0,3.292-2,2,.708.708L3,10.707V14H4V10.707l1.146,1.147.708-.708-2-2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M11,4V6H10V4Zm0,5H10v2h1Z" />
+    </g>
+  </g>
+</svg>

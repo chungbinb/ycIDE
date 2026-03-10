@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ATLControl</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M13.28,10.5l1.333,1.333L12.447,14h-1L11,13.554V12.78Zm-1.334-1L10.613,8.167,13.28,5.5l1.333,1.334ZM3.6,7.5l-2-2,4-4,2,2Z" />
+    <path class="light-yellow" d="M13.473,5.235h-.53L11.177,7H6V5.75H5.989l1.9-1.9v-.7l-2-2H5.178l-4,4v.708l2,2h.707L5,6.738V9.964H6V8h4.276v.433l1.333,1.333h.53L14.806,7.1V6.569ZM3.531,6.793,2.239,5.5,5.531,2.207,6.824,3.5ZM11.874,8.97l-.8-.8L11.238,8h.012V7.988L13.208,6.03l.8.8Zm1.069,1.264L11.177,12H11v2h1.9l1.9-1.9v-.531l-1.333-1.334ZM11.874,13.97l-.8-.8.164-.17h.012v-.012l1.958-1.958.8.8Z" />
+    <path class="light-defaultgrey" d="M4.787,16H3.9l-.441-1.248H1.526L1.1,16H.213l1.836-4.9h.916ZM3.238,14.09l-.68-1.955a2.533,2.533,0,0,1-.065-.309H2.479a1.914,1.914,0,0,1-.068.309L1.738,14.09ZM8.313,11.1H4.692v.689h1.4V16h.813V11.789H8.313Zm3.4,4.214h-1.9V11.1H9V16h2.714Z" />
+  </g>
+</svg>

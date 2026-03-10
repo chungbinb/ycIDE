@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightXPath</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,13.5h4v-2h-4Z" />
+    <path class="light-defaultgrey-10" d="M9.5,9.5h4v-2h-4Z" />
+    <path class="light-defaultgrey-10" d="M5.5,3.5h4v-2h-4Z" />
+    <path class="light-blue-10" d="M1.5,9.5h4v-2h-4Z" />
+    <path class="light-blue" d="M5.5,10h-4L1,9.5v-2L1.5,7h4l.5.5v2ZM2,9H5V8H2Z" />
+    <path class="light-blue-10" d="M1.5,13.5h4v-2h-4Z" />
+    <path class="light-blue" d="M5.5,14h-4L1,13.5v-2l.5-.5h4l.5.5v2ZM2,13H5V12H2Z" />
+    <path class="light-defaultgrey" d="M4,11H3V10H4Z" />
+    <path class="light-defaultgrey" d="M13.5,10l.5-.5v-2L13.5,7H12V5.5L11.5,5H8V4H9.5l.5-.5v-2L9.5,1h-4L5,1.5v2l.5.5H7V5H3.5L3,5.5V7H4V6h7V7H9.5L9,7.5v2l.5.5H11v1H9.5l-.5.5v2l.5.5h4l.5-.5v-2l-.5-.5H12V10ZM6,3V2H9V3Zm7,9v1H10V12ZM10,9V8h3V9Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>OrderDescending</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,2.5v.89l.5.5.76.76L7.41,5h4.5L13,6.09V8.5h1.5v-6Zm-.6,4-.27.27L5.36,6.5H5v6h6.5v-6Z" />
+    <path class="light-defaultgrey" d="M14.5,2h-8L6,2.5v.39l1,1V3h7V8H13V9h1.5l.5-.5v-6Zm-5,2h-1L8,4.5V5h2V4.5Zm0,5h-1L8,9.5v1l.5.5h1l.5-.5v-1Zm-3-1h-1L5,8.5v1l.5.5h1L7,9.5v-1Zm3,1h-1L8,9.5v1l.5.5h1l.5-.5v-1Zm-4-1L5,8.5v1l.5.5h1L7,9.5v-1L6.5,8Zm6-2H6.4l-.5.5-.27.27L5.36,6.5,5,6.13V7h6v5H5v1h6.5l.5-.5v-6ZM10,10.5v-1L9.5,9h-1L8,9.5v1l.5.5h1ZM6.5,10,7,9.5v-1L6.5,8h-1L5,8.5v1l.5.5Z" />
+    <path class="light-blue" d="M6.344,4.646l-.707.708L4,3.707V15H3V3.707L1.344,5.354.637,4.646l2.5-2.5h.707Z" />
+  </g>
+</svg>

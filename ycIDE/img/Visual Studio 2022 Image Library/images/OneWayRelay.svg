@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>OneWayRelay</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,8A1.5,1.5,0,1,1,8,6.5,1.5,1.5,0,0,1,9.5,8Z" />
+    <path class="light-defaultgrey" d="M11.538,4.464l-.707.707a4.007,4.007,0,0,1,0,5.658l.707.707A5.008,5.008,0,0,0,11.538,4.464ZM9.967,8a2,2,0,1,1-2-2A2,2,0,0,1,9.967,8Zm-1,0a1,1,0,1,0-1,1A1,1,0,0,0,8.967,8Zm4.69-5.657-.707.707a7,7,0,0,1,0,9.9l.707.707a8,8,0,0,0,0-11.314Z" />
+    <path class="light-blue" d="M5.85,11.15l-.7.7L6.29,13H1v1H6.29L5.15,15.15l.7.7,2-2v-.7Z" />
+  </g>
+</svg>
