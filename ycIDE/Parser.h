@@ -123,10 +123,8 @@ struct WhileStmtNode : public ASTNode {
 
 // 计次循环语句节点
 struct ForStmtNode : public ASTNode {
-    std::wstring loopVar;                            // 循环变量名
-    std::shared_ptr<ASTNode> startValue;             // 起始值
-    std::shared_ptr<ASTNode> endValue;               // 结束值
-    std::shared_ptr<ASTNode> stepValue;              // 步长值（可选）
+    std::shared_ptr<ASTNode> loopCount;              // 循环次数
+    std::wstring loopVar;                            // 已循环次数记录变量（可选）
     std::vector<std::shared_ptr<ASTNode>> body;      // 循环体
     
     ForStmtNode() : ASTNode(ASTNodeType::FOR_STMT) {}

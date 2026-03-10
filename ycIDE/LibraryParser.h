@@ -100,6 +100,9 @@ public:
     // 获取库文件名对应的 .fne 完整路径
     std::wstring GetLibraryFnePath(const std::wstring& libFileName) const;
     
+    // 获取库文件名对应的中文名称
+    std::wstring GetLibraryChineseName(const std::wstring& libFileName) const;
+    
 private:
     LibraryParser() = default;
     
@@ -110,5 +113,6 @@ private:
     std::map<std::wstring, size_t> unitIndex;   // 名称到组件索引的映射
     std::vector<std::wstring> loadedLibraryFileNames;  // 已加载的库文件名列表
     std::map<std::wstring, std::wstring> libraryFilePathMap; // 库文件名 -> .fne完整路径
+    std::map<std::wstring, std::wstring> libraryChineseNameMap; // 库文件名 -> 中文名称
     std::wstring lastError_;  // 最后的错误信息
 };

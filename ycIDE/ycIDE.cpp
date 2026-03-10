@@ -11,6 +11,7 @@
 #include "ResourceExplorer.h"
 #include "Keyword.h"
 #include "LibraryConfig.h"
+#include "LibraryParser.h"
 #include "ProjectManager.h"
 #include "NewProjectDialog.h"
 #include "VisualDesigner.h"
@@ -4597,9 +4598,16 @@ LRESULT CALLBACK LibraryConfigWndProc(HWND hWnd, UINT message, WPARAM wParam, LP
             swprintf_s(debugMsg, L"扫描到 %zu 个支持库", libraries.size());
             SetWindowTextW(hDescText, debugMsg);
             
+            auto& libParser = LibraryParser::GetInstance();
             for (size_t i = 0; i < libraries.size(); i++) {
                 const auto& lib = libraries[i];
-                std::wstring displayName = (lib.loaded ? L"☑ " : L"☐ ") + lib.name;
+                std::wstring chName = libParser.GetLibraryChineseName(lib.name);
+                std::wstring displayName = (lib.loaded ? L"☑ " : L"☐ ");
+                if (!chName.empty()) {
+                    displayName += chName + L" (" + lib.name + L")";
+                } else {
+                    displayName += lib.name;
+                }
                 SendMessageW(hLibraryList, LB_ADDSTRING, 0, (LPARAM)displayName.c_str());
             }
             
@@ -4622,9 +4630,16 @@ LRESULT CALLBACK LibraryConfigWndProc(HWND hWnd, UINT message, WPARAM wParam, LP
                     
                     // 刷新列表显示
                     SendMessageW(hLibraryList, LB_RESETCONTENT, 0, 0);
+                    auto& libParser1 = LibraryParser::GetInstance();
                     for (size_t i = 0; i < libraries.size(); i++) {
                         const auto& lib = libraries[i];
-                        std::wstring displayName = L"☑ " + lib.name;
+                        std::wstring chName = libParser1.GetLibraryChineseName(lib.name);
+                        std::wstring displayName = L"☑ ";
+                        if (!chName.empty()) {
+                            displayName += chName + L" (" + lib.name + L")";
+                        } else {
+                            displayName += lib.name;
+                        }
                         SendMessageW(hLibraryList, LB_ADDSTRING, 0, (LPARAM)displayName.c_str());
                     }
                 }
@@ -4642,9 +4657,16 @@ LRESULT CALLBACK LibraryConfigWndProc(HWND hWnd, UINT message, WPARAM wParam, LP
                     
                     // 刷新列表显示
                     SendMessageW(hLibraryList, LB_RESETCONTENT, 0, 0);
+                    auto& libParser2 = LibraryParser::GetInstance();
                     for (size_t i = 0; i < libraries.size(); i++) {
                         const auto& lib = libraries[i];
-                        std::wstring displayName = L"☐ " + lib.name;
+                        std::wstring chName = libParser2.GetLibraryChineseName(lib.name);
+                        std::wstring displayName = L"☐ ";
+                        if (!chName.empty()) {
+                            displayName += chName + L" (" + lib.name + L")";
+                        } else {
+                            displayName += lib.name;
+                        }
                         SendMessageW(hLibraryList, LB_ADDSTRING, 0, (LPARAM)displayName.c_str());
                     }
                 }
@@ -4660,9 +4682,16 @@ LRESULT CALLBACK LibraryConfigWndProc(HWND hWnd, UINT message, WPARAM wParam, LP
                     // 刷新列表
                     SendMessageW(hLibraryList, LB_RESETCONTENT, 0, 0);
                     const auto& libraries = libConfig.GetLibraries();
+                    auto& libParser3 = LibraryParser::GetInstance();
                     for (size_t i = 0; i < libraries.size(); i++) {
                         const auto& lib = libraries[i];
-                        std::wstring displayName = (lib.loaded ? L"☑ " : L"☐ ") + lib.name;
+                        std::wstring chName = libParser3.GetLibraryChineseName(lib.name);
+                        std::wstring displayName = (lib.loaded ? L"☑ " : L"☐ ");
+                        if (!chName.empty()) {
+                            displayName += chName + L" (" + lib.name + L")";
+                        } else {
+                            displayName += lib.name;
+                        }
                         SendMessageW(hLibraryList, LB_ADDSTRING, 0, (LPARAM)displayName.c_str());
                     }
                 }
@@ -4697,8 +4726,14 @@ LRESULT CALLBACK LibraryConfigWndProc(HWND hWnd, UINT message, WPARAM wParam, LP
                     
                     if (sel != LB_ERR && sel < (int)libraries.size()) {
                         const auto& lib = libraries[sel];
+                        auto& libParserSel = LibraryParser::GetInstance();
+                        std::wstring chName = libParserSel.GetLibraryChineseName(lib.name);
                         std::wstring info = L"支持库名称：\r\n";
-                        info += lib.name;
+                        if (!chName.empty()) {
+                            info += chName + L" (" + lib.name + L")";
+                        } else {
+                            info += lib.name;
+                        }
                         info += L"\r\n\r\n支持库路径：\r\n";
                         info += lib.filePath;
                         info += L"\r\n\r\n状态：";
@@ -4719,21 +4754,32 @@ LRESULT CALLBACK LibraryConfigWndProc(HWND hWnd, UINT message, WPARAM wParam, LP
                         libConfig.SetLibraryLoaded(sel, !libraries[sel].loaded);
                         
                         // 更新显示
-                        std::wstring displayName = (libraries[sel].loaded ? L"☑ " : L"☐ ") + libraries[sel].name;
+                        auto& libParser4 = LibraryParser::GetInstance();
+                        std::wstring chName = libParser4.GetLibraryChineseName(libraries[sel].name);
+                        std::wstring displayName = (libraries[sel].loaded ? L"☑ " : L"☐ ");
+                        if (!chName.empty()) {
+                            displayName += chName + L" (" + libraries[sel].name + L")";
+                        } else {
+                            displayName += libraries[sel].name;
+                        }
                         SendMessageW(hLibraryList, LB_DELETESTRING, sel, 0);
                         SendMessageW(hLibraryList, LB_INSERTSTRING, sel, (LPARAM)displayName.c_str());
                         SendMessageW(hLibraryList, LB_SETCURSEL, sel, 0);
                         
                         // 更新信息显示
                         const auto& lib = libraries[sel];
-                        std::wstring info = L"支持库名称：\r\n";
-                        info += lib.name;
-                        info += L"\r\n\r\n支持库路径：\r\n";
-                        info += lib.filePath;
-                        info += L"\r\n\r\n状态：";
-                        info += lib.loaded ? L"已勾选" : L"未勾选";
-                        info += L"\r\n\r\n提示：\r\n点击列表项可切换勾选状态。";
-                        SetWindowTextW(hDescText, info.c_str());
+                        std::wstring info2 = L"支持库名称：\r\n";
+                        if (!chName.empty()) {
+                            info2 += chName + L" (" + lib.name + L")";
+                        } else {
+                            info2 += lib.name;
+                        }
+                        info2 += L"\r\n\r\n支持库路径：\r\n";
+                        info2 += lib.filePath;
+                        info2 += L"\r\n\r\n状态：";
+                        info2 += lib.loaded ? L"已勾选" : L"未勾选";
+                        info2 += L"\r\n\r\n提示：\r\n点击列表项可切换勾选状态。";
+                        SetWindowTextW(hDescText, info2.c_str());
                     }
                 }
                 break;

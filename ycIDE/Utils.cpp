@@ -850,6 +850,21 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
         return clean.find(L".如果 (") == 0 || clean.find(L".如果(") == 0;
     };
     
+    // 辅助函数：检查行是否是循环首命令，返回对应的循环尾关键字
+    auto getLoopTail = [&stripAllMarkers](const std::wstring& content) -> std::wstring {
+        std::wstring clean = stripAllMarkers(content);
+        if (clean.find(L".计次循环首") == 0 || clean.find(L"计次循环首") == 0) return L".计次循环尾 ()";
+        if (clean.find(L".判断循环首") == 0 || clean.find(L"判断循环首") == 0) return L".判断循环尾 ()";
+        if (clean.find(L".循环判断首") == 0 || clean.find(L"循环判断首") == 0) return L".循环判断尾 ()";
+        if (clean.find(L".变量循环首") == 0 || clean.find(L"变量循环首") == 0) return L".变量循环尾 ()";
+        return L"";
+    };
+
+    // 辅助函数：检查行是否是循环首命令
+    auto isLoopCmd = [&getLoopTail](const std::wstring& content) -> bool {
+        return !getLoopTail(content).empty();
+    };
+
     // 递归函数：将一组缩进行转换为EPL格式
     // indentedLines: 当前层级的行（已剥离外层标记）
     // indent: 当前缩进字符串（每层4个空格）
@@ -918,6 +933,26 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 
                 // 插入.如果结束
                 result += indent + L".如果结束\n";
+            }
+            // 检查是否是循环首命令
+            else if (isLoopCmd(bline)) {
+                std::wstring tail = getLoopTail(bline);
+                result += indent + RestoreHalfWidthOperators(stripAllMarkers(bline)) + L"\n";
+                
+                // 收集子行（\u200C 开头的行）
+                std::vector<std::wstring> subLines;
+                bi++;
+                while (bi < blockLines.size() && isIndentedLine(blockLines[bi])) {
+                    subLines.push_back(stripOneLevel(blockLines[bi]));
+                    bi++;
+                }
+                bi--; // 回退一行，for循环会++
+                
+                // 递归处理子行
+                convertBlock(subLines, indent + L"    ");
+                
+                // 插入循环尾
+                result += indent + tail + L"\n";
             }
             // 普通行
             else if (!bline.empty()) {
@@ -1025,8 +1060,8 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 trimmedLine = trimmedLine.substr(trimStart);
             }
             
-            // 检查是否是.如果真或.如果()命令行（顶层）
-            if ((isIfTrueCmd(trimmedLine) || isIfCmd(trimmedLine)) && i + 1 < lines.size()) {
+            // 检查是否是.如果真或.如果()或循环首命令行（顶层）
+            if ((isIfTrueCmd(trimmedLine) || isIfCmd(trimmedLine) || isLoopCmd(trimmedLine)) && i + 1 < lines.size()) {
                 // 将命令行和其子行收集到一个block中，使用递归函数处理
                 std::vector<std::wstring> block;
                 block.push_back(line);
@@ -1035,6 +1070,19 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 while (j < lines.size() && isIndentedLine(lines[j])) {
                     block.push_back(lines[j]);
                     j++;
+                }
+                
+                // 对于循环命令，跳过紧随其后的循环尾行（convertBlock会自动生成）
+                if (isLoopCmd(trimmedLine) && j < lines.size()) {
+                    std::wstring nextTrimmed = lines[j];
+                    size_t ns = nextTrimmed.find_first_not_of(L" \t");
+                    if (ns != std::wstring::npos) nextTrimmed = nextTrimmed.substr(ns);
+                    if (nextTrimmed.find(L".计次循环尾") == 0 || nextTrimmed.find(L"计次循环尾") == 0 ||
+                        nextTrimmed.find(L".判断循环尾") == 0 || nextTrimmed.find(L"判断循环尾") == 0 ||
+                        nextTrimmed.find(L".循环判断尾") == 0 || nextTrimmed.find(L"循环判断尾") == 0 ||
+                        nextTrimmed.find(L".变量循环尾") == 0 || nextTrimmed.find(L"变量循环尾") == 0) {
+                        j++; // 跳过循环尾行
+                    }
                 }
                 
                 // 递归转换

@@ -14,6 +14,8 @@ enum class EYTokenType {
     KEYWORD_ELSE,        // 否则
     KEYWORD_WHILE,       // 判断循环首
     KEYWORD_FOR,         // 计次循环首
+    KEYWORD_FOR_END,     // 计次循环尾
+    KEYWORD_WHILE_END,   // 判断循环尾
     KEYWORD_DO,          // 到循环尾
     KEYWORD_BREAK,       // 跳出循环
     KEYWORD_CONTINUE,    // 继续循环

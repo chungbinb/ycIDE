@@ -712,9 +712,7 @@ static void CollectFuncCalls(const std::shared_ptr<ASTNode>& node) {
         }
         case ASTNodeType::FOR_STMT: {
             auto* s = static_cast<ForStmtNode*>(node.get());
-            CollectFuncCalls(s->startValue);
-            CollectFuncCalls(s->endValue);
-            CollectFuncCalls(s->stepValue);
+            CollectFuncCalls(s->loopCount);
             for (auto& c : s->body) CollectFuncCalls(c);
             break;
         }
@@ -959,12 +957,10 @@ static std::string GenStmtNode(std::shared_ptr<ASTNode> node, int indent) {
         }
         case ASTNodeType::FOR_STMT: {
             auto* f = static_cast<ForStmtNode*>(node.get());
-            std::string varName = WideToUtf8(f->loopVar);
-            std::string start   = GenExprNode(f->startValue);
-            std::string end     = GenExprNode(f->endValue);
-            std::string step    = f->stepValue ? GenExprNode(f->stepValue) : "1";
-            std::string result  = ind + "for (int " + varName + " = " + start +
-                "; " + varName + " <= " + end + "; " + varName + " += " + step + ") {\n";
+            std::string count = GenExprNode(f->loopCount);
+            std::string varName = f->loopVar.empty() ? "_ey_cnt" : WideToUtf8(f->loopVar);
+            std::string result  = ind + "for (int " + varName + " = 1; " +
+                varName + " <= " + count + "; " + varName + "++) {\n";
             for (auto& s : f->body) result += GenStmtNode(s, indent + 1);
             result += ind + "}\n";
             return result;
