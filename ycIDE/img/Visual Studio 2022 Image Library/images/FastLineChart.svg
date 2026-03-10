@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFastLineChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8.023,15H1.5L1,14.5V1H2V14H7.422A4.935,4.935,0,0,0,8.023,15Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15.5,12A3.5,3.5,0,1,1,12,8.5,3.5,3.5,0,0,1,15.5,12Z" />
+    <path class="light-defaultgrey" d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Zm0-7a3,3,0,1,0,3,3A3,3,0,0,0,12,9Z" />
+    <path class="light-defaultgrey" d="M13.5,13H12l-.5-.5V10h1v2h1Z" />
+    <path class="light-lightblue" d="M15,3.765V5.18L12.917,3.1l-5.2,5.2H7.008L5.139,6.43,2,9.568V8.154L4.785,5.369h.707L7.361,7.237l5.2-5.2h.707Z" />
+  </g>
+</svg>

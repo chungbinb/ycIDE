@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-orange{fill: #b73d18; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRocket</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.5,10.139V14.5h-3l-1-1Z" />
+      <path class="light-defaultgrey" d="M11,10.139V14.5l-.5.5h-3l-.353-.146-1-1,.707-.708L7.7,14H9.995V10.139Z" />
+    </g>
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M5.873,5.5,2.5,9.5l-1-1v-3Z" />
+      <path class="light-defaultgrey" d="M2,6V8.293l.854.853-.707.708-1-1L1,8.5v-3L1.5,5H5.873V6Z" />
+    </g>
+    <path class="light-orange" d="M4,14v1H1V12H2v2Z" />
+    <path class="light-defaultgrey-10" d="M14.493,1.5c.009,7.027-8,12-8,12l-4-4S7.492,1.509,14.493,1.5Z" />
+    <path class="light-defaultgrey" d="M14.491,1C7.3,1.009,2.278,8.9,2.068,9.234l.071.62,4,4,.617.071C7.093,13.716,15,8.722,14.992,1.5ZM6.557,12.856,3.136,9.437C4.128,8,8.379,2.355,13.978,2.016,13.652,7.628,7.991,11.869,6.557,12.856Z" />
+    <path class="light-defaultgrey" d="M11,6.5A1.5,1.5,0,1,1,9.495,5,1.5,1.5,0,0,1,11,6.5Z" />
+  </g>
+</svg>

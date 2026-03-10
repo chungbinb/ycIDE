@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCallFromMethod</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple-10" d="M14.5,8.326v3.818l-3,1.364-3-1.364V8.326l3-1.636Z" />
+    <path class="light-purple" d="M14.739,7.879l-3-1.636h-.478l-3,1.636L8,8.318v3.819l.293.455,3,1.363h.414l3-1.363L15,12.137V8.318ZM11,12.724l-2-.91V9.1L11,10Zm.5-3.59L9.618,8.278,11.5,7.251l1.882,1.027Zm2.5,2.68-2,.91V10L14,9.1Z" />
+    <path class="light-blue" d="M2.707,10l1.147,1.146-.708.708-2-2V9.146l2-2,.708.708L2.707,9H7v1Z" />
+    <path class="light-defaultgrey-10" d="M3.5,3A1.5,1.5,0,0,1,5,1.5h5A1.5,1.5,0,0,1,11.5,3V4.5h-2v-1h-4v1h-2Z" />
+    <path class="light-defaultgrey" d="M11,4H10V3.5L9.5,3h-4L5,3.5V4H4V3A1,1,0,0,1,5,2h5a1,1,0,0,1,1,1ZM10,1H5A2,2,0,0,0,3,3V4.5l.5.5h2L6,4.5V4H9v.5l.5.5h2l.5-.5V3A2,2,0,0,0,10,1Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDynamicGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M16,2.5v8l-.5.5H14V10h1V3H4V4H3V2.5L3.5,2h12Z" />
+      <path class="light-defaultgrey-10" d="M15.5,2.5v8H14V5.086L12.914,4H3.5V2.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M12.5,13.5H.5v-8h12Z" />
+    <path class="light-defaultgrey" d="M12.5,5H.5L0,5.5v8l.5.5h12l.5-.5v-8ZM12,13H1V6H12Z" />
+    <path class="light-blue" d="M10.854,9.146v.708l-2,2-.708-.708L9.293,10H3.707l1.147,1.146-.708.708-2-2V9.146l2-2,.708.708L3.707,9H9.293L8.146,7.854l.708-.708Z" />
+  </g>
+</svg>

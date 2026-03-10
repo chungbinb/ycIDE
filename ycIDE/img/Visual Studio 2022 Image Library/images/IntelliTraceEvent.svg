@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIntelliTraceEvent</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,5.5v5h2v3H5.516L7,11.8V11H5.5v-.276l.159-.224H7.5v-5h-2v-3h7v3Z" />
+    <path class="light-defaultgrey" d="M11,6v4h2v4H5.079L6,12.947V13h6V11H10V5h2V3H6V5H8v6H5.3l.712-1H7V6H5V2h8V6Z" />
+    <path class="light-yellow" d="M5.5,12,2,16H1l1.5-3H.5l2-4h3L3.363,12Z" />
+  </g>
+</svg>

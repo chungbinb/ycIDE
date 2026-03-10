@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightForeignKeyError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,8.5a3,3,0,1,1,2.816-4H7.5l1-1,1,1,1-1,1,1,1-1,2,2-1,1H7.316A2.99,2.99,0,0,1,4.5,8.5Z" />
+    <path class="light-defaultgrey" d="M2.75,5.5a.75.75,0,1,1,.75.75A.75.75,0,0,1,2.75,5.5ZM4.5,2A3.5,3.5,0,1,0,7.649,7H13.5l.354-.146,1-1V5.146l-2-2h-.708l-.646.647-.646-.647h-.708L9.5,3.793l-.646-.647H8.146l-.622.623A3.491,3.491,0,0,0,4.5,2ZM6.882,4.782H7.925L8.5,4.207l.646.647h.708l.646-.647.646.647h.708l.646-.647L13.793,5.5l-.5.5H6.949a2.526,2.526,0,1,1-.067-1.218Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.147-.708.707L12,12.707l-1.146,1.147-.708-.707L11.293,12l-1.147-1.146.708-.707L12,11.293l1.146-1.146.708.707Z" />
+  </g>
+</svg>

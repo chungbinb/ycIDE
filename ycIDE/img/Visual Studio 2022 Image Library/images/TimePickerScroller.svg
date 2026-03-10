@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>TimePickerScroller</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,1.5a5,5,0,0,0,0,10A4.919,4.919,0,0,0,9,10.83V3h1.08A5.05,5.05,0,0,0,6.5,1.5Z" />
+    <path class="light-defaultgrey" d="M6.5,1a5.5,5.5,0,0,0,0,11A5.4,5.4,0,0,0,9,11.39V10.24A4.5,4.5,0,1,1,6.5,2,4.428,4.428,0,0,1,9.32,3h1.42A5.5,5.5,0,0,0,6.5,1Z" />
+    <path class="light-defaultgrey" d="M7,6V3H6V6.5l.5.5H9V6Z" />
+    <path class="light-defaultgrey-10" d="M10,4V15h5V4Z" />
+    <path class="light-defaultgrey" d="M10,9v1h5V9Z" />
+    <path class="light-blue" d="M10,11v4h5V11Zm0-7V8h5V4Z" />
+    <path class="white" d="M11,12l1.5,2L14,12Zm1.5-6.97L11.02,7H14Z" />
+  </g>
+</svg>

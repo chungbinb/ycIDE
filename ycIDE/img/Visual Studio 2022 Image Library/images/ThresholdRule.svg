@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightThresholdRule</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M2.5,1.5V8.76L3,7.85,3.47,7H5.53L6.5,8.76l.5.91.35.63.25.46.25.45L9.39,14l.27.5H13.5V1.5Z" />
+      <path class="light-defaultgrey" d="M13.5,1H2.5L2,1.5V9.67l.5-.91L3,7.85V2H13V14H9.39l.27.5.28.5H13.5l.5-.5V1.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M8,3.5A2.493,2.493,0,0,0,6.5,7.99v.77l.5.91.35.63.25.46.4-.4,1.5,1.5V7.99A2.493,2.493,0,0,0,8,3.5Z" />
+    <path class="light-defaultgrey" d="M8,3A3.009,3.009,0,0,0,5,6a2.772,2.772,0,0,0,.18,1h.35L6.5,8.76l.5.91V8.82a2.868,2.868,0,0,0,2,0v1.83L8.35,10h-.7l-.3.3.25.46.25.45L8,11.06l1.15,1.15.85-.35V8.22A2.989,2.989,0,0,0,8,3ZM8,8a2,2,0,1,1,2-2A2.006,2.006,0,0,1,8,8Z" />
+    <path class="light-defaultgrey" d="M.061,15.261,4.061,8h.878l4,7.261L8.5,16H.5Z" />
+    <path class="white" d="M4,10H5v3H4Zm.5,3.75a.75.75,0,1,1-.75.75A.75.75,0,0,1,4.5,13.75Z" />
+  </g>
+</svg>

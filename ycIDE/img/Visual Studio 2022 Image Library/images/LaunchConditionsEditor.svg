@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLaunchConditionsEditor</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M8.5,8.5,5.5,12v3.5h-2V12L.5,8.5Z" />
+    <path class="light-defaultgrey-10" d="M14.5,1.5v10H7.9l2.153-2.511L9.141,7H6.5V1.5Z" />
+    <path class="light-defaultgrey" d="M9.141,7H11V8H9.6Zm.049,3H10V9.055ZM8,3V4h5V3ZM8,6h3V5H8Zm4,0h1V5H12Z" />
+    <path class="light-defaultgrey" d="M15,1.5v10l-.5.5H7.476l.857-1H14V2H7V7H6V1.5L6.5,1h8Z" />
+    <path class="light-blue" d="M8.5,8H.5l-.38.825L3,12.185V15.5l.5.5h2l.5-.5V12.185l2.88-3.36ZM5.12,11.675,5,12v3H4V12l-.12-.325L1.587,9H7.413Z" />
+  </g>
+</svg>

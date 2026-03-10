@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIntellisenseLightBulbError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M5.5,11.531V11.2a1.94,1.94,0,0,0-.871-1.576,5.013,5.013,0,1,1,7.633-2.592C12.174,7.022,12.09,7,12,7a4.991,4.991,0,0,0-4.953,4.531Z" />
+    <path class="light-yellow" d="M7,12.03H5.5l-.5-.5a1.86,1.86,0,0,0-.829-1.623A5.831,5.831,0,0,1,2,5.531a5.5,5.5,0,0,1,11,0,5.092,5.092,0,0,1-.25,1.545A4.875,4.875,0,0,0,12,7c-.1,0-.19.023-.287.029A4.132,4.132,0,0,0,12,5.531a4.5,4.5,0,0,0-9,0A4.846,4.846,0,0,0,4.827,9.152a2.9,2.9,0,0,1,1.14,1.878H7.1A5,5,0,0,0,7,12C7,12.01,7,12.02,7,12.03Z" />
+    <path class="light-yellow" d="M7.5,3.031A2.5,2.5,0,0,0,7,7.981v3.05h.1a4.946,4.946,0,0,1,.9-2V7.981a2.5,2.5,0,0,0-.5-4.95Zm0,4A1.5,1.5,0,1,1,9,5.531,1.5,1.5,0,0,1,7.5,7.031Z" />
+    <path class="light-defaultgrey-10" d="M7.713,14.531H5.5v-3H7.047C7.033,11.688,7,11.839,7,12A4.942,4.942,0,0,0,7.713,14.531Z" />
+    <path class="light-defaultgrey" d="M8.051,15.031H5.5l-.5-.5v-3l.5-.5H7.1A4.991,4.991,0,0,0,7,12c0,.011,0,.021,0,.031H6v2H7.441A4.973,4.973,0,0,0,8.051,15.031Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

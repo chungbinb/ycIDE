@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMessageError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Zm0,0H0V0H16Zm0,0H0V0H16Zm0,0H0V0H16Zm0,0H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,3.5,8,8.5l-6.5-5Z" />
+    <path class="light-defaultgrey-10" d="M7.051,12.5H1.5v-9h13V7.7A4.937,4.937,0,0,0,12,7a5.006,5.006,0,0,0-5,5A4.865,4.865,0,0,0,7.051,12.5Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <path class="light-defaultgrey" d="M7,12H2V4.535L7.7,8.9h.61L14,4.535V7.424a4.967,4.967,0,0,1,1,.6V3.5L14.5,3H1.5L1,3.5v9l.5.5H7.1A5,5,0,0,1,7,12Zm6.03-8L8,7.869,2.97,4Z" />
+  </g>
+</svg>

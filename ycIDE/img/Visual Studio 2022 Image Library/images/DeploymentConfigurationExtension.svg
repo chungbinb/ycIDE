@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDeploymentConfigurationExtension</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,9.5H6.5V.5h5l2,2V8H8Z" />
+    <path class="light-defaultgrey" d="M8,10H6.5L6,9.5V.5L6.5,0h5l.354.146,2,2L14,2.5V8H13V3H10.993V1H7V9H8Z" />
+    <path class="light-defaultgrey" d="M9,5H8V4H9Zm2-1H10V5h1ZM9,6H8V7H9Z" />
+    <path class="light-yellow" d="M5.074,12.293v-.28H2.768v2H6l.487-.488h.354l.707.707v.354L6.135,16H5.781l-.707-.707v-.28H2.268l-.5-.5V10.94l-.354.353H1.061L0,10.232V9.879L2.121,7.758h.354l1.061,1.06v.354l-.768.768v1.073H6l.487-.488h.354l.707.707v.354L6.135,13H5.781Z" />
+    <path class="light-defaultgrey" d="M12,12H9V9h3Zm0,4H9V13h3Zm4-4H13V9h3Z" />
+  </g>
+</svg>

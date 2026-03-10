@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>TestMethodNotCovered</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M7.41,14A5.106,5.106,0,0,1,7,12a4.712,4.712,0,0,1,.1-1c.03-.17.08-.33.12-.5H4L2.48,12.96a1,1,0,0,0,.84,1.54H7.67C7.58,14.34,7.49,14.17,7.41,14Z" />
+    <path class="light-teal" d="M7.67,14.5c-.09-.16-.18-.33-.26-.5H3.32a.5.5,0,0,1-.41-.78L4.28,11H7.1c.03-.17.08-.33.12-.5.06-.17.12-.34.19-.5H4l-.42.23-.01.01L2.06,12.69A1.5,1.5,0,0,0,3.32,15H8A4.322,4.322,0,0,1,7.67,14.5Z" />
+    <path class="light-defaultgrey-10" d="M9.67,6.67V1.5h-3V6.67L4.5,10H7.41A5.063,5.063,0,0,1,9.54,7.65a5.228,5.228,0,0,1,.58-.29Z" />
+    <path class="light-defaultgrey" d="M11,2V1H5V2H6V6.52L3.58,10.23,4,10h.92l2-3.06L7,6.67V2H9V6.67l.08.27.46.71a5.228,5.228,0,0,1,.58-.29c.12-.04.23-.08.35-.12L10,6.52V2Z" />
+    <path class="light-blue" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M14,12.5H10v-1h4Z" />
+  </g>
+</svg>

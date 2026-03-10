@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSystemDiagram</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,8.5a1,1,0,0,1-1,1v5H1.5V2.5h12v5A1,1,0,0,1,14.5,8.5Z" />
+    <path class="light-defaultgrey-10" d="M4.5,4.5h6V7h-6Z" />
+    <path class="light-defaultgrey-10" d="M10.5,12.5h-6V10h6Z" />
+    <path class="light-defaultgrey" d="M15,8.5a1.5,1.5,0,0,0-1-1.408V2.5L13.5,2H1.5L1,2.5v12l.5.5h12l.5-.5V9.908A1.5,1.5,0,0,0,15,8.5ZM2,14V3H13V7.092a1.491,1.491,0,0,0,0,2.816V14ZM13.5,9a.5.5,0,1,1,.5-.5A.5.5,0,0,1,13.5,9Z" />
+    <path class="light-defaultgrey" d="M8,9H7V8H8ZM8,6H7V7H8Zm2.5-2h-6L4,4.5v3l.5.5H7V7H5V5h5V7H8V8h2.5l.5-.5v-3ZM7,11H8V10H7ZM4.5,13h6l.5-.5v-3L10.5,9H8v1h2v2H5V10H7V9H4.5L4,9.5v3Z" />
+  </g>
+</svg>

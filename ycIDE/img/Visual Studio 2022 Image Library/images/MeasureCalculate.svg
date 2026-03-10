@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMeasureCalculate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,4.5h2V6.586L6.914,6H5.5Zm4,6h2v-8h-2ZM14,1v9h1V1Z" />
+    <path class="light-defaultgrey" d="M9.5,2,9,2.5v8l.5.5h2l.5-.5v-8L11.5,2ZM11,10H10V3h1ZM15.5,0h-2L13,.5v10l.5.5h2l.5-.5V.5ZM15,4v6H14V1h1ZM7.5,4l.5.5V7.086l-1-1V5H6V6H5V4.5L5.5,4Z" />
+    <path class="light-defaultgrey-10" d="M6.5,15.5H.5v-8h6Z" />
+    <path class="light-defaultgrey" d="M6.5,7H.5L0,7.5v8l.5.5h6l.5-.5v-8ZM6,15H1V8H6ZM4,11H5v1H4Zm0,2H5v1H4Zm1-3H2V9H5ZM3,14H2V13H3Zm0-2H2V11H3Z" />
+  </g>
+</svg>

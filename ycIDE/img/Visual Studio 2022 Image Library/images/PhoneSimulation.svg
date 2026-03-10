@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPhoneSimulation</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M2.146,7.146l.708.708L1.707,9H7v1H1.707l1.147,1.146-.708.708-2-2V9.146Z" />
+    <path class="light-blue" d="M1,13H6.293L5.146,11.854l.708-.708,2,2v.708l-2,2-.708-.708L6.293,14H1Z" />
+    <path class="light-defaultgrey-10" d="M12.5,1.5v13H8.621l.233-.232V12.732L7.121,11H8V8H4.5V1.5Z" />
+    <path class="light-defaultgrey" d="M13,1.5v13l-.5.5H8.121l.733-.732V14H12V2H5V8H4.414L4,7.586V1.5L4.5,1h8Z" />
+    <path class="light-defaultgrey" d="M9,4H8V3H9Zm1,8v1H8.854v-.268L8.121,12Z" />
+  </g>
+</svg>

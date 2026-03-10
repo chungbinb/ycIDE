@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPhoneTool</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,1.5v13H9V10.086L7.914,9H7V8.086L5.914,7H4.5V1.5Z" />
+    <path class="light-defaultgrey" d="M13,1.5v13l-.5.5H9V14h3V2H5V7H4V1.5L4.5,1h8Z" />
+    <path class="light-defaultgrey" d="M9,4H8V3H9Zm1,8v1H9V12Z" />
+    <path class="light-defaultgrey-10" d="M7.5,10.5v5H.5v-5Z" />
+    <path class="light-defaultgrey" d="M7.5,10H6V8.5L5.5,8h-3L2,8.5V10H.5l-.5.5v5l.5.5h7l.5-.5v-5ZM3,9H5v1H3Zm4,2v1H1V11ZM1,15V13H2v1H3V13H5v1H6V13H7v2Z" />
+  </g>
+</svg>

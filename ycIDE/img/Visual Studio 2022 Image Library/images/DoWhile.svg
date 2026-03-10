@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDoWhile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M13.5,14H7V13h6V3H4V2h9.5l.5.5v11Z" />
+    <path class="light-defaultgrey" d="M5,14H4V13H5Z" />
+    <path class="light-blue" d="M6.623,7.357,5,5.735V12H4V5.735L2.381,7.357,1.674,6.65,4.148,4.175h.707L7.33,6.65Z" />
+  </g>
+</svg>

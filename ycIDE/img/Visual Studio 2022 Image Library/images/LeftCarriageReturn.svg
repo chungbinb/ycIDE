@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLeftCarriageReturn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M2,10.5v-5L5,8Z" />
+    <path class="light-defaultgrey" d="M14,3V4H13v9H12V4H10v9H9V8H8.5a2.5,2.5,0,0,1,0-5Z" />
+  </g>
+</svg>

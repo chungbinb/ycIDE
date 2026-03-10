@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLibrary</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M3.5,2.5v11h-2V2.5Zm4,0v11h-2V2.5ZM14.389,13l-1.931.517L9.611,2.9l1.931-.517Z" />
+    <path class="light-defaultgrey" d="M12.025,2.249,11.412,1.9,9.48,2.413l-.353.613,2.848,10.625.613.354,1.932-.518.353-.613Zm.787,10.66L10.223,3.25l.965-.259,2.589,9.659ZM7.5,14h-2L5,13.5V2.5L5.5,2h2l.5.5v11ZM6,13H7V3H6ZM3.5,14h-2L1,13.5V2.5L1.5,2h2l.5.5v11ZM2,13H3V3H2Z" />
+  </g>
+</svg>

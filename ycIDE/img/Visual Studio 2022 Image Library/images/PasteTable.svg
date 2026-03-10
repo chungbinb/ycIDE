@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPasteTable</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,3.5v11H10V10.086L8.914,9H3.5V3.5Z" />
+      <path class="light-defaultgrey" d="M14,3.5v11l-.5.5H10V14h3V4H4V9H3V3.5L3.5,3h10Z" />
+    </g>
+    <path class="light-defaultgrey" d="M10.5,2a2,2,0,0,0-4,0H5V4h7V2Zm-2-1a1,1,0,1,1-1,1A1,1,0,0,1,8.5,1Z" />
+    <path class="light-defaultgrey-10" d="M.5,10.5h8v5H.5Z" />
+    <path class="light-defaultgrey" d="M0,10.5v5l.5.5h8l.5-.5v-5L8.5,10H.5ZM4,12v1H1V12Zm4,1H5V12H8ZM5,15V14H8v1ZM1,15V14H4v1Z" />
+  </g>
+</svg>

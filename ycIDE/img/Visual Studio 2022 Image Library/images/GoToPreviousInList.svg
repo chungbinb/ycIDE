@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGoToPreviousInList</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M3,14H14v1H3ZM3,9v1H14V9Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14,11v2H3V11Z" />
+    <path class="light-blue" d="M2.4,1.9,3.1,2.6,1.707,4H8V5H1.707L3.1,6.4,2.4,7.1.146,4.854V4.146Z" />
+  </g>
+</svg>

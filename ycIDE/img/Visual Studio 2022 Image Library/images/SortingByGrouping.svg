@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>SortingByGrouping</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.73,12.85l-3.5-3.5L8.58,9l1.77-1.77.65.65V3L9.5,1.5h-8v13h11V12.85Z" />
+    <path class="light-defaultgrey" d="M12,12.85V14H2V2H9V5h2V3h.7L9.85,1.15,9.5,1h-8L1,1.5v13l.5.5h11l.5-.5V12.85Z" />
+    <path class="light-defaultgrey" d="M6.65,3.65,4.5,5.79,3.35,4.65l-.7.7,1.5,1.5h.7l2.5-2.5ZM4,8v2H6V8Zm0,3v2H6V11Zm6.88,1H8v1h3v-.88ZM8.23,9.35,8.58,9H8v1h.88ZM8,6V7h3V6Z" />
+    <path class="light-blue" d="M9.645,9.354l.707-.708L12,10.3V4h1v6.291l1.645-1.645.707.708-2.5,2.5h-.707Z" />
+  </g>
+</svg>

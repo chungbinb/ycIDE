@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTestPass</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M13.6,8.962A1,1,0,0,1,12.76,10.5H7.24A1,1,0,0,1,6.4,8.962L7.33,7.5h5.34Z" />
+    <path class="light-defaultgrey-10" d="M7.649,7,8.5,5.667V1.5h3V5.667L12.351,7Z" />
+    <path class="light-defaultgrey" d="M8,2H7V1h6V2H12V5.521L13.091,7.23,12.67,7h-.913l-.679-1.063L11,5.667V2H9V5.667l-.078.27L8.243,7H7.33l-.421.23L8,5.521Z" />
+    <path class="light-teal" d="M14.025,8.692,13.092,7.23,12.67,7H7.33l-.422.23L5.975,8.693a1.477,1.477,0,0,0-.219.942L7.1,10.982c.046,0,.089.018.136.018h5.522a1.5,1.5,0,0,0,1.264-2.308ZM13.2,9.74a.491.491,0,0,1-.438.26H7.239a.5.5,0,0,1-.421-.769L7.6,8H12.4l.786,1.23A.49.49,0,0,1,13.2,9.74Z" />
+    <path class="light-defaultgrey" d="M3.647,14.646,5.293,13H0V12H5.293L3.647,10.354l.707-.708,2.5,2.5v.708l-2.5,2.5Z" />
+  </g>
+</svg>

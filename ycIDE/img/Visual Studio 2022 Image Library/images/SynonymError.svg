@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSynonymError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7,12a5.106,5.106,0,0,1,.41-2c.08-.17.17-.34.26-.5H.5v5H7.67c-.09-.16-.18-.33-.26-.5A5.106,5.106,0,0,1,7,12Z" />
+    <path class="light-defaultgrey" d="M7.41,14H1V10H7.41c.08-.17.17-.34.26-.5A5.4,5.4,0,0,1,8.72,8.22L8.5,8H.5L0,8.5v6l.5.5H8a4.322,4.322,0,0,1-.33-.5C7.58,14.34,7.49,14.17,7.41,14Z" />
+    <path class="light-defaultgrey-10" d="M7.5,1.5v5h8v-5Z" />
+    <path class="light-defaultgrey" d="M15.5,0h-8L7,.5v6l.5.5h8l.5-.5V.5ZM15,6H8V2h7Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

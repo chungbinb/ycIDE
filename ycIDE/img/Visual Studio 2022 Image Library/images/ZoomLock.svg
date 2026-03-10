@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ZoomLock</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,11.5v4H.5v-4Z" />
+    <path class="light-defaultgrey" d="M0,11.5v4l.5.5h5l.5-.5v-4L5.5,11H5V10a2,2,0,0,0-4,0v1H.5ZM4,11H2V10a1,1,0,0,1,2,0ZM1,12H5v3H1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M6.5,1.5a5,5,0,0,0-5,5,4.913,4.913,0,0,0,.08.86,2.765,2.765,0,0,1,.47-.2A2.986,2.986,0,0,1,6,10v.09l1,1v.38A5,5,0,0,0,6.5,1.5Z" />
+      <path class="light-defaultgrey" d="M10.72,10.02a5.491,5.491,0,1,0-9.6-2.36,3.637,3.637,0,0,1,.46-.3,2.765,2.765,0,0,1,.47-.2A4.651,4.651,0,0,1,2,6.5a4.5,4.5,0,1,1,4.89,4.48l.11.11v.89a5.458,5.458,0,0,0,3.02-1.26l5.13,5.13.7-.7Z" />
+    </g>
+  </g>
+</svg>

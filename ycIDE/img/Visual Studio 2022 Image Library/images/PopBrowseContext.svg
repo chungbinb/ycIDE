@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightPopBrowseContext</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M5.951,4.756A1,1,0,0,1,6,5,1,1,0,1,1,5,4a1,1,0,0,1,.244.049L8.182,1.111l.707.707Z" />
+    <path class="light-defaultgrey-10" d="M10,5A5,5,0,1,1,5,0,5.006,5.006,0,0,1,10,5Z" />
+    <path class="light-defaultgrey" d="M9.416,2.705A4.943,4.943,0,0,1,10,5,5,5,0,1,1,5,0,4.934,4.934,0,0,1,7.3.584l-.734.734A4,4,0,1,0,8.682,3.439Z" />
+    <path class="light-defaultgrey" d="M9,11v1h5V11Zm4-2v1h2V9ZM11,7V8h4V7ZM9.46,9A3.333,3.333,0,0,1,9,9.46V10h3V9ZM8,13v1h4V13Z" />
+  </g>
+</svg>

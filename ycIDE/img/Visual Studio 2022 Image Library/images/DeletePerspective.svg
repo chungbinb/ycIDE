@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDeletePerspective</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.5,15.5H.5v-8h8Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,3.265V8l-4,2L10,9.253V7.086L8.914,6H7.5V3.265l4-2.333Z" />
+      <path class="light-defaultgrey" d="M15.752,2.833,11.752.5h-.5l-4,2.333L7,3.265V6H8V4.365l3,1.5V9.194l-1-.5V9.813l1.276.638h.448l4-2L16,8V3.265ZM11.5,5,8.281,3.388,11.5,1.511l3.219,1.877Zm3.5,2.7-3,1.5V5.865l3-1.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8.5,7H.5L0,7.5v8l.5.5h8l.5-.5v-8ZM6.645,12.938l-.707.707L7.293,15H1.707l1.355-1.355-.707-.707L1,14.293V8.707l1.355,1.355.707-.707L1.707,8H7.293L5.938,9.355l.707.707L8,8.707v5.586Z" />
+  </g>
+</svg>

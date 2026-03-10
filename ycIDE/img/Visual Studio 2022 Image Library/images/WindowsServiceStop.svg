@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWindowsServiceStop</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M5.5,6v5.5H7.03A4.293,4.293,0,0,1,7.1,11,5,5,0,0,1,12,7a4.712,4.712,0,0,1,1,.1c.17.03.33.08.5.12V6Z" />
+      <path class="light-defaultgrey" d="M13.5,6H13V7.1c.17.03.33.08.5.12.17.06.34.12.5.19V5.5ZM6,6H5.5L5,5.5v6l.5.5H7a4.07,4.07,0,0,1,.03-.5A4.293,4.293,0,0,1,7.1,11H6Z" />
+    </g>
+    <path class="light-defaultgrey" d="M0,9v1H4V9ZM2,7V8H4V7ZM0,5V6H4V5Z" />
+    <path class="light-defaultgrey-10" d="M5.5,3.5v2h8v-2Z" />
+    <path class="light-defaultgrey" d="M13.5,3h-8L5,3.5v2l.5.5h8l.5-.5v-2ZM13,5H6V4h7Z" />
+    <path class="light-red" d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Z" />
+    <path class="white" d="M10.5,10.5h3v3h-3Z" />
+  </g>
+</svg>

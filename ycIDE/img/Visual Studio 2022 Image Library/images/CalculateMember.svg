@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0;fill:none;}</style>
+  </defs>
+  <title>IconLightCalculateMember</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="cls-1" d="M16,16H0V0H16Z" />
+    <path class="light-defaultgrey-10" d="M6.5,15.5H.5v-8h6Z" />
+    <path class="light-defaultgrey-10" d="M14.5,6A4.469,4.469,0,0,1,8,10.012V7.086L6.914,6H5.5a4.5,4.5,0,0,1,9,0Z" />
+    <path class="light-defaultgrey" d="M15,6a5.006,5.006,0,0,1-5,5,4.95,4.95,0,0,1-2-.424V9.444A3.959,3.959,0,0,0,10,10,4,4,0,1,0,6,6H5A5,5,0,0,1,15,6Z" />
+    <path class="light-defaultgrey" d="M9.5,6A1.5,1.5,0,1,1,11,4.5,1.5,1.5,0,0,1,9.5,6Zm0-2a.5.5,0,1,0,.5.5A.5.5,0,0,0,9.5,4Z" />
+    <path class="light-defaultgrey" d="M6.5,7H.5L0,7.5v8l.5.5h6l.5-.5v-8ZM6,15H1V8H6ZM3,14H2V13H3Zm1-3H5v1H4Zm0,2H5v1H4Zm1-3H2V9H5ZM3,12H2V11H3Z" />
+  </g>
+</svg>

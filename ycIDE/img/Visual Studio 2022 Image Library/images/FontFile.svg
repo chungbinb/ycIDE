@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFontFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+      <path class="light-defaultgrey" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+    </g>
+    <path class="light-blue" d="M10.81,12.6a1.078,1.078,0,0,1-.292-.113.991.991,0,0,1-.423-.536L7.794,6H7.405Q6.913,7.265,6.286,8.885T5.138,11.8a1.817,1.817,0,0,1-.209.4,1.221,1.221,0,0,1-.3.275,1.061,1.061,0,0,1-.311.124A1.967,1.967,0,0,1,4,12.654V13H6.752v-.346a2.443,2.443,0,0,1-.69-.125c-.205-.072-.306-.173-.306-.3a1.146,1.146,0,0,1,.024-.214,3.3,3.3,0,0,1,.087-.341c.046-.143.1-.3.153-.467s.131-.366.222-.593h2.27l.572,1.546a.629.629,0,0,1,.029.112.663.663,0,0,1,.01.107c0,.071-.084.132-.251.18a2.874,2.874,0,0,1-.629.1V13h2.868v-.346A1.46,1.46,0,0,1,10.81,12.6ZM7.442,7.5l.811,2.435H6.506Z" />
+  </g>
+</svg>

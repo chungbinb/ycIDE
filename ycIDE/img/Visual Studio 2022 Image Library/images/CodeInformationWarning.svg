@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>CodeInformationWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6.126,15.647a4,4,0,1,1,2.2-4.754L5.908,15.28Z" />
+    <path class="white" d="M5,14H4V12H5Zm0-4H4v1H5Z" />
+    <path class="light-defaultgrey" d="M10.47,7,9.919,8H8V7ZM13,1H9V2h4Zm2,3H9V5h6ZM14,7H12.53l.551,1H14ZM8,1H2V2H8ZM7,7H4.5A4.937,4.937,0,0,1,7,7.7ZM8,4H3V5H8ZM4,7.051A4.865,4.865,0,0,1,4.5,7H4Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>VBSharedProject</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M11,8,6,14.5,1,8,6,1.5Z" />
+    <path class="light-blue-10" d="M15,8l-5,6.5L5,8l5-6.5Z" />
+    <path class="light-blue" d="M10.4,1.2H9.6L8,3.28,6.4,1.2H5.6L.6,7.7v.61l5,6.5H6.4L8,12.72l1.6,2.085H10.4l5-6.5V7.7ZM6,13.68,1.631,8,6,2.32,7.369,4.1,4.6,7.7v.61l2.765,3.6ZM8,4.92,10.369,8,8,11.08,5.631,8Zm2,8.76L8.631,11.9l2.765-3.6V7.7L8.631,4.1,10,2.32,14.369,8Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDataSourceView</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9.355,3.062,7.146.854,7.854.146l2.208,2.209Zm6.5-2.208L15.146.146,12.938,2.355l.707.707Zm0,7.292L13.645,5.938l-.707.707,2.208,2.209Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15.5.5v8H10V5.97c0-1.324-1.084-2.13-2.5-2.562V.5Z" />
+    <path class="light-defaultgrey" d="M16,.5v8l-.5.5H10V8h5V1H8V3.583a7.121,7.121,0,0,0-1-.311V.5L7.5,0h8Z" />
+    <path class="light-lightblue-10" d="M8.5,6v8c0,.828-1.791,1.5-4,1.5s-4-.672-4-1.5V6c0-.829,1.791-1.5,4-1.5S8.5,5.171,8.5,6Z" />
+    <path class="light-lightblue" d="M9,5.97c0-2.627-9-2.627-9,0H0V14c0,1.313,2.264,2,4.5,2S9,15.313,9,14V5.97Zm-4.5-1c2.273,0,3.5.71,3.5,1s-1.227,1-3.5,1S1,6.26,1,5.97,2.227,4.97,4.5,4.97ZM8,14c0,.29-1.227,1-3.5,1S1,14.29,1,14V7.261H1a7.863,7.863,0,0,0,3.5.709A7.863,7.863,0,0,0,8,7.261H8Z" />
+  </g>
+</svg>

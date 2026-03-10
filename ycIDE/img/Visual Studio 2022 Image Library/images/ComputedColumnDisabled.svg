@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>ComputedColumnDisabled</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,1.5v13H8v-8L7.5,6h-1V1.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,10.293l3.5,3.5V14.5l-.354.354L8,11.707Zm0,3L9.707,15H8.293L8,14.707Zm0-6,3.5,3.5V11.5l-.354.354L8,8.707Zm3.5-2.5V5.5l-.354.354-4-4L7.5,1.5h.707ZM6.854,3.146,11.5,7.793V8.5l-.354.354L6.5,4.207V3.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M12,1.5v13l-.5.5H8V14h3V2H7V6H6V1.5L6.5,1h5Z" />
+    <path class="light-defaultgrey-10" d="M6.5,15.5H.5v-8h6Z" />
+    <path class="light-defaultgrey" d="M6.5,7H.5L0,7.5v8l.5.5h6l.5-.5v-8ZM6,15H1V8H6ZM4,11H5v1H4Zm0,2H5v1H4Zm1-3H2V9H5ZM3,14H2V13H3Zm0-2H2V11H3Z" />
+  </g>
+</svg>

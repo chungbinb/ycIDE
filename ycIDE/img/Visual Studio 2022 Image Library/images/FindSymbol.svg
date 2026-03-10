@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFindSymbol</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M6,12.5A2.5,2.5,0,1,1,8.5,10,2.5,2.5,0,0,1,6,12.5Z" />
+    <path class="light-defaultgrey-10" d="M11.5,2.5h3v5h-3Z" />
+    <path class="light-defaultgrey-10" d="M9.5,2.5v3h-5v-3Z" />
+    <path class="light-defaultgrey" d="M9.5,2h-5L4,2.5v3l.5.5h5l.5-.5v-3ZM9,5H5V3H9Z" />
+    <path class="light-defaultgrey" d="M11,2.5v5l.5.5h3l.5-.5v-5L14.5,2h-3ZM14,3V7H12V3Z" />
+    <path class="light-blue" d="M.85,15.857l3.455-3.385a3.078,3.078,0,1,0-.713-.7L.15,15.143ZM6,12a2,2,0,1,1,2-2A2,2,0,0,1,6,12Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddTeamProject</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5,12.5A2.5,2.5,0,0,1,7.5,15h-5A2.5,2.5,0,0,1,5,12.5Z" />
+    <path class="light-defaultgrey-10" d="M15.5,4v7.5h-2V12h-2l-1-2L10,9.5l.5-.5V7H8V4Z" />
+    <path class="light-defaultgrey" d="M16,3.5v8l-.5.5H13a3.923,3.923,0,0,0-.129-1H15V5H8V3h7.5Z" />
+    <path class="light-defaultgrey-10" d="M6.5,11A1.5,1.5,0,1,1,5,9.5,1.5,1.5,0,0,1,6.5,11Z" />
+    <path class="light-defaultgrey-10" d="M10.5,8A1.5,1.5,0,1,1,9,6.5,1.5,1.5,0,0,1,10.5,8Z" />
+    <path class="light-defaultgrey" d="M10.438,9.384a2,2,0,1,0-2.876,0,3.031,3.031,0,0,0-.794.663,1.993,1.993,0,1,0-3.191,2.329A2.988,2.988,0,0,0,2,15H3a2,2,0,0,1,4,0H8a2.988,2.988,0,0,0-1.547-2.608,1.925,1.925,0,0,0,.295-.4c.111-.2.432-.809.432-.809A2,2,0,0,1,11,12h1A2.989,2.989,0,0,0,10.438,9.384ZM5,12a1,1,0,1,1,1-1A1,1,0,0,1,5,12ZM9,9a1,1,0,1,1,1-1A1,1,0,0,1,9,9Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

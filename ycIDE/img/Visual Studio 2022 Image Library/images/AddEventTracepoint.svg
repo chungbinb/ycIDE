@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAddEventTracepoint</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-red" d="M15.071,8,8,15.071.929,8,2,6.929V8H5V5H8V2H6.929L8,.929Z" />
+    </g>
+    <path class="light-red" d="M15.425,7.623v.7L8.377,15.375H7.672L.625,8.328v-.7L2,6.248V7.657l-.318.318,6.343,6.343,6.343-6.343L8.025,1.632,7.662,2H6.252L7.672.575h.705Z" />
+    <path class="white" d="M10.524,7.477,7.036,11.464h-1l1.5-2.99H5.541L7.534,4.487h2.99L8.4,7.477Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

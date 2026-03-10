@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCrystalReport</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.536,8.282l3.182,3.182L5.536,14.646,2.354,11.464Z" />
+    <path class="light-defaultgrey-10" d="M14.5,6c0,1.784-2.081,3.321-5.091,4.049A4.9,4.9,0,0,0,10.5,7c0-2.876-2.609-5.232-5.933-5.476Q5.028,1.5,5.5,1.5C10.471,1.5,14.5,3.515,14.5,6Z" />
+    <path class="light-defaultgrey" d="M9.526,10.535l-.51-.8A4.4,4.4,0,0,0,10,7c0-2.566-2.4-4.752-5.469-4.977l.01-1Q5.014,1,5.5,1C10.827,1,15,3.2,15,6,15,7.98,12.9,9.718,9.526,10.535ZM8.261,2.226A5.719,5.719,0,0,1,11,7a5.249,5.249,0,0,1-.488,2.2C12.667,8.448,14,7.25,14,6,14,4.284,11.562,2.779,8.261,2.226Z" />
+    <path class="light-defaultgrey" d="M5.889,7.929l3.182,3.182v.707L5.889,15H5.182L2,11.818v-.707L5.182,7.929ZM8.01,11.464,5.536,8.99,3.061,11.464l2.475,2.475Z" />
+  </g>
+</svg>

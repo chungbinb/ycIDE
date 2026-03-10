@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightThreeDExtrude</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,5.621V10.5l-4,4h-7v-7l4-4h4.879l.514-.461L13.015,5.16Z" />
+    <path class="light-blue" d="M16,.5V5H15V1.707L9.354,7.354l-.708-.708L14.293,1H11V0h4.5Z" />
+    <path class="light-defaultgrey" d="M12,6.121V10H6V4H9.879l1-1H5.5l-.354.146-4,4L1,7.5v7l.5.5h7l.354-.146,4-4L13,10.5V5.121ZM2,7.707l3-3v5.586l-3,3ZM8.293,14H2.707l3-3h5.586Z" />
+  </g>
+</svg>

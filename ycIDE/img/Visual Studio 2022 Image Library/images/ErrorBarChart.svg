@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightErrorBarChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue-10" d="M13.5,14h-4V4.5h4Z" />
+    <path class="light-lightblue" d="M9,14V4.5L9.5,4h4l.5.5V14H13V5H10v9Z" />
+    <path class="light-lightblue-10" d="M7.5,14h-4V6.5h4Z" />
+    <path class="light-lightblue" d="M3,14V6.5L3.5,6h4l.5.5V14H7V7H4v7Z" />
+    <path class="light-defaultgrey" d="M6,4V9h.5v1h-2V9H5V4H4.5V3h2V4Zm6.5-2V1h-2V2H11V7h-.5V8h2V7H12V2Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRemoteServiceBinding</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,14.5h-2v-2h2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,13H9v1H6Zm6,0v1h3V13Zm-1-1H10V10h1Z" />
+    </g>
+    <path class="light-defaultgrey" d="M11.5,12h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM11,14H10V13h1Z" />
+    <path class="light-defaultgrey" d="M6,3H1V2H6ZM6,8H1V9H6ZM5,5H1V6H5Z" />
+    <path class="light-defaultgrey" d="M14,6V5H12.949a2.473,2.473,0,0,0-.365-.876l.745-.745-.707-.707-.745.745A2.469,2.469,0,0,0,11,3.051V2H10V3.051a2.469,2.469,0,0,0-.877.366l-.745-.745-.707.707.745.745A2.473,2.473,0,0,0,8.051,5H7V6H8.051a2.473,2.473,0,0,0,.365.876l-.745.745.707.707.745-.745A2.469,2.469,0,0,0,10,7.949V9h1V7.949a2.469,2.469,0,0,0,.877-.366l.745.745.707-.707-.745-.745A2.473,2.473,0,0,0,12.949,6ZM10.5,7A1.5,1.5,0,1,1,12,5.5,1.5,1.5,0,0,1,10.5,7Z" />
+  </g>
+</svg>

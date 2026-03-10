@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWaitForCustomEvent</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M7.6,3.5h4.117L8.359,7.514h3.17L5.593,13.478H4.572L7.061,8.991H4.455Z" />
+    <path class="light-yellow" d="M5.593,13.979H4.572l-.437-.743L6.212,9.491H4.455l-.434-.749L7.17,3.253,7.6,3h4.117l.383.821L9.43,7.014h2.1l.354.852L5.948,13.831ZM5.318,8.491H7.061l.437.742L5.467,12.9l4.859-4.882H8.359l-.383-.822L10.65,4H7.893Z" />
+    <path class="light-defaultgrey" d="M2,5H1V1H2ZM4,5H3V1H4Z" />
+  </g>
+</svg>

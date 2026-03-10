@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCubeBuilderView</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M6,7V9H5l-.5-.5L4,9H3.5v1l.5.5v5l-.5.5h-1L2,15.5v-5l.5-.5V9h-1a.5.5,0,0,0-.5.5.5.5,0,0,1-1,0A2.5,2.5,0,0,1,2.5,7H4l.5.5L5,7Z" />
+    <path class="light-purple-10" d="M14.5,3.439v7L9,12.939,5,11.121V10H7V6H3.5V3.439l5.5-3Z" />
+    <path class="light-defaultgrey" d="M14.739,3l-5.5-3H8.761l-5.5,3L3,3.439V6H4V4.215L8.495,6.259l0,5.9L5,10.572v1.1l3.793,1.724h.414l5.5-2.5L15,10.439v-7ZM9,5.39,4.619,3.4,9,1.008,13.381,3.4Zm5,4.727L9.5,12.163l0-5.9L14,4.215Z" />
+    <path class="light-defaultgrey" d="M6,7V9H5l-.5-.5L4,9H3.5v1l.5.5v5l-.5.5h-1L2,15.5v-5l.5-.5V9h-1a.5.5,0,0,0-.5.5.5.5,0,0,1-1,0A2.5,2.5,0,0,1,2.5,7H4l.5.5L5,7Z" />
+    <path class="light-purple" d="M14.739,3l-5.5-3H8.761l-5.5,3L3,3.439V6H4V4.215L8.495,6.259l0,5.9L5,10.572v1.1l3.793,1.724h.414l5.5-2.5L15,10.439v-7ZM9,5.39,4.619,3.4,9,1.008,13.381,3.4Zm5,4.727L9.5,12.163l0-5.9L14,4.215Z" />
+  </g>
+</svg>

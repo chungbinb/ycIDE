@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUseCase</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,13.5c-3.794,0-7-2.518-7-5.5s3.206-5.5,7-5.5,7,2.518,7,5.5S11.294,13.5,7.5,13.5Z" />
+    <path class="light-defaultgrey" d="M7.5,2C3.358,2,0,4.686,0,8s3.358,6,7.5,6S15,11.314,15,8,11.642,2,7.5,2Zm0,11C3.916,13,1,10.757,1,8S3.916,3,7.5,3,14,5.243,14,8,11.084,13,7.5,13Z" />
+    <path class="light-defaultgrey" d="M11,7H4V6h7Zm0,2H4v1h7Z" />
+  </g>
+</svg>

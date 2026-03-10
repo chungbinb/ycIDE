@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ATLServer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v12H10.6V10H2.5V1.5Z" />
+    <path class="light-green" d="M11,11h2v1H11Zm0-3h2V7H11Zm0-5V4h2V3Z" />
+    <path class="light-defaultgrey" d="M1.836,11.1,0,16H.887l.426-1.248H3.246L3.687,16h.887L2.752,11.1Zm-.311,2.99L2.2,12.135a1.914,1.914,0,0,0,.068-.309H2.28a2.533,2.533,0,0,0,.065.309l.68,1.955ZM4.479,11.1H8.1v.689H6.692V16H5.879V11.789h-1.4ZM11.5,16H8.787V11.1H9.6v4.214h1.9Z" />
+    <path class="light-defaultgrey" d="M14.5,1H2.5L2,1.5V10H14v3H10.6v1h3.9l.5-.5V1.5ZM14,9H3V6H14Zm0-4H3V2H14Z" />
+  </g>
+</svg>

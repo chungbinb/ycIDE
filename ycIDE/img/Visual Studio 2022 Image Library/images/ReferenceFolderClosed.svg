@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReferenceFolderClosed</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M8.5,3.5l-1-1h-6V11H2.91l1,1H6v-.91L7.09,10h4.82L13,11.09V12.5h1.5v-9Z" />
+    <path class="light-yellow" d="M14.5,3H8.71l-.86-.85L7.5,2h-6L1,2.5V11H2V5H7.48l.35-.15L8.68,4H14v8H13v1h1.5l.5-.5v-9ZM7.27,4H2V3H7.29l.49.49Z" />
+    <path class="light-defaultgrey-10" d="M.5,12.5h2v2H.5Zm7-1v4h4v-4Z" />
+    <path class="light-defaultgrey" d="M11.5,11h-4l-.5.5V13H3v-.5L2.5,12H.5l-.5.5v2l.5.5h2l.5-.5V14H7v1.5l.5.5h4l.5-.5v-4ZM2,14H1V13H2Zm9,1H8V12h3Z" />
+  </g>
+</svg>

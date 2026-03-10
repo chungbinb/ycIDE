@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSelectObject</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M13.5,4.825v6.35L8,14.351,2.5,11.175V4.825L8,1.649Z" />
+    <path class="light-blue" d="M13.75,4.392,8.25,1.216h-.5L2.25,4.392,2,4.825v6.35l.25.433,5.5,3.176h.5l5.5-3.176.25-.433V4.825ZM8,2.226l4.5,2.6L8,7.423l-4.5-2.6ZM3,5.691l4.5,2.6v5.2L3,10.887Zm5.5,7.794v-5.2l4.5-2.6v5.2Z" />
+  </g>
+</svg>

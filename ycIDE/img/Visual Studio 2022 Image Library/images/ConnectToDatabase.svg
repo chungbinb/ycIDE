@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}</style>
+  </defs>
+  <title>ConnectToDatabase</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,16V0H16V16Z" />
+    <path class="canvas" d="M0,16H16V0H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M3,8.474H3a2.5,2.5,0,0,1-2.5-2.5V3.5h5V5.974A2.5,2.5,0,0,1,3,8.474Z" />
+    <path class="light-lightblue-10" d="M14.5,4.97V13c0,.828-1.791,1.5-4,1.5s-4-.672-4-1.5V7.9A3.984,3.984,0,0,0,7,5.974V4.258a6.677,6.677,0,0,1,3.5-.788C12.709,3.47,14.5,4.142,14.5,4.97Z" />
+    <path class="light-lightblue" d="M7,3.688V4.97c0-.29,1.227-1,3.5-1s3.5.71,3.5,1-1.227,1-3.5,1S7,5.26,7,4.97v1A3.989,3.989,0,0,1,6,8.617V13c0,1.313,2.264,2,4.5,2s4.5-.687,4.5-2V4.97C15,2.884,9.337,2.461,7,3.688ZM10.5,14C8.227,14,7,13.29,7,13V6.261a7.863,7.863,0,0,0,3.5.709A7.863,7.863,0,0,0,14,6.261V13C14,13.29,12.773,14,10.5,14Z" />
+    <path class="light-teal" d="M5,3V1A.5.5,0,0,0,4,1V3H2V1A.5.5,0,0,0,1,1V3H0V5.974A3,3,0,0,0,2.5,8.931V12h1V8.931A3,3,0,0,0,6,5.974V3ZM5,5.974a2,2,0,0,1-4,0V4H5Z" />
+  </g>
+</svg>

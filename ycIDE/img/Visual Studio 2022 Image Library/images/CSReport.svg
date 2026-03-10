@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSReport</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+    <path class="light-green" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+    <path class="light-green" d="M12,8.5v4l-.5.5h-1l-.5-.5v-4l.5-.5h1ZM7.5,10l-.5.5v2l.5.5h1l.5-.5v-2L8.5,10ZM4,4H9V5H4ZM4,7H7V6H4ZM4,9H6V8H4Z" />
+  </g>
+</svg>

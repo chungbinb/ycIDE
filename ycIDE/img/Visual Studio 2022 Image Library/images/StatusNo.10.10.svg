@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>StatusNo.10.10</title>
+  <title>IconLightStatusNo.10.10</title>
+  <g id="canvas">
+    <path class="canvas" d="M10,10H0V0H10Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M5,1.5A3.5,3.5,0,1,1,1.5,5,3.5,3.5,0,0,1,5,1.5Z" />
+    <path class="light-red" d="M8,5a2.97,2.97,0,0,1-.56,1.733L3.267,2.56A2.97,2.97,0,0,1,5,2,3,3,0,0,1,8,5ZM5,1A4,4,0,1,0,9,5,4,4,0,0,0,5,1ZM2,5a2.97,2.97,0,0,1,.56-1.733L6.733,7.44A2.97,2.97,0,0,1,5,8,3,3,0,0,1,2,5Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSelectPoint</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8,1.65,2.5,4.82v6.36L8,14.35l5.5-3.17V4.82ZM9.5,9.5h-3v-3h3Z" />
+      <path class="light-defaultgrey" d="M13.75,4.39,8.25,1.22h-.5L2.25,4.39,2,4.82v6.36l.25.43,5.5,3.17h.5l5.5-3.17.25-.43V4.82ZM13,10.89l-4.5,2.6V9.5h-1v3.99L3,10.89V5.69L6.5,7.71V6.55l-3-1.73L8,2.23l4.5,2.59-3,1.73V7.71L13,5.69Z" />
+    </g>
+    <path class="light-blue-10" d="M9.5,6.5v3h-3v-3Z" />
+    <path class="light-blue" d="M9.5,10h-3L6,9.5v-3L6.5,6h3l.5.5v3ZM7,9H9V7H7Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWFService</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,8.5a2,2,0,1,1-2-2A2,2,0,0,1,11.5,8.5Z" />
+    <path class="light-defaultgrey-10" d="M7.5,2.5h4v2h-4Zm-3,11h3v-2h-3Zm7-2v2h3v-2Z" />
+    <path class="light-defaultgrey" d="M14.5,11H14V8.5L13.5,8H11.945A2.5,2.5,0,0,0,10,6.05V5h1.5l.5-.5v-2L11.5,2h-4L7,2.5v2l.5.5H9V6.05A2.5,2.5,0,0,0,7.055,8H5.5L5,8.5V11H4.5l-.5.5v2l.5.5h3l.5-.5v-2L7.5,11H6V9H7.05a2.5,2.5,0,0,0,4.9,0H13v2H11.5l-.5.5v2l.5.5h3l.5-.5v-2ZM8,4V3h3V4ZM7,12v1H5V12Zm2.5-2A1.5,1.5,0,1,1,11,8.5,1.5,1.5,0,0,1,9.5,10ZM14,13H12V12h2Z" />
+    <path class="light-defaultgrey" d="M4,5V6H0V5ZM2,8H4V7H2ZM0,10H4V9H0Z" />
+  </g>
+</svg>

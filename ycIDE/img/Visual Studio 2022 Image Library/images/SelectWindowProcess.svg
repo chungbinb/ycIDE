@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>SelectWindowProcess</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,2V6.414L14.5,7.5v6H1.5V2.5H8l.232-.146L8.586,2h4.353L11.672,3.268l1.06,1.06L14.5,2.561,13.939,2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M12.71,4.7l-4.8,4.8H6.5V8.086l4.8-4.8Z" />
+      <path class="light-defaultgrey" d="M7.914,10H6.5L6,9.5V8.086l.146-.354,4.8-4.795.707.707L7,8.293V9h.707l4.649-4.649.707.707-4.795,4.8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M12.879,4.536,11.464,3.121,13.586,1,15,2.414Z" />
+    <path class="light-defaultgrey" d="M15.354,2.146l-1.5-1.5h-.708l-1.9,1.9-.9-.9-.708.708,4,4,.708-.708-.9-.9,1.9-1.9Zm-2.6,1.9-.793-.793L13.5,1.707l.793.793Z" />
+    <path class="light-defaultgrey" d="M15,6.414V13.5l-.5.5H1.5L1,13.5V2.5L1.5,2H8.586l-.354.354L8.879,3H2V5H7.465l-1,1H2v7H14V7.414Z" />
+  </g>
+</svg>

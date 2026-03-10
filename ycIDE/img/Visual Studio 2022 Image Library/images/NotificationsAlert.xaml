@@ -1,0 +1,35 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+      <SolidColorBrush x:Key="light-shadow" Color="#000000" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-yellow-10" Color="#996f00" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-yellow" Color="#996f00" Opacity="1" />
+      <System:Double x:Key="cls-1">0.75</System:Double>
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_2">
+              <DrawingGroup Opacity="{DynamicResource cls-1}">
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M9.5,13a1.5,1.5,0,0,1-3,0,1.483,1.483,0,0,1,.092-.5H9.408A1.483,1.483,0,0,1,9.5,13Z" />
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M9.879,12.333,9.408,12H6.592l-.471.333A1.975,1.975,0,0,0,6,13a2,2,0,0,0,4,0A1.975,1.975,0,0,0,9.879,12.333ZM8,14a1,1,0,0,1-1-1H9A1,1,0,0,1,8,14Z" />
+              </DrawingGroup>
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-shadow}" Geometry="F1M13.5,14H2.5l-.474-.658.589-1.769A7.458,7.458,0,0,0,3,9.2V7A5.013,5.013,0,0,1,4.637,3.3,4.956,4.956,0,0,1,8.489,2.023,5.145,5.145,0,0,1,13,7.193V9.2a7.458,7.458,0,0,0,.385,2.371l.589,1.769ZM3.194,13h9.612l-.369-1.11A8.474,8.474,0,0,1,12,9.2V7.193A4.134,4.134,0,0,0,8.4,3.02,3.961,3.961,0,0,0,5.31,4.04,4.011,4.011,0,0,0,4,7V9.2a8.474,8.474,0,0,1-.437,2.688Z" />
+              <GeometryDrawing Brush="{DynamicResource light-yellow-10}" Geometry="F1M13.5,12.5H2.5l.589-1.768A8,8,0,0,0,3.5,8.2V6A4.5,4.5,0,0,1,8.442,1.521,4.63,4.63,0,0,1,12.5,6.193V8.2a8,8,0,0,0,.411,2.53Z" />
+              <GeometryDrawing Brush="{DynamicResource light-yellow}" Geometry="F1M13.385,10.573A7.458,7.458,0,0,1,13,8.2V6.193a5.145,5.145,0,0,0-4.511-5.17A4.953,4.953,0,0,0,4.637,2.3,5.013,5.013,0,0,0,3,6V8.2a7.458,7.458,0,0,1-.385,2.371l-.589,1.769L2.5,13h11l.474-.658ZM3.194,12l.369-1.11A8.474,8.474,0,0,0,4,8.2V6A4.011,4.011,0,0,1,5.31,3.04,3.957,3.957,0,0,1,8.4,2.02,4.134,4.134,0,0,1,12,6.193V8.2a8.474,8.474,0,0,0,.437,2.688L12.806,12Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

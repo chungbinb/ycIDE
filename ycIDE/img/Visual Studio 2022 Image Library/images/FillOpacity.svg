@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightFillOpacity</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M15,5v8H6V10H2V2h9V5Z" />
+    <g class="cls-1">
+      <path class="light-lightblue" d="M11,10H6V5h5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M15.5,4H12V1.5L11.5,1H1.5L1,1.5v9l.5.5H5v2.5l.5.5h10l.5-.5v-9ZM2,10V2h9V4H5.5L5,4.5V10Zm9-5v5H6V5Zm4,8H6V11h5.5l.5-.5V5h3Z" />
+  </g>
+</svg>

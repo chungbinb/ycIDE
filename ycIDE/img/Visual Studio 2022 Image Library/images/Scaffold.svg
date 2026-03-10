@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightScaffold</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,1.5v3h-3v-3Z" />
+    <path class="light-defaultgrey" d="M4.5,1h-3L1,1.5v3l.5.5h3L5,4.5v-3ZM4,4H2V2H4Z" />
+    <path class="light-defaultgrey-10" d="M4.5,6.5v3h-3v-3Z" />
+    <path class="light-defaultgrey" d="M4.5,6h-3L1,6.5v3l.5.5h3L5,9.5v-3ZM4,9H2V7H4Z" />
+    <path class="light-defaultgrey-10" d="M4.5,11.5v3h-3v-3Z" />
+    <path class="light-defaultgrey" d="M4.5,11h-3l-.5.5v3l.5.5h3l.5-.5v-3ZM4,14H2V12H4Z" />
+    <path class="light-defaultgrey-10" d="M9.5,6.5v3h-3v-3Z" />
+    <path class="light-defaultgrey" d="M9.5,6h-3L6,6.5v3l.5.5h3l.5-.5v-3ZM9,9H7V7H9Z" />
+    <path class="light-defaultgrey-10" d="M9.5,11.5v3h-3v-3Z" />
+    <path class="light-defaultgrey" d="M9.5,11h-3l-.5.5v3l.5.5h3l.5-.5v-3ZM9,14H7V12H9Z" />
+    <path class="light-defaultgrey-10" d="M14.5,11.5v3h-3v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,11h-3l-.5.5v3l.5.5h3l.5-.5v-3ZM14,14H12V12h2Z" />
+    <path class="light-defaultgrey" d="M11,2H7V1h4Zm1-1V2h3V1Zm0,2H8V4h4Zm1,1h2V3H13Zm1,2H11V7h3ZM12,9h3V8H12Z" />
+  </g>
+</svg>

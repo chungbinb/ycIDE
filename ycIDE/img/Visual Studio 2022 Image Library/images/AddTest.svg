@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M13.675,15.5H4.325a1,1,0,0,1-.843-1.538L5,11.5h8l1.518,2.462A1,1,0,0,1,13.675,15.5Z" />
+    <path class="light-teal" d="M13.676,16H4.324A1.5,1.5,0,0,1,3.06,13.693l1.514-2.456L5,11h8l.426.237L14.944,13.7A1.5,1.5,0,0,1,13.676,16Zm-8.4-4L3.907,14.225A.5.5,0,0,0,4.324,15h9.352a.5.5,0,0,0,.421-.77L12.721,12Z" />
+    <path class="light-defaultgrey-10" d="M12.848,11H5.5L7.674,7.667V5h.5V2.5h2.5V7.667Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+    <path class="light-defaultgrey" d="M7,5H8V7.667l-.081.273-2,3.06H5l-.416.232,0,0L7,7.519Zm6.419,6.227,0,0L13,11h-.923l-2-3.06L10,7.667V3H8V2h4V3H11V7.519Z" />
+  </g>
+</svg>

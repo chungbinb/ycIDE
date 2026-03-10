@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPagingBulletedList</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M3.5,1.5v2h-2v-2Zm0,5v2h-2v-2Z" />
+    <path class="light-defaultgrey-10" d="M3.5,1.5v2h-2v-2Zm0,5v2h-2v-2Z" />
+    <path class="light-defaultgrey" d="M3.5,4h-2L1,3.5v-2L1.5,1h2l.5.5v2ZM2,3H3V2H2ZM14,2H5V3h9ZM3.5,9h-2L1,8.5v-2L1.5,6h2l.5.5v2ZM2,8H3V7H2ZM14,7H5V8h9Zm0,5H10v1h4Z" />
+    <path class="light-blue" d="M8.854,12.146v.708L6.909,14.8,6.2,14.091,7.293,13H2.707L3.8,14.091l-.707.707L1.146,12.854v-.708L3.091,10.2l.707.707L2.707,12H7.293L6.2,10.909l.707-.707Z" />
+  </g>
+</svg>

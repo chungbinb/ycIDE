@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ExistsInCollection</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M15.107,11.6l-4.25,4.25H10.15L7.9,13.6l.707-.707,1.9,1.9,3.9-3.9Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.5,1.5V5h4l.5.5v5h1.38L14.4,9.48l.1.1V1.5Z" />
+      <path class="light-defaultgrey-10" d="M1.5,3.5v9H4v-7L4.5,5H7V3.5Z" />
+      <path class="light-defaultgrey" d="M14.5,1h-7L7,1.5V3H1.5L1,3.5v9l.5.5H4V12H2V4H7V5H8V2h6V9.88l.4-.4.1.1.5.5V1.5ZM12,11h.88l1-1H12Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M4.5,5.5v9H7.39l-.9-.9,2.12-2.12,1.89,1.9,1-1V5.5Z" />
+    <path class="light-defaultgrey" d="M11.5,5h-7L4,5.5v9l.5.5H7.89l-1-1H5V6h6v6.88l1-1V5.5Z" />
+    <path class="light-defaultgrey-25" d="M8,10V6H7v4.5l.5.5H11V10Z" />
+  </g>
+</svg>

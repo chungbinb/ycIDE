@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBalanceBrace</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M11,13H5V12h6Zm0-4H5v1h6Zm0-3H5V7h6Zm0-3H5V4h6Z" />
+    <path class="light-defaultgrey" d="M14.707,10.184q-.913.059-.914,1.242v1.758A1.608,1.608,0,0,1,12,15v-.738a.883.883,0,0,0,.724-.293,1.56,1.56,0,0,0,.213-.926V11.35q0-1.237.874-1.5V9.826q-.873-.281-.874-1.512V6.6q0-1.137-.937-1.16v-.75a1.618,1.618,0,0,1,1.793,1.839V8.238q0,1.207.914,1.266Z" />
+    <path class="light-defaultgrey" d="M1.293,5.816q.914-.058.914-1.265V2.84A1.619,1.619,0,0,1,4,1v.75q-.937.024-.938,1.16V4.627q0,1.23-.873,1.512v.023q.873.264.873,1.5V9.355a1.557,1.557,0,0,0,.214.926A.88.88,0,0,0,4,10.574v.739A1.609,1.609,0,0,1,2.207,9.5V7.738q0-1.184-.914-1.242Z" />
+  </g>
+</svg>

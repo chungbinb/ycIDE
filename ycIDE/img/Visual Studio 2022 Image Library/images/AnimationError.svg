@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAnimationError</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.743,9.68,7.371,7.118,6.751,3.5,10,5.208,13.249,3.5l-.611,3.564A4.959,4.959,0,0,0,12,7a5,5,0,0,0-4.611,3.065Z" />
+    <path class="light-defaultgrey" d="M5,5V6H2V5ZM4,8H0V9H4ZM2,12H5V11H2Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="light-defaultgrey" d="M7.239,10.549l-2.568-.374-.276-.853L6.834,6.944l-.576-3.36.725-.526L10,4.643l3.017-1.585.725.526-.576,3.36.311.3a4.97,4.97,0,0,0-1.338-.233l.446-2.6L10.232,5.65H9.768L7.415,4.414l.449,2.62-.144.442-1.9,1.855L7.641,9.6A4.954,4.954,0,0,0,7.239,10.549Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

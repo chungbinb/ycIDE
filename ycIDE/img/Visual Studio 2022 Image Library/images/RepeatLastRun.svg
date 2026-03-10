@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>RepeatLastRun</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8,15A7,7,0,1,1,14,4.44V1.5h1v4l-.5.5h-4V5h2.671a5.983,5.983,0,1,0,.244,5.57l.9.43A7.031,7.031,0,0,1,8,15Z" />
+    <path class="light-green" d="M6,5l5,3L6,11Z" />
+  </g>
+</svg>

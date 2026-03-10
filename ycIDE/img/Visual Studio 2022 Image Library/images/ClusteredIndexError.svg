@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightClusteredIndexError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9.053,8H5v2H4V7.5L4.5,7H7V4H8V7h2.5l.2.2A4.965,4.965,0,0,0,9.053,8Z" />
+    </g>
+    <path class="light-defaultgrey" d="M2.27,14.875H1.262A4.9,4.9,0,0,1,0,11.457,5.209,5.209,0,0,1,1.262,8h1a5.615,5.615,0,0,0-1.184,3.457A5.426,5.426,0,0,0,2.27,14.875Z" />
+    <path class="light-defaultgrey-10" d="M5.5,12.5h-2v-2h2Zm5-9h-6v-2h6Z" />
+    <path class="light-defaultgrey" d="M5.5,10h-2l-.5.5v2l.5.5h2l.5-.5v-2ZM5,12H4V11H5Z" />
+    <path class="light-defaultgrey" d="M10.5,1h-6L4,1.5v2l.5.5h6l.5-.5v-2ZM10,3H5V2h5Z" />
+    <path class="light-red" d="M12.025,8a4,4,0,1,0,4,4A4,4,0,0,0,12.025,8Z" />
+    <path class="white" d="M12.732,12l1.147,1.146-.707.708-1.147-1.147-1.146,1.147-.707-.708L11.318,12l-1.146-1.146.707-.708,1.146,1.147,1.147-1.147.707.708Z" />
+  </g>
+</svg>

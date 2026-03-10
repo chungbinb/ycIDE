@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightConflict</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,13.5H.5V1.5h14Z" />
+      <path class="light-defaultgrey" d="M14.5,14H.5L0,13.5V1.5L.5,1h14l.5.5v12ZM1,13H14V2H1Z" />
+    </g>
+    <path class="light-defaultgrey" d="M10.021,7H13V8H10.021l1.091,1.091-.707.707L8.461,7.854V7.146L10.405,5.2l.707.707Zm-3.482.146v.708L4.6,9.8l-.707-.707L4.979,8H2V7H4.979L3.888,5.909,4.6,5.2ZM8,3H7v9H8Z" />
+  </g>
+</svg>

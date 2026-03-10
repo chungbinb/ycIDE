@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSubscript</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M11.133,14H13v1H10v-.5a1.756,1.756,0,0,1,.148-.734c.406-.9,1.035-1.167,1.7-1.9A.484.484,0,0,0,12,11.5a.5.5,0,0,0-1,0H10a1.5,1.5,0,1,1,2.562,1.062h-.007C11.006,14.073,11.325,13.743,11.133,14Z" />
+    <path class="light-defaultgrey" d="M9.25,3l-3,4,3,4H8L5.625,7.836,3.25,11H2L5,7,2,3H3.25L5.625,6.164,8,3Z" />
+  </g>
+</svg>

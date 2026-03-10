@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>OpenDocumentGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M15.854,2.146v.708l-2,2-.707-.708L14.293,3H13a2,2,0,0,0-2,2V6H10V5a3,3,0,0,1,3-3h1.293L13.147.854l.707-.708Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M9,7V5a3.657,3.657,0,0,1,.13-1,3.923,3.923,0,0,1,1.05-1.82L9.5,1.5h-5V5h2l.35.15,2,2L9,7.5v3h2.5V7Z" />
+      <path class="light-defaultgrey" d="M11,7v3H9v1h2.5l.5-.5V7ZM9.13,4a3.923,3.923,0,0,1,1.05-1.82,2.819,2.819,0,0,1,.36-.33l-.69-.7L9.5,1h-5L4,1.5V5H5V2H8.99V4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M6.5,5.5h-5v9h7v-7Z" />
+    <path class="light-defaultgrey" d="M8.85,7.15l-2-2L6.5,5h-5L1,5.5v9l.5.5h7l.5-.5v-7ZM8,14H2V6H5.99V8H8Z" />
+    <path class="light-defaultgrey-25" d="M5,10V6H4v4.5l.5.5H8V10Z" />
+  </g>
+</svg>

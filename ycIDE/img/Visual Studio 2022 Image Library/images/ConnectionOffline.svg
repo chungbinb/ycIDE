@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightConnectionOffline</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.5,5h-2V1.5h2ZM.5,8.5v-2H5v2Zm9.5,0v-2h4.5v2Z" />
+      <path class="light-defaultgrey" d="M15,6.5v2l-.5.5H10V8h4V7H10V6h4.5ZM6,5V1.5L6.5,1h2l.5.5V5H8V2H7V5ZM5,9H.5L0,8.5v-2L.5,6H5V7H1V8H5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M9.5,9.5h-4v-4h4Z" />
+    <path class="light-defaultgrey" d="M9.5,10h-4L5,9.5v-4L5.5,5h4l.5.5v4ZM6,9H9V6H6Z" />
+    <path class="light-defaultgrey" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+  </g>
+</svg>

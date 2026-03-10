@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightColumnMissing</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.379,14.5H5.5V2.5h5V9.086L8.732,10.854,10.5,12.621v.758Z" />
+    <path class="light-defaultgrey" d="M9.879,14H6V11H8.879l-.147-.146L9.586,10H6V7h4V9.586l.854-.854L11,8.879V1.5L10.5,1h-5L5,1.5v13l.5.5H8.879ZM6,3h4V6H6Z" />
+    <path class="light-defaultgrey" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+  </g>
+</svg>

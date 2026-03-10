@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>MultiFlatFileConnection</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.5,1.5h-5v2H8.15l.1.04,2.21,2.21.04.1V10.5h3v-7Z" />
+      <path class="light-defaultgrey" d="M13.85,3.15l-2-2L11.5,1h-5L6,1.5v2H7V2h3.99V4H13v6H10.5v1h3l.5-.5v-7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M3.5,12.5v-9h5v2h2v7Z" />
+    <path class="light-defaultgrey" d="M8,15v-.5L7.5,14V13h3.107L11,12.607V5.75l-.115-.278L8.528,3.115,8.25,3H3.393L3,3.393v9.214L3.393,13H6.5v1l-.5.5V15H2v1H12V15ZM4,12V4H8V6h2v6Z" />
+    <path class="light-defaultgrey" d="M9,9H5V8H9ZM7,7H5V6H7Zm2,4H5V10H9Z" />
+  </g>
+</svg>

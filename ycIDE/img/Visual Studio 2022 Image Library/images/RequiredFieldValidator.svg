@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>RequiredFieldValidator</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.086,12.5H1.5V2.5h13V9.379L11.379,12.5H9.621L7.854,10.732Z" />
+    <path class="light-green" d="M15.854,10.854l-5,5h-.708l-3-3,.708-.708L10.5,14.793l4.646-4.647Z" />
+    <path class="light-defaultgrey" d="M15,2.5V8.879l-1,1V3H2v9H6.586l-.854.854L5.879,13H1.5L1,12.5V2.5L1.5,2h13ZM10.121,13h.758l1-1H9.121Zm.509-3.05.8-1.39L9.09,7.5l2.34-1.06-.79-1.39L8.55,6.55,8.8,4H7.2l.25,2.55L5.37,5.05l-.8,1.39L6.91,7.5,4.57,8.56l.79,1.39,2.09-1.5L7.2,11h.38l.27-.27.27.27H8.8L8.55,8.45Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEnableAllBreakpoints</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M9.5,1A5.487,5.487,0,0,0,5.15,3.143a6.495,6.495,0,0,1,7.707,7.707h0A5.5,5.5,0,0,0,9.5,1Z" />
+    <path class="light-defaultgrey" d="M12,9.5A5.5,5.5,0,1,1,6.5,4,5.506,5.506,0,0,1,12,9.5Z" />
+  </g>
+</svg>

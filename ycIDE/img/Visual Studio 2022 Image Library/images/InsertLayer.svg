@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightInsertLayer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,4.5v8H1.5V1.5h6v3Z" />
+    <path class="light-defaultgrey" d="M15,5V3H13V4H8V1.5L7.5,1h-6L1,1.5V3H0V5H1V8H0V9H1v3H0v2H2V13H7v1H8V13h5v1h2V12H14V9h1V8H14V5ZM2,2H7V4H2V2ZM13,12H2V5H13Z" />
+  </g>
+</svg>

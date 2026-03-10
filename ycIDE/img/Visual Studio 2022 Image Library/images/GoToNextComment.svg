@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGoToNextComment</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,4.5v7h-6l-3,3v-3h-2V4.914L3.854,6.268,5.621,4.5Z" />
+    <path class="light-defaultgrey" d="M14,4.5v7l-.5.5H7.707L4.854,14.854,4,14.5V12H2.5L2,11.5v-7l.043-.043L3,5.414V11H4.5l.5.5v1.793l2.146-2.147L7.5,11H13V5H5.121l1-1H13.5Z" />
+    <path class="light-blue" d="M4.293,2,3.146.854,3.854.146l2,2v.708l-2,2-.708-.708L4.293,3H0V2Z" />
+  </g>
+</svg>

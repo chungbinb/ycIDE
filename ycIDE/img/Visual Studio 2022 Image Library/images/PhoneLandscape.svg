@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPhoneLandscape</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,3.5h13v8H1.5Z" />
+    <path class="light-defaultgrey" d="M1,3.5v8l.5.5h13l.5-.5v-8L14.5,3H1.5ZM14,4v7H2V4Z" />
+    <path class="light-defaultgrey" d="M13,6V9H12V6ZM4,7V8H3V7Z" />
+  </g>
+</svg>

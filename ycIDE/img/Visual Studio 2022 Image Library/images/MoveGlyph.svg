@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMoveGlyph</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,7.5a2,2,0,1,1-2-2A2,2,0,0,1,9.5,7.5Z" />
+    <path class="light-defaultgrey" d="M14.415,7.14v.707l-2.5,2.5-.707-.707,2.146-2.147L11.208,5.347l.707-.707ZM3.2,4.64.7,7.14v.707l2.5,2.5.707-.707L1.759,7.493,3.905,5.347Zm4.348,8.69L5.4,11.184l-.707.707,2.5,2.5H7.9l2.5-2.5-.707-.707ZM7.192.635l-2.5,2.5.707.707L7.546,1.7,9.692,3.842l.707-.707L7.9.635Z" />
+    <path class="light-defaultgrey" d="M7.5,5A2.5,2.5,0,1,0,10,7.5,2.5,2.5,0,0,0,7.5,5Zm0,4A1.5,1.5,0,1,1,9,7.5,1.5,1.5,0,0,1,7.5,9Z" />
+  </g>
+</svg>

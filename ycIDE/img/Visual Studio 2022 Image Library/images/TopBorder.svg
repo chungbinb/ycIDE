@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>TopBorder</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M2,2H13l1,1V14l-1,1H2L1,14V3Z" />
+      <path class="light-defaultgrey" d="M14,4V5H13V4ZM13,6V7h1V6Zm0,2V9h1V8Zm.5-6H13V3h1V2.5ZM13,10v1h1V10ZM9,2V3h1V2Zm2,0V3h1V2ZM9,14v1h1V14Zm2,0v1h1V14Zm3,.5V14H13v1h.5ZM13,12v1h1V12ZM8,4V5H7V4ZM7,6V7H8V6Zm0,4v1H8V10Zm0,2v1H8V12Zm0,2v1H8V14ZM7,2V3H8V2ZM1.5,2,1,2.5V3H2V2ZM3,2V3H4V2ZM5,2V3H6V2ZM1,6V7H2V6ZM1,8V9H2V8Zm0,6v.5l.5.5H2V14Zm0-4v1H2V10ZM1,4V5H2V4ZM5,14v1H6V14ZM1,12v1H2V12Zm2,2v1H4V14ZM9,8V9h1V8Zm2,0V9h1V8ZM7,8V9H8V8ZM5,8V9H6V8ZM3,8V9H4V8Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14,3H1V2H14Z" />
+  </g>
+</svg>

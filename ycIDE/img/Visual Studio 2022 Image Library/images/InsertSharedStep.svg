@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightInsertSharedStep</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7,11H2V9H4.834l1.177-.865V6H8.919l1.1-.806V3H13V6H11.1L10.017,7.082l0,1.918H8.085L7,10.089Z" />
+      <path class="light-defaultgrey" d="M7,12H1.491L1,11.5v-3L1.5,8H5.011V5.5l.5-.5H9.016V2.5l.5-.5H13.5l.5.5V6H13V3H10V5.5L9.516,6H6V8.5L5.511,9H2v2H7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15,8v5H9.006L9,11h2.292L12,10.284,12.006,8Z" />
+    <path class="light-defaultgrey" d="M15.5,14H8.508l-.5-.5L8,10.5l.5-.5h2.51l.006-2.5.5-.5H15.5l.5.5v6ZM9,13h6V8H12v2.5l-.5.5H9Z" />
+    <path class="light-blue" d="M5.854,3.146v.708l-2.5,2.5-.707-.708L4.291,4H0V3H4.3L2.647,1.354,3.354.646Z" />
+  </g>
+</svg>

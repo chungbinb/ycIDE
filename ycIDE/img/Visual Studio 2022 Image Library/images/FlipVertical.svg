@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFlipVertical</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M10.716,1.265l-3.75,6H6.119l-3.75-6L2.792.5h7.5Z" />
+    <path class="light-blue" d="M13.854,10.854h-.708l-2-2,.708-.708L13,9.293V4h1V9.293l1.146-1.147.708.708Z" />
+    <path class="white" d="M10.292,14h-7.5l3.75-6Z" />
+    <path class="light-defaultgrey" d="M10.716,13.735l-.424.765h-7.5l-.423-.765,3.75-6h.847ZM3.7,13.5h5.7L6.542,8.943Z" />
+  </g>
+</svg>

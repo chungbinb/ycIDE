@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightXMLElement</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,3v9H8.306l-.153-.011L5.8,9.619,4.006,11.4,4,11.394V3Z" />
+    <path class="light-defaultgrey" d="M8,5.705,6.183,7.533,8,9.353l-.707.707L5.121,7.886V7.179L7.291,5ZM10.811,10,13,7.827V7.118L10.811,4.939l-.7.709,1.831,1.823-1.826,1.82ZM14.5,2H3.5L3,2.5v7.894l1,1V3H14v9H8.163l.771.776V13H14.5l.5-.5V2.5Z" />
+    <path class="light-defaultgrey" d="M2.223,15.967.085,13.813l0-.707L2.193,11l.707.707L1.146,13.461l1.787,1.8ZM5.8,11.033l2.138,2.155v.706L5.826,16l-.707-.707,1.754-1.754-1.788-1.8Z" />
+  </g>
+</svg>

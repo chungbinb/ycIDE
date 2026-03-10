@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDeleteWatch</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,13.5H10.5L9.5,11V9.5h6V11Zm-13,0H6.5l1-2.5V9.5h-6V11Z" />
+    <path class="light-defaultgrey" d="M15.5,9h-6L9,9.5V10H7.989L8,9.5,7.5,9h-6L1,9.5l.01,1.6.5,2.5L2,14H6.5l.464-.314,1-2.5,0-.186H9l1.036,2.686L10.5,14H15l.49-.4L16,11V9.5ZM7,10.9,6.162,13H2.408L2,11V10H7ZM14.59,13H10.838L10,10.9V10h5l.007.9Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M3.087,5.208l.745.745L2.309,9H1.5L1,9.5l.053-.224Zm12.86,4.068-2.5-5L13,4H11V5h1.691l2,4H15.5l.5.5Z" />
+    </g>
+  </g>
+</svg>

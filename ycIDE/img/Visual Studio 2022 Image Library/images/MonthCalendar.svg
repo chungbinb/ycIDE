@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMonthCalendar</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,11.5h-2v-2h2Z" />
+    <path class="light-defaultgrey-10" d="M13.5,2.5v3H1.5v-3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,6v7.5H1.5V6Z" />
+      <path class="light-defaultgrey" d="M14,5.5v8l-.5.5H1.5L1,13.5v-8l.5.5H2v7H13V6h.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8,8H7V7H8Zm2-1H9V8h1Zm2,0H11V8h1ZM8,9H7v1H8ZM6,7H5V8H6ZM6,9H5v1H6Zm0,2H5v1H6ZM4,7H3V8H4ZM4,9H3v1H4Zm0,2H3v1H4Zm4,0H7v1H8Z" />
+    <path class="light-defaultgrey" d="M13.5,2H11V1H10V2H5V1H4V2H1.5L1,2.5v3l.5.5h12l.5-.5v-3ZM13,5H2V3H4V4H5V3h5V4h1V3h2Z" />
+    <path class="light-defaultgrey" d="M11.5,12h-2L9,11.5v-2L9.5,9h2l.5.5v2ZM10,11h1V10H10Z" />
+  </g>
+</svg>

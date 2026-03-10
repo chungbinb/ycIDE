@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightModulePrivate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M9,14.5H1.5v-5h8.551A2.942,2.942,0,0,0,10,10v.086l-1,1Z" />
+      <path class="light-purple" d="M9,15H1.5L1,14.5v-5L1.5,9h8.684A2.966,2.966,0,0,0,10,10H2v4H9Z" />
+    </g>
+    <path class="light-purple-10" d="M1.5,2.5h5v5h-5Zm9.848,5H8.5v-5h5V7.051A2.942,2.942,0,0,0,13,7,2.974,2.974,0,0,0,11.348,7.5Z" />
+    <path class="light-purple" d="M1.5,2,1,2.5v5l.5.5h5L7,7.5v-5L6.5,2ZM6,7H2V3H6Zm4.78,1H8.5L8,7.5v-5L8.5,2h5l.5.5V7.184A2.966,2.966,0,0,0,13,7V3H9V7h4A2.985,2.985,0,0,0,10.78,8Z" />
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightListDefinition</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,15.5H.5v-5h6Z" />
+    <path class="light-defaultgrey" d="M6.5,10H.5l-.5.5v5l.5.5h6l.5-.5v-5ZM4,12v1H3V12ZM1,12H2v1H1Zm0,3V14H2v1Zm2,0V14H4v1Zm3,0H5V14H6Zm0-2H5V12H6Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5.5v8H8V10.086L6.914,9H1.5V5.5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H8V13h6V6H2V9H1V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,2.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <path class="light-defaultgrey" d="M13,8H7V7h6Zm0,2H9V9h4Zm0,2H9V11h4Z" />
+  </g>
+</svg>

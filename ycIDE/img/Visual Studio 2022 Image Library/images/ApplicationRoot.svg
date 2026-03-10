@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightApplicationRoot</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,1.5v10H12V7.086L10.914,6H9.5V1.5a1,1,0,0,1,1-1h4A1,1,0,0,1,15.5,1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,0h-4A1.5,1.5,0,0,0,9,1.5V6h1V1.5a.5.5,0,0,1,.5-.5h4a.5.5,0,0,1,.5.5V11H12v1h3.5l.5-.5V1.5A1.5,1.5,0,0,0,14.5,0Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14,10H12V9h2Zm0-3H12V8h2Zm0-4H11V4h3Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M10.5,7.5v8H.5v-8Z" />
+    <path class="light-defaultgrey" d="M10.5,7H.5L0,7.5v8l.5.5h10l.5-.5v-8ZM10,15H1V8h9Z" />
+    <path class="light-yellow" d="M9,10A1,1,0,1,1,8,9,1,1,0,0,1,9,10Z" />
+    <path class="light-blue" d="M10,15H8.768L7,13.232,5.707,14.525,6.183,15H4.768L2,12.232l-1,1V11.818l.646-.646h.708L5,13.818l1.646-1.646h.708L10,14.818Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>CodeInformationError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M7.657,14.428a4,4,0,1,1,0-4.856,4.815,4.815,0,0,0,0,4.856Z" />
+    <path class="white" d="M5,14H4V12H5Zm0-4H4v1H5Z" />
+    <path class="light-defaultgrey" d="M15,5H9V4h6ZM13,1H9V2h4ZM8,8H9.031A4.952,4.952,0,0,1,12,7H8Zm4-1a4.95,4.95,0,0,1,2,.424V7ZM8,1H2V2H8ZM8,4H3V5H8ZM7,7H4.5A4.937,4.937,0,0,1,7,7.7ZM4,7.051A4.865,4.865,0,0,1,4.5,7H4Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

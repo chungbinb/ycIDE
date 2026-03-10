@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUnsyncedCommits</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M4,14V3.707L2.854,4.854l-.708-.708,2-2h.708l2,2-.708.708L5,3.707V14ZM12,2V12.293l1.146-1.147.708.708-2,2h-.708l-2-2,.708-.708L11,12.293V2Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFontSize</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M9.442,13l-1-2.691h-3.9L3.558,13h-.94L6.084,3.9h.851L10.382,13ZM6.668,5.491c-.029-.081-.061-.174-.092-.28A2.682,2.682,0,0,1,6.5,4.85H6.472c-.026.135-.055.255-.086.361s-.063.2-.092.28L4.821,9.541H8.153Z" />
+    <path class="light-blue" d="M15,6,12.5,9,10,6Z" />
+    <path class="light-blue" d="M10,4l2.5-3L15,4Z" />
+  </g>
+</svg>

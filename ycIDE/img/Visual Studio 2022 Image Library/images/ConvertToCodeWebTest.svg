@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightConvertToCodeWebTest</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M6,15H1V14H6Zm2-3H3v1H8ZM6,10H3v1H6Zm3,0H7v1H9ZM4,8H1V9H4ZM9,8H5V9H9Z" />
+    <path class="light-teal-10" d="M13.1,8.5H10V7H7.938l.312-.5h4.5l.772,1.235A.5.5,0,0,1,13.1,8.5Z" />
+    <path class="light-teal" d="M13.973,8.485A1,1,0,0,1,13.1,9H10V8h3.1l-.625-1H7.348l.478-.765L8.25,6h4.5l.424.235.772,1.235A1,1,0,0,1,13.973,8.485Z" />
+    <path class="light-defaultgrey-10" d="M8.562,6,9.5,4.5v-3h2v3L12.437,6Z" />
+    <path class="light-defaultgrey" d="M9,2H8V1h5V2H12V4.356l1.174,1.879L12.75,6h-.9l-.772-1.235L11,4.5V2H10V4.5l-.076.265L9.152,6h-.9l-.424.235L9,4.356Z" />
+    <path class="light-blue" d="M6,2H4V4.293L5.146,3.146l.708.708-2,2H3.146l-2-2,.708-.708L3,4.293V1.5L3.5,1H6Z" />
+  </g>
+</svg>

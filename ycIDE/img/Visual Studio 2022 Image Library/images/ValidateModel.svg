@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ValidateModel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,9H4v2H3.015L3,10.985V8.5L3.5,8H8V5H9V8h4.5l.5.5v1.565L13.065,11H13V9H9v2H8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M10.5,1.5v3h-4v-3Zm-8,12h2v-2h-2Z" />
+    <path class="light-defaultgrey" d="M10.5,1h-4L6,1.5v3l.5.5h4l.5-.5v-3ZM10,4H7V2h3ZM2.5,11l-.5.5v2l.5.5h2l.5-.5v-2L4.5,11ZM4,13H3V12H4Zm5.5-2,.5.5v1.485L8.644,11.629,7,13.272V11.5l.5-.5Z" />
+    <path class="light-green" d="M15.144,11.6l-4.25,4.25h-.707L7.937,13.6l.707-.707,1.9,1.9,3.9-3.9Z" />
+  </g>
+</svg>

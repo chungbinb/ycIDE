@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRenameLocalServer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,3.5v10h-6V3.5a1,1,0,0,1,1-1h4A1,1,0,0,1,9.5,3.5Z" />
+    <path class="light-defaultgrey" d="M8.5,2h-4A1.5,1.5,0,0,0,3,3.5v10l.5.5h6l.5-.5V3.5A1.5,1.5,0,0,0,8.5,2ZM9,13H4V3.5A.5.5,0,0,1,4.5,3h4a.5.5,0,0,1,.5.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,5V6H5V5ZM5,10H8V9H5Zm0,2H8V11H5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14,10v5h2v1H11V15h2V10H11V9h5v1Z" />
+  </g>
+</svg>

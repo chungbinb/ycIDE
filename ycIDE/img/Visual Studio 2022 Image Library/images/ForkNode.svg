@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightForkNode</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14.354,12.337l-2.5,2.5h-.708l-2.5-2.5.708-.707L11,13.274V9H5v4.278L6.646,11.63l.708.707-2.5,2.5H4.146l-2.5-2.5.708-.707L4,13.274V9H2V8H4L4,6.69,1.646,4.337l.708-.707L4,5.274V.983H5v4.3L6.646,3.63l.708.707L5,6.69V8h9V9H12v4.278l1.648-1.648Z" />
+  </g>
+</svg>

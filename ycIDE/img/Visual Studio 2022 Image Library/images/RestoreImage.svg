@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRestoreImage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.5v8H4.5V10.257L7.964,6.783c.078-.088.137-.189.206-.283Z" />
+    <path class="light-yellow" d="M13,9a1,1,0,1,1-1-1A1,1,0,0,1,13,9Z" />
+    <path class="light-defaultgrey" d="M15,6.5v8l-.5.5H4.5L4,14.5V10.758l1-1V14h9V7H7.748l.216-.217A4.076,4.076,0,0,0,8.495,6H14.5Z" />
+    <path class="light-blue" d="M7.979,3.981a3.057,3.057,0,0,1-.764,2.14L3.41,9.935,2.7,9.228,6.5,5.415a2.106,2.106,0,0,0,.472-1.429,2.19,2.19,0,0,0-.6-1.549A2.269,2.269,0,0,0,3.4,2.308L1.723,4H4V5H.5L0,4.5V1H1V3.309L2.7,1.6a3.263,3.263,0,0,1,4.356.1A3.161,3.161,0,0,1,7.979,3.981Z" />
+    <path class="light-blue" d="M14,14H12.793L10.98,12.188,9.34,13.827H8.633L5.986,11.181,5,12.167V10.753l.633-.633H6.34l2.646,2.647,1.641-1.64h.707L14,13.793Z" />
+  </g>
+</svg>

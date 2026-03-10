@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>UpdateDatabaseError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M8.5.97c-2.21,0-4,.67-4,1.5V5.5h.02L5,5.78,8.48,7.79l.25.43A4.982,4.982,0,0,1,12,7a4.07,4.07,0,0,1,.5.03V2.47C12.5,1.64,10.71.97,8.5.97Z" />
+    <path class="light-lightblue" d="M4,2.47V5.5h.52L5,5.78V3.76a7.792,7.792,0,0,0,3.5.71A7.792,7.792,0,0,0,12,3.76V7a4.07,4.07,0,0,1,.5.03,4.293,4.293,0,0,1,.5.07V2.47C13-.16,4-.16,4,2.47Zm4.5,1c-2.27,0-3.5-.71-3.5-1s1.23-1,3.5-1,3.5.71,3.5,1S10.77,3.47,8.5,3.47Z" />
+    <path class="light-defaultgrey-10" d="M7.5,8.95,4,6.93.5,8.95v4.04L4,15.02,7.15,13.2A4.812,4.812,0,0,1,7,12a4.985,4.985,0,0,1,.5-2.18Z" />
+    <path class="light-defaultgrey" d="M7.75,8.52,4.25,6.5h-.5L.25,8.52,0,8.95v4.04l.25.44,3.5,2.02h.5l3.04-1.76c-.05-.16-.1-.32-.14-.49A4.812,4.812,0,0,1,7,12v.71L4.5,14.15V11.3L7,9.86V12a4.985,4.985,0,0,1,.5-2.18A4.853,4.853,0,0,1,8,9V8.95ZM3.5,14.15,1,12.71V9.86L3.5,11.3ZM4,10.44,1.46,8.97,4,7.51,6.54,8.97Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

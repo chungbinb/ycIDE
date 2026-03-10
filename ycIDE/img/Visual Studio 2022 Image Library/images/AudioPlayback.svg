@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAudioPlayback</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,2V14l-4-3.5h-4V6.581L6.391,5.5H8.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,8A2,2,0,0,1,13,9.929V6.071A2,2,0,0,1,14.5,8Z" />
+      <path class="light-defaultgrey" d="M15,8a2.5,2.5,0,0,1-2,2.449V9.408a1.491,1.491,0,0,0,0-2.816V5.551A2.5,2.5,0,0,1,15,8Z" />
+    </g>
+    <path class="light-defaultgrey" d="M12.171,1.624,8.313,5H7.266L5.516,6H8v4H5V6.3L4,6.866V10.5l.5.5H8.313l3.858,3.376L13,14V2ZM12,12.9,9,10.273V5.727L12,3.1Z" />
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+  </g>
+</svg>

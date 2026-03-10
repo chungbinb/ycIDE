@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StartWithPerformanceProfilingPaused</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.14,4.5,7.27,5,3,7.44l-.5.28V14.5H7.17c-.09-.16-.18-.33-.26-.5a5.106,5.106,0,0,1-.41-2,4.4,4.4,0,0,1,.06-.73,4.732,4.732,0,0,1,.29-1.12A5.017,5.017,0,0,1,11.5,7a4.919,4.919,0,0,1,2.5.67,4.322,4.322,0,0,1,.5.33V4.5Z" />
+    <path class="light-green" d="M5.85,9.15h-.7L3,11.29v1.42l2.5-2.5,1.06,1.06a4.732,4.732,0,0,1,.29-1.12Z" />
+    <path class="light-defaultgrey" d="M14.5,4H9.02l-.88.5L7.27,5H14V7.67a4.322,4.322,0,0,1,.5.33,4.113,4.113,0,0,1,.5.42V4.5ZM6.91,14H3V7.44l-.5.28L2,8.01V14.5l.5.5h5a4.322,4.322,0,0,1-.33-.5C7.08,14.34,6.99,14.17,6.91,14Z" />
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+    <path class="light-blue" d="M11.5,8a4,4,0,1,0,4,4A4,4,0,0,0,11.5,8Z" />
+    <path class="white" d="M11,14H10V10h1Zm2,0H12V10h1Z" />
+  </g>
+</svg>

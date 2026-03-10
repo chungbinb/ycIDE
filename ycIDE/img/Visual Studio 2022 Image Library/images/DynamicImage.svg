@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDynamicImage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow" d="M12,5.5A1.5,1.5,0,1,1,10.5,4,1.5,1.5,0,0,1,12,5.5Z" />
+    <path class="light-defaultgrey" d="M15,2.5v11l-.5.5H8.854V13H14V3H2V9.879l-1,1V2.5L1.5,2h13Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H8.854v-.768l-3-3L4,11.586,2.146,9.732l-.646.647V2.5Z" />
+    <path class="light-blue" d="M7.854,13.146v.708l-2,2-.708-.708L6.293,14H1.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L1.707,13H6.293L5.146,11.854l.708-.708Z" />
+    <path class="light-blue" d="M14,11.09V12.5l-2.819-2.82L8.988,11.877H8.281L4.814,8.41,2.819,10.405l-.673-.673L2,9.879V9.811L4.461,7.35h.707l3.466,3.466,2.193-2.193h.707Z" />
+  </g>
+</svg>

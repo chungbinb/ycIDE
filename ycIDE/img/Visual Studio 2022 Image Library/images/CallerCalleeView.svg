@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCallerCalleeView</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.809,2.5H6.5v3h-2v5h2v3H4.809A2.312,2.312,0,0,1,2.5,11.191V4.809A2.312,2.312,0,0,1,4.809,2.5Z" />
+    <path class="light-defaultgrey" d="M2,4.809v6.382A2.812,2.812,0,0,0,4.809,14H6.5l.5-.5v-3L6.5,10H5V6H6.5L7,5.5v-3L6.5,2H4.809A2.812,2.812,0,0,0,2,4.809ZM6,3V5H5A1,1,0,0,0,4,6v4a1,1,0,0,0,1,1H6v2H4.811A1.808,1.808,0,0,1,3,11.191V4.809A1.808,1.808,0,0,1,4.811,3Z" />
+    <path class="light-blue" d="M14.854,4.146v.708l-2,2-.708-.708L13.293,5H9V4h4.293L12.146,2.854l.708-.708Z" />
+    <path class="light-blue" d="M9.146,11.854v-.708l2-2,.708.708L10.707,11H15v1H10.707l1.147,1.146-.708.708Z" />
+  </g>
+</svg>

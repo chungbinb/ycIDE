@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFlatList</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,13.5H1.5V1.5h13Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v12l.5.5h13l.5-.5V1.5ZM14,2V4H5V2ZM5,8h9v2H5ZM5,7V5h9V7ZM2,13V2H4V4H2.01V5H4V7H2.01V8H4v2H2.01v1H4v2Zm3,0V11h9v2Z" />
+  </g>
+</svg>

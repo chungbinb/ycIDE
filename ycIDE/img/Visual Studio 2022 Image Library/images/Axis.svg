@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAxis</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,15H13V14h1Zm-2,0H11V14h1Zm-2,0H9V14h1ZM8,15H7V14H8ZM6,15H5V14H6ZM4,15H3V14H4Z" />
+    <path class="light-defaultgrey" d="M14,13H2V1H3V12H14Z" />
+  </g>
+</svg>

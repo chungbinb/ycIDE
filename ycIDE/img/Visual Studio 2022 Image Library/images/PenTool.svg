@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPenTool</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5.5A17.456,17.456,0,0,1,2.707,8.793L4.968,13.5h5.064l2.261-4.707A17.456,17.456,0,0,1,8.5.5Zm1,9a1,1,0,1,1,1-1A1,1,0,0,1,7.5,9.5Z" />
+    <path class="light-defaultgrey" d="M12.744,9.009,10.451,13.8l-.9-.432L11.707,8.86A20.7,20.7,0,0,1,8.1,1H6.905A20.7,20.7,0,0,1,3.293,8.86l2.158,4.509-.9.432L2.256,9.009l.07-.539A19.743,19.743,0,0,0,6.01.4L6.5,0h2l.49.4A19.743,19.743,0,0,0,12.674,8.47Z" />
+    <path class="light-defaultgrey" d="M8,7.5H7V.5H8Z" />
+    <path class="light-defaultgrey" d="M7.5,10A1.5,1.5,0,1,1,9,8.5,1.5,1.5,0,0,1,7.5,10Zm0-2a.5.5,0,1,0,.5.5A.5.5,0,0,0,7.5,8Z" />
+    <path class="light-defaultgrey-10" d="M11.5,15.5h-8v-2h8Z" />
+    <path class="light-defaultgrey" d="M11.5,16h-8L3,15.5v-2l.5-.5h8l.5.5v2ZM4,15h7V14H4Z" />
+  </g>
+</svg>

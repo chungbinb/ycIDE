@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPatchPackage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v7l-3,3h-8v-7L1,5,4,2,6.5,4.5Z" />
+    <path class="light-defaultgrey" d="M14.5,4H6.71l-2-2,.645-.645-.71-.71L.65,4.65v.7L3,7.71V14.5l.5.5h8l.35-.15,3-3L15,11.5v-7ZM1.71,5,4,2.71,5.79,4.5,3.5,6.79ZM6,5.71V7H4.71ZM11,14H4V8h7Zm.29-7H7V5h6.29ZM14,11.29l-2,2V7.71l2-2Z" />
+  </g>
+</svg>

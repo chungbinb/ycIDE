@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPendingChange</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,12A3.5,3.5,0,1,1,4,8.5,3.5,3.5,0,0,1,7.5,12Z" />
+    <path class="light-blue" d="M10.914,8.207,13,10.293V13H12V10.707L10.207,8.914ZM8.086,6.793l.707-.707L7,4.293V2.707L8.147,3.854l.646-.647-.061-.061.061-.06L6.854,1.146H6.147l-2,2,.707.708L6,2.707v2Z" />
+    <path class="light-defaultgrey" d="M4,16a4,4,0,1,1,4-4A4,4,0,0,1,4,16ZM4,9a3,3,0,1,0,3,3A3,3,0,0,0,4,9Zm1.5,4H4l-.5-.5V10h1v2h1Z" />
+    <path class="light-defaultgrey" d="M14.854,3.146l-.707.708L13,2.707v2L8.855,8.852a4.922,4.922,0,0,0-.707-.707L12,4.293V2.707L10.854,3.854l-.707-.708,2-2h.707Z" />
+  </g>
+</svg>

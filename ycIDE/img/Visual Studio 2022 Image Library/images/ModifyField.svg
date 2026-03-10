@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightModifyField</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M7.4,12.216l-.034.1-1.67.922V9.608h-1v3.275L1.5,10.4V6.538L9.808,1.629l3.692,3.9-.5,1.1a1.893,1.893,0,0,0-.156.128L7.517,12.021Z" />
+      <path class="light-blue" d="M14,5.321v.934a1.73,1.73,0,0,0-1,.376v-1.1L9.721,2.249,2,6.538v3.653l2.692,2.692V9.608h1v3.633l1.67-.922-.234.7-.234.7-1.459.8-.6-.084L1.146,10.752,1,10.4V6.244l.257-.437L9.565,1.191l.6.084,3.692,3.693Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M15.135,9.928l-4.714,4.714-2.652.884.884-2.652L13.367,8.16a1.25,1.25,0,1,1,1.768,1.768Z" />
+    <path class="light-defaultgrey" d="M15.488,7.806a1.753,1.753,0,0,0-2.475,0L8.3,12.52l-.121.2L7.3,15.367,7.927,16l2.652-.884L10.774,15l4.714-4.714A1.751,1.751,0,0,0,15.488,7.806Zm-5.337,6.4-.125.041-.978-.977.042-.125,4.631-4.63a.75.75,0,0,1,1.06,1.06Z" />
+    <path class="light-blue-10" d="M13.418,5.22,5.239,9.764,1.6,6.129l8.18-4.545Z" />
+    <path class="light-blue" d="M5.477,10.194l-.586-.082L1.256,6.477,1.365,5.7,9.543,1.154l.587.083,3.636,3.635-.108.778ZM2.455,6.285,5.324,9.154,12.59,5.118,9.721,2.249Z" />
+  </g>
+</svg>

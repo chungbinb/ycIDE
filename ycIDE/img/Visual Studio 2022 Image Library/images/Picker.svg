@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPicker</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,12.5H1.5v-8h13Z" />
+    <path class="light-defaultgrey" d="M14.5,13H1.5L1,12.5v-8L1.5,4h13l.5.5v8ZM2,12H14V5H2Z" />
+    <path class="light-defaultgrey" d="M6,10H4V8H6ZM9,8H7v2H9Zm3,0H10v2h2Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightParallel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,11.5h-4v-8h4Z" />
+    <path class="light-defaultgrey-10" d="M7.5,11.5h-4v-8h4Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,1V3H5V1ZM6,12v2H5V12Z" />
+      <path class="light-defaultgrey" d="M12,1V3H11V1Zm0,11v2H11V12Z" />
+    </g>
+    <path class="light-defaultgrey" d="M3.5,3,3,3.5v8l.5.5h4l.5-.5v-8L7.5,3ZM7,11H4V4H7Zm6.5-8h-4L9,3.5v8l.5.5h4l.5-.5v-8ZM13,11H10V4h3Z" />
+  </g>
+</svg>

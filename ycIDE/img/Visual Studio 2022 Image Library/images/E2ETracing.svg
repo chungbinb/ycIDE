@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>E2ETracing</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,4.5v9H10v-6L9.5,7h-5V1.5h7Z" />
+      <path class="light-defaultgrey" d="M15,4.5v9l-.5.5H10V13h4V5H11V2H5V7H4V1.5L4.5,1h7l.354.146,3,3Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M.5,8.5h8v7H.5Z" />
+    <path class="light-green" d="M8.146,13.854,5.5,11.207,3.854,12.854H3.146L2.5,12.207.854,13.854l-.708-.708,2-2h.708l.646.647,1.646-1.647h.708l3,3Z" />
+    <path class="light-defaultgrey" d="M8.5,16H.5L0,15.5v-7L.5,8h8l.5.5v7ZM1,15H8V9H1Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-darkblue{fill: #313c9e; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightFlagDarkBlue</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-darkblue" d="M8.5,1.5v7h-6v-7Z" />
+      <path class="light-darkblue" d="M13.5,3.5v7h-5v-7Z" />
+    </g>
+    <path class="light-darkblue" d="M3,2V15H2V2Z" />
+    <path class="light-darkblue" d="M13.5,3h-5L8,3.5v7l.5.5h5l.5-.5v-7ZM13,10H9V4h4Z" />
+    <path class="light-darkblue" d="M8.5,1h-6L2,1.5v7l.5.5h6L9,8.5v-7ZM8,8H3V2H8Z" />
+  </g>
+</svg>

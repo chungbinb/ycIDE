@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDirectXThreeD</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,7.5l-1.5,6H5.5l-4-6,5-6H13Z" />
+    <path class="light-defaultgrey-10" d="M13.984,7.5l-1.2,4.782L12.066,13h-6.3L2.434,8h6.3L9.6,7.5l3.188-4.782Z" />
+    <path class="light-defaultgrey-25" d="M2.434,8h6.3l3.334,5h-6.3Z" />
+    <path class="light-defaultgrey" d="M13.485,1.379,13,1H6.5l-.384.18-5,6-.032.6,4,6L5.5,14H13l.485-.379,1.5-6V7.379ZM6.734,2h5.332L8.732,7H2.567Zm-4.3,6h6.3l3.334,5h-6.3Zm10.355,4.282L9.6,7.5l3.188-4.782,1.2,4.782Z" />
+  </g>
+</svg>

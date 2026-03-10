@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTooltip</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,10v4.5H3V10.479L3.521,10Z" />
+    <path class="light-defaultgrey" d="M16,10.5v4l-.5.5H3.5L3,14.5v-4l.163-.163.769,2.115L4,12.427V14H15V11H6.6l-.364-1H15.5Z" />
+    <path class="light-defaultgrey" d="M13,12v1H6V12Z" />
+    <path class="light-blue" d="M4.09,7.034l1.38,3.8-.94.342L3.123,7.3,1,9V0L7,7.2Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>GroupByClause</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,3.5v3h-7v-3Zm-7,9h7v-3h-7Z" />
+    <path class="light-defaultgrey" d="M5,1.984v.875q-1.087.029-1.087,1.354v2q0,1.436-1.025,1.763v.028q1.025.307,1.025,1.75v1.975a1.858,1.858,0,0,0,.242,1.084A1.02,1.02,0,0,0,5,13.154v.862A1.88,1.88,0,0,1,2.9,11.9V9.846q0-1.381-1.066-1.45V7.6Q2.9,7.535,2.9,6.127v-2A1.892,1.892,0,0,1,5,1.984ZM15,3.5v3l-.5.5h-7L7,6.5v-3L7.5,3h7ZM14,4H8V6h6Zm.5,5,.5.5v3l-.5.5h-7L7,12.5v-3L7.5,9ZM14,10H8v2h6Z" />
+  </g>
+</svg>

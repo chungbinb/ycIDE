@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StopFilter</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5l-4,5v5h-3v-5L6.54,8.3a3.012,3.012,0,0,0,.42-.27A5.016,5.016,0,0,0,8.9,5a4.293,4.293,0,0,0,.07-.5Z" />
+    <path class="light-defaultgrey" d="M14.5,4H9a4.07,4.07,0,0,1-.03.5A4.293,4.293,0,0,1,8.9,5h4.56L10.11,9.19,10,9.5V14H8V9.5l-.11-.31L6.96,8.03a3.012,3.012,0,0,1-.42.27,3.209,3.209,0,0,1-.45.24L7,9.68V14.5l.5.5h3l.5-.5V9.68l3.89-4.87Z" />
+    <path class="light-red" d="M4,8A4,4,0,1,1,8,4,4,4,0,0,1,4,8Z" />
+    <path class="white" d="M2.5,2.5h3v3h-3Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddNamespace</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14.773,10.906q-.913.059-.914,1.242v1.758a1.607,1.607,0,0,1-1.793,1.816v-.738a.88.88,0,0,0,.724-.293A1.557,1.557,0,0,0,13,13.765V12.072q0-1.236.873-1.5v-.023Q13,10.267,13,9.037V7.32q0-1.137-.938-1.16V5.41a1.618,1.618,0,0,1,1.793,1.84V8.961q0,1.206.914,1.265Z" />
+    <path class="light-defaultgrey" d="M5.293,10.16q.914-.058.914-1.265V7.184A1.618,1.618,0,0,1,8,5.344v.75q-.937.022-.937,1.16V8.971q0,1.23-.874,1.511v.024q.875.264.874,1.5V13.7a1.56,1.56,0,0,0,.213.926A.883.883,0,0,0,8,14.918v.738A1.608,1.608,0,0,1,6.207,13.84V12.082q0-1.184-.914-1.242Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

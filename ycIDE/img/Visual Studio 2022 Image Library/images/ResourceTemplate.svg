@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightResourceTemplate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14.5,14H14V13h1v.5ZM13,13H12v1h1Zm-2,0H10v1h1ZM9,13H8v1H9ZM7,13H6v1H7ZM5,13H4v1H5ZM3,13H2v1H3ZM1,13H0v.5l.5.5H1Zm0-2H0v1H1ZM1,9H0v1H1ZM1,7H0V8H1ZM1,5H0V6H1ZM1,3H0V4H1ZM1,1H.5L0,1.5V2H1ZM13,1H12V2h1ZM11,1H10V2h1ZM9,1H8V2H9ZM7,1H6V2H7ZM5,1H4V2H5ZM3,1H2V2H3Zm12,.5L14.5,1H14V2h1ZM15,11H14v1h1Zm0-2H14v1h1Zm0-2H14V8h1Zm0-2H14V6h1Zm0-2H14V4h1Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M12.5,3.5v8H2.5v-8Z" />
+    <path class="light-defaultgrey" d="M12.5,3H2.5L2,3.5v8l.5.5h10l.5-.5v-8ZM12,11H3V4h9Z" />
+    <path class="light-yellow" d="M11,6a1,1,0,1,1-1-1A1,1,0,0,1,11,6Z" />
+    <path class="light-blue" d="M12,11H10.768L9,9.232,7.707,10.525,8.183,11H6.768L4,8.232l-1,1V7.818l.646-.646h.708L7,9.818,8.646,8.172h.708L12,10.818Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPrimaryKeyWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.52,12.5h-2v2h-3V12.2L6.72,7a4.034,4.034,0,1,1,7.7-.619h0a4.042,4.042,0,0,1-1.113,2.024L12.53,7H10.47L9.17,9.36c-.05-.018-.1-.036-.15-.056L8,10.5H6.52Z" />
+    <path class="light-defaultgrey" d="M6.52,13H5.02v1.5l-.5.5h-3l-.5-.5V12.2l.146-.353L6.14,6.871a4.49,4.49,0,0,1-.2-1.405,4.533,4.533,0,1,1,7.61,3.386l-.5-.9a3.563,3.563,0,0,0,.874-1.664l0,.005A3.535,3.535,0,1,0,6.94,5.482a3.4,3.4,0,0,0,.239,1.33l-.11.542L2.02,12.4V14h2V12.5l.5-.5h1.5V10.5l.5-.5H7.765l.876-1.016.561-.14c.069.027.139.051.21.073L8.356,10.837,8,11H7.02v1.5ZM12,5a1,1,0,1,1-1-1A1,1,0,0,1,12,5Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPartitionScheme</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11,4.268V8.732L6.588,11.674,5.914,11,6,10.914V8.086L4.914,7H2.086L1.5,7.586V5.268L7,1.6Z" />
+    <path class="light-defaultgrey-10" d="M2.5,15.5H.5v-2h2Zm2-5h-2v-2h2Zm2,5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M6.5,13H6v-.5L5.5,12H4V11h.5l.5-.5v-2L4.5,8h-2L2,8.5v2l.5.5H3v1H1.5l-.5.5V13H.5l-.5.5v2l.5.5h2l.5-.5v-2L2.5,13h2l-.5.5v2l.5.5h2l.5-.5v-2ZM3,9H4v1H3ZM2,15H1V14H2Zm4,0H5V14H6Z" />
+    <path class="light-defaultgrey" d="M14.777,6.185l-1.5-1h-.554L11.5,6V4.268l-.223-.416-4-2.667H6.723l-5.5,3.667L1,5.268V8.086l1-1V6.2L3.2,7H4.914L6,8.086V8.2l4.5-3V6.666L7.223,8.852,7,9.268V10.8l-.772.515.721.721L7,12v.086l1,1v1.581l.723.481h.555l5.5-3.667L15,11.065V6.6ZM5.5,7.334,2.4,5.268,7,2.2l3.1,2.067Z" />
+  </g>
+</svg>

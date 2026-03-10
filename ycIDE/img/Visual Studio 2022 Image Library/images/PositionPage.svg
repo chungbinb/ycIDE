@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPositionPage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,9.5v4h-4v-4Z" />
+    <path class="light-defaultgrey" d="M14,7V8H8v6H7V8H1V7H7V1H8V7Z" />
+    <path class="light-defaultgrey" d="M13.5,9h-4L9,9.5v4l.5.5h4l.5-.5v-4ZM13,13H10V10h3Z" />
+    <path class="light-blue" d="M14.854,3.146v.708l-2.5,2.5-.707-.708L13.293,4H9V3h4.293L11.647,1.354l.707-.708Z" />
+    <path class="light-blue" d="M6.354,12.354l-2.5,2.5H3.146l-2.5-2.5.708-.707L3,13.293V9H4v4.293l1.646-1.646Z" />
+  </g>
+</svg>

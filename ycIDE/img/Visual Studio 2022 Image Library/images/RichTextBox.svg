@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightRichTextBox</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M1,14H6v1H1Zm0-3h9V10H1Zm0,2H8V12H1ZM9,7h6V8H9ZM9,5h6V6H9ZM9,3h6V4H9Z" />
+    <path class="light-blue" d="M13.5,9.4,9.473,15H10.84l.838-1.246H13.67L13.625,15H15V9.4Zm.289,1.5-.068,1.883H12.292l1.284-1.9a2.935,2.935,0,0,0,.271-.489h.032A2.412,2.412,0,0,0,13.793,10.9Z" />
+    <path class="light-defaultgrey-10" d="M7.5,2.5v6h-6v-6Z" />
+    <path class="light-defaultgrey" d="M7.5,2h-6L1,2.5v6l.5.5h6L8,8.5v-6ZM2,3H5V6H2ZM2,8V7H5V8ZM7,8H6V3H7Z" />
+  </g>
+</svg>

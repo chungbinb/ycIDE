@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBuildErrorList</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.7,14.5H2.5V3.5h10V7.051A4.865,4.865,0,0,0,12,7a5.006,5.006,0,0,0-5,5A4.937,4.937,0,0,0,7.7,14.5Z" />
+      <path class="light-defaultgrey" d="M8.026,15H2.5L2,14.5V3.5L2.5,3h10l.5.5V7.1A5,5,0,0,0,12,7V4H3V14H7.424A4.967,4.967,0,0,0,8.026,15Z" />
+    </g>
+    <path class="light-defaultgrey" d="M9.5,2a2,2,0,0,0-4,0H4V4h7V2Zm-2-1a1,1,0,1,1-1,1A1,1,0,0,1,7.5,1Z" />
+    <path class="light-red" d="M13.556,8.3a4.03,4.03,0,0,0-5.26,5.26A3.761,3.761,0,0,0,10.444,15.7a4.03,4.03,0,0,0,5.26-5.26A3.761,3.761,0,0,0,13.556,8.3Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

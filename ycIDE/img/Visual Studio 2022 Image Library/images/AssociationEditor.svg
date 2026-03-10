@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightAssociationEditor</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6.322,6.351l-2.5,2.5H3.115l-2.5-2.5.707-.707L3,7.322V5A3,3,0,0,1,6,2V3A2,2,0,0,0,4,5V7.258L5.615,5.644Z" />
+    <path class="light-defaultgrey" d="M5,15H1V14H5ZM4,12H1v1H4Zm1-2H1v1H5Z" />
+    <path class="light-defaultgrey-10" d="M14.5,10.5h-7v-9h7Z" />
+    <path class="light-defaultgrey" d="M13,4H9V3h4ZM12,6H9V5h3ZM9,8V7h4V8Zm5.5-7h-7L7,1.5v9l.5.5h7l.5-.5v-9ZM14,10H8V2h6Z" />
+  </g>
+</svg>

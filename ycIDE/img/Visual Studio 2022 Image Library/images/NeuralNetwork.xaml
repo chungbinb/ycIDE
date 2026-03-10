@@ -1,0 +1,28 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1" />
+      <System:Double x:Key="cls-1">0.75</System:Double>
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <DrawingGroup Opacity="{DynamicResource cls-1}">
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M12.282,4.4,9.432,7.26l-.709-.7,2.85-2.863ZM7.3,9.4l-2.94,2.952-.709-.7L6.593,8.7Zm5.06,2.248-.709.705L8.7,9.393l.709-.7ZM7.352,6.622l-.709.705L3.733,4.4l.709-.7Z" />
+              </DrawingGroup>
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M14.5,3A1.5,1.5,0,1,1,13,1.5,1.5,1.5,0,0,1,14.5,3Zm-5,5a1.5,1.5,0,1,1-1.5-1.5A1.5,1.5,0,0,1,9.508,8Zm-5-5A1.5,1.5,0,1,1,3,1.5,1.5,1.5,0,0,1,4.5,3Zm10,10A1.5,1.5,0,1,1,13,11.5,1.5,1.5,0,0,1,14.5,13Zm-9.99,0a1.5,1.5,0,1,1-1.5-1.5A1.5,1.5,0,0,1,4.513,13Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M13,1a2,2,0,1,0,2,2A2,2,0,0,0,13,1Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,13,4Zm-5,2a2,2,0,1,0,2,2A2,2,0,0,0,8.008,6Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,8.008,9ZM3,1A2,2,0,1,0,5,3,2,2,0,0,0,3,1ZM3,4A1,1,0,1,1,4,3,1,1,0,0,1,3,4Zm10,7a2,2,0,1,0,2,2A2,2,0,0,0,13,11Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,13,14Zm-9.99-3a2,2,0,1,0,2,2A2,2,0,0,0,3.013,11Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,3.013,14Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

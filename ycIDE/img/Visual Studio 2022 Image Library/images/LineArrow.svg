@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLineArrow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14.854,9.854l-4,4h-.708l-4-4,.708-.708L10,12.293V11A9.01,9.01,0,0,0,1,2V1A10.011,10.011,0,0,1,11,11v1.293l3.146-3.147Z" />
+  </g>
+</svg>

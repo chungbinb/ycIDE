@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSourceControlEditableNode</title>
+  <g id="canvas">
+    <path class="canvas" d="M7,16H0V0H7Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6.707,5.707l-4.5,4.5a12.087,12.087,0,0,1-1.992.728l-.161-.162a6.228,6.228,0,0,1,.739-1.98l4.5-4.5A1,1,0,0,1,6.707,5.707Z" />
+  </g>
+</svg>

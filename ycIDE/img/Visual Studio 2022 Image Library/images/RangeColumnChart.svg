@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRangeColumnChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue-10" d="M7.5,3.5h2v8h-2Z" />
+    <path class="light-lightblue" d="M7,3.5v8l.5.5h2l.5-.5v-8L9.5,3h-2ZM9,4v7H8V4Z" />
+    <path class="light-defaultgrey-10" d="M3.5,5.5h2v5h-2Z" />
+    <path class="light-defaultgrey" d="M3,5.5v5l.5.5h2l.5-.5v-5L5.5,5h-2ZM5,6v4H4V6Z" />
+    <path class="light-defaultgrey-10" d="M11.5,2.5h2v7h-2Z" />
+    <path class="light-defaultgrey" d="M11,2.5v7l.5.5h2l.5-.5v-7L13.5,2h-2ZM13,3V9H12V3Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMethodMissing</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M7.732,10.854l.727.726L6,13,1.5,10.4V5.189L6.009,2.4,10.5,5.189v4.19l-.646-.647Z" />
+      <path class="light-purple" d="M10.765,4.765,6.274,1.97H5.746l-4.51,2.8L1,5.189V10.4l.25.433,4.5,2.6h.5l2.575-1.487-.732-.732-1.592.92,0-4.059L10,6.055V8.879l1,1V5.189ZM6.009,2.983l3.52,2.191L6,7.21,2.474,5.174ZM2,10.113V6.056l3.5,2.02,0,4.059Z" />
+    </g>
+    <path class="light-purple-10" d="M6.009,2.4,10.5,5.189,6,7.787l-4.5-2.6Z" />
+    <path class="light-purple" d="M5.754,8.221l-4.5-2.6-.014-.858L5.746,1.97h.528l4.491,2.8-.015.857-4.5,2.6ZM2.474,5.174,6,7.21,9.528,5.174,6.009,2.983Z" />
+    <path class="light-defaultgrey" d="M12.707,13l2.147,2.146-.708.708L12,13.707,9.854,15.854l-.708-.708L11.293,13,9.146,10.854l.708-.708L12,12.293l2.146-2.147.708.708Z" />
+  </g>
+</svg>

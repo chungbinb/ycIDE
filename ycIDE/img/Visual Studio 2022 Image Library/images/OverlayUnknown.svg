@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>OverlayUnknown</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M16,11.5A4.5,4.5,0,1,1,11.5,7,4.505,4.505,0,0,1,16,11.5Z" />
+    <path class="light-defaultgrey" d="M11.5,15A3.5,3.5,0,1,1,15,11.5,3.5,3.5,0,0,1,11.5,15Z" />
+    <path class="white" d="M12.047,13.688a.547.547,0,1,1-.547-.547A.546.546,0,0,1,12.047,13.688Zm.514-4.237a1.345,1.345,0,0,1,.439.994c0,.679-.478.977-.949,1.434a.477.477,0,0,0-.147.231,1.352,1.352,0,0,0-.029.445h-.75v-.264a1.122,1.122,0,0,1,.082-.445,1.505,1.505,0,0,1,.205-.346c.261-.326.373-.276.756-.769a.406.406,0,0,0,.082-.286.752.752,0,0,0-1.5,0H10A1.515,1.515,0,0,1,12.561,9.451Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}</style>
+  </defs>
+  <title>EventWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow" d="M15.561,16h-8l-.44-.739,4-7.261H12l4,7.261Z" />
+    <path class="white" d="M12.061,13h-1V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.311,14.5Z" />
+    <path class="light-yellow-10" d="M9.954,8.046,3.5,14.5H2l3.5-6H2l4-7h5.387L7,6.5h4.5L11,7h-.47Z" />
+    <path class="light-yellow" d="M10.53,7h1.178l.146-.146L11.5,6H8.1l3.659-4.17L11.387,1H6l-.434.252-4,7L2,9H4.63L1.568,14.248,2,15H3.5l.354-.146L9.086,9.622ZM3.293,14H2.871L5.932,8.752,5.5,8H2.862L6.29,2h3.993L6.624,6.17,7,7h3.293Z" />
+  </g>
+</svg>

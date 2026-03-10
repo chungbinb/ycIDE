@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUnblockingStack</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.5h-7v-3h7Z" />
+    <path class="light-defaultgrey-10" d="M8.5,13.5h-7v-3h7Z" />
+    <path class="light-defaultgrey" d="M14.5,3H1.5L1,3.5v3l.5.5H11v5H9V10.5L8.5,10h-7l-.5.5v3l.5.5h7l.5-.5V13h2.5l.5-.5V7h2.5l.5-.5v-3ZM8,13H2V11H8Zm6-7H8V4h6Z" />
+  </g>
+</svg>

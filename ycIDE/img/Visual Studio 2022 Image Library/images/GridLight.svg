@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGridLight</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15.5,16H.5L0,15.5V.5L.5,0h15l.5.5v15ZM1,15H15V1H1Z" />
+    <path class="light-defaultgrey" d="M3,3H1V1H3ZM7,3H5V1H7ZM5,5H3V3H5ZM9,5H7V3H9ZM3,7H1V5H3ZM7,7H5V5H7ZM5,9H3V7H5ZM9,9H7V7H9Zm4,0H11V7h2Zm-2,2H9V9h2Zm4,0H13V9h2ZM9,13H7V11H9Zm4,0H11V11h2Zm-2,2H9V13h2Zm4,0H13V13h2Z" />
+  </g>
+</svg>

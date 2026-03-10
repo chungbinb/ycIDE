@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCurrentLocationArrow</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,8,12,11.5H3.5v-7H12Z" />
+    <path class="light-defaultgrey" d="M12,12H3.5L3,11.5v-7L3.5,4H12l.354.146,3.5,3.5v.708l-3.5,3.5ZM4,11h7.793l3-3-3-3H4Z" />
+    <path class="light-defaultgrey" d="M2,12H1V4H2Z" />
+  </g>
+</svg>

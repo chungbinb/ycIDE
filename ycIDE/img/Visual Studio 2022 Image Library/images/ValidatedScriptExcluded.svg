@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightValidatedScriptExcluded</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,8.293V4A1.5,1.5,0,0,1,7,2.5h7A1.5,1.5,0,0,1,15.5,4V5.5h-3V7.05C12.333,7.034,12.171,7,12,7A4.979,4.979,0,0,0,7.589,9.693,3.83,3.83,0,0,0,5.5,8.293Z" />
+    <path class="light-defaultgrey" d="M12.278,3A1.978,1.978,0,0,0,12,4V7a4.988,4.988,0,0,1,1,.1V6h2.5l.5-.5V4a2,2,0,0,0-2-2H7A2,2,0,0,0,5,4V8.166a5.539,5.539,0,0,1,1,.3V4A1,1,0,0,1,7,3ZM13,4a1,1,0,0,1,2,0V5H13Z" />
+    <path class="light-lightblue-10" d="M3.5,15.5c-1.654,0-3-.673-3-1.5V11c0-.827,1.346-1.5,3-1.5s3,.673,3,1.5v3C6.5,14.827,5.154,15.5,3.5,15.5Z" />
+    <path class="light-lightblue" d="M3.5,9C1.505,9,0,9.859,0,11v3c0,1.141,1.505,2,3.5,2S7,15.141,7,14V11C7,9.859,5.5,9,3.5,9Zm0,1c1.526,0,2.5.592,2.5,1s-.974,1-2.5,1S1,11.408,1,11,1.974,10,3.5,10Zm0,5C1.974,15,1,14.408,1,14V12.426A5.108,5.108,0,0,0,3.5,13,5.108,5.108,0,0,0,6,12.426V14C6,14.408,5.026,15,3.5,15Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M14,12.5H10v-1h4Z" />
+  </g>
+</svg>

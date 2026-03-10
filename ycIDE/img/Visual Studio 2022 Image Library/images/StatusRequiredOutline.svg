@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>StatusRequiredOutline</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M13.5,7.5a6,6,0,1,1-6-6A6.006,6.006,0,0,1,13.5,7.5Z" />
+    <path class="light-red" d="M7.5,14A6.5,6.5,0,1,1,14,7.5,6.508,6.508,0,0,1,7.5,14Zm0-12A5.5,5.5,0,1,0,13,7.5,5.507,5.507,0,0,0,7.5,2Z" />
+    <path class="light-red" d="M10.935,6.444,8.594,7.5,10.93,8.557l-.8,1.391-2.084-1.5L8.3,11H6.7l.249-2.553-2.084,1.5-.8-1.391L6.406,7.5,4.068,6.443l.8-1.391,2.084,1.5L6.7,4H8.3L8.051,6.553l2.084-1.5Z" />
+  </g>
+</svg>

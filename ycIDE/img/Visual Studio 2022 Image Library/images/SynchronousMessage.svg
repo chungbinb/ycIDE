@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSynchronousMessage</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2.207,11.5l2.147,2.146-.708.708-2.5-2.5v-.708l2.5-2.5.708.708ZM10,11v1h2V11ZM4,12H6V11H4Zm3,0H9V11H7Z" />
+    <path class="light-blue" d="M12.354,4.146v.708l-3,3-.708-.708L10.793,5H1V4h9.793L8.646,1.854l.708-.708Z" />
+    <path class="light-defaultgrey" d="M15,15H13V1h2Z" />
+  </g>
+</svg>

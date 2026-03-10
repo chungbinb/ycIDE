@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>TracepointDependent</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-red" d="M15.071,8,8,15.071.929,8,8,.929Z" />
+    </g>
+    <path class="light-red" d="M8.354.575H7.646L.575,7.646v.708l7.071,7.071h.708l7.071-7.071V7.646ZM8,14.364,1.636,8,8,1.636,14.364,8Z" />
+    <path class="white" d="M5.15,10.15l-.68.68.7.7.68-.68Zm2-2-1,1,.7.7,1-1ZM10.5,5H7V6H9.29L8.15,7.15l.7.7L10,6.71V9h1V5.5Z" />
+  </g>
+</svg>

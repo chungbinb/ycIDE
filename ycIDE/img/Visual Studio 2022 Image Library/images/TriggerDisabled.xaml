@@ -1,0 +1,30 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+      <SolidColorBrush x:Key="light-yellow" Color="#996f00" Opacity="1" />
+      <System:Double x:Key="cls-1">0.75</System:Double>
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <DrawingGroup Opacity="{DynamicResource cls-1}">
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M14.5,13.5H10V14H4.5v-.5h-3V3h13Z" />
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M5.017,9.729,1,5.712V4.3L5.488,8.787ZM10.712,6l-4-4H5.3l4,4ZM1,13.5l.5.5H2.691L1,12.309ZM6.823,6.117,2.707,2H1.5l-.1.1L6.352,7.06ZM5.487,12.791,4.7,12H3.882l.271-.543L1,8.3V9.718l4.015,4.015Zm3.289.7L9.288,14H10.7L9.436,12.735ZM14.5,2H13.309L15,3.691V2.5ZM9.3,2,15,7.7V6.283L10.717,2Zm1.83,5.835L15,11.7V10.288L11.722,7.009Zm-.488,3.518L13.292,14H14.5l.1-.1-3.3-3.3Z" />
+                <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M14.5,2H1.5L1,2.5v11l.5.5H4.882l.5-1H2V6H14v7H9.2l-.875,1H14.5l.5-.5V2.5ZM2,5V3H14V5Z" />
+              </DrawingGroup>
+              <GeometryDrawing Brush="{DynamicResource light-yellow}" Geometry="F1M10.5,10,7,14H6l1.5-3h-2l2-4h3L8.363,10Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>VBInterop</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M9,8v8H0V8Z" />
+    <path class="light-blue" d="M1,10H0V9H1Zm8,0H8V9H9ZM1,12H0V11H1Zm8,0H8V11H9ZM1,14H0V13H1Zm8,0H8V13H9ZM1,16H0V15H1Zm2,0H2V15H3Zm2,0H4V15H5Zm2,0H6V15H7Zm2,0H8V15H9ZM7,10.5V14H6V11.707L3.354,14.354l-.708-.708L5.293,11H3V10H6.5Zm2-3V9H0V7.5L.5,7h8Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,4.5v8l-.5.5H10V12h4V5H2V6H1V4.5L1.5,4h13Z" />
+      <path class="light-defaultgrey-10" d="M14.5,4v8H10V7.086L8.914,6H1.5V4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,2V4H2V2Z" />
+    <path class="light-defaultgrey" d="M14.5,5H1.5L1,4.5v-3L1.5,1h13l.5.5v3ZM2,4H14V2H2Z" />
+  </g>
+</svg>

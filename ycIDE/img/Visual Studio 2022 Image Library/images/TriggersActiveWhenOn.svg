@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTriggersActiveWhenOn</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,1.5v5h-5v-5Zm-5,8v5H.5v-5Zm10,0v5h-5v-5Z" />
+    <path class="light-defaultgrey" d="M10.5,1h-5L5,1.5v5l.5.5h5l.5-.5v-5ZM10,6H6V2h4ZM5.5,9H.5L0,9.5v5l.5.5h5l.5-.5v-5ZM5,14H1V10H5ZM15.5,9h-5l-.5.5v5l.5.5h5l.5-.5v-5ZM15,14H11V10h4Z" />
+  </g>
+</svg>

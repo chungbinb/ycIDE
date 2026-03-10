@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCodeSuppressedRule</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,4.5a3,3,0,1,1,5,2.221V12.5l-2-2-2,2V6.721A2.978,2.978,0,0,1,1.5,4.5Z" />
+    <path class="light-defaultgrey" d="M2,6.942H2V12.5l.854.354L4.5,11.207l1.646,1.647L7,12.5V6.942H7a3.5,3.5,0,1,0-5,0Zm1,.707a3.381,3.381,0,0,0,3,0H6v3.644L4.854,10.146H4.146L3,11.293V7.649ZM2,4.5A2.5,2.5,0,1,1,4.5,7,2.5,2.5,0,0,1,2,4.5Z" />
+    <path class="light-defaultgrey" d="M8,12a4,4,0,1,1,4,4A4,4,0,0,1,8,12Z" />
+    <path class="white" d="M13.414,11.657l.707.707-1.767,1.769h-.708L9.879,12.364l.707-.707.914.915V10h1v2.572Z" />
+  </g>
+</svg>

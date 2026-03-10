@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightDocumentTag</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8,9.147l2,2v.707l-2,2-.707-.707L8.939,11.5,7.293,9.854Zm-3.293.707L3.061,11.5l1.646,1.647L4,13.854l-2-2v-.707l2-2Z" />
+    <path class="light-defaultgrey-10" d="M11.5,15.5H.5v-8h11Z" />
+    <path class="light-defaultgrey-10" d="M13.5,4.5v9H13V7L11.914,5.914H3.5V1.5h7Z" />
+    <path class="light-defaultgrey" d="M14,4.5v9l-.5.5H13V5H10V2H4V6H3V1.5L3.5,1h7l.354.146,3,3Z" />
+    <path class="light-defaultgrey" d="M11.5,16H.5L0,15.5v-8L.5,7h11l.5.5v8ZM1,15H11V8H1Z" />
+  </g>
+</svg>

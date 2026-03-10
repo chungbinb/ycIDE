@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLeftArrowAsterisk</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10,7.5l4.5-3v6Z" />
+    <path class="light-defaultgrey" d="M14.166,10.916l-4.5-3V7.084l4.5-3,.777.416v6ZM10.845,7.5l3.1,2.066V5.434Z" />
+    <path class="light-defaultgrey" d="M8.435,6.444,6.094,7.5,8.43,8.557l-.8,1.391-2.084-1.5L5.8,11H4.2l.249-2.553-2.084,1.5-.8-1.391L3.906,7.5,1.568,6.443l.8-1.391,2.084,1.5L4.2,4H5.8L5.551,6.553l2.084-1.5Z" />
+  </g>
+</svg>

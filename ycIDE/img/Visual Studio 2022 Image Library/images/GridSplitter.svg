@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGridSplitter</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,14.5V4.5h10v10Z" />
+    <path class="light-defaultgrey" d="M14.5,15H4.5L4,14.5V4.5L4.5,4h10l.5.5v10ZM5,14h9V5H5Z" />
+    <path class="light-defaultgrey-10" d="M4.5,14.5h-3V4.5h3Z" />
+    <path class="light-defaultgrey-10" d="M4.5,4.5v-3h10v3Z" />
+    <path class="light-defaultgrey" d="M14.5,1H4.5L4,1.5V4H1.5L1,4.5v10l.5.5h3l.5-.5V5h9.5l.5-.5v-3ZM4,14H2V5H4ZM14,4H5V2h9Z" />
+    <path class="light-defaultgrey" d="M10,14H9V5h1Z" />
+    <path class="light-defaultgrey" d="M12.151,9.5l-1.125.75V8.75Z" />
+    <path class="light-defaultgrey" d="M6.9,9.5l1.125-.75v1.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSharedProjectPrivate</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey-10" d="M9,12.5,8,11,6,14,2,8,6,2,8,5l2-3,3.357,5.036A2.891,2.891,0,0,0,10,10v.086l-1,1Z" />
+    <path class="light-defaultgrey" d="M9,11.6,8.6,11l1.815-2.723V7.723L8.6,5,10,2.9l2.75,4.125C12.834,7.018,12.914,7,13,7a2.964,2.964,0,0,1,1.072.207L10.416,1.723H9.584L8,4.1,6.416,1.723H5.584l-4,6v.554l4,6h.832L8,11.9l1,1.5ZM6,13.1,2.6,8,6,2.9,7.4,5,5.584,7.723v.554L7.4,11ZM6.6,8,8,5.9,9.4,8,8,10.1Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

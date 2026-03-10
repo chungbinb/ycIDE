@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightArcPie</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.475,7.5c.012.166.025.331.025.5A6.5,6.5,0,1,1,8,1.5c.169,0,.334.013.5.025V7.5Z" />
+    <path class="light-defaultgrey" d="M8,15A7,7,0,0,1,8,1c.182,0,.36.013.538.027l.462.5V7h5.475l.5.462c.014.178.027.356.027.538A7.008,7.008,0,0,1,8,15ZM8,2a6,6,0,1,0,6,6H8.5L8,7.5Z" />
+  </g>
+</svg>

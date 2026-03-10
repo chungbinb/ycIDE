@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightVideoCamera</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,4.555v6.89a.5.5,0,0,1-.817.387L11.5,9.567V12.5H.5v-9h11V6.433l3.183-2.265A.5.5,0,0,1,15.5,4.555Z" />
+    <path class="light-defaultgrey" d="M15.428,3.651a.973.973,0,0,0-1.034.11L12,5.463V3.5L11.5,3H.5L0,3.5v9l.5.5h11l.5-.5V10.536l2.367,1.683a.992.992,0,0,0,.631.227,1.009,1.009,0,0,0,.43-.1.992.992,0,0,0,.572-.9V4.555A.992.992,0,0,0,15.428,3.651ZM11,12H1V4H11Zm3.974-.575L12,9.31V6.69l3-2.135Z" />
+  </g>
+</svg>

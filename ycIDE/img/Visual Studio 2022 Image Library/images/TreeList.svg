@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>TreeList</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v12h-7v-3h-2v-3h-2v-3h-2v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v3l.5.5H3V7.5l.5.5H5v2.5l.5.5H7v2.5l.5.5h7l.5-.5V1.5ZM14,4H5V2h9Zm0,3H7V5h7Zm0,3H9V8h5ZM2,2H4V4H2ZM4,5H6V7H4ZM6,8H8v2H6Zm2,3h2v2H8Zm6,2H11V11h3Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>Diamond</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6V7L8,14.5,1.5,7V6l3-3.5h7Z" />
+    <path class="light-defaultgrey" d="M14.879,5.675l-3-3.5L11.5,2h-7l-.379.175-3,3.5L1,6V7l.122.328,6.5,7.5h.756l6.5-7.5L15,7V6ZM13.841,6H11.347L10.222,3H11.27ZM4.653,7l1.9,5.068L2.162,7Zm5.625,0L8,13.076,5.722,7ZM5.722,6,6.847,3H9.153l1.125,3Zm5.625,1h2.491L9.446,12.068ZM4.73,3H5.778L4.653,6H2.159Z" />
+  </g>
+</svg>

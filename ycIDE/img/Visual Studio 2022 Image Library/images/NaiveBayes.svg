@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNaiveBayes</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,14.5v-3h-3v3Z" />
+    <path class="light-defaultgrey-10" d="M4.5,4.5v-3h-3v3Z" />
+    <path class="light-defaultgrey-10" d="M14.5,4.5v-3h-3v3Z" />
+    <path class="light-defaultgrey" d="M14.5,1h-3l-.5.5V3H5V1.5L4.5,1h-3L1,1.5v3l.5.5h.757l4.714,6H6.5l-.5.5v3l.5.5h3l.5-.5v-3L9.5,11H9.029l4.714-6H14.5l.5-.5v-3ZM2,2H4V4H2ZM9,14H7V12H9ZM8,10.691,3.529,5H4.5L5,4.5V4h6v.5l.5.5h.971ZM14,4H12V2h2Z" />
+  </g>
+</svg>

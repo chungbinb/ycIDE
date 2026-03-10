@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMoveToFolder</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M2.5,5v.38L2.88,5Zm7-1.5-1-1H7.62l.23.23V4.27L7.12,5,4.35,7.77,2.5,5.92V12.5h13v-9Z" />
+    <path class="light-yellow" d="M15.5,3H9.71l-.86-.85L8.5,2H7.12l.73.73V3h.44l.49.49L8.27,4H7.85v.27L7.12,5H8.48l.35-.15L9.68,4H15v8H3V6.42l-.77-.77.27-.27L2.88,5H2v7.5l.5.5h13l.5-.5v-9Z" />
+    <path class="light-blue" d="M3.647,5.646,5.293,4H0V3H5.293L3.647,1.354,4.354.646l2.5,2.5v.708l-2.5,2.5Z" />
+  </g>
+</svg>

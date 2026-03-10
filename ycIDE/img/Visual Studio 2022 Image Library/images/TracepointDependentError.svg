@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>TracepointDependentError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-red-10" d="M15.07,8l-.03.03A4.95,4.95,0,0,0,12,7a5,5,0,0,0-5,5,4.95,4.95,0,0,0,1.03,3.04L8,15.07.93,8,8,.93Z" />
+      <path class="light-red" d="M15.42,7.65v.7a4.01,4.01,0,0,0-.38-.32,5.185,5.185,0,0,0-1.41-.76L8,1.64,1.64,8l5.63,5.63a5.185,5.185,0,0,0,.76,1.41,4.01,4.01,0,0,0,.32.38h-.7L.58,8.35v-.7L7.65.58h.7Z" />
+    </g>
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+    <path class="light-red" d="M10.5,5H7V6H9.29L8.15,7.15l.7.7L10,6.71v.7a5.532,5.532,0,0,1,1-.31V5.5ZM7.15,8.15l-1,1,.7.7,1-1Zm-2,2-.68.68.7.7.68-.68Z" />
+  </g>
+</svg>

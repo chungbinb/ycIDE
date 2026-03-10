@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ToolBarTray</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M3.5,2.5v10H10V5.24l2,2.4L13.13,9l.84,1L16,12.44V2.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7.85,5.15,7.5,5h-2L5,5.5v4l.5.5h3L9,9.5v-3l-.15-.35ZM8,9H6V6H7.29L8,6.71Zm7-2.5v3l-.5.5h-.53l-.84-1H14V6.71L13.29,6H12V7.64l-1-1.2V5.5l.5-.5h2l.35.15,1,1Z" />
+    </g>
+    <path class="light-defaultgrey" d="M15.18,15H16V14H14.82ZM16,1V0H3.5L3,.5V2H0V13H3v1.5l.5.5H10V14H4V13h6V12H4V3H16V2H4V1ZM3,11H1V9H3ZM3,8.01H1v-2H3ZM3,5H1V3H3Z" />
+    <path class="light-blue" d="M13.278,12.7l.789,2.167-.94.342-.821-2.255L11,14V8l4,4.8Z" />
+  </g>
+</svg>

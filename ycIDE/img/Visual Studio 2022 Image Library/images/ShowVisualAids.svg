@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightShowVisualAids</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,5v8.5l-.5.5H5V13h8V5Z" />
+    <path class="light-defaultgrey" d="M13.607,3.1,2.707,14,2,13.293l10.9-10.9Z" />
+    <path class="light-defaultgrey" d="M11,3H10V2h1ZM9,2H8V3H9ZM4,3H5V2H4ZM2,2.5V3H3V2H2.5ZM7,2H6V3H7ZM2,5H3V4H2Zm0,6H3V10H2ZM2,7H3V6H2ZM2,9H3V8H2Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightComputedColumnWarning</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,14.5H.5v-8h6Z" />
+    <path class="light-defaultgrey" d="M6.5,6H.5L0,6.5v8l.5.5h6l.5-.5v-8ZM6,14H1V7H6ZM4,10H5v1H4Zm0,2H5v1H4ZM5,9H2V8H5ZM3,13H2V12H3Zm0-2H2V10H3Z" />
+    <path class="light-defaultgrey-10" d="M6.914,5H6.5V2.5h5V7H10.47L8,11.483v-5.4Z" />
+    <path class="light-defaultgrey" d="M7,5.086V3h4V6H7.914L8,6.086V7h4V1.5L11.5,1h-5L6,1.5V5h.914Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

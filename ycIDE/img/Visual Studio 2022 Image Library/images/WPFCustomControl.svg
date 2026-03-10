@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightWPFCustomControl</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,15.971H0v-16H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M1.207,6.5l1.816,1.82-.707.707L.147,6.853V6.146L2.315,3.967l.709.7Z" />
+    <path class="light-defaultgrey" d="M10.854,6.147v.709L8.666,9.029l-.7-.709L9.792,6.5,7.961,4.677l.705-.709Z" />
+    <path class="light-blue" d="M7,5V8H4V5Z" />
+    <path class="light-blue-10" d="M15.192,8.681,9.635,14.238,8.153,12.72l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,8.681Z" />
+    <path class="light-blue" d="M15.543,6.83a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L6.511,15.326,7.186,16l2.995-1.629,5.365-5.336A1.562,1.562,0,0,0,15.543,6.83Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

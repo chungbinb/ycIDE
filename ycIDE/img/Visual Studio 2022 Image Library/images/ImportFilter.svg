@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightImportFilter</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5l-4,5v5h-3v-5L5.789,7.361,7.851,5.3V4.5Z" />
+    <path class="light-blue" d="M2.5,0H3V1H2.5a1.5,1.5,0,0,0,0,3H5.258L3.644,2.385l.707-.707,2.5,2.5v.707l-2.5,2.5-.707-.707L5.322,5H2.5a2.5,2.5,0,0,1,0-5Z" />
+    <path class="light-defaultgrey" d="M14.891,4.813,11,9.675V14.5l-.5.5h-3L7,14.5V9.676L5.433,7.717l.712-.712L7.891,9.188,8,9.5V14h2V9.5l.109-.312L13.46,5H7.851V4H14.5Z" />
+  </g>
+</svg>

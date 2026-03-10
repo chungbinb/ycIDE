@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightCompile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M10,14H9V6H1V5H9.5l.5.5Z" />
+    <path class="light-defaultgrey" d="M12,12H11V4H3V3h8.5l.5.5Z" />
+    <path class="light-defaultgrey" d="M14,10H13V2H5V1h8.5l.5.5Z" />
+    <path class="light-blue" d="M2.148,10.146l2-2h.707l2,2-.707.708L5,9.707V14H4V9.707L2.855,10.854Z" />
+    <path class="light-defaultgrey-10" d="M14,1.485V10H12v2H10v2H1V5H3V3H5V1h8.515Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUpdatePanel</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v10H4.5V8H8V5H7.745a4.422,4.422,0,0,0,.131-.5Z" />
+    <path class="light-defaultgrey" d="M9,7H8V6H9Zm2,0H10V6h1Zm2,0H12V6h1ZM7,9H6V8H7ZM9,9H8V8H9Zm2,0H10V8h1Zm2,0H12V8h1ZM7,11H6V10H7Zm2,0H8V10H9Zm2,0H10V10h1Zm2,0H12V10h1ZM7,13H6V12H7Zm2,0H8V12H9Zm2,0H10V12h1Zm2,0H12V12h1Z" />
+    <path class="light-blue" d="M3.083,5.966l-.166.986A3.5,3.5,0,0,1,1.051,1H0V0H2.5L3,.5V3H2V1.5A2.5,2.5,0,0,0,3.083,5.966ZM6,3.5a2.505,2.505,0,0,1-1,2V4H4V6.5l.5.5H7V6H5.949A3.5,3.5,0,0,0,4.083.048l-.166.986A2.491,2.491,0,0,1,6,3.5Z" />
+    <path class="light-defaultgrey" d="M15,4.5v10l-.5.5H4.5L4,14.5V8H5v6h9V5H7.745a4.474,4.474,0,0,0,.213-1H14.5Z" />
+  </g>
+</svg>

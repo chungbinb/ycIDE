@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightImmediateWindow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,3.5v8H.5v-8Z" />
+    <path class="light-defaultgrey" d="M14.5,3H.5L0,3.5v8l.5.5h14l.5-.5v-8ZM14,11H1V4H14Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5.854,7.146v.708l-2.5,2.5-.708-.708L4.793,7.5,2.646,5.354l.708-.708Z" />
+    </g>
+  </g>
+</svg>

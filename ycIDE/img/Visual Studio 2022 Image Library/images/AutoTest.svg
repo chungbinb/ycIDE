@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>AutoTest</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.649,11,9.5,9.667V5.5h3V9.667L13.351,11Z" />
+    <path class="light-defaultgrey" d="M14.091,11.23,13.67,11h-.913l-.679-1.063L12,9.667V6H10V9.667l-.078.27L9.243,11H8.33l-.421.23L9,9.521V6H8.5V5H14V6H13V9.521Z" />
+    <path class="light-teal-10" d="M14.6,12.962A1,1,0,0,1,13.76,14.5H8.24A1,1,0,0,1,7.4,12.962L8.33,11.5h5.34Z" />
+    <path class="light-teal" d="M13.761,15H8.239a1.5,1.5,0,0,1-1.264-2.307l.933-1.463L8.33,11h5.34l.422.23.933,1.462A1.5,1.5,0,0,1,13.761,15ZM8.6,12l-.786,1.231A.5.5,0,0,0,8.239,14h5.522a.5.5,0,0,0,.421-.77L13.4,12Z" />
+    <path class="light-blue-10" d="M5.5,2.5l-3,2V.5Z" />
+    <path class="light-blue" d="M2,.5v4l.777.416,3-2V2.084l-3-2Zm1,.935L4.6,2.5,3,3.565ZM0,0H1V5H0ZM8,0V5H7V0Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLookupListItem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.56,4.5a3.887,3.887,0,0,1-.25.5A3.98,3.98,0,0,1,5.85,7a3.925,3.925,0,0,1-1.52-.3L2,8.99l-.5.49V12.5h13v-8Z" />
+    <path class="light-defaultgrey" d="M4,8V9h8V8ZM4,8V9h8V8ZM14.5,4H9.72a4.162,4.162,0,0,1-.16.5,3.887,3.887,0,0,1-.25.5H14v7H2V8.99L1,9.97V12.5l.5.5h13l.5-.5v-8ZM12,8H4V9h8Z" />
+    <path class="light-blue-10" d="M5.85,5.5A2.5,2.5,0,1,1,8.35,3,2.5,2.5,0,0,1,5.85,5.5Z" />
+    <path class="light-blue" d="M.7,8.857,4.156,5.472a3.075,3.075,0,1,0-.714-.7L0,8.143ZM5.85,5a2,2,0,1,1,2-2A2,2,0,0,1,5.85,5Z" />
+  </g>
+</svg>

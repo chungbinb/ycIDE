@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>DimensionWriteback</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,1.5v13H4V13.413l2.267-2.267-3-3H1.732L1.5,8.379V1.5Z" />
+    <path class="light-defaultgrey" d="M16,1.5v13l-.5.5H4V14H15V2H2V8.146H1.732L1,8.879V1.5L1.5,1h14Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13.857,11.147v.707L11.912,13.8l-.707-.707L12.3,12H5.413l.855-.855L5,9.879V4.74L3.915,5.825l-.707-.707L5.153,3.174H5.86L7.8,5.118,7.1,5.825,6,4.729V10.3L11.3,5H9.752V4H12.5l.5.5v2.75H12V5.71L6.712,11H12.3L11.205,9.91l.707-.707Z" />
+    </g>
+    <path class="light-blue" d="M2.854,9.146l2,2-.708.707L3,10.707V16H2V10.707L.854,11.853l-.708-.707,2-2Z" />
+  </g>
+</svg>

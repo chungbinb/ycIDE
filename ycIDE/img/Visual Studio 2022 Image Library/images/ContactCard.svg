@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightContactCard</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,13.5H.5V3.5h15Z" />
+    <path class="light-defaultgrey-10" d="M2.5,12a3,3,0,0,1,6,0ZM7.25,7.25A1.75,1.75,0,1,1,5.5,5.5,1.751,1.751,0,0,1,7.25,7.25Z" />
+    <path class="light-defaultgrey" d="M7.046,8.876a2.25,2.25,0,1,0-3.092,0A3.493,3.493,0,0,0,2,12H3a2.5,2.5,0,0,1,5,0H9A3.493,3.493,0,0,0,7.046,8.876ZM4.25,7.25A1.25,1.25,0,1,1,5.5,8.5,1.252,1.252,0,0,1,4.25,7.25Z" />
+    <path class="light-defaultgrey" d="M14,10H10V9h4Zm0-3H10V8h4Z" />
+    <path class="light-defaultgrey" d="M15.5,14H.5L0,13.5V3.5L.5,3h15l.5.5v10ZM1,13H15V4H1Z" />
+  </g>
+</svg>

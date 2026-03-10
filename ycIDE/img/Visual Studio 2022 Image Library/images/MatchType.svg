@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMatchType</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,1.5v10l-.5.5h-6L1,11.5V8h.88l-.15.15,2.12,2.12L7.62,6.5,3.85,2.73,1.73,4.85,1.88,5H1V1.5L1.5,1h6Z" />
+    <path class="light-defaultgrey" d="M8,1.5v10l-.5.5h-6L1,11.5V8H2v3H7V2H2V5H1V1.5L1.5,1h6Z" />
+    <path class="light-blue" d="M6.207,6.5,3.854,8.854l-.708-.708L4.293,7H1V6H4.293L3.146,4.854l.708-.708Z" />
+    <path class="light-defaultgrey-10" d="M14.12,11H15v3.5l-.5.5h-6L8,14.5V13H9V10.12l3.15,3.15,2.12-2.12Zm.38-7H9V8.88l3.15-3.15,2.12,2.12L14.12,8H15V4.5Z" />
+    <path class="light-defaultgrey" d="M15,4.5V8H14V5H9V4h5.5ZM14,14H9V13H8v1.5l.5.5h6l.5-.5V11H14Z" />
+    <path class="light-blue" d="M15,10H11.707l1.147,1.146-.708.708L9.793,9.5l2.353-2.354.708.708L11.707,9H15Z" />
+  </g>
+</svg>

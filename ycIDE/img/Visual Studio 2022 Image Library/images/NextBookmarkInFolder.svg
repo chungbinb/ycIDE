@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0;}</style>
+  </defs>
+  <title>IconLightNextBookmarkInFolder</title>
+  <g id="canvas" class="cls-1">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,7.5h6V15l-3-3-3,3Z" />
+    <path class="light-yellow-10" d="M8,13.505H.5V3.5h5l1,1h7V6H9.086L8,7.086Z" />
+    <path class="light-yellow" d="M8,13H1V6H5.475l.354-.146L6.682,5H13V6h1V4.5L13.5,4H6.707l-.853-.854L5.5,3H.5L0,3.5v10l.5.5H8ZM1,4H5.293l.488.488L5.268,5H1Z" />
+    <path class="light-blue" d="M3,9,7.293,9,5.9,7.6,6.6,6.892l2.25,2.25v.707L6.6,12.1,5.9,11.392l1.4-1.4L3,10Z" />
+    <path class="light-defaultgrey" d="M15.5,7h-6L9,7.5V15l.854.354L12.5,12.707l2.646,2.647L16,15V7.5ZM15,13.793l-2.146-2.147h-.708L10,13.793V8h5Z" />
+  </g>
+</svg>

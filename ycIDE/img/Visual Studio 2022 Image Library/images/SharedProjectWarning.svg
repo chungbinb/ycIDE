@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightSharedProjectWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M6.678,13.884l3.549-6.443L8.6,5,10,2.9,13.4,8l-.175.262.543.986.648-.972V7.723l-4-6H9.584L8,4.1,6.416,1.723H5.584l-4,6v.554l4,6h.832ZM9.4,8,8,10.1,6.6,8,8,5.9ZM2.6,8,6,2.9,7.4,5,5.584,7.723v.554L7.4,11,6,13.1Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+    <path class="light-defaultgrey-10" d="M6,14,2,8,6,2,8,5l2-3,4,6-.5.755L12.53,7H10.47L8.146,11.219,8,11Z" />
+  </g>
+</svg>

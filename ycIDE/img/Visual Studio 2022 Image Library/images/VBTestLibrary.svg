@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightVBTestLibrary</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M3.5,1.1l.5.5V7H3V2.1H2V7H1V1.6l.5-.5Zm2,0L5,1.6V7H6V2.1H7V12.866L7.709,14,8,13.709V1.6l-.5-.5Zm9.373,10.875-.353.613-1.932.517-.613-.353L9.127,2.131l.353-.613L11.412,1l.613.354Zm-1.1-.224L11.188,2.1l-.965.258,2.589,9.66Z" />
+    <g class="cls-1">
+      <path class="light-blue-10" d="M2.5,8.609h2v3l1.25,2H1.25l1.25-2Z" />
+      <path class="light-blue" d="M2,9.109H1v-1H6v1H5v2.356l1.027,1.644H4.849L4,11.753V9.109H3v2.644l-.848,1.356H.974L2,11.465Z" />
+    </g>
+    <path class="light-blue-10" d="M1.5,13.609h4l1,1.5-.5.5H1l-.5-.5Z" />
+    <path class="light-defaultgrey-10" d="M14.389,12.108l-1.931.518L9.611,2l1.931-.518ZM3.5,1.6h-2V6.109H1v1H4v-1H3.5Zm4,0h-2V6.109H5v1H7v3H6v1.07l.582.93h0l.229.368.262.419h.635L8,12.6V6.109H7.5Z" />
+    <path class="light-blue" d="M5.883,16.109H1.12A1.12,1.12,0,0,1,.17,14.4l.8-1.286H6.028l.8,1.287a1.12,1.12,0,0,1-.949,1.713Zm-4.354-2-.511.816a.114.114,0,0,0,0,.122.116.116,0,0,0,.105.062H5.883a.12.12,0,0,0,.1-.183l-.511-.817Z" />
+  </g>
+</svg>

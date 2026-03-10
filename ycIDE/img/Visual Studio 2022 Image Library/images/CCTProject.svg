@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCCTProject</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.5,4.5v8H13.957a3.019,3.019,0,0,0-2.281-2.412A3.892,3.892,0,0,0,8.157,7.844,3.847,3.847,0,0,0,6.5,8.236V1.5h6Z" />
+      <path class="light-defaultgrey" d="M16,4.5v8l-.5.5H14a2.94,2.94,0,0,0-.174-1H15V5H12V2H7V8.043a3.9,3.9,0,0,0-1,.463V1.5L6.5,1h6l.354.146,3,3Z" />
+    </g>
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5,4V5H2V4ZM5,8V9H2V8ZM4,6H1V7H4Z" />
+    </g>
+    <path class="light-lightblue-10" d="M12.5,13A1.5,1.5,0,0,1,11,14.5H5.5a2,2,0,1,1,.567-3.909,2.382,2.382,0,0,1,4.471.989A1.479,1.479,0,0,1,11,11.5,1.5,1.5,0,0,1,12.5,13Z" />
+    <path class="light-lightblue" d="M11,15H5.5A2.5,2.5,0,0,1,3,12.5a2.463,2.463,0,0,1,2.836-2.474A2.878,2.878,0,0,1,10.947,11,2.025,2.025,0,0,1,13,13,2,2,0,0,1,11,15ZM5.5,11a1.5,1.5,0,0,0,0,3H11a1,1,0,1,0-.307-1.945l-.611.2-.043-.641A1.882,1.882,0,0,0,6.5,10.833l-.194.352-.386-.114A1.448,1.448,0,0,0,5.5,11Z" />
+  </g>
+</svg>

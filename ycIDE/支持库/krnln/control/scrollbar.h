@@ -56,8 +56,6 @@ BOOL  WINAPI VScrollBar_SetProperty(HUNIT hUnit, INT nIndex, PUNIT_PROPERTY_VALU
 BOOL  WINAPI VScrollBar_PropertyUpdateUI(HUNIT hUnit, INT nIndex);
 PFN_INTERFACE WINAPI VScrollBar_GetInterface(INT nInterfaceNO);
 
-// 内部共享创建函数
-HUNIT WINAPI ScrollBar_CreateImpl(PUNIT_CREATE_PARAMS pParams, BOOL bHorizontal);
 BOOL  WINAPI ScrollBar_Destroy(HUNIT hUnit);
 BOOL  WINAPI ScrollBar_GetProperty(HUNIT hUnit, INT nIndex, PUNIT_PROPERTY_VALUE pValue);
 BOOL  WINAPI ScrollBar_SetProperty(HUNIT hUnit, INT nIndex, PUNIT_PROPERTY_VALUE pValue, LPCSTR* ppszTip);

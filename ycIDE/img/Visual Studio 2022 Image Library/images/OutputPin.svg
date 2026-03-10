@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>OutputPin</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M12.647,9.65,14.293,8H9V7h5.293L12.647,5.357l.707-.707,2.5,2.5v.707l-2.5,2.5Z" />
+    <path class="light-defaultgrey-10" d="M7.5,4.5v6h-6v-6Z" />
+    <path class="light-defaultgrey" d="M1,1V14H2V11H7.5l.5-.5v-6L7.5,4H2V1Zm1,9V5H7v5Z" />
+  </g>
+</svg>

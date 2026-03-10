@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCurrentFlowSwitch</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-yellow-10" d="M15.254,8,11.5,11.754l-1.4-1.4,2-2V7.646l-2-2,1.4-1.4Z" />
+      <path class="light-yellow" d="M15.607,7.646v.708l-3.753,3.753h-.708l-1.4-1.4L10.457,10,11.5,11.047,14.547,8,11.5,4.953,10.457,6,9.75,5.289l1.4-1.4h.708Z" />
+    </g>
+    <g class="cls-1">
+      <path class="light-yellow-10" d="M11.754,8,8,11.754l-1.4-1.4,2-2V7.646l-2-2L8,4.246Z" />
+      <path class="light-yellow" d="M12.107,7.646v.708L8.354,12.107H7.646l-1.4-1.4L6.957,10,8,11.047,11.047,8,8,4.953,6.957,6,6.25,5.289l1.4-1.4h.708Z" />
+    </g>
+    <path class="light-yellow-10" d="M4.5,11.754.746,8,4.5,4.246,8.254,8Z" />
+    <path class="light-yellow" d="M4.854,12.107H4.146L.393,8.354V7.646L4.146,3.893h.708L8.607,7.646v.708ZM1.453,8,4.5,11.047,7.547,8,4.5,4.953Z" />
+  </g>
+</svg>

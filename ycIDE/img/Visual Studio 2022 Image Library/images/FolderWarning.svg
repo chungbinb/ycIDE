@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFolderWarning</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M7.44,12.5H1.5V2.5h6l1,1h6v7.076L12.53,7H10.47Z" />
+    <path class="light-yellow" d="M7.715,12H2V5H7.475l.354-.146L8.682,4H14V9.668l1,1.815V3.5L14.5,3H8.707l-.853-.854L7.5,2h-6L1,2.5v10l.5.5H7.164ZM2,3H7.293l.488.488L7.268,4H2Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightInheritance</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9,2.5h4.5V7Z" />
+    <path class="light-defaultgrey" d="M13.5,2H9l-.354.854,1.9,1.9L1.868,13.425l.707.707L11.25,5.457l1.9,1.9L14,7V2.5ZM13,5.793,10.207,3H13Z" />
+  </g>
+</svg>

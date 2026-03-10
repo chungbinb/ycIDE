@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightNewQuery</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.89,2.5A4.714,4.714,0,0,1,8,3.5a4.07,4.07,0,0,1-.03.5,4.16,4.16,0,0,1-.23,1H13.5l.5.5v7h1.5V2.5Z" />
+      <path class="light-defaultgrey-10" d="M4.5,12.5V7.89a4.331,4.331,0,0,1-.5.08,4.182,4.182,0,0,1-1,0,4.331,4.331,0,0,1-.5-.08V15.5h11v-3Z" />
+      <path class="light-defaultgrey" d="M15.5,2H7.74a4.127,4.127,0,0,1,.15.5A4.714,4.714,0,0,1,8,3.5a4.07,4.07,0,0,1-.03.5H15v8H14V5.5L13.5,5H7.74a4.07,4.07,0,0,1-.5,1H13v9H3V7.97a4.331,4.331,0,0,1-.5-.08A4.127,4.127,0,0,1,2,7.74V15.5l.5.5h11l.5-.5V13h1.5l.5-.5V2.5Z" />
+    </g>
+    <path class="light-yellow-10" d="M6.84,6.5a3.078,3.078,0,0,1-.52.5A4.28,4.28,0,0,1,5,7.74a4.127,4.127,0,0,1-.5.15V12.5h9v-6Z" />
+    <path class="light-yellow" d="M6,9v1h6V9Zm7.5-3H7.24a3.249,3.249,0,0,1-.4.5,3.078,3.078,0,0,1-.52.5H13v5H5V7.74a4.127,4.127,0,0,1-.5.15,4.331,4.331,0,0,1-.5.08V12.5l.5.5h9l.5-.5v-6ZM12,9H6v1h6Z" />
+    <path class="light-yellow" d="M3,2,3,0H4L4,2l-.5.5Zm.5,2.5L3,5V7H4V5Zm1-1L5,4,7,4V3L5,3Zm-2,0L2,3,0,3V4L2,4Zm1.708-.7h.708L6.328,1.378,5.62.671,4.208,2.088ZM2.792,4.206H2.085L.673,5.623l.707.706L2.793,4.913Zm1.414,0v.708L5.623,6.328l.706-.708L4.913,4.208ZM2.794,2.792V2.085L1.378.673.671,1.38,2.088,2.793Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-shadow{fill: #000000; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPlistFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-3">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+      <path class="light-defaultgrey" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+    </g>
+  </g>
+  <g id="level-1">
+    <path class="light-shadow" d="M4,8H7V9H4Zm0,3H7V10H4Zm0,2H7V12H4ZM9,8V9h3V8Zm0,3h3V10H9Zm0,2h3V12H9Z" />
+    <path class="light-defaultgrey" d="M4,7H7V8H4Zm0,3H7V9H4Zm0,2H7V11H4ZM9,7V8h3V7Zm0,3h3V9H9Zm0,2h3V11H9Z" />
+  </g>
+</svg>

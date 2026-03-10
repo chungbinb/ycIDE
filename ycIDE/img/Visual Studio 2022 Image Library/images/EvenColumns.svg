@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>EvenColumns</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1,14.5V2.5L2,2H13l1,.5v12Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,8.5v6h5.5v-6Zm-6.5,6H7v-6H1.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8,5H7V4H8ZM8,6H7V7H8ZM6,2H5V3H6ZM4,2H3V3H4ZM2,2H1.5L1,2.5V3H2ZM12,2H11V3h1ZM10,2H9V3h1ZM8,2H7V3H8ZM2,4H1V5H2ZM13,7h1V6H13Zm0-2h1V4H13Zm.5-3H13V3h1V2.5ZM8,9h5v5H8v1h5.5l.5-.5V8H8ZM1,14.5l.5.5H7V14H2V9H7V8H1ZM2,6H1V7H2Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSSLink</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H8.958A3.058,3.058,0,0,0,9,14a3,3,0,0,0-2.129-2.871A3,3,0,0,0,4,9H2.5V1.5h8Z" />
+      <path class="light-defaultgrey" d="M14,4.5v10l-.5.5H8.828A2.984,2.984,0,0,0,9,14h4V5H10V2H3V9H2V1.5L2.5,1h8l.354.146,3,3Z" />
+    </g>
+    <path class="light-lightblue" d="M2,14a2,2,0,0,1,2-2H6a2,2,0,0,1,0,4H4A2,2,0,0,1,2,14Zm2-1a1,1,0,0,0,0,2H6a1,1,0,0,0,0-2Z" />
+    <path class="light-purple" d="M6,12a2,2,0,0,1-2,2H3a1,1,0,0,1,1-1,1,1,0,0,0,0-2H2a1,1,0,0,0,0,2h.269A1.984,1.984,0,0,0,2,14a2,2,0,0,1,0-4H4A2,2,0,0,1,6,12Z" />
+    <path class="light-defaultgrey" d="M10.5,6.4l-3.45,4.794A3,3,0,0,1,8,11.764l.68-1.01H10.67L10.625,12H12V6.4Zm.289,1.5-.068,1.883H9.292l1.284-1.9a2.9,2.9,0,0,0,.271-.489h.032A2.412,2.412,0,0,0,10.793,7.9Z" />
+  </g>
+</svg>

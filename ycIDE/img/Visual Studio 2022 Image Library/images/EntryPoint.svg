@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEntryPoint</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7.5,5H7.37l3.079-1.71.485.875L8,5.8V5.5Z" />
+      <path class="light-defaultgrey" d="M8,7.5h2.5v1H8Z" />
+      <path class="light-defaultgrey" d="M8,10.206l2.934,1.63-.485.875L7.37,11H7.5l.5-.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2.5,5.5h5v5h-5Z" />
+    <path class="light-defaultgrey" d="M7.5,11h-5L2,10.5v-5L2.5,5h5l.5.5v5ZM3,10H7V6H3Z" />
+    <path class="light-defaultgrey-10" d="M13.5,3A1.5,1.5,0,1,1,12,1.5,1.5,1.5,0,0,1,13.5,3Zm0,5A1.5,1.5,0,1,1,12,6.5,1.5,1.5,0,0,1,13.5,8Zm0,5A1.5,1.5,0,1,1,12,11.5,1.5,1.5,0,0,1,13.5,13Z" />
+    <path class="light-defaultgrey" d="M12,5a2,2,0,1,1,2-2A2,2,0,0,1,12,5Zm0-3a1,1,0,1,0,1,1A1,1,0,0,0,12,2Zm0,8a2,2,0,1,1,2-2A2,2,0,0,1,12,10Zm0-3a1,1,0,1,0,1,1A1,1,0,0,0,12,7Zm0,8a2,2,0,1,1,2-2A2,2,0,0,1,12,15Zm0-3a1,1,0,1,0,1,1A1,1,0,0,0,12,12Z" />
+  </g>
+</svg>

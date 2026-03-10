@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightImportCatalogPart</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M2.5,0H3V1H2.5a1.5,1.5,0,0,0,0,3H5.258L3.644,2.385l.707-.707,2.5,2.5v.707l-2.5,2.5-.707-.707L5.322,5H2.5a2.5,2.5,0,0,1,0-5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M16,2.5v12l-.5.5H1.5L1,14.5V5.649A3.464,3.464,0,0,0,2.5,6h.408l-.679.678L4.351,8.8l3.5-3.5V3.764L6.086,2H15.5Z" />
+      <path class="light-defaultgrey" d="M11,14h1v1H11ZM9,15h1V14H9Zm4,0h1V14H13Zm2-2h1V12H15Zm0-3v1h1V10ZM5,15H6V14H5ZM1,13H2V12H1Zm2,2H4V14H3ZM1,11H2V10H1Zm6,4H8V14H7ZM10,2H9V3h1ZM2,6H1V7H2ZM16,4H15V5h1ZM2,9V8H1V9ZM14,2H13V3h1Zm2,4H15V7h1Zm0,2H15V9h1ZM12,2H11V3h1ZM1,14.5l.5.5H2V14H1Zm14.5.5.5-.5V14H15v1ZM16,2.5,15.5,2H15V3h1ZM7,2v.914L7.086,3H8V2Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M13.5,6v5.5h-6V5.65L7.851,5.3V4.5H12Z" />
+    <path class="light-defaultgrey" d="M13.854,5.646l-1.5-1.5L12,4H7.851V5.3L7,6.15V11.5l.5.5h6l.5-.5V6ZM13,11H8V5h3V7h2Z" />
+  </g>
+</svg>

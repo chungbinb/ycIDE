@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>SelectDocumentGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.5,1.5h-5V5h2l.35.15,2,2L11,7.5v3h2.5v-7Z" />
+      <path class="light-defaultgrey" d="M13.85,3.15l-2-2L11.5,1h-5L6,1.5V5H7V2h3.99V4H13v6H11v1h2.5l.5-.5v-7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M8.5,5.5h-5v7.88L8.15,8.73,9.42,10l.58.58.27.27L6.62,14.5H10.5v-7Z" />
+    <path class="light-defaultgrey" d="M10.85,7.15l-2-2L8.5,5h-5L3,5.5v7.38l.5.5.5-.5V6H7.99V8H10v2.58l.27.27-.27.27V14H7.12l-1,1H10.5l.5-.5v-7Z" />
+    <path class="light-defaultgrey-25" d="M6,6v4.5l.19.19L7,9.88V6Zm3.42,4,.58.58V10Z" />
+    <path class="light-green" d="M8.854,10.854l-5,5H3.146l-3-3,.708-.708L3.5,14.793l4.646-4.647Z" />
+  </g>
+</svg>

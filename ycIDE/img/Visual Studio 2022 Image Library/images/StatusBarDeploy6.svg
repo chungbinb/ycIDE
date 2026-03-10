@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusBarDeploy6</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="white" d="M2.807,10.25H2V2.524l.5-.5H8l.354.147,1.5,1.5L10,4.024v.512L9.714,4.25H8.955L7.745,3.024H3v7.033Zm9.443-.05v3.6l-.45.45H8.2l-.45-.45V10.2l.45-.45h3.6Zm-1,.55H8.75v2.5h2.5Zm-5-2V6.25h2.5v2.5h1V5.7L9.3,5.25H5.7l-.45.45V9.3l.45.45H6.786l1-1Zm-.95,2.5.45.45v3.6l-.45.45H1.7l-.45-.45V11.7l.45-.45Zm-.55,1H2.25v2.5h2.5Z" />
+  </g>
+</svg>

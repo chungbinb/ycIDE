@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-purple{fill: #6936aa; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLinkedMeasureGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,11.5v-8h-2v8Z" />
+    <path class="light-defaultgrey-10" d="M9.5,6.5v5H7.622c-.039-.026-.081-.048-.122-.072V6.5Z" />
+    <path class="light-defaultgrey" d="M11.5,3h2l.5.5v8l-.5.5h-2l-.5-.5v-8ZM13,11V4H12v7Z" />
+    <path class="light-lightblue" d="M2,14a2,2,0,0,1,2-2H6a2,2,0,0,1,0,4H4A2,2,0,0,1,2,14Zm2-1a1,1,0,0,0,0,2H6a1,1,0,0,0,0-2Z" />
+    <path class="light-purple" d="M6,12a2,2,0,0,1-2,2H3a1,1,0,0,1,1-1,1,1,0,0,0,0-2H2a1,1,0,0,0,0,2h.269A1.984,1.984,0,0,0,2,14a2,2,0,0,1,0-4H4A2,2,0,0,1,6,12Z" />
+    <path class="light-defaultgrey" d="M9.5,6h-2L7,6.5v4.7a3.024,3.024,0,0,1,1.211.8H9.5l.5-.5v-5ZM9,11H8V7H9Z" />
+    <path class="light-defaultgrey-10" d="M3.5,9V8.5h2v.916A2.93,2.93,0,0,0,4,9Z" />
+    <path class="light-defaultgrey" d="M3,9V8.5L3.5,8h2l.5.5V9.789a2.963,2.963,0,0,0-1-.613V9H3Z" />
+    <path class="light-defaultgrey" d="M16,1.5v12l-.5.5H14V13h1V2H14V1h1.5ZM2,9V2H3V1H1.5L1,1.5V9.184A2.966,2.966,0,0,1,2,9Z" />
+  </g>
+</svg>

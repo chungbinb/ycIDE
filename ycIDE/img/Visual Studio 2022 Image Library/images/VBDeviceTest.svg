@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>VBDeviceTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M13.2,10.74a.491.491,0,0,1-.438.26H7.239A.471.471,0,0,1,7,10.933a.534.534,0,0,1-.2-.193.488.488,0,0,1,.017-.509L7,9.953,7.6,9H12.4l.786,1.23A.49.49,0,0,1,13.2,10.74Z" />
+      <path class="light-blue" d="M14.076,11.221A1.48,1.48,0,0,1,12.761,12H7.239A1.51,1.51,0,0,1,7,11.968V10.933A.471.471,0,0,0,7.239,11h5.522a.5.5,0,0,0,.421-.77L12.4,9H7.6L7,9.953V8.182L7.33,8h5.34l.422.23.933,1.462A1.484,1.484,0,0,1,14.076,11.221Z" />
+    </g>
+    <path class="light-blue-10" d="M7.649,8,8.5,6.667V2.5h3V6.667L12.351,8Z" />
+    <path class="light-blue" d="M13.091,8.23,12.67,8h-.913l-.679-1.063L11,6.667V3H9V6.667l-.078.27L8.243,8H7.33L7,8.182V8.093L8,6.521V3H7V2h6V3H12V6.521Z" />
+    <path class="light-blue" d="M4,14H2V13H4Z" />
+    <path class="light-blue-10" d="M5.5,15.5H.5v-8h5Z" />
+    <path class="light-blue" d="M5.5,7H.5L0,7.5v8l.5.5h5l.5-.5v-8ZM5,15H1V8H5Z" />
+  </g>
+</svg>

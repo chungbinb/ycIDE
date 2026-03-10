@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>StatusInformationOutline.18.18</title>
+  <title>StatusInformationOutline.18.18</title>
+  <g id="canvas">
+    <path class="canvas" d="M18,18H0V0H18Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M8.5,16.5A7.5,7.5,0,1,1,16,9,7.509,7.509,0,0,1,8.5,16.5Z" />
+    <path class="light-blue" d="M8.5,17a8,8,0,1,1,8-8A8.009,8.009,0,0,1,8.5,17Zm0-15a7,7,0,1,0,7,7A7.008,7.008,0,0,0,8.5,2Z" />
+    <path class="light-blue" d="M8,8.025H9V14H8ZM8.5,4.9a.75.75,0,1,0,.75.75A.75.75,0,0,0,8.5,4.9Z" />
+  </g>
+</svg>

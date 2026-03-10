@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightImport</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M10.354,14.354l-.708-.708L12.293,11H5.5a4.5,4.5,0,0,1,0-9V3a3.5,3.5,0,0,0,0,7h6.793L9.646,7.354l.708-.708,3.5,3.5v.708Z" />
+  </g>
+</svg>

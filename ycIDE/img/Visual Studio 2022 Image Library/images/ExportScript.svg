@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExportScript</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M12.354,9.646l2.5,2.5v.708l-2.5,2.5-.708-.708L13.293,13H8V12h5.293l-1.647-1.646ZM15,10v5h1V10Z" />
+    <path class="light-defaultgrey-10" d="M13.564,4V5.5h-3V11H7v1.5H3.064a1.5,1.5,0,0,1-1.5-1.5v-.5h2V4a1.5,1.5,0,0,1,1.5-1.5h7A1.5,1.5,0,0,1,13.564,4Z" />
+    <path class="light-defaultgrey" d="M12,2H5A2,2,0,0,0,3,4v6H1.5l-.5.5V11a2.023,2.023,0,0,0,1.993,2H7V12H3a1,1,0,0,1-1-1H8v-.5L7.5,10H4V4A1,1,0,0,1,5,3h5.278A1.978,1.978,0,0,0,10,4v7h1V6h2.5l.5-.5V4A2,2,0,0,0,12,2Zm1,3H11V4a1,1,0,0,1,2,0Z" />
+  </g>
+</svg>

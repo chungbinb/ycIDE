@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightThrow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,13.5h-8V3.5h8Z" />
+    <path class="light-defaultgrey" d="M13,7H8V6h5Zm0,2H8V8h5Zm0,2H8V10h5Zm1.5,3h-8L6,13.5V3.5L6.5,3h8l.5.5v10ZM7,13h7V4H7Z" />
+    <path class="light-defaultgrey" d="M5,6V7H1V6ZM3,8H5V9H3ZM1,10H5v1H1Z" />
+  </g>
+</svg>

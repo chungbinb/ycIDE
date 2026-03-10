@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHTMLTagComment</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M4.061,8.182,1.232,5.354V4.646L4.061,1.818l.707.707L2.293,5,4.768,7.475Zm9.707,3.172v-.708L10.939,7.818l-.707.707L12.707,11l-2.475,2.475.707.707ZM7,2H6V6H7Zm.25,5.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,7.25,7.5ZM8,6h2V5H8Zm3,0h2V5H11ZM4,11H6V10H4Zm3,0H9V10H7Z" />
+  </g>
+</svg>

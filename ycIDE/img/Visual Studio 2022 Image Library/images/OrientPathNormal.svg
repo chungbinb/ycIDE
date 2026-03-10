@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightOrientPathNormal</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15,13.5H14a6.5,6.5,0,0,0-13,0H0a7.5,7.5,0,0,1,15,0Z" />
+    <path class="white" d="M8.5,1.919l.5.5v9l-.5.5h-2l-.5-.5v-9l.5-.5ZM2.317,3.727.371,4.19,0,4.792l2.081,8.756.6.371,1.946-.463.371-.6L2.919,4.1Zm12.312.463-1.946-.463-.6.371L10,12.854l.371.6,1.946.463.6-.371L15,4.792Z" />
+    <path class="light-defaultgrey-10" d="M8.5,11.5h-2v-9h2Z" />
+    <path class="light-defaultgrey" d="M8.5,2h-2L6,2.5v9l.5.5h2l.5-.5v-9ZM8,11H7V3H8Z" />
+    <path class="light-defaultgrey-10" d="M4.514,13.051l-1.946.463L.486,4.758,2.432,4.3Z" />
+    <path class="light-defaultgrey" d="M2.317,3.809.371,4.271,0,4.873l2.081,8.756.6.371,1.946-.463.371-.6L2.919,4.179ZM3.911,12.68l-.972.231L1.089,5.128,2.061,4.9Z" />
+    <path class="light-defaultgrey-10" d="M12.568,4.3l1.946.463-2.082,8.756-1.946-.463Z" />
+    <path class="light-defaultgrey" d="M12.081,4.179,10,12.935l.371.6L12.317,14l.6-.371L15,4.873l-.371-.6-1.946-.462Zm.858.718.972.231-1.85,7.783-.972-.231Z" />
+  </g>
+</svg>

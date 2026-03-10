@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCloseLog</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5,13H2V12H5ZM5,9H2v1H5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,1.5v13H3.5V13H5V12H3.5V10H5V9H3.5V8H6.914L8,6.914V5.5h4.5v-2H8v-2Z" />
+    <path class="light-defaultgrey" d="M4,9H3V8H4ZM14.5,1H8V2h6V14H4V13H3v1.5l.5.5h11l.5-.5V1.5ZM4,10H3v2H4Z" />
+    <path class="light-teal-10" d="M12.5,5.5H8v-2h4.5Z" />
+    <path class="light-teal" d="M12.5,6H8V5h4V4H8V3h4.5l.5.5v2Z" />
+    <path class="light-defaultgrey" d="M7,.5v6L6.5,7H.5L0,6.5V.5L.5,0h6Z" />
+    <path class="white" d="M5.146,5.854,3.5,4.207,2,5.707,1.293,5l1.5-1.5L1.293,2,2,1.293l1.5,1.5L5,1.293,5.707,2l-1.5,1.5L5.854,5.146Z" />
+  </g>
+</svg>

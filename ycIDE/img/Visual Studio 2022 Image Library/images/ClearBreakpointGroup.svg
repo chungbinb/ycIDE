@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightClearBreakpointGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M16,7.5a4.983,4.983,0,0,1-2.566,4.34A5.955,5.955,0,0,0,6.66,5.066,4.983,4.983,0,0,1,16,7.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M12.5,11a5,5,0,1,1-5-5A5.006,5.006,0,0,1,12.5,11Z" />
+    <path class="light-red" d="M3.681,3,5.84,5.155l-.68.68L3,3.674.84,5.835l-.68-.68L2.319,3,.16.837.84.157,3,2.318,5.16.157l.68.68Z" />
+  </g>
+</svg>

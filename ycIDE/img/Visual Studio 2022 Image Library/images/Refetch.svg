@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRefetch</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,6.5h3v3h-3Zm5,3h3v-3h-3Zm5-3v3h3v-3Z" />
+    <path class="light-defaultgrey" d="M1.5,6,1,6.5v3l.5.5h3L5,9.5v-3L4.5,6ZM4,9H2V7H4ZM6.5,6,6,6.5v3l.5.5h3l.5-.5v-3L9.5,6ZM9,9H7V7H9Zm5.5-3h-3l-.5.5v3l.5.5h3l.5-.5v-3ZM14,9H12V7h2Z" />
+  </g>
+</svg>

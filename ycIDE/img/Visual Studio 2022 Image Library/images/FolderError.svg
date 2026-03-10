@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFolderError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M7.051,12.5H1.5V2.5h6l1,1h6V7.7A4.937,4.937,0,0,0,12,7a5.006,5.006,0,0,0-5,5A4.865,4.865,0,0,0,7.051,12.5Z" />
+    <path class="light-yellow" d="M7,12H2V5H7.475l.354-.146L8.682,4H14V7.424a4.967,4.967,0,0,1,1,.6V3.5L14.5,3H8.707l-.853-.854L7.5,2h-6L1,2.5v10l.5.5H7.1A5,5,0,0,1,7,12ZM2,3H7.293l.488.488L7.268,4H2Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

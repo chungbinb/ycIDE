@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFSCodeFile</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+    <path class="light-purple" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+    <path class="light-defaultgrey" d="M6.947,11.987a1.348,1.348,0,0,1-1.174-.614A3.132,3.132,0,0,1,5.352,9.6a3.471,3.471,0,0,1,.44-1.929A1.434,1.434,0,0,1,7.06,7.013q1.587,0,1.588,2.467A3.251,3.251,0,0,1,8.2,11.344,1.44,1.44,0,0,1,6.947,11.987Zm.076-4.353q-.874,0-.876,1.93,0,1.8.859,1.8t.846-1.835Q7.852,7.633,7.023,7.634ZM11,7.081V12h-.779V8.034a2.521,2.521,0,0,1-.454.257,3.956,3.956,0,0,1-.555.186V7.812c.129-.042.255-.087.376-.134s.239-.1.357-.157.236-.124.356-.2.243-.152.371-.244Z" />
+  </g>
+</svg>

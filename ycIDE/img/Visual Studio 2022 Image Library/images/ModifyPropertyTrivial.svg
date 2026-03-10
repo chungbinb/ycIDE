@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightModifyPropertyTrivial</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7,10.183c-1.612,1.609-3.432,3.4-4.556,4.45a1.352,1.352,0,0,1-.892.346A1.5,1.5,0,0,1,.5,14.509a1.444,1.444,0,0,1-.187-1.973c1.383-1.448,4.122-4.167,6.022-6.018a3.872,3.872,0,0,0,.507.9c-1.859,1.817-4.467,4.408-5.791,5.8-.135.153.008.441.157.591a.4.4,0,0,0,.571.087C3.05,12.7,5.251,10.521,7,8.769Z" />
+      <path class="light-defaultgrey-10" d="M7,9.476c-1.724,1.724-3.725,3.7-4.9,4.791-.861.75-2.077-.651-1.418-1.4C2.02,11.468,4.666,8.84,6.56,6.992a3.918,3.918,0,0,0,.673.861L7,8.086Z" />
+    </g>
+    <path class="light-defaultgrey" d="M6.026,5a3.961,3.961,0,0,1,4-4,4.19,4.19,0,0,1,1.441.241L8.585,4.2l2.241,2.241,2.959-2.882A4.19,4.19,0,0,1,14.026,5a4.006,4.006,0,0,1-.541,2h-5.4l-.867.867A3.98,3.98,0,0,1,6.026,5Z" />
+    <path class="light-defaultgrey-10" d="M15.5,8.5v5h-3l-2,2.1V13.5h-2v-5Z" />
+    <path class="light-defaultgrey" d="M15.5,8h-7L8,8.5v5l.5.5H10v1.6l.862.344L12.714,14H15.5l.5-.5v-5ZM15,13H12.5l-.362.155L11,14.35V13.5l-.5-.5H9V9h6Z" />
+  </g>
+</svg>

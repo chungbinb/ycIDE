@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWFC</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,11v3.5h-5V11Z" />
+    <path class="light-defaultgrey-10" d="M5,12.5H1.5v-7H5Z" />
+    <path class="light-defaultgrey-10" d="M6.5,9.5h8v-8h-8Z" />
+    <path class="light-defaultgrey" d="M14.5,10h-8L6,9.5v-8L6.5,1h8l.5.5v8ZM7,9h7V2H7Z" />
+    <path class="light-defaultgrey" d="M12,11v3.5l-.5.5h-5L6,14.5v-4l.5.5H7v3h4V11Z" />
+    <path class="light-defaultgrey" d="M5,13H1.5L1,12.5v-7L1.5,5H5V6H2v6H5Z" />
+  </g>
+</svg>

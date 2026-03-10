@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightShelvePendingChanges</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M16,8.5v6l-.5.5H1.5L1,14.5v-6L1.5,8h14Z" />
+    <path class="light-defaultgrey" d="M11,14h1v1H11ZM9,15h1V14H9Zm4,0h1V14H13Zm2-2h1V12H15Zm0-3v1h1V10ZM5,15H6V14H5ZM1,13H2V12H1Zm2,2H4V14H3ZM1,11H2V10H1Zm6,4H8V14H7ZM8,8H7V9H8Zm2,0H9V9h1ZM6,8H5V9H6Zm8,0H13V9h1ZM3,9H4V8H3Zm9-1H11V9h1ZM1.5,8,1,8.5V9H2V8ZM1,14.5l.5.5H2V14H1Zm14.5.5.5-.5V14H15v1ZM16,8.5,15.5,8H15V9h1Z" />
+    <path class="light-blue" d="M10.646,3.353,9,1.707V7H8V1.707L6.354,3.353l-.708-.707,2.5-2.5h.708l2.5,2.5Z" />
+  </g>
+</svg>

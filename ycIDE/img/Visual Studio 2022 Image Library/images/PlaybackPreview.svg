@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPlaybackPreview</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M11.14,8.44a3.921,3.921,0,0,1-.7.71l.01.01,4.7,4.69.7-.7Z" />
+    <path class="light-blue-10" d="M8,2.5a3.3,3.3,0,0,0-1.21.23l.59.33L9.02,4l-4,2.28-.47.27A3.5,3.5,0,1,0,8,2.5Z" />
+    <path class="light-blue" d="M8,2a4,4,0,0,0-1.76.41l.55.32.59.33A3.179,3.179,0,0,1,8,3,3,3,0,1,1,5.02,6.28l-.47.27-.47.27A4.01,4.01,0,0,0,8,10a3.968,3.968,0,0,0,2.45-.84,3.143,3.143,0,0,0,.7-.71A3.917,3.917,0,0,0,12,6,4,4,0,0,0,8,2Z" />
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+  </g>
+</svg>

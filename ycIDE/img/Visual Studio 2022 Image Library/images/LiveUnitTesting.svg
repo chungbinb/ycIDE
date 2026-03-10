@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLiveUnitTesting</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.287,7,9.5,6.667V2.5h3V6.667L13.351,8H9.424l.713-1Z" />
+    <path class="light-defaultgrey" d="M14.091,8.23,13.67,8h-.913l-.679-1.063L12,6.667V3H10V6.667l-.078.27L9.881,7H8.694L9,6.521V3H8V2h6V3H13V6.521Z" />
+    <path class="light-green" d="M7,4,0,8V0Z" />
+    <path class="light-yellow" d="M8,11,4.5,15h-1L5,12H3L5,8H8L5.863,11Z" />
+    <path class="light-teal-10" d="M13.76,11.5H8.892L10.2,10H8L9.068,8.5h4.6L14.6,9.962A1,1,0,0,1,13.76,11.5Z" />
+    <path class="light-teal" d="M15.076,11.221A1.48,1.48,0,0,1,13.761,12H8.454l.875-1h4.432a.5.5,0,0,0,.421-.77L13.4,9H8.712l.712-1H13.67l.422.23.933,1.462A1.484,1.484,0,0,1,15.076,11.221Z" />
+  </g>
+</svg>

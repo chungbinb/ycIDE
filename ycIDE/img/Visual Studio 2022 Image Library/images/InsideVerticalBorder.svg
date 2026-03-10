@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>InsideVerticalBorder</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1,14V3L2,2H13l1,1V14l-1,1H2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M3,2H4V3H3ZM5,3H6V2H5ZM7,3H8V2H7ZM1,2.5V3H2V2H1.5ZM9,3h1V2H9ZM1,7H2V6H1ZM1,5H2V4H1ZM13,7h1V6H13Zm0-2h1V4H13Zm.5-3H13V3h1V2.5ZM11,3h1V2H11ZM3,8H4V9H3ZM5,9H6V8H5ZM9,9h1V8H9Zm2,0h1V8H11Zm2,0h1V8H13ZM1,9H2V8H1Zm0,5.5.5.5H2V14H1ZM1,13H2V12H1Zm0-2H2V10H1Zm4,4H6V14H5Zm2,0H8V14H7Zm6,0h.5l.5-.5V14H13ZM9,15h1V14H9ZM3,15H4V14H3Zm10-4h1V10H13Zm-2,4h1V14H11Zm2-2h1V12H13Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8,2V15H7V2Z" />
+  </g>
+</svg>

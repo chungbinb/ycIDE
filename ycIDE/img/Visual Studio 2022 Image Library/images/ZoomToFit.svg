@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ZoomToFit</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15.854,15.146l-.708.708-3.422-3.423a6.742,6.742,0,0,0,.707-.707Z" />
+      <path class="light-defaultgrey-10" d="M13.5,7.5a6,6,0,1,1-6-6A6,6,0,0,1,13.5,7.5Z" />
+      <path class="light-defaultgrey" d="M7.5,1A6.5,6.5,0,1,0,14,7.5,6.508,6.508,0,0,0,7.5,1Zm0,12A5.5,5.5,0,1,1,13,7.5,5.507,5.507,0,0,1,7.5,13Z" />
+    </g>
+    <path class="light-blue" d="M4.5,4h2V5H5V6.5H4v-2Zm6,0h-2V5H10V6.5h1v-2ZM5,8.5H4v2l.5.5h2V10H5ZM10,10H8.5v1h2l.5-.5v-2H10Z" />
+  </g>
+</svg>

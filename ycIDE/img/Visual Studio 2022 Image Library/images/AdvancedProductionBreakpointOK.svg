@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAdvancedProductionBreakpointOK</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M7.7,14.5H4.247L.494,8,4.247,1.5h7.506L15.506,8l-.174.3A4.971,4.971,0,0,0,7.7,14.5Z" />
+      <path class="light-purple" d="M8.026,15H4.247l-.433-.25L.062,8.25v-.5l3.752-6.5L4.247,1h7.506l.433.25,3.752,6.5v.5l-.24.416a4.989,4.989,0,0,0-.806-.73L11.464,2H4.536L1.071,8l3.465,6H7.424A4.967,4.967,0,0,0,8.026,15Z" />
+    </g>
+    <path class="light-purple" d="M7,9H5V7H7V5H9V7h2v.1A5.016,5.016,0,0,0,7.1,11H7Z" />
+    <path class="light-green" d="M16,12a4,4,0,1,1-4-4A4,4,0,0,1,16,12Z" />
+    <path class="white" d="M14.208,11.171l-2.365,2.365-.711,0L9.792,12.16l.715-.7.987,1.011L13.5,10.464Z" />
+  </g>
+</svg>

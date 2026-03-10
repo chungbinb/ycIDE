@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightProductionBreakpointOff</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M15.506,8l-3.753,6.5H4.247L.494,8,4.247,1.5h7.506Z" />
+      <path class="light-purple" d="M11.753,15H4.247l-.433-.25L.062,8.25v-.5l3.752-6.5L4.247,1h7.506l.433.25,3.752,6.5v.5l-3.752,6.5ZM4.536,14h6.928l3.465-6L11.464,2H4.536L1.071,8Z" />
+    </g>
+  </g>
+</svg>

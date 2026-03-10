@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDetailPageItemTemplate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,7.5h-3v-3h3Z" />
+    <path class="light-defaultgrey" d="M4.5,8h-3L1,7.5v-3L1.5,4h3l.5.5v3ZM2,7H4V5H2Z" />
+    <path class="light-defaultgrey" d="M11,2H1V1H11Zm0,2H6V5h5Zm0,3H6V8h5Zm0,3H1v1H11Zm0,3H1v1H11Z" />
+    <path class="light-defaultgrey" d="M16,3H12V1h4Zm0,3H12V4h4Zm0,3H12V7h4Z" />
+  </g>
+</svg>

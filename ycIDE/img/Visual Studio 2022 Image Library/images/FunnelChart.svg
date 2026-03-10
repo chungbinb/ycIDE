@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFunnelChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.9,10,8,14.5,6.1,10Z" />
+    <path class="light-defaultgrey" d="M10.576,9.7l-2.115,5H7.539l-2.115-5,.461.3H6.64L8,13.217,9.36,10h.755Z" />
+    <path class="light-lightblue-10" d="M11.808,5.5l-1.693,4H5.885l-1.693-4Z" />
+    <path class="light-lightblue" d="M10.115,10H5.885l-.461-.3-1.693-4L4.192,5h7.616l.461.7-1.693,4Zm-3.9-1H9.784l1.269-3H4.947Z" />
+    <path class="light-lightblue-10" d="M13.5,1.5l-1.692,4H4.192L2.5,1.5Z" />
+    <path class="light-lightblue" d="M13.5,1H2.5l-.461.7,1.692,4,.461.3h7.616l.461-.3,1.692-4ZM11.477,5H4.523L3.255,2h9.49Z" />
+  </g>
+</svg>

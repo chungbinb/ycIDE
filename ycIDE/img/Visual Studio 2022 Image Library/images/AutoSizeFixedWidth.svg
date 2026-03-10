@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>AutoSizeFixedWidth</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2,14H1V2H2ZM15,2H14V14h1Z" />
+    <path class="light-defaultgrey" d="M11.435,6.444,9.094,7.5,11.43,8.557l-.8,1.391-2.084-1.5L8.8,11H7.2l.249-2.553-2.084,1.5-.8-1.391L6.906,7.5,4.568,6.443l.8-1.391,2.084,1.5L7.2,4H8.8L8.551,6.553l2.084-1.5Z" />
+  </g>
+</svg>

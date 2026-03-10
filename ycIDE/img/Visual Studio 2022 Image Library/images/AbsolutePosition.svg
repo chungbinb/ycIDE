@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAbsolutePosition</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,4H1V3H15Zm0-2H1V1H15Zm0,4H13V5h2Zm0,2H13V7h2Zm0,2H13V9h2ZM2,6H1V5H2ZM2,8H1V7H2Zm0,2H1V9H2Zm13,4H1V13H15Zm0-2H1V11H15Z" />
+    </g>
+    <path class="light-blue" d="M8,8H3V5H8Z" />
+  </g>
+</svg>

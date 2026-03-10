@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightParseDynamicValue</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M10,2V3H5V2H7V1H8V2ZM5,14V13h5v1H8v1H7V14Z" />
+    <path class="light-defaultgrey" d="M14,4.5v6.379l-1-1V5H2v6H9.879l1,1H1.5L1,11.5v-7L1.5,4h12Z" />
+    <path class="light-defaultgrey-10" d="M13.5,4.5V9.38l-.5-.5v1L10.854,7.732,8.732,9.854,10.379,11.5H1.5v-7Z" />
+    <path class="light-blue" d="M16,10v4.5l-.5.5H11V14h3.293L10.146,9.854l.708-.708L15,13.293V10Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightInsertClause</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M16,10.5H13.5v-4H16Z" />
+    <path class="light-defaultgrey-10" d="M5.5,10.5v4h-4v-4Z" />
+    <path class="light-defaultgrey-10" d="M5.5,2.5v4h-4v-4Z" />
+    <path class="light-defaultgrey" d="M5.5,2h-4L1,2.5v4l.5.5h4L6,6.5v-4ZM5,6H2V3H5Z" />
+    <path class="light-defaultgrey" d="M5.5,10h-4l-.5.5v4l.5.5h4l.5-.5v-4ZM5,14H2V11H5Z" />
+    <path class="light-blue" d="M14,7v3h2v1H13.5l-.5-.5V9H7.707l1.646,1.643-.707.707-2.5-2.5V8.143l2.5-2.5.707.707L7.707,8H13V6.5l.5-.5H16V7Z" />
+  </g>
+</svg>

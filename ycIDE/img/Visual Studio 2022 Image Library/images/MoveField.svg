@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMoveField</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M8.5,1.169l3.006,3.007v3.5l-7,3.889L1.5,8.556v-3.5Z" />
+      <path class="light-blue" d="M12.006,4.176v3.5l-.256.437L4.75,12l-.6-.084L1.146,8.91l-.14-.354v-3.5l.251-.437-.111.791L2,6.265V8.349l2.006,2.006V8.271l.147.147.6.084.256-.143v2.354l6-3.333V5.026l.744-.413.11-.791Z" />
+    </g>
+    <path class="light-blue-10" d="M11.506,4.176l-7,3.889L1.5,5.058l7-3.889Z" />
+    <path class="light-blue" d="M4.75,8.5l-.6-.084L1.146,5.412l.111-.791,7-3.889.6.084L11.86,3.822l-.11.791ZM2.322,5.173,4.593,7.444l6.091-3.383L8.413,1.789Z" />
+    <path class="light-defaultgrey" d="M15.854,12.146v.708l-2.5,2.5-.707-.708L14.293,13H9V12h5.293l-1.646-1.646.707-.708Z" />
+  </g>
+</svg>

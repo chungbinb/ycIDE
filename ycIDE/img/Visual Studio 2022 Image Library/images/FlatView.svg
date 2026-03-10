@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFlatView</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10,1.5A4.5,4.5,0,1,1,5.5,6,4.5,4.5,0,0,1,10,1.5Z" />
+    <path class="light-defaultgrey" d="M5,6a5,5,0,1,1,5,5A5.006,5.006,0,0,1,5,6ZM6,6a4,4,0,1,0,4-4A4,4,0,0,0,6,6Z" />
+    <path class="light-defaultgrey-10" d="M4.025,5.5C4.012,5.665,4,5.831,4,6a6,6,0,0,0,6,6c.169,0,.335-.012.5-.025V14.5h-9v-9Z" />
+    <path class="light-defaultgrey" d="M1.5,5H4.09A6,6,0,0,0,4,6H2v8h8V12a6,6,0,0,0,1-.09V14.5l-.5.5h-9L1,14.5v-9Z" />
+  </g>
+</svg>

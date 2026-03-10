@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-orange{fill: #b73d18; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightJSGridApplication</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H6V13h8V6H2v4H1V5.5L1.5,5h13Z" />
+      <path class="light-defaultgrey-10" d="M14.5,5v8H6V10H1.5V5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,3V5H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <path class="light-orange" d="M4,15H5v1H4ZM2,16H3V15H2ZM0,16H1V15H0Zm4-2H5V13H4ZM2,14H3V13H2ZM0,14H1V13H0Zm4-2H5V11H4ZM2,12H3V11H2ZM0,12H1V11H0Z" />
+  </g>
+</svg>

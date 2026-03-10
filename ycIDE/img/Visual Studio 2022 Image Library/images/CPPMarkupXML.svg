@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCPPMarkupXML</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,4.5v9h-.831l.229-.228v-1.54L9.157,9H2.5V1.5h7Z" />
+    <path class="light-defaultgrey" d="M13,4.5v9l-.5.5H11.166l.732-.728V13H12V5H9V2H3V9H2V1.5L2.5,1h7l.354.146,3,3Z" />
+    <path class="light-red" d="M3.079,10.672,1.262,12.5l1.816,1.82-.707.707L.2,12.853v-.707L2.37,9.967Zm5.632-.7-.7.709L9.837,12.5,8.006,14.32l.705.709L10.9,12.856v-.709ZM4.025,15.342l.95.316,2-6-.95-.316Z" />
+  </g>
+</svg>

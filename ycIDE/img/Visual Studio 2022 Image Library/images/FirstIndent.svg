@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFirstIndent</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,15H3V14H14Zm0-4H3V10H14Zm0-4H3V6H14Zm0-4H8V2h6Z" />
+    <path class="light-blue" d="M5.293,2,4.146.854,4.854.146l2,2v.708l-2,2-.708-.708L5.293,3H1V2Z" />
+  </g>
+</svg>

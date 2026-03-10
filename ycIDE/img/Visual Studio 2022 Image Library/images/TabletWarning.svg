@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTabletWarning</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,2.5v10H7.44l.28-.5.55-1,2.2-4h2.06L14,9.67l.5.91V2.5Z" />
+    <path class="light-defaultgrey" d="M7,10v1H8.27l.55-1Zm7.5-8H1.5L1,2.5v10l.5.5H7.17l.27-.5.28-.5H2V3H14V9.67l.5.91.5.91V2.5ZM7,11H8.27l.55-1H7Zm0-1v1H8.27l.55-1Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddToDependancyGraphAncestor</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,1.5v14H2.5V8H5V5H8V1.5Z" />
+    <path class="light-defaultgrey" d="M16,1.5v14l-.5.5H2.5L2,15.5V8H3v7H15V3H8V1h7.5Z" />
+    <path class="light-defaultgrey" d="M7.5,7H8L5.75,10H4.5l-.5.5v2l.5.5h3l.5-.5v-2L7.5,10H7L9,7.333,11,10h-.5l-.5.5v2l.5.5h3l.5-.5v-2l-.5-.5H12.25L10,7h.5l.5-.5v-2L10.5,4H8V5h2V6H8V5H7V6.5ZM7,11v1H5V11Zm6,0v1H11V11Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

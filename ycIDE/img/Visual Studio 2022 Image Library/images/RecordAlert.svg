@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRecordAlert</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-red-10" d="M8.159,14.493c-.05,0-.1.007-.148.007a6.5,6.5,0,1,1,6.5-6.5c0,.057-.007.112-.008.169l-.87-.87L12.912,7H11.088l-.721.3L7.3,10.367l-.3.721v1.824l.3.721Z" />
+      <path class="light-red" d="M8.634,14.968c-.205.019-.413.032-.623.032a7,7,0,1,1,7-7c0,.217-.013.432-.033.644l-.984-.984a6,6,0,1,0-6.346,6.322Z" />
+    </g>
+    <path class="light-red" d="M7,11.857A3.992,3.992,0,1,1,11.866,7h-.778l-.721.3L7.3,10.367l-.3.721Z" />
+    <path class="light-blue" d="M12.713,16H11.287l-.353-.146L8.146,13.066,8,12.713V11.287l.146-.353,2.788-2.788L11.287,8h1.426l.353.146,2.788,2.788.146.353v1.426l-.146.353-2.788,2.788Z" />
+    <path class="white" d="M12.5,12h-1V9h1Zm0,1h-1v1h1Z" />
+  </g>
+</svg>

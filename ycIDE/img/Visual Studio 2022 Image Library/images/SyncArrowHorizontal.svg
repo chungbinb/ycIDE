@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSyncArrowHorizontal</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,5H3.707L4.854,6.146l-.708.708-2-2V4.146l2-2,.708.708L3.707,4H14ZM2,11H12.293L11.146,9.854l.708-.708,2,2v.708l-2,2-.708-.708L12.293,12H2Z" />
+  </g>
+</svg>

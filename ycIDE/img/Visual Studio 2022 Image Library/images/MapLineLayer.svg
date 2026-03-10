@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightMapLineLayer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M6,5.618l3,1.5V8.382L4.236,6H2V2H6ZM4,11H2v3H9V13H4Zm6,3h3.527L10,12.236ZM10,2V4h4V2Zm0,6.882,4,2V9.618l-4-2Zm4-2.618V5H11.473ZM2,9v1H5v2H9v-.264L3.528,9Z" />
+      <path class="light-defaultgrey" d="M14,4V5H11.473L9,3.764V2h1V4ZM9,12H5V10H2v1H4v2H9v1h1V12.236l-1-.5ZM9,8.382l1,.5V7.618l-1-.5Z" />
+    </g>
+    <path class="light-blue" d="M14,7.382V8.5L7,5V2H8V4.382ZM2,7V8H3.764L14,13.118V12L4,7Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v13l.5.5h13l.5-.5V1.5ZM14,14H2V2H14Z" />
+  </g>
+</svg>

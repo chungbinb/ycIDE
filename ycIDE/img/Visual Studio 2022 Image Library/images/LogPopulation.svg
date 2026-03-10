@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightLogPopulation</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,1.5V3H4V4H2.5V6H4V7H3.414l.854.854L4.121,8H8v3H7.121l1.733,1.732v1.536l-.233.232H13.5V1.5ZM11,5H6V4h5Z" />
+    <path class="light-teal-10" d="M11.5,5.5h-6v-2h6Z" />
+    <path class="light-teal" d="M11.5,3h-6L5,3.5v2l.5.5h6l.5-.5v-2ZM11,5H6V4h5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2.414,6H4V7H3.414ZM4,3H1V4H4ZM1.879,6H1v.879Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14,1.5v13l-.5.5H8.121l.733-.732V14H13V2H3V3H2V1.5L2.5,1h11ZM2,5.879l.146-.147L2.414,6H3V4H2Z" />
+    <path class="light-blue" d="M2.146,7.146l.708.708L1.707,9H7v1H1.707l1.147,1.146-.708.708-2-2V9.146ZM1,13H6.293L5.146,11.854l.708-.708,2,2v.708l-2,2-.708-.708L6.293,14H1Z" />
+  </g>
+</svg>

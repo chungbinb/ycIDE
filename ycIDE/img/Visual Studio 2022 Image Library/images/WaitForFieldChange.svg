@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWaitForFieldChange</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M10.5,8.5h4v5h-4Z" />
+    <path class="light-defaultgrey-10" d="M10,8.5v5H2.5v-5Z" />
+    <path class="light-defaultgrey" d="M2,5H1V1H2ZM4,5H3V1H4Z" />
+    <path class="light-defaultgrey" d="M10,13H7V9h3V8.5l.5-.5h-8L2,8.5v5l.5.5h8l-.5-.5ZM6,13H3V9H6Z" />
+    <path class="light-blue" d="M10,13.5v-5l.5-.5h4l.5.5v5l-.5.5h-4ZM11,9v4h3V9Z" />
+  </g>
+</svg>

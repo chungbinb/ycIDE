@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusAlert.18.18</title>
+  <title>IconLightStatusAlert.18.18</title>
+  <g id="canvas">
+    <path class="canvas" d="M18,18H0V0H18Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M10.926,17H8.074l-.707-.293L1.793,11.133,1.5,10.426V7.574l.293-.707L7.367,1.293,8.074,1h2.852l.707.293,5.574,5.574.293.707v2.852l-.293.707-5.574,5.574Z" />
+    <path class="white" d="M10,10H9V4h1Zm-.5,1.75a.75.75,0,1,0,.75.75A.75.75,0,0,0,9.5,11.75Z" />
+  </g>
+</svg>

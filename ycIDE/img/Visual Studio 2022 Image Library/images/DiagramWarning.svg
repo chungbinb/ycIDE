@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>DiagramWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,9.5h2v2H.5Zm3-9v3H8.489V.5ZM5,11.5H7v-2H5Z" />
+    <path class="light-defaultgrey" d="M8.489,0H3.5L3,.5v3l.5.5H8.489l.5-.5V.5Zm-.5,3H4V1H7.989ZM.5,9,0,9.5v2l.5.5h2l.5-.5v-2L2.5,9ZM2,11H1V10H2ZM5,9l-.5.5v2L5,12H7l.5-.5v-2L7,9Zm1.5,2h-1V10h1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M5.5,9V7H2V9H1V6.5L1.5,6h4V4h1V6h4l.5.5V7h-.53L10,7.853V7H6.5V9Z" />
+    </g>
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

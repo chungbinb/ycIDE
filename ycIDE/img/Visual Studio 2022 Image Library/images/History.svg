@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHistory</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,8A6.5,6.5,0,1,1,8,1.5,6.5,6.5,0,0,1,14.5,8Z" />
+    <path class="light-defaultgrey" d="M15,8A7,7,0,0,1,1.789,11.231l.887-.462A6.008,6.008,0,1,0,2.811,5H5V6H1.5L1,5.5V2H2V4.394A7,7,0,0,1,15,8Z" />
+    <path class="light-defaultgrey" d="M10.854,10.646l-.708.708-3-3L7,8V4H8V7.793Z" />
+  </g>
+</svg>

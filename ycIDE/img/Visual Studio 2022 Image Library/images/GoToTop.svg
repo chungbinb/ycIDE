@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGoToTop</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M4.646,7.9l2.5-2.5h.708l2.5,2.5L9.646,8.6,8,6.957V14H7V6.957L5.354,8.6Z" />
+    <path class="light-defaultgrey" d="M2,3H13V2H2Z" />
+  </g>
+</svg>

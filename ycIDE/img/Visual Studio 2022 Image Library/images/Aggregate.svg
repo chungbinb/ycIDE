@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAggregate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15.5,10H11.3l-.429-.757L12.517,6.5,10.871,3.757,11.3,3h4.2l.5.5v1H15V4H12.183l1.346,2.243v.514L12.183,9H15V8.5h1v1Z" />
+    <path class="light-defaultgrey" d="M6,12H4v1H6Z" />
+    <path class="light-defaultgrey" d="M6,9H4v1H6Z" />
+    <path class="light-defaultgrey" d="M7,6H5V7H7Z" />
+    <path class="light-defaultgrey" d="M9.707,6.5q-.913-.058-.914-1.266V3.527A1.618,1.618,0,0,0,7,1.688v.75q.938.022.938,1.16V5.314q0,1.231.873,1.512V6.85q-.873.263-.873,1.5v1.693a1.559,1.559,0,0,1-.214.926A.883.883,0,0,1,7,11.262V12a1.608,1.608,0,0,0,1.793-1.816V8.426q0-1.184.914-1.242Z" />
+    <path class="light-defaultgrey" d="M.293,9.84q.914.058.914,1.242V12.84A1.608,1.608,0,0,0,3,14.656v-.738a.88.88,0,0,1-.724-.293,1.558,1.558,0,0,1-.213-.926V11.006q0-1.236-.874-1.5V9.482q.873-.28.874-1.511V6.254q0-1.137.938-1.16v-.75a1.618,1.618,0,0,0-1.793,1.84V7.9Q1.207,9.1.293,9.16Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>XMLElementLowConfidence</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12,3V6.979a5.04,5.04,0,0,0-5,5L7,12H2V3Z" />
+    <path class="light-defaultgrey" d="M13,2.5V7.08a5,5,0,0,0-1-.1V3H2v9H7a5.07,5.07,0,0,0,.1,1H1.5L1,12.5V2.5L1.5,2h11ZM5.276,5,3.106,7.179v.707L5.277,10.06l.707-.707L4.168,7.533,5.985,5.705Zm2.83.709L9.875,7.47A5.009,5.009,0,0,1,10.923,7.1L8.811,5Z" />
+    <path class="light-blue" d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Z" />
+    <path class="white" d="M12.625,14.5A.625.625,0,1,1,12,13.875.625.625,0,0,1,12.625,14.5Zm.587-4.842a1.534,1.534,0,0,1,.5,1.137c0,.775-.546,1.116-1.085,1.638a.543.543,0,0,0-.167.264,1.55,1.55,0,0,0-.033.508h-.858v-.3a1.29,1.29,0,0,1,.094-.508A1.692,1.692,0,0,1,11.9,12c.3-.373.426-.315.863-.879a.457.457,0,0,0,.094-.326.859.859,0,0,0-1.714,0h-.857A1.731,1.731,0,0,1,13.212,9.658Z" />
+  </g>
+</svg>

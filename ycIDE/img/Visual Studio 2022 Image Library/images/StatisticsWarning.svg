@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightStatisticsWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,5.5V7h1.03l.47.85.5.91V5.5Z" />
+    <path class="light-defaultgrey-10" d="M7.5,2.5v9.89l.5-.9L9,9.67l.5-.91V2.5Z" />
+    <path class="light-defaultgrey-10" d="M3.5,8.5h2v4h-2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,14V2H1V14.5l.5.5H6.06l.55-1Z" />
+    </g>
+    <path class="light-defaultgrey" d="M3,8.5v4l.5.5h2l.5-.5v-4L5.5,8h-2ZM5,9v3H4V9Z" />
+    <path class="light-defaultgrey" d="M9.5,2h-2L7,2.5v10l.28.28.22-.39.5-.9V3H9V9.67l.5-.91.5-.91V2.5Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+    <path class="light-defaultgrey" d="M13.5,5h-2l-.5.5V7h1V6h1V7.85l.5.91.5.91V5.5Z" />
+  </g>
+</svg>

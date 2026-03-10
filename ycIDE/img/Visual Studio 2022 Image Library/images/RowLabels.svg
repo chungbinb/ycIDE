@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRowLabels</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,11.5h12v3H1.5Z" />
+    <path class="light-blue" d="M14,10H1V8H14Z" />
+    <path class="light-defaultgrey" d="M1,11v3.5l.5.5h12l.5-.5V11Zm4,3H2V12H5Zm4,0H6V12H9Zm4,0H10V12h3Z" />
+    <path class="light-defaultgrey-10" d="M1.5,3.5h12v3H1.5Z" />
+    <path class="light-blue" d="M14,2H1V0H14Z" />
+    <path class="light-defaultgrey" d="M1,3V6.5l.5.5h12l.5-.5V3ZM5,6H2V4H5ZM9,6H6V4H9Zm4,0H10V4h3Z" />
+  </g>
+</svg>

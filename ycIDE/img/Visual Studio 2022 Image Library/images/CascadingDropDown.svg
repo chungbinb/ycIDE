@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightCascadingDropDown</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M11.5,5.125,10.75,4h1.5Z" />
+    <path class="light-defaultgrey" d="M13.5,12.125,12.75,11h1.5Z" />
+    <path class="light-defaultgrey-10" d="M13.5,6.5H.5v-4h13Z" />
+    <path class="light-defaultgrey" d="M13.5,2H.5L0,2.5v4L.5,7h13l.5-.5v-4ZM1,3H9V6H1ZM13,6H10V3h3Z" />
+    <path class="light-defaultgrey-10" d="M15.5,13.5H2.5v-4h13Z" />
+    <path class="light-defaultgrey" d="M15.5,9H2.5L2,9.5v4l.5.5h13l.5-.5v-4ZM3,10h8v3H3Zm12,3H12V10h3Z" />
+  </g>
+</svg>

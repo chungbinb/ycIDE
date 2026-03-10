@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGoToWorkItem</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14,5.879V10l-.5.621V14.5H3.5V5.914l.354.354L6.621,3.5H13.5V6.379Z" />
+      <path class="light-defaultgrey" d="M14,10v4.5l-.5.5H3.5L3,14.5V5.414l.854.854L4,6.121V14h9V11.121Z" />
+      <path class="light-defaultgrey" d="M14,3.5V5.879l-1,1V4H7.121l.733-.732V3H13.5Z" />
+    </g>
+    <path class="light-green" d="M15.854,6.854l-5,5h-.708l-3-3,.708-.708L10.5,10.793l4.646-4.647Z" />
+    <path class="light-defaultgrey" d="M10.5,2a1.995,1.995,0,0,0-3.917-.538l.271.27V3.268L6.121,4H12V2Zm-2,1a1,1,0,1,1,1-1A1,1,0,0,1,8.5,3Z" />
+    <path class="light-blue" d="M4.293,2,3.146.854,3.854.146l2,2v.708l-2,2-.708-.708L4.293,3H0V2Z" />
+  </g>
+</svg>

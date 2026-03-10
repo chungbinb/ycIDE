@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAlignTop</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,14.5h-2V3.5h2Zm5-4h-2v-7h2Z" />
+    <path class="light-defaultgrey" d="M6.5,15h-2L4,14.5V3.5L4.5,3h2l.5.5v11ZM5,14H6V4H5Zm6.5-3h-2L9,10.5v-7L9.5,3h2l.5.5v7ZM10,10h1V4H10Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14,1V2H2V1Z" />
+    </g>
+  </g>
+</svg>

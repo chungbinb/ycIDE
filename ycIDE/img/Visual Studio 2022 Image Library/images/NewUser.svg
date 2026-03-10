@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>NewUser</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9,9.5A2.986,2.986,0,0,1,6.1,7.26L7.74,5.62,7.12,5H8V3.68A2.772,2.772,0,0,1,9,3.5a3,3,0,0,1,0,6Zm0,0A4.494,4.494,0,0,0,4.5,14h9A4.494,4.494,0,0,0,9,9.5Z" />
+    <path class="light-defaultgrey" d="M10.96,9.4A3.5,3.5,0,0,0,9,3a3.317,3.317,0,0,0-1,.15V4.21A2.423,2.423,0,0,1,9,4,2.5,2.5,0,1,1,6.52,6.84l-.82.82A3.465,3.465,0,0,0,7.04,9.4,5.015,5.015,0,0,0,4,14H5a4,4,0,0,1,8,0h1A5.015,5.015,0,0,0,10.96,9.4Z" />
+    <path class="light-yellow" d="M4,2l-.5.5L3,2V0H4ZM1.379.672l-.707.707L2.086,2.793l.7,0,0-.711ZM0,3V4H2l.5-.5L2,3ZM.672,5.621l.707.707L2.793,4.914l0-.7-.711,0ZM3,7H4V5l-.5-.5L3,5Zm2.621-.672.707-.707L4.914,4.207l-.7,0,0,.711ZM7,4V3H5l-.5.5L5,4ZM6.328,1.379,5.621.672,4.207,2.086l0,.7.711,0Z" />
+  </g>
+</svg>

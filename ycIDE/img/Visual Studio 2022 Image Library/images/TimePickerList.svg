@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTimePickerList</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,1.5v12H8.746A4.96,4.96,0,0,0,1.5,7.694V1.5Z" />
+    <path class="light-defaultgrey-10" d="M7.5,12A3.5,3.5,0,1,1,4,8.5,3.5,3.5,0,0,1,7.5,12Z" />
+    <path class="light-defaultgrey" d="M10,7h5V8H10Z" />
+    <path class="light-defaultgrey" d="M3,4H7V5H3ZM3,6H9V7H3Z" />
+    <path class="light-blue" d="M15,13H10V9h5ZM15,2H10V6h5Z" />
+    <path class="white" d="M14,10H11l1.5,2ZM12.5,3.031,14,5H11.017Z" />
+    <path class="light-defaultgrey" d="M4,16a4,4,0,1,1,4-4A4,4,0,0,1,4,16ZM4,9a3,3,0,1,0,3,3A3,3,0,0,0,4,9Zm1.5,4H4l-.5-.5V10h1v2h1Z" />
+    <path class="light-defaultgrey" d="M15,1V2H2V7.422a4.935,4.935,0,0,0-1,.6V1.5L1.5,1ZM8.578,14H15V13H8.9A4.968,4.968,0,0,1,8.578,14Z" />
+  </g>
+</svg>

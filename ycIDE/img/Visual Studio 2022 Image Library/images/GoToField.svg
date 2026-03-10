@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGoToField</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M4.293,2,3.146.854,3.854.146l2,2v.708l-2,2-.708-.708L4.293,3H0V2Z" />
+    <g class="cls-1">
+      <path class="light-blue-10" d="M10.494,4.169,13.5,7.176v3.5l-7,3.889L3.494,11.556v-3.5Z" />
+      <path class="light-blue" d="M14,7.176v3.5l-.256.437L6.744,15l-.6-.084L3.14,11.91,3,11.556v-3.5l.251-.437-.111.791.854.853v2.084L6,13.355V11.271l.147.147.6.084L7,11.359v2.354l6-3.333V8.026l.744-.413.11-.791Z" />
+    </g>
+    <path class="light-blue-10" d="M13.5,7.176l-7,3.889L3.494,8.058l7-3.889Z" />
+    <path class="light-blue" d="M6.744,11.5l-.6-.084L3.14,8.412l.111-.791,7-3.889.6.084,3.006,3.006-.11.791ZM4.316,8.173l2.271,2.271,6.091-3.383L10.407,4.789Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>InfoTipInline.11.11</title>
+  <title>InfoTipInline.11.11</title>
+  <g id="canvas">
+    <path class="canvas" d="M11,11H0V0H11Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M9.5,5.5a4,4,0,1,1-4-4A4,4,0,0,1,9.5,5.5Z" />
+    <path class="light-blue" d="M5.5,1A4.5,4.5,0,1,0,10,5.5,4.505,4.505,0,0,0,5.5,1Zm0,8A3.5,3.5,0,1,1,9,5.5,3.5,3.5,0,0,1,5.5,9Z" />
+    <path class="light-blue" d="M5,5H6V8H5Zm.5-2.125a.625.625,0,1,0,.625.625A.625.625,0,0,0,5.5,2.875Z" />
+  </g>
+</svg>

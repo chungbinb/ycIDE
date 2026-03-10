@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHTMLTagBDI</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M3.079,6.672,1.262,8.5l1.816,1.82-.707.707L.2,8.853V8.146L2.37,5.967Zm10.632-.7-.7.709L14.837,8.5,13.006,10.32l.705.709L15.9,8.856V8.147Z" />
+    <path class="light-defaultgrey" d="M12,4.5V9A4,4,0,0,1,4,9V8.5L4.5,8H6V7H7V8.5L6.5,9H5a3,3,0,0,0,6,0V5H9V4h2.5ZM9,2H7V3H9Z" />
+  </g>
+</svg>

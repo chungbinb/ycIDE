@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightConvertFolderToBranch</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M7.5,2.5v4h-6v-5H3.75l1,1Z" />
+    <path class="light-yellow" d="M7.5,2H4.957L4.1,1.146,3.75,1H1.5L1,1.5v5l.5.5h6L8,6.5v-4ZM7,6H2V2H3.543l.853.854L4.75,3H7Z" />
+    <path class="light-defaultgrey-10" d="M14.5,14.5h-6v-5h6Z" />
+    <path class="light-defaultgrey" d="M14.5,15h-6L8,14.5v-5L8.5,9h6l.5.5v5ZM9,14h5V10H9Z" />
+    <path class="light-blue" d="M3,8v3H5.293L4.146,9.854l.708-.708,2,2v.708l-2,2-.708-.708L5.293,12H2.5L2,11.5V8Z" />
+  </g>
+</svg>

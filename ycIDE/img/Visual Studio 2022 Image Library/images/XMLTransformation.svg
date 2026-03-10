@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightXMLTransformation</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,15.5H.5v-8h7Z" />
+    <path class="light-defaultgrey" d="M6,10H2V9H6Zm0,2H2V11H6Zm0,2H2V13H6Z" />
+    <path class="light-defaultgrey" d="M.5,7,0,7.5v8l.5.5h7l.5-.5v-8L7.5,7ZM7,15H1V8H7Z" />
+    <path class="light-defaultgrey-10" d="M9,7.086,7.914,6H6V.5h7L15.5,3v9h-.379l-1.853-1.854H11.732L9.879,12H9Z" />
+    <path class="light-defaultgrey" d="M13,1H6V6H5V.393L5.393,0H13.25l.278.115,2.357,2.357L16,2.75V12l-.879,0L15,11.879V3H13Z" />
+    <path class="light-defaultgrey" d="M13.5,7H13V6.5L12.5,6H11V5h.5l.5-.5v-2L11.5,2h-2L9,2.5v2l.5.5H10V6H7.914L9,7.086V10h.5l.5-.5v-2L9.5,7h2l-.5.5v2l.5.5h2l.5-.5v-2ZM10,3h1V4H10Zm3,6H12V8h1Z" />
+    <path class="light-blue" d="M14.854,13.146l-.708.708L13,12.707V15.5l-.5.5H10V15h2V12.707l-1.146,1.147-.708-.708,2-2h.708Z" />
+  </g>
+</svg>

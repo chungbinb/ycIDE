@@ -7,6 +7,7 @@
 #include <commdlg.h>
 #include <vector>
 #include <sstream>
+#include <functional>
 
 void DebugLog(const std::wstring& msg) {
     CreateDirectoryA("logs", NULL);
@@ -114,7 +115,106 @@ std::wstring ConvertEPLToInternal(const std::wstring& eplCode) {
                            trimmed.find(L"如果 (") == 0 || trimmed.find(L"如果(") == 0);
         bool isIfTrueCommand = (trimmed.find(L".如果真") == 0 || trimmed.find(L"如果真") == 0);
         
-        if (isIfCommand || isIfTrueCommand) {
+        // 检查是否是循环命令（判断循环首/循环判断首）
+        bool isLoopHeadCommand = (trimmed.find(L".判断循环首") == 0 || trimmed.find(L"判断循环首") == 0 ||
+                                  trimmed.find(L".循环判断首") == 0 || trimmed.find(L"循环判断首") == 0 ||
+                                  trimmed.find(L".计次循环首") == 0 || trimmed.find(L"计次循环首") == 0 ||
+                                  trimmed.find(L".变量循环首") == 0 || trimmed.find(L"变量循环首") == 0);
+        
+        if (isLoopHeadCommand) {
+            // 查找对应的循环尾命令
+            std::wstring tailKeyword1, tailKeyword2;
+            if (trimmed.find(L"判断循环首") != std::wstring::npos) {
+                tailKeyword1 = L".判断循环尾";
+                tailKeyword2 = L"判断循环尾";
+            } else if (trimmed.find(L"循环判断首") != std::wstring::npos) {
+                tailKeyword1 = L".循环判断尾";
+                tailKeyword2 = L"循环判断尾";
+            } else if (trimmed.find(L"计次循环首") != std::wstring::npos) {
+                tailKeyword1 = L".计次循环尾";
+                tailKeyword2 = L"计次循环尾";
+            } else {
+                tailKeyword1 = L".变量循环尾";
+                tailKeyword2 = L"变量循环尾";
+            }
+            
+            int tailLineIdx = -1;
+            int nestLevel = 1;
+            
+            for (size_t j = i + 1; j < allLines.size(); j++) {
+                std::wstring checkTrimmed = allLines[j];
+                size_t checkFirst = checkTrimmed.find_first_not_of(L" \t");
+                if (checkFirst != std::wstring::npos) {
+                    checkTrimmed = checkTrimmed.substr(checkFirst);
+                }
+                
+                // 检查嵌套的同类循环首
+                if (trimmed.find(L"判断循环首") != std::wstring::npos) {
+                    if (checkTrimmed.find(L".判断循环首") == 0 || checkTrimmed.find(L"判断循环首") == 0) {
+                        nestLevel++;
+                    }
+                } else if (trimmed.find(L"循环判断首") != std::wstring::npos) {
+                    if (checkTrimmed.find(L".循环判断首") == 0 || checkTrimmed.find(L"循环判断首") == 0) {
+                        nestLevel++;
+                    }
+                } else if (trimmed.find(L"计次循环首") != std::wstring::npos) {
+                    if (checkTrimmed.find(L".计次循环首") == 0 || checkTrimmed.find(L"计次循环首") == 0) {
+                        nestLevel++;
+                    }
+                } else if (trimmed.find(L"变量循环首") != std::wstring::npos) {
+                    if (checkTrimmed.find(L".变量循环首") == 0 || checkTrimmed.find(L"变量循环首") == 0) {
+                        nestLevel++;
+                    }
+                }
+                
+                if (checkTrimmed.find(tailKeyword1) == 0 || checkTrimmed.find(tailKeyword2) == 0) {
+                    nestLevel--;
+                    if (nestLevel == 0) {
+                        tailLineIdx = (int)j;
+                        break;
+                    }
+                }
+            }
+            
+            if (tailLineIdx == -1) {
+                tailLineIdx = (int)allLines.size();
+            }
+            
+            // 转换循环体（循环首和循环尾之间的代码）为 \u200C 标记
+            for (int j = (int)i + 1; j < tailLineIdx; j++) {
+                std::wstring& targetLine = allLines[j];
+                if (targetLine.empty()) continue;
+                
+                size_t targetFirst = targetLine.find_first_not_of(L" \t");
+                if (targetFirst != std::wstring::npos) {
+                    std::wstring targetTrimmed = targetLine.substr(targetFirst);
+                    allLines[j] = L"\u200C" + targetTrimmed;
+                } else {
+                    allLines[j] = L"\u200C";
+                }
+            }
+            
+            // 循环尾行保留原样（不需要缩进标记），确保有点号前缀
+            if (tailLineIdx < (int)allLines.size()) {
+                std::wstring& tailLine = allLines[tailLineIdx];
+                size_t tailFirst = tailLine.find_first_not_of(L" \t");
+                if (tailFirst != std::wstring::npos) {
+                    tailLine = tailLine.substr(tailFirst);
+                }
+                // 确保以.开头
+                if (!tailLine.empty() && tailLine[0] != L'.') {
+                    tailLine = L"." + tailLine;
+                }
+            }
+            
+            // 在循环尾后面添加空行作为结束标记
+            if (tailLineIdx < (int)allLines.size()) {
+                // 检查循环尾后面是否已有空行
+                if (tailLineIdx + 1 >= (int)allLines.size() || !allLines[tailLineIdx + 1].empty()) {
+                    allLines.insert(allLines.begin() + tailLineIdx + 1, L"");
+                }
+            }
+        } else if (isIfCommand || isIfTrueCommand) {
             DebugLog(L"Found If/IfTrue at line " + std::to_wstring(i));
             // 找到.否则的位置（如果有）
             int elseLineIdx = -1;
@@ -681,18 +781,23 @@ static std::wstring RestoreHalfWidthOperators(const std::wstring& line) {
         wchar_t ch = line[i];
         if (ch == L'"') { inStr = !inStr; restored += ch; continue; }
         if (inStr) { restored += ch; continue; }
-        wchar_t halfWidth = 0;
+        const wchar_t* replacement = nullptr;
         switch (ch) {
-            case L'\uFF1D': halfWidth = L'='; break;
-            case L'\uFF0B': halfWidth = L'+'; break;
-            case L'\uFF0D': halfWidth = L'-'; break;
-            case L'\u00D7': halfWidth = L'*'; break;
-            case L'\u00F7': halfWidth = L'/'; break;
+            case L'\uFF1D': replacement = L"="; break;
+            case L'\uFF0B': replacement = L"+"; break;
+            case L'\uFF0D': replacement = L"-"; break;
+            case L'\u00D7': replacement = L"*"; break;
+            case L'\u00F7': replacement = L"/"; break;
+            case L'\uFF1E': replacement = L">"; break;
+            case L'\uFF1C': replacement = L"<"; break;
+            case L'\u2265': replacement = L">="; break;
+            case L'\u2264': replacement = L"<="; break;
+            case L'\u2260': replacement = L"!="; break;
             default: break;
         }
-        if (halfWidth) {
+        if (replacement) {
             if (!restored.empty() && restored.back() == L' ') restored.pop_back();
-            restored += halfWidth;
+            restored += replacement;
             if (i + 1 < line.length() && line[i + 1] == L' ') i++;
         } else {
             restored += ch;
@@ -705,6 +810,129 @@ static std::wstring RestoreHalfWidthOperators(const std::wstring& line) {
 std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
     std::wstring result;
     int currentTable = 0; // 0:None, 1:Assembly, 2:Sub, 3:Param, 4:LocalVar, 5:ClassVar
+    
+    // 辅助函数：剥离一层嵌套标记，返回剥离后的内容
+    // 嵌套标记格式：\u200C = 深度1，\u200C\u200B\u200C = 深度2，...
+    // 剥离后：深度1的行变为普通行，深度2的行变为深度1的行
+    auto stripOneLevel = [](const std::wstring& ln) -> std::wstring {
+        if (ln.empty()) return ln;
+        // 第一个字符必须是分支标记（\u200C 或 \u200D）
+        if (ln[0] != L'\u200C' && ln[0] != L'\u200D') return ln;
+        // 剥离第一个分支标记
+        size_t pos = 1;
+        // 如果后面是 \u200B（深度分隔符），也一并剥离
+        if (pos < ln.length() && ln[pos] == L'\u200B') pos++;
+        return ln.substr(pos);
+    };
+    
+    // 辅助函数：检查行是否属于当前层级的缩进行（首字符是 \u200C、\u200D 或 \u200B）
+    auto isIndentedLine = [](const std::wstring& ln) -> bool {
+        return !ln.empty() && (ln[0] == L'\u200C' || ln[0] == L'\u200D' || ln[0] == L'\u200B');
+    };
+    
+    // 辅助函数：剥离行首所有标记字符，获取纯内容
+    auto stripAllMarkers = [](const std::wstring& ln) -> std::wstring {
+        size_t pos = 0;
+        while (pos < ln.length() && (ln[pos] == L'\u200C' || ln[pos] == L'\u200D' || ln[pos] == L'\u200B')) {
+            pos++;
+        }
+        return ln.substr(pos);
+    };
+    
+    // 辅助函数：检查行（可能含标记前缀）是否是.如果真命令
+    auto isIfTrueCmd = [&stripAllMarkers](const std::wstring& content) -> bool {
+        return stripAllMarkers(content).find(L".如果真") == 0;
+    };
+    
+    // 辅助函数：检查行（可能含标记前缀）是否是.如果()命令
+    auto isIfCmd = [&stripAllMarkers](const std::wstring& content) -> bool {
+        std::wstring clean = stripAllMarkers(content);
+        return clean.find(L".如果 (") == 0 || clean.find(L".如果(") == 0;
+    };
+    
+    // 递归函数：将一组缩进行转换为EPL格式
+    // indentedLines: 当前层级的行（已剥离外层标记）
+    // indent: 当前缩进字符串（每层4个空格）
+    std::function<void(const std::vector<std::wstring>&, const std::wstring&)> convertBlock;
+    convertBlock = [&](const std::vector<std::wstring>& blockLines, const std::wstring& indent) {
+        for (size_t bi = 0; bi < blockLines.size(); bi++) {
+            const std::wstring& bline = blockLines[bi];
+            
+            // 检查是否是.如果真命令
+            if (isIfTrueCmd(bline)) {
+                result += indent + RestoreHalfWidthOperators(stripAllMarkers(bline)) + L"\n";
+                
+                // 收集子行（\u200C 开头的行）
+                std::vector<std::wstring> subLines;
+                bi++;
+                while (bi < blockLines.size() && isIndentedLine(blockLines[bi])) {
+                    subLines.push_back(stripOneLevel(blockLines[bi]));
+                    bi++;
+                }
+                bi--; // 回退一行，for循环会++
+                
+                // 递归处理子行
+                convertBlock(subLines, indent + L"    ");
+                
+                // 插入.如果真结束
+                result += indent + L".如果真结束\n";
+            }
+            // 检查是否是.如果()命令
+            else if (isIfCmd(bline)) {
+                result += indent + RestoreHalfWidthOperators(stripAllMarkers(bline)) + L"\n";
+                
+                // 收集条件达成分支行（\u200C 开头）
+                std::vector<std::wstring> trueLines;
+                bi++;
+                while (bi < blockLines.size()) {
+                    const std::wstring& nextLine = blockLines[bi];
+                    if (!nextLine.empty() && nextLine[0] == L'\u200C') {
+                        trueLines.push_back(stripOneLevel(nextLine));
+                        bi++;
+                    } else {
+                        break;
+                    }
+                }
+                
+                // 递归处理条件达成分支
+                convertBlock(trueLines, indent + L"    ");
+                
+                // 插入.否则
+                result += indent + L".否则\n";
+                
+                // 收集否则分支行（\u200D 开头）
+                std::vector<std::wstring> falseLines;
+                while (bi < blockLines.size()) {
+                    const std::wstring& nextLine = blockLines[bi];
+                    if (!nextLine.empty() && nextLine[0] == L'\u200D') {
+                        falseLines.push_back(stripOneLevel(nextLine));
+                        bi++;
+                    } else {
+                        break;
+                    }
+                }
+                bi--; // 回退一行
+                
+                // 递归处理否则分支
+                convertBlock(falseLines, indent + L"    ");
+                
+                // 插入.如果结束
+                result += indent + L".如果结束\n";
+            }
+            // 普通行
+            else if (!bline.empty()) {
+                // 清除残留标记字符并还原运算符
+                std::wstring cleanLine = bline;
+                while (!cleanLine.empty() && (cleanLine[0] == L'\u200C' || cleanLine[0] == L'\u200D' || cleanLine[0] == L'\u200B')) {
+                    cleanLine = cleanLine.substr(1);
+                }
+                result += indent + RestoreHalfWidthOperators(cleanLine) + L"\n";
+            } else {
+                // 空行
+                result += indent + L"\n";
+            }
+        }
+    };
     
     for (size_t i = 0; i < lines.size(); i++) {
         const auto& line = lines[i];
@@ -790,114 +1018,39 @@ std::wstring ConvertInternalToEPL(const std::vector<std::wstring>& lines) {
                 }
             }
         } else {
-            // 普通代码行
+            // 普通代码行 - 使用递归函数处理流程控制
             std::wstring trimmedLine = line;
             size_t trimStart = trimmedLine.find_first_not_of(L" \t");
             if (trimStart != std::wstring::npos) {
                 trimmedLine = trimmedLine.substr(trimStart);
             }
             
-            // 检查是否是特殊标记行，需要转换
-            // 检查是否是.如果真或.如果()命令行
-            bool isIfTrueLine = (trimmedLine.find(L".如果真") == 0);
-            bool isIfLine = (trimmedLine.find(L".如果 (") == 0 || trimmedLine.find(L".如果(") == 0);
-            
-            if (isIfTrueLine && i + 1 < lines.size()) {
-                // 输出.如果真命令行
-                result += line + L"\n";
+            // 检查是否是.如果真或.如果()命令行（顶层）
+            if ((isIfTrueCmd(trimmedLine) || isIfCmd(trimmedLine)) && i + 1 < lines.size()) {
+                // 将命令行和其子行收集到一个block中，使用递归函数处理
+                std::vector<std::wstring> block;
+                block.push_back(line);
                 
-                // 向后查找，找到流程控制结束位置（缩进行之后的普通空行）
                 size_t j = i + 1;
-                
-                // 输出所有缩进行（使用\u200C标记）
-                while (j < lines.size()) {
-                    const std::wstring& nextLine = lines[j];
-                    // 检查是否是流程控制内的行（使用\u200C特殊字符标记，或者普通空格开头）
-                    bool isIndentedLine = (nextLine.length() > 0 && nextLine[0] == L'\u200C');
-                    bool isOldIndentedLine = (nextLine.length() > 0 && nextLine[0] == L' ' && (nextLine.length() == 1 || nextLine[1] != L' '));
-                    
-                    if (isIndentedLine) {
-                        // \u200C标记的缩进行，转换为4个空格缩进后输出
-                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
-                        j++;
-                    } else if (isOldIndentedLine) {
-                        // 旧格式的单空格缩进行
-                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
-                        j++;
-                    } else {
-                        // 非缩进行，流程控制结束
-                        break;
-                    }
+                while (j < lines.size() && isIndentedLine(lines[j])) {
+                    block.push_back(lines[j]);
+                    j++;
                 }
                 
-                // 插入.如果真结束
-                result += L".如果真结束\n";
+                // 递归转换
+                convertBlock(block, L"");
                 
                 // 跳过已处理的行
-                i = j - 1;  // -1因为for循环会i++
-            } else if (isIfLine && i + 1 < lines.size()) {
-                // .如果()命令
-                result += line + L"\n";
-                
-                // 向后查找条件达成分支和否则分支
-                size_t j = i + 1;
-                
-                // 输出所有条件达成分支行（使用\u200C标记）
-                while (j < lines.size()) {
-                    const std::wstring& nextLine = lines[j];
-                    // 检查是否是条件达成分支（\u200C标记或单空格）
-                    bool isIndentedLine = (nextLine.length() > 0 && nextLine[0] == L'\u200C');
-                    bool isOldIndentedLine = (nextLine.length() > 0 && nextLine[0] == L' ' && (nextLine.length() == 1 || nextLine[1] != L' '));
-                    
-                    if (isIndentedLine) {
-                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
-                        j++;
-                    } else if (isOldIndentedLine) {
-                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
-                        j++;
-                    } else {
-                        break;
-                    }
-                }
-                
-                // 插入.否则
-                result += L".否则\n";
-                
-                // 输出所有否则分支行（使用\u200D标记）
-                while (j < lines.size()) {
-                    const std::wstring& nextLine = lines[j];
-                    // 检查是否是否则分支（\u200D标记或双空格）
-                    bool isElseLine = (nextLine.length() > 0 && nextLine[0] == L'\u200D');
-                    bool isOldElseLine = (nextLine.length() >= 2 && nextLine[0] == L' ' && nextLine[1] == L' ');
-                    
-                    if (isElseLine) {
-                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(1)) + L"\n";
-                        j++;
-                    } else if (isOldElseLine) {
-                        result += L"    " + RestoreHalfWidthOperators(nextLine.substr(2)) + L"\n";
-                        j++;
-                    } else {
-                        break;
-                    }
-                }
-                
-                // 插入.如果结束
-                result += L".如果结束\n";
-                
-                // 跳过已处理的行
-                i = j - 1;  // -1因为for循环会i++
-            } else if (!line.empty() && (line[0] == L'\u200C' || line[0] == L'\u200D' || line[0] == L'\u2060')) {
+                i = j - 1;
+            } else if (!line.empty() && (line[0] == L'\u200C' || line[0] == L'\u200D' || line[0] == L'\u200B' || line[0] == L'\u2060')) {
                 // 跳过孤立的特殊标记行（参数展开行或流程控制内的行）
-                // 这些行不应该直接出现在保存的文件中
                 continue;
             } else {
                 // 普通行，直接输出（去除可能的特殊字符）
                 std::wstring cleanLine = line;
-                // 移除开头的特殊字符
-                while (!cleanLine.empty() && (cleanLine[0] == L'\u200C' || cleanLine[0] == L'\u200D' || cleanLine[0] == L'\u2060')) {
+                while (!cleanLine.empty() && (cleanLine[0] == L'\u200C' || cleanLine[0] == L'\u200D' || cleanLine[0] == L'\u200B' || cleanLine[0] == L'\u2060')) {
                     cleanLine = cleanLine.substr(1);
                 }
-                // 将全角运算符还原为半角（编辑器显示用全角，源码需要半角）
                 result += RestoreHalfWidthOperators(cleanLine) + L"\n";
             }
         }

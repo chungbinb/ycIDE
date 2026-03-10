@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>Entities</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,1.5v7H12v-2L11.5,6h-6V1.5Z" />
+      <path class="light-defaultgrey" d="M14.5,1h-9L5,1.5V6H6V5H8V6H9V5h2V6h.5l.5.5V7h2V8H12V9h2.5l.5-.5v-7ZM8,4H6V3H8Zm3,0H9V3h2Zm3,2H12V5h2Zm0-2H12V3h2Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M10.5,14.5h-9v-7h9Z" />
+    <path class="light-defaultgrey" d="M10.5,7h-9L1,7.5v7l.5.5h9l.5-.5v-7ZM10,10H8V9h2Zm0,2H8V11h2ZM2,11H4v1H2ZM2,9H4v1H2ZM7,9v1H5V9ZM5,11H7v1H5ZM2,13H4v1H2Zm3,0H7v1H5Zm5,1H8V13h2Z" />
+  </g>
+</svg>

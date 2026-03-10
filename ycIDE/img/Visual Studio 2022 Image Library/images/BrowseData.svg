@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBrowseData</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.045v7L9.367,13.378,9,13.545l-.339.013-2-1.96A3.925,3.925,0,0,0,7,10,3.991,3.991,0,0,0,3.5,6.051V4.045l5.5-3Z" />
+    <path class="light-defaultgrey" d="M14.739,3.606l-5.5-3H8.761l-5.5,3L3,4.045V6a3.939,3.939,0,0,1,1,.142V4.821L8.495,6.865v6.25s-.108.079-.161.123L9.112,14h.1l5.5-2.5L15,11.045v-7ZM9,6,4.619,4,9,1.614,13.381,4Zm5,4.727L9.5,12.769v-.986l0,0V6.869L9.207,7,14,4.821Z" />
+    <path class="light-blue-10" d="M.5,10.143a2.5,2.5,0,1,1,2.5,2.5A2.5,2.5,0,0,1,.5,10.143Z" />
+    <path class="light-blue" d="M8.85,15.286,5.408,11.914A2.964,2.964,0,0,0,6,10.143a3.007,3.007,0,1,0-1.3,2.472L8.15,16ZM1,10.143a2,2,0,1,1,2,2A2,2,0,0,1,1,10.143Z" />
+  </g>
+</svg>

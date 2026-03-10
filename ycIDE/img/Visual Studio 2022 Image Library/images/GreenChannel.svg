@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>GreenChannel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15,8A7,7,0,1,1,8,1,7.009,7.009,0,0,1,15,8Z" />
+    <path class="white" d="M10.769,8v3.341A5.531,5.531,0,0,1,8.075,12,3.748,3.748,0,0,1,5.3,10.931,3.833,3.833,0,0,1,4.231,8.1a3.975,3.975,0,0,1,1.163-2.95A4.023,4.023,0,0,1,8.35,4a5.5,5.5,0,0,1,2.17.378V5.7A3.734,3.734,0,0,0,8.4,5.107a2.7,2.7,0,0,0-2.027.815,2.9,2.9,0,0,0-.791,2.11,3.047,3.047,0,0,0,.68,2.1,2.348,2.348,0,0,0,1.846.763,2.921,2.921,0,0,0,1.382-.307V9.08H7.859V8Z" />
+  </g>
+</svg>

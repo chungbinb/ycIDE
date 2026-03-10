@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}</style>
+  </defs>
+  <title>ListBoxSearch</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5.5v14H6.38l.51-.5,2.45-2.4A3.977,3.977,0,0,1,11,6.54V.5Z" />
+    <path class="light-defaultgrey" d="M8,9v1H3V9ZM3,3V4H8V3Zm0,9H8V11H3ZM3,6H8V5H3ZM3,8H8V7H3Z" />
+    <path class="light-defaultgrey-25" d="M11,4V6.54a3.983,3.983,0,0,1,5,.82V4Z" />
+    <path class="light-blue" d="M15.5,0H11V5h4.5l.5-.5V.5Z" />
+    <path class="white" d="M13.5,1,15,3H12Z" />
+    <path class="light-defaultgrey" d="M.5,0,0,.5v14l.5.5H5.87l1.02-1H1V1H11V0Z" />
+    <path class="light-blue-10" d="M13,12.5A2.5,2.5,0,1,1,15.5,10,2.5,2.5,0,0,1,13,12.5Z" />
+    <path class="light-blue" d="M7.85,15.857l3.455-3.385a3.078,3.078,0,1,0-.713-.7L7.15,15.143ZM13,12a2,2,0,1,1,2-2A2,2,0,0,1,13,12Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMapToFolder</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M6.5,3.5v4H.5v-5H2.75l1,1Z" />
+    <path class="light-yellow" d="M6.5,3H3.957L3.1,2.146,2.75,2H.5L0,2.5v5L.5,8h6L7,7.5v-4ZM6,7H1V3H2.543l.853.854L3.75,4H6Z" />
+    <g class="cls-1">
+      <path class="light-yellow" d="M15.5,3.5v4h-6v-5h2.25l1,1Z" />
+    </g>
+    <path class="light-yellow" d="M15.5,3H12.957L12.1,2.146,11.75,2H9.5L9,2.5v5l.5.5h6l.5-.5v-4ZM15,7H10V3h1.543l.853.854L12.75,4H15Z" />
+    <path class="light-blue" d="M14.854,11.146l-.708.708L13,10.707V14.5l-.5.5h-9L3,14.5V10.707L1.854,11.854l-.708-.708,2-2h.708l2,2-.708.708L4,10.707V14h8V10.707l-1.146,1.147-.708-.708,2-2h.708Z" />
+  </g>
+</svg>

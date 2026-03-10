@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDatabaseMarkup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8.656,12.879v-.707L6.535,10.051l-.707.707L7.6,12.525,5.828,14.293,6.535,15ZM1,12.172v.707L3.121,15l.707-.707L2.061,12.525l1.767-1.767-.707-.707Z" />
+    <path class="light-lightblue-10" d="M12.5,3.5V13c0,.774-1.774,1.406-4.035,1.484l1.191-1.191V11.758L6.535,8.637,4.828,10.344,3.5,9.016V3.5C3.5,2.574,5.836,2,8,2S12.5,2.574,12.5,3.5Z" />
+    <path class="light-lightblue" d="M8,1.5c-2.408,0-5,.626-5,2V8.758l.121-.121L4,9.516V4.762A9.5,9.5,0,0,0,8,5.5a9.5,9.5,0,0,0,4-.738V13c0,.2-.949.811-3.015.964L7.95,15H8c2.408,0,5-.626,5-2V3.5C13,2.126,10.408,1.5,8,1.5Zm0,3c-2.625,0-4-.743-4-1s1.375-1,4-1,4,.743,4,1S10.625,4.5,8,4.5Z" />
+  </g>
+</svg>

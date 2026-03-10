@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}.cls-2{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightColorScale</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M13.5,13.5h-5v-6h5Z" />
+    <path class="white" d="M13.5,7.5h-5v-6h5Z" />
+    <path class="light-defaultgrey" d="M13.5,1h-5L8,1.5v12l.5.5h5l.5-.5V1.5ZM13,13H9V8h4Zm0-6H9V2h4Z" />
+    <path class="light-defaultgrey" d="M6.5,13.5h-5V10h5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6.5,10h-5V7h5Z" />
+    </g>
+    <path class="white" d="M6.5,4h-5V1.5h5Z" />
+    <g class="cls-2">
+      <path class="light-defaultgrey" d="M6.5,7h-5V4h5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M6.5,14h-5L1,13.5V1.5L1.5,1h5l.5.5v12ZM2,13H6V2H2Z" />
+  </g>
+</svg>

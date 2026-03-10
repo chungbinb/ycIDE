@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFrameSelect</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,5.953V9.995L8,12.015,4.5,9.995V5.953L8,3.932Z" />
+    <path class="light-defaultgrey" d="M11.75,5.521,8.25,3.5h-.5L4.25,5.521,4,5.953V9.994l.25.433,3.5,2.021h.5l3.5-2.021L12,9.994V5.953ZM7.5,11.15,5,9.705V6.86L7.5,8.3ZM8,7.438,5.465,5.974,8,4.51l2.535,1.464Zm3,2.267L8.5,11.15V8.3L11,6.86Z" />
+    <path class="light-defaultgrey" d="M2,6H1V1.5L1.5,1H6V2H2ZM15,1.5,14.5,1H10V2h4V6h1Zm0,13V10H14v4H10v1h4.5ZM6,14H2V10H1v4.5l.5.5H6Z" />
+  </g>
+</svg>

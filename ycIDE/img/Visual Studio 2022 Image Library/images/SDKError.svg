@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSDKError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M6.411,1.85A2.331,2.331,0,0,1,5.278,5.405V8H3.716V5.405a2.332,2.332,0,0,1,0-4.4l0,2.2H5.281l0-2.2A2.338,2.338,0,0,1,6.411,1.85ZM8.534,3.957a.493.493,0,0,0,.493-.493.493.493,0,0,1,.493-.493h.985V4.759l-.492.493V7.417A4.948,4.948,0,0,1,11.984,7V5.252l-.493-.493V2.971h.493l.493-.492.493.492h.986V1H12.97l-.493.493L11.984,1H10.505A2.464,2.464,0,0,0,8.041,3.464.493.493,0,0,0,8.534,3.957Z" />
+    <path class="light-defaultgrey-10" d="M7.7,14.5H1.5v-5H7.7a4.838,4.838,0,0,0,0,5ZM12,7a4.957,4.957,0,0,1,2,.423V6H2V9.038h6A4.983,4.983,0,0,1,12,7Z" />
+    <path class="light-defaultgrey" d="M15,6.5V8.026a4.967,4.967,0,0,0-1-.6V7H13V6h1.5ZM8.026,9H5v1H7.424A4.967,4.967,0,0,1,8.026,9Zm-.6,5H2V10H5V9H2V7h.716V6H1.5L1,6.5v3H1v5l.5.5H8.026A4.967,4.967,0,0,1,7.424,14ZM5,12V10H4v2ZM6.277,7H9V6H6.277Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

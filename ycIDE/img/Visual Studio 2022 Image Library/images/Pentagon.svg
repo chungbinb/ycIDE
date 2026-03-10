@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>Pentagon</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.859,12.017,14.5H3.983L1.5,6.859,8,2.136Z" />
+    <path class="light-defaultgrey" d="M12.381,15H3.619L.912,6.668,8,1.518l7.088,5.15ZM4.346,14h7.308l2.258-6.95L8,2.754,2.088,7.05Z" />
+  </g>
+</svg>

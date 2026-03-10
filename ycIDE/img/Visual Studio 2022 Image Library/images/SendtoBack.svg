@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSendtoBack</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M9.09,8,8,6.91V5.5H5.5V8H6.91L8,9.09V10.5h2.5V8Z" />
+    <path class="light-blue" d="M10,8v2H8v1h2.5l.5-.5V8ZM8,5H5.5L5,5.5V8H6V6H8Z" />
+    <path class="light-defaultgrey" d="M6.5,9l.5.5v5l-.5.5h-5L1,14.5v-5L1.5,9Zm8-8h-5L9,1.5v5l.5.5h5l.5-.5v-5Z" />
+  </g>
+</svg>

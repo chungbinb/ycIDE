@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCloudWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M8.541,10.5H4.549a3.125,3.125,0,1,1,0-6.25,2.924,2.924,0,0,1,.8.109A3.493,3.493,0,0,1,11.925,6h.36A2.243,2.243,0,0,1,14,9.664L12.53,7H10.47Z" />
+    <path class="light-lightblue" d="M8.266,11H4.548a3.626,3.626,0,0,1,0-7.25,3.48,3.48,0,0,1,.567.047A3.963,3.963,0,0,1,12.37,5.5a2.757,2.757,0,0,1,1.882,4.628l-.521-.946a1.7,1.7,0,0,0,.274-.929A1.735,1.735,0,0,0,12.287,6.5h-.859V6.064A3.037,3.037,0,0,0,8.417,3,3,3,0,0,0,5.609,4.989a2.51,2.51,0,0,0-1.061-.238,2.625,2.625,0,0,0,0,5.25H8.817Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

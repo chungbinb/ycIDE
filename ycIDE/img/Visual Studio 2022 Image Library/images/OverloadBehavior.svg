@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightOverloadBehavior</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,5.432l4,2.333V12.5l-4,2-4-2V7.765Z" />
+    <path class="light-defaultgrey-10" d="M15.5,3.765V8.5l-4,2-.5-.25V7.5l-.514-.9L7.5,4.862v-1.1l4-2.333Z" />
+    <path class="light-defaultgrey" d="M9.752,7.333,5.752,5h-.5l-4,2.333L1,7.765V12.5l.276.448,4,2h.448l4-2L10,12.5V7.765ZM5.5,6.011,8.719,7.888,5.5,9.5,2.281,7.888ZM2,8.865l3,1.5v3.329l-3-1.5Zm7,3.329-3,1.5V10.365l3-1.5Z" />
+    <path class="light-defaultgrey" d="M15.752,3.333,11.752,1h-.5l-4,2.333L7,3.765V4.57l1,.583V4.865l3,1.5v4.447l.276.139h.448l4-2L16,8.5V3.765ZM11.5,5.5,8.281,3.888,11.5,2.011l3.219,1.877Zm3.5,2.7-3,1.5V6.365l3-1.5Z" />
+  </g>
+</svg>

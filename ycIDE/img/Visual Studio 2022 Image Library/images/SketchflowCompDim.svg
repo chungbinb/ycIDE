@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSketchflowCompDim</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,5.5a3,3,0,1,1-3-3A3,3,0,0,1,13.5,5.5Z" />
+    <path class="light-defaultgrey" d="M3,7H0V4H3Zm6,6v3h3V13ZM3,15H4V14H3Zm2,0H6V14H5Zm2,0H8V14H7ZM1,9H2V8H1Zm0,2H2V10H1Zm0,2H2V12H1Z" />
+    <path class="light-defaultgrey" d="M16,6V5.032H13.969A3.494,3.494,0,0,0,13.3,3.405l1.441-1.441-.685-.684L12.62,2.717A3.483,3.483,0,0,0,11,2.036V0h-.968V2.031A3.484,3.484,0,0,0,8.4,2.7L6.964,1.257l-.684.685L7.717,3.38A3.483,3.483,0,0,0,7.036,5H5v.968H7.031A3.484,3.484,0,0,0,7.7,7.6L6.257,9.036l.685.684L8.38,8.283A3.483,3.483,0,0,0,10,8.964V11h.968V8.969A3.494,3.494,0,0,0,12.6,8.3l1.441,1.441.684-.685L13.283,7.62A3.483,3.483,0,0,0,13.964,6ZM10.5,8A2.5,2.5,0,1,1,13,5.5,2.5,2.5,0,0,1,10.5,8Z" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPrint</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M11.5,1.5V6h-7V1.5Z" />
+      <path class="light-defaultgrey-10" d="M11.5,10.5v4h-7v-4Z" />
+      <path class="light-defaultgrey" d="M12,1.5V6H11V2H5V6H4V1.5L4.5,1h7Z" />
+      <path class="light-defaultgrey" d="M11.5,10h-7l-.5.5v4l.5.5h7l.5-.5v-4ZM11,14H5V11h6Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,7.5v5H12v-2l-.5-.5h-7l-.5.5v2H1.5v-5a1,1,0,0,1,1-1h11A1,1,0,0,1,14.5,7.5Z" />
+    <path class="light-defaultgrey" d="M15,7.5v5l-.5.5H12V12h2V7.5a.5.5,0,0,0-.5-.5H2.5a.5.5,0,0,0-.5.5V12H4v1H1.5L1,12.5v-5A1.5,1.5,0,0,1,2.5,6h11A1.5,1.5,0,0,1,15,7.5Z" />
+    <path class="light-teal" d="M4,8V9H3V8Z" />
+  </g>
+</svg>

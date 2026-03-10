@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightViewRemove</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.62,2.5l-.5.5L7.27,5.15,5.15,7.27,3,5.12l-.5.5V14.5h12V2.5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H6.12l-1,1h8.17L10.65,5.65l.7.7L14,3.71v9.58l-2.65-2.64-.7.7L13.29,14H3.71l2.64-2.65-.7-.7L3,13.29V5.12l-1,1V14.5l.5.5h12l.5-.5V2.5Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+  </g>
+</svg>

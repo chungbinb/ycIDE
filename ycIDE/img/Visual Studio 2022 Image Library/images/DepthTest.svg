@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDepthTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M14,9v4.5l-.5.5H9V13h3.293L1.868,2.575l.707-.707L13,12.293V9Z" />
+    <path class="light-defaultgrey" d="M5.5,14H1v-.75L3.871,9.5H1.25v-1H5.5v.75L2.7,13H5.5Z" />
+  </g>
+</svg>

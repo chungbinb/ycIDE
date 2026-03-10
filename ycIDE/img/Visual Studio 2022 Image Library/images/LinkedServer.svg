@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-purple{fill: #6936aa; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>LinkedServer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,3.5v10H8.958a3,3,0,0,0-2.1-2.359,2.98,2.98,0,0,0-.359-.763V3.5a1,1,0,0,1,1-1h4A1,1,0,0,1,12.5,3.5Z" />
+    <path class="light-defaultgrey" d="M13,3.5v10l-.5.5H9a2.957,2.957,0,0,0-.176-1H12V3.5a.5.5,0,0,0-.5-.5h-4a.5.5,0,0,0-.5.5v7.7c-.047-.017-.092-.04-.141-.054A3.013,3.013,0,0,0,6,9.789V3.5A1.5,1.5,0,0,1,7.5,2h4A1.5,1.5,0,0,1,13,3.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,11h3v1H8.211A2.826,2.826,0,0,0,8,11.787ZM8,5V6h3V5Zm0,5h3V9H8Z" />
+    </g>
+    <path class="light-lightblue" d="M2,14a2,2,0,0,1,2-2H6a2,2,0,0,1,0,4H4A2,2,0,0,1,2,14Zm2-1a1,1,0,0,0,0,2H6a1,1,0,0,0,0-2Z" />
+    <path class="light-purple" d="M6,12a2,2,0,0,1-2,2H3a1,1,0,0,1,1-1,1,1,0,0,0,0-2H2a1,1,0,0,0,0,2h.269A1.984,1.984,0,0,0,2,14a2,2,0,0,1,0-4H4A2,2,0,0,1,6,12Z" />
+  </g>
+</svg>

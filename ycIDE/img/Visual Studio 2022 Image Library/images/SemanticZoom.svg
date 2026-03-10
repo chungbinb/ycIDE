@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSemanticZoom</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,8.309v6.929l-4-2.31V6Z" />
+    <path class="light-defaultgrey-10" d="M14.5,9.464l-6,3.464V8.309l6-3.464Z" />
+    <path class="light-defaultgrey-10" d="M5.5.477l6,3.464L7.5,6.25l-6-3.464Z" />
+    <path class="light-defaultgrey" d="M6.25,15.67l-4-2.309L2,12.929V6l.75-.433,4,2.31L7,8.309v6.928ZM3,12.64l3,1.731V8.6L3,6.866Z" />
+    <path class="light-defaultgrey" d="M8.75,13.36,8,12.928V8.31l.25-.433.726-.419L14.25,4.413l.75.433V9.464l-.25.432ZM9,8.6v3.463l5-2.887V5.712Z" />
+    <path class="light-defaultgrey" d="M11.749,3.508v.866L9,5.961l-1.25.722h-.5l-6-3.464V2.353l4-2.309h.5ZM7.5,5.672l3-1.731-5-2.887-3,1.732Z" />
+  </g>
+</svg>

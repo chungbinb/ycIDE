@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSortLines</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15,3V4H7V3ZM7,7h6V6H7Zm0,3h3V9H7Z" />
+    <path class="light-blue" d="M5.854,10.854l-2,2H3.146l-2-2,.708-.708L3,11.293V3H4v8.293l1.146-1.147Z" />
+  </g>
+</svg>

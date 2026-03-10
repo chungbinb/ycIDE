@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRunPaused</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-green" d="M14.5,8l-7,4.375V3.625Z" />
+    </g>
+    <path class="light-green" d="M4,3V13H3V3Z" />
+    <path class="light-green" d="M7.765,3.2,7,3.625v8.75l.765.424,7-4.375V7.576ZM8,11.473V4.527L13.557,8Z" />
+  </g>
+</svg>

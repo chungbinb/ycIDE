@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightOverlayNo</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M16,11a5,5,0,1,1-5-5A5.006,5.006,0,0,1,16,11Z" />
+    <path class="light-red-10" d="M11,7.5A3.5,3.5,0,1,1,7.5,11,3.5,3.5,0,0,1,11,7.5Z" />
+    <path class="light-red" d="M11,7a4,4,0,1,0,4,4A4,4,0,0,0,11,7Zm3,4a2.97,2.97,0,0,1-.56,1.733L9.267,8.56A2.97,2.97,0,0,1,11,8,3,3,0,0,1,14,11ZM8,11a2.97,2.97,0,0,1,.56-1.733l4.173,4.173A2.97,2.97,0,0,1,11,14,3,3,0,0,1,8,11Z" />
+  </g>
+</svg>

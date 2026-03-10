@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDisconnectVirtualMachine</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,2.5v7H1.5v-7Z" />
+    <path class="light-defaultgrey" d="M13.5,2H1.5L1,2.5v7l.5.5H7v1H8V10h5.5l.5-.5v-7ZM13,9H2V3H13Z" />
+    <path class="light-defaultgrey" d="M10,13v1h4V13ZM1,14H5V13H1Z" />
+    <path class="light-red" d="M8.207,13l1.272,1.271-.708.708L7.5,13.707,6.229,14.979l-.708-.708L6.793,13,5.521,11.729l.708-.708L7.5,12.293l1.271-1.272.708.708Z" />
+  </g>
+</svg>

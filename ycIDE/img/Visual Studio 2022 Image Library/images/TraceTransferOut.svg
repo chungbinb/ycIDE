@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTraceTransferOut</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M14,9.707l-2.5-2.5L7.854,10.854H7.146L5.5,9.207,3,11.707V10.293L5.146,8.146h.708L7.5,9.793l3.646-3.647h.708L14,8.293Z" />
+    <path class="light-defaultgrey-10" d="M14.5,3.5v10H2.5V7.622l.146.146L4.768,5.646,4.125,5H8V3.5Z" />
+    <path class="light-blue" d="M3.353,1.354,1.707,3H7V4H1.707L3.353,5.647l-.707.707-2.5-2.5V3.147l2.5-2.5Z" />
+    <path class="light-defaultgrey" d="M15,3.5v10l-.5.5H2.5L2,13.5V7.122l.646.646L3,7.414V13H14V4H8V3h6.5Z" />
+  </g>
+</svg>

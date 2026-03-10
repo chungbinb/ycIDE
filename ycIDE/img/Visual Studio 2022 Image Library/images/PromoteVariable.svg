@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>PromoteVariable</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M10.5,2.06,8,3.47V4.96H5.34L2.5,6.56v4.5l4,3.5,8-4.5V5.56Z" />
+      <path class="light-blue" d="M14.83,5.19l-4-3.5-.58-.06L8,2.9V4.04l2.44-1.37,3.2,2.81.36.31V9.77L7,13.71V10.06H6v3.4L3,10.84V6.86l.36-.21h.01l3-1.69H5V4.58L2.25,6.13,2,6.56v4.5l.17.38,4,3.5.58.06,8-4.5.25-.44V5.56Z" />
+    </g>
+    <path class="light-blue-10" d="M10.5,2.06,8,3.47V4.96H5.34L2.5,6.56,3,7l3.5,3.06L14,5.84l.5-.28Z" />
+    <path class="light-blue" d="M10.83,1.69l-.58-.06L8,2.9V4.04l2.44-1.37,3.2,2.81L6.56,9.46,3.37,6.65l3-1.69H5V4.58L2.25,6.13l-.08.81.33.29.5.44,3,2.62.17.15.58.06L7,10.36l7-3.94.5-.28L14.75,6l.08-.81Z" />
+    <path class="light-blue" d="M7,.5V3.96H6V1.934A6.5,6.5,0,0,1,.5,5H0V3.984H.5V4A5.5,5.5,0,0,0,5.392,1H3V0H6.5Z" />
+  </g>
+</svg>

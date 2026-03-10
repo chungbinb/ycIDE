@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightInsertMark</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v4h-4v-4Z" />
+    <path class="light-defaultgrey" d="M15,15H2V14H15Z" />
+    <path class="light-defaultgrey" d="M15,12H2V11H15Z" />
+    <path class="light-defaultgrey" d="M15,2H6V1h9Z" />
+    <path class="light-blue" d="M2.5,2H4V3H2.5a1.5,1.5,0,0,0,0,3H6.258L4.644,4.385l.707-.707,2.5,2.5v.707l-2.5,2.5-.707-.707L6.322,7H2.5a2.5,2.5,0,0,1,0-5Z" />
+    <path class="light-defaultgrey" d="M14.5,4h-4l-.5.5v4l.5.5h4l.5-.5v-4ZM14,8H11V5h3Z" />
+  </g>
+</svg>

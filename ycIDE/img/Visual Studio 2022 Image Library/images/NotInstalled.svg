@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNotInstalled</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,4.5h13v4H.5Z" />
+    <path class="light-defaultgrey" d="M10.854,8.732,12,9.879V9h1.5l.5-.5v-4L13.5,4H.5L0,4.5v4L.5,9H2v1H3V9h7.586ZM1,8V5H13V8Z" />
+    <path class="light-red" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+    <path class="light-green" d="M3,7H2V6H3Z" />
+  </g>
+</svg>

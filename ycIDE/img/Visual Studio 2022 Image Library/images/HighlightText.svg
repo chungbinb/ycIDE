@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHighlightText</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,13.222V9.5H4.707L4.5,9.293V8a2.5,2.5,0,0,0-2-2.45V2h10V5.55A2.5,2.5,0,0,0,10.5,8V9.293l-.207.207H9.5v1.858l-.127.205L5.75,13.375Z" />
+    <path class="light-defaultgrey" d="M12,2V5H3V2H2V6A2,2,0,0,1,4,8V9.5l.5.5H5v3.5l.724.447,4-2L10,11.5V10h.5l.5-.5V8a2,2,0,0,1,2-2V2ZM9,11.191l-3,1.5V10H9ZM10,8V9H5V8a2.981,2.981,0,0,0-.78-2h6.56A2.981,2.981,0,0,0,10,8Z" />
+  </g>
+</svg>

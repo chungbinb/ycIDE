@@ -207,6 +207,13 @@ int g_HoverToolBarButton = -1;  // 悬停的工具栏按钮索引
 #define TB_DEBUG        110
 #define TB_STOP         111
 #define TB_BUILD        112
+#define TB_PLATFORM     113
+
+// 编译平台架构
+enum class PlatformArch { X86, X64 };
+PlatformArch g_CurrentPlatform = PlatformArch::X64;  // 默认x64
+RECT g_PlatformDropdownRect = {0};  // 平台下拉框区域
+bool g_PlatformDropdownHover = false;
 
 // 菜单项
 struct MenuItem {
@@ -524,14 +531,39 @@ void UpdateMenuItems() {
     
     g_MenuItems.push_back(themeMenu);
     g_MenuItems.push_back(viewMenu);
+    // 编译菜单
+    MenuItem compileMenu = {L"编译", {0}, IDM_COMPILE, false, true, {}};
+    compileMenu.subItems = {
+        {L"编译                Shift+F7", {0}, ID_BUILD_COMPILE, false, true, {}},
+        {L"静态编译                  F7", {0}, ID_BUILD_STATIC, false, true, {}}
+    };
+    
+    // 运行菜单
+    MenuItem runMenu = {L"运行", {0}, IDM_RUN, false, true, {}};
+    bool isRunning = Compiler::GetInstance().IsRunning();
+    runMenu.subItems = {
+        {L"运行                       F5", {0}, ID_BUILD_RUN, false, !isRunning, {}},
+        {L"终止", {0}, ID_BUILD_STOP, false, isRunning, {}},
+        {L"─────────", {0}, 0, false, false, {}},
+        {L"单步跟踪                  F8", {0}, ID_DEBUG_STEP, false, true, {}},
+        {L"执行到光标处     Ctrl+F8", {0}, ID_DEBUG_RUN_TO_CURSOR, false, true, {}}
+    };
+    
     g_MenuItems.push_back(toolsMenu);
+    g_MenuItems.push_back(compileMenu);
+    g_MenuItems.push_back(runMenu);
     g_MenuItems.push_back(helpMenu);
+    
+    // 搜索菜单项（直接触发搜索，无子菜单）
+    MenuItem searchMenu = {L"\uE721 搜索", {0}, IDM_SEARCH, false, true, {}};
+    g_MenuItems.push_back(searchMenu);
     
     // 重新计算菜单位置
     int menuX = 50;
     for (size_t i = 0; i < g_MenuItems.size(); i++) {
-        g_MenuItems[i].rect = {menuX, 0, menuX + 60, g_TitleBarHeight};
-        menuX += 60;
+        int itemWidth = (g_MenuItems[i].id == IDM_SEARCH) ? 70 : 60;
+        g_MenuItems[i].rect = {menuX, 0, menuX + itemWidth, g_TitleBarHeight};
+        menuX += itemWidth;
     }
     
     // 刷新标题栏
@@ -540,6 +572,44 @@ void UpdateMenuItems() {
         RECT titleRect = {0, 0, 0, g_TitleBarHeight};
         GetClientRect(hMainWnd, &titleRect);
         titleRect.bottom = g_TitleBarHeight;
+        InvalidateRect(hMainWnd, &titleRect, FALSE);
+    }
+}
+
+// 根据编译器运行状态更新菜单项和工具栏按钮的启用/禁用
+void UpdateRunningState() {
+    Compiler& compiler = Compiler::GetInstance();
+    bool isRunning = compiler.IsRunning();
+    
+    // 更新运行菜单中的子项 enabled 状态
+    for (auto& menu : g_MenuItems) {
+        if (menu.id == IDM_RUN) {
+            for (auto& sub : menu.subItems) {
+                if (sub.id == ID_BUILD_RUN) {
+                    sub.enabled = !isRunning;  // 运行中则禁用"运行"
+                } else if (sub.id == ID_BUILD_STOP) {
+                    sub.enabled = isRunning;   // 非运行中则禁用"终止"
+                }
+            }
+            break;
+        }
+    }
+    
+    // 更新工具栏按钮 enabled 状态
+    for (auto& btn : g_ToolBarButtons) {
+        if (btn.id == TB_RUN) {
+            btn.enabled = !isRunning;
+        } else if (btn.id == TB_STOP) {
+            btn.enabled = isRunning;
+        }
+    }
+    
+    // 刷新标题栏和工具栏
+    extern HWND hMainWnd;
+    if (hMainWnd) {
+        RECT titleRect;
+        GetClientRect(hMainWnd, &titleRect);
+        titleRect.bottom = g_TitleBarHeight + g_ToolBarHeight;
         InvalidateRect(hMainWnd, &titleRect, FALSE);
     }
 }
@@ -607,7 +677,6 @@ void InitToolBar() {
         {TB_REDO,      L"重做", 12},      // 索引12: 向前（重做）
         {TB_UNDO,      L"撤销", 14},      // 索引14: 撤销
         {0, nullptr, -1},  // 分隔符
-        {TB_BUILD,     L"搜索", 16},      // 索引16: 搜索文件夹
         {TB_RUN,       L"运行", 18},      // 索引18: 运行
         {TB_STOP,      L"停止", 20},      // 索引20: 停止
         {TB_DEBUG,     L"调试", 22},      // 索引22: 下一个图标
@@ -636,13 +705,18 @@ void InitToolBar() {
         ToolBarButton tbBtn;
         tbBtn.id = btn.id;
         tbBtn.tooltip = btn.tooltip;
-        tbBtn.enabled = true;
+        tbBtn.enabled = (btn.id != TB_STOP);  // 停止按钮初始禁用
         tbBtn.iconIndex = btn.iconIndex;
         tbBtn.rect = {x, y, x + g_ToolBarButtonSize, y + g_ToolBarButtonSize};
         g_ToolBarButtons.push_back(tbBtn);
         
         x += g_ToolBarButtonSize + 2;  // 按钮间隔
     }
+    
+    // 在工具栏末尾添加平台选择下拉框
+    x += 8;  // 分隔符间距
+    int dropdownWidth = 60;
+    g_PlatformDropdownRect = {x, y, x + dropdownWidth, y + g_ToolBarButtonSize};
 }
 
 // 初始化活动栏
@@ -2826,6 +2900,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 {
                     OutputDebugStringW(L"[Compile] ID_BUILD_RUN triggered\n");
                     
+                    // 如果已在运行，忽略
+                    if (Compiler::GetInstance().IsRunning()) break;
+                    
                     // 显示输出面板
                     if (!g_OutputPanelVisible) {
                         g_OutputPanelVisible = true;
@@ -2886,6 +2963,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                         // 如果编译成功，运行程序
                         if (result.success) {
                             compiler.RunExecutable(result.outputFile);
+                            // 通知主窗口更新运行状态
+                            PostMessage(hMainWnd, WM_RUNNING_STATE_CHANGED, 0, 0);
                         }
                     });
                     compileThread.detach();  // 分离线程，让它在后台运行
@@ -2955,6 +3034,68 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 }
                 break;
             
+            case ID_BUILD_STATIC:
+                {
+                    OutputDebugStringW(L"[Compile] ID_BUILD_STATIC triggered\n");
+                    
+                    // 显示输出面板
+                    if (!g_OutputPanelVisible) {
+                        g_OutputPanelVisible = true;
+                        RECT rect;
+                        GetClientRect(hWnd, &rect);
+                        SendMessage(hWnd, WM_SIZE, SIZE_RESTORED, MAKELPARAM(rect.right, rect.bottom));
+                    }
+                    
+                    // 清空并切换到输出标签
+                    if (g_pOutputPanel) {
+                        g_pOutputPanel->ClearOutput();
+                        g_pOutputPanel->SetActiveTab(OutputTabType::Output);
+                    }
+                    
+                    // 编译前自动保存可视化设计器
+                    if (g_pVisualDesigner && g_pVisualDesigner->IsModified()) {
+                        std::wstring designPath = g_pVisualDesigner->GetFilePath();
+                        if (!designPath.empty()) {
+                            g_pVisualDesigner->SaveFile(designPath);
+                        }
+                    }
+                    
+                    // 在后台线程中执行静态编译
+                    HWND hMainWnd3 = hWnd;
+                    std::thread staticCompileThread([hMainWnd3]() {
+                        Compiler& compiler = Compiler::GetInstance();
+                        compiler.SetCallback([hMainWnd3](const CompileMessage& msg) {
+                            std::wstring prefix;
+                            switch (msg.type) {
+                                case CompileMessageType::Error:
+                                    prefix = L"[错误] ";
+                                    break;
+                                case CompileMessageType::Warning:
+                                    prefix = L"[警告] ";
+                                    break;
+                                case CompileMessageType::Success:
+                                    prefix = L"[成功] ";
+                                    break;
+                                default:
+                                    prefix = L"";
+                                    break;
+                            }
+                            std::wstring* pMsg = new std::wstring(prefix + msg.message + L"\r\n");
+                            if (!PostMessage(hMainWnd3, WM_COMPILE_OUTPUT, reinterpret_cast<WPARAM>(pMsg), 0)) {
+                                delete pMsg;
+                            }
+                        });
+                        
+                        // 静态编译（所有依赖编入单个exe）
+                        CompileOptions options;
+                        options.debug = false;
+                        options.staticLink = true;
+                        compiler.CompileProject(options);
+                    });
+                    staticCompileThread.detach();
+                }
+                break;
+            
             case ID_BUILD_DEBUG:
                 {
                     OutputDebugStringW(L"[Compile] ID_BUILD_DEBUG triggered\n");
@@ -2972,6 +3113,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                         if (g_pOutputPanel) {
                             g_pOutputPanel->AppendOutput(L"程序已被用户终止\r\n", false);
                         }
+                        UpdateRunningState();
                     } else if (compiler.IsCompiling()) {
                         // TODO: 实现取消编译功能
                         MessageBoxW(hWnd, L"编译过程中无法停止", L"提示", MB_OK | MB_ICONINFORMATION);
@@ -2980,6 +3122,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                             g_pOutputPanel->AppendOutput(L"没有正在运行的程序\r\n", false);
                         }
                     }
+                }
+                break;
+            
+            case ID_DEBUG_STEP:
+                {
+                    OutputDebugStringW(L"[Debug] ID_DEBUG_STEP triggered\n");
+                    // TODO: 实现单步跟踪功能
+                    MessageBoxW(hWnd, L"单步跟踪功能正在开发中...", L"调试", MB_OK | MB_ICONINFORMATION);
+                }
+                break;
+            
+            case ID_DEBUG_RUN_TO_CURSOR:
+                {
+                    OutputDebugStringW(L"[Debug] ID_DEBUG_RUN_TO_CURSOR triggered\n");
+                    // TODO: 实现执行到光标处功能
+                    MessageBoxW(hWnd, L"执行到光标处功能正在开发中...", L"调试", MB_OK | MB_ICONINFORMATION);
                 }
                 break;
             
@@ -3226,6 +3384,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             if (y >= g_TitleBarHeight && y < g_TitleBarHeight + g_ToolBarHeight) {
                 for (size_t i = 0; i < g_ToolBarButtons.size(); i++) {
                     if (PtInRect(&g_ToolBarButtons[i].rect, {x, y})) {
+                        // 禁用按钮不响应点击
+                        if (!g_ToolBarButtons[i].enabled) {
+                            return 0;
+                        }
                         // 执行工具栏按钮对应的操作
                         switch (g_ToolBarButtons[i].id) {
                             case TB_NEW_FILE:
@@ -3273,10 +3435,48 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 }
             }
             
+            // 检查平台下拉框点击（在工具栏区域）
+            if (y >= g_TitleBarHeight && y < g_TotalTopHeight) {
+                POINT pt = {x, y};
+                if (PtInRect(&g_PlatformDropdownRect, pt)) {
+                    // 弹出平台选择菜单
+                    HMENU hPopup = CreatePopupMenu();
+                    AppendMenuW(hPopup, MF_STRING | (g_CurrentPlatform == PlatformArch::X86 ? MF_CHECKED : 0), 
+                               9901, L"x86");
+                    AppendMenuW(hPopup, MF_STRING | (g_CurrentPlatform == PlatformArch::X64 ? MF_CHECKED : 0), 
+                               9902, L"x64");
+                    POINT screenPt = {g_PlatformDropdownRect.left, g_PlatformDropdownRect.bottom};
+                    ClientToScreen(hWnd, &screenPt);
+                    int cmd = TrackPopupMenu(hPopup, TPM_RETURNCMD | TPM_NONOTIFY, 
+                                            screenPt.x, screenPt.y, 0, hWnd, NULL);
+                    DestroyMenu(hPopup);
+                    if (cmd == 9901) g_CurrentPlatform = PlatformArch::X86;
+                    else if (cmd == 9902) g_CurrentPlatform = PlatformArch::X64;
+                    InvalidateRect(hWnd, &g_PlatformDropdownRect, FALSE);
+                    return 0;
+                }
+            }
+            
             // 检查菜单点击（只在标题栏区域）
             if (y < g_TitleBarHeight) {
                 for (size_t i = 0; i < g_MenuItems.size(); i++) {
                     if (PtInRect(&g_MenuItems[i].rect, {x, y})) {
+                        // 没有子菜单的项直接执行命令
+                        if (g_MenuItems[i].subItems.empty()) {
+                            g_ActiveMenu = -1;
+                            if (g_MenuPopupWnd) {
+                                ShowWindow(g_MenuPopupWnd, SW_HIDE);
+                            }
+                            // 触发搜索
+                            if (g_MenuItems[i].id == IDM_SEARCH) {
+                                // 切换到搜索面板
+                                g_ActiveActivityButton = AB_SEARCH;
+                                g_LeftPanelVisible = true;
+                                InvalidateRect(hWnd, NULL, FALSE);
+                                MessageBoxW(hWnd, L"搜索功能正在开发中...", L"提示", MB_OK | MB_ICONINFORMATION);
+                            }
+                            return 0;
+                        }
                         if (g_ActiveMenu == (int)i) {
                             // 关闭菜单
                             ReleaseCapture();
@@ -3432,7 +3632,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             if (y >= g_TitleBarHeight && y < g_TitleBarHeight + g_ToolBarHeight) {
                 POINT pt = {x, y};
                 for (size_t i = 0; i < g_ToolBarButtons.size(); i++) {
-                    if (PtInRect(&g_ToolBarButtons[i].rect, pt)) {
+                    if (PtInRect(&g_ToolBarButtons[i].rect, pt) && g_ToolBarButtons[i].enabled) {
                         g_HoverToolBarButton = (int)i;
                         break;
                     }
@@ -3446,6 +3646,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                 toolBarRect.top = g_TitleBarHeight;
                 toolBarRect.bottom = g_TitleBarHeight + g_ToolBarHeight;
                 InvalidateRect(hWnd, &toolBarRect, FALSE);
+            }
+            
+            // 检查平台下拉框悬停
+            {
+                POINT pt = {x, y};
+                bool oldHover = g_PlatformDropdownHover;
+                g_PlatformDropdownHover = (PtInRect(&g_PlatformDropdownRect, pt) != 0);
+                if (oldHover != g_PlatformDropdownHover) {
+                    InvalidateRect(hWnd, &g_PlatformDropdownRect, FALSE);
+                }
             }
             
             // 检查活动栏按钮悬停（根据面板交换状态判断位置）
@@ -3520,6 +3730,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 清除工具栏按钮悬停状态
             if (g_HoverToolBarButton != -1) {
                 g_HoverToolBarButton = -1;
+                needToolBarRepaint = true;
+            }
+            
+            // 清除平台下拉框悬停状态
+            if (g_PlatformDropdownHover) {
+                g_PlatformDropdownHover = false;
                 needToolBarRepaint = true;
             }
             
@@ -3762,8 +3978,32 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                     graphics.FillPath(&hoverBrush, &path);
                 }
                 
-                DrawTextW(memDC, g_MenuItems[i].text.c_str(), -1, &g_MenuItems[i].rect, 
-                    DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+                // 搜索菜单项由后续代码单独绘制（需要特殊字体）
+                if (g_MenuItems[i].id != IDM_SEARCH) {
+                    DrawTextW(memDC, g_MenuItems[i].text.c_str(), -1, &g_MenuItems[i].rect, 
+                        DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+                }
+            }
+            
+            // 搜索菜单项：用 Segoe Fluent Icons 字体绘制搜索图标
+            for (size_t i = 0; i < g_MenuItems.size(); i++) {
+                if (g_MenuItems[i].id == IDM_SEARCH) {
+                    RECT iconRect = g_MenuItems[i].rect;
+                    // 图标绘制在左半部分
+                    iconRect.right = iconRect.left + 20;
+                    HFONT searchIconFont = CreateFont(14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+                        DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+                        CLEARTYPE_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Segoe Fluent Icons");
+                    HFONT prevFont = (HFONT)SelectObject(memDC, searchIconFont);
+                    DrawTextW(memDC, L"\uE721", -1, &iconRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+                    SelectObject(memDC, prevFont);
+                    DeleteObject(searchIconFont);
+                    // 文字绘制在右半部分
+                    RECT textRect = g_MenuItems[i].rect;
+                    textRect.left += 18;
+                    DrawTextW(memDC, L"搜索", -1, &textRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+                    break;
+                }
             }
             
             // 绘制标题栏按钮
@@ -3897,6 +4137,45 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
                         DrawTextW(memDC, L"?", -1, (LPRECT)&btn.rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
                     }
                 }
+            }
+            
+            // === 绘制平台选择下拉框 ===
+            {
+                RectF dropRect((REAL)g_PlatformDropdownRect.left, (REAL)g_PlatformDropdownRect.top,
+                    (REAL)(g_PlatformDropdownRect.right - g_PlatformDropdownRect.left),
+                    (REAL)(g_PlatformDropdownRect.bottom - g_PlatformDropdownRect.top));
+                
+                // 背景（悬停时高亮）
+                Color bgColor = g_PlatformDropdownHover ? Color(255, 55, 55, 55) : Color(255, 45, 45, 45);
+                SolidBrush bgBrush(bgColor);
+                GraphicsPath dropPath;
+                float dropRadius = 4.0f;
+                dropPath.AddArc(dropRect.X, dropRect.Y, dropRadius * 2, dropRadius * 2, 180, 90);
+                dropPath.AddArc(dropRect.X + dropRect.Width - dropRadius * 2, dropRect.Y, dropRadius * 2, dropRadius * 2, 270, 90);
+                dropPath.AddArc(dropRect.X + dropRect.Width - dropRadius * 2, dropRect.Y + dropRect.Height - dropRadius * 2, dropRadius * 2, dropRadius * 2, 0, 90);
+                dropPath.AddArc(dropRect.X, dropRect.Y + dropRect.Height - dropRadius * 2, dropRadius * 2, dropRadius * 2, 90, 90);
+                dropPath.CloseFigure();
+                graphics.FillPath(&bgBrush, &dropPath);
+                
+                // 边框
+                Pen borderPen(Color(255, 80, 80, 80), 1.0f);
+                graphics.DrawPath(&borderPen, &dropPath);
+                
+                // 文本（x86/x64）
+                const wchar_t* platformText = (g_CurrentPlatform == PlatformArch::X86) ? L"x86" : L"x64";
+                Gdiplus::Font dropFont(L"Segoe UI", 9.0f, FontStyleRegular, UnitPoint);
+                SolidBrush textBrush(Color(255, 220, 220, 220));
+                StringFormat sf;
+                sf.SetAlignment(StringAlignmentCenter);
+                sf.SetLineAlignment(StringAlignmentCenter);
+                // 留出右侧箭头空间
+                RectF textRect(dropRect.X, dropRect.Y, dropRect.Width - 12.0f, dropRect.Height);
+                graphics.DrawString(platformText, -1, &dropFont, textRect, &sf, &textBrush);
+                
+                // 下拉箭头 ▾
+                Gdiplus::Font arrowFont(L"Segoe UI", 7.0f, FontStyleRegular, UnitPoint);
+                RectF arrowRect(dropRect.X + dropRect.Width - 16.0f, dropRect.Y, 14.0f, dropRect.Height);
+                graphics.DrawString(L"\u25BE", -1, &arrowFont, arrowRect, &sf, &textBrush);
             }
             
             // === 绘制活动栏 (VS Code风格) ===
@@ -4221,6 +4500,21 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
             delete pMsg;  // 释放内存
         }
+        return 0;
+    
+    case WM_PROCESS_EXITED:
+        {
+            DWORD exitCode = (DWORD)wParam;
+            if (g_pOutputPanel) {
+                std::wstring exitMsg = L"程序已退出 (退出码: " + std::to_wstring(exitCode) + L")\r\n";
+                g_pOutputPanel->AppendOutput(exitMsg, false);
+            }
+            UpdateRunningState();
+        }
+        return 0;
+    
+    case WM_RUNNING_STATE_CHANGED:
+        UpdateRunningState();
         return 0;
         
     case WM_DESTROY:

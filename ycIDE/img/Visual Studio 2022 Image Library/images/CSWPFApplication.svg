@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSWPFApplication</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,3V5H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8H11.828v-.268L8.707,9.611,7.318,11H3.682L2.293,9.611,1.5,10.4V5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H11.828V13H14V6H2V9.9l-1,1V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-green" d="M7,12v3H4V12Zm3.828,1.854v-.708L8.707,11.025,8,11.732,9.768,13.5,8,15.268l.707.707ZM.172,13.146v.708l2.121,2.121L3,15.268,1.232,13.5,3,11.732l-.707-.707Z" />
+  </g>
+</svg>

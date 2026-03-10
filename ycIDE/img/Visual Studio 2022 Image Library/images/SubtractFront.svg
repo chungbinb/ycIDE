@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSubtractFront</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,5.5v9h-9v-9Z" />
+    <path class="light-defaultgrey" d="M11,1.5V4H5.086L4,5.086V11H1.5L1,10.5v-9L1.5,1h9Z" />
+    <path class="light-defaultgrey" d="M14.5,15h-9L5,14.5v-9L5.5,5h9l.5.5v9ZM6,14h8V6H6Z" />
+  </g>
+</svg>

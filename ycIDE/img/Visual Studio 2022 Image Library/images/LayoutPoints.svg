@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>LayoutPoints</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,4.168l-4.967,10.4L10,14.315V14.5l-.5.5h-8L1,14.5V4.5L1.5,4H6.285L7.93.554Z" />
+    <path class="light-defaultgrey" d="M7,14H8v1H7ZM5,15H6V14H5ZM3,15H4V14H3Zm-2-.5.5.5H2V14H1ZM1,11H2V10H1Zm0,2H2V12H1ZM1,9H2V8H1ZM1,7H2V6H1ZM4,4H3V5H4ZM1,4.5V5H2V4H1.5Zm14.951-.116-4.967,10.4-.667.236L2.748,11.406l-.235-.666L5.253,5H5V4h.731L7.479.338,8.146.1l7.57,3.614Zm-1.118.02L8.166,1.22l-4.535,9.5L10.3,13.9Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPageBodyGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,1.5v11h-2v-9h-7v-2Z" />
+      <path class="light-defaultgrey" d="M14,1.5v11l-.5.5h-2V12H13V2H5V3.5H4v-2L4.5,1h9Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2.5,3.5v11h9V3.5Zm7.5,7-.5.5h-5L4,10.5v-3L4.5,7h5l.5.5Z" />
+    <path class="light-defaultgrey" d="M10,13H4V12h6Zm0-8H4V6h6Zm1.5,10h-9L2,14.5V3.5L2.5,3h9l.5.5v11ZM3,14h8V4H3Z" />
+    <path class="light-blue-10" d="M4.5,7.5h5v3h-5Z" />
+    <path class="light-blue" d="M9.5,11h-5L4,10.5v-3L4.5,7h5l.5.5v3ZM5,10H9V8H5Z" />
+  </g>
+</svg>

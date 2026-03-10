@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSpotlight</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M2.707,13.5,2.5,13.293V8.7l.258-.106L4.151,9.984,8.662,7.208l.126.128L5.969,11.8,7.41,13.242,7.3,13.5Z" />
+    <path class="light-defaultgrey-10" d="M12.5,6.328V10.5l-7-7H9.672l2-2L14.5,4.328Z" />
+    <path class="light-blue" d="M7.427,8.555,5.759,11.2l-.426.676.565.565L6.461,13H3V9.539l.519.519.558.559L4.75,10.2,7.427,8.555M8.738,6.574,4.226,9.351,2.875,8,2,8.362V13.5l.5.5H7.638L8,13.125,6.605,11.73,9.423,7.267l-.685-.693Z" />
+    <path class="light-defaultgrey" d="M12.025,1.146h-.707L9.465,3H5.5l-.354.854,7,7L13,10.5V6.536l1.854-1.854V3.975ZM6.707,4H9.465L12,6.536V9.293ZM12.5,5.622,10.379,3.5l1.292-1.293,2.122,2.122Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEditRowRight</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M13,14H12V13h1Zm2-1H14v1h1Z" />
+    <path class="light-blue-10" d="M.812,5.309a1.059,1.059,0,0,1,1.5,0l5.539,5.539L6.365,12.365.808,6.808A1.062,1.062,0,0,1,.812,5.309Z" />
+    <path class="light-blue" d="M.454,7.162,5.819,12.5l3,1.629.675-.674L7.912,10.205l-5.25-5.25A1.561,1.561,0,0,0,.454,7.162Zm.71-1.5a.559.559,0,0,1,.79,0l5.19,5.189-.783.8-5.2-5.2A.561.561,0,0,1,1.164,5.664Z" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCancelQuery</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M12.5,10v3h-9V5.621L5.146,7.268,5.5,6.914V10Z" />
+      <path class="light-defaultgrey-10" d="M14.5,3v7.5h-2v-5H6.914l.354-.354L5.5,3.379V3Z" />
+      <path class="light-defaultgrey" d="M15,2.5v8l-.5.5H13v2.5l-.5.5h-9L3,13.5v-8l.189-.189L4.879,7H4v6h8V7H5.414L7.268,5.146,7.121,5H12.5l.5.5V10h1V4H6.121l-1-1,1-1H14.5Z" />
+    </g>
+    <path class="light-yellow-10" d="M12.5,6.5v4h-7V6.914L5.914,6.5Z" />
+    <path class="light-yellow" d="M12.5,6H6.414L5.146,7.268,5,7.121V10.5l.5.5h7l.5-.5v-4ZM12,10H6V7h6Z" />
+    <path class="light-yellow" d="M11,8V9H7V8Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightServiceBusQueueListTrid</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,5.5h-2v-2h2Zm4,0h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M5.5,6h-2L3,5.5v-2L3.5,3h2l.5.5v2ZM4,5H5V4H4ZM9.5,6h-2L7,5.5v-2L7.5,3h2l.5.5v2ZM8,5H9V4H8Z" />
+    <path class="light-defaultgrey-10" d="M8.5,11.5h-2v-2h2Zm4,0h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M8.5,12h-2L6,11.5v-2L6.5,9h2l.5.5v2ZM7,11H8V10H7Zm5.5,1h-2l-.5-.5v-2l.5-.5h2l.5.5v2ZM11,11h1V10H11Z" />
+    <path class="light-defaultgrey" d="M12,2H1V1H12Zm3,5V8H1V7Zm0,7H4V13H15Z" />
+  </g>
+</svg>

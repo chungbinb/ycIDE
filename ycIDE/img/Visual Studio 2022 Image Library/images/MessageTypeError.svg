@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMessageTypeError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.914,6H5.5V1.5h9v6h-.36A4.944,4.944,0,0,0,12,7c-.027,0-.051.007-.078.008Z" />
+      <path class="light-defaultgrey" d="M10.277,4.916H9.723l-4.5-3L5,1.5,5.5,1h9l.5.5-.223.416ZM7.151,2,10,3.9,12.849,2Z" />
+      <path class="light-defaultgrey" d="M11.914,7H12c-.027,0-.051.007-.078.008Z" />
+      <path class="light-defaultgrey" d="M14,2H6V6H5V1.5L5.5,1h9l.5.5v6l-.3.3A4.958,4.958,0,0,0,12,7h2Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.255,13.5H1.5v-6H9.86A4.993,4.993,0,0,0,7,12,4.942,4.942,0,0,0,7.255,13.5Z" />
+    <path class="light-defaultgrey" d="M7.424,14H1.5L1,13.5v-6L1.5,7h9l.2.2A4.964,4.964,0,0,0,9.031,8H2v5H7.1A4.91,4.91,0,0,0,7.424,14Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="light-defaultgrey" d="M10.7,7.2,10.5,7h-9L1,7.5l.223.416,4.5,3h.554L7.348,10.2A5,5,0,0,1,10.7,7.2ZM3.151,8h5.7L6,9.9Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

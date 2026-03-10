@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPasteAppend</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,3.5v11H10v-7L9.5,7h-6V3.5Z" />
+      <path class="light-defaultgrey" d="M14,3.5v11l-.5.5H10V14h3V4H4V7H3V3.5L3.5,3h10Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M9.5,12.5v3H.5v-3H3.586L5,13.914,6.414,12.5Z" />
+    <path class="light-defaultgrey" d="M9.5,12H6.914L6,12.914V15H4V12.914L3.086,12H.5l-.5.5v3l.5.5h9l.5-.5v-3ZM3,15H1V13H3Zm6,0H7V13H9Z" />
+    <path class="light-defaultgrey" d="M10.5,2a2,2,0,0,0-4,0H5V4h7V2Zm-2-1a1,1,0,1,1-1,1A1,1,0,0,1,8.5,1Z" />
+    <path class="light-blue-10" d="M9.5,10.5H.5v-3h9Z" />
+    <path class="light-blue" d="M9.5,7H.5L0,7.5v3l.5.5h3L5,12.5,6.5,11h3l.5-.5v-3ZM3,10H1V8H3ZM4,8H6v2H4Zm5,2H7V8H9Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWordWrap</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8,3.008a1.978,1.978,0,0,0-1,.278V1H6V7H7V6.729a1.969,1.969,0,0,0,1,.279,2,2,0,0,0,0-4Zm.013,3.026a1,1,0,1,1,1-1A1,1,0,0,1,8.013,6.034ZM4,3.286a1.978,1.978,0,0,0-1-.278,2,2,0,0,0,0,4,1.969,1.969,0,0,0,1-.279V7H5V3H4ZM2.993,6.034a1,1,0,1,1,1-1A1,1,0,0,1,2.993,6.034Zm.711,5.7.719.7A2,2,0,1,1,4.393,9.6l-.7.714a1,1,0,1,0-.7,1.716A.992.992,0,0,0,3.7,11.734Z" />
+    <path class="light-blue" d="M15,5.5v6l-.5.5H7.679l1.677,1.678-.707.707-2.5-2.5v-.707l2.5-2.5.707.707L7.741,11H14V6H11V5h3.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPYDebugInteractiveWindow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-yellow-10" d="M14.5,5.5v8H1.5V8.3L6.391,5.5Z" />
+      <path class="light-yellow" d="M15,5.5v8l-.5.5H1.5L1,13.5V8.58l1-.571V13H14V6H5.516l1.75-1H14.5Z" />
+    </g>
+    <path class="light-yellow-10" d="M14.5,2.5v3H6.391L9.016,4,6.391,2.5Z" />
+    <path class="light-yellow" d="M15,2.5v3l-.5.5H5.516l1.75-1H14V3H7.266L5.516,2H14.5Z" />
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+  </g>
+</svg>

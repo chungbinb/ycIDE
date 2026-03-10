@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTransferStoredProcedure</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,2.5v10H7.449L5.678,10.729,5,11.408V10.5A3.494,3.494,0,0,0,2.5,7.163V2.5Z" />
+    <path class="light-blue" d="M6.385,12.851l-2.5,2.5H3.178l-2.5-2.5.707-.707L3,13.758V10.5A1.5,1.5,0,0,0,1.5,9H0V8H1.5A2.5,2.5,0,0,1,4,10.5v3.322l1.678-1.678Z" />
+    <path class="light-defaultgrey" d="M13.5,2H2.5L2,2.5V7.051a3.44,3.44,0,0,1,1,.3V5H13v7H6.949l.85.851L7.65,13H13.5l.5-.5V2.5ZM13,4H3V3H13Z" />
+    <path class="light-defaultgrey" d="M4,8.058V8H8V9H4.649A3.516,3.516,0,0,0,4,8.058ZM10,8H9V9h1ZM8,6H4V7H8Zm0,4v1h4V10Zm-3,.5V11h.408l.27-.271L5.949,11H7V10H4.949A3.443,3.443,0,0,1,5,10.5Z" />
+  </g>
+</svg>

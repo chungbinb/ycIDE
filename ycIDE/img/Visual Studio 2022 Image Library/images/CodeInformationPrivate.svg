@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>CodeInformationPrivate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M.5,12a4,4,0,1,1,4,4A4,4,0,0,1,.5,12Z" />
+    <path class="white" d="M5,14H4V12H5Zm0-4H4v1H5Z" />
+    <path class="light-defaultgrey" d="M8,5H3V4H8Zm7-1H9V5h6ZM8,1H2V2H8Zm5,0H9V2h4Zm0,6H8V8h2.78A2.985,2.985,0,0,1,13,7Zm1,0H13a2.966,2.966,0,0,1,1,.184ZM7,7.7V7H4.5A4.937,4.937,0,0,1,7,7.7ZM4,7.051A4.865,4.865,0,0,1,4.5,7H4Z" />
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

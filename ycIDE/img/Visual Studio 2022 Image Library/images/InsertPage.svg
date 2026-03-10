@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0;fill:none;}.cls-2{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightInsertPage</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="cls-1" d="M16,16H0V0H16Z" />
+    <g class="cls-2">
+      <path class="light-defaultgrey-10" d="M13.5.5h-6V7.38l.5.5.7.7L9,9.3v1.2h6.5v-8Z" />
+      <path class="light-defaultgrey" d="M15.85,2.15l-2-2L13.5,0h-6L7,.5V6.88l1,1V1h5V3h2v7H9v1h6.5l.5-.5v-8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.5,9.5v6H.5v-8h5Z" />
+    <path class="light-defaultgrey" d="M7.854,9.146l-2-2L5.5,7H.5L0,7.5v8l.5.5h7l.5-.5v-6ZM1,15V8H5v2H7v5Z" />
+    <path class="light-blue" d="M.146,3.854l.708-.708L2,4.293V3A3,3,0,0,1,5,0H6V1H5A2,2,0,0,0,3,3V4.293L4.146,3.146l.708.708-2,2H2.146Z" />
+  </g>
+</svg>

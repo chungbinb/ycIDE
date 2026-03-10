@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightStrongNameKey</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v10H10.97a4.045,4.045,0,0,0-.51-1.5,3.979,3.979,0,0,0-6.09-1H2.5V2.5Z" />
+    <path class="light-defaultgrey" d="M6,7V8h5V7ZM6,5V6h5V5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H2.5L2,2.5V10H3V9H4V8H3V7H4V6H3V5H4V4H3V3H4V4H5V3H6V4H7V3H8V4H9V3h1V4h1V3h1V4h1V3h1V4H13V5h1V6H13V7h1V8H13V9h1v1H13v1h1v1H13V11H12v1H11V11h-.54A3.914,3.914,0,0,1,11,13h3.5l.5-.5V2.5Z" />
+    <path class="light-defaultgrey-10" d="M9.5,13a2.493,2.493,0,0,1-4.893.684L3.475,14l-.5-.5-1,.5-1.5-1.5,1-1H5.011A2.493,2.493,0,0,1,9.5,13Z" />
+    <path class="light-defaultgrey" d="M8,13a.5.5,0,1,1-.5-.5A.5.5,0,0,1,8,13Zm2,0a2.992,2.992,0,0,1-5.7,1.288l-.693.193-.488-.127-.245-.246-.678.339-.577-.093-1.5-1.5v-.708l1-1L1.476,11h3.3A2.962,2.962,0,0,1,7,10,3,3,0,0,1,10,13Zm-8.817-.5.891.892.678-.339.577.093.293.294.85-.237.615.343A2,2,0,1,0,7,11a1.979,1.979,0,0,0-1.589.8l-.4.2H1.683Z" />
+  </g>
+</svg>

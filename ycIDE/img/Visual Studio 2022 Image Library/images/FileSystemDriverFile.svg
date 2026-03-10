@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFileSystemDriverFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,6.5a1,1,0,1,1-1-1A1,1,0,0,1,6.5,6.5Z" />
+    <path class="light-defaultgrey-10" d="M10.5,10.5a1,1,0,1,1-1-1A1,1,0,0,1,10.5,10.5Z" />
+    <path class="light-defaultgrey" d="M9.5,12A1.5,1.5,0,1,1,11,10.5,1.5,1.5,0,0,1,9.5,12Zm0-2a.5.5,0,1,0,.5.5A.5.5,0,0,0,9.5,10Z" />
+    <path class="light-defaultgrey" d="M5.5,8A1.5,1.5,0,1,1,7,6.5,1.5,1.5,0,0,1,5.5,8Zm0-2a.5.5,0,1,0,.5.5A.5.5,0,0,0,5.5,6Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H2.5V1.5h8Z" />
+      <path class="light-defaultgrey" d="M13.854,4.146l-3-3L10.5,1h-8L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,14V2h7V5h3v9Z" />
+      <path class="light-defaultgrey" d="M6.908,6H9.5l.5.5V9.092a1.4,1.4,0,0,0-1,0V7H6.908a1.4,1.4,0,0,0,0-1Z" />
+    </g>
+  </g>
+</svg>

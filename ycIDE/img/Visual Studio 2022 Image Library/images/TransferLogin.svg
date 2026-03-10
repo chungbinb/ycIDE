@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTransferLogin</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.5v6H8.449L6.678,10.729l-.178.179V6.5Z" />
+    <path class="light-blue" d="M7.385,12.851l-2.5,2.5H4.178l-2.5-2.5.707-.707L4,13.758V10.5A1.5,1.5,0,0,0,2.5,9H0V8H2.5A2.5,2.5,0,0,1,5,10.5v3.322l1.678-1.678Z" />
+    <path class="light-defaultgrey" d="M14.5,6H14V4.536a3.5,3.5,0,0,0-7,0V6H6.5L6,6.5v4.908l.678-.679L7,11.051V7h7v5H7.949l.85.851L8.65,13H14.5l.5-.5v-6ZM13,6H8V4.536a2.5,2.5,0,0,1,5,0Z" />
+    <path class="light-defaultgrey" d="M11,11H10V8h1Z" />
+  </g>
+</svg>

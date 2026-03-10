@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightVBWorkflowDiagram</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M9.5,4.5h-4v-3h4Zm-7,10H.5v-2h2Zm6,0h-2v-2h2Zm6,0h-2v-2h2Z" />
+    <path class="light-blue" d="M14.5,12H14V8.5L13.5,8H8V5H9.5l.5-.5v-3L9.5,1h-4L5,1.5v3l.5.5H7V8H1.5L1,8.5V12H.5l-.5.5v2l.5.5h2l.5-.5v-2L2.5,12H2V9H7v3H6.5l-.5.5v2l.5.5h2l.5-.5v-2L8.5,12H8V9h5v3h-.5l-.5.5v2l.5.5h2l.5-.5v-2ZM2,14H1V13H2Zm6,0H7V13H8ZM6,4V2H9V4Zm8,10H13V13h1Z" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightStoredProcedureError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M1.5,5v8H7.1a5.05,5.05,0,0,1,0-2,5.532,5.532,0,0,1,.31-1A5.116,5.116,0,0,1,9,8a4.918,4.918,0,0,1,2-.9A4.712,4.712,0,0,1,12,7a5.106,5.106,0,0,1,2,.41c.17.08.34.17.5.26V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H1.5L1,5.5v8l.5.5H7.41a5.532,5.532,0,0,1-.31-1H2V6H14V7.41c.17.08.34.17.5.26A4.322,4.322,0,0,1,15,8V5.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2,3V5H14V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v3l.5.5h13l.5-.5v-3ZM2,5V3H14V5Z" />
+    <path class="light-defaultgrey" d="M6,11v1H7a4.712,4.712,0,0,1,.1-1ZM9,7V8a4.918,4.918,0,0,1,2-.9V7ZM3,11v1H5V11ZM3,9v1H7.41A5.26,5.26,0,0,1,8,9ZM3,7V8H8V7Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

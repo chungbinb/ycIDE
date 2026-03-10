@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSConsoleTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,3v9l-7.9-.022-.568-.908V10h1V7H4.5V3Z" />
+    <path class="light-defaultgrey" d="M10,9v1h2V9Zm0-.646L8.409,9.945,7.7,9.237,8.939,8,7.7,6.763l.707-.708L10,7.646Z" />
+    <path class="light-defaultgrey" d="M14.5,2H4.5L4,2.5V7H5V5h9v6H6.029v.07l.582.93H14.5l.5-.5v-9ZM14,4H5V3h9Z" />
+    <g class="cls-1">
+      <path class="light-green-10" d="M2.528,8.5h2v3l1.25,2h-4.5l1.25-2Z" />
+      <path class="light-green" d="M2.03,9h-1V8h5V9h-1v2.356L6.056,13H4.878L4.03,11.644V9h-1v2.644L2.182,13H1L2.03,11.356Z" />
+    </g>
+    <path class="light-green-10" d="M1.528,13.5h4l1,1.5-.5.5h-5l-.5-.5Z" />
+    <path class="light-green" d="M5.911,16H1.148A1.12,1.12,0,0,1,.2,14.286L1,13H6.056l.8,1.287A1.12,1.12,0,0,1,5.911,16ZM1.557,14l-.511.816a.118.118,0,0,0,0,.122.116.116,0,0,0,.1.062H5.911a.116.116,0,0,0,.105-.062.112.112,0,0,0,0-.121L5.5,14Z" />
+  </g>
+</svg>

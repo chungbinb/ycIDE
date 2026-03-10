@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPivotControl</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,0V16H0V0" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M13.854,11.146v.708l-2,2-.708-.708L12.293,12H2.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L2.707,11h9.586L11.146,9.854l.708-.708Z" />
+    <path class="light-defaultgrey" d="M9.006,8.723a2,2,0,1,0,0-3.446V3h-1V9h1Zm1-2.723a1,1,0,1,1-1,1A1,1,0,0,1,10.006,6Zm-5,3a1.987,1.987,0,0,0,1-.277V9h1V5h-1v.277A2,2,0,1,0,5.006,9Zm0-3a1,1,0,1,1-1,1A1,1,0,0,1,5.006,6Z" />
+  </g>
+</svg>

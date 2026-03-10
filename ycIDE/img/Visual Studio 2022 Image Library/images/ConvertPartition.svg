@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightConvertPartition</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M14.8,4.056,12.854,6h-.708L10.2,4.056l.707-.707L12,4.439V2H4V6H3V1.5L3.5,1h9l.5.5V4.439l1.091-1.09Z" />
+    <path class="light-defaultgrey-10" d="M6.5,13.5H.5v-6h6Z" />
+    <path class="light-defaultgrey" d="M6.5,14H.5L0,13.5v-6L.5,7h6l.5.5v6ZM1,13H6V8H1Z" />
+    <path class="light-defaultgrey-10" d="M15.609,10.5l-3.182,3.182L9.245,10.5l3.182-3.182Z" />
+    <path class="light-defaultgrey" d="M12.78,14.035h-.707L8.892,10.854v-.708l3.181-3.181h.707l3.183,3.181v.708ZM9.952,10.5l2.475,2.475L14.9,10.5,12.427,8.025Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple{fill: #6936aa; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightThread</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple" d="M8,7a6.006,6.006,0,0,0-6,6H1A6.991,6.991,0,0,1,13.551,8.753a7,7,0,0,1-.675.764A5.99,5.99,0,0,0,8,7Zm5.556,3.743A5.974,5.974,0,0,1,14,13h1a6.948,6.948,0,0,0-.716-3.065A7.974,7.974,0,0,1,13.556,10.743Z" />
+    <path class="light-blue" d="M2.267,9A6.954,6.954,0,0,1,1,5H2a5.958,5.958,0,0,0,.927,3.19A6.985,6.985,0,0,0,2.267,9ZM14,5a6.006,6.006,0,0,1-6,6A5.941,5.941,0,0,1,4.282,9.689a5.093,5.093,0,0,0-.586.81A6.942,6.942,0,0,0,8,12a7.009,7.009,0,0,0,7-7Z" />
+  </g>
+</svg>

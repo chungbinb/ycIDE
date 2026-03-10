@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCallout</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,2.5v10h-7L3.5,15V12.5h-2V2.5Z" />
+    <path class="light-defaultgrey" d="M13.5,2H1.5L1,2.5v10l.5.5H3v2l.82.384L6.681,13H13.5l.5-.5V2.5ZM13,12H6.5l-.32.116L4,13.933V12.5L3.5,12H2V3H13Z" />
+    <path class="light-defaultgrey" d="M8,4V9H7V4Zm.25,6.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,8.25,10.5Z" />
+  </g>
+</svg>

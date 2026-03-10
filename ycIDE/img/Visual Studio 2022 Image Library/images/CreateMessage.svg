@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCreateMessage</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7.293,10.354,8,9.646l2,2v.708l-2,2-.707-.708L8.939,12ZM4.707,13.646,4,14.354l-2-2v-.708l2-2,.707.708L3.061,12Z" />
+    <path class="light-defaultgrey" d="M14,12H12V5h2Z" />
+    <path class="light-blue" d="M11.328,4.146v.708L8.146,8.036l-.707-.707L9.768,5H6.025V4H9.768L7.439,1.671,8.146.964ZM5,4H1V5H5Z" />
+  </g>
+</svg>

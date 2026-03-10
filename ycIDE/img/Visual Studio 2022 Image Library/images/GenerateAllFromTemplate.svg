@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGenerateAllFromTemplate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,14.5H.5v-7H5L6.5,9Z" />
+    <path class="light-defaultgrey" d="M6.854,8.646l-1.5-1.5L5,7H.5L0,7.5v7l.5.5h6l.5-.5V9ZM1,14V8H4v2H6v4Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9.5,0H10V1H9V.5ZM9,2V3h1V2ZM9,4V5h1V4ZM9,6V7h1V6ZM9,8v.5l.5.5H10V8Zm2,0V9h1V8Zm2,0V9h1V8Zm2,0V9h.5l.5-.5V8Zm0-6V3h1V2Zm0,2V5h1V4Zm0,2V7h1V6ZM14,3V2H13v.5l.5.5ZM11,0V1h1V0Zm2,0V1h1V0Z" />
+      <path class="light-defaultgrey-10" d="M15.5,9h-6L9,8.5V.5L9.5,0H14l.354.146,1.5,1.5L16,2V8.5Z" />
+    </g>
+    <path class="light-blue" d="M2.146,3.854l.708-.708L4,4.293V1.5L4.5,1H7V2H5V4.293L6.146,3.146l.708.708-2,2H4.146Z" />
+  </g>
+</svg>

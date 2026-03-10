@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightShowReflexiveView</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7,14H2V13H7Zm0-2H2V11H7Zm0-2H2V9H7Zm2,2H8V11H9Zm3-3H11V8h1Zm2,2H13V10h1Zm-3,3H10V13h1ZM14,2V7H13V2ZM12,2V7H11V2ZM10,2V7H9V2Zm3.146,11.854-11-11,.708-.708,11,11Z" />
+  </g>
+</svg>

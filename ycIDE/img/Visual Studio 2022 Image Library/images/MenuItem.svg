@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMenuItem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M3,8v3H13V8Zm9,2H4V9h8Z" />
+    <path class="light-defaultgrey" d="M10,7H4V6h6ZM4,13h6V12H4Z" />
+    <path class="light-defaultgrey-10" d="M13.5,4.5v10H2.5V1.5h6v3Z" />
+    <path class="light-defaultgrey" d="M13.5,4H9V1.5L8.5,1h-6L2,1.5v13l.5.5h11l.5-.5V4.5ZM3,2H8V4H3ZM13,14H3V5H13Z" />
+    <path class="white" d="M12,10H4V9h8Z" />
+  </g>
+</svg>

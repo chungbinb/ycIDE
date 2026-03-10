@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>VideoCard</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.5,9.5v4h-2v2h-2v-2H.5v-4Z" />
+    <path class="light-defaultgrey" d="M8.5,9H1V8H0v7H1V14H4v1.5l.5.5h2l.5-.5V14H8.5l.5-.5v-4ZM6,15H5V14H6Zm2-2H1V10H8Z" />
+    <path class="light-defaultgrey" d="M4,12H5V11H4Zm2,0H7V11H6ZM2,12H3V11H2Z" />
+    <path class="light-defaultgrey-10" d="M15.5,7.5H5.5v-6h10Z" />
+    <path class="light-defaultgrey" d="M15.5,1H5.5L5,1.5v6l.5.5H10V9H9.91l.09.09V10h3V9H11V8h4.5l.5-.5v-6ZM15,7H6V2h9Z" />
+  </g>
+</svg>

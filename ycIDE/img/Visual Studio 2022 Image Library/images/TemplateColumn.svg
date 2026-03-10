@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>TemplateColumn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12,.5v14l-.5.5h-6L5,14.5V.5L5.5,0h6Z" />
+    <path class="light-defaultgrey" d="M5.5,0H6V1H5V.5Zm6,0H11V1h1V.5ZM5,14.5l.5.5H6V14H5Zm6,.5h.5l.5-.5V14H11ZM5,3H6V2H5ZM7,3H8V2H7ZM9,3h1V2H9ZM5,5H6V4H5Zm6,0h1V4H11ZM5,7H6V6H5ZM7,7H8V6H7ZM9,7h1V6H9Zm2,0h1V6H11ZM7,11H8V10H7Zm2,0h1V10H9Zm2,0h1V10H11ZM5,9H6V8H5Zm0,2H6V10H5Zm2,4H8V14H7Zm2,0h1V14H9ZM5,13H6V12H5Zm6-4h1V8H11Zm0,4h1V12H11ZM7,1H8V0H7ZM9,1h1V0H9Zm2,2h1V2H11Z" />
+  </g>
+</svg>

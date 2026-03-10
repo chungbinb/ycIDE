@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCheckerboardRound</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="white" d="M15,8A7,7,0,1,1,8,1,7,7,0,0,1,15,8Z" />
+    <path class="white" d="M15,8A7,7,0,1,1,8,1,7,7,0,0,1,15,8Z" />
+    <path class="light-defaultgrey" d="M10,10h2v2H10ZM8,4H6V2H8Zm2,2h2V8H10Zm0,8h1.607A7,7,0,0,1,10,14.71ZM6,6H4V4H6ZM8,8H6V6H8Zm4,0h2v2H12Zm-2,2H8V8h2ZM8,4h2V6H8ZM6,14H4.393q-.2-.121-.393-.255V12H6ZM6,2H4.393A7,7,0,0,1,6,1.29ZM2,6H1.29A7,7,0,0,1,2,4.393Zm8-4h1.607q.2.122.393.255V4H10ZM8,2V1a7.024,7.024,0,0,1,2,.29V2ZM4,4H2.255A7.056,7.056,0,0,1,4,2.255ZM8,14v1a7.024,7.024,0,0,1-2-.29V14ZM4,12H2.255q-.133-.192-.255-.393V10H4ZM2,10H1.29A7.024,7.024,0,0,1,1,8H2ZM14,6h.71A7.024,7.024,0,0,1,15,8H14ZM8,12H6V10H8ZM6,10H4V8H6Zm4,2v2H8V12Zm2-8h1.745q.133.192.255.393V6H12Zm0,8h1.745A7.056,7.056,0,0,1,12,13.745ZM4,8H2V6H4Zm10,2h.71A7,7,0,0,1,14,11.607Z" />
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSpace</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12,6a1.987,1.987,0,0,0-1,.277V4H10v6h1V9.723A2,2,0,1,0,12,6Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,12,9ZM8.006,8.75A.75.75,0,1,1,8.756,8,.75.75,0,0,1,8.006,8.75ZM5,6v.277A2,2,0,1,0,5,9.723V10H6V6ZM4,9A1,1,0,1,1,5,8,1,1,0,0,1,4,9Z" />
+  </g>
+</svg>

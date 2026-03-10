@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightActiveDocumentHost</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,14.5V4.5h6l2,2v8Z" />
+    <path class="light-defaultgrey" d="M3,14V5H8V7h2v7Zm7.885-7.528L8.528,4.115,8.25,4H2.393L2,4.393V14.607L2.393,15h8.214L11,14.607V6.75Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14,1.5v8l-.5.5H12V6.552l-.267-.646L9.094,3.266,8.447,3H6V1.5L6.5,1h7Z" />
+    </g>
+  </g>
+</svg>

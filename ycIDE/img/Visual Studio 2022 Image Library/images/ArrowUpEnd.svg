@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-shadow{fill: #000000; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightArrowUpEnd</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-2">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M4,2V1h9V2Z" />
+    </g>
+  </g>
+  <g id="level-1">
+    <path class="light-shadow" d="M4.149,8.146l4-4h.707l4,4-.707.708L9,5.707V16H8V5.707L4.856,8.854Z" />
+    <path class="light-defaultgrey" d="M4.149,7.146l4-4h.707l4,4-.707.708L9,4.707V15H8V4.707L4.856,7.854Z" />
+  </g>
+</svg>

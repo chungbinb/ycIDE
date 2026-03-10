@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightArrangeShapes</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,13.5h-3v-3h3Zm-6,0h-3v-3h3Zm-6,0H.5v-3h3Z" />
+    <path class="light-defaultgrey" d="M15.5,14h-3l-.5-.5v-3l.5-.5h3l.5.5v3ZM13,13h2V11H13ZM9.5,14h-3L6,13.5v-3l.5-.5h3l.5.5v3ZM7,13H9V11H7ZM3.5,14H.5L0,13.5v-3L.5,10h3l.5.5v3ZM1,13H3V11H1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,12H4V11H6Zm6-1H10v1h2Z" />
+    </g>
+    <path class="light-blue" d="M14.854,5.854l-2,2h-.708l-2-2,.708-.708L12,6.293V4a2,2,0,0,0-2-2H6V1h4a3,3,0,0,1,3,3V6.293l1.146-1.147Z" />
+    <path class="light-defaultgrey-10" d="M3.5,1.5v2h-2v-2Zm0,2v2h2v-2Zm2,2v2h2v-2Z" />
+    <path class="light-defaultgrey" d="M7.5,5H6V3.5L5.5,3H4V1.5L3.5,1h-2L1,1.5v2l.5.5H3V5.5l.5.5H5V7.5l.5.5h2L8,7.5v-2ZM2,2H3V3H2ZM4,4H5V5H4ZM7,7H6V6H7Z" />
+  </g>
+</svg>

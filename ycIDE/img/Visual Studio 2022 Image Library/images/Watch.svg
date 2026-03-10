@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWatch</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,12.5H9.5L8.5,10V8.5h6V10Zm-13,0H5.5l1-2.5V8.5H.5V10Z" />
+    <path class="light-defaultgrey" d="M14.5,8h-6L8,8.5V9H6.989L7,8.5,6.5,8H.5L0,8.5l.01,1.6.5,2.5L1,13H5.5l.464-.314,1-2.5V10H8l1.036,2.686L9.5,13H14l.49-.4L15,10V8.5ZM6,9.9,5.162,12H1.408L1,10V9H6ZM13.59,12H9.838L9,9.9V9h5l.007.9Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14.947,8.276l-2.5-5L12,3H10V4h1.691l2,4H14.5l.5.5ZM0,8.5.5,8h.809l2-4H5V3H3l-.447.276-2.5,5Z" />
+    </g>
+  </g>
+</svg>

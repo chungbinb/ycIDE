@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSplitTree</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M11,7v4H9v1h2.5l.5-.5V7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M.5,9.5v5h8v-5Z" />
+    <path class="light-defaultgrey" d="M8.5,8H.5L0,8.5v6l.5.5h8l.5-.5v-6ZM8,14H1V10H8Z" />
+    <path class="light-defaultgrey-10" d="M7.5,1.5v5h8v-5Z" />
+    <path class="light-defaultgrey" d="M15.5,0h-8L7,.5v6l.5.5h8l.5-.5V.5ZM15,6H8V2h7Z" />
+  </g>
+</svg>

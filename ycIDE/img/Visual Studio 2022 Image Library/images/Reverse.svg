@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReverse</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,2V9.5h-5Z" />
+    <path class="light-defaultgrey" d="M6.5,10h-5l-.416-.777,5-7.5L7,2V9.5ZM2.434,9H6V3.651Z" />
+    <path class="light-defaultgrey" d="M8,9.5V2l.916-.277,5,7.5L13.5,10h-5Z" />
+    <path class="light-blue" d="M13.854,13.146v.708l-2,2-.707-.708L12.293,14H2.708l1.146,1.146-.707.708-2-2v-.708l2-2,.707.708L2.708,13h9.585l-1.146-1.146.707-.708Z" />
+  </g>
+</svg>

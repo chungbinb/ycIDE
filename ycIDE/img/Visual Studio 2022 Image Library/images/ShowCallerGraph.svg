@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ShowCallerGraph</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6.854,3.145v.707l-2.5,2.5-.707-.707L5.291,4H0V3H5.3L3.647,1.352,4.354.645Z" />
+    <path class="light-defaultgrey-10" d="M6.5,7A1.5,1.5,0,0,1,8,5.5h5A1.5,1.5,0,0,1,14.5,7V8.5h-2v-1h-4v1h-2Z" />
+    <path class="light-defaultgrey" d="M13,5H8A2,2,0,0,0,6,7V8.5l.5.5h2L9,8.5V8h3v.5l.5.5h2l.5-.5V7A2,2,0,0,0,13,5Zm1,3H13V7.5L12.5,7h-4L8,7.5V8H7V7A1,1,0,0,1,8,6h5a1,1,0,0,1,1,1ZM7,10h6v1H7Zm4,2v1H7V12ZM7,14h5v1H7Z" />
+  </g>
+</svg>

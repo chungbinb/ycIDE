@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAlphaTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M4,3H2V1H4Zm9,10H11v2h2ZM15,2H13V4h2ZM3,4H1V6H3Z" />
+    <path class="light-defaultgrey" d="M8,3a5,5,0,1,0,5,5A5,5,0,0,0,8,3ZM7,10H5V8H7ZM9,7H7V5H9Z" />
+  </g>
+</svg>

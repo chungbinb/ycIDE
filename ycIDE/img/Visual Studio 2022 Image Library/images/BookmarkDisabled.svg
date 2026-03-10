@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0;}.cls-2{opacity:0.5;}</style>
+  </defs>
+  <title>BookmarkDisabled</title>
+  <g id="canvas" class="cls-1">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,1.5v13L7.972,10,3.5,14.5V1.5Z" />
+    <g class="cls-2">
+      <path class="light-defaultgrey" d="M8.35,9.643h-.7L7.291,10,4,6.707V5.293ZM12,9.293,4.707,2H4v.707l8,8ZM8.707,2H7.293L12,6.707V5.293ZM6,11.292l-2-2v1.414L5.292,12Z" />
+    </g>
+    <path class="light-defaultgrey" d="M12.5,1h-9L3,1.5v13l.854.354L8,10.7l4.146,4.151L13,14.5V1.5ZM12,13.292,8.354,9.643H7.646L4,13.292V2h8Z" />
+  </g>
+</svg>

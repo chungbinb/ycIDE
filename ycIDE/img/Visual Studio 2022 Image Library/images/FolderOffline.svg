@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFolderOffline</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M10.379,12.5H1.5V2.5h6l1,1h6V9.379l-1.5,1.5L10.854,8.732,8.732,10.854Z" />
+    <path class="light-yellow" d="M14.5,3H8.707l-.853-.854L7.5,2h-6L1,2.5v10l.5.5h9.379l-1-1H2V5H7.475l.354-.146L8.682,4H14V9.879l1-1V3.5ZM7.268,4H2V3H7.293l.488.488Z" />
+    <path class="light-defaultgrey" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+  </g>
+</svg>

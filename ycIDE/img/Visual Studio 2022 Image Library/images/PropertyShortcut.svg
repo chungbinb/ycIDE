@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPropertyShortcut</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7,9.45c-1.73,1.73-3.745,3.72-4.923,4.817-.861.75-2.077-.651-1.418-1.4,1.335-1.4,3.981-4.026,5.875-5.874a3.913,3.913,0,0,0,.686.873L7,8.086Z" />
+      <path class="light-defaultgrey" d="M7,10.157c-1.618,1.615-3.452,3.423-4.582,4.476a1.352,1.352,0,0,1-.892.346,1.5,1.5,0,0,1-1.056-.47,1.444,1.444,0,0,1-.187-1.973c1.383-1.448,4.122-4.167,6.022-6.018a3.9,3.9,0,0,0,.506.9c-1.858,1.817-4.466,4.408-5.791,5.8-.134.153.009.441.158.591a.4.4,0,0,0,.57.087C3.031,12.7,5.247,10.5,7,8.743Z" />
+    </g>
+    <path class="light-defaultgrey" d="M6,5a3.961,3.961,0,0,1,4-4,4.19,4.19,0,0,1,1.441.241L8.559,4.2,10.8,6.441l2.959-2.882A4.19,4.19,0,0,1,14,5a4.006,4.006,0,0,1-.541,2H8.086l-.879.879A3.979,3.979,0,0,1,6,5Z" />
+    <path class="light-defaultgrey-10" d="M15.5,8.5v7h-7v-7Z" />
+    <path class="light-defaultgrey" d="M15.5,8h-7L8,8.5v7l.5.5h7l.5-.5v-7ZM15,15H9V9h6Zm-1-4.5V14H13V11.707l-2.646,2.647-.708-.708L12.293,11H10V10h3.5Z" />
+  </g>
+</svg>

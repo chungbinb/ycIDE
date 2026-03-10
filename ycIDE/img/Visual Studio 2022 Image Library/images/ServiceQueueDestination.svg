@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>ServiceQueueDestination</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,10.5h-3v-5h3Zm-8-2.121V5.5h3v5H7.621Z" />
+    <path class="light-defaultgrey" d="M14,4H1V3H14Zm-.5,7h-3l-.5-.5v-5l.5-.5h3l.5.5v5ZM11,10h2V6H11Zm3,2v1H8.854V12ZM9,5.5v5l-.5.5H8.121l-1-1H8V6H6V8.879l-.646-.647L5,8.586V5.5L5.5,5h3Z" />
+    <path class="light-blue" d="M4.647,14.646,6.293,13H1V12H6.293L4.647,10.354l.707-.708,2.5,2.5v.708l-2.5,2.5Z" />
+  </g>
+</svg>

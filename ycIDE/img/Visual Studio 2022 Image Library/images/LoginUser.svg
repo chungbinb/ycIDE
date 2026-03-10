@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>LoginUser</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,2.5a3,3,0,1,0,3,3A3,3,0,0,0,8,2.5Z" />
+    <path class="light-defaultgrey-10" d="M8,8.5A4.494,4.494,0,0,0,3.5,13H9V11.09l1-1V10a2.119,2.119,0,0,1,.04-.44,2.11,2.11,0,0,1,.12-.51A4.5,4.5,0,0,0,8,8.5Z" />
+    <path class="light-defaultgrey" d="M11.5,5.5A3.5,3.5,0,1,0,6.04,8.4,5.015,5.015,0,0,0,3,13H4A4,4,0,0,1,8,9a4.052,4.052,0,0,1,2.04.56,2.11,2.11,0,0,1,.12-.51,3.706,3.706,0,0,1,.19-.46c-.13-.07-.26-.13-.39-.19A3.491,3.491,0,0,0,11.5,5.5ZM8,8a2.5,2.5,0,1,1,2.5-2.5A2.5,2.5,0,0,1,8,8Z" />
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

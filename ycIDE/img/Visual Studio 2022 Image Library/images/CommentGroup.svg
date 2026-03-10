@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>CommentGroup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,2.5v5h-3l-2,2.1V7.5H9V6.086L7.914,5H7.5V2.5Z" />
+      <path class="light-defaultgrey" d="M15,2.5v5l-.5.5H11.714L9.862,9.944,9,9.6V7h.5l.5.5v.85l1.138-1.195L11.5,7H14V3H8V5.086L7.914,5H7V2.5L7.5,2h7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.5,6.5v5h-3l-2,2.1V11.5H.5v-5Z" />
+    <path class="light-defaultgrey" d="M7.5,6H.5L0,6.5v5l.5.5H2v1.6l.862.344L4.714,12H7.5l.5-.5v-5ZM7,11H4.5l-.362.155L3,12.35V11.5L2.5,11H1V7H7Z" />
+  </g>
+</svg>

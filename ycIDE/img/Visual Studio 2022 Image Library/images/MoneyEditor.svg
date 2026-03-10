@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMoneyEditor</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M2.5,2.5V4h11l.5.5v.91a2.183,2.183,0,0,1,.44-.04,2.1,2.1,0,0,1,.56.07,2.24,2.24,0,0,1,.5.16V2.5Z" />
+      <path class="light-defaultgrey" d="M15.5,2H2.5L2,2.5V4H3V3H15V5.44a2.24,2.24,0,0,1,.5.16,1.99,1.99,0,0,1,.5.31V2.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M.5,4.5v8H6.77l.24-.5.25-.51.69-.69L9.3,9.46l.01-.02,3.32-3.32a2.114,2.114,0,0,1,.37-.3,2.186,2.186,0,0,1,.5-.27V4.5Z" />
+    <path class="light-defaultgrey" d="M13.5,4H.5L0,4.5v8l.5.5H6.53l.48-1H3.5A2.5,2.5,0,0,0,1,9.5v-2A2.5,2.5,0,0,0,3.5,5h7a2.493,2.493,0,0,0,1.15,2.1l.74-.74A1.479,1.479,0,0,1,11.5,5H13v.82a2.453,2.453,0,0,1,1-.41V4.5Zm-11,8H1V10.5A1.5,1.5,0,0,1,2.5,12ZM1,6.5V5H2.5A1.5,1.5,0,0,1,1,6.5Z" />
+    <path class="light-defaultgrey-10" d="M7,6.49a2,2,0,1,0,2,2A2.006,2.006,0,0,0,7,6.49Z" />
+    <path class="light-defaultgrey" d="M7,5.99a2.5,2.5,0,0,0,0,5,2.555,2.555,0,0,0,.95-.19L9.3,9.46l.01-.02A2.5,2.5,0,0,0,7,5.99Zm0,4a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,7,9.99Z" />
+    <path class="light-blue-10" d="M15.192,8.681,9.635,14.238,8.153,12.72l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,8.681Z" />
+    <path class="light-blue" d="M15.543,6.83a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L6.511,15.326,7.186,16l2.995-1.629,5.365-5.336A1.562,1.562,0,0,0,15.543,6.83Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

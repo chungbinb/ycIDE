@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTimeline</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M3,11.5H.5v-3H3v3Zm3-3v3h9v-3Z" />
+    <path class="light-defaultgrey" d="M4,5H1L2.5,7Z" />
+    <path class="light-blue" d="M5,12H4V6H5Z" />
+    <path class="light-defaultgrey" d="M7,7H6V6H7ZM9,6H8V7H9Zm2,0H10V7h1Zm2,0H12V7h1Zm2,0H14V7h1ZM1,6H0V7H1Z" />
+    <path class="light-defaultgrey" d="M6,11h9v1H6ZM3,11H1V9H3V8H.5L0,8.5v3l.5.5H3ZM6,8V9h9V8Z" />
+  </g>
+</svg>

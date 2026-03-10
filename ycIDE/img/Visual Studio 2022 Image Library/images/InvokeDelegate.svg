@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>InvokeDelegate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple-10" d="M14.5,4.5v9H1.5V8.3L8.141,4.5Z" />
+    <path class="light-purple" d="M14.5,4H9.016L7.266,5H12v8H4V6.866L3,7.438V13H2V8.009L1,8.581V13.5l.5.5h13l.5-.5v-9ZM14,13H13V5h1Z" />
+    <path class="light-defaultgrey" d="M11,2.5V4H10V3H7.266L5.516,2H10.5Z" />
+    <path class="light-green" d="M7,4,0,8V0Z" />
+  </g>
+</svg>

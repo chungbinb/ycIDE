@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightComputedColumnError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,14.5H.5v-8h6Z" />
+    <path class="light-defaultgrey" d="M6.5,6H.5L0,6.5v8l.5.5h6l.5-.5v-8ZM6,14H1V7H6ZM4,10H5v1H4Zm0,2H5v1H4ZM5,9H2V8H5ZM3,13H2V12H3Zm0-2H2V10H3Z" />
+    <path class="light-defaultgrey-10" d="M8,6,7,5H6.5V2.5h5V6L12,7l-.5.051A4.976,4.976,0,0,0,8,9.031Z" />
+    <path class="light-defaultgrey" d="M7,5H6V1.5L6.5,1h5l.5.5V7H8V6h3V3H7Zm.975,9.939L7.914,15h.112C8.01,14.979,7.991,14.96,7.975,14.939Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

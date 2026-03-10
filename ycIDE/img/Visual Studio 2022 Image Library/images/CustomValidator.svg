@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCustomValidator</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8.478,12.5H3.5v-4h10v2.771L12.271,12.5H10.522L9.5,11.478Z" />
+    <path class="light-defaultgrey" d="M10.022,12h2.749l-1,1h-.749ZM13.5,8H3.5L3,8.5v4l.5.5H7.978l1-1H4V9h9v2.771l1-1V8.5Z" />
+    <path class="light-defaultgrey" d="M10,3H3V2h7ZM3,4V5h9V4ZM3,7h7V6H3Z" />
+    <path class="light-green" d="M16,11.6l-4.25,4.25h-.707L8.793,13.6l.707-.707,1.9,1.9,3.9-3.9Z" />
+  </g>
+</svg>

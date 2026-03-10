@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDependancy</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,2.5V7H13V3.707L11.061,5.646l-.707-.707L12.293,3H9V2h4.5ZM1.868,13.425l.707.707L5.4,11.3,4.7,10.6ZM6.111,9.182l.707.707L9.646,7.061l-.707-.707Z" />
+  </g>
+</svg>

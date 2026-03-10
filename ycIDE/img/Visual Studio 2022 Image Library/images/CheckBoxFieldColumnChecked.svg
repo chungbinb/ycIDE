@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCheckBoxFieldColumnChecked</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,1.5v12H9v-6L8.5,7h-1V1.5Z" />
+    <path class="light-defaultgrey" d="M12.5,0h-5L7,.5V7H8V6h4V9H9v1h3v3H9v1h3.5l.5-.5V.5ZM12,5H8V2h4Z" />
+    <path class="light-defaultgrey-10" d="M.5,8.5h7v7H.5Z" />
+    <path class="light-defaultgrey" d="M2.763,13.944,1.348,12.53l.707-.707,1.061,1.061,2.829-2.828.707.707L3.47,13.944ZM7.5,8H.5L0,8.5v7l.5.5h7l.5-.5v-7ZM7,15H1V9H7Z" />
+  </g>
+</svg>

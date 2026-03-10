@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAccelerator</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,13.5H6.674l1.5-11H14.5Z" />
+    <path class="light-defaultgrey" d="M14.5,14H6.672l-.5-.567,1.5-11L8.172,2H14.5l.5.5v11ZM7.245,13H14V3H8.608Z" />
+    <path class="light-defaultgrey" d="M5,4V5H2V4ZM4,7H0V8H4ZM2,11H5V10H2Z" />
+  </g>
+</svg>

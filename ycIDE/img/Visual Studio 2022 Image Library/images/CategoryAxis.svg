@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCategoryAxis</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M13.5,4.5v6h-9v-7h4l1,1Z" />
+    <path class="light-yellow" d="M13.5,4H9.707l-.853-.854L8.5,3h-4L4,3.5v7l.5.5h9l.5-.5v-6ZM8.293,4l.488.488L8.268,5H5V4ZM13,10H5V6H8.475l.354-.146L9.682,5H13Z" />
+    <path class="light-defaultgrey" d="M14,15H13V14h1Zm-2,0H11V14h1Zm-2,0H9V14h1ZM8,15H7V14H8ZM6,15H5V14H6ZM4,15H3V14H4Zm10-3H3V1H2V12.5l.5.5H14Z" />
+  </g>
+</svg>

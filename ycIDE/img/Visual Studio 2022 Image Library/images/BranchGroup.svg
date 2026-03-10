@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBranchGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14,7.5h1.5v4H14ZM3.5,1.5V3h10l.5.5,0,2h1.5v-4Z" />
+      <path class="light-defaultgrey" d="M15.5,7l.5.5v4l-.5.5H14V11h1V8H14V7Zm0-6H3.5L3,1.5V3H4V2H15V5H14V6h1.5l.5-.5v-4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M12.5,14.5h-5v-4h5Z" />
+    <path class="light-defaultgrey-10" d="M12.5,4.5H.5v4h12Z" />
+    <path class="light-defaultgrey" d="M12.5,9l.5-.5v-4L12.5,4H.5L0,4.5v4L.5,9H3v3.5l.5.5H7v1.5l.5.5h5l.5-.5v-4l-.5-.5h-5l-.5.5V12H4V9ZM8,11h4v3H8ZM1,8V5H12V8Z" />
+  </g>
+</svg>

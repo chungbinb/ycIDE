@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBidirectional</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M10,1.5h4.5V6Z" />
+    <path class="light-blue-10" d="M6,14.5H1.5V10Z" />
+    <path class="light-blue" d="M14.5,1H10l-.354.854,1.9,1.9L3.75,11.543l-1.9-1.9L1,10v4.5l.5.5H6l.354-.854-1.9-1.9L12.25,4.457l1.9,1.9L15,6V1.5ZM2,14V11.207L4.793,14ZM14,4.793,11.207,2H14Z" />
+  </g>
+</svg>

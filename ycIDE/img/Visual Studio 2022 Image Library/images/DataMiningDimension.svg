@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDataMiningDimension</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14.854,13.146v.708l-2,2-.708-.708L13.3,14H2.5L2,13.5V2.707L.854,3.854.146,3.146l2-2h.708l2,2-.708.708L3,2.707V13H13.289l-1.143-1.142.708-.708Z" />
+    <path class="light-yellow" d="M5.6,11l-.6-.6v-.6l5.426-5.426h.6l.6.6v.6L6.206,11Z" />
+    <path class="light-defaultgrey" d="M13.44,8.584,11.029,6.172l-.56.56-1.206-1.2.56-.56L7.416,2.56,7.976,2a8.3,8.3,0,0,1,3.043,1.771l.649-.649h.6l.6.6v.6l-.656.656A8.649,8.649,0,0,1,14,8.024Z" />
+  </g>
+</svg>

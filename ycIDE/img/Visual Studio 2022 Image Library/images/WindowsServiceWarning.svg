@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWindowsServiceWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M5.5,6v5.5H7.99l.28-.5,2.2-4h2.06l.47.85.5.91V6Z" />
+      <path class="light-defaultgrey" d="M13.5,6H13V7.85l.5.91.5.91V5.5ZM6,6H5.5L5,5.5v6l.5.5H7.72l.27-.5.28-.5H6Z" />
+    </g>
+    <path class="light-defaultgrey" d="M0,9v1H4V9ZM2,7V8H4V7ZM0,5V6H4V5Z" />
+    <path class="light-defaultgrey-10" d="M5.5,3.5v2h8v-2Z" />
+    <path class="light-defaultgrey" d="M13.5,3h-8L5,3.5v2l.5.5h8l.5-.5v-2ZM13,5H6V4h7Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

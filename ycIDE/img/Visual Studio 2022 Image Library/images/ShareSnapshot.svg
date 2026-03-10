@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightShareSnapshot</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,7.5l-1-1H11v.41L9.91,8H3.5v7.5h12v-8Z" />
+    <path class="light-defaultgrey" d="M15.5,7H12.71l-.86-.85L11.5,6H11v.91L10.91,7h.38l.86.85L12.5,8H15v7H4V8H3v7.5l.5.5h12l.5-.5v-8Z" />
+    <path class="light-teal" d="M6,9.5A.5.5,0,1,1,5.5,9,.5.5,0,0,1,6,9.5Z" />
+    <path class="light-teal-10" d="M9.5,13.5a2,2,0,1,1,2-2A2,2,0,0,1,9.5,13.5Z" />
+    <path class="light-teal" d="M9.5,9A2.5,2.5,0,1,0,12,11.5,2.5,2.5,0,0,0,9.5,9Zm0,4A1.5,1.5,0,1,1,11,11.5,1.5,1.5,0,0,1,9.5,13Z" />
+    <path class="light-defaultgrey-10" d="M.5,6.5V.5h9v6Z" />
+    <path class="light-defaultgrey" d="M9.5,0H.5L0,.5v6L.5,7h9l.5-.5V.5ZM9,6H1V1H9Z" />
+    <path class="light-defaultgrey" d="M5.277,3.916H4.723l-4.5-3L0,.5.5,0h9l.5.5L9.777.916ZM2.151,1,5,2.9,7.849,1Z" />
+  </g>
+</svg>

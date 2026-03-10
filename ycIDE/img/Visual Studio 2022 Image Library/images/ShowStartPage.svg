@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ShowStartPage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H9.414l1-1H14V6H2V9.879l-1,1V5.5L1.5,5h13Z" />
+      <path class="light-defaultgrey-10" d="M14.5,5v8H10.414l.354-.354-5-5H4.232L1.5,10.379V5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,3V5H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <path class="light-blue-10" d="M7.5,11.5v4h-5v-4L5,9Z" />
+    <path class="light-blue" d="M9.354,12.646l-4-4H4.646l-4,4,.708.708L2,12.707V15.5l.5.5h5l.5-.5V12.707l.646.647ZM7,15H5.5V13h-1v2H3V11.707l2-2,2,2Z" />
+  </g>
+</svg>

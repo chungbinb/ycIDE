@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFilterDescriptor</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,5.5v8h-8V3.5h6Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13,14v1.5l-.5.5h-8L4,15.5V5.5L4.5,5H6v8.5l.5.5Z" />
+      <path class="light-defaultgrey" d="M12.5,16H12V15h1v.5ZM11,15H10v1h1ZM9,15H8v1H9ZM7,15H6v1H7ZM5,15H4v.5l.5.5H5Zm0-2H4v1H5Zm0-2H4v1H5ZM5,9H4v1H5ZM5,7H4V8H5ZM5,5H4.5L4,5.5V6H5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M14.854,5.146l-2-2L12.5,3h-6L6,3.5v10l.5.5h8l.5-.5v-8ZM7,13V4h4.993V6H14v7Z" />
+    <path class="light-defaultgrey" d="M13,11H8V10h5Zm0-3H8V9h5ZM11,6H8V7h3Z" />
+    <path class="light-blue" d="M5,.5,3,2.5V5H2V2.5L0,.5V0H5Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNavigateMenu</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5.5v10H12V2.988L9,3V.5Z" />
+    <path class="light-defaultgrey-10" d="M10.5,4.5v10h-9V4.5h.879L4.732,6.854H6.268L8.621,4.5Z" />
+    <path class="light-defaultgrey" d="M15,.5v10l-.5.5H12V10h2V8H12V7h2V5H12V4h2V2H9V0h5.5Z" />
+    <path class="light-defaultgrey" d="M10.5,4H9.121L7,6.121V14H5V6.854H4.732L4,6.121V8H2V6H3.879l-2-2H1.5L1,4.5v10l.5.5h9l.5-.5V4.5ZM4,14H2V12H4Zm0-3H2V9H4Zm6,3H8V12h2Zm0-3H8V9h2Zm0-3H8V6h2Z" />
+    <path class="light-blue" d="M6,2V4.293L7.146,3.146l.708.708-2,2H5.146l-2-2,.708-.708L5,4.293V2A2,2,0,0,1,7,0H8V1H7A1,1,0,0,0,6,2Z" />
+  </g>
+</svg>

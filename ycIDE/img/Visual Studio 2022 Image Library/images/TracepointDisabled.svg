@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTracepointDisabled</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M8,15.071.929,8,8,.929,15.071,8Z" />
+    <path class="light-red" d="M8.354,15.425H7.646L.575,8.354V7.646L7.646.575h.708l7.071,7.071v.708ZM1.636,8,8,14.364,14.364,8,8,1.636Z" />
+  </g>
+</svg>

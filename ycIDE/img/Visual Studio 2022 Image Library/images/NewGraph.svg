@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightNewGraph</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M10.02,6H7.95L4.78,10H6.06L8.98,6.3,11.94,10h1.28Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2.5,10.5v4h5v-4Zm8,0v4h5v-4Zm-2.97-9a4.4,4.4,0,0,1,.21.5,4.457,4.457,0,0,1,0,3,4.4,4.4,0,0,1-.21.5H11.5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,10h-5l-.5.5v4l.5.5h5l.5-.5v-4ZM15,14H11V11h4ZM7.5,10h-5l-.5.5v4l.5.5h5l.5-.5v-4ZM7,14H3V11H7ZM11.5,1H7.24a3.6,3.6,0,0,1,.29.5,4.4,4.4,0,0,1,.21.5H11V5H7.74a4.4,4.4,0,0,1-.21.5,3.6,3.6,0,0,1-.29.5H11.5l.5-.5v-4Z" />
+    <path class="light-yellow" d="M3,2,3,0H4L4,2l-.5.5Zm.5,2.5L3,5V7H4V5Zm1-1L5,4,7,4V3L5,3Zm-2,0L2,3,0,3V4L2,4Zm1.708-.7h.708L6.328,1.378,5.62.671,4.208,2.088ZM2.792,4.206H2.085L.673,5.623l.707.706L2.793,4.913Zm1.414,0v.708L5.623,6.328l.706-.708L4.913,4.208ZM2.794,2.792V2.085L1.378.673.671,1.38,2.088,2.793Z" />
+  </g>
+</svg>

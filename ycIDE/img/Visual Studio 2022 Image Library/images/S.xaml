@@ -1,0 +1,22 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M4.906,11.507V10.02a2.256,2.256,0,0,0,.476.328,3.871,3.871,0,0,0,.586.247,4.838,4.838,0,0,0,.62.154,3.33,3.33,0,0,0,.571.054,2.442,2.442,0,0,0,1.356-.3,1,1,0,0,0,.447-.882.962.962,0,0,0-.148-.537A1.617,1.617,0,0,0,8.4,8.665,4.4,4.4,0,0,0,7.769,8.3c-.241-.114-.5-.236-.774-.361q-.444-.237-.826-.479A3.645,3.645,0,0,1,5.5,6.927a2.268,2.268,0,0,1-.442-.667A2.146,2.146,0,0,1,4.9,5.393a2.005,2.005,0,0,1,.276-1.066A2.342,2.342,0,0,1,5.9,3.58a3.361,3.361,0,0,1,1.03-.438A4.889,4.889,0,0,1,8.112,3a4.711,4.711,0,0,1,1.992.311V4.737A3.185,3.185,0,0,0,8.2,4.2a3.47,3.47,0,0,0-.641.061,1.928,1.928,0,0,0-.571.2,1.238,1.238,0,0,0-.409.359.879.879,0,0,0-.158.529,1,1,0,0,0,.121.5,1.3,1.3,0,0,0,.356.389,3.469,3.469,0,0,0,.571.343c.224.112.484.231.78.361.3.158.59.325.859.5a3.974,3.974,0,0,1,.71.578,2.507,2.507,0,0,1,.486.7,2.047,2.047,0,0,1,.179.878,2.178,2.178,0,0,1-.267,1.117,2.157,2.157,0,0,1-.719.74,3.171,3.171,0,0,1-1.042.413A5.813,5.813,0,0,1,7.207,12a5.109,5.109,0,0,1-.538-.033c-.211-.023-.429-.055-.652-.1s-.433-.1-.632-.155A2,2,0,0,1,4.906,11.507Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

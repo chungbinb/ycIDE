@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAccordian</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M14.854,8.854l-2,2h-.708l-2-2,.708-.708L12,9.293V4h1V9.293l1.146-1.147Z" />
+    <path class="light-defaultgrey" d="M15,2H1V1H15ZM9,4H4V5H9ZM9,7H4V8H9ZM8,10H4v1H8ZM3,4H2V5H3ZM3,7H2V8H3Zm0,3H2v1H3Zm12,3H1v1H15Z" />
+  </g>
+</svg>

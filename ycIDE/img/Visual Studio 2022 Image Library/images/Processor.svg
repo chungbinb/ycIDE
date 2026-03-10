@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightProcessor</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,3.5v8h-8v-8Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,12H9v2H8ZM6,14H7V12H6ZM4,14H5V12H4Zm6,0h1V12H10ZM8,3H9V1H8ZM6,3H7V1H6ZM4,3H5V1H4Zm6,0h1V1H10Zm2,4h2V6H12Zm0-3V5h2V4Zm0,5h2V8H12Zm0,2h2V10H12ZM1,7H3V6H1ZM1,4V5H3V4ZM1,9H3V8H1Zm0,2H3V10H1Z" />
+    </g>
+    <path class="light-defaultgrey" d="M11.5,3h-8L3,3.5v8l.5.5h8l.5-.5v-8ZM11,11H4V4h7Z" />
+    <path class="light-defaultgrey" d="M9.5,5h-4L5,5.5v4l.5.5h4l.5-.5v-4ZM9,9H6V6H9Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExportTestRunResults</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.351,9h-4.7L6.5,7.667V5.438L9.016,4l-.875-.5H9.5V7.667Z" />
+    <path class="light-blue" d="M12.354,9.646l2.5,2.5v.708l-2.5,2.5-.708-.708L13.293,13H8V12h5.293l-1.647-1.646ZM15,10v5h1V10Z" />
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+    <path class="light-teal-10" d="M7,12.5H5.24A1,1,0,0,1,4.4,10.962L5.33,9.5h5.34l.162.254-.6.6.647.646H7Z" />
+    <path class="light-teal" d="M7,13H5.239a1.5,1.5,0,0,1-1.264-2.307L4.908,9.23,5.33,9h5.34l.422.23.1.161-.725.725L10.4,10H5.6l-.786,1.231A.5.5,0,0,0,5.239,12H7Z" />
+    <path class="light-defaultgrey" d="M7,5.152V7.667l-.078.27L6.243,9H5.33l-.421.23L6,7.521v-1.8Zm3,2.369V4h1V3H7.266l1.75,1L9,4.009V7.667l.078.27L9.757,9h.913l.421.23Z" />
+  </g>
+</svg>

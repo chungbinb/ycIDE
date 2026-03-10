@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>Account</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,9.721V15.5l-2-2-2,2V9.721a3,3,0,1,1,4,0Z" />
+    <path class="light-defaultgrey" d="M8,7.5A3.5,3.5,0,1,0,2,9.942V15.5l.854.354L4.5,14.207l1.646,1.647L7,15.5V9.942A3.485,3.485,0,0,0,8,7.5ZM4.5,5A2.5,2.5,0,1,1,2,7.5,2.5,2.5,0,0,1,4.5,5Zm.354,8.146H4.146L3,14.293V10.649a3.381,3.381,0,0,0,3,0v3.644Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,4V14.5l-.5.5H8V14h6V5H11V2H4V3.051a4.485,4.485,0,0,0-1,.225V1.5L3.5,1H12l.354.146,2.5,2.5Z" />
+      <path class="light-defaultgrey-10" d="M14.5,4V14.5H8V10.32a4.48,4.48,0,0,0-4.5-7.2V1.5H12Z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>TwoWayRelay</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,8A1.5,1.5,0,1,1,8,6.5,1.5,1.5,0,0,1,9.5,8Z" />
+    <path class="light-defaultgrey" d="M.672,11.206A7.995,7.995,0,0,1,2.343,2.343l.707.707a6.981,6.981,0,0,0-1.608,7.386Zm3.605.1.707-.706a3.994,3.994,0,0,1,.185-5.431l-.707-.707A4.992,4.992,0,0,0,4.277,11.308Zm7.261-6.844-.707.707a4.007,4.007,0,0,1,0,5.658l.707.707A5.008,5.008,0,0,0,11.538,4.464ZM9.967,8a2,2,0,1,1-2-2A2,2,0,0,1,9.967,8Zm-1,0a1,1,0,1,0-1,1A1,1,0,0,0,8.967,8Zm4.69-5.657-.707.707a7,7,0,0,1,0,9.9l.707.707a8,8,0,0,0,0-11.314Z" />
+    <path class="light-blue" d="M7.854,13.146v.708l-2,2-.708-.708L6.293,14H1.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L1.707,13H6.293L5.146,11.854l.708-.708Z" />
+  </g>
+</svg>

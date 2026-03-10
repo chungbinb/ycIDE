@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBookmarkMainMenuItem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8H8V7.086L6.914,6H1.5V5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H8V13h6V6H1V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,3V5H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+    <path class="light-defaultgrey-10" d="M.5,8h6v7.5l-3-3-3,3Z" />
+    <path class="light-defaultgrey" d="M6.5,7H.5L0,7.5V15l.854.354L3.5,12.707l2.646,2.647L7,15V7.5ZM6,13.793,3.854,11.646H3.146L1,13.793V8H6Z" />
+  </g>
+</svg>

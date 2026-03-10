@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightModalPopup</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M2.5,4V7H8.91l.4.4.69.69V9.88l.15-.15.27.27H14v2h1.5V4Z" />
+      <path class="light-defaultgrey" d="M15.5,4H2.5L2,4.5V7H3.71l2-2H7.29l-2,2H6.71l2-2h1.58l-2,2h.62l.4.4L11.71,5h1.58L10,8.29V9.71L14.71,5H15V6.29L11.29,10h1.42L15,7.71V9.04l-1,1v1.42l1-1V12H14v1h1.5l.5-.5v-8ZM3,6.29V5H4.29Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M3,2V4H15V2Z" />
+    <path class="light-defaultgrey" d="M15.5,1H2.5L2,1.5v3l.5.5h13l.5-.5v-3ZM3,4V2H15V4Z" />
+    <path class="light-defaultgrey-10" d="M8.5,11.38V8.5H.5v7H8.38l-.5-.5-.73-.73V12.73Z" />
+    <path class="light-defaultgrey" d="M9,10.88V8.5L8.5,8H.5L0,8.5v7l.5.5h8l.19-.19L7.88,15H1V10H8v1.88Z" />
+    <path class="light-blue" d="M13,11v2.5l-.5.5H9.707l1.146,1.146-.707.708-2-2v-.708l2-2,.707.708L9.707,13H12V11Z" />
+  </g>
+</svg>

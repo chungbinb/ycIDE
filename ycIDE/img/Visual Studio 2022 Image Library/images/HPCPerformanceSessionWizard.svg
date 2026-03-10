@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-darkblue{fill: #313c9e; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHPCPerformanceSessionWizard</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,14.5h2v-6h-2Z" />
+    <path class="light-defaultgrey-10" d="M7,9a1.506,1.506,0,0,1-1-.39,1.476,1.476,0,0,1-.47-.82L5.5,7.63V14.5h2V8.91A1.426,1.426,0,0,1,7,9Z" />
+    <path class="light-defaultgrey-10" d="M9.5,2.5V4.89a1.482,1.482,0,0,1,0,2.22V14.5h2V2.5Z" />
+    <path class="light-defaultgrey-10" d="M13.5,14.5h2v-5h-2Z" />
+    <path class="light-defaultgrey" d="M11.5,2h-2L9,2.5V4.59a1.483,1.483,0,0,1,.5.3A1.5,1.5,0,0,1,10,6V3h1V14H10V6a1.5,1.5,0,0,1-.5,1.11,1.483,1.483,0,0,1-.5.3V14.5l.5.5h2l.5-.5V2.5Z" />
+    <path class="light-defaultgrey" d="M15.5,15h-2l-.5-.5v-5l.5-.5h2l.5.5v5ZM14,14h1V10H14Z" />
+    <path class="light-defaultgrey" d="M3.5,15h-2L1,14.5v-6L1.5,8h2l.5.5v6ZM2,14H3V9H2Z" />
+    <path class="light-defaultgrey" d="M7.5,8.91A1.426,1.426,0,0,1,7,9v5H6V8.61a1.476,1.476,0,0,1-.47-.82L5.5,7.63l-.02-.11-.27-.05A.727.727,0,0,1,5,7.41V14.5l.5.5h2l.5-.5V8.61A1.338,1.338,0,0,1,7.5,8.91Z" />
+    <path class="light-darkblue" d="M.4,2.51l1.313-.263a.678.678,0,0,0,.532-.532L2.51.4a.5.5,0,0,1,.98,0l.263,1.313a.678.678,0,0,0,.532.532L5.6,2.51a.5.5,0,0,1,0,.98l-1.313.263a.678.678,0,0,0-.532.532L3.49,5.6a.5.5,0,0,1-.98,0L2.247,4.285a.678.678,0,0,0-.532-.532L.4,3.49a.5.5,0,0,1,0-.98Z" />
+    <path class="light-blue" d="M5.4,5.51l.786-.157a.212.212,0,0,0,.165-.163L6.51,4.4a.5.5,0,0,1,.98,0l.157.786a.212.212,0,0,0,.163.165L8.6,5.51a.5.5,0,0,1,0,.98l-.786.157a.212.212,0,0,0-.165.163L7.49,7.6a.5.5,0,0,1-.98,0l-.157-.786a.212.212,0,0,0-.163-.165L5.4,6.49a.5.5,0,0,1,0-.98Z" />
+  </g>
+</svg>

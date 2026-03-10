@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCloneToDesktop</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,11.5v3H1.5v-3a1,1,0,0,1,1-1h10A1,1,0,0,1,13.5,11.5Z" />
+    <path class="light-defaultgrey" d="M13.5,15H1.5L1,14.5v-3A1.5,1.5,0,0,1,2.5,10h10A1.5,1.5,0,0,1,14,11.5v3ZM2,14H13V11.5a.5.5,0,0,0-.5-.5H2.5a.5.5,0,0,0-.5.5Zm10-1H11V12h1Zm-2,0H9V12h1Z" />
+    <path class="light-blue" d="M10.854,5.854l-3,3H7.146l-3-3,.708-.708L7,7.293V1H8V7.293l2.146-2.147Z" />
+  </g>
+</svg>

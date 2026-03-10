@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPageFooter</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,1.5v13h11V1.5Zm9.5,11-.5.5h-7L4,12.5v-3L4.5,9h7l.5.5Z" />
+    <path class="light-blue-10" d="M11.5,12.5h-7v-3h7Z" />
+    <path class="light-defaultgrey" d="M13.5,15H2.5L2,14.5V1.5L2.5,1h11l.5.5v13ZM3,14H13V2H3ZM12,4H4V3h8Zm0,2H4V5h8Zm0,2H4V7h8Z" />
+    <path class="light-blue" d="M11.5,13h-7L4,12.5v-3L4.5,9h7l.5.5v3ZM5,12h6V10H5Z" />
+  </g>
+</svg>

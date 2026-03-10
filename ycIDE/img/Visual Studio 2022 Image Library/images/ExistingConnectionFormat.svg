@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExistingConnectionFormat</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M10,11h2V8.707L10.854,9.854l-.708-.708,2-2h.708l2,2-.708.708L13,8.707V11.5l-.5.5H10Z" />
+    <path class="light-lightblue-10" d="M4,6.5C2.314,6.5.5,7,.5,8.086v5.828C.5,15,2.314,15.5,4,15.5s3.5-.5,3.5-1.586V8.086C7.5,7,5.686,6.5,4,6.5Z" />
+    <path class="light-lightblue" d="M4,6C2.073,6,0,6.567,0,7.813v6.375C0,15.433,2.073,16,4,16s4-.567,4-1.812V7.813C8,6.567,5.927,6,4,6ZM4,7c1.969,0,3,.6,3,.813s-1.031.812-3,.812-3-.6-3-.812S2.031,7,4,7Zm0,8c-1.969,0-3-.6-3-.812V9.051a7.2,7.2,0,0,0,3,.574,7.2,7.2,0,0,0,3-.574v5.137C7,14.4,5.969,15,4,15Z" />
+    <path class="light-defaultgrey-10" d="M15.5,5.5h-6v-4h6Z" />
+    <path class="light-defaultgrey" d="M15.5,0h-6L9,.5v5l.5.5h6l.5-.5V.5ZM11,5H10V4h1Zm0-2H10V2h1Zm2,2H12V4h1Zm0-2H12V2h1Zm2,2H14V4h1Zm0-2H14V2h1Z" />
+  </g>
+</svg>

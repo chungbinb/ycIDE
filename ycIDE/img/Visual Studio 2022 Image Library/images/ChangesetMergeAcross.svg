@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightChangesetMergeAcross</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M15.854,13.146v.708L13.909,15.8l-.707-.707L14.293,14H12.707l-1.853,1.854L10.5,16H9V15h1.293l1-1H9V13h5.293L13.2,11.909l.707-.707Z" />
+    <path class="light-defaultgrey" d="M8.707,9H10.5a3.5,3.5,0,1,0-3-5.274A3.494,3.494,0,1,0,4.5,9H6.293L1.646,13.646l.708.708L7.5,9.207,10.293,12h1.414ZM7,8H4.5A2.5,2.5,0,1,1,7,5.5ZM8,5.5A2.5,2.5,0,1,1,10.5,8H8Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCloudError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M7.05,11.5h-2.5a3.125,3.125,0,1,1,0-6.25,2.924,2.924,0,0,1,.8.109A3.493,3.493,0,0,1,11.925,7h.065A4.99,4.99,0,0,0,7.05,11.5Z" />
+    <path class="light-lightblue" d="M7,12H4.548a3.626,3.626,0,0,1,0-7.25,3.48,3.48,0,0,1,.567.047A3.963,3.963,0,0,1,12.37,6.5,2.664,2.664,0,0,1,14.516,7.7,4.947,4.947,0,0,0,12,7a4.942,4.942,0,0,0-.573.058A3.036,3.036,0,0,0,8.417,4,3,3,0,0,0,5.609,5.989a2.51,2.51,0,0,0-1.061-.238,2.625,2.625,0,0,0,0,5.25H7.1A4.985,4.985,0,0,0,7,12Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

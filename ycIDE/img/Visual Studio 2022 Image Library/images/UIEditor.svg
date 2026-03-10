@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightUIEditor</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M11,4H8V3h3Zm2,1H8V6h5Zm0,2H8V8h5Zm0,2H8v1h5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M6.25,10.25A2.25,2.25,0,1,1,4,8,2.25,2.25,0,0,1,6.25,10.25ZM7.5,16a3.5,3.5,0,0,0-7,0Z" />
+    <path class="light-defaultgrey-10" d="M14.5,3.5v8H7.524a3.683,3.683,0,0,0,.226-1.25A3.723,3.723,0,0,0,6.5,7.476V1.5h6v2Z" />
+    <path class="light-defaultgrey" d="M15,3.75v7.857L14.607,12H7.3a3.689,3.689,0,0,0,.364-1H14V4H12V2H7V8.023A3.765,3.765,0,0,0,6,7.09v-5.7L6.393,1H12.25l.278.115,2.357,2.357Z" />
+    <path class="light-defaultgrey" d="M2.25,10.25A1.75,1.75,0,1,1,4,12,1.752,1.752,0,0,1,2.25,10.25ZM5.7,12.394a2.75,2.75,0,1,0-3.4,0A4,4,0,0,0,0,16H1a3,3,0,0,1,6,0H8A4,4,0,0,0,5.7,12.394Z" />
+  </g>
+</svg>

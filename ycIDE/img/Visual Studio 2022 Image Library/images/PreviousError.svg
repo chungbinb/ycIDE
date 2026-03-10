@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPreviousError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M15,8.5A6.5,6.5,0,1,1,2.124,7.245l.522.523L4.768,5.646,4.121,5H8V2.025C8.166,2.013,8.331,2,8.5,2A6.5,6.5,0,0,1,15,8.5Z" />
+    <path class="light-blue" d="M3.353,1.354,1.707,3H7V4H1.707L3.353,5.646l-.707.708-2.5-2.5V3.146l2.5-2.5Z" />
+    <path class="white" d="M9.207,8.5l2.4,2.4L10.9,11.6l-2.4-2.4L6.1,11.6,5.4,10.9l2.4-2.4L5.4,6.1,6.1,5.4l2.4,2.4,2.4-2.4L11.6,6.1Z" />
+  </g>
+</svg>

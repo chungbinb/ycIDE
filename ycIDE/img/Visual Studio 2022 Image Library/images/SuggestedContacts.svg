@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSuggestedContacts</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15,3V4H7V3ZM9,7h6V6H9Zm0,3h6V9H9Zm0,3h6V12H9Z" />
+    <path class="light-yellow" d="M4.712,4.292,5.4,6.445,3.68,5.1,1.957,6.445l.69-2.153L1,3H3.064L3.68,1.086,4.3,3H6.359Z" />
+  </g>
+</svg>

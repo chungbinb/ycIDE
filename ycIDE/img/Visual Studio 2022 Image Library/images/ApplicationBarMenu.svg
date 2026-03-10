@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightApplicationBarMenu</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,14.5H1.5v-5h13Z" />
+    <path class="light-defaultgrey-10" d="M14.5,7.5H1.5v-6h13Z" />
+    <path class="light-defaultgrey" d="M4.5,11l.5.5v1l-.5.5h-1L3,12.5v-1l.5-.5Zm3,0-.5.5v1l.5.5h1l.5-.5v-1L8.5,11Zm5,0h-1l-.5.5v1l.5.5h1l.5-.5v-1Z" />
+    <path class="light-defaultgrey" d="M14.5,15H1.5L1,14.5v-5L1.5,9h13l.5.5v5ZM2,14H14V10H2Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v6l.5.5h13l.5-.5v-6ZM14,7H2V2H14ZM13,4H3V3H13Zm0,2H3V5H13Z" />
+  </g>
+</svg>

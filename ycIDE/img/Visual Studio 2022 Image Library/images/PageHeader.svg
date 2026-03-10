@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>PageHeader</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,1.5v13h11V1.5Zm9,5h-7v-3h7Z" />
+    <path class="light-blue-10" d="M11.5,6.5h-7v-3h7Z" />
+    <path class="light-defaultgrey" d="M2.5,1h11l.5.5v13l-.5.5H2.5L2,14.5V1.5ZM13,2H3V14H13ZM4,12h8v1H4Zm0-2h8v1H4ZM4,8h8V9H4Z" />
+    <path class="light-blue" d="M11.5,7h-7L4,6.5v-3L4.5,3h7l.5.5v3ZM5,6h6V4H5Z" />
+  </g>
+</svg>

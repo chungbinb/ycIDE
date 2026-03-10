@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>WriteToConsole</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M5.862,13.5H1.5V5H12.933a2.625,2.625,0,0,0-.3.248L7.263,10.617Zm5.736,0h2.9V10.613Z" />
+      <path class="light-defaultgrey" d="M14.949,4.551,15,4.5v.067C14.983,4.563,14.966,4.555,14.949,4.551ZM14,11.11V13H12.1l-1,1h3.4l.5-.5V10.116ZM6.105,13H2V5H1.5L1,4.5v9l.5.5H5.619Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,1.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M14.439,4.5a2.61,2.61,0,0,1,.51.051L15,4.5v-3L14.5,1H1.5L1,1.5v3l.5.5H12.933A2.528,2.528,0,0,1,14.439,4.5ZM2,2H14V4H2Z" />
+    <path class="light-defaultgrey" d="M7.076,11H6V10H7.879l-.616.617ZM5.854,8.146l-2-2-.708.708L4.793,8.5,3.146,10.146l.708.708,2-2Z" />
+    <path class="light-blue-10" d="M15.192,7.808,9.635,13.365,8.153,11.847l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,7.808Z" />
+    <path class="light-blue" d="M15.543,5.957a1.562,1.562,0,0,0-2.2,0l-5.25,5.25L6.511,14.453l.675.674L10.181,13.5l5.365-5.336A1.562,1.562,0,0,0,15.543,5.957Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

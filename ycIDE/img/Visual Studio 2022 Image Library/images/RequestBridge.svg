@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRequestBridge</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,9.5c.813,0,1.5,1.145,1.5,2.5s-.687,2.5-1.5,2.5H7c-.813,0-1.5-1.145-1.5-2.5S6.187,9.5,7,9.5Z" />
+    <path class="light-defaultgrey-10" d="M2,6.5C1.187,6.5.5,5.355.5,4S1.187,1.5,2,1.5H9c.813,0,1.5,1.145,1.5,2.5S9.813,6.5,9,6.5Z" />
+    <path class="light-blue" d="M14.293,3,13.146,1.854l.708-.708,2,2v.708l-2,2-.708-.708L14.293,4H12V3Z" />
+    <path class="light-defaultgrey" d="M14,9H8V7H9c1.105,0,2-1.343,2-3s-.895-3-2-3H2C.9,1,0,2.343,0,4S.9,7,2,7H7V9C5.9,9,5,10.343,5,12s.895,3,2,3h7c1.105,0,2-1.343,2-3S15.105,9,14,9ZM9,2c.552,0,1,.9,1,2S9.552,6,9,6,8,5.105,8,4,8.448,2,9,2ZM2,6c-.552,0-1-.895-1-2s.448-2,1-2H7.519A3.914,3.914,0,0,0,7,4a3.914,3.914,0,0,0,.519,2Zm5,8c-.552,0-1-.895-1-2s.448-2,1-2,1,.895,1,2S7.552,14,7,14Zm7,0H8.481a4.113,4.113,0,0,0,0-4H14c.552,0,1,.895,1,2S14.552,14,14,14Z" />
+    <path class="light-blue" d="M4,11v1H1.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L1.707,11Z" />
+  </g>
+</svg>

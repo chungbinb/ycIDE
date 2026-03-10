@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPerformanceError</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.05,11.5H1.5V1.5h12V7.254A4.907,4.907,0,0,0,7.05,11.5Z" />
+    <path class="light-green" d="M10.5,5.207,6.854,8.854H6.146L4.5,7.207,2,9.707V8.293L4.146,6.146h.708L6.5,7.793l3.646-3.647h.708L13,6.293V7.1a5.146,5.146,0,0,0-.674-.068Z" />
+    <path class="light-defaultgrey" d="M7.1,11A4.988,4.988,0,0,0,7,12H1.5L1,11.5V1.5L1.5,1h12l.5.5V7.422A4.968,4.968,0,0,0,13,7.1V2H2v9Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

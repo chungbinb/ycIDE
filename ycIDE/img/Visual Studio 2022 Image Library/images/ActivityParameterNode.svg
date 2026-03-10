@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightActivityParameterNode</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,3.5v8H5.5v-2H.5v-4h5v-2Z" />
+    <path class="light-defaultgrey" d="M11.5,5l.5.5v1l-.5.5h-1L10,6.5v-1l.5-.5ZM12,9.5l.5.5h1l.5-.5v-1L13.5,8h-1l-.5.5Zm-4,0,.5.5h1l.5-.5v-1L9.5,8h-1L8,8.5Z" />
+    <path class="light-defaultgrey" d="M15.5,3H5.5L5,3.5V5H.5L0,5.5v4l.5.5H5v1.5l.5.5h10l.5-.5v-8ZM1,9V6H6V9Zm14,2H6V10h.5L7,9.5v-4L6.5,5H6V4h9Z" />
+  </g>
+</svg>

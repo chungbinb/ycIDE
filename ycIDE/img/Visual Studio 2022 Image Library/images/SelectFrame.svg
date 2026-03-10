@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>SelectFrame</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,5.953V9.995L8,12.015,4.5,9.995V5.953L8,3.932Z" />
+    <path class="light-defaultgrey" d="M12,9.994V5.953l-.25-.432L8.25,3.5h-.5L4.25,5.521,4,5.953V9.994l.25.433,3.5,2.021h.5l3.5-2.021ZM7.5,11.15,5,9.705V6.86L7.5,8.3ZM8,7.438,5.465,5.974,8,4.51l2.535,1.464Zm3,2.267L8.5,11.15V8.3L11,6.86ZM2,14H6v1H1.5L1,14.5V10H2Zm12-4h1v4.5l-.5.5H10V14h4ZM2,6H1V1.5L1.5,1H6V2H2ZM15,1.5V6H14V2H10V1h4.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPrintPreview</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.5,1.5h-8V12.42l.5-.49.34-.33A4,4,0,1,1,7,14a3.925,3.925,0,0,1-1.52-.3l-.31.3-.51.5H13.5V4.5Z" />
+      <path class="light-defaultgrey" d="M13.85,4.15l-3-3L10.5,1h-8L2,1.5V12.91l1-.98V2h7V5h3v9H5.17l-.51.5-.51.5H13.5l.5-.5V4.5Z" />
+    </g>
+    <path class="light-blue-10" d="M7,12.5A2.5,2.5,0,1,1,9.5,10,2.5,2.5,0,0,1,7,12.5Z" />
+    <path class="light-blue" d="M1.85,15.857l3.455-3.385a3.078,3.078,0,1,0-.713-.7L1.15,15.143ZM7,12a2,2,0,1,1,2-2A2,2,0,0,1,7,12Z" />
+  </g>
+</svg>

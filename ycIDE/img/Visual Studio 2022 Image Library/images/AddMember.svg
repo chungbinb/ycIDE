@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddMember</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10,14.5A4.5,4.5,0,1,1,14.5,10,4.5,4.5,0,0,1,10,14.5Z" />
+    <path class="light-defaultgrey" d="M10,15a5,5,0,1,1,5-5A5.006,5.006,0,0,1,10,15Zm0-9a4,4,0,1,0,4,4A4,4,0,0,0,10,6Z" />
+    <path class="light-defaultgrey" d="M9.5,10A1.5,1.5,0,1,1,11,8.5,1.5,1.5,0,0,1,9.5,10Zm0-2a.5.5,0,1,0,.5.5A.5.5,0,0,0,9.5,8Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

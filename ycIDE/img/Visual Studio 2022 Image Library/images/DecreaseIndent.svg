@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDecreaseIndent</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15,4H8V3h7ZM13,6H8V5h5Zm2,2H8V7h7Zm-2,2H8V9h5Zm2,2H8V11h7Z" />
+    <path class="light-blue" d="M3.646,4.646l.708.708L2.705,7H7V8H2.709L4.354,9.646l-.708.708-2.5-2.5V7.146Z" />
+  </g>
+</svg>

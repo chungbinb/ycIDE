@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDTSFileSystem</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,2.5V8H11L9.914,7H6.5V.5h5Z" />
+    <path class="light-defaultgrey" d="M14,2.5V8H13V3H10.993V1H7V7H6V.5L6.5,0h5l.354.146,2,2Z" />
+    <path class="light-defaultgrey" d="M9,5H8V4H9Zm2-1H10V5h1ZM9,6H8V7H9Z" />
+    <path class="light-defaultgrey" d="M12,12H9V9h3Zm0,4H9V13h3Zm4-4H13V9h3Z" />
+    <path class="light-yellow-10" d="M8,14.5H.5v-7h4l1,1H8Z" />
+    <path class="light-yellow" d="M8,14H1V10H4.475l.354-.146L5.682,9H8V8H5.707l-.853-.854L4.5,7H.5L0,7.5v7l.5.5H8ZM1,8H4.293l.488.488L4.268,9H1Z" />
+  </g>
+</svg>

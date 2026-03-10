@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTableScript</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M3.511,14a1.983,1.983,0,0,0,.268,1H2.019a1,1,0,0,1-1-1Zm0-4v3h.5l.5.5V14a1,1,0,0,0,2,0V10a1.978,1.978,0,0,1,.278-1H4.511A1,1,0,0,0,3.511,10Zm5-1a1,1,0,0,0-1,1h2A1,1,0,0,0,8.511,9Z" />
+    <path class="light-defaultgrey" d="M8.511,8h-4a2,2,0,0,0-2,2v3H.519l-.5.5V14A1.969,1.969,0,0,0,.3,15a1.992,1.992,0,0,0,1.714,1h3.5a2,2,0,0,0,2-2V11h2.5l.5-.5V10A2,2,0,0,0,8.511,8ZM2.019,15a1,1,0,0,1-1-1H3.511a1.983,1.983,0,0,0,.268,1Zm4.492-5v4a1,1,0,0,1-2,0v-.5l-.5-.5h-.5V10a1,1,0,0,1,1-1H6.789A1.978,1.978,0,0,0,6.511,10Zm3,0h-2a1,1,0,1,1,2,0Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H8.511V12h1.914l1.086-1.086V10a3,3,0,0,0-3-3h-4A2.98,2.98,0,0,0,2.5,7.789V2.5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H2.5L2,2.5V8.367A3,3,0,0,1,4.511,7H3V5H6V7H7V5h3V7H8.511A3,3,0,0,1,11,8.328V8h3v2H11.511v.914L11.425,11H14v2H11V11.425L10.425,12H10v1H8.511v1H14.5l.5-.5V2.5ZM14,7H11V5h3Zm0-3H3V3H14Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{fill:none;}</style>
+  </defs>
+  <title>IconLightEnableCode</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="cls-1" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="light-defaultgrey" d="M9,6V7H4V6ZM4,10h8V9H4ZM14,6H10V7h4Zm0-3H8V4h6ZM5.732,12.854,6.586,12H2v1H5.879ZM7,3H2V4H7Z" />
+    <path class="light-green" d="M15.854,10.854l-5,5h-.708l-3-3,.708-.708L10.5,14.793l4.646-4.647Z" />
+  </g>
+</svg>

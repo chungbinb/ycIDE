@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSDKPrivate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,15.962H0v-16H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9,14.461H1.5v-5h8.552A2.983,2.983,0,0,0,10,10v.086l-1,1Z" />
+    <path class="light-defaultgrey-10" d="M10.184,9.038H2V6H14V7.223a2.944,2.944,0,0,0-3.816,1.815Z" />
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+    <path class="light-defaultgrey" d="M9,7H6.28V6H9Zm5.5-1H13V7h1v.223a3,3,0,0,1,1,.6V6.5ZM2,9V7h.716V6H1.5L1,6.5v3l.5.5H10A2.967,2.967,0,0,1,10.2,9Zm3,3H4V10H5ZM2,14V9.5H1v5l.5.5H9V14Z" />
+    <path class="light-defaultgrey" d="M13.957.961V2.933h-.986l-.492-.493-.493.493h-.493V4.72l.493.493V7.189a3,3,0,0,0-1.174.772h-.8V5.213l.493-.493V2.933H9.521a.493.493,0,0,0-.492.493.493.493,0,1,1-.986,0A2.465,2.465,0,0,1,10.507.961h1.479l.493.493.492-.493Zm-8.68,0,0,2.206H3.715l0-2.2a2.332,2.332,0,0,0,0,4.4v2.6H5.28v-2.6a2.332,2.332,0,0,0,0-4.4Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>Diff</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,3.5V13.5H9.005V3.5ZM1.5,13.5H6V3.5H1.5Z" />
+    <path class="light-defaultgrey" d="M7,1H8V15H7ZM1,3.5V13.5l.5.5H6V13H2V4H6V3H1.5ZM13.5,3H9.005V4H13V13H9.005v1H13.5l.5-.5V3.5Z" />
+    <path class="light-red" d="M6,4V7H2V4ZM2,10H6V9H2Zm0,3H6V12H2Z" />
+    <path class="light-green" d="M9,10h4v2H9ZM9,7V9h4V7Z" />
+  </g>
+</svg>

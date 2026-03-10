@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightShowWordDiff</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.031,9.5H.5V.5h12V6.88A4,4,0,0,0,6.031,9.5Z" />
+    <path class="light-defaultgrey" d="M6.127,9A3.978,3.978,0,0,0,6,10H.5L0,9.5V.5L.5,0h12l.5.5V7.357a4.036,4.036,0,0,0-1-.82V1H1V9Z" />
+    <path class="light-defaultgrey" d="M7,7.357V2H8V4.277A1.988,1.988,0,0,1,11,6c0,.042,0,.084,0,.125A4.039,4.039,0,0,0,10,6a1,1,0,1,0-1.882.471A4.028,4.028,0,0,0,7,7.357Z" />
+    <path class="light-defaultgrey" d="M6,8V4H5v.277A2,2,0,1,0,5,7.723V8ZM4,7A1,1,0,1,1,5,6,1,1,0,0,1,4,7Z" />
+    <path class="light-blue-10" d="M7.5,10A2.5,2.5,0,1,1,10,12.5,2.5,2.5,0,0,1,7.5,10Z" />
+    <path class="light-blue" d="M15.85,15.143l-3.442-3.372A2.964,2.964,0,0,0,13,10a3.007,3.007,0,1,0-1.3,2.472l3.455,3.385ZM8,10a2,2,0,1,1,2,2A2,2,0,0,1,8,10Z" />
+  </g>
+</svg>

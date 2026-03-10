@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSMTPConnection</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v9H1.5v-9Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2.5,8,7.5l-6.5-5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v9l.5.5h6v1l-.5.5V14H3v1H13V14H9v-.5L8.5,13V12h6l.5-.5v-9ZM13.03,3,8,6.869,2.97,3ZM14,11H2V3.535L7.7,7.9h.61L14,3.535Z" />
+  </g>
+</svg>

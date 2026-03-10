@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSMenuItemCustomAction</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,13H9V10H5V.5h5.5v3h5Z" />
+    <path class="light-defaultgrey" d="M14,6H6V5h8ZM10,1H5V3h5Zm6,2.5v10l-.5.5H9V13h6V4H5v6H4V.5L4.5,0h6l.5.5V3h4.5Z" />
+    <path class="light-green-10" d="M5.5,13.5l-3,2v-4Z" />
+    <path class="light-green" d="M2,11.5v4l.777.416,3-2v-.832l-3-2Zm1,.935L4.6,13.5,3,14.565ZM0,11H1v5H0Zm7,0v5H8V11Z" />
+    <path class="light-green" d="M6,7H5v3H15V7Zm8,2H6V8h8Z" />
+  </g>
+</svg>

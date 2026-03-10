@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightApplicationRoleWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4,6.5a3.589,3.589,0,0,0-.5.051V1.5h11v9h-.042L12.53,7H10.47L8.542,10.5H7.733c.005-.083.017-.166.017-.25A3.754,3.754,0,0,0,4,6.5Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+    <path class="light-defaultgrey" d="M14,9.668l.651,1.181L15,10.5v-9L14.5,1H3.5L3,1.5V6.653A3.671,3.671,0,0,1,4,6.5V4H14ZM4,3V2H14V3Z" />
+    <path class="light-defaultgrey-10" d="M6.337,16H.5a3.487,3.487,0,0,1,6.215-2.184L5.908,15.28ZM6.25,10.25A2.25,2.25,0,1,0,4,12.5,2.25,2.25,0,0,0,6.25,10.25Z" />
+    <path class="light-defaultgrey" d="M6.456,14.286l.518-.94A4.05,4.05,0,0,0,5.7,12.394a2.75,2.75,0,1,0-3.4,0A4,4,0,0,0,0,16H1a3,3,0,0,1,5.456-1.714ZM4,12a1.75,1.75,0,1,1,1.75-1.75A1.752,1.752,0,0,1,4,12Z" />
+  </g>
+</svg>

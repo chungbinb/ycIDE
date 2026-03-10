@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>StatusOffline</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M8.207,7.5l3.4,3.4L10.9,11.6l-3.4-3.4L4.1,11.6,3.4,10.9l3.4-3.4L3.4,4.1,4.1,3.4l3.4,3.4,3.4-3.4L11.6,4.1Z" />
+  </g>
+</svg>

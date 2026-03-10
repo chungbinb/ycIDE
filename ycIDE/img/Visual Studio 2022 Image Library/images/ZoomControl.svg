@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ZoomControl</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,1.5a3,3,0,1,1-3,3A3,3,0,0,1,4.5,1.5Z" />
+    <path class="light-defaultgrey-10" d="M8.5,1.5v.94A4.478,4.478,0,0,1,9,4.5V6.88l3,3,.27.27-2.12,2.12L9,11.12l-.5-.5V14.5h6V1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,1h-6L8,1.5v.18a4.339,4.339,0,0,1,.5.76A4.478,4.478,0,0,1,9,4.5V2h5V14H9V11.12l-1-1V14.5l.5.5h6l.5-.5V1.5Z" />
+    <path class="light-defaultgrey" d="M12,6V3H11V6H10V7h1V8.88l1,1V7h1V6Zm-1,7h1V10.42l-1,1Z" />
+    <path class="light-defaultgrey" d="M10.854,10.146,7.3,6.6A3.5,3.5,0,1,0,6.6,7.3l3.551,3.552ZM2,4.5A2.5,2.5,0,1,1,4.5,7,2.5,2.5,0,0,1,2,4.5Z" />
+    <path class="light-defaultgrey" d="M6,4V5H5V6H4V5H3V4H4V3H5V4Z" />
+  </g>
+</svg>

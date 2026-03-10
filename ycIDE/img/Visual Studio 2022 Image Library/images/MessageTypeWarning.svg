@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMessageTypeWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.889,13.5H1.5v-6h8.694Z" />
+    <path class="light-defaultgrey" d="M6.614,14H1.5L1,13.5v-6L1.5,7h8.97L9.919,8H2v5H7.165Z" />
+    <path class="light-defaultgrey" d="M9.494,8.772,10.47,7H1.5L1,7.5l.223.416,4.5,3h.554ZM3.151,8h5.7L6,9.9Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.914,6H5.5V1.5h9v6H12.806L12.53,7h-.616Z" />
+      <path class="light-defaultgrey" d="M10.277,4.916H9.723l-4.5-3L5,1.5,5.5,1h9l.5.5-.223.416ZM7.151,2,10,3.9,12.849,2Z" />
+      <path class="light-defaultgrey" d="M6,6H5V1.5L5.5,1h9l.5.5v6l-.5.5H13.081L12.53,7H14V2H6Z" />
+    </g>
+  </g>
+</svg>

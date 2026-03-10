@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>PrivateBuildInstance</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9,14.914,9.086,15H.5L0,14.5V5H1v9H9ZM13,5V7a2.966,2.966,0,0,1,1,.184V5Z" />
+      <path class="light-defaultgrey-10" d="M13,5V7a3,3,0,0,0-3,3v.086l-1,1V14H.5V5H2.878L5.732,7.854H7.268L10.122,5Z" />
+    </g>
+    <path class="light-blue" d="M9.354,4.354l-2.5,2.5H6.146l-2.5-2.5.708-.707L6,5.293V0H7V5.293L8.646,3.647Z" />
+    <path class="light-defaultgrey" d="M9,13H8V11H9ZM6,11v2H4V11ZM4,8v2H2V8ZM8,8v2H6V8Z" />
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

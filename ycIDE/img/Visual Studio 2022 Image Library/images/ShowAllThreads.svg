@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple{fill: #6936aa; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightShowAllThreads</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-purple" d="M6,10a4,4,0,0,0-4,4H1a5,5,0,0,1,8.305-3.748A4.065,4.065,0,0,1,8.643,11,3.984,3.984,0,0,0,6,10Z" />
+    <path class="light-purple" d="M10.544,11.914A4.986,4.986,0,0,1,11,14H10a3.972,3.972,0,0,0-.23-1.336A6.029,6.029,0,0,0,10.544,11.914Z" />
+    <path class="light-blue" d="M2,11A4.968,4.968,0,0,1,1,8H2A3.979,3.979,0,0,0,2.7,10.251,5.064,5.064,0,0,0,2,11Z" />
+    <path class="light-blue" d="M11,8a5,5,0,0,1-7.493,4.333,3.021,3.021,0,0,1,.717-.749A4,4,0,0,0,10,8Z" />
+    <path class="light-purple" d="M9,4A4,4,0,0,0,5,8H4a5,5,0,0,1,8.305-3.748A4.065,4.065,0,0,1,11.643,5,3.984,3.984,0,0,0,9,4Z" />
+    <path class="light-purple" d="M13.544,5.914A4.986,4.986,0,0,1,14,8H13a3.972,3.972,0,0,0-.23-1.336A6.029,6.029,0,0,0,13.544,5.914Z" />
+    <path class="light-blue" d="M5,5A4.968,4.968,0,0,1,4,2H5a3.979,3.979,0,0,0,.7,2.251A5.064,5.064,0,0,0,5,5Z" />
+    <path class="light-blue" d="M14,2A5.006,5.006,0,0,1,9,7a4.97,4.97,0,0,1-2.493-.667,3.021,3.021,0,0,1,.717-.749A4,4,0,0,0,13,2Z" />
+  </g>
+</svg>

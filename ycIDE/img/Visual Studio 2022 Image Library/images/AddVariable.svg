@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAddVariable</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M12.494,4.169,15.5,7.176v3.5l-7,3.889L5.494,11.556v-3.5Z" />
+      <path class="light-blue" d="M16,7.176v3.5l-.256.437L8.744,15l-.6-.084L5.14,11.91,5,11.556v-3.5l.251-.437-.111.791.854.853v2.084L8,13.355V11.271l.147.147.6.084L9,11.359v2.354l6-3.333V8.026l.744-.413.11-.791Z" />
+    </g>
+    <path class="light-blue-10" d="M15.5,7.176l-7,3.889L5.494,8.058l7-3.889Z" />
+    <path class="light-blue" d="M8.744,11.5l-.6-.084L5.14,8.412l.111-.791,7-3.889.6.084,3.006,3.006-.11.791ZM6.316,8.173l2.271,2.271,6.091-3.383L12.407,4.789Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

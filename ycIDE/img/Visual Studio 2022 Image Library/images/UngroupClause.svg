@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUngroupClause</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,9.5v3h-8v-3Z" />
+    <path class="light-defaultgrey-10" d="M14.5,2.5v3h-8v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,2h-8L6,2.5v3l.5.5h8l.5-.5v-3ZM14,5H7V3h7Z" />
+    <path class="light-blue" d="M2.854,1.146l2,2-.708.707L3,2.707V6H2V2.707L.854,3.853.146,3.146l2-2Z" />
+    <path class="light-blue" d="M2.854,13.854l2-2-.708-.708L3,12.293V9H2v3.293L.854,11.146l-.708.708,2,2Z" />
+    <path class="light-defaultgrey" d="M14.5,9h-8L6,9.5v3l.5.5h8l.5-.5v-3ZM14,12H7V10h7Z" />
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRetrieve</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M10.5,1.5H5.62L6.85,2.73V4.27l-3,3L2.5,5.92V14.5h11V4.5Z" />
+      <path class="light-defaultgrey" d="M13.85,4.15l-3-3L10.5,1H5.12l1,1H10V5h3v9H3V6.42l-1-1V14.5l.5.5h11l.5-.5V4.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M7,8A1,1,0,1,1,8,9,1,1,0,0,1,7,8Zm3.354,1.854,1.5-1.5V7.646l-1.5-1.5-.708.708L10.793,8,9.646,9.146Zm-4-.708L5.207,8,6.354,6.854l-.708-.708-1.5,1.5v.708l1.5,1.5ZM4,11v1h8V11Z" />
+    <path class="light-blue" d="M5.854,3.146v.708l-2,2-.708-.708L4.293,4H.5L0,3.5V0H1V3H4.293L3.146,1.854l.708-.708Z" />
+  </g>
+</svg>

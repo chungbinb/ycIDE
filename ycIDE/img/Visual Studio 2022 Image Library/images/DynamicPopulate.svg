@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>DynamicPopulate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,4.5v10H8.621l.233-.232V12.732l-3-3L4,11.586l-1.5-1.5V1.5h8Z" />
+      <path class="light-defaultgrey" d="M14,4.5v10l-.5.5H8.121l.733-.732V14H13V5H10V2H3v8.586l-.854-.854L2,9.879V1.5L2.5,1h8l.354.146,3,3Z" />
+      <path class="light-defaultgrey" d="M9,7H8V6H9ZM7,7H6V6H7ZM5,7H4V6H5Zm6-.5L10.5,6H10V7h1ZM11,13H10V12h1Zm0-2H10V10h1Zm0-2H10V8h1Z" />
+    </g>
+    <path class="light-blue" d="M7.854,13.146v.708l-2,2-.708-.708L6.293,14H1.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L1.707,13H6.293L5.146,11.854l.708-.708Z" />
+  </g>
+</svg>

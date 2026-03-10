@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>StatisticsError</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7.41,14H2V2H1V14.5l.5.5H8A5.26,5.26,0,0,1,7.41,14Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M11.5,5.5V7.03A4.07,4.07,0,0,1,12,7a4.712,4.712,0,0,1,1,.1c.17.03.33.08.5.12V5.5Zm-8,3v4h2v-4Zm4-6V9.82A4.853,4.853,0,0,1,8,9,5.262,5.262,0,0,1,9,8a4.322,4.322,0,0,1,.5-.33V2.5Z" />
+    <path class="light-defaultgrey" d="M13.5,5h-2l-.5.5V7.1a4.293,4.293,0,0,1,.5-.07A4.07,4.07,0,0,1,12,7V6h1V7.1c.17.03.33.08.5.12.17.06.34.12.5.19V5.5Zm-8,3h-2L3,8.5v4l.5.5h2l.5-.5v-4ZM5,12H4V9H5ZM9.5,2h-2L7,2.5V12a4.985,4.985,0,0,1,.5-2.18A4.853,4.853,0,0,1,8,9V3H9V8a4.322,4.322,0,0,1,.5-.33c.16-.09.33-.18.5-.26V2.5Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M12.707,12l1.147,1.146-.708.708L12,12.707l-1.146,1.147-.708-.708L11.293,12l-1.147-1.146.708-.708L12,11.293l1.146-1.147.708.708Z" />
+  </g>
+</svg>

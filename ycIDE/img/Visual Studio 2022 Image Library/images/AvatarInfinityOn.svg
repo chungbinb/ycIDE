@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAvatarInfinityOn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M6.4,7.244l.745.745L6.4,8.734a1.055,1.055,0,1,1-.744-1.8A1.034,1.034,0,0,1,6.4,7.244Zm3.939-.295a1.056,1.056,0,0,0-.744.295l-.746.745.746.745a1.053,1.053,0,1,0,.744-1.785ZM15,5v6a4,4,0,0,1-4,4H5a4,4,0,0,1-4-4V5A4,4,0,0,1,5,1h6A4,4,0,0,1,15,5ZM12.6,7.989a2.24,2.24,0,0,0-.663-1.6,2.3,2.3,0,0,0-3.194,0L8,7.14l-.746-.747a2.306,2.306,0,0,0-3.195,0A2.258,2.258,0,1,0,7.254,9.585L8,8.84l.747.745a2.26,2.26,0,0,0,3.857-1.6Z" />
+  </g>
+</svg>

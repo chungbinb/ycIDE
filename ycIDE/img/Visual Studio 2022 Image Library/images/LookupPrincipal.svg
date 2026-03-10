@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLookupPrincipal</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7.25,6.75A1.75,1.75,0,1,1,9,8.5,1.752,1.752,0,0,1,7.25,6.75ZM10.7,8.894a2.75,2.75,0,1,0-3.4,0A4,4,0,0,0,5,12.5H6a3,3,0,0,1,6,0h1A4,4,0,0,0,10.7,8.894Z" />
+    <path class="light-defaultgrey-10" d="M14,3V14H4V5.956A3.423,3.423,0,0,0,4.507,6,3.494,3.494,0,0,0,7.956,3Z" />
+    <path class="light-defaultgrey" d="M15,2.5v12l-.5.5H3.5L3,14.5V6.128L3.332,5.8A3.387,3.387,0,0,0,4,5.956V14H14V3H7.956a3.443,3.443,0,0,0,.051-.5A3.443,3.443,0,0,0,7.956,2H14.5Z" />
+    <path class="light-blue-10" d="M6.507,2.5a2,2,0,1,1-2-2A2,2,0,0,1,6.507,2.5Z" />
+    <path class="light-blue" d="M4.507,0A2.5,2.5,0,0,0,2.423,3.876L.153,6.146l.707.708L3.13,4.583A2.478,2.478,0,0,0,4.507,5a2.5,2.5,0,0,0,0-5Zm0,4a1.5,1.5,0,1,1,1.5-1.5A1.5,1.5,0,0,1,4.507,4Z" />
+  </g>
+</svg>

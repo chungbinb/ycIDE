@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-purple{fill: #6936aa; opacity: 1;}</style>
+  </defs>
+  <title>OverlayTimelineMarkPurple</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M12.432,8,16,11.568v.864L12.432,16h-.864L8,12.432v-.864L11.568,8Z" />
+    <path class="light-purple" d="M9,12l3-3,3,3-3,3Z" />
+  </g>
+</svg>

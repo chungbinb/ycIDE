@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>CloudStagingStopped</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M14.976,7.985a5.006,5.006,0,0,0-1.237-.673,1.752,1.752,0,0,0-.231-.293A1.732,1.732,0,0,0,12.287,6.5h-.859V6.063A3.037,3.037,0,0,0,8.417,3,3,3,0,0,0,5.609,4.988,2.51,2.51,0,0,0,4.548,4.75,2.625,2.625,0,0,0,4,9.942v1A3.626,3.626,0,0,1,4.548,3.75a3.48,3.48,0,0,1,.567.047A3.963,3.963,0,0,1,12.37,5.5a2.731,2.731,0,0,1,2.606,2.488Z" />
+    <path class="light-lightblue-10" d="M14.419,7.625A4.973,4.973,0,0,0,12,7H2V9.171A3.119,3.119,0,0,1,4.549,4.25a2.924,2.924,0,0,1,.8.109A3.493,3.493,0,0,1,11.925,6h.36a2.237,2.237,0,0,1,2.134,1.625Z" />
+    <path class="light-defaultgrey" d="M8,9H7V8H9A5.04,5.04,0,0,0,8,9ZM5,10H7.418A4.915,4.915,0,0,0,7.1,11H5Zm0,2H7a5,5,0,0,0,.1,1H5ZM6,9H3V8H6Zm2,6v0H3V14H7.418A5.03,5.03,0,0,0,8,15Z" />
+    <path class="light-defaultgrey" d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Z" />
+    <path class="white" d="M10.5,10.5h3v3h-3Z" />
+  </g>
+</svg>

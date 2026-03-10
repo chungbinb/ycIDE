@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRichTooltip</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,6.5v8H3.5V11.26l.43,1.19L4,12.42l2.75-.99L5.55,8.12l3.69.21L8.13,7l-.41-.5Z" />
+    <path class="light-defaultgrey" d="M16,6.5v8l-.5.5H3.5L3,14.5V9.89l.5,1.37.43,1.19L4,12.42V14H15V7H8.13l-.41-.5L7.3,6h8.2Z" />
+    <path class="light-defaultgrey" d="M9.974,8H9.04L7.168,13h.906l.433-1.273h1.966L10.923,13h.909ZM8.722,11.051l.687-1.994a2.01,2.01,0,0,0,.07-.315h.014a2.72,2.72,0,0,0,.066.315l.694,1.994Z" />
+    <path class="light-blue" d="M4.09,7.034l1.38,3.8-.94.342L3.123,7.3,1,9V0L7,7.2Z" />
+  </g>
+</svg>

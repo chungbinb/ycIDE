@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEditLayoutTable</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M6.105,13H.5L0,12.5V.5L.5,0h12l.5.5V5.818a2.576,2.576,0,0,0-.368.3L7.263,11.489,6.529,13Z" />
+      <path class="light-defaultgrey" d="M0,10H1v1H0ZM7,1H6V0H7ZM6.529,13H6V12H7v.03ZM0,12H1v1H.5L0,12.5ZM9,1H8V0H9Zm4,0H12V0h.5l.5.5Zm0,2H12V2h1Zm-.067,2H12V4h1v.945C12.976,4.961,12.956,4.983,12.933,5ZM11,1H10V0h1Zm1,5.752V6h.778c-.048.042-.1.075-.146.121ZM2,12H3v1H2Zm2,0H5v1H4ZM0,8H1V9H0ZM4,0H5V1H4ZM2,0H3V1H2ZM0,4H1V5H0ZM.5,0H1V1H0V.5ZM0,6H1V7H0ZM0,2H1V3H0Z" />
+    </g>
+    <path class="light-defaultgrey" d="M10.5,2h-8L2,2.5v3l.5.5h8l.5-.5v-3ZM10,5H3V3h7ZM5.5,7h-3L2,7.5v2l.5.5h3L6,9.5v-2ZM5,9H3V8H5Zm2.5,1L7,9.5v-2L7.5,7h3l.5.5v.252l-1,1V8H8V9H9.752l-1,1Z" />
+    <path class="light-blue-10" d="M15.192,8.681,9.635,14.238,8.153,12.72l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,8.681Z" />
+    <path class="light-blue" d="M15.543,6.83a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L6.511,15.326,7.186,16l2.995-1.629,5.365-5.336A1.562,1.562,0,0,0,15.543,6.83Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

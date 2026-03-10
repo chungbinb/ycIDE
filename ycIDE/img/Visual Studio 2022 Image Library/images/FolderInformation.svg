@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>FolderInformation</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M8.5,3.5l-1-1h-6v10H6.53A4.07,4.07,0,0,1,6.5,12a5,5,0,0,1,5-5,4.919,4.919,0,0,1,2.5.67,4.322,4.322,0,0,1,.5.33V3.5Z" />
+    <path class="light-yellow" d="M14.5,3H8.71l-.86-.85L7.5,2h-6L1,2.5v10l.5.5H6.6a4.293,4.293,0,0,1-.07-.5A4.07,4.07,0,0,1,6.5,12H2V5H7.48l.35-.15L8.68,4H14V7.67a4.322,4.322,0,0,1,.5.33,4.113,4.113,0,0,1,.5.42V3.5ZM7.27,4H2V3H7.29l.49.49Z" />
+    <path class="light-blue" d="M11.5,16a4,4,0,1,1,4-4A4,4,0,0,1,11.5,16Z" />
+    <path class="white" d="M11,12h1v2H11Zm0-1h1V10H11Z" />
+  </g>
+</svg>

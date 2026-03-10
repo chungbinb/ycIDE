@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAvatarThreeDotsOn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M11,1H5A4,4,0,0,0,1,5v6a4,4,0,0,0,4,4h6a4,4,0,0,0,4-4V5A4,4,0,0,0,11,1ZM4.707,7.012A1.207,1.207,0,1,1,5.915,5.805,1.208,1.208,0,0,1,4.707,7.012ZM8,9.207A1.207,1.207,0,1,1,9.207,8,1.208,1.208,0,0,1,8,9.207ZM11.293,11.4A1.207,1.207,0,1,1,12.5,10.2,1.209,1.209,0,0,1,11.293,11.4Z" />
+  </g>
+</svg>

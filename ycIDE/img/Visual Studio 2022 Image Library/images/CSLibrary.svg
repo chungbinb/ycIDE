@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSLibrary</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green-10" d="M14.389,13l-1.931.518L9.611,2.891l1.931-.517Z" />
+    <path class="light-green-10" d="M3.5,2.5v11h-2V2.5Z" />
+    <path class="light-green-10" d="M7.5,2.5v11h-2V2.5Z" />
+    <path class="light-green" d="M12.025,2.244l-.613-.353L9.48,2.408l-.353.613,2.848,10.625.613.354,1.932-.518.353-.613Zm.787,10.66L10.223,3.245l.965-.259,2.589,9.66Z" />
+    <path class="light-green" d="M3.5,14h-2L1,13.5V2.5L1.5,2h2l.5.5v11ZM2,13H3V3H2Z" />
+    <path class="light-green" d="M7.5,14h-2L5,13.5V2.5L5.5,2h2l.5.5v11ZM6,13H7V3H6Z" />
+  </g>
+</svg>

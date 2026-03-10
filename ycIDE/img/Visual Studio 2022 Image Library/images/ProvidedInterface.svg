@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightProvidedInterface</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4A2.5,2.5,0,1,1,12,1.5,2.5,2.5,0,0,1,14.5,4ZM3.811,14.311,1.689,12.189,5.932,7.947l2.121,2.121Z" />
+    <path class="light-defaultgrey" d="M12,1A3,3,0,0,0,9,4a2.97,2.97,0,0,0,.56,1.733L6.993,8.3l-.708-.707H5.578L1.336,11.836v.707l2.121,2.121h.707l4.243-4.242V9.715L7.7,9.007,10.267,6.44A2.97,2.97,0,0,0,12,7a3,3,0,0,0,0-6ZM3.811,13.6,2.4,12.189,5.932,8.653l1.415,1.415ZM12,6a2,2,0,1,1,2-2A2,2,0,0,1,12,6Z" />
+  </g>
+</svg>

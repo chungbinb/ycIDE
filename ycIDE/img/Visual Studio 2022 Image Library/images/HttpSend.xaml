@@ -1,0 +1,25 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-blue-10" Color="#005dba" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-blue" Color="#005dba" Opacity="1" />
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-blue-10}" Geometry="F1M13.6,3.4A6.509,6.509,0,0,0,9,1.5a6.109,6.109,0,0,0-2.04.34l.81.81L5.65,4.77,5,4.12V8H2.5a6.825,6.825,0,0,0,.12,1.27,6.506,6.506,0,0,0,8.87,4.74A6.512,6.512,0,0,0,13.6,3.4Z" />
+              <GeometryDrawing Brush="{DynamicResource light-blue}" Geometry="F1M13.95,3.05A7,7,0,0,0,6.56,1.44l.4.4.81.81L6.23,4.19A7.749,7.749,0,0,0,5.95,5H5V6h.7a10.354,10.354,0,0,0,0,4H3.35A5.93,5.93,0,0,1,3,8H2A7,7,0,1,0,13.95,3.05ZM9,14c-.13,0-.25-.01-.37-.02A9.525,9.525,0,0,1,7,11h4.01a9.525,9.525,0,0,1-1.63,2.98C9.25,13.99,9.13,14,9,14Zm3.05-3h2.14a6.067,6.067,0,0,1-3.4,2.73A10.733,10.733,0,0,0,12.05,11Zm2.14-6H12.05a10.577,10.577,0,0,0-1.26-2.73A6.067,6.067,0,0,1,14.19,5ZM12.3,10a10.354,10.354,0,0,0,0-4h2.35a5.85,5.85,0,0,1,0,4ZM8.63,2.02C8.75,2.01,8.87,2,9,2s.25.01.37.02A9.552,9.552,0,0,1,11.01,5H7A9.525,9.525,0,0,1,8.63,2.02ZM6.72,6h4.56a9.648,9.648,0,0,1,.22,2,9.648,9.648,0,0,1-.22,2H6.72A9.648,9.648,0,0,1,6.5,8,9.648,9.648,0,0,1,6.72,6Zm-.77,5a10.256,10.256,0,0,0,1.26,2.73A6.067,6.067,0,0,1,3.81,11Z" />
+              <GeometryDrawing Brush="{DynamicResource light-blue}" Geometry="F1M5.646,3.353,4,1.707V7H3V1.707L1.354,3.353.646,2.646l2.5-2.5h.708l2.5,2.5Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

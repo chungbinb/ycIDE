@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>WindowsFormToolBox</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M1.5,4.5V10h.41l.09.09v-1L3.09,8H6.91L8,9.09V12.5h6.5v-8Z" />
+    <path class="light-red" d="M5,7V8h6V7Zm9.5-3H1.5L1,4.5V10h.91l.09.09V8H14v4H8v.91L7.91,13H14.5l.5-.5v-8ZM2,7V5H14V7Z" />
+    <path class="light-defaultgrey" d="M10.5,2h-5L5,2.5V4H6V3h4V4h1V2.5ZM11,6V9h1V6ZM4,6V8H5V6Z" />
+    <path class="light-defaultgrey" d="M7,9.5v3l-.5.5h-3L3,12.5v-3L3.5,9h3ZM.5,11l-.5.5v3l.5.5h1l.5-.5v-3L1.5,11Zm3,3-.5.5v1l.5.5h2l.5-.5v-1L5.5,14Z" />
+  </g>
+</svg>

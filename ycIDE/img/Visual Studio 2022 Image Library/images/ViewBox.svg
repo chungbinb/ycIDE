@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightViewBox</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,5.5v5h-5v-5Z" />
+    <path class="light-defaultgrey" d="M14.5,15H1.5L1,14.5V1.5L1.5,1h13l.5.5v13ZM2,14H14V2H2Z" />
+    <path class="light-blue" d="M6.1,5.4,5.4,6.1,4,4.707V6H3V3.5L3.5,3H6V4H4.707Z" />
+    <path class="light-blue" d="M4.707,12H6v1H3.5L3,12.5V10H4v1.293L5.4,9.9,6.1,10.6Z" />
+    <path class="light-blue" d="M13,10v2.5l-.5.5H10V12h1.293L9.9,10.6,10.6,9.9l1.4,1.4V10Z" />
+    <path class="light-blue" d="M13,3.5V6H12V4.707L10.6,6.1,9.9,5.4l1.4-1.4H10V3h2.5Z" />
+    <path class="light-defaultgrey" d="M10.5,11h-5L5,10.5v-5L5.5,5h5l.5.5v5ZM6,10h4V6H6Z" />
+  </g>
+</svg>

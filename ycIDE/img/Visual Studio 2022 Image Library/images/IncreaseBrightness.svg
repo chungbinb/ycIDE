@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIncreaseBrightness</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,9.5a3,3,0,1,1-3-3A3,3,0,0,1,13.5,9.5Z" />
+    <path class="light-defaultgrey" d="M16,10V9.032H13.969A3.494,3.494,0,0,0,13.3,7.405l1.441-1.441-.685-.684L12.62,6.717A3.483,3.483,0,0,0,11,6.036V4h-.968V6.031A3.484,3.484,0,0,0,8.4,6.7L6.964,5.257l-.684.685L7.717,7.38A3.483,3.483,0,0,0,7.036,9H5v.968H7.031A3.484,3.484,0,0,0,7.7,11.6L6.257,13.036l.685.684L8.38,12.283a3.483,3.483,0,0,0,1.62.681V15h.968V12.969A3.494,3.494,0,0,0,12.6,12.3l1.441,1.441.684-.685L13.283,11.62A3.483,3.483,0,0,0,13.964,10Zm-5.5,2A2.5,2.5,0,1,1,13,9.5,2.5,2.5,0,0,1,10.5,12Z" />
+    <path class="light-blue" d="M3,2.707,1.854,3.854l-.708-.708,2-2h.708l2,2-.708.708L4,2.707V7H3Z" />
+  </g>
+</svg>

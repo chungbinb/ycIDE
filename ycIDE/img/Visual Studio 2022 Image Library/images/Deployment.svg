@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDeployment</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14.77,6.38l-6.445,5.5h-.65L1.23,6.38l.65-.76,5.62,4.8V7.5h1v2.916l5.62-4.8Z" />
+    </g>
+    <path class="light-lightblue-10" d="M9.5,11.5v3h-3v-3Z" />
+    <path class="light-lightblue" d="M9.5,11h-3l-.5.5v3l.5.5h3l.5-.5v-3ZM9,14H7V12H9Z" />
+    <path class="light-lightblue-10" d="M14.445,6.193A16.447,16.447,0,0,1,8,7.5,16.447,16.447,0,0,1,1.555,6.193a6.495,6.495,0,0,1,12.89,0Z" />
+    <path class="light-lightblue" d="M8,0A7,7,0,0,0,1.059,6.131l.3.521A16.869,16.869,0,0,0,8,8a16.869,16.869,0,0,0,6.641-1.348l.3-.521A7,7,0,0,0,8,0ZM2.11,5.88a5.995,5.995,0,0,1,11.78,0A16.121,16.121,0,0,1,2.11,5.88Z" />
+  </g>
+</svg>

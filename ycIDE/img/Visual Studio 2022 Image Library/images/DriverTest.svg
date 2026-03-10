@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDriverTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13,9.5H12V4H6.5V3h6l.5.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M6.5,3.5a2,2,0,1,1-2-2A2,2,0,0,1,6.5,3.5Zm8,8a2,2,0,1,1-2-2A2,2,0,0,1,14.5,11.5Z" />
+    <path class="light-defaultgrey" d="M4.5,6A2.5,2.5,0,1,1,7,3.5,2.5,2.5,0,0,1,4.5,6Zm0-4A1.5,1.5,0,1,0,6,3.5,1.5,1.5,0,0,0,4.5,2Zm8,12A2.5,2.5,0,1,1,15,11.5,2.5,2.5,0,0,1,12.5,14Zm0-4A1.5,1.5,0,1,0,14,11.5,1.5,1.5,0,0,0,12.5,10Z" />
+    <path class="light-defaultgrey-10" d="M6.438,13H2.563L3.5,11.5v-3h2v3Z" />
+    <path class="light-defaultgrey" d="M3,9H2V8H7V9H6v2.356l1.174,1.879L6.75,13h-.9l-.772-1.235L5,11.5V9H4v2.5l-.076.265L3.152,13h-.9l-.424.235L3,11.356Z" />
+    <path class="light-teal-10" d="M7.522,14.735A.5.5,0,0,1,7.1,15.5H1.9a.5.5,0,0,1-.424-.765L2.25,13.5h4.5Z" />
+    <path class="light-teal" d="M7.1,16H1.9a1,1,0,0,1-.848-1.53l.772-1.235L2.25,13h4.5l.424.235.772,1.235A1,1,0,0,1,7.1,16ZM2.527,14,1.9,15H7.1l-.625-1Z" />
+  </g>
+</svg>

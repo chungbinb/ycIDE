@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRouteService</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M3,1V3H6.293L5.146,1.854l.708-.708,2,2v.708l-2,2-.708-.708L6.293,4H2.5L2,3.5V1Z" />
+    <path class="light-defaultgrey" d="M15,11V10H13.949a2.473,2.473,0,0,0-.365-.876l.745-.745-.707-.707-.745.745A2.469,2.469,0,0,0,12,8.051V7H11V8.051a2.469,2.469,0,0,0-.877.366l-.745-.745-.707.707.745.745A2.473,2.473,0,0,0,9.051,10H8v1H9.051a2.473,2.473,0,0,0,.365.876l-.745.745.707.707.745-.745a2.469,2.469,0,0,0,.877.366V14h1V12.949a2.469,2.469,0,0,0,.877-.366l.745.745.707-.707-.745-.745A2.473,2.473,0,0,0,13.949,11Zm-3.5,1A1.5,1.5,0,1,1,13,10.5,1.5,1.5,0,0,1,11.5,12Z" />
+    <path class="light-defaultgrey" d="M7,8H2V7H7Zm0,5H2v1H7ZM6,10H2v1H6Z" />
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-yellow-10" Color="#996f00" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-yellow" Color="#996f00" Opacity="1" />
+      <SolidColorBrush x:Key="light-blue" Color="#005dba" Opacity="1" />
+      <SolidColorBrush x:Key="light-red" Color="#c50b17" Opacity="1" />
+      <System:Double x:Key="cls-1">0.75</System:Double>
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-yellow-10}" Geometry="F1M6.5,3.5v4H.5v-5H2.75l1,1Z" />
+              <GeometryDrawing Brush="{DynamicResource light-yellow}" Geometry="F1M6.5,3H3.957L3.1,2.146,2.75,2H.5L0,2.5v5L.5,8h6L7,7.5v-4ZM6,7H1V3H2.543l.853.854L3.75,4H6Z" />
+              <DrawingGroup Opacity="{DynamicResource cls-1}">
+                <GeometryDrawing Brush="{DynamicResource light-yellow}" Geometry="F1M15.5,3.5v4h-6v-5h2.25l1,1Z" />
+              </DrawingGroup>
+              <GeometryDrawing Brush="{DynamicResource light-yellow}" Geometry="F1M15.5,3H12.957L12.1,2.146,11.75,2H9.5L9,2.5v5l.5.5h6l.5-.5v-4ZM15,7H10V3h1.543l.853.854L12.75,4H15Z" />
+              <GeometryDrawing Brush="{DynamicResource light-blue}" Geometry="F1M12.85,9.15h-.7l-2,2,.7.7L12,10.71V14H10.12l1,1H12.5l.5-.5V10.71l1.15,1.14.7-.7ZM4,10.71l1.15,1.14.7-.7-2-2h-.7l-2,2,.7.7L3,10.71V14.5l.5.5H4.88l1-1H4Z" />
+              <GeometryDrawing Brush="{DynamicResource light-red}" Geometry="F1M8.707,14l1.272,1.271-.708.708L8,14.707,6.729,15.979l-.708-.708L7.293,14,6.021,12.729l.708-.708L8,13.293l1.271-1.272.708.708Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

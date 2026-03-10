@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightOperatorPrivate</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-blue-10" d="M9,12.5H1.5V2.5h10V7.417A2.993,2.993,0,0,0,10,10v.086l-1,1Z" />
+    <path class="light-blue" d="M9,13H1.5L1,12.5V2.5L1.5,2h10l.5.5V7.184a2.989,2.989,0,0,0-1,.6V3H2v9H9Zm1-8H7V6h3Zm.028,3H8.874L7.142,11H8.3ZM6,5H5V4H4V5H3V6H4V7H5V6H6ZM3,11H6V10H3ZM6,8H3V9H6Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

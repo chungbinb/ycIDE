@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDetailDataView</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,13.5h-5v-2h5Zm0-7h-5v2h5Zm0-5h-5v2h5Zm8,10h-5v2h5Zm0-5h-5v2h5Zm0-5h-5v2h5Z" />
+    <path class="light-defaultgrey" d="M6.5,14h-5L1,13.5v-2l.5-.5h5l.5.5v2ZM2,13H6V12H2ZM6.5,9h-5L1,8.5v-2L1.5,6h5l.5.5v2ZM2,8H6V7H2ZM6.5,4h-5L1,3.5v-2L1.5,1h5l.5.5v2ZM2,3H6V2H2ZM14.5,14h-5L9,13.5v-2l.5-.5h5l.5.5v2ZM10,13h4V12H10Zm4.5-4h-5L9,8.5v-2L9.5,6h5l.5.5v2ZM10,8h4V7H10Zm4.5-4h-5L9,3.5v-2L9.5,1h5l.5.5v2ZM10,3h4V2H10Z" />
+  </g>
+</svg>

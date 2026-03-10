@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPredictQueryBuilder</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12.85,11.15l-.7.7L13.29,13H3V7.97a4.16,4.16,0,0,1-1-.23V13.5l.5.5H13.3l-1.15,1.15.7.7,2-2v-.7Z" />
+    <path class="light-yellow" d="M5.6,11l-.6-.6v-.6l5.426-5.426h.6l.6.6v.6L6.206,11Z" />
+    <path class="light-defaultgrey" d="M12.22,4.98l.65-.65v-.6l-.6-.61h-.6l-.65.65A8.3,8.3,0,0,0,7.98,2l-.18.18a3.8,3.8,0,0,1,.18.95L9.82,4.97l-.56.56,1.21,1.2.56-.56,2.41,2.41L14,8.02A8.791,8.791,0,0,0,12.22,4.98Z" />
+    <path class="light-yellow" d="M3,2,3,0H4L4,2l-.5.5ZM4,5,4,7H3L3,5l.5-.5ZM5,3,7,3V4L5,4l-.5-.5ZM2,4,0,4V3L2,3l.5.5ZM4.208,2.086,5.62.672l.708.706L4.915,2.793H4.208ZM2.792,4.914,1.38,6.328.672,5.622,2.085,4.207h.707Zm2.122-.706L6.328,5.62l-.706.708L4.207,4.915V4.208ZM2.086,2.792.672,1.38,1.378.672,2.793,2.085v.707Z" />
+    <path class="light-yellow" d="M3,2,3,0H4L4,2l-.5.5ZM4,5,4,7H3L3,5l.5-.5ZM5,3,7,3V4L5,4l-.5-.5ZM2,4,0,4V3L2,3l.5.5ZM4.208,2.086,5.62.672l.708.706L4.915,2.793H4.208ZM2.792,4.914,1.38,6.328.672,5.622,2.085,4.207h.707Zm2.122-.706L6.328,5.62l-.706.708L4.207,4.915V4.208ZM2.086,2.792.672,1.38,1.378.672,2.793,2.085v.707Z" />
+  </g>
+</svg>

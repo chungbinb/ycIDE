@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightKPI</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,14.5h6v-3h-6Z" />
+    <path class="light-defaultgrey-10" d="M1.5,9.5h9v-3h-9Z" />
+    <path class="light-defaultgrey-10" d="M1.5,4.5h13v-3H1.5Z" />
+    <path class="light-defaultgrey" d="M14.5,5H1.5L1,4.5v-3L1.5,1h13l.5.5v3ZM2,4H14V2H2Z" />
+    <path class="light-defaultgrey" d="M10.5,10h-9L1,9.5v-3L1.5,6h9l.5.5v3ZM2,9h8V7H2Z" />
+    <path class="light-defaultgrey" d="M7.5,15h-6L1,14.5v-3l.5-.5h6l.5.5v3ZM2,14H7V12H2Z" />
+  </g>
+</svg>

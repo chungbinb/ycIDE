@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCacheOk</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M10.5,3V7.234A5.027,5.027,0,0,0,7.43,10H5.3L7.44,7H2.5V3c0-.829,1.791-1.5,4-1.5S10.5,2.171,10.5,3Z" />
+    <path class="light-lightblue-10" d="M7,11.979a4.9,4.9,0,0,0,.054.53c-.183.009-.364.021-.554.021-.335,0-.655-.02-.966-.049l1.687-1.929A4.911,4.911,0,0,0,7,11.979Z" />
+    <path class="light-lightblue" d="M7,11.981a4.956,4.956,0,0,0,.1,1c-.2.011-.4.023-.6.023a10.57,10.57,0,0,1-1.341-.092l.813-.928c.173.009.341.02.528.02S6.836,11.989,7,11.981Z" />
+    <path class="light-lightblue" d="M2,3V7H3V4.291A7.877,7.877,0,0,0,6.5,5,7.877,7.877,0,0,0,10,4.291V7.4a4.97,4.97,0,0,1,1-.322V3C11,.373,2,.373,2,3ZM6.5,4C4.227,4,3,3.29,3,3S4.227,2,6.5,2,10,2.71,10,3,8.773,4,6.5,4Z" />
+    <path class="light-green" d="M16,11.979a4,4,0,1,1-4-4A4,4,0,0,1,16,11.979Z" />
+    <path class="white" d="M14.208,11.15l-2.365,2.364-.711,0-1.34-1.372.715-.7.987,1.011L13.5,10.443Z" />
+    <path class="light-yellow" d="M5.5,11,2,15H1l1.5-3H.5l2-4h3L3.363,11Z" />
+  </g>
+</svg>

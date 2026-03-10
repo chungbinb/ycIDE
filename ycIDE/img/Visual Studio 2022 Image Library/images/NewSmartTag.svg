@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>NewSmartTag</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,16V0H16V16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M10.848,5.152a.75.75,0,1,1,1.061,0A.75.75,0,0,1,10.848,5.152Z" />
+    <path class="light-yellow" d="M4.914,2.793H4.207V2.086L5.619.672l.708.706ZM.671,5.622l.708.706L2.792,4.914V4.207H2.085ZM4.5,3.5,5,4,7,4V3L5,3Zm-2,0L2,3,0,3V4L2,4ZM.671,1.38,2.086,2.792h.707V2.085L1.377.672ZM3,0V2l.5.5L4,2V0ZM4.206,4.208v.707L5.621,6.328l.707-.708L4.913,4.208ZM3.5,4.5,3,5V7H4V5Z" />
+    <path class="light-defaultgrey-10" d="M13.5,2.5V8.157L7.136,14.521,1.479,8.864l.993-.993A4.466,4.466,0,0,0,3.5,8,4.471,4.471,0,0,0,7.88,2.5Z" />
+    <path class="light-defaultgrey" d="M14,2.5V8.157l-.146.353L7.49,14.874H6.783L1.126,9.217V8.51L1.932,7.7a4.456,4.456,0,0,0,1.159.256l-.905.905,2.251,2.25.449.449,2.25,2.251L13,7.95V3H8.05l-.091.091a4.491,4.491,0,0,0-.221-1.048L7.843,2H13.5Z" />
+  </g>
+</svg>

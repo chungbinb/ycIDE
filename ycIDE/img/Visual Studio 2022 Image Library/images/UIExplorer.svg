@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightUIExplorer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M1.5,5V7.67c.16-.09.33-.18.5-.26A5.106,5.106,0,0,1,4,7a4.712,4.712,0,0,1,1,.1,5.532,5.532,0,0,1,1,.31A5.029,5.029,0,0,1,9,12a4.712,4.712,0,0,1-.1,1h5.6V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H1.5L1,5.5V8a4.322,4.322,0,0,1,.5-.33c.16-.09.33-.18.5-.26V6H5V7.1a5.532,5.532,0,0,1,1,.31V6h8v7H8.9a5.532,5.532,0,0,1-.31,1H14.5l.5-.5v-8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2,3V5H14V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v3l.5.5h13l.5-.5v-3ZM2,5V3H14V5Z" />
+    <path class="light-defaultgrey-10" d="M8,12A4,4,0,1,1,4,8,4,4,0,0,1,8,12Z" />
+    <path class="light-defaultgrey" d="M7.682,10.439A4,4,0,1,1,5.561,8.318l-.794.794A2.943,2.943,0,0,0,4,9a3,3,0,1,0,3,3,2.943,2.943,0,0,0-.112-.767ZM4.951,11.756A.989.989,0,1,1,4,11a1,1,0,0,1,.244.049l2.2-2.2a4.009,4.009,0,0,1,.707.707Z" />
+    <path class="light-defaultgrey" d="M12,8H9V7h3ZM9,9v1h4V9Zm0,3h3V11H9Z" />
+  </g>
+</svg>

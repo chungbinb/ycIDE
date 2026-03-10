@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCPPPhonePivot</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5.5v13H9.949A3,3,0,0,0,7,11V10h3V7H7.5V.5Z" />
+    <path class="light-defaultgrey" d="M12,2V3H11V2ZM10,12h3V11H10ZM15.5,0h-8L7,.5V7H8V1h7V13H9.816A2.966,2.966,0,0,1,10,14h5.5l.5-.5V.5Z" />
+    <path class="light-red" d="M7,12a1.987,1.987,0,0,0-1,.277V10H5v6H6v-.277A2,2,0,1,0,7,12Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,7,15ZM3,12v.277a2,2,0,1,0,0,3.446V16H4V12ZM2,15a1,1,0,1,1,1-1A1,1,0,0,1,2,15ZM9,9H0V8H9Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHideMember</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16ZM0,0V16H16V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,5V6H13V5ZM13,7V8h1V7Zm1,5V11H13v1Zm0,1.5V13H13v1h.5ZM13,9v1h1V9Zm-1,5V13H11v1ZM6,14V13H5v1Zm4,0V13H9v1ZM8,14V13H7v1Z" />
+    <path class="light-defaultgrey" d="M11,3H3v8H2V2.5L2.5,2H11Z" />
+    <path class="light-defaultgrey" d="M13.607,3.1,2.707,14,2,13.293l10.9-10.9Z" />
+  </g>
+</svg>

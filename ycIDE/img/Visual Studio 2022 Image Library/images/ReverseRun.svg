@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightReverseRun</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue" d="M8.5,3.625v8.75L1.5,8Z" />
+    </g>
+    <path class="light-blue" d="M1.235,7.576v.848l7,4.375L9,12.375V3.625L8.235,3.2ZM2.443,8,8,4.527v6.946Z" />
+    <path class="light-blue" d="M13,3V13H12V3Z" />
+  </g>
+</svg>

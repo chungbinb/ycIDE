@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightValidateDocument</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.525,14.5H2.5V1.5h8l3,3v7.025l-1.854,1.854L10,11.732,7.879,13.854Z" />
+      <path class="light-defaultgrey" d="M9.025,15H2.5L2,14.5V1.5L2.5,1h8l.354.146,3,3L14,4.5v6.525l-1,1V5H10V2H3V14H8.025Z" />
+    </g>
+    <path class="light-green" d="M12,15.854h-.707l-2-2L10,13.146l1.646,1.647,3.647-3.647.707.708Z" />
+  </g>
+</svg>

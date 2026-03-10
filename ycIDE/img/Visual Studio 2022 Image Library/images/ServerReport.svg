@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ServerReport</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,3.5v10H10V9.3l-.3-.727-3.2-3.2V3.5a1,1,0,0,1,1-1h4A1,1,0,0,1,12.5,3.5Z" />
+    <path class="light-defaultgrey" d="M13,3.5v10l-.5.5H10V13h2V3.5a.5.5,0,0,0-.5-.5h-4a.5.5,0,0,0-.5.5V5.873l-.584-.584L6,5.123V3.5A1.5,1.5,0,0,1,7.5,2h4A1.5,1.5,0,0,1,13,3.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9.876,9H11v1H10V9.3ZM10,12h1V11H10ZM8,5V6h3V5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M8.5,9.5v6H.5v-9h5Z" />
+    <path class="light-defaultgrey" d="M8.854,9.142l-3-3L5.5,6H.5L0,6.5v9l.5.5h8l.5-.5v-6ZM8,15H1V7H5v3H8ZM3.5,12l.5.5v1l-.5.5h-1L2,13.5v-1l.5-.5ZM5,11.5l.5-.5h1l.5.5v2l-.5.5h-1L5,13.5ZM2,8H4V9H2Zm1,3H2V10H3Z" />
+  </g>
+</svg>

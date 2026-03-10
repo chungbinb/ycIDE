@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightActionTool</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.207,11.5.5,9.793V5.207L2.207,3.5H12.793L14.5,5.207V9.793L12.793,11.5Z" />
+    <path class="light-defaultgrey" d="M13,3H2L0,5v5l2,2H13l2-2V5Zm1,6.586L12.586,11H2.414L1,9.586V5.414L2.414,4H12.586L14,5.414Z" />
+  </g>
+</svg>

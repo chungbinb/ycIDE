@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPNPEntity</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5.5v4a2,2,0,0,1-4,0V.5Z" />
+    <path class="light-defaultgrey-10" d="M14,7.96a3.145,3.145,0,0,1-1,0A3.384,3.384,0,0,1,11.06,7a3.09,3.09,0,0,1-.71-1,3.147,3.147,0,0,1-.31-1A2.737,2.737,0,0,1,10,4.5v-1H.5v8h14V7.85A2.784,2.784,0,0,1,14,7.96Z" />
+    <path class="light-defaultgrey" d="M11,10h2V9H11Zm.06-3H11V8h2V7.96A3.384,3.384,0,0,1,11.06,7ZM10,5V6h.35a3.147,3.147,0,0,1-.31-1ZM5,10h5V9H5ZM9,8h1V7H9ZM9,5H8V6H9ZM7,8H8V7H7ZM7,5H6V6H7ZM5,8H6V7H5ZM5,5H4V6H5ZM2,10H4V9H2ZM2,8H4V7H2ZM3,5H2V6H3ZM14.5,7.85a2.784,2.784,0,0,1-.5.11V11H1V4h9V3H.5L0,3.5v8l.5.5h14l.5-.5V7.65A2.374,2.374,0,0,1,14.5,7.85ZM13,9H11v1h2Zm0-1.04A3.384,3.384,0,0,1,11.06,7H11V8h2ZM10,6h.35a3.147,3.147,0,0,1-.31-1H10Zm0,3H5v1h5Zm0-2H9V8h1ZM9,5H8V6H9ZM7,8H8V7H7ZM6,6H7V5H6ZM5,8H6V7H5ZM4,6H5V5H4ZM2,10H4V9H2ZM4,7H2V8H4ZM2,5V6H3V5Zm8.04,0H10V6h.35A3.147,3.147,0,0,1,10.04,5ZM8,5V6H9V5ZM6,5V6H7V5ZM9,7V8h1V7ZM7,7V8H8V7ZM5,7V8H6V7ZM4,5V6H5V5ZM5,9v1h5V9ZM2,9v1H4V9Zm9,0v1h2V9Zm.06-2H11V8h2V7.96A3.384,3.384,0,0,1,11.06,7ZM2,7V8H4V7ZM2,5V6H3V5Z" />
+    <path class="light-defaultgrey" d="M15.5,0h-4L11,.5v4a2.5,2.5,0,0,0,5,0V.5ZM15,4.5a1.5,1.5,0,0,1-3,0V1h1V3h1V1h1Z" />
+  </g>
+</svg>

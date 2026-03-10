@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMatchTag</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M3,9v2H5.293L4.146,9.854l.708-.708,2,2v.708l-2,2-.708-.708L5.293,12H2.5L2,11.5V9Z" />
+    <path class="light-defaultgrey" d="M11.2,9.709,9.364,11.528,11.2,13.353l-.7.708L8.3,11.882v-.709L10.49,9ZM13.51,9l-.7.709,1.831,1.819-1.831,1.825.705.708L15.7,11.882v-.709ZM2.49,2,.3,4.173v.709L2.49,7.062l.7-.709L1.364,4.528,3.2,2.709Zm2.315.709L6.636,4.528,4.805,6.353l.705.709L7.7,4.882V4.173L5.51,2Z" />
+  </g>
+</svg>

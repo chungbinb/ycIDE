@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightProgressBar</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,12.5H.5v-8h14Z" />
+    <path class="light-defaultgrey" d="M14.5,13H.5L0,12.5v-8L.5,4h14l.5.5v8ZM1,12H14V5H1Z" />
+    <path class="light-blue" d="M10,11H2V6h8Z" />
+  </g>
+</svg>

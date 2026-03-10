@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightForEach</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,1.5v13l-.5.5h-9L4,14.5,4,5.735,2.381,7.357,1.674,6.65,4.148,4.175h.707L7.33,6.65l-.707.707L5,5.735,5,14h8V2H4V1h9.5Z" />
+  </g>
+</svg>

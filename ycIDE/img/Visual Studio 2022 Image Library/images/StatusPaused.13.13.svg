@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 13">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>StatusPaused.13.13</title>
+  <title>IconLightStatusPaused.13.13</title>
+  <g id="canvas">
+    <path class="canvas" d="M13,13H0V0H13Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6.5,1A5.5,5.5,0,1,0,12,6.5,5.506,5.506,0,0,0,6.5,1Z" />
+    <path class="white" d="M5,9H4V4H5Z" />
+    <path class="white" d="M9,9H8V4H9Z" />
+  </g>
+</svg>

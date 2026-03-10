@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCheckConstraintGroup</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,11.5h-9v-7h9Z" />
+    <path class="light-defaultgrey" d="M15.5,15.011H.5l-.5-.5V1.5L.5,1h15l.5.5V14.511Zm-14.5-1H15V2H1Z" />
+    <path class="light-defaultgrey" d="M12.5,4h-9L3,4.5v7l.5.5h9l.5-.5v-7ZM7,6H9V8H7Zm3,0h2V8H10ZM4,6H6V8H4ZM4,9H6v2H4ZM7,9H9v2H7Zm5,2H10V9h2Z" />
+  </g>
+</svg>

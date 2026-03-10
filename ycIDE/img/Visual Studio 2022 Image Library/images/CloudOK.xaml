@@ -1,0 +1,28 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-lightblue-10" Color="#0077a0" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-lightblue" Color="#0077a0" Opacity="1" />
+      <SolidColorBrush x:Key="light-green" Color="#1f801f" Opacity="1" />
+      <SolidColorBrush x:Key="white" Color="#ffffff" Opacity="1" />
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-lightblue-10}" Geometry="F1M7.05,11.5h-2.5a3.125,3.125,0,1,1,0-6.25,2.924,2.924,0,0,1,.8.109A3.493,3.493,0,0,1,11.925,7h.065A4.99,4.99,0,0,0,7.05,11.5Z" />
+              <GeometryDrawing Brush="{DynamicResource light-lightblue}" Geometry="F1M7,12H4.548a3.626,3.626,0,0,1,0-7.25,3.48,3.48,0,0,1,.567.047A3.963,3.963,0,0,1,12.37,6.5,2.664,2.664,0,0,1,14.516,7.7,4.947,4.947,0,0,0,12,7a4.942,4.942,0,0,0-.573.058A3.036,3.036,0,0,0,8.417,4,3,3,0,0,0,5.609,5.989a2.51,2.51,0,0,0-1.061-.238,2.625,2.625,0,0,0,0,5.25H7.1A4.985,4.985,0,0,0,7,12Z" />
+              <GeometryDrawing Brush="{DynamicResource light-green}" Geometry="F1M16,11.979a4,4,0,1,1-4-4A4,4,0,0,1,16,11.979Z" />
+              <GeometryDrawing Brush="{DynamicResource white}" Geometry="F1M14.208,11.15l-2.365,2.364-.711,0-1.34-1.372.715-.7.987,1.011L13.5,10.443Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

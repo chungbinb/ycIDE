@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>StartTestWithoutDebugger</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M13.675,14.5H4.324a1,1,0,0,1-.842-1.538L5,10.5h8l1.518,2.462A1,1,0,0,1,13.675,14.5Z" />
+    <path class="light-teal" d="M13.676,15H4.324a1.5,1.5,0,0,1-1.265-2.307l1.515-2.456L5,10h8l.426.237L14.944,12.7A1.5,1.5,0,0,1,13.676,15Zm-8.4-4L3.907,13.225A.5.5,0,0,0,4.324,14h9.352a.5.5,0,0,0,.42-.77L12.721,11Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M12.674,10H5.326L7.5,6.667v-1.8L9.016,4,7.5,3.134V1.5h3V6.667Z" />
+      <path class="light-defaultgrey" d="M8,4.581V6.667l-.081.273-2,3.06H5l-.416.232,0,0L7,6.519V5.152Zm5.419,5.646,0,0L13,10h-.923l-2-3.06L10,6.667V2H8V3.419L7,2.848V2H6V1h6V2H11V6.519Z" />
+    </g>
+    <path class="light-green" d="M7,4,0,8V0Z" />
+  </g>
+</svg>

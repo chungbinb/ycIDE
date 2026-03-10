@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPickBranch</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,5.5v7H10.622l3.646-3.646L12.146,6.732,7.5,11.378,4.854,8.731,2.732,10.854,4.378,12.5H1.5v-7H5.378L7.732,7.854H9.268L11.622,5.5Z" />
+    <path class="light-blue" d="M6.354,3.647,8,5.293V0H9V5.293l1.643-1.646.707.707-2.5,2.5H8.147l-2.5-2.5Z" />
+    <path class="light-green" d="M12.854,8.854l-5,5H7.146l-3-3,.708-.708L7.5,12.793l4.646-4.647Z" />
+    <path class="light-defaultgrey" d="M3.878,12l1,1H1.5L1,12.5v-7L1.5,5H4.878l1,1H2v6ZM15.5,5H12.122l-1,1H15v6H11.122l-1,1H15.5l.5-.5v-7Z" />
+  </g>
+</svg>

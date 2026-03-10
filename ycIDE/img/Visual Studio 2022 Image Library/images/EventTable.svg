@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>EventTable</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5V13H6.033L7,11.843V11H5.3L7,8.618V8H2.5V2.5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H2.5L2,2.5V8H6.039L6,10l-.7,1H6v2l-.921,1H14.5l.5-.5V2.5ZM6,7H3V5H6Zm4,6H7V11h3Zm0-3H7V8h3Zm0-3H7V5h3Zm4,6H11V11h3Zm0-3H11V8h3Zm0-3H11V5h3Zm0-3H3V3H14Z" />
+    <path class="light-yellow" d="M5.5,12,2,16H1l1.5-3H.5l2-4h3L3.363,12Z" />
+  </g>
+</svg>

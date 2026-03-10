@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>ParentChildAttributeDisabled</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,8.5v3H7.03A4.293,4.293,0,0,1,7.1,11,4.918,4.918,0,0,1,8,9a4.113,4.113,0,0,1,.42-.5Zm-3-6v4h4v-4Zm-2,6v3h3v-3Z" />
+    <path class="light-defaultgrey" d="M8.5,8h-3L5,8.5v3l.5.5H7a4.07,4.07,0,0,1,.03-.5A4.293,4.293,0,0,1,7.1,11H6V9H8a4.113,4.113,0,0,1,.42-.5c.1-.09.2-.19.3-.28Zm-2-6h-4L2,2.5v4l.5.5h4L7,6.5v-4ZM6,6H3V3H6ZM3.5,8H.5L0,8.5v3l.5.5h3l.5-.5v-3ZM3,11H1V9H3Z" />
+    <path class="light-blue" d="M14.5,4H9V5h5V7.41A5.26,5.26,0,0,1,15,8V4.5Z" />
+    <path class="light-red" d="M12,8a4,4,0,1,0,4,4A4,4,0,0,0,12,8Z" />
+    <path class="white" d="M14,12.5H10v-1h4Z" />
+  </g>
+</svg>

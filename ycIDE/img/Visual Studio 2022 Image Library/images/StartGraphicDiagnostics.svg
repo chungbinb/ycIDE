@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightStartGraphicDiagnostics</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M3.5,7.5h3l1-1h4l1,1h3v8H3.5Z" />
+    <path class="light-defaultgrey" d="M15.5,7H12.707l-.853-.854L11.5,6h-4l-.354.146L6.293,7H3.5L3,7.5v8l.5.5h12l.5-.5v-8ZM15,15H4V8H6.5l.354-.146L7.707,7h3.586l.853.854L12.5,8H15Z" />
+    <path class="light-teal" d="M6,9.5A.5.5,0,1,1,5.5,9,.5.5,0,0,1,6,9.5Z" />
+    <path class="light-teal-10" d="M9.5,13.5a2,2,0,1,1,2-2A2,2,0,0,1,9.5,13.5Z" />
+    <path class="light-teal" d="M9.5,9A2.5,2.5,0,1,0,12,11.5,2.5,2.5,0,0,0,9.5,9Zm0,4A1.5,1.5,0,1,1,11,11.5,1.5,1.5,0,0,1,9.5,13Z" />
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+  </g>
+</svg>

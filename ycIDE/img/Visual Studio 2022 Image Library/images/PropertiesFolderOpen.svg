@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow-25{fill: #996f00; opacity: 0.25;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.25;}</style>
+  </defs>
+  <title>IconLightPropertiesFolderOpen</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M13.5,3.5v2h-5l-1,1H4.944A3.967,3.967,0,0,0,3.67,6.046a4.059,4.059,0,0,0-.659-.054,4.017,4.017,0,0,0-1.74.4L.012,7l0,0,0,.01V7L.5,5.5v-3h5l1,1Z" />
+    <path class="light-yellow-25" d="M15.5,5.5l-2,7H8.335L6.854,11.02A3.982,3.982,0,0,0,5.825,7.156,4.021,4.021,0,0,0,4.96,6.5H7.5l1-1Z" />
+    <g class="cls-1">
+      <path class="light-yellow" d="M14,12.5H13V6h1Z" />
+    </g>
+    <path class="light-yellow" d="M15.9,5.629l-1.867,7L13.545,13H8.835l-.072-.072-.616-.617L7.835,12h5.326l1.6-6H8.685l-.853.854L7.478,7H5.642A3.957,3.957,0,0,0,3.67,6.046V6h3.6l.854-.854L8.478,5H13V4H6.5L6.15,3.854,5.3,3H1V6.521L.012,7l0,0,0,.01V2.5L.5,2h5l.353.146L6.711,3H13.5l.5.5V5h1.408Z" />
+    <path class="light-defaultgrey" d="M.046,10.5A2.994,2.994,0,0,1,.3,8.705L2.289,10.7,3.707,9.282l-2-1.991A2.982,2.982,0,0,1,5.7,11.274l3.312,3.312v.707L8.3,16H7.593L4.281,12.688A2.978,2.978,0,0,1,.046,10.5Z" />
+  </g>
+</svg>

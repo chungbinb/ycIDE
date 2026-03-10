@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightImageChisel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,1.5v12h14V1.5Z" />
+    <path class="light-defaultgrey-25" d="M14.5,13.5H.5l2-2h10v-8l2-2Z" />
+    <path class="light-defaultgrey" d="M14.5,1H.5L0,1.5v12l.5.5h14l.5-.5V1.5ZM12.293,3H2.707l-1-1H13.293ZM12,4v7H3V4ZM2,3.707v7.586l-1,1V2.707ZM2.707,12h9.586l1,1H1.707ZM13,11.293V3.707l1-1v9.586Z" />
+    <path class="light-blue" d="M12,10.793V11H10.793L8.98,9.188,7.34,10.827H6.633L3.986,8.181,3,9.167V7.753l.633-.633H4.34L6.986,9.767l1.641-1.64h.707Z" />
+    <path class="light-yellow" d="M11,6a1,1,0,1,1-1-1A1,1,0,0,1,11,6Z" />
+  </g>
+</svg>

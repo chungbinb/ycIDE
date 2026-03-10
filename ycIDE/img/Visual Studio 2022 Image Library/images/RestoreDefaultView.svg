@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRestoreDefaultView</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v10H2.5V10.439l.913.909L7.964,6.783A4.02,4.02,0,0,0,8.949,4.5Z" />
+    <path class="light-blue" d="M7.979,3.981a3.057,3.057,0,0,1-.764,2.14L3.41,9.935,2.7,9.228,6.5,5.415a2.106,2.106,0,0,0,.472-1.429,2.19,2.19,0,0,0-.6-1.549A2.27,2.27,0,0,0,3.4,2.308L1.723,4H4V5H.5L0,4.5V1H1V3.309L2.7,1.6a3.263,3.263,0,0,1,4.356.1A3.161,3.161,0,0,1,7.979,3.981Z" />
+    <path class="light-defaultgrey" d="M15,4.5v10l-.5.5H2.5L2,14.5V9.942l1,.995V14H14V6H8.495a3.933,3.933,0,0,0,.484-2H14.5Z" />
+  </g>
+</svg>

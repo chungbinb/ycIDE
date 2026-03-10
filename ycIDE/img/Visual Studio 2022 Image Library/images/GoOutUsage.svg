@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightGoOutUsage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6,.5V4H5V1.707L2.354,4.354l-.708-.708L4.293,1H2V0H5.5ZM6,5H1V0H0V5.5L.5,6H6Z" />
+    <path class="light-defaultgrey-10" d="M3.5,14a4.5,4.5,0,0,1,9,0Z" />
+    <path class="light-defaultgrey-10" d="M11,6.5A3,3,0,0,1,5.05,7H7V3.684A2.962,2.962,0,0,1,8,3.5,3,3,0,0,1,11,6.5Z" />
+    <path class="light-defaultgrey" d="M13,14H12a4,4,0,0,0-8,0H3A5.007,5.007,0,0,1,6.043,9.4,3.5,3.5,0,0,1,4.539,7H5.551A2.5,2.5,0,1,0,8,4a2.475,2.475,0,0,0-1,.212V3.163A3.449,3.449,0,0,1,8,3,3.5,3.5,0,0,1,9.957,9.4,5.007,5.007,0,0,1,13,14Z" />
+  </g>
+</svg>

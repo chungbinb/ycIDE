@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMyMoviesTV</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.5v7H2.5v-7Z" />
+    <path class="light-defaultgrey" d="M14.5,6H2.5L2,6.5v7l.5.5h12l.5-.5v-7ZM14,13H3V7H14Z" />
+    <path class="light-defaultgrey-10" d="M14.333,3.693,2.515,5.777l-.347-1.97L13.985,1.723Z" />
+    <path class="light-defaultgrey" d="M14.478,1.637l-.58-.406L2.081,3.314l-.406.58.347,1.969.58.406L14.419,4.186l.406-.58ZM8.366,3.221l2.056-.362,1.159.812-2.056.362ZM8.134,4.279l-2.056.362L4.919,3.829l2.056-.362ZM2.747,4.212l.78-.138,1.159.812L2.92,5.2Zm10.226-.786-1.159-.812L13.58,2.3l.173.985Z" />
+  </g>
+</svg>

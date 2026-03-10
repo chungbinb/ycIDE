@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCloudService</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M3.767,6H1V5H4v.6A4.2,4.2,0,0,0,3.767,6ZM3,8H0V7H3Zm.847,2H1V9H3.426A4.037,4.037,0,0,0,3.847,10Z" />
+    </g>
+    <path class="light-lightblue-10" d="M15.5,8.647A1.843,1.843,0,0,1,13.672,10.5H7.3a2.574,2.574,0,0,1,0-5.147,2.426,2.426,0,0,1,.656.09,2.876,2.876,0,0,1,5.418,1.351h.3A1.843,1.843,0,0,1,15.5,8.647Z" />
+    <path class="light-lightblue" d="M13.672,11H7.3a3.074,3.074,0,0,1,0-6.147,3.011,3.011,0,0,1,.414.029,3.37,3.37,0,0,1,2.772-1.47A3.422,3.422,0,0,1,13.833,6.3a2.354,2.354,0,0,1-.161,4.7ZM7.3,5.853A2.074,2.074,0,0,0,7.3,10h6.371a1.353,1.353,0,0,0,0-2.706h-.788L12.875,6.8a2.42,2.42,0,0,0-2.388-2.391A2.381,2.381,0,0,0,8.4,5.681l-.19.352-.385-.108A1.9,1.9,0,0,0,7.3,5.853Z" />
+  </g>
+</svg>

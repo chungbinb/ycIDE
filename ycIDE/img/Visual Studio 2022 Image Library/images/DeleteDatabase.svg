@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDeleteDatabase</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M14.5,5v8c0,.828-1.791,1.5-4,1.5s-4-.672-4-1.5V5.914l.768-.768-.579-.578C7.186,3.952,8.694,3.5,10.5,3.5,12.709,3.5,14.5,4.172,14.5,5Z" />
+    <path class="light-lightblue" d="M6.321,4.2l.712.712C7.2,4.6,8.393,4,10.5,4c2.273,0,3.5.7,3.5.985v.03C14,5.3,12.773,6,10.5,6a5.837,5.837,0,0,1-3.327-.759L6,6.414V13c0,1.313,2.264,2,4.5,2s4.5-.687,4.5-2V4.969C15,2.634,7.9,2.381,6.321,4.2ZM14,13c0,.29-1.227,1-3.5,1S7,13.29,7,13V6.3A7.9,7.9,0,0,0,10.5,7,7.913,7.913,0,0,0,14,6.3Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+  </g>
+</svg>

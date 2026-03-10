@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-orange-10{fill: #b73d18; opacity: 0.1;}.light-orange{fill: #b73d18; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCodeReviewDashboard</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-orange-10" d="M8.5,6.5v5h-3l-2,2.1V11.5h-2v-5Z" />
+    <path class="light-orange" d="M8.5,6h-7L1,6.5v5l.5.5H3v1.6l.862.344L5.714,12H8.5l.5-.5v-5ZM8,11H5.5l-.362.155L4,12.35V11.5L3.5,11H2V7H8Z" />
+    <path class="light-defaultgrey" d="M10,7h3V8H10Zm0-3h3V3H10Zm1-3H8V2h3Zm1,0V2h4V1Zm2,3h2V3H14ZM10,6h5V5H10Z" />
+  </g>
+</svg>

@@ -208,6 +208,9 @@ std::vector<CompletionItem> KeywordManager::GetCompletions(const std::wstring& i
     // 然后搜索支持库命令
     auto& libParser = LibraryParser::GetInstance();
     for (const auto& cmd : libParser.GetCommands()) {
+        // 跳过隐藏命令
+        if (cmd.isHidden) continue;
+        
         int score = CalculateScore(cmd.chineseName, cmd.pinyin, cmd.initials);
         
         // 检查英文名

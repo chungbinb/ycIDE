@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightNewWindow</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.74,5a4.07,4.07,0,0,1-.5,1A4.486,4.486,0,0,1,3.5,8,4.379,4.379,0,0,1,2,7.74a4.4,4.4,0,0,1-.5-.21V13h13V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H7.74a4.07,4.07,0,0,1-.5,1H14v7H2V7.74a4.4,4.4,0,0,1-.5-.21A3.6,3.6,0,0,1,1,7.24V13.5l.5.5h13l.5-.5v-8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.97,3A4.07,4.07,0,0,1,8,3.5,4.379,4.379,0,0,1,7.74,5H14V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H7.74a4.16,4.16,0,0,1,.23,1H14V5H7.74a4.07,4.07,0,0,1-.5,1H14.5l.5-.5v-3Z" />
+    <path class="light-yellow" d="M3,2,3,0H4L4,2l-.5.5Zm.5,2.5L3,5V7H4V5Zm1-1L5,4,7,4V3L5,3Zm-2,0L2,3,0,3V4L2,4Zm1.707-.7h.708L6.325,1.378,5.617.671,4.205,2.088ZM2.789,4.206H2.082L.67,5.623l.708.706L2.79,4.913Zm1.414,0v.708L5.62,6.328l.706-.708L4.91,4.208ZM2.791,2.792V2.085L1.375.673.668,1.38,2.085,2.793Z" />
+  </g>
+</svg>

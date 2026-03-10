@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLastHistoryCommand</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2,14h9v1H2Zm8-8H6.122l1,1H10ZM2,2V3H15V2Zm3,9h7V10H5Z" />
+    <path class="light-blue" d="M.646,7.646l2.5-2.5h.708l2.5,2.5-.708.707L4,6.707V12H3V6.707L1.354,8.353Z" />
+  </g>
+</svg>

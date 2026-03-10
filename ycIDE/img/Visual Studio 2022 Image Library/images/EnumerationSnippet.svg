@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEnumerationSnippet</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14,10H12V4.5L11.5,4H7V2h7Z" />
+      <path class="light-defaultgrey" d="M14,11h1v1H14Zm.5-10h-8L6,1.5V4H7V2h7v8h1V1.5ZM12,12h1V11H12Z" />
+    </g>
+    <g class="cls-1">
+      <path class="light-yellow-10" d="M11.54,4.5v6H8.021v-2l-.5-.5H4.5V4.5Z" />
+      <path class="light-yellow" d="M12.043,4.5v6l-.5.5H8V10h3V5H5V8H4V4.5L4.5,4H11.54ZM9.529,6V7H6.513V6ZM7.016,9H9.529V8H7.016Z" />
+    </g>
+    <path class="light-yellow-10" d="M7.543,8.5v6H.5v-6Z" />
+    <path class="light-yellow" d="M5.543,11H2.5V10H5.543Zm0,1H2.5v1H5.543ZM8.021,8.5,8,14.5l-.457.5H.5L0,14.5v-6L.5,8H7.543ZM7,9H1v5H7Z" />
+  </g>
+</svg>

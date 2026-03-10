@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSetProactiveCaching</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M8,7.545V5H7.737A4.443,4.443,0,0,0,8,3.5a4.493,4.493,0,0,0-.216-1.337L8,2.045l5.5,3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M13.5,5.045v7L8,14.545l-5.5-2.5V7.872c.085.02.165.051.252.066L3,7.979V8h.123l.616.1L3.756,8H8V5H7.737A4.443,4.443,0,0,0,8,3.5a4.493,4.493,0,0,0-.216-1.337L8,2.045Z" />
+      <path class="light-defaultgrey" d="M14,5.045v7l-.293.455L8.207,15H7.793l-5.5-2.5L2,12.045v-4.3a4.561,4.561,0,0,0,.752.2L3,7.979v3.744l4.5,2.045L7.5,8h.712l.288-.131,0,5.9L13,11.723v-5.9l.707-.321.032-.894Z" />
+    </g>
+    <path class="light-defaultgrey" d="M13.739,4.606l-.032.894L8.207,8H8V7L12.381,5,8,2.614l-.081.044a4.433,4.433,0,0,0-.312-.968l.154-.084h.478Z" />
+    <path class="light-blue" d="M3.917,1.035,4.083.048A3.494,3.494,0,0,1,5.941,6H7V7H4V4H5V5.5A2.5,2.5,0,0,0,3.917,1.035ZM0,1H1.059A3.494,3.494,0,0,0,2.917,6.952l.166-.987A2.5,2.5,0,0,1,2,1.5V3H3V0H0Z" />
+  </g>
+</svg>

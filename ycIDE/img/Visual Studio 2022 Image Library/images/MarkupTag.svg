@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMarkupTag</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M6.768,5.525,4.293,8l2.475,2.475-.707.707L3.232,8.354V7.646L6.061,4.818Zm3.171-.707-.707.707L11.707,8,9.232,10.475l.707.707,2.829-2.828V7.646Z" />
+  </g>
+</svg>

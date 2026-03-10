@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNoStroke</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v13H1.5V1.5Z" />
+    <path class="light-red" d="M14.854,1.854l-13,13-.708-.708,13-13Z" />
+    <path class="light-defaultgrey" d="M4,9.88l-1,1V3.5L3.5,3h7.38l-1,1H4ZM5.12,13H12.5l.5-.5V5.12l-1,1V12H6.12ZM15,1.5v13l-.5.5H1.5L1,14.5V1.5L1.5,1h13ZM14,2H2V14H14Z" />
+  </g>
+</svg>

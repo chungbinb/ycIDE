@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightToolBar</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M16,13.5H3.5V2.5H16Z" />
+    <path class="light-defaultgrey" d="M16,3V2H0V14H16V13H4V3ZM3,12H1V10H3ZM3,9.012H1v-2H3ZM3,6H1V4H3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8.5,10h-3L5,9.5v-4L5.5,5h2l.354.146,1,1L9,6.5v3ZM6,9H8V6.707L7.293,6H6Z" />
+      <path class="light-defaultgrey" d="M14.5,10h-3L11,9.5v-4l.5-.5h2l.354.146,1,1L15,6.5v3ZM12,9h2V6.707L13.293,6H12Z" />
+    </g>
+  </g>
+</svg>

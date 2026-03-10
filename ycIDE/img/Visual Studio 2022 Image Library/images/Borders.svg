@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBorders</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,14.5H1.5V2.5h12Z" />
+    <path class="light-defaultgrey" d="M13.5,15H1.5L1,14.5V2.5L1.5,2h12l.5.5v12ZM2,14H13V3H2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M8,5H7V4H8ZM8,4H7V5H8ZM8,6H7V7H8ZM8,8H7V9H8Zm0,2H7v1H8Zm0,2H7v1H8ZM8,4H7V5H8ZM8,4H7V5H8ZM8,6H7V7H8ZM8,8H7V9H8Zm0,2H7v1H8Zm0,2H7v1H8ZM3,8V9H4V8ZM3,8V9H4V8ZM5,8V9H6V8ZM9,8V9h1V8Zm2,0V9h1V8Z" />
+    </g>
+  </g>
+</svg>

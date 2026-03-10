@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAddComputedField</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v13H4.5V8H5V5H8V1.5Z" />
+    <path class="light-defaultgrey" d="M15,1.5v13l-.5.5H4.5L4,14.5V8H5v6h9V2H8V1h6.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13,3.5v2l-.5.5h-6L6,5.5V5h6V4H8V3h4.5Z" />
+      <path class="light-defaultgrey" d="M9,11h1v1H9ZM6,10H7V9H6ZM6,8H7V7H6Zm0,4H7V11H6Zm6,0h1V11H12Zm0-4h1V7H12Zm0,2h1V9H12ZM9,8h1V7H9Zm0,2h1V9H9Z" />
+    </g>
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

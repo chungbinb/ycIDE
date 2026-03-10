@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightPrintDocument</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.5,13.5v2h-6v-2Z" />
+      <path class="light-defaultgrey" d="M8.5,13h-6l-.5.5v2l.5.5h6l.5-.5v-2ZM8,15H3V14H8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M10,9.5H1a.5.5,0,0,0-.5.5v4.5H2v-1l.5-.5h6l.5.5v1h1.5V10A.5.5,0,0,0,10,9.5Z" />
+    <path class="light-defaultgrey" d="M10,9H1a1,1,0,0,0-1,1v4.5l.5.5H2V14H1V10h9v4H9v1h1.5l.5-.5V10A1,1,0,0,0,10,9Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.5,5.5v4h-6v-4Z" />
+      <path class="light-defaultgrey" d="M9,5.5v4H8V6H3V9.5H2v-4L2.5,5h6Z" />
+    </g>
+    <path class="light-teal" d="M3,11v1H2V11Z" />
+    <path class="light-defaultgrey-10" d="M12.5,2.5V.5h-6V4H8.91L10,5.09V8a2.006,2.006,0,0,1,2,2v.5h2.5v-8Z" />
+    <path class="light-defaultgrey" d="M14.89,2.47,12.53.11,12.25,0H6.39L6,.39V4H7V1h5V3h2v7H12v1h2.61l.39-.39V2.75Z" />
+  </g>
+</svg>

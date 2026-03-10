@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddColumnsToLeft</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M3.5,13.5H.5V4h3Z" />
+    <path class="light-blue" d="M.5,3,0,3.5v10l.5.5h3l.5-.5V3.5L3.5,3ZM3,13H1V11H3Zm0-3H1V8H3ZM3,7H1V5H3Z" />
+    <path class="light-defaultgrey-10" d="M15,5v8H9V10h2V7H9V5Z" />
+    <path class="light-defaultgrey" d="M15.5,3h-6L9,3.5V7h1V5h2V7l-1,.006V8h1v2.011L10,10H9v3.5l.5.5h6l.5-.5V3.5ZM12,13H10V11h2Zm3,0H13V11h2Zm0-3H13V8h2Zm0-3H13V5h2Z" />
+    <path class="light-blue" d="M10,8V9H5.707l1.147,1.146-.708.708-2-2V8.146l2-2,.708.708L5.707,8Z" />
+  </g>
+</svg>

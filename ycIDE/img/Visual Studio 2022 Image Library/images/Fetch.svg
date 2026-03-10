@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightFetch</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M11.854,11l-4,4H7.146l-4-4,.708-.707L7,13.439l.5.457.5-.457,3.146-3.146ZM7.5,11.4a.75.75,0,1,0-.75-.75A.75.75,0,0,0,7.5,11.4Zm0-3a.75.75,0,1,0-.75-.75A.75.75,0,0,0,7.5,8.4Zm0-3a.75.75,0,1,0-.75-.75A.75.75,0,0,0,7.5,5.4Zm0-3a.75.75,0,1,0-.75-.75A.75.75,0,0,0,7.5,2.4Z" />
+  </g>
+</svg>

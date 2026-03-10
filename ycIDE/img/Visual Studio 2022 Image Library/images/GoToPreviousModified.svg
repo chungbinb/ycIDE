@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>GoToPreviousModified</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M6,2V3H1.707L2.854,4.146l-.708.708-2-2V2.146l2-2,.708.708L1.707,2Z" />
+    <path class="light-defaultgrey-10" d="M13.26,2.736a1.5,1.5,0,0,1,0,2.119l0,0L6.116,12,4,9.884l7.143-7.148A1.5,1.5,0,0,1,13.26,2.736Z" />
+    <path class="light-defaultgrey" d="M13.588,5.233A2,2,0,0,0,10.761,2.41v0h0L4.042,9.13,2,13.333,2.667,14l4.065-1.944L13.588,5.24ZM6.224,11.19l-.082.039L4.771,9.858l.039-.082,6.655-6.658a1,1,0,1,1,1.414,1.414h0Z" />
+  </g>
+</svg>

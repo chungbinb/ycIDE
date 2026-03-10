@@ -137,9 +137,9 @@ static std::vector<LibraryParameter> GetCommandParameters(const std::wstring& cm
 static std::wstring ExtractCommandName(const std::wstring& line) {
     if (line.empty()) return L"";
     
-    // 跳过特殊标记字符
+    // 跳过特殊标记字符（包括嵌套深度分隔符\u200B）
     size_t start = 0;
-    while (start < line.length() && (line[start] == L'\u200C' || line[start] == L'\u200D' || line[start] == L' ' || line[start] == L'\t')) {
+    while (start < line.length() && (line[start] == L'\u200C' || line[start] == L'\u200D' || line[start] == L'\u200B' || line[start] == L' ' || line[start] == L'\t')) {
         start++;
     }
     
@@ -566,39 +566,113 @@ static bool IsValidAssignmentTarget(const std::wstring& line) {
 struct ExprOperatorInfo {
     wchar_t op;             // 半角运算符: + - * /
     wchar_t fullWidthOp;    // 全角运算符: ＋ － × ÷
+    std::wstring fullWidthOpStr; // 多字符全角运算符（如≥ ≤）
     std::wstring param1Name; // 第一个参数名
     std::wstring param2Name; // 第二个参数名
     std::wstring leftOperand;  // 左操作数
     std::wstring rightOperand; // 右操作数
+    int opLength;            // 运算符字符长度（用于多字符运算符如>=）
 };
 
 // 获取运算符的参数名称
-static ExprOperatorInfo GetOperatorInfo(wchar_t op) {
+static ExprOperatorInfo GetOperatorInfo(wchar_t op, wchar_t nextOp = 0) {
     ExprOperatorInfo info = {};
     info.op = op;
+    info.opLength = 1;
+    
+    // 先检查多字符运算符
+    if ((op == L'>' || op == L'\uFF1E') && (nextOp == L'=' || nextOp == L'\uFF1D')) {
+        info.fullWidthOp = L'\u2265';  // ≥
+        info.fullWidthOpStr = L"\u2265";
+        info.param1Name = L"被比较值";
+        info.param2Name = L"比较值";
+        info.opLength = 2;
+        return info;
+    }
+    if ((op == L'<' || op == L'\uFF1C') && (nextOp == L'=' || nextOp == L'\uFF1D')) {
+        info.fullWidthOp = L'\u2264';  // ≤
+        info.fullWidthOpStr = L"\u2264";
+        info.param1Name = L"被比较值";
+        info.param2Name = L"比较值";
+        info.opLength = 2;
+        return info;
+    }
+    if ((op == L'!' || op == L'\uFF01') && (nextOp == L'=' || nextOp == L'\uFF1D')) {
+        info.fullWidthOp = L'\u2260';  // ≠
+        info.fullWidthOpStr = L"\u2260";
+        info.param1Name = L"被比较值";
+        info.param2Name = L"比较值";
+        info.opLength = 2;
+        return info;
+    }
+    if ((op == L'=' || op == L'\uFF1D') && (nextOp == L'=' || nextOp == L'\uFF1D')) {
+        info.fullWidthOp = L'\uFF1D';  // ＝
+        info.fullWidthOpStr = L"\uFF1D";
+        info.param1Name = L"被比较值";
+        info.param2Name = L"比较值";
+        info.opLength = 2;
+        return info;
+    }
+    
+    // 单字符运算符
     switch (op) {
         case L'+': case L'\uFF0B':
             info.fullWidthOp = L'\uFF0B';
+            info.fullWidthOpStr = L"\uFF0B";
             info.param1Name = L"被加数或文本或字节集";
             info.param2Name = L"加数或文本或字节集";
             break;
         case L'-': case L'\uFF0D':
             info.fullWidthOp = L'\uFF0D';
+            info.fullWidthOpStr = L"\uFF0D";
             info.param1Name = L"被减数";
             info.param2Name = L"减数";
             break;
         case L'*': case L'\u00D7':
             info.fullWidthOp = L'\u00D7';
+            info.fullWidthOpStr = L"\u00D7";
             info.param1Name = L"被乘数";
             info.param2Name = L"乘数";
             break;
         case L'/': case L'\u00F7':
             info.fullWidthOp = L'\u00F7';
+            info.fullWidthOpStr = L"\u00F7";
             info.param1Name = L"被除数";
             info.param2Name = L"除数";
             break;
+        case L'>': case L'\uFF1E':
+            info.fullWidthOp = L'\uFF1E';
+            info.fullWidthOpStr = L"\uFF1E";
+            info.param1Name = L"被比较值";
+            info.param2Name = L"比较值";
+            break;
+        case L'<': case L'\uFF1C':
+            info.fullWidthOp = L'\uFF1C';
+            info.fullWidthOpStr = L"\uFF1C";
+            info.param1Name = L"被比较值";
+            info.param2Name = L"比较值";
+            break;
+        case L'\u2265':  // ≥
+            info.fullWidthOp = L'\u2265';
+            info.fullWidthOpStr = L"\u2265";
+            info.param1Name = L"被比较值";
+            info.param2Name = L"比较值";
+            break;
+        case L'\u2264':  // ≤
+            info.fullWidthOp = L'\u2264';
+            info.fullWidthOpStr = L"\u2264";
+            info.param1Name = L"被比较值";
+            info.param2Name = L"比较值";
+            break;
+        case L'\u2260':  // ≠
+            info.fullWidthOp = L'\u2260';
+            info.fullWidthOpStr = L"\u2260";
+            info.param1Name = L"被比较值";
+            info.param2Name = L"比较值";
+            break;
         default:
             info.fullWidthOp = op;
+            info.fullWidthOpStr = std::wstring(1, op);
             info.param1Name = L"参数1";
             info.param2Name = L"参数2";
             break;
@@ -607,12 +681,60 @@ static ExprOperatorInfo GetOperatorInfo(wchar_t op) {
 }
 
 // 解析表达式中最外层的运算符（不在括号内），返回是否找到
-// 按优先级从低到高查找：先找加减，再找乘除
+// 按优先级从低到高查找：先找比较运算符，再找加减，再找乘除
 static bool ParseExpressionOperator(const std::wstring& expr, ExprOperatorInfo& info) {
     int parenDepth = 0;
     bool inString = false;
     
-    // 先查找加减（低优先级，从右往左找确保左结合）
+    // 最先查找比较运算符（最低优先级）
+    int lastCmpPos = -1;
+    wchar_t lastCmpOp = 0;
+    int lastCmpLen = 1;  // 运算符字符长度
+    for (size_t i = 0; i < expr.length(); i++) {
+        if (expr[i] == L'"') { inString = !inString; continue; }
+        if (inString) continue;
+        if (expr[i] == L'(' || expr[i] == L'\uFF08') parenDepth++;
+        else if (expr[i] == L')' || expr[i] == L'\uFF09') parenDepth--;
+        else if (parenDepth == 0) {
+            wchar_t nextCh = (i + 1 < expr.length()) ? expr[i + 1] : 0;
+            // 检查多字符比较运算符: >=, <=, !=, ==
+            if ((expr[i] == L'>' || expr[i] == L'\uFF1E') && (nextCh == L'=' || nextCh == L'\uFF1D')) {
+                lastCmpPos = (int)i; lastCmpOp = expr[i]; lastCmpLen = 2;
+            } else if ((expr[i] == L'<' || expr[i] == L'\uFF1C') && (nextCh == L'=' || nextCh == L'\uFF1D')) {
+                lastCmpPos = (int)i; lastCmpOp = expr[i]; lastCmpLen = 2;
+            } else if ((expr[i] == L'!' || expr[i] == L'\uFF01') && (nextCh == L'=' || nextCh == L'\uFF1D')) {
+                lastCmpPos = (int)i; lastCmpOp = expr[i]; lastCmpLen = 2;
+            } else if ((expr[i] == L'=' || expr[i] == L'\uFF1D') && (nextCh == L'=' || nextCh == L'\uFF1D')) {
+                lastCmpPos = (int)i; lastCmpOp = expr[i]; lastCmpLen = 2;
+            }
+            // 单字符全角比较运算符: ≥ ≤ ≠
+            else if (expr[i] == L'\u2265' || expr[i] == L'\u2264' || expr[i] == L'\u2260') {
+                lastCmpPos = (int)i; lastCmpOp = expr[i]; lastCmpLen = 1;
+            }
+            // 单字符比较运算符: > <（不带=）
+            else if (expr[i] == L'>' || expr[i] == L'\uFF1E' || expr[i] == L'<' || expr[i] == L'\uFF1C') {
+                // 确保下一个字符不是=（已在上面处理）
+                lastCmpPos = (int)i; lastCmpOp = expr[i]; lastCmpLen = 1;
+            }
+        }
+    }
+    
+    if (lastCmpPos >= 0) {
+        wchar_t nextCh = (lastCmpPos + 1 < (int)expr.length()) ? expr[lastCmpPos + 1] : 0;
+        info = GetOperatorInfo(lastCmpOp, nextCh);
+        info.opLength = lastCmpLen;
+        std::wstring left = expr.substr(0, lastCmpPos);
+        std::wstring right = (lastCmpPos + lastCmpLen < (int)expr.length()) ? expr.substr(lastCmpPos + lastCmpLen) : L"";
+        while (!left.empty() && (left.back() == L' ' || left.back() == L'\t')) left.pop_back();
+        while (!left.empty() && (left.front() == L' ' || left.front() == L'\t')) left.erase(0, 1);
+        while (!right.empty() && (right.front() == L' ' || right.front() == L'\t')) right.erase(0, 1);
+        while (!right.empty() && (right.back() == L' ' || right.back() == L'\t')) right.pop_back();
+        info.leftOperand = left;
+        info.rightOperand = right;
+        return true;
+    }
+    
+    // 再查找加减（低优先级，从右往左找确保左结合）
     int lastAddSubPos = -1;
     wchar_t lastAddSubOp = 0;
     for (size_t i = 0; i < expr.length(); i++) {
@@ -641,6 +763,7 @@ static bool ParseExpressionOperator(const std::wstring& expr, ExprOperatorInfo& 
     
     if (lastAddSubPos > 0) {
         info = GetOperatorInfo(lastAddSubOp);
+        info.opLength = 1;
         std::wstring left = expr.substr(0, lastAddSubPos);
         std::wstring right = (lastAddSubPos + 1 < (int)expr.length()) ? expr.substr(lastAddSubPos + 1) : L"";
         // 去除前后空格
@@ -673,6 +796,7 @@ static bool ParseExpressionOperator(const std::wstring& expr, ExprOperatorInfo& 
     
     if (lastMulDivPos > 0) {
         info = GetOperatorInfo(lastMulDivOp);
+        info.opLength = 1;
         std::wstring left = expr.substr(0, lastMulDivPos);
         std::wstring right = (lastMulDivPos + 1 < (int)expr.length()) ? expr.substr(lastMulDivPos + 1) : L"";
         while (!left.empty() && (left.back() == L' ' || left.back() == L'\t')) left.pop_back();
@@ -698,7 +822,24 @@ static std::wstring FormatExprOperators(const std::wstring& expr) {
         if (expr[i] == L'(' || expr[i] == L'\uFF08') { parenDepth++; result += expr[i]; continue; }
         if (expr[i] == L')' || expr[i] == L'\uFF09') { parenDepth--; result += expr[i]; continue; }
         if (parenDepth == 0) {
+            // 先检查多字符运算符
+            wchar_t nextCh = (i + 1 < expr.length()) ? expr[i + 1] : 0;
+            if ((expr[i] == L'>' && nextCh == L'=') || (expr[i] == L'\uFF1E' && (nextCh == L'=' || nextCh == L'\uFF1D'))) {
+                result += L" \u2265 "; i++; continue;  // ≥
+            }
+            if ((expr[i] == L'<' && nextCh == L'=') || (expr[i] == L'\uFF1C' && (nextCh == L'=' || nextCh == L'\uFF1D'))) {
+                result += L" \u2264 "; i++; continue;  // ≤
+            }
+            if ((expr[i] == L'!' && nextCh == L'=') || (expr[i] == L'\uFF01' && (nextCh == L'=' || nextCh == L'\uFF1D'))) {
+                result += L" \u2260 "; i++; continue;  // ≠
+            }
+            if ((expr[i] == L'=' && nextCh == L'=') || (expr[i] == L'\uFF1D' && nextCh == L'\uFF1D')) {
+                result += L" \uFF1D " ; i++; continue;  // ＝
+            }
             switch (expr[i]) {
+                case L'>': result += L" \uFF1E "; continue;
+                case L'<': result += L" \uFF1C "; continue;
+                // 已是全角的比较运算符直接保留（不重复添加空格）
                 case L'+': result += L" \uFF0B "; continue;
                 case L'-':
                     // 如果是首字符或前面是运算符/空格/左括号，则是负号不格式化
@@ -712,6 +853,38 @@ static std::wstring FormatExprOperators(const std::wstring& expr) {
             }
         }
         result += expr[i];
+    }
+    return result;
+}
+
+// 将全角运算符还原为半角（用于同步参数行回命令行时保持编译兼容性）
+static std::wstring RestoreHalfWidthOperators(const std::wstring& expr) {
+    std::wstring result;
+    for (size_t i = 0; i < expr.length(); i++) {
+        wchar_t ch = expr[i];
+        const wchar_t* replacement = nullptr;
+        switch (ch) {
+            case L'\uFF0B': replacement = L"+"; break;  // ＋ → +
+            case L'\uFF0D': replacement = L"-"; break;  // ー → -
+            case L'\u00D7': replacement = L"*"; break;  // × → *
+            case L'\u00F7': replacement = L"/"; break;  // ÷ → /
+            case L'\uFF1E': replacement = L">"; break;  // ＞ → >
+            case L'\uFF1C': replacement = L"<"; break;  // ＜ → <
+            case L'\u2265': replacement = L">="; break; // ≥ → >=
+            case L'\u2264': replacement = L"<="; break; // ≤ → <=
+            case L'\u2260': replacement = L"!="; break; // ≠ → !=
+            case L'\uFF1D': replacement = L"="; break;  // ＝ → =
+            default: break;
+        }
+        if (replacement) {
+            // 移除运算符前的空格
+            if (!result.empty() && result.back() == L' ') result.pop_back();
+            result += replacement;
+            // 跳过运算符后的空格
+            if (i + 1 < expr.length() && expr[i + 1] == L' ') i++;
+        } else {
+            result += ch;
+        }
     }
     return result;
 }
@@ -1119,6 +1292,75 @@ static void ApplyTypeCompletion(HWND hWnd, EditorData* data, EditorDocument* doc
     InvalidateRect(hWnd, NULL, TRUE);
 }
 
+// 检查当前行是否是流程控制块内唯一的内容行（不能被删除）
+// 检查上方是否有同深度的流程控制命令，并且下方没有其他同深度的内容行
+static bool IsOnlyContentLineInFlowBlock(EditorDocument* doc, int lineIndex) {
+    if (lineIndex <= 0 || lineIndex >= (int)doc->lines.size()) return false;
+    
+    const std::wstring& line = doc->lines[lineIndex];
+    int depth = GetNestingDepth(line);
+    if (depth <= 0) return false;  // 不是嵌套内容行
+    
+    // 去掉标记后看是否有实际代码内容（排除嵌套的流程控制命令）
+    size_t markerLen = 0;
+    GetNestingDepth(line, &markerLen);
+    std::wstring content = line.substr(markerLen);
+    // 如果内容行是流程控制命令（如嵌套的.如果真），则不受保护
+    if (!content.empty() && content[0] == L'.') return false;
+    
+    // 向上查找同深度-1的流程控制命令（父命令）
+    bool foundParentCmd = false;
+    for (int k = lineIndex - 1; k >= 0; k--) {
+        const std::wstring& prevLine = doc->lines[k];
+        // 跳过参数行
+        if (!prevLine.empty() && prevLine[0] == L'\u2060') continue;
+        
+        int prevDepth = GetNestingDepth(prevLine);
+        if (prevDepth < depth) {
+            // 检查是否是流程控制命令
+            if (IsFlowControlLine(prevLine)) {
+                foundParentCmd = true;
+            }
+            break;
+        }
+    }
+    if (!foundParentCmd) return false;
+    
+    // 检查是否是同深度的唯一内容行（不含嵌套的流程控制命令）
+    int sameDepthContentCount = 0;
+    // 向上扫描
+    for (int k = lineIndex - 1; k >= 0; k--) {
+        const std::wstring& checkLine = doc->lines[k];
+        if (!checkLine.empty() && checkLine[0] == L'\u2060') continue;
+        int checkDepth = GetNestingDepth(checkLine);
+        if (checkDepth < depth) break;  // 到达上层，停止
+        if (checkDepth == depth) {
+            size_t ml = 0;
+            GetNestingDepth(checkLine, &ml);
+            std::wstring c = checkLine.substr(ml);
+            if (c.empty() || c[0] != L'.') sameDepthContentCount++;  // 非流程控制命令的同深度行
+        }
+    }
+    // 向下扫描
+    for (int k = lineIndex + 1; k < (int)doc->lines.size(); k++) {
+        const std::wstring& checkLine = doc->lines[k];
+        if (!checkLine.empty() && checkLine[0] == L'\u2060') continue;
+        int checkDepth = GetNestingDepth(checkLine);
+        if (checkDepth < depth) break;  // 到达同层或上层，停止
+        if (checkDepth == depth) {
+            size_t ml = 0;
+            GetNestingDepth(checkLine, &ml);
+            std::wstring c = checkLine.substr(ml);
+            if (c.empty() || c[0] != L'.') sameDepthContentCount++;
+        }
+    }
+    
+    // 加上当前行自己
+    sameDepthContentCount++;
+    
+    return sameDepthContentCount <= 1;
+}
+
 // 检查当前行是否是流程控制区块后的保护空行
 // 如果是，返回流程控制内最后一行的索引；否则返回-1
 static int IsProtectedEmptyLineAfterFlowControl(EditorDocument* doc, int lineIndex) {
@@ -1270,7 +1512,8 @@ static void SyncAssignParamLineToAssignLine(EditorDocument* doc, int paramLineIn
         start++;
     }
     std::wstring prefix = cmdLine.substr(0, start);
-    cmdLine = prefix + newLhs + L" \uFF1D " + newRhs;
+    cmdLine = prefix + newLhs + L"=" + newRhs;
+    FormatAssignmentLine(cmdLine);
 }
 
 // 执行语法检查（在文本变化后调用）
@@ -1426,10 +1669,10 @@ static void CheckAndFormatKeywords(EditorDocument* doc, int lineIndex) {
             
             // 如果需要流程线，在后面添加相应的行
             if (needsFlowLine) {
-                // 检查是否是.如果()命令（带括号，有否则分支）
+                // 检查是否是.如果()或.判断()命令（带括号，有否则分支）
                 // 判断当前是否有括号（原来有或者刚添加的）
                 bool hasBracket = originalHasBracket || needsBrackets;
-                bool hasElseBranch = (word == L"如果" && needsBrackets && hasBracket);
+                bool hasElseBranch = ((word == L"如果" || word == L"判断") && needsBrackets && hasBracket);
                 
                 if (hasElseBranch) {
                     // .如果()：创建带否则分支的结构
@@ -1500,14 +1743,115 @@ static void CheckAndFormatKeywords(EditorDocument* doc, int lineIndex) {
                             doc->lines.insert(doc->lines.begin() + lineIndex + 3, L"");
                         }
                     }
+                } else if (word == L"判断循环首") {
+                    // 判断循环首命令：创建缩进行 + 判断循环尾命令行
+                    bool needsStructure = true;
+                    if (lineIndex + 1 < (int)doc->lines.size()) {
+                        int currentDepth = GetNestingDepth(line);
+                        int nextLineDepth = GetNestingDepth(doc->lines[lineIndex + 1]);
+                        // 检查结束行是否包含判断循环尾
+                        bool hasCorrectEnd = false;
+                        if (lineIndex + 2 < (int)doc->lines.size()) {
+                            const std::wstring& endLine = doc->lines[lineIndex + 2];
+                            hasCorrectEnd = (endLine.find(L".判断循环尾") != std::wstring::npos);
+                        }
+                        if (nextLineDepth == currentDepth + 1 && hasCorrectEnd) {
+                            needsStructure = false;
+                        }
+                    }
+                    if (needsStructure) {
+                        int nestingDepth = GetNestingDepth(line);
+                        
+                        size_t markerLen = 0;
+                        while (markerLen < line.length() && 
+                               (line[markerLen] == L'\u200C' || line[markerLen] == L'\u200D' || line[markerLen] == L'\u200B')) {
+                            markerLen++;
+                        }
+                        std::wstring currentMarker = (markerLen > 0) ? line.substr(0, markerLen) : L"";
+                        
+                        std::wstring innerMarker;
+                        if (nestingDepth == 0) {
+                            innerMarker = L"\u200C";
+                        } else {
+                            innerMarker = currentMarker + L"\u200B\u200C";
+                        }
+                        
+                        // 插入内层缩进行
+                        doc->lines.insert(doc->lines.begin() + lineIndex + 1, innerMarker);
+                        
+                        // 插入判断循环尾命令行（与判断循环首同层）
+                        std::wstring tailLine = currentMarker + L".判断循环尾 ()";
+                        doc->lines.insert(doc->lines.begin() + lineIndex + 2, tailLine);
+                        
+                        // 插入结束行
+                        if (nestingDepth > 0) {
+                            doc->lines.insert(doc->lines.begin() + lineIndex + 3, currentMarker);
+                        } else {
+                            doc->lines.insert(doc->lines.begin() + lineIndex + 3, L"");
+                        }
+                    }
+                } else if (word == L"循环判断首") {
+                    // 循环判断首命令：创建缩进行 + 循环判断尾命令行
+                    bool needsStructure = true;
+                    if (lineIndex + 1 < (int)doc->lines.size()) {
+                        int currentDepth = GetNestingDepth(line);
+                        int nextLineDepth = GetNestingDepth(doc->lines[lineIndex + 1]);
+                        bool hasCorrectEnd = false;
+                        if (lineIndex + 2 < (int)doc->lines.size()) {
+                            const std::wstring& endLine = doc->lines[lineIndex + 2];
+                            hasCorrectEnd = (endLine.find(L".循环判断尾") != std::wstring::npos);
+                        }
+                        if (nextLineDepth == currentDepth + 1 && hasCorrectEnd) {
+                            needsStructure = false;
+                        }
+                    }
+                    if (needsStructure) {
+                        int nestingDepth = GetNestingDepth(line);
+                        
+                        size_t markerLen = 0;
+                        while (markerLen < line.length() && 
+                               (line[markerLen] == L'\u200C' || line[markerLen] == L'\u200D' || line[markerLen] == L'\u200B')) {
+                            markerLen++;
+                        }
+                        std::wstring currentMarker = (markerLen > 0) ? line.substr(0, markerLen) : L"";
+                        
+                        std::wstring innerMarker;
+                        if (nestingDepth == 0) {
+                            innerMarker = L"\u200C";
+                        } else {
+                            innerMarker = currentMarker + L"\u200B\u200C";
+                        }
+                        
+                        // 插入内层缩进行
+                        doc->lines.insert(doc->lines.begin() + lineIndex + 1, innerMarker);
+                        
+                        // 插入循环判断尾命令行（与循环判断首同层）
+                        std::wstring tailLine = currentMarker + L".循环判断尾 ()";
+                        doc->lines.insert(doc->lines.begin() + lineIndex + 2, tailLine);
+                        
+                        // 插入结束行
+                        if (nestingDepth > 0) {
+                            doc->lines.insert(doc->lines.begin() + lineIndex + 3, currentMarker);
+                        } else {
+                            doc->lines.insert(doc->lines.begin() + lineIndex + 3, L"");
+                        }
+                    }
                 } else if (word == L"如果真") {
                     // 如果真命令：创建递减深度的缩进行
                     bool needsStructure = true;
                     if (lineIndex + 1 < (int)doc->lines.size()) {
-                        // 检查是否已经有结构（使用特殊字符标记）
-                        if ((doc->lines[lineIndex + 1].length() > 0 && doc->lines[lineIndex + 1][0] == L'\u200C') && 
-                            lineIndex + 2 < (int)doc->lines.size() &&
-                            doc->lines[lineIndex + 2].empty()) {
+                        // 检查是否已经有结构（精确匹配深度）
+                        int currentDepth = GetNestingDepth(line);
+                        int nextLineDepth = GetNestingDepth(doc->lines[lineIndex + 1]);
+                        bool hasCorrectEnd = false;
+                        if (lineIndex + 2 < (int)doc->lines.size()) {
+                            if (currentDepth == 0) {
+                                hasCorrectEnd = doc->lines[lineIndex + 2].empty();
+                            } else {
+                                hasCorrectEnd = (GetNestingDepth(doc->lines[lineIndex + 2]) == currentDepth);
+                            }
+                        }
+                        if (nextLineDepth == currentDepth + 1 && hasCorrectEnd) {
                             needsStructure = false;
                         }
                     }
@@ -1528,7 +1872,7 @@ static void CheckAndFormatKeywords(EditorDocument* doc, int lineIndex) {
                         if (nestingDepth == 0) {
                             innerMarker = L"\u200C";
                         } else {
-                            innerMarker = currentMarker + L"\u200B";
+                            innerMarker = currentMarker + L"\u200B\u200C";
                         }
                         
                         // 插入内层缩进行
@@ -1541,14 +1885,111 @@ static void CheckAndFormatKeywords(EditorDocument* doc, int lineIndex) {
                             doc->lines.insert(doc->lines.begin() + lineIndex + 2, L"");
                         }
                     }
+                } else if (word == L"计次循环首") {
+                    // 计次循环首命令：创建缩进行 + 计次循环尾命令行
+                    bool needsStructure = true;
+                    if (lineIndex + 1 < (int)doc->lines.size()) {
+                        int currentDepth = GetNestingDepth(line);
+                        int nextLineDepth = GetNestingDepth(doc->lines[lineIndex + 1]);
+                        bool hasCorrectEnd = false;
+                        if (lineIndex + 2 < (int)doc->lines.size()) {
+                            const std::wstring& endLine = doc->lines[lineIndex + 2];
+                            hasCorrectEnd = (endLine.find(L".计次循环尾") != std::wstring::npos);
+                        }
+                        if (nextLineDepth == currentDepth + 1 && hasCorrectEnd) {
+                            needsStructure = false;
+                        }
+                    }
+                    if (needsStructure) {
+                        int nestingDepth = GetNestingDepth(line);
+                        
+                        size_t markerLen = 0;
+                        while (markerLen < line.length() && 
+                               (line[markerLen] == L'\u200C' || line[markerLen] == L'\u200D' || line[markerLen] == L'\u200B')) {
+                            markerLen++;
+                        }
+                        std::wstring currentMarker = (markerLen > 0) ? line.substr(0, markerLen) : L"";
+                        
+                        std::wstring innerMarker;
+                        if (nestingDepth == 0) {
+                            innerMarker = L"\u200C";
+                        } else {
+                            innerMarker = currentMarker + L"\u200B\u200C";
+                        }
+                        
+                        doc->lines.insert(doc->lines.begin() + lineIndex + 1, innerMarker);
+                        
+                        std::wstring tailLine = currentMarker + L".计次循环尾 ()";
+                        doc->lines.insert(doc->lines.begin() + lineIndex + 2, tailLine);
+                        
+                        if (nestingDepth > 0) {
+                            doc->lines.insert(doc->lines.begin() + lineIndex + 3, currentMarker);
+                        } else {
+                            doc->lines.insert(doc->lines.begin() + lineIndex + 3, L"");
+                        }
+                    }
+                } else if (word == L"变量循环首") {
+                    // 变量循环首命令：创建缩进行 + 变量循环尾命令行
+                    bool needsStructure = true;
+                    if (lineIndex + 1 < (int)doc->lines.size()) {
+                        int currentDepth = GetNestingDepth(line);
+                        int nextLineDepth = GetNestingDepth(doc->lines[lineIndex + 1]);
+                        bool hasCorrectEnd = false;
+                        if (lineIndex + 2 < (int)doc->lines.size()) {
+                            const std::wstring& endLine = doc->lines[lineIndex + 2];
+                            hasCorrectEnd = (endLine.find(L".变量循环尾") != std::wstring::npos);
+                        }
+                        if (nextLineDepth == currentDepth + 1 && hasCorrectEnd) {
+                            needsStructure = false;
+                        }
+                    }
+                    if (needsStructure) {
+                        int nestingDepth = GetNestingDepth(line);
+                        
+                        size_t markerLen = 0;
+                        while (markerLen < line.length() && 
+                               (line[markerLen] == L'\u200C' || line[markerLen] == L'\u200D' || line[markerLen] == L'\u200B')) {
+                            markerLen++;
+                        }
+                        std::wstring currentMarker = (markerLen > 0) ? line.substr(0, markerLen) : L"";
+                        
+                        std::wstring innerMarker;
+                        if (nestingDepth == 0) {
+                            innerMarker = L"\u200C";
+                        } else {
+                            innerMarker = currentMarker + L"\u200B\u200C";
+                        }
+                        
+                        doc->lines.insert(doc->lines.begin() + lineIndex + 1, innerMarker);
+                        
+                        std::wstring tailLine = currentMarker + L".变量循环尾 ()";
+                        doc->lines.insert(doc->lines.begin() + lineIndex + 2, tailLine);
+                        
+                        if (nestingDepth > 0) {
+                            doc->lines.insert(doc->lines.begin() + lineIndex + 3, currentMarker);
+                        } else {
+                            doc->lines.insert(doc->lines.begin() + lineIndex + 3, L"");
+                        }
+                    }
+                } else if (word == L"判断循环尾" || word == L"循环判断尾" || word == L"计次循环尾" || word == L"变量循环尾") {
+                    // 循环尾命令：不创建嵌套结构，只作为循环的结束标记
+                    // 流程线由绘制代码负责（从循环尾向上到循环首）
                 } else {
                     // 其他流程控制命令
                     bool needsStructure = true;
                     if (lineIndex + 1 < (int)doc->lines.size()) {
-                        // 检查是否已经有结构（使用特殊字符标记）
-                        if ((doc->lines[lineIndex + 1].length() > 0 && doc->lines[lineIndex + 1][0] == L'\u200C') && 
-                            lineIndex + 2 < (int)doc->lines.size() &&
-                            doc->lines[lineIndex + 2].empty()) {
+                        // 检查是否已经有结构（精确匹配深度）
+                        int currentDepth = GetNestingDepth(line);
+                        int nextLineDepth = GetNestingDepth(doc->lines[lineIndex + 1]);
+                        bool hasCorrectEnd = false;
+                        if (lineIndex + 2 < (int)doc->lines.size()) {
+                            if (currentDepth == 0) {
+                                hasCorrectEnd = doc->lines[lineIndex + 2].empty();
+                            } else {
+                                hasCorrectEnd = (GetNestingDepth(doc->lines[lineIndex + 2]) == currentDepth);
+                            }
+                        }
+                        if (nextLineDepth == currentDepth + 1 && hasCorrectEnd) {
                             needsStructure = false;
                         }
                     }
@@ -1569,7 +2010,7 @@ static void CheckAndFormatKeywords(EditorDocument* doc, int lineIndex) {
                         if (nestingDepth == 0) {
                             innerMarker = L"\u200C";
                         } else {
-                            innerMarker = currentMarker + L"\u200B";
+                            innerMarker = currentMarker + L"\u200B\u200C";
                         }
                         
                         // 插入内层缩进行
@@ -3368,7 +3809,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                     }
                                     
                                     for (size_t p = 0; p < params.size(); p++) {
-                                        // 参数行格式：\u2060 + 参数名 + : + 参数值
+                                        // 参数行格式：\u2060 + 参数名 + : + 参数值（存储半角，渲染时全角显示）
                                         std::wstring paramValue = (p < argValues.size()) ? argValues[p] : L"";
                                         std::wstring paramLine = L"\u2060" + params[p].name + L":" + paramValue;
                                         doc->lines.insert(doc->lines.begin() + i + p + 1, paramLine);
@@ -3401,9 +3842,6 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 // 展开：插入两行（被赋值的变量、用于赋予的值）
                                 std::wstring lhs, rhs;
                                 IsAssignmentLine(line, &lhs, &rhs);
-                                
-                                // 右值格式化运算符为全角
-                                rhs = FormatExprOperators(rhs);
                                 
                                 std::wstring line1 = L"\u2060\u88AB\u8D4B\u503C\u7684\u53D8\u91CF\u6216\u53D8\u91CF\u6570\u7EC4:" + lhs;
                                 std::wstring line2 = L"\u2060\u7528\u4F5C\u8D4B\u4E88\u7684\u503C\u6216\u8D44\u6E90:" + rhs;
@@ -4310,6 +4748,16 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             if (leftBracket != std::wstring::npos) {
                                 // 计算括号X坐标
                                 std::wstring cmdText = cmdLine;
+                                // 去掉嵌套标记字符
+                                size_t cmdMLen = 0;
+                                int cmdNDepth = GetNestingDepth(cmdText, &cmdMLen);
+                                int cmdBaseX = startX;
+                                if (cmdNDepth > 0) {
+                                    cmdText = cmdText.substr(cmdMLen);
+                                    leftBracket = cmdText.find(L'(');
+                                    if (leftBracket == std::wstring::npos) leftBracket = 0;
+                                    cmdBaseX = startX + cmdNDepth * 20;
+                                }
                                 size_t dotPos = cmdText.find(L'.');
                                 if (dotPos != std::wstring::npos) {
                                     cmdText.erase(dotPos, 1);
@@ -4317,13 +4765,13 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 }
                                 SIZE textSize;
                                 GetTextExtentPoint32W(hdc, cmdText.c_str(), (int)leftBracket, &textSize);
-                                int bracketX = startX + 20 + textSize.cx;
+                                int bracketX = cmdBaseX + 20 + textSize.cx;
                                 
                                 // 计算※符号位置
                                 SIZE prefixSize;
                                 GetTextExtentPoint32W(hdc, L"      ", 6, &prefixSize);
                                 int minArrowX = bracketX + 20;
-                                int defaultArrowX = startX + 20 + prefixSize.cx;
+                                int defaultArrowX = cmdBaseX + 20 + prefixSize.cx;
                                 int arrowX = (std::max)(minArrowX, defaultArrowX);
                                 
                                 paramTextX = arrowX - prefixSize.cx;
@@ -5911,9 +6359,39 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 doc->modified = true;
                                 InvalidateRect(hWnd, NULL, TRUE);
                                 return 0;
+                            } else {
+                                // 没有更多参数，在最后一个参数行后插入带标记的内容行
+                                // 查找最后一个连续参数行
+                                int lastParam = doc->cursorLine;
+                                while (lastParam + 1 < (int)doc->lines.size() && 
+                                       doc->lines[lastParam + 1].length() > 0 && doc->lines[lastParam + 1][0] == L'\u2060') {
+                                    lastParam++;
+                                }
+                                // 获取命令行的嵌套标记前缀，内容行应比命令行深一层
+                                size_t pCmdMarkerLen = 0;
+                                int pCmdDepth = GetNestingDepth(cmdLine, &pCmdMarkerLen);
+                                std::wstring newLine;
+                                int newCol = 0;
+                                if (pCmdDepth > 0) {
+                                    newLine = cmdLine.substr(0, pCmdMarkerLen) + L"\u200B\u200C";
+                                    newCol = (int)newLine.length();
+                                } else {
+                                    newLine = L"\u200C";
+                                    newCol = 1;
+                                }
+                                doc->lines.insert(doc->lines.begin() + lastParam + 1, newLine);
+                                while (doc->parametersExpanded.size() <= lastParam + 1) {
+                                    doc->parametersExpanded.push_back(false);
+                                }
+                                doc->parametersExpanded.insert(doc->parametersExpanded.begin() + lastParam + 1, false);
+                                doc->cursorLine = lastParam + 1;
+                                doc->cursorCol = newCol;
+                                doc->modified = true;
+                                InvalidateRect(hWnd, NULL, TRUE);
+                                return 0;
                             }
                         }
-                        // 如果没有更多参数，继续到下面的普通处理
+                        // 如果没有找到命令行，继续到下面的普通处理
                     }
                     
                     // 检查当前行是否有括号（可能是命令行）
@@ -5942,13 +6420,25 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             
                             if (hasParamLines) {
                                 // 跳过参数行，在最后一个参数行后面插入新行
-                                doc->lines.insert(doc->lines.begin() + lastParamLine + 1, L"");
+                                // 获取命令行的嵌套标记前缀，内容行应比命令行深一层
+                                size_t cmdMarkerLen = 0;
+                                int cmdDepth = GetNestingDepth(line, &cmdMarkerLen);
+                                std::wstring newContentLine;
+                                int newCol = 0;
+                                if (cmdDepth > 0) {
+                                    newContentLine = line.substr(0, cmdMarkerLen) + L"\u200B\u200C";
+                                    newCol = (int)newContentLine.length();
+                                } else {
+                                    newContentLine = L"\u200C";
+                                    newCol = 1;
+                                }
+                                doc->lines.insert(doc->lines.begin() + lastParamLine + 1, newContentLine);
                                 while (doc->parametersExpanded.size() <= lastParamLine + 1) {
                                     doc->parametersExpanded.push_back(false);
                                 }
                                 doc->parametersExpanded.insert(doc->parametersExpanded.begin() + lastParamLine + 1, false);
                                 doc->cursorLine = lastParamLine + 1;
-                                doc->cursorCol = 0;
+                                doc->cursorCol = newCol;
                                 doc->modified = true;
                                 InvalidateRect(hWnd, NULL, TRUE);
                                 return 0;
@@ -6255,10 +6745,18 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             // 检查下一行是否以期望的标记开头
                             if (nextLine.length() >= expectedNextMarker.length() &&
                                 nextLine.substr(0, expectedNextMarker.length()) == expectedNextMarker) {
-                                // 下一行已经是正确的缩进行，只需跳转
-                                needCreateNewLine = false;
-                                doc->cursorLine++;
-                                doc->cursorCol = (int)expectedNextMarker.length();
+                                // 检查下一行是否是流程控制命令（不是纯内容行）
+                                std::wstring nextContent = nextLine.substr(expectedNextMarker.length());
+                                bool nextIsFlowCmd = !nextContent.empty() && nextContent[0] == L'.' && IsFlowControlLine(nextContent);
+                                if (nextIsFlowCmd) {
+                                    // 下一行是更深层的流程控制命令，在它上方插入一行内容行
+                                    // needCreateNewLine 保持 true
+                                } else {
+                                    // 下一行是纯内容行，跳转即可
+                                    needCreateNewLine = false;
+                                    doc->cursorLine++;
+                                    doc->cursorCol = (int)expectedNextMarker.length();
+                                }
                             }
                         }
                         
@@ -6288,11 +6786,22 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         if (doc->cursorLine + 1 < (int)doc->lines.size()) {
                             std::wstring& nextLine = doc->lines[doc->cursorLine + 1];
                             if (nextLine.length() > 0 && (nextLine[0] == L'\u200C' || nextLine[0] == L'\u200D')) {
-                                // 下一行已经是缩进行，只需跳转
-                                needCreateNewLine = false;
-                                doc->cursorLine++;
-                                int indentLen = 1;
-                                doc->cursorCol = indentLen;
+                                // 检查下一行是否是流程控制命令（不是纯内容行）
+                                size_t nextMarkerLen = 0;
+                                GetNestingDepth(nextLine, &nextMarkerLen);
+                                std::wstring nextContent = nextLine.substr(nextMarkerLen);
+                                bool nextIsFlowCmd = !nextContent.empty() && nextContent[0] == L'.' && IsFlowControlLine(nextContent);
+                                if (nextIsFlowCmd) {
+                                    // 下一行是嵌套流程控制命令，在它上方插入内容行
+                                    // needCreateNewLine 保持 true
+                                } else {
+                                    // 下一行是纯内容行，跳转即可
+                                    needCreateNewLine = false;
+                                    doc->cursorLine++;
+                                    size_t skipLen = 0;
+                                    GetNestingDepth(nextLine, &skipLen);
+                                    doc->cursorCol = (int)skipLen;
+                                }
                             }
                         }
                         
@@ -6361,6 +6870,15 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     InvalidateRect(hWnd, NULL, TRUE);
                 } else if (doc->cursorCol > 0) {
                     std::wstring& line = doc->lines[doc->cursorLine];
+                    
+                    // 检查是否是流程控制内容行，不能删除标记前缀字符
+                    if (line.length() > 0 && (line[0] == L'\u200C' || line[0] == L'\u200D' || line[0] == L'\u200B')) {
+                        size_t markerLen = 0;
+                        GetNestingDepth(line, &markerLen);
+                        if (doc->cursorCol <= (int)markerLen) {
+                            return 0;
+                        }
+                    }
                     
                     // 检查是否是参数行，如果是则不能删除参数名部分
                     if (line.length() > 0 && line[0] == L'\u2060') {
@@ -6608,6 +7126,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 
                     // 保护子程序中最后一个普通代码行不被删除
                     if (IsOnlyNormalLineInSubroutine(doc, doc->cursorLine)) {
+                        return 0;
+                    }
+
+                    // 保护流程控制块内唯一的内容行不被删除
+                    if (IsOnlyContentLineInFlowBlock(doc, doc->cursorLine)) {
                         return 0;
                     }
 
@@ -7006,6 +7529,15 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         }
                     }
                     
+                    // 保护流程控制内容行的标记前缀不被删除
+                    if (line.length() > 0 && (line[0] == L'\u200C' || line[0] == L'\u200D' || line[0] == L'\u200B')) {
+                        size_t markerLen = 0;
+                        GetNestingDepth(line, &markerLen);
+                        if (doc->cursorCol < (int)markerLen) {
+                            return 0;
+                        }
+                    }
+                    
                     if (doc->cursorCol < (int)line.length()) {
                         // 表格行中不允许删除制表符（单元格分隔符）
                         if (line.find(L'\t') != std::wstring::npos && line[doc->cursorCol] == L'\t') {
@@ -7136,6 +7668,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 
                         // 保护子程序中最后一个普通代码行不被删除
                         if (IsOnlyNormalLineInSubroutine(doc, doc->cursorLine + 1)) {
+                            return 0;
+                        }
+
+                        // 保护流程控制块内唯一的内容行不被删除
+                        if (IsOnlyContentLineInFlowBlock(doc, doc->cursorLine + 1)) {
                             return 0;
                         }
 
@@ -7502,9 +8039,9 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     
                     // 如果没有括号，检查是否是支持库命令且有参数
                     if (!isCommandLine) {
-                        // 提取命令名
+                        // 提取命令名（跳过嵌套标记字符）
                         size_t cmdStart = 0;
-                        while (cmdStart < line.length() && (line[cmdStart] == L' ' || line[cmdStart] == L'\t')) cmdStart++;
+                        while (cmdStart < line.length() && (line[cmdStart] == L' ' || line[cmdStart] == L'\t' || line[cmdStart] == L'\u200C' || line[cmdStart] == L'\u200D' || line[cmdStart] == L'\u200B')) cmdStart++;
                         if (cmdStart < line.length() && line[cmdStart] == L'.') cmdStart++;
                         while (cmdStart < line.length() && (line[cmdStart] == L' ' || line[cmdStart] == L'\t')) cmdStart++;
                         
@@ -7685,9 +8222,26 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 }
             };
             
-            // Lambda 函数：绘制实心向下箭头
-            auto DrawDownArrow = [&](int x, int y) {
-                HBRUSH hArrowBrush = CreateSolidBrush(g_CurrentTheme.textDim);
+            // 流程控制线的彩虹色数组（按嵌套深度循环使用）
+            static const COLORREF g_RainbowColors[] = {
+                RGB(230, 80, 80),    // 红
+                RGB(230, 160, 50),   // 橙
+                RGB(220, 200, 50),   // 黄
+                RGB(80, 190, 80),    // 绿
+                RGB(60, 180, 220),   // 青
+                RGB(80, 120, 230),   // 蓝
+                RGB(170, 100, 220),  // 紫
+            };
+            static const int g_RainbowColorCount = sizeof(g_RainbowColors) / sizeof(g_RainbowColors[0]);
+            
+            auto GetFlowLineColor = [](int depth) -> COLORREF {
+                return g_RainbowColors[depth % g_RainbowColorCount];
+            };
+
+            // Lambda 函数：绘制实心向下箭头（可指定颜色，默认使用textDim）
+            auto DrawDownArrow = [&](int x, int y, COLORREF color = 0) {
+                if (color == 0) color = g_CurrentTheme.textDim;
+                HBRUSH hArrowBrush = CreateSolidBrush(color);
                 HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hArrowBrush);
                 HPEN hNoPen = (HPEN)GetStockObject(NULL_PEN);
                 HPEN hOldPen = (HPEN)SelectObject(hdc, hNoPen);
@@ -7704,9 +8258,10 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 DeleteObject(hArrowBrush);
             };
 
-            // Lambda 函数：绘制实心向右箭头
-            auto DrawRightArrow = [&](int x, int y) {
-                HBRUSH hArrowBrush = CreateSolidBrush(g_CurrentTheme.textDim);
+            // Lambda 函数：绘制实心向右箭头（可指定颜色，默认使用textDim）
+            auto DrawRightArrow = [&](int x, int y, COLORREF color = 0) {
+                if (color == 0) color = g_CurrentTheme.textDim;
+                HBRUSH hArrowBrush = CreateSolidBrush(color);
                 HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hArrowBrush);
                 HPEN hNoPen = (HPEN)GetStockObject(NULL_PEN);
                 HPEN hOldPen = (HPEN)SelectObject(hdc, hNoPen);
@@ -7715,6 +8270,26 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                 points[0] = { x, y };          // Tip
                 points[1] = { x - 6, y - 3 };  // Top
                 points[2] = { x - 6, y + 3 };  // Bottom
+                
+                Polygon(hdc, points, 3);
+                
+                SelectObject(hdc, hOldPen);
+                SelectObject(hdc, hOldBrush);
+                DeleteObject(hArrowBrush);
+            };
+
+            // Lambda 函数：绘制实心向上箭头（可指定颜色，默认使用textDim）
+            auto DrawUpArrow = [&](int x, int y, COLORREF color = 0) {
+                if (color == 0) color = g_CurrentTheme.textDim;
+                HBRUSH hArrowBrush = CreateSolidBrush(color);
+                HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hArrowBrush);
+                HPEN hNoPen = (HPEN)GetStockObject(NULL_PEN);
+                HPEN hOldPen = (HPEN)SelectObject(hdc, hNoPen);
+                
+                POINT points[3];
+                points[0] = { x, y - 1 };      // Tip (pointing up)
+                points[1] = { x - 3, y + 2 };  // Left
+                points[2] = { x + 3, y + 2 };  // Right
                 
                 Polygon(hdc, points, 3);
                 
@@ -8060,9 +8635,17 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         int textStartX = startX;
                         bool isTableLine = (line.find(L"\t") != std::wstring::npos);
                         
-                        if (IsFlowControlLine(line)) {
-                            // 流程控制语句，文本从 startX + 20 开始
-                            textStartX = startX + 20;
+                        // 计算嵌套深度和标记长度
+                        size_t selMarkerLen = 0;
+                        int selNestDepth = GetNestingDepth(line, &selMarkerLen);
+                        bool selIsFlowControl = IsFlowControlLine(line);
+                        
+                        if (selIsFlowControl) {
+                            // 流程控制语句，文本从 startX + 20 + 嵌套偏移 开始
+                            textStartX = startX + 20 + selNestDepth * 20;
+                        } else if (selNestDepth > 0) {
+                            // 嵌套内容行，文本从 startX + 嵌套偏移 开始
+                            textStartX = startX + selNestDepth * 20;
                         } else if (!isTableLine) {
                             // 非表格行，需要计算缩进
                             int indent = 0;
@@ -8215,10 +8798,16 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             // 使用GDI精确计算文本宽度
                             SIZE textSize;
                             
-                            // 计算缩进字符数量
+                            // 计算缩进字符数量（包括嵌套标记字符）
                             size_t indentChars = 0;
-                            while (indentChars < line.length() && (line[indentChars] == L' ' || line[indentChars] == L'\t')) {
-                                indentChars++;
+                            if (selIsFlowControl) {
+                                indentChars = selMarkerLen + 1;  // 标记字符 + 点号
+                            } else if (selNestDepth > 0) {
+                                indentChars = selMarkerLen;  // 仅标记字符
+                            } else {
+                                while (indentChars < line.length() && (line[indentChars] == L' ' || line[indentChars] == L'\t')) {
+                                    indentChars++;
+                                }
                             }
                             
                             if (selStart == selEnd) {
@@ -8536,11 +9125,22 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     if (dotPos != std::wstring::npos) {
                         displayText.erase(dotPos, 1);  // 删除点号
                     }
+                    // 格式化括号内的运算符为全角显示
+                    size_t bracketStart = displayText.find(L'(');
+                    size_t bracketEnd = displayText.rfind(L')');
+                    if (bracketStart != std::wstring::npos && bracketEnd != std::wstring::npos && bracketEnd > bracketStart) {
+                        std::wstring beforeBracket = displayText.substr(0, bracketStart + 1);
+                        std::wstring bracketContent = displayText.substr(bracketStart + 1, bracketEnd - bracketStart - 1);
+                        std::wstring afterBracket = displayText.substr(bracketEnd);
+                        bracketContent = FormatExprOperators(bracketContent);
+                        displayText = beforeBracket + bracketContent + afterBracket;
+                    }
                     // 根据嵌套深度偏移绘制位置
                     TextOutW(hdc, startX + 20 + depthOffset, currentY + (rowHeight - fontSize) / 2, displayText.c_str(), (int)displayText.length());
                     
-                    // 检查是否包含"如果("或"如果 ("
-                    bool hasElseBranch = (trimmedLine.find(L".如果(") == 0 || trimmedLine.find(L".如果 (") == 0);
+                    // 检查是否包含"如果("或"如果 ("或"判断("或"判断 ("
+                    bool hasElseBranch = (trimmedLine.find(L".如果(") == 0 || trimmedLine.find(L".如果 (") == 0 ||
+                                          trimmedLine.find(L".判断(") == 0 || trimmedLine.find(L".判断 (") == 0);
                     
                     // 调试日志：输出行信息
                     LogFlowLine(L"========================================");
@@ -8558,10 +9158,11 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                     LogFlowLine(L"行 %d: 字符编码: %s", (int)i, charCodes.c_str());
                     LogFlowLine(L"行 %d: ifNestingDepth=%d, depthOffset=%d", (int)i, ifNestingDepth, depthOffset);
                     
-                    // 绘制横向虚线
+                    // 绘制横向虚线（使用彩虹色）
                     int lineX = startX + 10 + depthOffset;
                     int textCenterOffset = (rowHeight - fontSize) / 2 + fontSize / 2;  // 文本垂直中心位置
-                    HPEN hDashPen = CreatePen(PS_DOT, 1, g_CurrentTheme.textDim);
+                    COLORREF flowColor = GetFlowLineColor(ifNestingDepth);
+                    HPEN hDashPen = CreatePen(PS_DOT, 1, flowColor);
                     HPEN hOldDashPen = (HPEN)SelectObject(hdc, hDashPen);
                     MoveToEx(hdc, lineX, currentY + textCenterOffset, NULL);
                     LineTo(hdc, startX + 18 + depthOffset, currentY + textCenterOffset);
@@ -8832,7 +9433,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             MoveToEx(hdc, leftX, elseY, NULL);
                             LineTo(hdc, startX + 18 + depthOffset, elseY);
                             // 向右箭头
-                            DrawRightArrow(startX + 18 + depthOffset, elseY);
+                            DrawRightArrow(startX + 18 + depthOffset, elseY, flowColor);
                             
                             // 绘制第二条虚线：从条件达成分支到否则分支下方的向下箭头
                             // 先向左绘制横线连接到竖线
@@ -8844,7 +9445,7 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             MoveToEx(hdc, rightX - 13, trueBranchY, NULL);
                             LineTo(hdc, rightX - 13, elseBranchBottomY);
                             // 向下箭头（在否则分支行的底部）
-                            DrawDownArrow(rightX - 13, elseBranchBottomY);
+                            DrawDownArrow(rightX - 13, elseBranchBottomY, flowColor);
                         } else {
                             // 没找到完整的if-else结构，绘制单条向下的线
                             LogFlowLine(L"行 %d: 没有找到否则分支，绘制单条线", (int)i);
@@ -8859,9 +9460,9 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                     continue;
                                 }
                                 
-                                // 检查是否是条件达成分支或否则分支的行
-                                bool isIndented = (checkLine.length() >= 1 && (checkLine[0] == L'\u200C' || checkLine[0] == L'\u200D' || checkLine[0] == L'\u200B'));
-                                if (isIndented) {
+                                // 检查嵌套深度：只包含比当前命令更深层的行
+                                int checkDepth = GetNestingDepth(checkLine);
+                                if (checkDepth > ifNestingDepth) {
                                     endY = currentY + (int)(j - i + 1) * rowHeight;
                                 } else if (checkLine.empty()) {
                                     continue;
@@ -8872,41 +9473,111 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             
                             MoveToEx(hdc, lineX, currentY + textCenterOffset, NULL);
                             LineTo(hdc, lineX, endY);
-                            DrawDownArrow(lineX, endY);
+                            DrawDownArrow(lineX, endY, flowColor);
                         }
                     } else {
-                        // .如果真 或其他流程控制，绘制单条线
-                        // 查找流程控制内最后一个有内容的行（有缩进的行）
-                        int endY = currentY + rowHeight;  // 默认至少延伸一行
+                        // 检查是否是循环首命令（判断循环首/循环判断首），不绘制流程线（由循环尾负责绘制）
+                        bool isLoopHead = (trimmedLine.find(L".判断循环首") == 0 || trimmedLine.find(L".循环判断首") == 0 ||
+                                            trimmedLine.find(L".计次循环首") == 0 || trimmedLine.find(L".变量循环首") == 0);
+                        // 检查是否是循环尾命令，需要绘制向上的流程线
+                        bool isLoopTail = (trimmedLine.find(L".判断循环尾") == 0 || trimmedLine.find(L".循环判断尾") == 0 ||
+                                           trimmedLine.find(L".计次循环尾") == 0 || trimmedLine.find(L".变量循环尾") == 0);
                         
-                        for (size_t j = i + 1; j < doc->lines.size(); j++) {
-                            const std::wstring& checkLine = doc->lines[j];
+                        if (isLoopHead) {
+                            // 循环首命令：不绘制流程线，由对应的循环尾命令绘制向上的流程线
+                        } else if (isLoopTail) {
+                            // 循环尾命令：向上查找对应的循环首命令，绘制从循环尾到循环首的向上流程线
+                            std::wstring targetHead;
+                            if (trimmedLine.find(L".判断循环尾") == 0) targetHead = L".判断循环首";
+                            else if (trimmedLine.find(L".循环判断尾") == 0) targetHead = L".循环判断首";
+                            else if (trimmedLine.find(L".计次循环尾") == 0) targetHead = L".计次循环首";
+                            else targetHead = L".变量循环首";
+                            int headLineIdx = -1;
                             
-                            // 遇到参数行，更新endY到该行之后，然后继续查找缩进行
-                            if (checkLine.length() > 0 && checkLine[0] == L'\u2060') {
-                                endY = currentY + (int)(j - i + 2) * rowHeight;  // 延伸到参数行之后
-                                continue;
+                            // 向上查找对应的循环首命令（同层深度）
+                            for (int j = (int)i - 1; j >= 0; j--) {
+                                const std::wstring& checkLine = doc->lines[j];
+                                
+                                // 跳过参数行
+                                if (checkLine.length() > 0 && checkLine[0] == L'\u2060') continue;
+                                // 跳过空行
+                                if (checkLine.empty()) continue;
+                                
+                                // 检查嵌套深度
+                                int checkDepth = GetNestingDepth(checkLine);
+                                if (checkDepth < ifNestingDepth) break;  // 超出当前块
+                                if (checkDepth > ifNestingDepth) continue;  // 更深层嵌套，跳过
+                                
+                                // 同层深度，检查是否是对应的循环首命令
+                                // 去掉标记字符后检查
+                                std::wstring checkTrimmed = checkLine;
+                                size_t cStart = 0;
+                                while (cStart < checkTrimmed.length() && 
+                                       (checkTrimmed[cStart] == L'\u200C' || checkTrimmed[cStart] == L'\u200D' || 
+                                        checkTrimmed[cStart] == L'\u200B')) {
+                                    cStart++;
+                                }
+                                if (cStart < checkTrimmed.length()) {
+                                    checkTrimmed = checkTrimmed.substr(cStart);
+                                }
+                                
+                                if (checkTrimmed.find(targetHead) == 0) {
+                                    headLineIdx = j;
+                                    break;
+                                }
                             }
                             
-                            // 检查是否是条件达成分支或否则分支的行
-                            bool isIndented = (checkLine.length() >= 1 && (checkLine[0] == L'\u200C' || checkLine[0] == L'\u200D'));
-                            if (isIndented) {
-                                // 更新结束位置为这一行的底部
-                                endY = currentY + (int)(j - i + 1) * rowHeight;
-                            } else if (checkLine.empty()) {
-                                // 空行，继续查找
-                                continue;
-                            } else {
-                                // 遇到非缩进行，结束查找
-                                break;
+                            if (headLineIdx >= 0) {
+                                // 找到循环首，绘制从循环尾到循环首的向上流程线
+                                int headY = currentY - ((int)i - headLineIdx) * rowHeight + textCenterOffset;
+                                int tailY = currentY + textCenterOffset;
+                                
+                                // 竖线：从循环尾向上到循环首
+                                MoveToEx(hdc, lineX, tailY, NULL);
+                                LineTo(hdc, lineX, headY);
+                                
+                                // 横线：从竖线顶端向右到"判"字左边
+                                int arrowEndX = startX + 18 + depthOffset;
+                                MoveToEx(hdc, lineX, headY, NULL);
+                                LineTo(hdc, arrowEndX, headY);
+                                
+                                // 向右箭头（指向"判"字左侧）
+                                DrawRightArrow(arrowEndX, headY, flowColor);
                             }
+                        } else {
+                            // .如果真 或其他流程控制，绘制单条线
+                            // 查找流程控制内最后一个有内容的行（有缩进的行）
+                            int endY = currentY + rowHeight;  // 默认至少延伸一行
+                            
+                            for (size_t j = i + 1; j < doc->lines.size(); j++) {
+                                const std::wstring& checkLine = doc->lines[j];
+                                
+                                // 遇到参数行，更新endY到该行之后，然后继续查找缩进行
+                                if (checkLine.length() > 0 && checkLine[0] == L'\u2060') {
+                                    endY = currentY + (int)(j - i + 2) * rowHeight;  // 延伸到参数行之后
+                                    continue;
+                                }
+                                
+                                // 检查嵌套深度：只包含比当前命令更深层的行
+                                int checkDepth = GetNestingDepth(checkLine);
+                                if (checkDepth > ifNestingDepth) {
+                                    // 更新结束位置为这一行的底部
+                                    endY = currentY + (int)(j - i + 1) * rowHeight;
+                                } else if (checkLine.empty()) {
+                                    // 空行，继续查找
+                                    continue;
+                                } else {
+                                    // 遇到同层或更浅层的行，结束查找
+                                    break;
+                                }
+                            }
+                            
+                            MoveToEx(hdc, lineX, currentY + textCenterOffset, NULL);
+                            LineTo(hdc, lineX, endY);
+                            
+                            // 绘制向下箭头
+                            DrawDownArrow(lineX, endY, flowColor);
                         }
-                        
-                        MoveToEx(hdc, lineX, currentY + textCenterOffset, NULL);
-                        LineTo(hdc, lineX, endY);
-                        
-                        // 绘制向下箭头
-                        DrawDownArrow(lineX, endY);
                     }
                     
                     SelectObject(hdc, hOldDashPen);
@@ -8958,13 +9629,15 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                 // 计算括号的X坐标
                                 std::wstring cmdText = prevLine;
                                 
-                                // 检查是否是流程控制内的行（使用特殊字符标记）
-                                bool isIndentedCmd = (cmdText.length() >= 1 && (cmdText[0] == L'\u200C' || cmdText[0] == L'\u200D'));
-                                int cmdStartX = isIndentedCmd ? (startX + 20) : startX;
+                                // 检查是否是流程控制内的行（使用特殊字符标记），获取嵌套深度
+                                size_t cmdMarkerLen = 0;
+                                int cmdNestDepth = GetNestingDepth(cmdText, &cmdMarkerLen);
+                                bool isIndentedCmd = (cmdNestDepth > 0);
+                                int cmdStartX = isIndentedCmd ? (startX + 20 + (cmdNestDepth - 1) * 20) : startX;
                                 
-                                // 如果是流程控制内的行，去掉标记字符
+                                // 如果是流程控制内的行，去掉所有标记字符
                                 if (isIndentedCmd) {
-                                    cmdText = cmdText.substr(1);
+                                    cmdText = cmdText.substr(cmdMarkerLen);
                                     if (!isAssignment) leftBracket = cmdText.find(L'(');
                                 }
                                 
@@ -9104,7 +9777,9 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                         }
                     }
                     
-                    std::wstring displayText = L"      ※" + paramName + L"：" + paramValue;
+                    // 格式化参数值中的运算符为全角显示
+                    std::wstring displayValue = FormatExprOperators(paramValue);
+                    std::wstring displayText = L"      ※" + paramName + L"：" + displayValue;
                     TextOutW(hdc, paramTextX, currentY + (rowHeight - fontSize) / 2, displayText.c_str(), (int)displayText.length());
                 } else if (line.length() > 0 && line[0] == L'\'') {
                     // 注释行
@@ -9162,12 +9837,23 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             // 跳过点号，文本绘制在更深的缩进位置
                             int textIndent = baseIndent + 20;  // 嵌套流程命令再缩进20
                             std::wstring displayText = contentPart.substr(1);
+                            // 格式化括号内的运算符为全角显示
+                            size_t nBracketStart = displayText.find(L'(');
+                            size_t nBracketEnd = displayText.rfind(L')');
+                            if (nBracketStart != std::wstring::npos && nBracketEnd != std::wstring::npos && nBracketEnd > nBracketStart) {
+                                std::wstring beforeBkt = displayText.substr(0, nBracketStart + 1);
+                                std::wstring bktContent = displayText.substr(nBracketStart + 1, nBracketEnd - nBracketStart - 1);
+                                std::wstring afterBkt = displayText.substr(nBracketEnd);
+                                bktContent = FormatExprOperators(bktContent);
+                                displayText = beforeBkt + bktContent + afterBkt;
+                            }
                             TextOutW(hdc, startX + textIndent, currentY + (rowHeight - fontSize) / 2, displayText.c_str(), (int)displayText.length());
                             
-                            // 绘制横向虚线（在缩进位置）
+                            // 绘制横向虚线（在缩进位置，使用彩虹色）
                             int lineX = startX + baseIndent + 10;  // 基于baseIndent计算虚线起点
                             int textCenterOffset = (rowHeight - fontSize) / 2 + fontSize / 2;
-                            HPEN hDashPen = CreatePen(PS_DOT, 1, g_CurrentTheme.textDim);
+                            COLORREF nestedFlowColor = GetFlowLineColor(nestingDepth);
+                            HPEN hDashPen = CreatePen(PS_DOT, 1, nestedFlowColor);
                             HPEN hOldDashPen = (HPEN)SelectObject(hdc, hDashPen);
                             MoveToEx(hdc, lineX, currentY + textCenterOffset, NULL);
                             LineTo(hdc, startX + baseIndent + 18, currentY + textCenterOffset);
@@ -9218,12 +9904,12 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                             MoveToEx(hdc, lineX, currentY + textCenterOffset, NULL);
                             LineTo(hdc, lineX, endY);
                             
-                            // 绘制向下箭头
+                            // 绘制向下箭头（使用彩虹色）
                             POINT downArrow[3];
                             downArrow[0] = {lineX, endY};           // 顶点（向下）
                             downArrow[1] = {lineX - 4, endY - 6};   // 左上角
                             downArrow[2] = {lineX + 4, endY - 6};   // 右上角
-                            HBRUSH hArrowBrush = CreateSolidBrush(g_CurrentTheme.textDim);
+                            HBRUSH hArrowBrush = CreateSolidBrush(nestedFlowColor);
                             HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hArrowBrush);
                             HPEN hNoPen = (HPEN)GetStockObject(NULL_PEN);
                             SelectObject(hdc, hNoPen);
@@ -9539,13 +10225,15 @@ LRESULT CALLBACK YiEditorWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
                                     // 计算括号X坐标（与绘制逻辑完全一致）
                                     std::wstring cmdText = cmdLine;
                                     
-                                    // 检查是否是流程控制内的行（使用特殊字符标记）
-                                    bool isIndentedCmd = (cmdText.length() >= 1 && (cmdText[0] == L'\u200C' || cmdText[0] == L'\u200D'));
-                                    int cmdStartX = isIndentedCmd ? (startX + 20) : startX;
+                                    // 检查是否是流程控制内的行（使用特殊字符标记），获取嵌套深度
+                                    size_t cmdMarkerLen2 = 0;
+                                    int cmdNestDepth2 = GetNestingDepth(cmdText, &cmdMarkerLen2);
+                                    bool isIndentedCmd = (cmdNestDepth2 > 0);
+                                    int cmdStartX = isIndentedCmd ? (startX + 20 + (cmdNestDepth2 - 1) * 20) : startX;
                                     
-                                    // 如果是流程控制内的行，去掉标记字符
+                                    // 如果是流程控制内的行，去掉所有标记字符
                                     if (isIndentedCmd) {
-                                        cmdText = cmdText.substr(1);
+                                        cmdText = cmdText.substr(cmdMarkerLen2);
                                         leftBracket = cmdText.find(L'(');
                                     }
                                     

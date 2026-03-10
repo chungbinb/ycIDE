@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>ImplementingImplemented</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M10,12H1V3h9Z" />
+    <path class="white" d="M6,5v5H7v1H4V10H5V5H4V4H7V5Z" />
+    <path class="light-defaultgrey" d="M15.146,9.146l.708.708-2,2h-.708l-2-2,.708-.708L13,10.293V4.707L11.854,5.854l-.708-.708,2-2h.708l2,2-.708.708L14,4.707v5.586Z" />
+  </g>
+</svg>

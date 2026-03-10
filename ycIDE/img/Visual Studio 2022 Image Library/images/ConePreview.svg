@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightConePreview</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M13.5,13c0,.828-2.462,1.5-5.5,1.5S2.5,13.828,2.5,13a.457.457,0,0,1,.053-.2L8,1.5l5.447,11.3A.457.457,0,0,1,13.5,13Z" />
+    <path class="light-lightblue" d="M8,15c-2.229,0-6-.421-6-2a.941.941,0,0,1,.1-.415L7.55,1.283h.9l5.447,11.3A.934.934,0,0,1,14,13C14,14.579,10.229,15,8,15ZM8,2.651,3,13.02c.134.315,1.976.98,5,.98,2.948,0,4.772-.633,4.99-.995Z" />
+    <g class="cls-1">
+      <path class="light-lightblue-10" d="M2.5,13c0-.828,2.462-1.5,5.5-1.5s5.5.672,5.5,1.5S11.038,14.5,8,14.5,2.5,13.828,2.5,13Z" />
+      <path class="light-lightblue" d="M8,11c-2.229,0-6,.421-6,2s3.771,2,6,2,6-.421,6-2S10.229,11,8,11Zm0,3c-3.021,0-4.863-.665-5-.979C3.137,12.665,4.979,12,8,12s4.863.665,5,.979C12.863,13.335,11.021,14,8,14Z" />
+    </g>
+  </g>
+</svg>

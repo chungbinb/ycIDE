@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCrashDumpFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,8.5v6h-7v-8h5Z" />
+    <path class="light-defaultgrey-10" d="M13.5,1.5v10H11V8.3l-.3-.721L8.42,5.3,7.7,5H7.5V1.5a1,1,0,0,1,1-1h4A1,1,0,0,1,13.5,1.5Z" />
+    <path class="light-defaultgrey" d="M14,1.5v10l-.5.5H11V11h2V1.5a.5.5,0,0,0-.5-.5h-4a.5.5,0,0,0-.5.5V5.125L7.7,5H7V1.5A1.5,1.5,0,0,1,8.5,0h4A1.5,1.5,0,0,1,14,1.5Z" />
+    <path class="light-defaultgrey" d="M9.854,8.146l-2-2L7.5,6h-5L2,6.5v8l.5.5h7l.5-.5v-6ZM9,14H3V7H6.993V9H9Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M10.121,7H12V8H10.875L10.7,7.58ZM11,10h1V9H11ZM9,3V4h3V3Z" />
+    </g>
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M4,12H8v1H4Z" />
+      <path class="light-defaultgrey" d="M8,10v1H4V10Z" />
+      <path class="light-defaultgrey" d="M6,9H4V8H6Z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>SystemInfo</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M12.5,1.5h-6a1,1,0,0,0-1,1V7.22c.17.06.34.12.5.19A5.111,5.111,0,0,1,8.59,10a5.532,5.532,0,0,1,.31,1,5.05,5.05,0,0,1,0,2,5.532,5.532,0,0,1-.31,1c-.08.17-.17.34-.26.5H13.5V2.5A1,1,0,0,0,12.5,1.5Z" />
+    <path class="light-defaultgrey" d="M12.5,1h-6A1.5,1.5,0,0,0,5,2.5V7.1c.17.03.33.08.5.12.17.06.34.12.5.19V2.5A.5.5,0,0,1,6.5,2h6a.5.5,0,0,1,.5.5V14H8.59c-.08.17-.17.34-.26.5A4.322,4.322,0,0,1,8,15h5.5l.5-.5V2.5A1.5,1.5,0,0,0,12.5,1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M9,12a4.712,4.712,0,0,1-.1,1h2.6V12Zm-.41-2a5.532,5.532,0,0,1,.31,1h2.6V10ZM7.5,4V5h4V4Z" />
+    </g>
+    <path class="light-blue" d="M4,16a4,4,0,1,1,4-4A4,4,0,0,1,4,16Z" />
+    <path class="white" d="M3.5,12h1v2h-1Zm1.125-1.5A.625.625,0,1,1,4,9.875.625.625,0,0,1,4.625,10.5Z" />
+  </g>
+</svg>

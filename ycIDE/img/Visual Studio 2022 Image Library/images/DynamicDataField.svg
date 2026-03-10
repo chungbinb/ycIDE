@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDynamicDataField</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12.5,11l.5-.5v4l-.5.5H8.121l.733-.732V14H12V11Zm0-10h-6L6,1.5v4L6.5,5H7V2h5V5h.5l.5.5v-4Z" />
+      <path class="light-defaultgrey-10" d="M12.5,1.5V5h-6V1.5ZM8.854,12.732v1.536l-.233.232H12.5V11H7.121Z" />
+    </g>
+    <path class="light-blue" d="M7.854,13.146v.708l-2,2-.708-.708L6.293,14H1.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L1.707,13H6.293L5.146,11.854l.708-.708Z" />
+    <path class="light-defaultgrey" d="M12.5,5h-6L6,5.5V9.879L7.121,11H12.5l.5-.5v-5ZM12,10H7V6h5Z" />
+    <path class="light-defaultgrey-10" d="M12.5,5.5v5H6.621L6.5,10.379V5.5Z" />
+    <path class="light-defaultgrey-10" d="M12.5,5.5v5H6.621L6.5,10.379V5.5Z" />
+  </g>
+</svg>

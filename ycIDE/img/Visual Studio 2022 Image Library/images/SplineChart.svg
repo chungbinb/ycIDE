@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue{fill: #0077a0; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSplineChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-defaultgrey" d="M15,11.293v1.414l-4.5-4.5L7.354,11.354H6.646L2,6.707V5.293l5,5,3.146-3.147h.708Z" />
+    <path class="light-lightblue" d="M15,2.293V3.707L12.854,5.854h-.708L9.5,3.207,2,10.707V9.293L9.146,2.146h.708L12.5,4.793Z" />
+  </g>
+</svg>

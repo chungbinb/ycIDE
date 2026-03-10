@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRuleWarning</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M2.5,1.5v13H6.34l.27-.5,1.54-2.79.25-.45.25-.46L9,9.67l.5-.91L10.47,7h2.06l.47.85.5.91V1.5Z" />
+      <path class="light-defaultgrey" d="M13.5,1H2.5L2,1.5v13l.5.5H6.06l.28-.5.27-.5H3V2H13V7.85l.5.91.5.91V1.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M8,3.5A2.493,2.493,0,0,0,6.5,7.99v3.87L8,10.36l.4.4.25-.46L9,9.67l.5-.91V7.99A2.493,2.493,0,0,0,8,3.5Z" />
+    <path class="light-defaultgrey" d="M8,3A2.989,2.989,0,0,0,6,8.22v3.64l.85.35L8,11.06l.15.15.25-.45.25-.46-.3-.3h-.7L7,10.65V8.82a2.868,2.868,0,0,0,2,0v.85l.5-.91L10.47,7h.35A2.772,2.772,0,0,0,11,6,3.009,3.009,0,0,0,8,3ZM8,8a2,2,0,1,1,2-2A2.006,2.006,0,0,1,8,8Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

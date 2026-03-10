@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMaskedTextBox</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M3.994,13H2.941a6.788,6.788,0,0,1-1.7-4.688,7.042,7.042,0,0,1,1.7-4.765H4A7.3,7.3,0,0,0,2.334,8.3,7.155,7.155,0,0,0,3.994,13Zm5.054,0H8A7.143,7.143,0,0,0,9.659,8.3a7.277,7.277,0,0,0-1.67-4.753H9.053a7.026,7.026,0,0,1,1.7,4.765A6.759,6.759,0,0,1,9.048,13Z" />
+    <path class="light-defaultgrey" d="M7,13H5V11H7Z" />
+    <path class="light-defaultgrey" d="M15,13H12V11h3Z" />
+  </g>
+</svg>

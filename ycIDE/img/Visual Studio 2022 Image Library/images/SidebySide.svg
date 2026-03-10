@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSidebySide</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.5,3.5l2,2v6H.5v-8Zm9,0h-4v8h6v-6Z" />
+    <path class="light-defaultgrey" d="M4.854,3.146,4.5,3H.5L0,3.5v8l.5.5h6l.5-.5v-6l-.146-.354ZM6,11H1V4H4V6H6Zm9.854-5.854-2-2L13.5,3h-4L9,3.5v8l.5.5h6l.5-.5v-6ZM15,11H10V4h3V6h2Z" />
+  </g>
+</svg>

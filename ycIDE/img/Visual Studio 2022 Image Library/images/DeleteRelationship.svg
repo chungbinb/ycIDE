@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDeleteRelationship</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,8.5h8v6H.5Z" />
+    <path class="light-defaultgrey-10" d="M7.5.5h8v6h-8Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+    <path class="light-defaultgrey" d="M8.5,8H.5L0,8.5v6l.5.5h8l.5-.5v-6ZM1,14V10H8v4Z" />
+    <path class="light-defaultgrey" d="M15.5,0h-8L7,.5v6l.5.5h8l.5-.5V.5ZM8,6V2h7V6Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M11.5,12H9V11h2V7h1v4.5Z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightQuickReplace</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8,15H2V9H8Z" />
+    <path class="light-blue" d="M8,4.064H5V6.21L6.146,5.064l.708.707-2,2H4.146l-2-2,.708-.707L4,6.21V3.564l.5-.5H8Z" />
+    <path class="light-defaultgrey" d="M10,6.723a2,2,0,1,0,0-3.446V1H9V7h1ZM11,4a1,1,0,1,1-1,1A1,1,0,0,1,11,4Z" />
+    <path class="white" d="M4,12a1,1,0,0,0,1.707.707l.707.707a2,2,0,1,1,0-2.828l-.707.707A1,1,0,0,0,4,12Z" />
+  </g>
+</svg>

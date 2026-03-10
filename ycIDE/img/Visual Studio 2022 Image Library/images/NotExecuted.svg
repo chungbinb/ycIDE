@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightNotExecuted</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M13.707,13l2.147,2.146-.708.708L13,13.707l-2.146,2.147-.708-.708L12.293,13l-2.147-2.146.708-.708L13,12.293l2.146-2.147.708.708Z" />
+    <path class="light-green" d="M7,1A6,6,0,0,0,7,13a5.93,5.93,0,0,0,3.05-.83L8.73,10.85l2.12-2.12,1.32,1.32A5.93,5.93,0,0,0,13,7,6,6,0,0,0,7,1Z" />
+    <path class="white" d="M6,4.48V9.52L9.77,7Z" />
+  </g>
+</svg>

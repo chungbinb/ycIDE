@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>TracepointDependentWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-red-10" d="M15.071,8,13.788,9.283,12.53,7H10.47L6.726,13.8.929,8,8,.929Z" />
+      <path class="light-red" d="M15.425,7.646v.708L14.039,9.739l-.5-.912L14.364,8,8,1.636,1.636,8l5.341,5.341-.5.912-5.9-5.9V7.646L7.646.575h.708Z" />
+    </g>
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+    <path class="light-red" d="M10.5,5H7V6H9.29L8.15,7.15l.7.7L10,6.71V7.85L10.47,7H11V5.5ZM7.15,8.15l-1,1,.7.7,1-1Zm-2,2-.68.68.7.7.68-.68Z" />
+  </g>
+</svg>

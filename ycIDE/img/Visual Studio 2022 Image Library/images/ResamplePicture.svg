@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightResamplePicture</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2.5,3H0V2H2V0H3V2.5ZM2,16H3V13.5L2.5,13H0v1H2Zm12-2h2V13H13.5l-.5.5V16h1ZM13.5,3H16V2H14V0H13V2.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M12.5,3.5v9h-9v-9Z" />
+    <path class="light-defaultgrey" d="M12.5,13h-9L3,12.5v-9L3.5,3h9l.5.5v9ZM4,12h8V4H4Z" />
+    <path class="light-yellow" d="M11,6a1,1,0,1,1-1-1A1,1,0,0,1,11,6Z" />
+    <path class="light-blue" d="M10,9.732,8.707,11.025,9.683,12H8.268L5,8.732l-1,1V8.318l.646-.646h.708L8,10.318,9.646,8.672h.708L12,10.318v1.414Z" />
+  </g>
+</svg>

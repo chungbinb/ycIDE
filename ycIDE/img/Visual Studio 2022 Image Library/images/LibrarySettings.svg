@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLibrarySettings</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,8.488V2.5h2V8A4.458,4.458,0,0,0,1.5,8.488Z" />
+    <path class="light-defaultgrey-10" d="M5.5,8.488V2.5h2v7.979A4.5,4.5,0,0,0,5.5,8.488Z" />
+    <path class="light-defaultgrey-10" d="M14.389,13l-1.931.517L9.611,2.9l1.931-.517Z" />
+    <path class="light-defaultgrey" d="M7,13V12H5.949a2.473,2.473,0,0,0-.365-.876l.745-.745-.707-.707-.745.745A2.469,2.469,0,0,0,4,10.051V9H3v1.051a2.469,2.469,0,0,0-.877.366l-.745-.745-.707.707.745.745A2.473,2.473,0,0,0,1.051,12H0v1H1.051a2.473,2.473,0,0,0,.365.876l-.745.745.707.707.745-.745A2.469,2.469,0,0,0,3,14.949V16H4V14.949a2.469,2.469,0,0,0,.877-.366l.745.745.707-.707-.745-.745A2.473,2.473,0,0,0,5.949,13ZM3.5,14A1.5,1.5,0,1,1,5,12.5,1.5,1.5,0,0,1,3.5,14Z" />
+    <path class="light-defaultgrey" d="M1,8.76V2.5L1.5,2h2l.5.5V8.05A4.576,4.576,0,0,0,3.5,8a4.576,4.576,0,0,0-.5.05V3H2V8.276A4.466,4.466,0,0,0,1,8.76Z" />
+    <path class="light-defaultgrey" d="M7.5,2l.5.5v10A4.46,4.46,0,0,0,7,9.7V3H6V8.76a4.466,4.466,0,0,0-1-.484V2.5L5.5,2Z" />
+    <path class="light-defaultgrey" d="M12.025,2.249,11.412,1.9,9.48,2.413l-.353.613,2.848,10.625.613.354,1.932-.518.353-.613Zm.787,10.66L10.223,3.25l.965-.259,2.589,9.659Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightChecklist</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,11v1H5V11ZM5,7V8h9V7ZM5,3V4h9V3ZM2,12.707.646,11.354l.708-.708L2,11.293,3.646,9.646l.708.708Zm0-4L.646,7.354l.708-.708L2,7.293,3.646,5.646l.708.708Zm0-4L.646,3.354l.708-.708L2,3.293,3.646,1.646l.708.708Z" />
+  </g>
+</svg>

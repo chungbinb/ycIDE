@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightElementSeparator</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,11.5h-4v-7h4Zm9-7h-4v7h4Z" />
+    <path class="light-defaultgrey" d="M5.5,12h-4L1,11.5v-7L1.5,4h4l.5.5v7ZM2,11H5V5H2Z" />
+    <path class="light-defaultgrey" d="M14.5,12h-4l-.5-.5v-7l.5-.5h4l.5.5v7ZM11,11h3V5H11Z" />
+    <path class="light-defaultgrey" d="M9,14H7V2H9Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-darkblue-10{fill: #313c9e; opacity: 0.1;}.light-darkblue{fill: #313c9e; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAvatarAsteriskOff</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-darkblue-10" d="M14.5,5.5v5a4,4,0,0,1-4,4h-5a4,4,0,0,1-4-4v-5a4,4,0,0,1,4-4h5A4,4,0,0,1,14.5,5.5Z" />
+    <path class="light-darkblue" d="M10.5,1h-5A4.505,4.505,0,0,0,1,5.5v5A4.505,4.505,0,0,0,5.5,15h5A4.505,4.505,0,0,0,15,10.5v-5A4.505,4.505,0,0,0,10.5,1ZM14,10.5A3.5,3.5,0,0,1,10.5,14h-5A3.5,3.5,0,0,1,2,10.5v-5A3.5,3.5,0,0,1,5.5,2h5A3.5,3.5,0,0,1,14,5.5Z" />
+    <path class="light-darkblue" d="M8.605,8l1.81.817-.5.866L8.3,8.524,8.5,10.5h-1l.2-1.976L6.085,9.683l-.5-.866L7.4,8l-1.81-.817.5-.866L7.7,7.476,7.5,5.5h1L8.3,7.476,9.915,6.317l.5.866Z" />
+  </g>
+</svg>

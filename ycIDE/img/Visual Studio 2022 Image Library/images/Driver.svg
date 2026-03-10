@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDriver</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13,9.5H12V4H6.5V3h6l.5.5Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M6.5,3.5a2,2,0,1,1-2-2A2,2,0,0,1,6.5,3.5Zm8,8a2,2,0,1,1-2-2A2,2,0,0,1,14.5,11.5Z" />
+    <path class="light-defaultgrey" d="M4.5,6A2.5,2.5,0,1,1,7,3.5,2.5,2.5,0,0,1,4.5,6Zm0-4A1.5,1.5,0,1,0,6,3.5,1.5,1.5,0,0,0,4.5,2Zm8,12A2.5,2.5,0,1,1,15,11.5,2.5,2.5,0,0,1,12.5,14Zm0-4A1.5,1.5,0,1,0,14,11.5,1.5,1.5,0,0,0,12.5,10Z" />
+  </g>
+</svg>

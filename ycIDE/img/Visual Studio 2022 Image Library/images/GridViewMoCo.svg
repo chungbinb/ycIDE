@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGridViewMoCo</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,7.633A3.484,3.484,0,0,0,7.5,7V6.5h2ZM4.633,8.5H3.5v-2h2V7.633A3.535,3.535,0,0,0,4.633,8.5Zm.867-4h-2v-2h2Zm4,0h-2v-2h2Zm4,0h-2v-2h2Zm0,4h-2v-2h2Zm0,4h-2v-2h2Z" />
+    <path class="light-defaultgrey-10" d="M3.507,14.493,1.386,12.371,3.257,10.5l2.475,1.768Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M5.5,10.5a2,2,0,1,1,2,2A2,2,0,0,1,5.5,10.5Z" />
+      <path class="light-defaultgrey" d="M7.5,13A2.5,2.5,0,1,1,10,10.5,2.5,2.5,0,0,1,7.5,13Zm0-4A1.5,1.5,0,1,0,9,10.5,1.5,1.5,0,0,0,7.5,9Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8,10.5a.5.5,0,0,0-.854-.353L5.678,11.614l-2.13-1.521-.644.053L1.033,12.018v.707l2.121,2.121h.707l3.992-3.992A.5.5,0,0,0,8,10.5ZM3.507,13.785,2.093,12.371l1.219-1.218,1.649,1.178Z" />
+    <path class="light-defaultgrey" d="M7,7.05V6.5L7.5,6h2l.5.5V8.056A3.479,3.479,0,0,0,9,7.35V7H8v.05A3.588,3.588,0,0,0,7.5,7,3.588,3.588,0,0,0,7,7.05Zm-1,.3V6.5L5.5,6h-2L3,6.5v2l.5.5h.85A3.5,3.5,0,0,1,6,7.35ZM4,7H5V8H4ZM5.5,5h-2L3,4.5v-2L3.5,2h2l.5.5v2ZM4,4H5V3H4ZM9.5,5h-2L7,4.5v-2L7.5,2h2l.5.5v2ZM8,4H9V3H8Zm5.5,1h-2L11,4.5v-2l.5-.5h2l.5.5v2ZM12,4h1V3H12Zm1.5,5h-2L11,8.5v-2l.5-.5h2l.5.5v2ZM12,8h1V7H12Zm1.5,5h-2l-.5-.5v-2l.5-.5h2l.5.5v2ZM12,12h1V11H12Z" />
+  </g>
+</svg>

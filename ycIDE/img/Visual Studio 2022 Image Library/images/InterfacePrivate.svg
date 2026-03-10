@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightInterfacePrivate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue" d="M8.5,6V7h-4V6Z" />
+    </g>
+    <path class="light-blue-10" d="M4.5,6.5a2,2,0,1,1-2-2A2,2,0,0,1,4.5,6.5Zm5.635,2.657a3.022,3.022,0,1,1,4.23-1.813,3.081,3.081,0,0,0-.463-.19A2.963,2.963,0,0,0,13,7a2.993,2.993,0,0,0-2.685,1.688A2.856,2.856,0,0,0,10.135,9.157Z" />
+    <path class="light-blue" d="M2.5,4A2.5,2.5,0,1,0,5,6.5,2.5,2.5,0,0,0,2.5,4Zm0,4A1.5,1.5,0,1,1,4,6.5,1.5,1.5,0,0,1,2.5,8ZM9,6.5a2.5,2.5,0,0,1,5,0,2.439,2.439,0,0,1-.1.654,2.982,2.982,0,0,1,.9.462,3.493,3.493,0,1,0-4.767,2.051,2.966,2.966,0,0,1,.281-.979A2.492,2.492,0,0,1,9,6.5Z" />
+    <path class="light-defaultgrey-10" d="M15.5,11.5v4h-5v-4Z" />
+    <path class="light-defaultgrey" d="M15.5,11H15V10a2,2,0,0,0-4,0v1h-.5l-.5.5v4l.5.5h5l.5-.5v-4ZM12,10a1,1,0,0,1,2,0v1H12Zm3,5H11V12h4Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>CodeInformationRule</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6.5,6.757v5.778l-2-2-2,2V6.757a3,3,0,1,1,4,0Z" />
+    <path class="light-defaultgrey" d="M8,4.535A3.5,3.5,0,1,0,2,6.977H2v5.558l.854.354L4.5,11.242l1.646,1.647L7,12.535V6.977H7A3.484,3.484,0,0,0,8,4.535ZM6,7.684v3.644L4.854,10.182H4.146L3,11.328V7.684H3a3.381,3.381,0,0,0,3,0ZM4.5,7.035A2.5,2.5,0,1,1,7,4.535,2.5,2.5,0,0,1,4.5,7.035Z" />
+    <path class="light-blue" d="M12,16a4,4,0,1,1,4-4A4,4,0,0,1,12,16Z" />
+    <path class="white" d="M11.5,12h1v2h-1Zm0-1h1V10h-1Z" />
+  </g>
+</svg>

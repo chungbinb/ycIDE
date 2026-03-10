@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightStorageDriver</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v5H8V7.09L7.91,7l-1-1H3.5A2.466,2.466,0,0,0,2,5.05,2.734,2.734,0,0,0,1.5,5V2.5Z" />
+    <path class="light-green" d="M10,4h1V5H10Zm2,0V5h1V4Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5V5.05A2.734,2.734,0,0,1,1.5,5a2.734,2.734,0,0,1,.5.05V3H14V7H7.91L8,7.09V8h6.5l.5-.5v-5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7,7.5v4H6V8H2.5V7h4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2.5,7.5a1,1,0,1,1-1-1A1,1,0,0,1,2.5,7.5Zm4,4a1,1,0,1,0,1,1A1,1,0,0,0,6.5,11.5Z" />
+    <path class="light-defaultgrey" d="M1.5,6A1.5,1.5,0,1,0,3,7.5,1.5,1.5,0,0,0,1.5,6Zm0,2A.5.5,0,1,1,2,7.5.5.5,0,0,1,1.5,8Zm5,3A1.5,1.5,0,1,0,8,12.5,1.5,1.5,0,0,0,6.5,11Zm0,2a.5.5,0,1,1,.5-.5A.5.5,0,0,1,6.5,13Z" />
+  </g>
+</svg>

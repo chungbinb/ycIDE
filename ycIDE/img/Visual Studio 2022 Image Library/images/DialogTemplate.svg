@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDialogTemplate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15,4v9H13v1H2V13H1V4h.5V2.5h13V4Z" />
+      <path class="light-defaultgrey" d="M13,12H10V11h3ZM9,11H6v1H9ZM3,9H7V8H3ZM7,6H3V7H7Zm0,8H8V13H7ZM5,14H6V13H5ZM3,14H4V13H3ZM1,7.979H2V7H1ZM11,14h1V13H11ZM9,14h1V13H9ZM1,10H2V9H1Zm13,2h1V11H14ZM1,12H2V11H1Zm13-2h1V9H14Zm.5-6H1.5L1,4.5V6H2V5H14V6h1V4.5ZM14,7.979h1V7H14ZM13,13v1h1.5l.5-.5V13H13ZM1,13.5l.5.5H2V13H1Z" />
+      <path class="light-defaultgrey" d="M14.5,5H1.5L1,4.5v-2L1.5,2h13l.5.5v2ZM2,4H14V3H2Z" />
+      <path class="light-defaultgrey" d="M12.5,6h-4L8,6.5v2l.5.5h4l.5-.5v-2ZM12,8H9V7h3Z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEditAssociation</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.5,12.5h2v2h-2Zm-10-10h2v2h-2Z" />
+    <path class="light-defaultgrey" d="M11,14.5v-2l.5-.5h2l.5.5v2l-.5.5h-2ZM13,13H12v1h1ZM1,4.5v-2L1.5,2h2l.5.5v2L3.5,5h-2ZM3,3H2V4H3Z" />
+    <path class="light-blue-10" d="M14.192,3.308,8.635,8.865,7.153,7.347l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,14.192,3.308Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6.119,6.412l-.462.952L3.293,5H3.5L4,4.5V4.293ZM11,12.707V12.5l.5-.5h.207l-2.1-2.1-.917.5Z" />
+    </g>
+    <path class="light-blue" d="M14.543,1.457a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L5.511,9.953l.675.674L9.181,9l5.365-5.336A1.562,1.562,0,0,0,14.543,1.457Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

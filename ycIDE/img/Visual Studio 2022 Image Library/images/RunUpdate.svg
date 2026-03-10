@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRunUpdate</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M10,14v1A4.985,4.985,0,0,1,7.031,6H5.516l1.75-1H8.5l.5.5v4H8V6.556A3.987,3.987,0,0,0,10,14Z" />
+    <path class="light-blue" d="M15.5,14v1h-4l-.5-.5v-4h1v2.944A3.987,3.987,0,0,0,10,6V5a4.985,4.985,0,0,1,2.969,9Z" />
+    <path class="light-green" d="M7,4,0,8V0Z" />
+  </g>
+</svg>

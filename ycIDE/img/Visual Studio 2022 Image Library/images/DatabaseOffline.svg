@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDatabaseOffline</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M11.048,13.143A7.905,7.905,0,0,1,7,14c-2.481,0-4.5-.673-4.5-1.5V3c0-.926,2.336-1.5,4.5-1.5s4.5.574,4.5,1.5V9.408l-.5-.5L8.906,11Z" />
+    <path class="light-lightblue" d="M12,9.908V3c0-1.374-2.592-2-5-2S2,1.626,2,3v9.5c0,1.374,2.592,2,5,2a11.493,11.493,0,0,0,3.125-.4l.94-.941-.37-.37A7.607,7.607,0,0,1,7,13.5c-2.753,0-4-.767-4-1V4.262A9.5,9.5,0,0,0,7,5a9.5,9.5,0,0,0,4-.738V8.908ZM7,4C4.375,4,3,3.257,3,3S4.375,2,7,2s4,.743,4,1S9.625,4,7,4Z" />
+    <path class="light-defaultgrey" d="M13.841,13.161,16,15.32l-.68.68-2.16-2.161L11,16l-.68-.68,2.159-2.159L10.32,11l.68-.68,2.16,2.161,2.16-2.161L16,11Z" />
+  </g>
+</svg>

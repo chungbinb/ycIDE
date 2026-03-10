@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightWPFDesigner</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,15.971H0v-16H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.5,4.5h-4v-3h4Zm5,10h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M14.5,12H14V8.5L13.5,8H8V5H9.5l.5-.5v-3L9.5,1h-4L5,1.5v3l.5.5H7V8H1.5L1,8.5v2.341l1-1V9H7v1.971h.223L8,10.19V9h5v3h-.5l-.5.5v2l.5.5h2l.5-.5v-2ZM6,4V2H9V4Zm8,10H13V13h1Z" />
+    <path class="light-defaultgrey" d="M1.207,13.469l1.816,1.82L2.316,16,.147,13.823v-.706l2.169-2.179.709.705Z" />
+    <path class="light-defaultgrey" d="M10.854,13.118v.709L8.666,16l-.7-.709,1.831-1.819L7.961,11.647l.705-.709Z" />
+    <path class="light-blue" d="M7,11.971v3H4v-3Z" />
+  </g>
+</svg>

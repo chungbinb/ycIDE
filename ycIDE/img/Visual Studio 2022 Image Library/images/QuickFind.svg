@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightQuickFind</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M8.564,9.15l-4.71,4.7-.708-.708,4.71-4.7A4.015,4.015,0,0,0,8.564,9.15Z" />
+    <path class="light-defaultgrey-10" d="M14.5,6A3.5,3.5,0,1,1,11,2.5,3.5,3.5,0,0,1,14.5,6Z" />
+    <path class="light-defaultgrey" d="M11,10a4,4,0,1,1,4-4A4,4,0,0,1,11,10Zm0-7a3,3,0,1,0,3,3A3,3,0,0,0,11,3Z" />
+    <path class="light-defaultgrey" d="M6,2V3H3V2ZM5,5H1V6H5ZM3,9H6V8H3Z" />
+  </g>
+</svg>

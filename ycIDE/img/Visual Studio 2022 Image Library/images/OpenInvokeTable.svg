@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightOpenInvokeTable</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,3.5v11H1.5V7H3V5a1,1,0,0,1,.117-.47L4.854,6.268,7.621,3.5Z" />
+    <path class="light-blue" d="M6.854,2.146v.707l-2,2-.707-.707L5.293,3H4A2,2,0,0,0,2,5V6H1V5A3,3,0,0,1,4,2H5.293L4.147.853,4.854.146Z" />
+    <path class="light-defaultgrey" d="M15,3.5v11l-.5.5H1.5L1,14.5V7H2v7H14V4H7.121l.733-.733V3H14.5Z" />
+    <path class="light-defaultgrey" d="M12.5,5H6.121L4.854,6.268,3.587,5H3.5L3,5.5v7l.5.5h9l.5-.5v-7ZM6,12H4V11H6Zm0-2H4V9H6ZM6,8H4V7H6Zm3,4H7V11H9Zm0-2H7V9H9ZM9,8H7V7H9Zm3,4H10V11h2Zm0-2H10V9h2Zm0-2H10V7h2Z" />
+  </g>
+</svg>

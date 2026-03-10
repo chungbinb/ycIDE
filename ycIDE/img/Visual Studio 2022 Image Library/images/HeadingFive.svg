@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHeadingFive</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14,5H2V2H14Z" />
+    <path class="light-defaultgrey" d="M14,8H2V7H14Zm0,2H6v1h8Zm0,3H6v1h8Z" />
+    <path class="light-defaultgrey" d="M1.346,14.77V13.9a1.976,1.976,0,0,0,1.117.372,1.386,1.386,0,0,0,.918-.291.965.965,0,0,0,.348-.776.878.878,0,0,0-.354-.742A1.666,1.666,0,0,0,2.361,12.2q-.227,0-.918.047l.2-2.945H4.4v.773h-2l-.093,1.4c.179-.011.342-.016.488-.016a1.932,1.932,0,0,1,1.377.457,1.634,1.634,0,0,1,.486,1.25A1.709,1.709,0,0,1,4.1,14.5a2.2,2.2,0,0,1-1.53.5A2.533,2.533,0,0,1,1.346,14.77Z" />
+  </g>
+</svg>

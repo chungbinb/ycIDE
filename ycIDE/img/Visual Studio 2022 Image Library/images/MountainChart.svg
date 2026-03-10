@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightMountainChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2V13.5H1.5v-3L2.845,9,4.19,10.5l2.689-3,1.793,2Z" />
+    <path class="light-defaultgrey" d="M14.105,1.693,8.646,8.721l-1.4-1.555H6.507L4.189,9.751,3.217,8.666H2.473l-1.345,1.5L1,10.5v3l.5.5h13l.5-.5V2ZM14,13H2V10.691l.845-.942.972,1.085h.745L6.879,8.249,8.3,9.834l.766-.027L14,3.458Z" />
+  </g>
+</svg>

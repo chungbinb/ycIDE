@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-shadow{fill: #000000; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAddressEditor</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-2">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M6.511,14.453,7.059,15H5.644L5.3,14.657l.076-.157H.5v-8H11.379l.5-.5h1.459l-5.25,5.205Zm3.67-.955L7.419,15H9.513l.919-.5H14.5V10.613l.5-.5V8.7l-.5.5Z" />
+      <path class="light-defaultgrey" d="M5.644,15H.5L0,14.5v-8L.5,6H11.879l-1,1H1.944L7.5,9.991l.84-.452L7.262,10.617l-.147.3L1,7.628V14H5.62l-.319.657ZM14,11.11V14H11.094l-.309.308L9.513,15H14.5l.5-.5V10.115Z" />
+    </g>
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15.192,7.808,9.635,13.365,8.153,11.847l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,7.808Z" />
+      <path class="light-blue" d="M15.543,5.957a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L6.511,14.453l.675.674L10.181,13.5l5.365-5.336A1.562,1.562,0,0,0,15.543,5.957Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+    </g>
+  </g>
+  <g id="level-1">
+    <path class="light-shadow" d="M5,4H3V6H2V4H0V3H2V1H3V3H5Z" />
+    <path class="light-green" d="M5,3H3V5H2V3H0V2H2V0H3V2H5Z" />
+  </g>
+</svg>

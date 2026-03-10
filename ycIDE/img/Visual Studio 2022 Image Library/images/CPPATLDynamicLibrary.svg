@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCPPATLDynamicLibrary</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M7.5,10h-2V2.5h.882l-.236.235V4.266L7.5,5.619Zm5.353-2.735L11.5,5.912l-.852.852,1.81,6.753L14.389,13ZM3.5,2.5h-2V10h2Z" />
+    <path class="light-red" d="M13.354,7.766l.119-.12,1.4,5.223-.353.613L12.588,14l-.613-.354L10.24,7.173l.816-.817L12.812,12.9l.965-.258L12.146,6.558ZM6.146,2.73,6,3V10H5V2.5L5.5,2H6.882ZM7,5.119l1,1V10H7ZM2,10H1V2.5L1.5,2h2l.5.5V10H3V3H2Z" />
+    <path class="light-defaultgrey" d="M15.854,3.145v.707L13.6,6.1,12.9,5.4,14.291,4H8.709L10.1,5.4,9.4,6.1l-2.25-2.25V3.145L9.4.9,10.1,1.6,8.705,3H14.3L12.9,1.6,13.6.9Z" />
+    <path class="light-defaultgrey" d="M4.787,16H3.9l-.441-1.248H1.526L1.1,16H.213l1.836-4.9h.916ZM3.238,14.09l-.68-1.955a2.492,2.492,0,0,1-.065-.309H2.479a1.97,1.97,0,0,1-.068.309L1.738,14.09Z" />
+    <path class="light-defaultgrey" d="M8.313,11.789H6.905V16H6.092V11.789h-1.4V11.1H8.313Z" />
+    <path class="light-defaultgrey" d="M11.714,16H9V11.1h.813v4.214h1.9Z" />
+  </g>
+</svg>

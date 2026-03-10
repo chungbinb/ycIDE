@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCPPBlankPhone</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red" d="M7,15l-.354-.146-3.5-3.5L3,11V8l7,7Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M3.5,7.086V1.5h8v13h-.586Zm0,6.035V14.5H4.879Z" />
+      <path class="light-defaultgrey" d="M5.379,15H3.5L3,14.5V12.621l1,1V14h.379ZM3,6.586V1.5L3.5,1h8l.5.5v13l-.5.5h-.086l-1-1H11V2H4V7.586ZM8,4H7V3H8Z" />
+    </g>
+  </g>
+</svg>

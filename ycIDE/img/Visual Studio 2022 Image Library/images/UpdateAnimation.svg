@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightUpdateAnimation</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.257,10.68l-3.632.528L10,14.5,8.375,11.208,4.743,10.68,7.371,8.118,7.351,8H8V5.157l2,1.051L13.249,4.5l-.62,3.618Z" />
+    <path class="light-blue" d="M3.083,5.966l-.166.986A3.5,3.5,0,0,1,1.051,1H0V0H2.5L3,.5V3H2V1.5A2.5,2.5,0,0,0,3.083,5.966ZM6,3.5a2.505,2.505,0,0,1-1,2V4H4V6.5l.5.5H7V6H5.949A3.5,3.5,0,0,0,4.083.048l-.166.986A2.491,2.491,0,0,1,6,3.5Z" />
+    <path class="light-defaultgrey" d="M4,9H0v1H4ZM2,13H5V12H2Z" />
+    <path class="light-defaultgrey" d="M15.605,10.322l-.276.853-3.372.491-1.509,3.055h-.9L8.043,11.666l-3.372-.491-.276-.853L6.776,8H7.858l.006.034-.144.442-1.9,1.855,2.63.383.376.273L10,13.371l1.177-2.384.376-.273,2.63-.383-1.9-1.855-.144-.442.449-2.62L10.232,6.65H9.768L8,5.721V5H7.744a4.507,4.507,0,0,0,.123-.477L10,5.643l3.017-1.585.725.526-.576,3.36Z" />
+  </g>
+</svg>

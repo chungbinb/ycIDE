@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExport</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M4.646,1.646l.708.708L2.707,5H9.5a4.5,4.5,0,0,1,0,9V13a3.5,3.5,0,0,0,0-7H2.707L5.354,8.646l-.708.708-3.5-3.5V5.146Z" />
+  </g>
+</svg>

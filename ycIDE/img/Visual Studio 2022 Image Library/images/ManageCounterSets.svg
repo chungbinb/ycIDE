@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightManageCounterSets</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,8.5h8v7H.5Z" />
+    <path class="light-defaultgrey-10" d="M6.5,2.5h-2V.5h2Z" />
+    <path class="light-defaultgrey" d="M6.5,3h-2L4,2.5V.5L4.5,0h2L7,.5v2ZM5,2H6V1H5Z" />
+    <path class="light-green" d="M8.147,13.854,5.5,11.207,3.854,12.854H3.147L2.5,12.207.854,13.854l-.707-.708,2-2h.707l.646.647,1.647-1.647h.707l3,3Z" />
+    <path class="light-defaultgrey" d="M8.5,16H.5L0,15.5v-7L.5,8h8l.5.5v7ZM1,15H8V9H1Z" />
+    <path class="light-defaultgrey" d="M15,9.586v.707L14.293,11h-.707l-3.3-3.3a3.2,3.2,0,0,1-.495.177L8.914,7H6.779A2.938,2.938,0,0,1,6.3,3.714L8.293,5.707,9.707,4.293,7.714,2.3A2.969,2.969,0,0,1,9,2a3,3,0,0,1,3,3,2.969,2.969,0,0,1-.3,1.286Z" />
+  </g>
+</svg>

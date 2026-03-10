@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIncreaseIndent</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15,4H8V3h7ZM13,6H8V5h5Zm2,2H8V7h7Zm-2,2H8V9h5Zm2,2H8V11h7Z" />
+    <path class="light-blue" d="M6.854,7.146v.708l-2.5,2.5-.708-.708L5.291,8H1V7H5.3L3.646,5.354l.708-.708Z" />
+  </g>
+</svg>

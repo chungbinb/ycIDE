@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightToolbox</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-red-10" d="M14.5,8.5v5H1.5v-5Z" />
+    <path class="light-red-10" d="M14.5,5.5v3H1.5v-3Z" />
+    <path class="light-red" d="M15,8.5v5l-.5.5H1.5L1,13.5v-5H2V13H14V8.5Z" />
+    <path class="light-red" d="M14.5,5H1.5L1,5.5v3l.5.5h13l.5-.5v-3ZM14,8H2V6H14Z" />
+    <path class="light-defaultgrey" d="M4,7H5v3H4Zm7,0v3h1V7Z" />
+    <path class="light-defaultgrey" d="M11,3.5V5H10V4H6V5H5V3.5L5.5,3h5Z" />
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightEditZone</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M6.529,13H.5L0,12.5V2.5L.5,2h14l.5.5V5.44a2.564,2.564,0,0,0-.562-.067,2.536,2.536,0,0,0-1.807.748L7.262,11.49Z" />
+      <path class="light-defaultgrey" d="M9,3H8V2H9Zm6,0H14V2h.5l.5.5ZM6.529,13H6V12H7v.03ZM0,12H1v1H.5L0,12.5ZM7,3H6V2H7Zm8,2H14V4h1ZM11,3H10V2h1Zm2,0H12V2h1ZM.5,2H1V3H0V2.5ZM0,10H1v1H0ZM2,2H3V3H2ZM4,2H5V3H4ZM2,12H3v1H2Zm2,0H5v1H4ZM0,8H1V9H0ZM0,6H1V7H0ZM0,4H1V5H0Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.28,10.473H2.5v-6h6v5.779l-.242.243Z" />
+    <path class="light-defaultgrey" d="M9,9.752V4.473l-.5-.5h-6l-.5.5v6l.5.5L7.758,11ZM3,4.973H8V9.995L3,9.973Z" />
+    <path class="light-blue-10" d="M15.192,8.681,9.635,14.238,8.153,12.72l5.539-5.539a1.059,1.059,0,0,1,1.5,0A1.062,1.062,0,0,1,15.192,8.681Z" />
+    <path class="light-blue" d="M15.543,6.83a1.56,1.56,0,0,0-2.2,0l-5.25,5.25L6.511,15.326,7.186,16l2.995-1.629,5.365-5.336A1.562,1.562,0,0,0,15.543,6.83Zm-.7,1.5-5.2,5.2-.783-.8,5.19-5.189a.56.56,0,0,1,.792.793Z" />
+  </g>
+</svg>

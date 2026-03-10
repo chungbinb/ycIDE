@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightOutGoingCodeReview</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2,14H8v1H2ZM7,9V8H4V9Zm6-7H9V3h4ZM8,5H3.42L3,5.42V6H8ZM3,12H9V11H3ZM9,5V6h6V5ZM8,9h6V8H8Z" />
+    <path class="light-blue" d="M7,3H1.707L2.854,4.146l-.708.708-2-2V2.146l2-2,.708.708L1.707,2H7Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightScriptPreview</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M6,4h5.278A1.978,1.978,0,0,0,11,5v7a1,1,0,0,1-2,0v-.5L8.5,11H5.963A3.479,3.479,0,0,0,5,8.053V5A1,1,0,0,1,6,4Zm2,8a1.984,1.984,0,0,0,.269,1H7.121l-1-1Zm6-7V6H12V5a1,1,0,0,1,2,0Z" />
+    <path class="light-defaultgrey" d="M13,3H6A2,2,0,0,0,4,5V7.338a3.527,3.527,0,0,1,1,.715V5A1,1,0,0,1,6,4h5.278A1.978,1.978,0,0,0,11,5v7a1,1,0,0,1-2,0v-.5L8.5,11H5.963a3.488,3.488,0,0,1-.167.675L6.121,12H8a1.984,1.984,0,0,0,.269,1H7.121l1,1H10a2,2,0,0,0,2-2V7h2.5l.5-.5V5A2,2,0,0,0,13,3Zm1,3H12V5a1,1,0,0,1,2,0Z" />
+    <path class="light-blue-10" d="M2.5,8.5a2,2,0,1,1-2,2A2,2,0,0,1,2.5,8.5Z" />
+    <path class="light-blue" d="M0,10.5A2.5,2.5,0,0,0,2.5,13a2.473,2.473,0,0,0,1.376-.417l3.27,3.271.708-.708-3.271-3.27A2.473,2.473,0,0,0,5,10.5a2.5,2.5,0,0,0-5,0Zm1,0A1.5,1.5,0,1,1,2.5,12,1.5,1.5,0,0,1,1,10.5Z" />
+  </g>
+</svg>

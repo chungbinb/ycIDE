@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDataMiningPrediction</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow" d="M.6,9.15l-.6-.6v-.6L5.426,2.518h.6l.6.6v.6L1.206,9.15Z" />
+    <path class="light-defaultgrey" d="M8.44,6.738,6.029,4.327l-.56.56L4.263,3.681l.56-.56L2.416.714l.56-.559a8.3,8.3,0,0,1,3.043,1.77l.648-.648h.6l.6.6v.6l-.656.657A8.64,8.64,0,0,1,9,6.179Z" />
+    <path class="light-blue-10" d="M13,8.634l1.5,2-4.5,5-4.5-5,1.5-2Z" />
+    <path class="light-blue" d="M13.4,8.417l-.4-.2H7l-.4.2-1.5,2,.028.634,4.5,5h.744l4.5-5,.028-.634Zm.1,1.8H11.846l-.375-1H12.75Zm-5.372,1,.753,2.51-2.259-2.51Zm2.7,0L10,13.976l-.828-2.76Zm-1.607-1,.375-1H10.4l.375,1Zm2.651,1h1.506l-2.259,2.51Zm-4.622-2H8.529l-.375,1H6.5Z" />
+  </g>
+</svg>

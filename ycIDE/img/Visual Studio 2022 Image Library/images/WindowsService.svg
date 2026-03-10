@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightWindowsService</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,6v5.5h-8V6Z" />
+      <path class="light-defaultgrey" d="M15,5.5v6l-.5.5h-8L6,11.5v-6l.5.5H7v5h7V6h.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M5,5V6H1V5ZM3,8H5V7H3ZM1,10H5V9H1Z" />
+    <path class="light-defaultgrey-10" d="M14.5,3.5v2h-8v-2Z" />
+    <path class="light-defaultgrey" d="M14.5,3h-8L6,3.5v2l.5.5h8l.5-.5v-2ZM14,5H7V4h7Z" />
+  </g>
+</svg>

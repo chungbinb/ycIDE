@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>ViewBySchema</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12,8.85V11H11V9H4v2H3V8.5L3.5,8H7V6H8V8h2.88l.85.85Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8.23,5.35,8.88,6H5.5L5,5.5v-3L5.5,2h4l.5.5V3.58l-1,1V3H6V5H8.58ZM14,11.5v3l-.5.5h-4L9,14.5v-3l.5-.5h4ZM13,12H10v2h3ZM5.5,11l.5.5v3l-.5.5h-4L1,14.5v-3l.5-.5ZM5,12H2v2H5Z" />
+    <path class="light-defaultgrey-10" d="M5.5,2.5v3H8.38l-.15-.15L8.58,5,9,4.58l.5-.5V2.5Zm4,9v3h4v-3Zm-8,0v3h4v-3Z" />
+    <path class="light-blue" d="M9.645,5.354l.707-.708L12,6.3V0h1V6.291l1.645-1.645.707.708-2.5,2.5h-.707Z" />
+  </g>
+</svg>

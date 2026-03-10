@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightCSWorkflowInitiationForm</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M4,11H5.5a2.5,2.5,0,1,0,.167,2.75l.865.5A3.507,3.507,0,1,1,6,10.06V9H7v2.5l-.5.5H4Z" />
+    <path class="light-defaultgrey-10" d="M14,5v9H7.832l.065-.113L6.366,13h.548L8,11.914V8H5s-.834.032-1,.051V6.866L9.016,4l-3.5-2H11V5Z" />
+    <path class="light-defaultgrey" d="M4,6.866V8.051a4.485,4.485,0,0,0-1,.225V7.438Z" />
+    <path class="light-defaultgrey" d="M15,4.5v10l-.5.5H7.23c.056-.083.117-.161.167-.248L7.832,14H14V5H11V2H5.516L3.766,1H11.5l.354.146,3,3Z" />
+    <path class="light-green-10" d="M6,4,.5,7V1Z" />
+    <path class="light-green" d="M0,0V8L7,4ZM1,1.723,4.984,4,1,6.277Z" />
+  </g>
+</svg>

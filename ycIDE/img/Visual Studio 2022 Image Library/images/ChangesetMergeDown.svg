@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightChangesetMergeDown</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M16,9v1.5l-.146.354L14,12.707v1.586L15.091,13.2l.707.707-1.944,1.945h-.708L11.2,13.909l.707-.707L13,14.293V9h1v2.293l1-1V9Z" />
+    <path class="light-defaultgrey" d="M11.716,11.981,8.707,8.973H10.5A3.5,3.5,0,1,0,7.5,3.7a3.494,3.494,0,1,0-3,5.274H6.293L1.646,13.619l.708.707L7.5,9.18l3.509,3.508ZM7,7.973H4.5A2.5,2.5,0,1,1,7,5.473Zm1-2.5a2.5,2.5,0,1,1,2.5,2.5H8Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-green-10{fill: #1f801f; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSSiteDefinition</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-green" d="M9,12v1H6V12H7V8H8v4Z" />
+    </g>
+    <path class="light-green-10" d="M4,9.5,5.5,11v4.5H.5v-6ZM10.5,3,9,1.5H5.5v6h5ZM13,9.5H9.5v6h5V11Z" />
+    <path class="light-green" d="M4.354,9.146,4,9H.5L0,9.5v6l.5.5h5l.5-.5V11l-.146-.354ZM5,15H1V10H3v2H5Zm5.5-7,.5-.5V3l-.146-.354-1.5-1.5L9,1H5.5L5,1.5v6l.5.5ZM6,2H8V4h2V7H6Zm8.854,8.646-1.5-1.5L13,9H9.5L9,9.5v6l.5.5h5l.5-.5V11ZM14,15H10V10h2v2h2Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReformatSelection</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,14.5h-6v-4h6Z" />
+    <path class="light-defaultgrey" d="M14.61,10H8.39L8,10.37v4.26l.39.37h6.22l.39-.37V10.37ZM14,14H9V11h5Z" />
+    <path class="light-blue-10" d="M6.5,5.5H.5v-4h6Z" />
+    <path class="light-blue" d="M6.61,1H.39L0,1.37V5.63L.39,6H1v6.5l.5.5H5.291L3.646,14.645l.708.707,2.5-2.5v-.707l-2.5-2.5-.708.707L5.3,12H2V6H6.61L7,5.63V1.37ZM6,5H1V2H6Z" />
+  </g>
+</svg>

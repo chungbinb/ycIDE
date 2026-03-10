@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}</style>
+  </defs>
+  <title>IconLightDecisionNode</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M14.854,4.146v.708L12.2,7.505,11.5,6.8l1.8-1.8H7V4h6.293L11.5,2.2,12.2,1.5ZM5,13.293V7H4v6.293L2.2,11.5,1.5,12.2l2.651,2.652h.708L7.505,12.2,6.8,11.5Z" />
+    <path class="light-defaultgrey-10" d="M7.328,4.5,4.5,7.328,1.672,4.5,4.5,1.672Z" />
+    <path class="light-defaultgrey" d="M4.854,7.682H4.146L1.318,4.854V4.146L4.146,1.318h.708L7.682,4.146v.708ZM2.378,4.5,4.5,6.622,6.622,4.5,4.5,2.378Z" />
+  </g>
+</svg>

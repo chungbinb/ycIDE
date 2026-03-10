@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>InterOp</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M1.5,5V6H10v7h4.5V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H1.5L1,5.5V6H14v7H10v1h4.5l.5-.5v-8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M2,3V5H14V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H1.5L1,2.5v3l.5.5h13l.5-.5v-3ZM2,5V3H14V5Z" />
+    <path class="light-defaultgrey-10" d="M9,16H0V7H9Z" />
+    <path class="light-defaultgrey" d="M0,8H1V7H0ZM3,9H2v1H3Zm1,7H5V15H4ZM3,7H2V8H3ZM2,16H3V15H2ZM0,16H1V15H0Zm0-2H1V13H0Zm0-4H1V9H0Zm0,2H1V11H0Zm8,2H9V13H8Zm0-2H9V11H8Zm0,4H9V15H8Zm0-6H9V9H8ZM8,7V8H9V7ZM6,10H7V9H6Zm0,6H7V15H6ZM5,7H4V8H5ZM5,9H4v1H5ZM6,8H7V7H6Z" />
+    <path class="light-blue" d="M6,11.5V14H5V12.707L3.6,14.1,2.9,13.4l1.4-1.4H3V11H5.5Z" />
+  </g>
+</svg>

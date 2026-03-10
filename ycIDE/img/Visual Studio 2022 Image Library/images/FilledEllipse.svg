@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.5;}</style>
+  </defs>
+  <title>IconLightFilledEllipse</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M14.5,8c0,2.486-2.91,4.5-6.5,4.5S1.5,10.481,1.5,8,4.41,3.5,8,3.5,14.5,5.51,14.5,8Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8,13c-3.86,0-7-2.243-7-5S4.14,3,8,3s7,2.244,7,5S11.86,13,8,13ZM8,4C4.691,4,2,5.79,2,8s2.691,4,6,4,6-1.794,6-4S11.309,4,8,4Z" />
+  </g>
+</svg>

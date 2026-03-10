@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightBinding</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M16,1.5v9l-.5.5H14V10h1V3H5V4H4V1.5L4.5,1h11Z" />
+      <path class="light-defaultgrey-10" d="M15.5,1.5v9H14v-6L13.5,4h-9V1.5Z" />
+    </g>
+    <path class="light-defaultgrey" d="M2,16Q.609,15.984.609,14.813V13.66q0-.773-.609-.812v-.571c.406-.026.609-.3.609-.828V10.328Q.609,9.14,2,9.125V9.73c-.414.011-.621.259-.621.747v1.1a.91.91,0,0,1-.777.973v.012a.9.9,0,0,1,.777.964v1.09a.98.98,0,0,0,.139.6A.592.592,0,0,0,2,15.4Z" />
+    <path class="light-defaultgrey" d="M4,15.4a.592.592,0,0,0,.482-.185.98.98,0,0,0,.139-.6v-1.09a.9.9,0,0,1,.777-.964v-.012a.91.91,0,0,1-.777-.973v-1.1c0-.488-.207-.736-.621-.747V9.125q1.39.016,1.391,1.2v1.121c0,.527.2.8.609.828v.571q-.609.039-.609.812v1.153Q5.391,15.984,4,16Z" />
+    <path class="light-defaultgrey-10" d="M13.5,4.5v9H7V11.34L6.391,11.3v-.973A2.146,2.146,0,0,0,4,8.125H2.5V4.5Z" />
+    <path class="light-defaultgrey" d="M14,4.5v9l-.5.5H7V13h6V6H3V8.125H2V4.5L2.5,4h11Z" />
+  </g>
+</svg>

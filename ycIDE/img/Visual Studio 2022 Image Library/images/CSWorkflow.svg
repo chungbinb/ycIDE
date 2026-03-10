@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCSWorkflow</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M10.146,4.146,11.293,3H7.5a5.5,5.5,0,1,0,3.889,9.389l.707.707A6.5,6.5,0,1,1,7.5,2h3.793L10.146.854l.708-.708,2,2v.708l-2,2Z" />
+    <path class="light-green" d="M11.854,6.854l-4.5,4.5H6.646l-2.5-2.5.708-.708L7,10.293l4.146-4.147Z" />
+  </g>
+</svg>

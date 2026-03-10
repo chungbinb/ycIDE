@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDirectLinkList</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v9H4.5v-9h-3v-3h13v3Z" />
+    <path class="light-defaultgrey" d="M15,1.5,14.5,1H1.5L1,1.5v3l.5.5H4v8.5l.5.5h10l.5-.5ZM14,7H8V5h6ZM7,5V7H5V5ZM5,8H7v2H5ZM8,8h6v2H8Zm6-4H5V2h9ZM2,2H4V4H2Zm3,9H7v2H5Zm3,2V11h6v2Z" />
+  </g>
+</svg>

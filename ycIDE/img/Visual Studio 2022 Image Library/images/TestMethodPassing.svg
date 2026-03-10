@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>TestMethodPassing</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M7.42,14A5.036,5.036,0,0,1,7,11.98,4.591,4.591,0,0,1,7.1,11a4.535,4.535,0,0,1,.12-.5H4L2.48,12.96a1,1,0,0,0,.84,1.54H7.68C7.59,14.34,7.5,14.17,7.42,14Z" />
+    <path class="light-teal" d="M7.68,14.5c-.09-.16-.18-.33-.26-.5H3.32a.5.5,0,0,1-.41-.78L4.28,11H7.1a4.535,4.535,0,0,1,.12-.5c.05-.17.12-.33.18-.5H4l-.42.23-.01.01L2.06,12.69A1.5,1.5,0,0,0,3.32,15h4.7A3.387,3.387,0,0,1,7.68,14.5Z" />
+    <path class="light-defaultgrey-10" d="M9.67,6.67V1.5h-3V6.67L4.5,10H7.4A5.109,5.109,0,0,1,9.53,7.63a5.182,5.182,0,0,1,.58-.28Z" />
+    <path class="light-defaultgrey" d="M11,2V1H5V2H6V6.52L3.58,10.23,4,10h.92l2-3.06L7,6.67V2H9V6.67l.08.27.45.69a5.182,5.182,0,0,1,.58-.28c.12-.05.23-.09.35-.13L10,6.52V2Z" />
+    <path class="light-green" d="M16,11.979a4,4,0,1,1-4-4A4,4,0,0,1,16,11.979Z" />
+    <path class="white" d="M14.208,11.15l-2.365,2.364-.711,0-1.34-1.372.715-.7.987,1.011L13.5,10.443Z" />
+  </g>
+</svg>

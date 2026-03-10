@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDisplayFullSignature</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M3,10H2V2.5L2.5,2H5V3H3ZM14.5,2H12V3h2V13H12v1h2.5l.5-.5V2.5ZM9,14a2,2,0,0,1-2,2,1.978,1.978,0,0,1-1-.278V16H5V10H6v2.278A1.978,1.978,0,0,1,7,12,2,2,0,0,1,9,14ZM8,14a1,1,0,1,0-1,1A1,1,0,0,0,8,14ZM4,12v4H3v-.278A1.978,1.978,0,0,1,2,16a2,2,0,0,1,0-4,1.978,1.978,0,0,1,1,.278V12ZM3,14a1,1,0,1,0-1,1A1,1,0,0,0,3,14Z" />
+  </g>
+</svg>

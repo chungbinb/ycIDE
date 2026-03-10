@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLandingPage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M2,2H7V3H2ZM2,7H4V5H2ZM5,7H7V5H5ZM2,10H4V8H2Zm0,3H4V11H2Zm8-6h2V5H10Zm3,0h2V5H13Zm-3,3h2V8H10Zm0,3h2V11H10ZM5,10H7V8H5Zm5-8V3h5V2Z" />
+  </g>
+</svg>

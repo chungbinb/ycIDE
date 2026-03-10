@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightButton</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M10,7a1.978,1.978,0,0,0-1,.278V5H8v6H9v-.278A1.978,1.978,0,0,0,10,11a2,2,0,0,0,0-4Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,10,10ZM6,7v.278A1.978,1.978,0,0,0,5,7a2,2,0,0,0,0,4,1.978,1.978,0,0,0,1-.278V11H7V7ZM5,10A1,1,0,1,1,6,9,1,1,0,0,1,5,10Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M1.5,12.5a1,1,0,0,1-1-1v-7a1,1,0,0,1,1-1h12a1,1,0,0,1,1,1v7a1,1,0,0,1-1,1Z" />
+    <path class="light-defaultgrey" d="M13.5,13H1.5A1.5,1.5,0,0,1,0,11.5v-7A1.5,1.5,0,0,1,1.5,3h12A1.5,1.5,0,0,1,15,4.5v7A1.5,1.5,0,0,1,13.5,13ZM1.5,4a.5.5,0,0,0-.5.5v7a.5.5,0,0,0,.5.5h12a.5.5,0,0,0,.5-.5v-7a.5.5,0,0,0-.5-.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightHideRedundantMerges</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M14.5,1.5v3H1.5v-3Z" />
+    <path class="light-blue" d="M14.5,5H1.5L1,4.5v-3L1.5,1h13l.5.5v3ZM2,4H14V2H2Z" />
+    <path class="light-defaultgrey-10" d="M14.5,11.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M14.5,15H1.5L1,14.5v-3l.5-.5h13l.5.5v3ZM2,14H14V12H2Z" />
+    <path class="light-blue" d="M6.354,7.354l-2.5,2.5H3.146l-2.5-2.5.708-.708L3,8.293V5H4V8.293L5.646,6.646Z" />
+    <path class="light-defaultgrey" d="M10.354,8.354l-1.5,1.5H8.146l-1.5-1.5.708-.708L8,8.293V6H9V8.293l.646-.647Z" />
+    <path class="light-defaultgrey" d="M14.354,8.354l-1.5,1.5h-.708l-1.5-1.5.708-.708L12,8.293V6h1V8.293l.646-.647Z" />
+  </g>
+</svg>

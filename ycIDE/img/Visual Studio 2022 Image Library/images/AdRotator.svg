@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAdRotator</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.5v8H.5V9h4a4.473,4.473,0,0,0,4-2.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,12H7v1H6ZM6,9H7V8.2a4.437,4.437,0,0,1-1,.52ZM2,12.5l.5.5H3V12H2ZM2,11H3V10H2Zm2,2H5V12H4ZM8,9H9V8H8Zm4,4h.5l.5-.5V12H12Zm0-2h1V10H12Zm.5-3H12V9h1V8.5ZM10,13h1V12H10Zm0-4h1V8H10ZM8,13H9V12H8Z" />
+    </g>
+    <path class="light-blue" d="M3,5H4V7.5L3.5,8H1V7H2.06A3.481,3.481,0,0,1,4,1.051v1A2.5,2.5,0,0,0,3,6.5ZM8,1H5.5L5,1.5V4H6V2.5A2.5,2.5,0,0,1,5,6.95v1A3.481,3.481,0,0,0,6.94,2H8Z" />
+    <path class="light-defaultgrey" d="M15,6.5v8l-.5.5H.5L0,14.5V9H1v5H14V7H8.238a4.493,4.493,0,0,0,.486-1H14.5Z" />
+  </g>
+</svg>

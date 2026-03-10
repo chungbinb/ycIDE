@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>PrintDirect</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M5.5,1.5V6h7V1.5Z" />
+      <path class="light-defaultgrey-10" d="M8.78,10.5a4.535,4.535,0,0,1,.12.5,4.591,4.591,0,0,1,.1.98A5.036,5.036,0,0,1,8.58,14c-.08.17-.17.34-.26.5H12.5v-4Z" />
+      <path class="light-defaultgrey" d="M12.5,1h-7L5,1.5V6H6V2h6V6h1V1.5Z" />
+      <path class="light-defaultgrey" d="M12.5,10H8.6c.06.17.13.33.18.5a4.535,4.535,0,0,1,.12.5H12v3H8.58c-.08.17-.17.34-.26.5a3.387,3.387,0,0,1-.34.5H12.5l.5-.5v-4Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,6.5H3.5a.981.981,0,0,0-.94.69,3.736,3.736,0,0,1,.74-.15c.01-.01.01-.01.02-.01A1.87,1.87,0,0,1,3.66,7h.68A5,5,0,0,1,8.6,10h3.9l.5.5v2h2.5v-5A1,1,0,0,0,14.5,6.5Z" />
+    <path class="light-defaultgrey" d="M14.5,6H3.5A1.489,1.489,0,0,0,2.01,7.39a5.144,5.144,0,0,1,.55-.2,3.736,3.736,0,0,1,.74-.15c.01-.01.01-.01.02-.01A.566.566,0,0,1,3.5,7h11a.5.5,0,0,1,.5.5V12H13v1h2.5l.5-.5v-5A1.5,1.5,0,0,0,14.5,6Z" />
+    <path class="light-blue" d="M8,11.979a4,4,0,1,1-4-4A4,4,0,0,1,8,11.979Z" />
+    <path class="white" d="M6.208,11.15,3.843,13.514l-.711,0-1.34-1.372.715-.7.987,1.011L5.5,10.443Z" />
+  </g>
+</svg>

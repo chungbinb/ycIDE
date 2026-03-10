@@ -1,0 +1,29 @@
+<Viewbox Width="16 " Height="16" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=mscorlib">
+  <Rectangle Width="16 " Height="16">
+    <Rectangle.Resources>
+      <SolidColorBrush x:Key="canvas" Opacity="0" />
+      <SolidColorBrush x:Key="light-teal-10" Color="#006758" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-teal" Color="#006758" Opacity="1" />
+      <SolidColorBrush x:Key="light-defaultgrey-10" Color="#212121" Opacity="0.1" />
+      <SolidColorBrush x:Key="light-defaultgrey" Color="#212121" Opacity="1" />
+    </Rectangle.Resources>
+    <Rectangle.Fill>
+      <DrawingBrush Stretch="None">
+        <DrawingBrush.Drawing>
+          <DrawingGroup>
+            <DrawingGroup x:Name="canvas">
+              <GeometryDrawing Brush="{DynamicResource canvas}" Geometry="F1M16,16H0V0H16Z" />
+            </DrawingGroup>
+            <DrawingGroup x:Name="level_1">
+              <GeometryDrawing Brush="{DynamicResource light-teal-10}" Geometry="F1M8.6,13.962A1,1,0,0,1,7.76,15.5H2.24A1,1,0,0,1,1.4,13.962L2.33,12.5H7.67Z" />
+              <GeometryDrawing Brush="{DynamicResource light-teal}" Geometry="F1M7.761,16H2.239A1.5,1.5,0,0,1,.975,13.693l.933-1.463L2.33,12H7.67l.422.23.933,1.462A1.5,1.5,0,0,1,7.761,16ZM2.6,13l-.786,1.231A.5.5,0,0,0,2.239,15H7.761a.5.5,0,0,0,.421-.77L7.4,13Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey-10}" Geometry="F1M2.649,12,3.5,10.667V6.5h3v4.167L7.351,12Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M3,7H2V6H8V7H7v3.521L8.091,12.23,7.67,12H6.757l-.679-1.063L6,10.667V7H4v3.667l-.078.27L3.243,12H2.33l-.421.23L3,10.521Z" />
+              <GeometryDrawing Brush="{DynamicResource light-defaultgrey}" Geometry="F1M8,5V0l7,4L9,7.429V5Z" />
+            </DrawingGroup>
+          </DrawingGroup>
+        </DrawingBrush.Drawing>
+      </DrawingBrush>
+    </Rectangle.Fill>
+  </Rectangle>
+</Viewbox>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightScale</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,1.5v13l-.5.5H1.5L1,14.5V1.5L1.5,1h13Z" />
+    <path class="light-defaultgrey-10" d="M9.5,9.5v5h-8v-8h5v.17L6.17,7,3.03,10.15l2.82,2.82L9,9.83l.33-.33Z" />
+    <path class="light-defaultgrey" d="M9.33,9.5,9,9.83V14H2V7H6.17l.33-.33V6h-5L1,6.5v8l.5.5h8l.5-.5v-5Z" />
+    <path class="light-defaultgrey" d="M12,4.5V8H11V5.707L5.854,10.854l-.708-.708L10.293,5H8V4h3.5Z" />
+    <path class="light-defaultgrey" d="M7,1H8V2H7Zm4,1h1V1H11Zm0,13h1V14H11ZM1,5H2V4H1ZM1,1.5V3H2V1H1.5ZM5,2H6V1H5ZM3,2H4V1H3ZM9,2h1V1H9Zm4,12v1h1.5l.5-.5V14Zm1-9h1V4H14Zm.5-4H13V2h1V3h1V1.5ZM14,7h1V6H14Zm0,6h1V12H14Zm0-4h1V8H14Zm0,2h1V10H14Z" />
+  </g>
+</svg>

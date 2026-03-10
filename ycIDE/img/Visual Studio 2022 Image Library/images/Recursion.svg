@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRecursion</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,9.5h-7v-8h7Z" />
+    <path class="light-defaultgrey" d="M13,4H9V3h4ZM12,6H9V5h3Zm1,2H9V7h4Zm1.5,2h-7L7,9.5v-8L7.5,1h7l.5.5v8ZM8,9h6V2H8Z" />
+    <path class="light-blue" d="M5.854,6.146v.708l-2,2-.708-.708L4.293,7H2v5H1V6.5L1.5,6H4.293L3.146,4.854l.708-.708Z" />
+    <path class="light-blue" d="M11,11v2.5l-.5.5H5.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L5.707,13H10V11Z" />
+  </g>
+</svg>

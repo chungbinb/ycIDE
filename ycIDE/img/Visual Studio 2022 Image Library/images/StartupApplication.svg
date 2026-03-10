@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>StartupApplication</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M7.27,5,5.52,6,2,8.01l-.5.28V13h13V5Z" />
+      <path class="light-defaultgrey" d="M14.5,5H7.27L5.52,6H14v7H2V8.01l-.5.28L1,8.58V13.5l.5.5h13l.5-.5v-8Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.27,3,9.02,4,7.27,5H14V3Z" />
+    <path class="light-defaultgrey" d="M14.5,2H5.52L7.27,3H14V5H7.27L5.52,6H14.5l.5-.5v-3Z" />
+    <path class="light-green" d="M7,4,0,8V0Z" />
+  </g>
+</svg>

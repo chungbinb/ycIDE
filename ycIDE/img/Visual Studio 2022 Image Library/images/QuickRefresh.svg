@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightQuickRefresh</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M16,4V8.5l-.5.5H11V8h3.584a5,5,0,1,0-1.048,5.535l.707.707A6,6,0,1,1,15,6.682V4Z" />
+    <path class="white" d="M7.57,3.01,9.28.98,8.82,0H2.16L0,3.77V7.49H.51L0,8.41v3.57H1.79l.73-.3L9.06,5.1,8.2,3.01Z" />
+    <path class="light-yellow-10" d="M3.6.5H7.721L4.359,4.514h3.17L1.593,10.478H.572L3.061,5.991H.455Z" />
+    <path class="light-yellow" d="M1.593,10.979H.572l-.437-.743L2.212,6.491H.455L.021,5.742,3.17.253,3.6,0H7.721L8.1.823,5.43,4.014h2.1l.354.852L1.948,10.831ZM1.318,5.491H3.061l.437.742L1.467,9.9,6.326,5.014H4.359l-.383-.822L6.65,1H3.893Z" />
+  </g>
+</svg>

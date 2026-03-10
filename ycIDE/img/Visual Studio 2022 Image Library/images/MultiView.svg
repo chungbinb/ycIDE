@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMultiView</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M.5,6.5v8h10v-8Z" />
+    <path class="light-defaultgrey" d="M10.5,6H.5L0,6.5v8l.5.5h10l.5-.5v-8ZM10,14H1V7h9Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,10.5h-2v2H11v-6L10.5,6h-8V4.5h2v-2h10Z" />
+      <path class="light-defaultgrey" d="M14.5,2H4.5L4,2.5V4H2.5L2,4.5V6H3V5h9v7H11v1h1.5l.5-.5V11h1.5l.5-.5v-8ZM14,10H13V4.5L12.5,4H5V3h9Z" />
+    </g>
+    <path class="light-defaultgrey" d="M3,9H2V8H3Zm0,1H2v1H3Zm0,2H2v1H3ZM5,8H4V9H5Zm0,2H4v1H5Zm2,0H6v1H7Zm2,0H8v1H9Zm0,2H8v1H9ZM7,12H6v1H7ZM5,12H4v1H5Z" />
+  </g>
+</svg>

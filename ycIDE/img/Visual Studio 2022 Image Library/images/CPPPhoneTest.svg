@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCPPPhoneTest</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5.5v13H8.519L7,11.07V10H8V7H5.5V.5Z" />
+    <path class="light-red-10" d="M7.522,14.735A.5.5,0,0,1,7.1,15.5H1.9a.5.5,0,0,1-.424-.765L2.25,13.5h4.5Z" />
+    <path class="light-red" d="M7.1,16H1.9a1,1,0,0,1-.848-1.53l.772-1.235L2.25,13h4.5l.424.235.772,1.235A1,1,0,0,1,7.1,16ZM2.527,14,1.9,15H7.1l-.625-1Z" />
+    <g class="cls-1">
+      <path class="light-red-10" d="M2.5,13l.938-1.5v-3h2v3L6.375,13Z" />
+      <path class="light-red" d="M3,9H2V8H7V9H6v2.356l1.174,1.879L6.75,13h-.9l-.772-1.235L5,11.5V9H4v2.5l-.076.265L3.152,13h-.9l-.424.235L3,11.356Z" />
+    </g>
+    <path class="light-defaultgrey" d="M10,2V3H9V2ZM8,12h3V11H8ZM13.5,0h-8L5,.5V7H6V1h7V13H8.207l.587.939c.012.02.016.042.027.061H13.5l.5-.5V.5Z" />
+  </g>
+</svg>

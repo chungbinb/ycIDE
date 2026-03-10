@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDMAChannel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,11H1V10H2Zm2-1H3v1H4ZM2,15H1v1H2Zm2,0H3v1H4Zm2,0H5v1H6Zm2,0H7v1H8Zm2,0H9v1h1ZM6,0H5V1H6ZM8,0H7V1H8Zm2,0H9V1h1Zm2,0H11V1h1Zm2,0H13V1h1ZM12,5H11V6h1Zm2,0H13V6h1Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M9.621,11.5H10.5v3H.5v-3H5.379l1.353,1.354H8.268Z" />
+    <path class="light-defaultgrey-10" d="M14.5,1.5v3H9.621L8.268,3.146H6.732L5.379,4.5H4.5v-3Z" />
+    <path class="light-defaultgrey" d="M10.5,11l.5.5v3l-.5.5H.5L0,14.5v-3L.5,11H4.879l1,1H1v2h9V12H9.121l1-1Z" />
+    <path class="light-defaultgrey" d="M15,1.5v3l-.5.5H10.121l-1-1H14V2H5V4h.879l-1,1H4.5L4,4.5v-3L4.5,1h10Z" />
+    <path class="light-blue" d="M9.146,9.146l.708.708-2,2H7.146l-2-2,.708-.708L7,10.293V5.707L5.854,6.854l-.708-.708,2-2h.708l2,2-.708.708L8,5.707v4.586Z" />
+  </g>
+</svg>

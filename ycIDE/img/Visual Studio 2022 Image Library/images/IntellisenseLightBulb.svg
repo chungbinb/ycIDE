@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightIntellisenseLightBulb</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M12.5,5.531A4.987,4.987,0,0,1,10.4,9.6a2.053,2.053,0,0,0-.9,1.664v.268h-4V11.2a1.94,1.94,0,0,0-.871-1.576A5,5,0,1,1,12.5,5.531Z" />
+    <path class="light-yellow" d="M9.5,12.031h-4l-.5-.5a1.86,1.86,0,0,0-.829-1.623h0A5.831,5.831,0,0,1,2,5.531a5.5,5.5,0,0,1,11,0,5.831,5.831,0,0,1-2.171,4.376A1.861,1.861,0,0,0,10,11.531Zm-3.161-1H9.033a2.9,2.9,0,0,1,1.14-1.879A4.847,4.847,0,0,0,12,5.531a4.5,4.5,0,0,0-9,0A4.846,4.846,0,0,0,4.827,9.152h0a2.9,2.9,0,0,1,1.14,1.878Z" />
+    <path class="light-yellow" d="M10,5.531a2.5,2.5,0,1,0-3,2.45v3.05H8V7.981A2.5,2.5,0,0,0,10,5.531Zm-2.5,1.5A1.5,1.5,0,1,1,9,5.531,1.5,1.5,0,0,1,7.5,7.031Z" />
+    <path class="light-defaultgrey-10" d="M9.5,11.531v3h-4v-3Z" />
+    <path class="light-defaultgrey" d="M9.5,11.031h-4l-.5.5v3l.5.5h4l.5-.5v-3Zm-.5,3H6v-2H9Z" />
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRoundJoint</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,8A4.5,4.5,0,0,1,7,3.5h6.5v8h-3v3h-8Z" />
+    <path class="light-defaultgrey" d="M13.5,3H7A5.006,5.006,0,0,0,2,8v6.5l.5.5h8l.5-.5V12h2.5l.5-.5v-8ZM13,11H10.5l-.5.5V14H3V8A4,4,0,0,1,7,4h6Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M13,8H8V7h5ZM7,9H6v5H7Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.5,8.5h-2v-2h2Z" />
+    <path class="light-defaultgrey" d="M5,9V6H8V9ZM6,8H7V7H6Z" />
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightFileSystemWatcher</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M9.25,15.5h-3l-.5-2.25V12.5H9.5v.75Z" />
+    <path class="light-defaultgrey-10" d="M.5,13.25V12.5H4.25v.75l-.5,2.25h-3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5.5V13H11V11.884l-.106-.45L9.465,8.575,8.534,8H1.5V5.5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H11V13h3V6H2V8H1.466L1,8.288V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,2.5v3H1.5v-3Z" />
+    <path class="light-defaultgrey" d="M9.947,11.776,8.7,9.276,8.25,9H7v1h.941l1,2H5.75l-.5.5h-.5l-.5-.5H1.059l1-2H3V9H1.75L1.3,9.276l-1.25,2.5L0,12v1.25l.253,2.3L.75,16h3l.488-.392L4.707,13.5h.6l.458,2.108L6.25,16h3l.5-.445L10,13.25V12ZM3.349,15H1.2L1,13.222V13H3.75ZM8.8,15H6.651l-.4-1.8V13H9v.2Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+  </g>
+</svg>

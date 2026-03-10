@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRenameField</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue-10" d="M9,11h1.755L5.192,14.09,1.5,10.4V6.244L9.808,1.629,13.5,5.321V8H9Z" />
+      <path class="light-blue" d="M11,11v.436L5.435,14.528l-.6-.084L1.146,10.752,1,10.4V6.244l.257-.437L9.565,1.191l.6.084,3.692,3.693L14,5.321V8H13V5.528L9.721,2.249,2,6.538v3.653l2.692,2.692V9.608h1v3.633L9.726,11Z" />
+    </g>
+    <path class="light-blue-10" d="M13.418,5.22,5.239,9.764,1.6,6.129l8.18-4.545Z" />
+    <path class="light-blue" d="M13.766,4.872,10.13,1.237l-.587-.083L1.365,5.7l-.109.778,3.635,3.635.586.082L9,8.237V8h.427l4.231-2.35ZM5.324,9.154,2.455,6.285,9.721,2.249l2.863,2.872Z" />
+    <path class="light-defaultgrey" d="M13,10v5h2v1H10V15h2V10H10V9h5v1Z" />
+  </g>
+</svg>

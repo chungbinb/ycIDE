@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>CloudStaging</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue" d="M14.987,8.25A2.726,2.726,0,0,1,13,10.9V9.838A1.75,1.75,0,0,0,12.287,6.5h-.859V6.063A3.037,3.037,0,0,0,8.417,3,3,3,0,0,0,5.609,4.988,2.51,2.51,0,0,0,4.548,4.75a2.625,2.625,0,0,0,0,5.25H5v1H4.548a3.626,3.626,0,0,1,0-7.25,3.48,3.48,0,0,1,.567.047A3.963,3.963,0,0,1,12.37,5.5,2.732,2.732,0,0,1,14.987,8.25Z" />
+    <path class="light-lightblue-10" d="M14.505,8.25a2.239,2.239,0,0,1-.645,1.583A.806.806,0,0,1,13.5,10s-.338.84-.5.9V7H3v3H5v.5H4.549a3.125,3.125,0,1,1,0-6.25,2.924,2.924,0,0,1,.8.109A3.493,3.493,0,0,1,11.925,6h.36a2.238,2.238,0,0,1,2.22,2.25Z" />
+    <path class="light-defaultgrey" d="M9,15H4V14H9Zm2-3H6v1h5ZM9,10H6v1H9Zm3,0H10v1h2ZM7,8H4V9H7Zm5,0H8V9h4Z" />
+  </g>
+</svg>

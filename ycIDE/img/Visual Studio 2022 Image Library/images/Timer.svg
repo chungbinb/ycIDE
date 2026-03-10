@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTimer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+    <path class="light-defaultgrey-10" d="M13,9A5.5,5.5,0,1,1,7.5,3.5,5.5,5.5,0,0,1,13,9Z" />
+    <path class="light-defaultgrey" d="M8.5,9a1,1,0,0,1-2,0A.985.985,0,0,1,7,8.153V5H8V8.153A.985.985,0,0,1,8.5,9Z" />
+    <path class="light-defaultgrey" d="M13.854,3.854l-.708-.708L11.632,4.661A5.976,5.976,0,0,0,8,3.025V2h2V1H5V2H7V3.025A6.013,6.013,0,1,0,12.3,5.41ZM7.5,14a5,5,0,1,1,5-5A5.006,5.006,0,0,1,7.5,14Z" />
+  </g>
+</svg>

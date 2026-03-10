@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBranchContainsChanges</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,6.5H1.5v-4h13Z" />
+    <path class="light-green" d="M16,12a4,4,0,1,1-4-4A4,4,0,0,1,16,12Z" />
+    <path class="white" d="M14.208,11.171l-2.365,2.365-.711,0L9.792,12.16l.715-.7.987,1.011L13.5,10.464Z" />
+    <path class="light-defaultgrey" d="M5,11V7h9.5l.5-.5v-4L14.5,2H1.5L1,2.5v4l.5.5H4v4.5l.5.5H7a5,5,0,0,1,.1-1ZM2,6V3H14V6Z" />
+  </g>
+</svg>

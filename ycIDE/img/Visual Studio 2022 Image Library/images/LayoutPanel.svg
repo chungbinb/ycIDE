@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>LayoutPanel</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14,2.5v12l-.5.5H1.5L1,14.5V3L2,2H13.5Z" />
+    <path class="light-defaultgrey" d="M13,14h1v.5l-.5.5H13ZM9,15h1V14H9Zm2,0h1V14H11ZM7,15H8V14H7ZM5,15H6V14H5ZM3,15H4V14H3Zm-2-.5.5.5H2V14H1ZM1,11H2V10H1Zm0,2H2V12H1ZM1,9H2V8H1ZM1,7H2V6H1ZM1,5H2V4H1ZM4,2H3V3H4ZM6,2H5V3H6Zm4,0H9V3h1Zm1,1h1V2H11ZM8,2H7V3H8Zm5.5,0H13V3h1V2.5ZM1,2.5V3H2V2H1.5ZM13,11h1V10H13Zm0,2h1V12H13Zm0-4h1V8H13Zm0-2h1V6H13Zm0-2h1V4H13ZM3,4h9V8H3ZM4,7h7V5H4ZM8,9h4v3H8Zm1,2h2V10H9ZM7,12H3V9H7ZM6,10H4v1H6Z" />
+  </g>
+</svg>

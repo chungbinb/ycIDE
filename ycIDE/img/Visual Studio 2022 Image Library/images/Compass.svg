@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCompass</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue-10" d="M14,7.5a6.878,6.878,0,0,1-6.75,7A6.878,6.878,0,0,1,.5,7.5,6.878,6.878,0,0,1,7.25.5,6.878,6.878,0,0,1,14,7.5Z" />
+    <path class="light-blue" d="M7.25,0A7.386,7.386,0,0,0,0,7.5,7.386,7.386,0,0,0,7.25,15,7.386,7.386,0,0,0,14.5,7.5,7.386,7.386,0,0,0,7.25,0Zm.5,13.974V13h-1v.974A6.384,6.384,0,0,1,1.024,8h.922V7H1.024A6.384,6.384,0,0,1,6.75,1.026V2h1V1.026A6.384,6.384,0,0,1,13.476,7h-.922V8h.922A6.384,6.384,0,0,1,7.75,13.974Z" />
+    <path class="light-red-10" d="M8.393,6.607,6.607,8.393,5,5Z" />
+    <path class="light-red" d="M8.768,6.232l-.75.75L6.051,6.051l.931,1.967-.75.75h0L3.949,3.949Z" />
+    <path class="light-blue-10" d="M8.393,6.607,10,10,6.607,8.393Z" />
+    <path class="light-blue" d="M8.769,6.232l2.282,4.819L6.232,8.768l.75-.75,1.967.931L8.018,6.982l.75-.75Z" />
+  </g>
+</svg>

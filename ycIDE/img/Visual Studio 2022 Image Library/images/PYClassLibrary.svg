@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>PYClassLibrary</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M5.5,2.5h2V8.412l-.084-.084H6.234L5.562,9H5.5Zm6.042-.121-1.931.517,2.847,10.626L14.389,13ZM1.5,7.607,2.1,7H3.278l.222.232V2.5h-2Z" />
+    <path class="light-defaultgrey" d="M7.5,2l.5.5V8.917l-.584-.584H7V3H6V8.567l-.438.438H5V2.5L5.5,2Zm-6,0L1,2.5V8.112L2,7.105V3H3V7h.278L4,7.737V2.5L3.5,2ZM14.873,12.861l-.353.613-1.932.518-.613-.354L9.127,3.013,9.48,2.4l1.932-.517.613.353Zm-1.1-.224L11.188,2.978l-.965.259L12.812,12.9Z" />
+    <path class="light-yellow" d="M5.023,11.307V11H4v3H5.976l.672-.672H7l.625.625v.354L6,15.932H5.648l-.625-.625V15H3.5L3,14.5V11H2.229l-.615.614H1.261l-1-1v-.353l2.25-2.25h.353l1,1v.353L3.229,10H5.976l.672-.672H7l.625.625v.354L6,11.932H5.648Z" />
+  </g>
+</svg>

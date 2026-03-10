@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-yellow{fill: #996f00; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSDKWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.907,9.5h.6v1.079Zm-4.814,0H1.5v5H6.338Z" />
+    <path class="light-defaultgrey" d="M2,9H9.368l-.551,1H5v2H4V10H2v4H6.613l-.55,1H1.5L1,14.5v-5H1v-3L1.5,6H2.718V7H2ZM9,6H6.28V7H9Zm2,6h1V9H11Zm3.5-6H13V7h1V9h-.37l.37.671h0l.109.2.072.131h0L15,11.486V6.5Z" />
+    <path class="light-defaultgrey-10" d="M9.347,9.038H2V6H14V9.038h-.347L12.53,7H10.47Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+    <path class="light-defaultgrey" d="M13.957,1V2.971h-.986l-.492-.492-.493.492h-.493V4.759l.493.493V7H10.47l-.456.827V5.252l.493-.493V2.971H9.521a.493.493,0,0,0-.492.493.493.493,0,1,1-.986,0A2.464,2.464,0,0,1,10.507,1h1.479l.493.493L12.972,1ZM5.277,1l0,2.205H3.715l0-2.2a2.332,2.332,0,0,0,0,4.4V8H5.28V5.405a2.331,2.331,0,0,0,0-4.4Z" />
+  </g>
+</svg>

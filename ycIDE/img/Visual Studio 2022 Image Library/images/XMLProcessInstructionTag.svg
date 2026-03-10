@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightXMLProcessInstructionTag</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,14.5H1.5V2.5H15Z" />
+    <path class="light-defaultgrey" d="M15,15H1.5L1,14.5V2.5L1.5,2H15V3H2V14H15ZM6.416,11.223,4.6,8.5,6.416,5.777l-.832-.554-2,3v.554l2,3ZM10.5,10.75a.75.75,0,1,0,.75.75A.75.75,0,0,0,10.5,10.75ZM8.443,7H9.471a1.031,1.031,0,0,1,2.058,0,.556.556,0,0,1-.113.392c-.525.676-.679.607-1.037,1.054a2.053,2.053,0,0,0-.281.475,1.544,1.544,0,0,0-.112.61v.362h1.028a1.88,1.88,0,0,1,.04-.61.655.655,0,0,1,.2-.317c.647-.626,1.3-1.035,1.3-1.966a1.841,1.841,0,0,0-.6-1.364A2.077,2.077,0,0,0,8.443,7Z" />
+  </g>
+</svg>

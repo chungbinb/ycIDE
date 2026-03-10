@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDynamicLibrary</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.389,13l-1.931.518L9.611,2.891l1.931-.517Z" />
+    <path class="light-defaultgrey" d="M12.025,2.244l-.613-.353L9.48,2.408l-.353.613,2.848,10.625.613.354,1.932-.518.353-.613Zm.787,10.66L10.223,3.245l.965-.259,2.589,9.66Z" />
+    <path class="light-defaultgrey-10" d="M7.5,2.5v8.884L5.854,9.732l-.354.354V2.5Zm-6,7.884.646-.647L3.5,11.086V2.5h-2Z" />
+    <path class="light-defaultgrey" d="M3.5,2l.5.5v9.091l-1-1V3H2V9.879l-1,1V2.5L1.5,2Zm4,0h-2L5,2.5v8.091l.854-.854L6,9.879V3H7v7.884l1,1V2.5Z" />
+    <path class="light-blue" d="M7.854,13.146v.708l-2,2-.708-.708L6.293,14H1.707l1.147,1.146-.708.708-2-2v-.708l2-2,.708.708L1.707,13H6.293L5.146,11.854l.708-.708Z" />
+  </g>
+</svg>

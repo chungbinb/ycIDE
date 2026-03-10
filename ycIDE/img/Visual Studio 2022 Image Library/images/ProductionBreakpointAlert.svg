@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightProductionBreakpointAlert</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M7.666,14.5H4.247L.494,8,4.247,1.5h7.506L15.506,8l-.612,1.06L13.133,7.3,12.412,7H10.588l-.721.3L6.8,10.367l-.3.721v1.824l.3.721Z" />
+      <path class="light-purple" d="M8.166,15H4.247l-.433-.25L.062,8.25v-.5l3.752-6.5L4.247,1h7.506l.433.25,3.752,6.5v.5L15.26,9.426l-.732-.732.4-.694L11.464,2H4.536L1.071,8l3.465,6h2.63Z" />
+    </g>
+    <path class="light-blue" d="M12.213,16H10.787l-.353-.146L7.646,13.066,7.5,12.713V11.287l.146-.353,2.788-2.788L10.787,8h1.426l.353.146,2.788,2.788.146.353v1.426l-.146.353-2.788,2.788Z" />
+    <path class="white" d="M12,12H11V9h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,13.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightShowEmptyCells</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H10.914l-.5.5H6.586l-.5-.5H2.5V2.5Z" />
+    <path class="light-defaultgrey" d="M14.5,2H2.5L2,2.5v11l.5.5H6.586l-1-1H3V11H5.879L7,9.879V8h3V9.879L11.121,11H14v2H11.414l-1,1H14.5l.5-.5V2.5ZM6,10H3V8H6ZM6,7H3V5H6Zm4,0H7V5h3Zm4,3H11V8h3Zm0-3H11V5h3Zm0-3H3V3H14Z" />
+    <path class="light-blue" d="M8,11.707,6.854,12.854l-.708-.708,2-2h.708l2,2-.708.708L9,11.707V16H8Z" />
+  </g>
+</svg>

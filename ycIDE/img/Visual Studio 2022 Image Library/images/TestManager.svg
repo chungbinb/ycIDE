@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTestManager</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M6.579,14.735a.5.5,0,0,1-.424.765H.959a.5.5,0,0,1-.424-.765L1.307,13.5h4.5Z" />
+    <path class="light-teal" d="M5.883,16H1.12a1.12,1.12,0,0,1-.95-1.714L.974,13H6.028l.8,1.287A1.12,1.12,0,0,1,5.883,16ZM1.529,14l-.511.816a.114.114,0,0,0,0,.122A.116.116,0,0,0,1.12,15H5.883a.12.12,0,0,0,.1-.183L5.474,14Z" />
+    <path class="light-defaultgrey-10" d="M1.557,13l.937-1.5v-3h2v3L5.432,13Z" />
+    <path class="light-defaultgrey" d="M2,9H1V8H6V9H5v2.356L6.028,13H4.849L4,11.644V9H3v2.644L2.153,13H.974L2,11.356Z" />
+    <path class="light-defaultgrey-10" d="M6.5,2.5h-2V.5h2Z" />
+    <path class="light-defaultgrey" d="M6.5,3h-2L4,2.5V.5L4.5,0h2L7,.5v2ZM5,2H6V1H5Z" />
+    <path class="light-defaultgrey" d="M6.038,5.5a2.994,2.994,0,0,1,.253-1.795l1.991,2L9.7,4.282l-2-1.991a2.983,2.983,0,0,1,3.988,3.983L15,9.586v.707L14.293,11h-.707L10.274,7.688A2.98,2.98,0,0,1,6.038,5.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPHPFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M1.926,8.969V11H1V5.4H2.7a2.246,2.246,0,0,1,1.5.45,1.563,1.563,0,0,1,.532,1.265,1.747,1.747,0,0,1-.555,1.336,2.109,2.109,0,0,1-1.5.52Zm0-2.8V8.211h.6a1.328,1.328,0,0,0,.91-.277.99.99,0,0,0,.313-.782q0-.987-1.148-.988Z" />
+    <path class="light-defaultgrey" d="M10,11H9.066V8.57H6.43V11H5.5V5.4h.93V7.754H9.066V5.4H10Z" />
+    <path class="light-defaultgrey" d="M11.926,8.969V11H11V5.4h1.7a2.246,2.246,0,0,1,1.5.45,1.563,1.563,0,0,1,.532,1.265,1.747,1.747,0,0,1-.555,1.336,2.109,2.109,0,0,1-1.5.52Zm0-2.8V8.211h.6a1.328,1.328,0,0,0,.91-.277.99.99,0,0,0,.313-.782q0-.987-1.148-.988Z" />
+  </g>
+</svg>

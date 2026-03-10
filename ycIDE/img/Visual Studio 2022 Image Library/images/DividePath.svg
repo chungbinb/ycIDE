@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightDividePath</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,10.5h-5v-5h5Z" />
+    <path class="light-defaultgrey" d="M5.5,5,5,5.5V11h5.5l.5-.5V5ZM10,10H6V6h4Z" />
+    <path class="light-defaultgrey-10" d="M4,10.5H1.5v-9h9V4H5.086L4,5.086Zm8-5v5.414L10.914,12H5.5v2.5h9v-9Z" />
+    <path class="light-defaultgrey" d="M4,11H1.5L1,10.5v-9L1.5,1h9l.5.5V4H10V2H2v8H4Z" />
+    <path class="light-defaultgrey" d="M15,5.5v9l-.5.5h-9L5,14.5V12H6v2h8V6H12V5h2.5Z" />
+  </g>
+</svg>

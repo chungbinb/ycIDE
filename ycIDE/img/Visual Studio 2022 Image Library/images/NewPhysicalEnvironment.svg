@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightNewPhysicalEnvironment</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow" d="M3,2V0H4V2l-.5.5ZM4,5V7H3V5l.5-.5ZM5,3,7,3V4L5,4l-.5-.5ZM2,4,0,4V3L2,3l.5.5ZM4.207,2.086,5.619.672l.708.706L4.914,2.793H4.207ZM2.792,4.914,1.379,6.328.671,5.622,2.085,4.207h.707Zm2.121-.706L6.328,5.62l-.707.708L4.206,4.915V4.208ZM2.086,2.792.671,1.38,1.377.672,2.793,2.085v.707Z" />
+    <path class="light-defaultgrey-10" d="M13,10.5H12v2l-.5.5h-6L5,12.5v-2H4l-2,4H15Z" />
+    <path class="light-defaultgrey" d="M13.45,10.28,13,10H12v1h.69l1.5,3H2.81l1.5-3H5V10H4l-.45.28-2,4L2,15H15l.45-.72Z" />
+    <path class="light-defaultgrey-10" d="M10.5,1.5H7.53a4.4,4.4,0,0,1,.21.5A4.379,4.379,0,0,1,8,3.5a4.07,4.07,0,0,1-.03.5,4.16,4.16,0,0,1-.23,1A4.411,4.411,0,0,1,6,7.24a3.6,3.6,0,0,1-.5.29V12.5h6V2.5A1,1,0,0,0,10.5,1.5Z" />
+    <path class="light-defaultgrey" d="M10.5,1H7.24a3.6,3.6,0,0,1,.29.5,4.4,4.4,0,0,1,.21.5H10.5a.5.5,0,0,1,.5.5V12H6V7.24a3.6,3.6,0,0,1-.5.29,4.4,4.4,0,0,1-.5.21V12.5l.5.5h6l.5-.5V2.5A1.5,1.5,0,0,0,10.5,1Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M7,10v1h3V10ZM7,8V9h3V8Zm.97-4a4.16,4.16,0,0,1-.23,1H10V4Z" />
+    </g>
+  </g>
+</svg>

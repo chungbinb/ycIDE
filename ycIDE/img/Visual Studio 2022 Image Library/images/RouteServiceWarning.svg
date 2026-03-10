@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow{fill: #996f00; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRouteServiceWarning</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="light-defaultgrey" d="M9.051,8H8V7H9.051a2.473,2.473,0,0,1,.365-.876l-.745-.745.707-.707.745.745A2.469,2.469,0,0,1,11,5.051V4h1V5.051a2.469,2.469,0,0,1,.877.366l.745-.745.707.707-.745.745A2.473,2.473,0,0,1,13.949,7H15V8H13.949a2.473,2.473,0,0,1-.365.876l.745.745L14.1,9.85,12.97,7.8A1.536,1.536,0,0,0,13,7.5a1.5,1.5,0,0,0-3,0,1.536,1.536,0,0,0,.03.3L8.9,9.85l-.229-.229.745-.745A2.473,2.473,0,0,1,9.051,8Z" />
+    <path class="light-blue" d="M3,1V3H6.293L5.146,1.854l.708-.708,2,2v.708l-2,2-.708-.708L6.293,4H2.5L2,3.5V1Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+    <path class="light-defaultgrey" d="M7,8H2V7H7Zm0,5H2v1H7ZM6,10H2v1H6Z" />
+  </g>
+</svg>

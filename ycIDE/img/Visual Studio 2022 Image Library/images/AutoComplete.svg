@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightAutoComplete</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,1.5v4H1.5v-4Z" />
+    <path class="light-defaultgrey" d="M14.5,1H1.5L1,1.5v4l.5.5h13l.5-.5v-4ZM2,2h8V5H2ZM14,5H11V2h3Zm-1.5-.875L11.75,3h1.5ZM3,3H4V4H3ZM5,3H6V4H5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M4.5,6h10v7.5H4.5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H4.5L4,13.5V6H5v7h9V6h.5ZM9,7H6V8H9Zm0,4H6v1H9Zm3-2H6v1h6Z" />
+    </g>
+  </g>
+</svg>

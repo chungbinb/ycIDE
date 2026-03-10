@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCurrentFlowDecision</title>
+  <g id="canvas">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M8,14.5,1.5,8,8,1.5,14.5,8Zm0,0L1.5,8,8,1.5,14.5,8Z" />
+    <path class="light-yellow" d="M8.354,14.854H7.646l-6.5-6.5V7.646l6.5-6.5h.708l6.5,6.5v.708ZM2.207,8,8,13.793,13.793,8,8,2.207Z" />
+  </g>
+</svg>

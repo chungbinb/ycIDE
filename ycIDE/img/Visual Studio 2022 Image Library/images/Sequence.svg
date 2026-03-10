@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSequence</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M3.379,12.5H.5v-8H3.379L6,7.119v3.758l-.644-.645L3.232,12.354Zm8.242-8L9,7.123v3.758l.648-.649,2.122,2.122-.147.146H14.5v-8Z" />
+    <path class="light-defaultgrey" d="M3.879,13H.5L0,12.5v-8L.5,4H3.586l-.354.354L3.879,5H1v7H3.586l-.354.354ZM14.5,4H11.414l.354.354L11.121,5H14v7H11.414l.354.354L11.121,13H14.5l.5-.5v-8Z" />
+    <path class="light-blue" d="M7.854,6.854H7.146l-2.5-2.5.708-.708L7,5.291V1H8V5.3L9.646,3.646l.708.708Z" />
+    <path class="light-blue" d="M7.854,14.854H7.146l-2.5-2.5.708-.708L7,13.291V9H8v4.3l1.648-1.649.708.708Z" />
+  </g>
+</svg>

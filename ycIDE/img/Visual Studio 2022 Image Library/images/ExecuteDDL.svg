@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightExecuteDDL</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M4.293,2,3.146.854,3.854.146l2,2v.708l-2,2-.708-.708L4.293,3H0V2Z" />
+    <path class="light-defaultgrey-10" d="M14.5,5.045v7L9,14.545l-5.5-2.5V5.914l.354.354,3-3V3.216L9,2.045Z" />
+    <path class="light-defaultgrey" d="M14.739,4.606l-5.5-3H8.761L6.854,2.646v.622L5.714,4.407,9,2.614,13.381,5,9,7,4.961,5.16l-.755.755,4.289,1.95,0,5.9L4,11.723v-5.6l-.146.147L3,5.414v6.631l.293.455,5.5,2.5h.414l5.5-2.5L15,12.045v-7ZM14,11.723,9.5,13.769l0-5.9h0L14,5.821Z" />
+  </g>
+</svg>

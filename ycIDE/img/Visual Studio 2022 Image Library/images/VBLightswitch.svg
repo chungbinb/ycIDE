@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>VBLightswitch</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-blue" d="M10,5.445A2.5,2.5,0,1,0,7,7.9V11H8V7.9A2.5,2.5,0,0,0,10,5.445Zm-2.5,1.5A1.5,1.5,0,1,1,9,5.445,1.5,1.5,0,0,1,7.5,6.945Z" />
+    </g>
+    <path class="light-blue-10" d="M12.5,5.5a4.987,4.987,0,0,1-2.1,4.068,2.053,2.053,0,0,0-.9,1.664v3.213h-4V11.164a1.94,1.94,0,0,0-.871-1.576A5,5,0,1,1,12.5,5.5Z" />
+    <path class="light-blue" d="M10.967,1.229A5.5,5.5,0,1,0,4.342,10,1.441,1.441,0,0,1,5,11.164V14.5l.5.5h4l.5-.5V11.231a1.549,1.549,0,0,1,.689-1.256,5.5,5.5,0,0,0,.278-8.746ZM9,14H6V12H9Zm1.109-4.84A2.563,2.563,0,0,0,9.011,11H5.994A2.445,2.445,0,0,0,4.917,9.179a4.5,4.5,0,1,1,5.192-.019Z" />
+  </g>
+</svg>

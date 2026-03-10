@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightContractArrow</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M7,9.5V13H6V10.707L1.854,14.854l-.708-.708L5.293,10H3V9H6.5Z" />
+    <path class="light-defaultgrey" d="M10.707,6H13V7H9.5L9,6.5V3h1V5.293l4.146-4.147.708.708Z" />
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightLocateControl</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,2.5v11H7.365A3.492,3.492,0,0,0,4.5,8V2.5Z" />
+    <path class="light-blue-10" d="M6.5,11.5a2,2,0,1,1-2-2A2,2,0,0,1,6.5,11.5Z" />
+    <path class="light-blue" d="M4.5,9A2.5,2.5,0,0,0,2,11.5a2.473,2.473,0,0,0,.417,1.376L.146,15.146l.708.708,2.27-2.271A2.473,2.473,0,0,0,4.5,14a2.5,2.5,0,0,0,0-5Zm0,4A1.5,1.5,0,1,1,6,11.5,1.5,1.5,0,0,1,4.5,13Z" />
+    <path class="light-defaultgrey" d="M15,2.5v11l-.5.5H6.942a3.515,3.515,0,0,0,.707-1H14V3H5V8.051A3.443,3.443,0,0,0,4.5,8a3.443,3.443,0,0,0-.5.051V2.5L4.5,2h10Z" />
+  </g>
+</svg>

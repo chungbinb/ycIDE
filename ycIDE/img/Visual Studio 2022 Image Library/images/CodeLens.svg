@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue-10{fill: #005dba; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightCodeLens</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M12,8H9V7h3Zm3-1H13V8h2Zm0-2H11V6h4ZM14,9H11v1h3Z" />
+    <path class="light-blue-10" d="M7.5,7.5a9.978,9.978,0,0,1-2.5,6,9.978,9.978,0,0,1-2.5-6A9.978,9.978,0,0,1,5,1.5,9.978,9.978,0,0,1,7.5,7.5Z" />
+    <path class="light-blue" d="M5.366,13.841H4.634A10.4,10.4,0,0,1,2,7.5,10.4,10.4,0,0,1,4.634,1.159h.732A10.4,10.4,0,0,1,8,7.5,10.4,10.4,0,0,1,5.366,13.841ZM5,2.286A9.13,9.13,0,0,0,3,7.5a9.13,9.13,0,0,0,2,5.214A9.13,9.13,0,0,0,7,7.5,9.13,9.13,0,0,0,5,2.286Z" />
+    <path class="light-defaultgrey" d="M13.211,13.909l-8.5-6V7.091l8.5-6,.578.818L5.867,7.5l7.922,5.591Z" />
+  </g>
+</svg>

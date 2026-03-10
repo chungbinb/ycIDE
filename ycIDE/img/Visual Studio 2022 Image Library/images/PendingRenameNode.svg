@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightPendingRenameNode</title>
+  <g id="canvas">
+    <path class="canvas" d="M7,16H0V0H7Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-blue" d="M4,6v4a1,1,0,0,0,1,1v1a1.988,1.988,0,0,1-1.5-.691A1.988,1.988,0,0,1,2,12V11a1,1,0,0,0,1-1V6A1,1,0,0,0,2,5V4a1.988,1.988,0,0,1,1.5.691A1.988,1.988,0,0,1,5,4V5A1,1,0,0,0,4,6Z" />
+  </g>
+</svg>

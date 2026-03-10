@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-shadow{fill: #000000; opacity: 0.1;}.cls-1{opacity:0.5;}.cls-2{opacity:0.1;}.cls-3{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDevices</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-3">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12,13v1H6V13c2,0,2-.6,2-1h2C10,12.35,10,13,12,13Z" />
+    </g>
+  </g>
+  <g id="level-2">
+    <g class="cls-2">
+      <path class="light-defaultgrey" d="M5,11v1H2.5L2,11.5V7H3v4Z" />
+      <path class="light-defaultgrey-10" d="M5,7.5v4H2.5V7h2Z" />
+    </g>
+    <g class="cls-3">
+      <path class="light-shadow" d="M15.5,3H2.5L2,3.5v9l.5.5h13l.5-.5v-9ZM15,12H3V4H15Z" />
+      <path class="light-defaultgrey-10" d="M15.5,2.5v9H5v-4L4.5,7h-2V2.5Z" />
+      <path class="light-defaultgrey" d="M16,2.5v9l-.5.5H5V11H15V3H3V7H2V2.5L2.5,2h13Z" />
+    </g>
+  </g>
+  <g id="level-1">
+    <path class="light-shadow" d="M3,13v1H2V13ZM4.5,8H.5L0,8.5v7l.5.5h4l.5-.5v-7ZM4,15H1V9H4Z" />
+    <path class="light-defaultgrey-10" d="M4.5,7.5v7H.5v-7Z" />
+    <path class="light-defaultgrey" d="M4.5,7H.5L0,7.5v7l.5.5h4l.5-.5v-7ZM4,14H1V8H4ZM3,12v1H2V12Z" />
+  </g>
+</svg>

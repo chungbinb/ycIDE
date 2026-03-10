@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRenameMethod</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M9.464,11,6,13,1.5,10.4V5.189L6.009,2.4,10.5,5.189V8H9v3Z" />
+      <path class="light-purple" d="M9,11h1.464L6.25,13.433h-.5l-4.5-2.6L1,10.4V5.189l.236-.424L5.746,1.97h.528l4.491,2.8L11,5.189V8H10V5.467L6.009,2.983,2,5.468v4.645l3.5,2.022,0-4.348h1l0,4.347L9,10.691Z" />
+    </g>
+    <path class="light-purple-10" d="M6.009,2.4,10.5,5.189,6,7.787l-4.5-2.6Z" />
+    <path class="light-purple" d="M5.754,8.221l-4.5-2.6-.014-.858L5.746,1.97h.528l4.491,2.8-.015.857-4.5,2.6ZM2.474,5.174,6,7.21,9.528,5.174,6.009,2.983Z" />
+    <path class="light-defaultgrey" d="M13,10v5h2v1H10V15h2V10H10V9h5v1Z" />
+  </g>
+</svg>

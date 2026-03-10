@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBrowsePrevious</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M16,5a5,5,0,1,1-5-5A5.006,5.006,0,0,1,16,5Z" />
+    <path class="light-defaultgrey" d="M11.244,4.049l2.938-2.938.707.707L11.951,4.756A1,1,0,0,1,12,5a1.1,1.1,0,1,1-.756-.951Zm4.172-1.344-.734.734a4,4,0,1,1-2.121-2.121L13.3.584A4.934,4.934,0,0,0,11,0a5,5,0,1,0,5,5A4.943,4.943,0,0,0,15.416,2.705Z" />
+    <path class="light-blue" d="M1.146,11.844v-.707l2.5-2.5.708.707L2.707,11H9v1H2.707l1.647,1.637-.708.707Z" />
+  </g>
+</svg>

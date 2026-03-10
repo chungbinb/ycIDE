@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTransferErrorMessage</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M13.5,3.5V8.76L12.53,7H10.47L7.991,11.5H2.5V9.621l.232.233H4.268l3-3L5.146,4.732,5,4.88A3.952,3.952,0,0,0,4.7,3.5Z" />
+    <path class="light-yellow" d="M15.5,16h-8l-.439-.739,4-7.261h.878l4,7.261Z" />
+    <path class="light-blue" d="M3.854,8.854H3.146l-2-2,.708-.708L3,7.293V5A2,2,0,0,0,1,3H0V2H1A3,3,0,0,1,4,5V7.293L5.146,6.146l.708.708Z" />
+    <path class="light-defaultgrey" d="M5.414,5H12V6H6.414ZM13,4V7.853l1,1.815V3.5L13.5,3H4.442a3.914,3.914,0,0,1,.422,1ZM8.266,11H3V9.854H2.732L2,9.121V11.5l.5.5H7.715Zm1.1-2H5.121l-.853.854H4V10H8.817Zm1.1-2H7.121l-1,1h3.8Z" />
+    <path class="white" d="M12,13H11V10h1Zm.25,1.5a.75.75,0,1,1-.75-.75A.75.75,0,0,1,12.25,14.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-shadow{fill: #000000; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.5;}.cls-2{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightGoToTask</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-3">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,3.5v11H4.5V3.5Z" />
+      <path class="light-defaultgrey" d="M14.5,3H4.5L4,3.5v11l.5.5h10l.5-.5V3.5ZM14,14H5V4h9Z" />
+    </g>
+  </g>
+  <g id="level-2">
+    <g class="cls-2">
+      <path class="light-defaultgrey" d="M14.1,9.479l-3.75,3.75H9.646L7.4,10.979l.708-.708,1.9,1.9,3.4-3.4Z" />
+      <path class="light-defaultgrey" d="M11.5,2a2,2,0,0,0-4,0H6V4h7V2Zm-2,1a1,1,0,1,1,1-1A1,1,0,0,1,9.5,3Z" />
+    </g>
+  </g>
+  <g id="level-1">
+    <path class="light-shadow" d="M8.854,8.145v.707l-2.5,2.5-.708-.707L7.291,9H1V8H7.3L5.646,6.352l.708-.707Z" />
+    <path class="light-blue" d="M8.854,7.145v.707l-2.5,2.5-.708-.707L7.291,8H1V7H7.3L5.646,5.352l.708-.707Z" />
+  </g>
+</svg>

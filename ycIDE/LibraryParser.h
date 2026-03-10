@@ -28,6 +28,7 @@ struct LibraryCommand {
     std::vector<std::wstring> initials;     // 首字母（支持多音字）
     bool needsFlowLine;        // 是否需要流程线（流程控制命令）
     bool needsBrackets;        // 是否需要括号
+    bool isHidden;             // 是否隐藏命令（不在自动完成中显示）
 };
 
 // 支持库数据类型

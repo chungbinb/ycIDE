@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightIntellitraceLog</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M11,5H6V4h5Z" />
+    <path class="light-defaultgrey-10" d="M2.5,1.5V3H4V4H2.5V6H4v.025C4.165,6.01,4.331,6,4.5,6a5.5,5.5,0,0,1,4.606,8.5H13.5V1.5ZM11,5H6V4h5Z" />
+    <path class="light-teal" d="M11.5,3h-6L5,3.5v2l.5.5h6l.5-.5v-2ZM11,5H6V4h5Z" />
+    <path class="light-defaultgrey" d="M6,11v1H4.5L4,11.5V9H5v2Z" />
+    <path class="light-defaultgrey" d="M14,1.5v13l-.5.5H8.743A5.508,5.508,0,0,0,9.4,14H13V2H3V3H2V1.5L2.5,1h11ZM3,6H2V4H3Z" />
+    <path class="light-defaultgrey" d="M9,11.5A4.5,4.5,0,0,1,.382,13.3l.873-.505A3.5,3.5,0,1,0,4.5,8,3.427,3.427,0,0,0,2.094,9H3v1H.5L0,9.5V7H1V8.725A4.433,4.433,0,0,1,4.5,7,4.505,4.505,0,0,1,9,11.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M2,6H4v.025a5.452,5.452,0,0,0-2,.583ZM1,3V4H4V3Z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightStringQuote</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M4,5.18v.937q-.985,0-.985,1.883H4v2H2V8a3.679,3.679,0,0,1,.507-2.049A1.674,1.674,0,0,1,4,5.18Zm1.507.771A3.679,3.679,0,0,0,5,8v2H7V8H6.024q0-1.883.976-1.883V5.18A1.674,1.674,0,0,0,5.507,5.951ZM9,6.99h.976q0,1.884-.976,1.883V9.81a1.677,1.677,0,0,0,1.493-.766A3.674,3.674,0,0,0,11,6.99V5H9ZM12,5V6.99h.985q0,1.884-.985,1.883V9.81a1.677,1.677,0,0,0,1.493-.766A3.674,3.674,0,0,0,14,6.99V5Z" />
+  </g>
+</svg>

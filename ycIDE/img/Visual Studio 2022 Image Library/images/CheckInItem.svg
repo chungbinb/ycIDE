@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCheckInItem</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12,12H3V11h9Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M13.5,13.5H1.5v-4h12Z" />
+    <path class="light-defaultgrey" d="M13.5,9H1.5L1,9.5v4l.5.5h12l.5-.5v-4ZM13,13H2V10H13Z" />
+    <path class="light-blue" d="M7.146,1.146h.708l2.5,2.5-.708.707L8,2.709V8H7V2.705L5.354,4.353l-.708-.707Z" />
+  </g>
+</svg>

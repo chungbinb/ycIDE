@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>IconLightStopPhoneLandscape</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v8H1.5V8.306A4.944,4.944,0,0,0,8.95,4.5Z" />
+    <path class="light-defaultgrey" d="M15,4.5v8l-.5.5H1.5L1,12.5V7.977a4.935,4.935,0,0,0,1,.6V12H14V5H8.9A4.988,4.988,0,0,0,9,4h5.5ZM13,7v3H12V7Z" />
+    <path class="light-red" d="M4,8A4,4,0,1,1,8,4,4,4,0,0,1,4,8Z" />
+    <path class="white" d="M2.5,2.5h3v3h-3Z" />
+  </g>
+</svg>

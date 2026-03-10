@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightReturnValue</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,5v8.5H3.5V7.948l1.271-1.27L4.093,6H4.5A3.485,3.485,0,0,0,6.942,5Z" />
+    <path class="light-defaultgrey" d="M9,8H5V7H9Zm1,1H5v1h5ZM9,11H5v1H9Z" />
+    <path class="light-blue" d="M7,2.5A2.5,2.5,0,0,1,4.5,5H1.678L3.356,6.678l-.707.707-2.5-2.5V4.178l2.5-2.5.707.707L1.742,4H4.5a1.5,1.5,0,0,0,0-3H4V0h.5A2.5,2.5,0,0,1,7,2.5Z" />
+    <path class="light-defaultgrey" d="M15,4.5v9l-.5.5H3.5L3,13.5V8.448l1-1V13H14V6H4.5A3.5,3.5,0,0,0,7.649,4H14.5Z" />
+  </g>
+</svg>

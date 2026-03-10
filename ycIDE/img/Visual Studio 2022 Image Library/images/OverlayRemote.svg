@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-offwhite{fill: #f6f6f6; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.white{fill: #ffffff; opacity: 1;}</style>
+  </defs>
+  <title>OverlayRemote</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-offwhite" d="M16,11a5,5,0,1,1-5-5A5.006,5.006,0,0,1,16,11Z" />
+    <path class="light-blue" d="M11,7a4,4,0,1,0,4,4A4,4,0,0,0,11,7Z" />
+    <path class="white" d="M10.854,12.354l-1.5,1.5-.708-.708L9.793,12,8.646,10.854l.708-.708,1.5,1.5Zm2.5-1.208-.708.708-1.5-1.5V9.646l1.5-1.5.708.708L12.207,10Z" />
+  </g>
+</svg>

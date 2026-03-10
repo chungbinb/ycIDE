@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-teal{fill: #006758; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightLogProperty</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M2.5,1.5V3H4V4H2.5V6H4v.141A3.991,3.991,0,0,1,7,10a3.819,3.819,0,0,1-.069.682q-.021.126-.051.249c-.008.033-.011.067-.021.1L10,14.172V14.5h3.5V1.5ZM11,5H6V4h5Z" />
+    <path class="light-teal-10" d="M11.5,5.441h-6V3.559h6Z" />
+    <path class="light-defaultgrey" d="M9,14.586v.707L8.293,16H7.586l-3.3-3.3A2.969,2.969,0,0,1,3,13a3,3,0,0,1-3-3A2.969,2.969,0,0,1,.3,8.714l1.993,1.993L3.707,9.293,1.714,7.3A2.969,2.969,0,0,1,3,7a3,3,0,0,1,3,3,2.969,2.969,0,0,1-.3,1.286Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M4,6.141A3.977,3.977,0,0,0,3,6H4ZM4,3H1V4H4ZM3,6H1v.555A3.955,3.955,0,0,1,3,6Z" />
+    </g>
+    <path class="light-defaultgrey" d="M3,6H2V4H3ZM13.5,1H2.5L2,1.5V3H3V2H13V14H9.828l.172.172V15h3.5l.5-.5V1.5Z" />
+    <path class="light-teal" d="M11.5,3h-6L5,3.5v2l.5.5h6l.5-.5v-2ZM11,5H6V4h5Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightBrushXFormArrow</title>
+  <g id="Canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M11.864,10.5l-3,3H2.5V7.136l3-3V8.379L11.278,2.6,13.4,4.722,7.621,10.5Z" />
+    <path class="light-defaultgrey" d="M8.864,14H2.5L2,13.5V7.136l.146-.353,3-3L6,4.136V7.172l4.925-4.925h.707l2.121,2.121v.707L8.828,10h3.036l.353.854-3,3ZM3,13H8.657l2-2H7.621l-.353-.854,5.424-5.424L11.278,3.308,5.854,8.732,5,8.379V5.343l-2,2Z" />
+  </g>
+</svg>

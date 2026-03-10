@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal-10{fill: #006758; opacity: 0.1;}.light-teal{fill: #006758; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightConnectTestPlan</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal-10" d="M3,8.474H3a2.5,2.5,0,0,1-2.5-2.5V3.5h5V5.974A2.5,2.5,0,0,1,3,8.474Z" />
+    <path class="light-teal" d="M5,3V1A.5.5,0,0,0,4,1V3H2V1A.5.5,0,0,0,1,1V3H0V5.974A3,3,0,0,0,2.5,8.931V12h1V8.931A3,3,0,0,0,6,5.974V3ZM5,5.974a2,2,0,0,1-4,0V4H5Z" />
+    <path class="light-defaultgrey-10" d="M14.5,13.5h-6v-8h6Z" />
+    <path class="light-defaultgrey" d="M13,8H10V7h3Zm2-2.5v8l-.5.5h-6L8,13.5V13H7V12H8V11H7V10H8V9H7V8H8V7H7V6H8V5.5L8.5,5h6ZM14,6H9v7h5Z" />
+  </g>
+</svg>

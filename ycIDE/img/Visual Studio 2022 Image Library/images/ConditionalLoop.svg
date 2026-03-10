@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightConditionalLoop</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14,15.5H2V1.5H14Z" />
+      <path class="light-defaultgrey" d="M2,5.7V1.5L2.5,1h11l.5.5V5.7a4.5,4.5,0,0,0-1-.943V2H3V4.76A4.5,4.5,0,0,0,2,5.7ZM13,12.24V15H3V12.24A4.5,4.5,0,0,1,2,11.3v4.2l.5.5h11l.5-.5V11.3A4.5,4.5,0,0,1,13,12.24Z" />
+    </g>
+    <path class="light-defaultgrey" d="M8.854,5.854l-2,2-.708-.708L7.293,6H5.5a2.5,2.5,0,0,0,0,5H6v1H5.5a3.5,3.5,0,0,1,0-7H7.293L6.146,3.854l.708-.708,2,2Z" />
+    <path class="light-defaultgrey" d="M14,8.5A3.5,3.5,0,0,1,10.5,12H8.707L9.8,13.091h0l.055.055-.707.708-2-2v-.708l2-2,.707.708L9.8,9.909h0L8.707,11H10.5a2.5,2.5,0,0,0,0-5H10V5h.5A3.5,3.5,0,0,1,14,8.5Z" />
+  </g>
+</svg>

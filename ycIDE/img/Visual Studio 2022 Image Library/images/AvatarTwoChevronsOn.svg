@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-teal{fill: #006758; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAvatarTwoChevronsOn</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-teal" d="M11,1H5A4,4,0,0,0,1,5v6a4,4,0,0,0,4,4h6a4,4,0,0,0,4-4V5A4,4,0,0,0,11,1ZM4.25,10.7,6.721,8,4.25,5.3H5.885L8.406,8,5.934,10.7Zm5.029,0H7.594L10.066,8,7.594,5.3H9.23L11.75,8Z" />
+  </g>
+</svg>

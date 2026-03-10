@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightSourceControlManager</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,3.5h-2v-2h2Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M8.279,9.15s-3.418,3.45-5.191,5.1c-.861.75-2.076-.65-1.418-1.4,1.671-1.75,5.14-5.1,5.14-5.1Z" />
+      <path class="light-defaultgrey" d="M8.865,7.921A1.51,1.51,0,0,0,7.469,7a1.622,1.622,0,0,0-1,.389C4.75,9.031,2.991,10.743,1.294,12.52a1.443,1.443,0,0,0,.187,1.972,1.5,1.5,0,0,0,1.056.47,1.347,1.347,0,0,0,.892-.346c1.862-1.734,3.659-3.543,5.218-5.127A1.449,1.449,0,0,0,8.865,7.921ZM7.923,8.8C6.381,10.367,4.6,12.161,2.76,13.873a.4.4,0,0,1-.571-.087c-.149-.149-.292-.437-.157-.591,1.673-1.753,3.417-3.448,5.076-5.044A.575.575,0,0,1,7.469,8a.515.515,0,0,1,.48.322A.467.467,0,0,1,7.923,8.8Z" />
+    </g>
+    <path class="light-defaultgrey" d="M13,6.985a4,4,0,0,1-8,0,3.961,3.961,0,0,1,4-4,4.19,4.19,0,0,1,1.441.24L7.559,6.185,9.8,8.425l2.959-2.881A4.19,4.19,0,0,1,13,6.985Z" />
+    <path class="light-defaultgrey" d="M14.5,4h-2L12,3.5v-2l.5-.5h2l.5.5v2ZM13,3h1V2H13Z" />
+  </g>
+</svg>

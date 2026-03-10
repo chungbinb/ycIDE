@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightRunFilter</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15,3.5l-4,5v5H8v-5L5.848,5.81,9.016,4l-.875-.5Z" />
+    <path class="light-defaultgrey" d="M15.391,3.813,11.5,8.675V13.5L11,14H8l-.5-.5V8.675L5.409,6.061l.878-.5,2.1,2.629L8.5,8.5V13h2V8.5l.109-.312L13.96,4H9.016L7.266,3H15Z" />
+    <path class="light-green" d="M0,0,7,4,0,8Z" />
+  </g>
+</svg>

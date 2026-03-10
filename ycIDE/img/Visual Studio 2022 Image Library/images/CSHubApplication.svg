@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green-10{fill: #1f801f; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightCSHubApplication</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="canvas" d="M0,0H16V16H0Z" />
+    <path class="light-green-10" d="M7.5,15.5H.5v-7h7Z" />
+    <path class="light-green" d="M7.5,8H.5L0,8.5v7l.5.5h7l.5-.5v-7ZM7,15H1V10H7ZM6,12H4V11H6Zm0,2H4V13H6ZM3,12H2V11H3Zm0,2H2V13H3Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14.5,5v8H9V8.086L7.914,7H1.5V5Z" />
+      <path class="light-defaultgrey" d="M15,5.5v8l-.5.5H9V13h5V6H2V7H1V5.5L1.5,5h13Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14,3V5H2V3Z" />
+    <path class="light-defaultgrey" d="M14.5,6H1.5L1,5.5v-3L1.5,2h13l.5.5v3ZM2,5H14V3H2Z" />
+  </g>
+</svg>

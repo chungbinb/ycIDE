@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTextBulletPosition</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M15,9H7V8h8ZM3.5,7A1.5,1.5,0,1,0,5,8.5,1.5,1.5,0,0,0,3.5,7Z" />
+    <path class="light-blue" d="M6,12,3.507,15,1,12ZM3.507,2,1,5H6Z" />
+  </g>
+</svg>

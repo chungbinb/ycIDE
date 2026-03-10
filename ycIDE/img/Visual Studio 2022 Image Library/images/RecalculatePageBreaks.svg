@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRecalculatePageBreaks</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M14,7V5H11V2H5V8l-.021.253a4.349,4.349,0,0,1,2.974,4.788L14,13V10h1V7ZM12,9H11V8h1Zm2,0H13V8h1Z" />
+      <path class="light-defaultgrey" d="M15,4.5V7H14V5H11V2H5V8.258a4.535,4.535,0,0,0-.752-.2L4,8.021V1.5L4.5,1h7l.354.146,3,3ZM14,13H7.956a4.293,4.293,0,0,1-.07.438A4.065,4.065,0,0,1,7.74,14H14.5l.5-.5V10H14Z" />
+    </g>
+    <path class="light-defaultgrey" d="M13,9V8h1V9ZM11,8h1V9H11ZM9,8h1V9H9Zm7,0V9H15V8Z" />
+    <path class="light-blue" d="M3.917,10.035l.166-.987A3.494,3.494,0,0,1,5.941,15H7v1H4V13H5v1.5a2.5,2.5,0,0,0-1.083-4.465ZM0,10H1.059a3.494,3.494,0,0,0,1.858,5.952l.166-.987A2.5,2.5,0,0,1,2,10.5V12H3V9H0Z" />
+  </g>
+</svg>

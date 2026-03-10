@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightDeploymentConfiguration</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M7.5,5.5v10h-6V5.5a1,1,0,0,1,1-1h4A1,1,0,0,1,7.5,5.5Z" />
+    <path class="light-defaultgrey" d="M6.5,4h-4A1.5,1.5,0,0,0,1,5.5v10l.5.5h6l.5-.5V5.5A1.5,1.5,0,0,0,6.5,4ZM7,15H2V5.5A.5.5,0,0,1,2.5,5h4a.5.5,0,0,1,.5.5Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M6,7V8H3V7ZM3,12H6V11H3Zm0,2H6V13H3Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M7.99,5.5l-1.5-1V.5h5l2,2V8H7.99Z" />
+    <path class="light-defaultgrey" d="M5.99,5V.5l.5-.5h5l.354.146,2,2,.146.354V8h-1V3H10.983V1H6.99V5Z" />
+    <path class="light-defaultgrey" d="M9.99,5h-1V4h1Zm2-1h-1V5h1Zm-2,2h-1V7h1Z" />
+    <path class="light-defaultgrey" d="M12,12H9V9h3Zm0,4H9V13h3Zm4-4H13V9h3Z" />
+  </g>
+</svg>

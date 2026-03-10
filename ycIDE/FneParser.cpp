@@ -310,10 +310,8 @@ bool FneParser::LoadFneFile(const std::wstring& filePath) {
                 }
             }
 
-            // 只添加非隐藏命令到命令列表
-            if (!cmdInfo.isHidden) {
-                commands.push_back(cmdInfo);
-            }
+            // 添加所有命令到命令列表（包括隐藏命令，由上层决定是否使用）
+            commands.push_back(cmdInfo);
         }
     }
 

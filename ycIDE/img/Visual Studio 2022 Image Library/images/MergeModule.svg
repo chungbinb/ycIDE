@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-purple-10{fill: #6936aa; opacity: 0.1;}.light-purple{fill: #6936aa; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightMergeModule</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-purple-10" d="M3.5,9.5v5h12v-5Z" />
+      <path class="light-purple" d="M15.5,9H3.5L3,9.5v5l.5.5h12l.5-.5v-5ZM15,14H4V10H15Z" />
+    </g>
+    <path class="light-purple-10" d="M15.5,2.5v5h-5v-5ZM4.71,3.59l.99.99L6,5.3V7.5H8.5v-5H5.8Z" />
+    <path class="light-purple" d="M15.5,2h-5l-.5.5v5l.5.5h5l.5-.5v-5ZM15,7H11V3h4ZM8.5,2l.5.5v5L8.5,8H6V7H8V3H5.3l1-1Z" />
+    <path class="light-green" d="M2.146.146h.708L4.8,2.091,4.091,2.8,3,1.707V3.293L4.854,5.146,5,5.5V7H4V5.707l-1-1V7H2V1.707L.909,2.8.2,2.091Z" />
+  </g>
+</svg>

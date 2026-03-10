@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightSplitKeyValuePair</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,14.5h-9V1.5h9Z" />
+    <path class="light-defaultgrey" d="M15.5,14.5h-5V1.5h5Z" />
+    <path class="light-defaultgrey" d="M15.5,1H1.5L1,1.5v13l.5.5h14l.5-.5V1.5ZM2,2h8V14H2ZM15,14H11V2h4Z" />
+    <path class="light-defaultgrey-10" d="M8.5,6A2.492,2.492,0,0,1,6.684,8.393L7,9.525l-.5.5.5,1-1.5,1.5-1-1V7.989A2.5,2.5,0,1,1,8.5,6Z" />
+    <path class="light-defaultgrey" d="M6,5a.5.5,0,1,1-.5.5A.5.5,0,0,1,6,5ZM6,3A2.992,2.992,0,0,1,7.288,8.7l.193.693-.127.488-.246.245.339.678-.093.577-1.5,1.5H5.146l-1-1L4,11.524v-3.3A2.962,2.962,0,0,1,3,6,3,3,0,0,1,6,3Zm-.5,8.817.892-.891-.339-.678.093-.577.294-.293L6.2,8.528l.343-.615A2,2,0,1,0,4,6a1.979,1.979,0,0,0,.8,1.589l.2.4v3.329Z" />
+  </g>
+</svg>

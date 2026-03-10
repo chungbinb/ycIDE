@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-25{fill: #212121; opacity: 0.25;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightStorageContainer</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-25" d="M5.5,1.5h9l-3,3h-9Z" />
+    <path class="light-defaultgrey-10" d="M11.5,4.5l3-3v9l-3,3h-9v-9Z" />
+    <path class="light-defaultgrey" d="M9,7H4V6H9ZM7,8H4V9H7Z" />
+    <path class="light-defaultgrey" d="M14.5,1h-9l-.354.146-3,3L2,4.5v9l.5.5h9l.354-.146,3-3L15,10.5v-9ZM5,2.707V4H3.707ZM11,13H3V5h8Zm.293-9H6V2h7.293ZM14,10.293l-2,2V4.707l2-2Z" />
+  </g>
+</svg>

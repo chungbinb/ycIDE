@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-red-10{fill: #c50b17; opacity: 0.1;}.light-red{fill: #c50b17; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightRecordKeyframe</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M10.5,5.55l4.95,4.95L10.5,15.45,5.55,10.5Z" />
+    <g class="cls-1">
+      <path class="light-red-10" d="M7.5,4A3.5,3.5,0,1,1,4,.5,3.5,3.5,0,0,1,7.5,4Z" />
+      <path class="light-red" d="M4,0A4,4,0,1,0,8,4,4,4,0,0,0,4,0ZM4,7A3,3,0,1,1,7,4,3,3,0,0,1,4,7Z" />
+    </g>
+    <path class="light-defaultgrey" d="M10.854,15.8h-.708L5.2,10.854v-.708L10.146,5.2h.708L15.8,10.146v.708Zm-4.6-5.3L10.5,14.742,14.743,10.5,10.5,6.257Z" />
+    <path class="light-red" d="M6,4A2,2,0,1,1,4,2,2,2,0,0,1,6,4Z" />
+  </g>
+</svg>

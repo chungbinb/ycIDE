@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-red{fill: #c50b17; opacity: 1;}</style>
+  </defs>
+  <title>DeleteMessage</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M14.5,4.5v9H1.5V6.621L3,5.121,5.146,7.268,7.268,5.146,6.621,4.5Z" />
+    <path class="light-defaultgrey" d="M15,4.5v9l-.5.5H1.5L1,13.5V7.121l1-1V13H14V5H7.121l-1-1H14.5Z" />
+    <path class="light-defaultgrey-10" d="M14.5,4.5,8,9.5,2.7,5.422l.3-.3L5.146,7.268,7.268,5.146,6.621,4.5Z" />
+    <path class="light-defaultgrey" d="M15,4.5v.269L8.305,9.9H7.7L2.332,5.789,3,5.121,5.146,7.268l.336-.336L8,8.869,13.03,5H7.121l-1-1H14.5Z" />
+    <path class="light-red" d="M3.707,3,5.854,5.146l-.708.708L3,3.707.854,5.854.146,5.146,2.293,3,.146.854.854.146,3,2.293,5.146.146l.708.708Z" />
+  </g>
+</svg>

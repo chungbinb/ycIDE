@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightToggleButton</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M1.5,12.5a1,1,0,0,1-1-1v-7a1,1,0,0,1,1-1h12a1,1,0,0,1,1,1v7a1,1,0,0,1-1,1Z" />
+    <path class="light-green" d="M13.5,3.5H7v9h6.5a1,1,0,0,0,1-1v-7A1,1,0,0,0,13.5,3.5Z" />
+    <path class="light-defaultgrey" d="M13.5,3H1.5A1.5,1.5,0,0,0,0,4.5v7A1.5,1.5,0,0,0,1.5,13h12A1.5,1.5,0,0,0,15,11.5v-7A1.5,1.5,0,0,0,13.5,3Zm-12,9a.5.5,0,0,1-.5-.5v-7A.5.5,0,0,1,1.5,4H7v8ZM14,11.5a.5.5,0,0,1-.5.5H8V4h5.5a.5.5,0,0,1,.5.5Z" />
+  </g>
+</svg>

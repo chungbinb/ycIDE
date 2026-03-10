@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-green{fill: #1f801f; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTVMonitorSelected</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-green" d="M16,11.6l-4.25,4.25h-.707L8.793,13.6l.707-.707,1.9,1.9,3.9-3.9Z" />
+    <path class="light-defaultgrey-10" d="M13.5,3.5v7H1.5v-7Z" />
+    <path class="light-defaultgrey" d="M13.5,3H1.5L1,3.5v7l.5.5H7v1H5v1H8v-.022L8.978,12H8V11h5.5l.5-.5v-7ZM13,10H2V4H13Z" />
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>DependancyGraph</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M12.221,10H10.94L7.982,6.3,5.055,10H3.779L6.946,6H9.021Z" />
+    </g>
+    <path class="light-defaultgrey-10" d="M14.5,10.5v4h-5v-4Zm-13,4h5v-4h-5Zm9-13h-5v4h5Z" />
+    <path class="light-defaultgrey" d="M1.5,10l-.5.5v4l.5.5h5l.5-.5v-4L6.5,10ZM6,14H2V11H6Zm8.5-4h-5l-.5.5v4l.5.5h5l.5-.5v-4ZM14,14H10V11h4ZM10.5,6l.5-.5v-4L10.5,1h-5L5,1.5v4l.5.5ZM6,2h4V5H6Z" />
+  </g>
+</svg>

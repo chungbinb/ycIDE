@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>SendTest</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M4.92,3.5,4,4.42V7H1.5v5.5h13v-9Z" />
+    <path class="light-defaultgrey-10" d="M14.5,3.5l-.65.5L8,8.5,4,5.42v-1l.92-.92Z" />
+    <path class="light-defaultgrey" d="M15,3.5v9l-.5.5H1.5L1,12.5V7H2v5H14V4.54L8.3,8.9H7.7L4,6.07V4.79L8,7.87,13.03,4H4.42l1-1H14.5Z" />
+    <path class="light-blue" d="M4.854,2.146l-.708.708L3,1.707V6H2V1.707L.854,2.854.146,2.146l2-2h.708Z" />
+  </g>
+</svg>

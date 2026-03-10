@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightHiddenField</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M9,8a1.989,1.989,0,0,0-1,.277V6H7v6H8v-.277A2,2,0,1,0,9,8Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,9,11ZM5,8v.277a2,2,0,1,0,0,3.446V12H6V8ZM4,11a1,1,0,1,1,1-1A1,1,0,0,1,4,11Z" />
+    <g class="cls-1">
+      <path class="light-defaultgrey-10" d="M15,3.5v10l-.5.5H.5L0,13.5V3.5L.5,3h14Z" />
+      <path class="light-defaultgrey" d="M13,6.506v3.988a.46.46,0,0,0,.41.505.387.387,0,0,0,.09,0v1a1.457,1.457,0,0,1-1-.352,1.457,1.457,0,0,1-1,.352V11a.461.461,0,0,0,.5-.416.541.541,0,0,0,0-.09V6.506a.46.46,0,0,0-.41-.5.387.387,0,0,0-.09,0V5a1.452,1.452,0,0,1,1,.352A1.452,1.452,0,0,1,13.5,5V6a.461.461,0,0,0-.5.416A.541.541,0,0,0,13,6.506Z" />
+      <path class="light-defaultgrey" d="M10,13h1v1H10ZM8,14H9V13H8Zm4,0h1V13H12Zm2-2h1V11H14Zm0-3v1h1V9ZM4,14H5V13H4ZM0,12H1V11H0Zm2,2H3V13H2ZM0,10H1V9H0Zm6,4H7V13H6ZM7,3H6V4H7ZM9,3H8V4H9ZM5,3H4V4H5ZM1,5H0V6H1ZM1,8V7H0V8ZM13,3H12V4h1Zm2,2H14V6h1ZM2,4H3V3H2ZM15,7H14V8h1ZM11,3H10V4h1ZM.5,3,0,3.5V4H1V3ZM0,13.5l.5.5H1V13H0Zm14.5.5.5-.5V13H14v1ZM15,3.5,14.5,3H14V4h1Z" />
+    </g>
+  </g>
+</svg>

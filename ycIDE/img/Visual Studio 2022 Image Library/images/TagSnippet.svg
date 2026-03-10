@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>IconLightTagSnippet</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.5,1.481V10H13V7.086L11.914,6h-3.9V4.992a3.9,3.9,0,0,0-.51.052V1.481Z" />
+    <path class="light-defaultgrey" d="M15,11h1v1H15Zm-2,1h1V11H13ZM15.5,1h-8L7,1.5V6H8V2h7v8h1V1.5Z" />
+    <path class="light-blue" d="M2.3,11.882v-.709L4.49,9l.705.709L3.364,11.528,5.2,13.353l-.7.709Zm7.394,0v-.709L7.51,9l-.7.709,1.831,1.819L6.805,13.353l.705.709Z" />
+    <path class="light-defaultgrey-10" d="M11.5,7.5v8H.5v-8Z" />
+    <path class="light-defaultgrey" d="M11.5,16H.5L0,15.5v-8L.5,7h11l.5.5v8ZM1,15H11V8H1Z" />
+  </g>
+</svg>

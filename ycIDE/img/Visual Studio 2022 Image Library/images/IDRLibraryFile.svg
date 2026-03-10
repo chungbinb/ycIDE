@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IDRLibraryFile</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.39,13l-1.93.52L10.61,2.9l1.93-.52ZM2.5,6h2V2.5h-2Zm4,0H7.91L8,6.09l.5.5V2.5h-2Z" />
+    <path class="light-defaultgrey" d="M13.03,2.25l-.62-.35-1.93.51-.35.62,2.84,10.62.62.35,1.93-.51.35-.62Zm.78,10.66L11.22,3.25l.97-.26,2.59,9.66ZM4.5,2l.5.5V6H4V3H3V6H2V2.5L2.5,2Zm4,0,.5.5V7.09l-1-1V3H7V6H6V2.5L6.5,2Z" />
+    <path class="light-defaultgrey-10" d="M7.3,15.5h-6v-8h6Z" />
+    <path class="light-defaultgrey" d="M5.974,10H3V9H5.974ZM8,7.5v8l-.5.5H1.25l-.5-.5V15H0V14H.75V13H0V12H.75V11H0V10H.75V9H0V8H.75V7.5l.5-.5H7.5ZM7,8H1.75v7H7Z" />
+  </g>
+</svg>

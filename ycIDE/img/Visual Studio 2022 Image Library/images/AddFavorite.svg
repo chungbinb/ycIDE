@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>IconLightAddFavorite</title>
+  <g id="canvas" class="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M12.392,10.52l.682,3.98L9.5,12.621,5.926,14.5l.683-3.98L4.023,8H5V7.515l2.713-.394L9.5,3.5l1.787,3.621,4,.581Z" />
+    <path class="light-yellow" d="M15.632,8.06l-.277-.853-3.736-.543L9.948,3.279h-.9L7.381,6.664,5,7.01V8H3.387l-.019.06,2.7,2.635-.638,3.721.725.526L9.5,13.186l3.342,1.756.725-.526L12.929,10.7ZM12.41,13.586,9.732,12.179H9.268L6.59,13.586,7.1,10.6l-.145-.442L4.791,8.051l2.994-.435.376-.274L9.5,4.63l1.339,2.712.376.274,2.994.435-2.166,2.111L11.9,10.6Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

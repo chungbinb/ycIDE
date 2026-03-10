@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-yellow-10{fill: #996f00; opacity: 0.1;}.light-yellow{fill: #996f00; opacity: 1;}.light-green{fill: #1f801f; opacity: 1;}</style>
+  </defs>
+  <title>AddRulerVertical</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-yellow-10" d="M5.5,1.5V2H8V5H5.5V15.5h5V1.5Z" />
+    <path class="light-yellow" d="M10.5,1h-5L5,1.5V2h5V4H8V5h2V6H9V7h1V8H8V9h2v1H9v1h1v1H8v1h2v2H6V5H5V15.5l.5.5h5l.5-.5V1.5Z" />
+    <path class="light-green" d="M7,4H4V7H3V4H0V3H3V0H4V3H7Z" />
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEraser</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,0V16H0V0Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey-10" d="M15.247,6.75,7.5,14.5H3.747l-3-3a.907.907,0,0,1,0-1.25l9-9Z" />
+    <path class="light-defaultgrey" d="M15.6,6.4,10.1.9H9.393L.387,9.9a1.415,1.415,0,0,0,.006,1.951l3,3L3.747,15H12V14H8.7l6.9-6.9ZM3.954,14,1.107,11.153A.4.4,0,0,1,1.1,10.6l2.4-2.4L8.29,13l-1,1ZM9,12.293,4.2,7.5,9.747,1.957,14.54,6.75Z" />
+  </g>
+</svg>

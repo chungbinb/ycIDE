@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-blue{fill: #005dba; opacity: 1;}</style>
+  </defs>
+  <title>CloudDownload</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-lightblue-10" d="M15,7.25A2.73,2.73,0,0,1,12.3,10H10V6H7v4H4.561a3.626,3.626,0,0,1,0-7.25,3.471,3.471,0,0,1,.567.047,3.963,3.963,0,0,1,7.255,1.7A2.732,2.732,0,0,1,15,7.25Z" />
+    <path class="light-lightblue" d="M15,7.25A2.73,2.73,0,0,1,12.3,10H10V9h2.3a1.75,1.75,0,0,0,0-3.5h-.859V5.063A3.037,3.037,0,0,0,8.43,2h0A3.005,3.005,0,0,0,5.622,3.988,2.51,2.51,0,0,0,4.561,3.75a2.625,2.625,0,0,0,0,5.25H7v1H4.561a3.626,3.626,0,0,1,0-7.25,3.471,3.471,0,0,1,.567.047,3.963,3.963,0,0,1,7.255,1.7A2.732,2.732,0,0,1,15,7.25Z" />
+    <path class="light-blue" d="M8.146,14.854l-2.5-2.5.708-.708L8,13.293V7H9v6.293l1.646-1.647.708.708-2.5,2.5Z" />
+  </g>
+</svg>

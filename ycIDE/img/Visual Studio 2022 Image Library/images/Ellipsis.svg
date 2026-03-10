@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}</style>
+  </defs>
+  <title>IconLightEllipsis</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <path class="light-defaultgrey" d="M4,8.5A1.5,1.5,0,1,1,2.5,7,1.5,1.5,0,0,1,4,8.5Zm5,0A1.5,1.5,0,1,1,7.5,7,1.5,1.5,0,0,1,9,8.5Zm5,0A1.5,1.5,0,1,1,12.5,7,1.5,1.5,0,0,1,14,8.5Z" />
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>.canvas{fill: none; opacity: 0;}.light-defaultgrey{fill: #212121; opacity: 1;}.light-lightblue-10{fill: #0077a0; opacity: 0.1;}.light-lightblue{fill: #0077a0; opacity: 1;}.light-defaultgrey-10{fill: #212121; opacity: 0.1;}.cls-1{opacity:0.75;}</style>
+  </defs>
+  <title>IconLightThreeLineBreakChart</title>
+  <g id="canvas">
+    <path class="canvas" d="M16,16H0V0H16Z" />
+  </g>
+  <g id="level-1">
+    <g class="cls-1">
+      <path class="light-defaultgrey" d="M15,14v1H1.5L1,14.5V1H2V14Z" />
+    </g>
+    <path class="light-lightblue-10" d="M3.5,10.5h2v2h-2Z" />
+    <path class="light-lightblue" d="M3,10.5v2l.5.5h2l.5-.5v-2L5.5,10h-2ZM5,11v1H4V11Z" />
+    <path class="light-lightblue-10" d="M6.5,8.5h2v2h-2Z" />
+    <path class="light-lightblue" d="M6,8.5v2l.5.5h2l.5-.5v-2L8.5,8h-2ZM8,9v1H7V9Z" />
+    <path class="light-lightblue-10" d="M9.5,2.5h2v6h-2Z" />
+    <path class="light-lightblue" d="M9,2.5v6l.5.5h2l.5-.5v-6L11.5,2h-2ZM11,3V8H10V3Z" />
+    <path class="light-lightblue" d="M7,11H5V10H7Z" />
+    <path class="light-lightblue" d="M10,9H8V8h2Z" />
+    <path class="light-lightblue" d="M13,9H11V8h2Z" />
+    <path class="light-defaultgrey-10" d="M12.5,8.5h2v3h-2Z" />
+    <path class="light-defaultgrey" d="M12,8.5v3l.5.5h2l.5-.5v-3L14.5,8h-2ZM14,9v2H13V9Z" />
+  </g>
+</svg>
