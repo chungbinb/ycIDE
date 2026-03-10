@@ -1,4 +1,4 @@
-#include "framework.h"
+﻿#include "framework.h"
 #include "ycIDE.h"
 #include "AIModel.h"
 #include "AIChat.h"
@@ -5751,6 +5751,15 @@ LRESULT CALLBACK ToolboxWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM l
         }
         return 0;
         
+    case WM_COMMAND:
+        {
+            // 处理搜索框文本变化
+            if (HIWORD(wParam) == EN_CHANGE && pToolbox) {
+                pToolbox->OnSearchTextChanged();
+            }
+        }
+        return 0;
+        
     case WM_LBUTTONDOWN:
         {
             int x = GET_X_LPARAM(lParam);
@@ -6296,6 +6305,7 @@ void SwitchToVisualDesignerMode(bool enable)
                     doc->lines.push_back(subName + L"\t\t\t");
                     doc->lines.push_back(L"");
                     doc->modified = true;
+                doc->MarkContentDirty();
                     targetLine = (int)doc->lines.size() - 2;
                     int curTab = tabData->FindTab(eycPath);
                     if (curTab >= 0) tabData->SetTabModified(curTab, true);
@@ -6305,6 +6315,7 @@ void SwitchToVisualDesignerMode(bool enable)
                 if (codeLine >= (int)doc->lines.size()) {
                     doc->lines.push_back(L"");
                     doc->modified = true;
+                doc->MarkContentDirty();
                 }
                 doc->cursorLine = codeLine;
                 doc->cursorCol = 0;
@@ -6388,6 +6399,7 @@ void SwitchToVisualDesignerMode(bool enable)
                             }
                             if (changed) {
                                 doc->modified = true;
+                doc->MarkContentDirty();
                                 TabBarData* td = (TabBarData*)GetWindowLongPtr(hTabBarWnd, GWLP_USERDATA);
                                 if (td) {
                                     int ti = td->FindTab(filePath);

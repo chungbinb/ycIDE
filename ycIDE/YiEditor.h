@@ -2,6 +2,8 @@
 #include <windows.h>
 #include <string>
 #include <vector>
+#include <map>
+#include <unordered_map>
 #include "Keyword.h"
 #include "Parser.h"  // 添加语法检查支持
 
@@ -65,6 +67,40 @@ struct EditorDocument {
     // 语法检查相关
     std::vector<SyntaxError> syntaxErrors;   // 语法错误列表
     bool syntaxCheckEnabled;                 // 是否启用语法检查
+    
+    // 表格布局缓存（避免每次WM_PAINT重新计算）
+    std::vector<std::vector<int>> cachedTableMaxWidths;
+    std::vector<int> cachedTableTypes;
+    bool tableLayoutDirty;                   // 需要重新计算表格布局
+    int cachedLineCount;                     // 上次计算时的行数
+    
+    // 水平滚动条最大宽度缓存
+    int cachedMaxLineWidth;
+    bool maxLineWidthDirty;
+    
+    // 流程线索引缓存（避免每次WM_PAINT做O(n²)搜索）
+    struct FlowBlockInfo {
+        int elseLineIdx;       // 否则分支行号（-1表示无）
+        int lastIndentedLine;  // 否则分支最后一行
+        int blockEndLine;      // 流程块结束行（不含if-else时）
+        int loopHeadLine;      // 对应的循环首行号（循环尾用）
+        int nextFlowCmdLine;   // 紧跟的下一个判断/如果命令行号（-1表示无）
+    };
+    std::map<int, FlowBlockInfo> flowBlockIndex;  // key = 流程控制命令行号
+    bool flowBlockDirty;                          // 需要重新计算流程块索引
+    
+    // 文本宽度缓存（避免每帧大量GDI调用）
+    std::unordered_map<std::wstring, int> textWidthCache;
+    int cachedFontSize;           // 缓存对应的字体大小
+    int cachedCharWidth;          // 单字符宽度（估算用）
+    int cachedChineseCharWidth;   // 中文字符宽度（估算用）
+    
+    // 标记内容已修改（同时使缓存失效）
+    void MarkContentDirty() {
+        tableLayoutDirty = true;
+        maxLineWidthDirty = true;
+        flowBlockDirty = true;
+    }
     
     EditorDocument();
     ~EditorDocument();
