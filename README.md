@@ -1,5 +1,7 @@
 # ycIDE - 易语言现代化 IDE
 
+# 目前主要在更新基于HTML重构的ycIDE版，地址：https://github.com/chungbinb/ycIDE-electron
+
 一个现代化的易语言 IDE 实现，基于 C++ 和 Windows API 开发，完全支持 x64 + Unicode 架构。
 开发交流QQ群：767523155
 
